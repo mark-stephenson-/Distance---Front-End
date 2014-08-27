@@ -13,6 +13,12 @@
 		A536994F19ADD1170045EEB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A536994D19ADD1170045EEB1 /* Main.storyboard */; };
 		A536995119ADD1170045EEB1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A536995019ADD1170045EEB1 /* Images.xcassets */; };
 		A536995D19ADD1170045EEB1 /* NHS_PraseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A536995C19ADD1170045EEB1 /* NHS_PraseTests.m */; };
+		A561093E19ADEED000488879 /* NHSPraseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A561093D19ADEED000488879 /* NHSPraseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A561094A19ADEED000488879 /* NHSPraseKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A561094919ADEED000488879 /* NHSPraseKitTests.m */; };
+		A561094D19ADEED000488879 /* NHSPraseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A561093919ADEED000488879 /* NHSPraseKit.framework */; };
+		A561094F19ADEED000488879 /* NHSPraseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A561093919ADEED000488879 /* NHSPraseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A561095A19ADEEF000488879 /* TheDistanceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A561093119ADEE8700488879 /* TheDistanceKit.framework */; };
+		A561095B19ADEEF500488879 /* TheDistanceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A561093119ADEE8700488879 /* TheDistanceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,7 +29,64 @@
 			remoteGlobalIDString = A536993F19ADD1170045EEB1;
 			remoteInfo = "NHS Prase";
 		};
+		A561093019ADEE8700488879 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A561091519ADEE8700488879 /* TheDistanceKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A53698DA19ADC7EA0045EEB1;
+			remoteInfo = TheDistanceKit;
+		};
+		A561093219ADEE8700488879 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A561091519ADEE8700488879 /* TheDistanceKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A53698E519ADC7EB0045EEB1;
+			remoteInfo = TheDistanceKitTests;
+		};
+		A561094419ADEED000488879 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A536993819ADD1170045EEB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A536993F19ADD1170045EEB1;
+			remoteInfo = "NHS Prase";
+		};
+		A561094B19ADEED000488879 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A536993819ADD1170045EEB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A561093819ADEED000488879;
+			remoteInfo = NHSPraseKit;
+		};
+		A561095019ADEED000488879 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A536993819ADD1170045EEB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A561093819ADEED000488879;
+			remoteInfo = NHSPraseKit;
+		};
+		A561095819ADEEE800488879 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A561091519ADEE8700488879 /* TheDistanceKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A53698D919ADC7EA0045EEB1;
+			remoteInfo = TheDistanceKit;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A561094E19ADEED000488879 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A561095B19ADEEF500488879 /* TheDistanceKit.framework in Embed Frameworks */,
+				A561094F19ADEED000488879 /* NHSPraseKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A536994019ADD1170045EEB1 /* NHS Prase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NHS Prase.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +101,13 @@
 		A536995619ADD1170045EEB1 /* NHS PraseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NHS PraseTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A536995B19ADD1170045EEB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A536995C19ADD1170045EEB1 /* NHS_PraseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NHS_PraseTests.m; sourceTree = "<group>"; };
+		A561091519ADEE8700488879 /* TheDistanceKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = TheDistanceKit.xcodeproj; sourceTree = "<group>"; };
+		A561093919ADEED000488879 /* NHSPraseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NHSPraseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A561093C19ADEED000488879 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A561093D19ADEED000488879 /* NHSPraseKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NHSPraseKit.h; sourceTree = "<group>"; };
+		A561094319ADEED000488879 /* NHSPraseKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NHSPraseKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A561094819ADEED000488879 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A561094919ADEED000488879 /* NHSPraseKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NHSPraseKitTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,10 +115,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A561095A19ADEEF000488879 /* TheDistanceKit.framework in Frameworks */,
+				A561094D19ADEED000488879 /* NHSPraseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A536995319ADD1170045EEB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A561093519ADEED000488879 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A561094019ADEED000488879 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -61,8 +147,11 @@
 		A536993719ADD1170045EEB1 = {
 			isa = PBXGroup;
 			children = (
+				A56108EF19ADEE8700488879 /* Libraries */,
 				A536994219ADD1170045EEB1 /* NHS Prase */,
 				A536995919ADD1170045EEB1 /* NHS PraseTests */,
+				A561093A19ADEED000488879 /* NHSPraseKit */,
+				A561094619ADEED000488879 /* NHSPraseKitTests */,
 				A536994119ADD1170045EEB1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,6 +161,8 @@
 			children = (
 				A536994019ADD1170045EEB1 /* NHS Prase.app */,
 				A536995619ADD1170045EEB1 /* NHS PraseTests.xctest */,
+				A561093919ADEED000488879 /* NHSPraseKit.framework */,
+				A561094319ADEED000488879 /* NHSPraseKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,7 +207,69 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A56108EF19ADEE8700488879 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				A561091519ADEE8700488879 /* TheDistanceKit.xcodeproj */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		A561091619ADEE8700488879 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A561093119ADEE8700488879 /* TheDistanceKit.framework */,
+				A561093319ADEE8700488879 /* TheDistanceKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A561093A19ADEED000488879 /* NHSPraseKit */ = {
+			isa = PBXGroup;
+			children = (
+				A561093D19ADEED000488879 /* NHSPraseKit.h */,
+				A561093B19ADEED000488879 /* Supporting Files */,
+			);
+			path = NHSPraseKit;
+			sourceTree = "<group>";
+		};
+		A561093B19ADEED000488879 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A561093C19ADEED000488879 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A561094619ADEED000488879 /* NHSPraseKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				A561094919ADEED000488879 /* NHSPraseKitTests.m */,
+				A561094719ADEED000488879 /* Supporting Files */,
+			);
+			path = NHSPraseKitTests;
+			sourceTree = "<group>";
+		};
+		A561094719ADEED000488879 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A561094819ADEED000488879 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A561093619ADEED000488879 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A561093E19ADEED000488879 /* NHSPraseKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		A536993F19ADD1170045EEB1 /* NHS Prase */ = {
@@ -126,10 +279,14 @@
 				A536993C19ADD1170045EEB1 /* Sources */,
 				A536993D19ADD1170045EEB1 /* Frameworks */,
 				A536993E19ADD1170045EEB1 /* Resources */,
+				A561094E19ADEED000488879 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A561095919ADEEE800488879 /* PBXTargetDependency */,
+				A561094C19ADEED000488879 /* PBXTargetDependency */,
+				A561095119ADEED000488879 /* PBXTargetDependency */,
 			);
 			name = "NHS Prase";
 			productName = "NHS Prase";
@@ -154,6 +311,42 @@
 			productReference = A536995619ADD1170045EEB1 /* NHS PraseTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		A561093819ADEED000488879 /* NHSPraseKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A561095219ADEED000488879 /* Build configuration list for PBXNativeTarget "NHSPraseKit" */;
+			buildPhases = (
+				A561093419ADEED000488879 /* Sources */,
+				A561093519ADEED000488879 /* Frameworks */,
+				A561093619ADEED000488879 /* Headers */,
+				A561093719ADEED000488879 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NHSPraseKit;
+			productName = NHSPraseKit;
+			productReference = A561093919ADEED000488879 /* NHSPraseKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A561094219ADEED000488879 /* NHSPraseKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A561095519ADEED000488879 /* Build configuration list for PBXNativeTarget "NHSPraseKitTests" */;
+			buildPhases = (
+				A561093F19ADEED000488879 /* Sources */,
+				A561094019ADEED000488879 /* Frameworks */,
+				A561094119ADEED000488879 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A561094519ADEED000488879 /* PBXTargetDependency */,
+			);
+			name = NHSPraseKitTests;
+			productName = NHSPraseKitTests;
+			productReference = A561094319ADEED000488879 /* NHSPraseKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -170,6 +363,13 @@
 						CreatedOnToolsVersion = 6.0;
 						TestTargetID = A536993F19ADD1170045EEB1;
 					};
+					A561093819ADEED000488879 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					A561094219ADEED000488879 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = A536993F19ADD1170045EEB1;
+					};
 				};
 			};
 			buildConfigurationList = A536993B19ADD1170045EEB1 /* Build configuration list for PBXProject "NHS Prase" */;
@@ -183,13 +383,38 @@
 			mainGroup = A536993719ADD1170045EEB1;
 			productRefGroup = A536994119ADD1170045EEB1 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A561091619ADEE8700488879 /* Products */;
+					ProjectRef = A561091519ADEE8700488879 /* TheDistanceKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				A536993F19ADD1170045EEB1 /* NHS Prase */,
 				A536995519ADD1170045EEB1 /* NHS PraseTests */,
+				A561093819ADEED000488879 /* NHSPraseKit */,
+				A561094219ADEED000488879 /* NHSPraseKitTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A561093119ADEE8700488879 /* TheDistanceKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TheDistanceKit.framework;
+			remoteRef = A561093019ADEE8700488879 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A561093319ADEE8700488879 /* TheDistanceKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TheDistanceKitTests.xctest;
+			remoteRef = A561093219ADEE8700488879 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		A536993E19ADD1170045EEB1 /* Resources */ = {
@@ -202,6 +427,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A536995419ADD1170045EEB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A561093719ADEED000488879 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A561094119ADEED000488879 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -229,6 +468,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A561093419ADEED000488879 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A561093F19ADEED000488879 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A561094A19ADEED000488879 /* NHSPraseKitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -236,6 +490,26 @@
 			isa = PBXTargetDependency;
 			target = A536993F19ADD1170045EEB1 /* NHS Prase */;
 			targetProxy = A536995719ADD1170045EEB1 /* PBXContainerItemProxy */;
+		};
+		A561094519ADEED000488879 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A536993F19ADD1170045EEB1 /* NHS Prase */;
+			targetProxy = A561094419ADEED000488879 /* PBXContainerItemProxy */;
+		};
+		A561094C19ADEED000488879 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A561093819ADEED000488879 /* NHSPraseKit */;
+			targetProxy = A561094B19ADEED000488879 /* PBXContainerItemProxy */;
+		};
+		A561095119ADEED000488879 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A561093819ADEED000488879 /* NHSPraseKit */;
+			targetProxy = A561095019ADEED000488879 /* PBXContainerItemProxy */;
+		};
+		A561095919ADEEE800488879 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TheDistanceKit;
+			targetProxy = A561095819ADEEE800488879 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -334,7 +608,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/**",
+				);
 				INFOPLIST_FILE = "NHS Prase/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -345,7 +625,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries/**",
+				);
 				INFOPLIST_FILE = "NHS Prase/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -385,6 +671,80 @@
 			};
 			name = Release;
 		};
+		A561095319ADEED000488879 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NHSPraseKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A561095419ADEED000488879 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = NHSPraseKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A561095619ADEED000488879 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NHSPraseKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NHS Prase.app/NHS Prase";
+			};
+			name = Debug;
+		};
+		A561095719ADEED000488879 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NHSPraseKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NHS Prase.app/NHS Prase";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -404,12 +764,30 @@
 				A536996219ADD1170045EEB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A536996319ADD1170045EEB1 /* Build configuration list for PBXNativeTarget "NHS PraseTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A536996419ADD1170045EEB1 /* Debug */,
 				A536996519ADD1170045EEB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A561095219ADEED000488879 /* Build configuration list for PBXNativeTarget "NHSPraseKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A561095319ADEED000488879 /* Debug */,
+				A561095419ADEED000488879 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A561095519ADEED000488879 /* Build configuration list for PBXNativeTarget "NHSPraseKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A561095619ADEED000488879 /* Debug */,
+				A561095719ADEED000488879 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

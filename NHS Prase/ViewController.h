@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
 
+@interface ViewController : UIViewController
+{
+    IBOutlet UIScrollView *scrollView;
+
+    IBOutlet UITextField *usernameField;
+    IBOutlet UITextField *passwordField;
+}
 
 @end
 

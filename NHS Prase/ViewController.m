@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+#import <TheDistanceKit/TheDistanceKit.h>
+
 @interface ViewController ()
 
 @end
@@ -22,6 +24,23 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.keyboardAccessoryView = [TDInputAccessoryView inputAccessoryViewWithNavigationDelegate:self];
+    self.components = @[usernameField, passwordField];
+    
+    self.scrollContainer = scrollView;
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    self.scrollContainer = nil;
 }
 
 @end
