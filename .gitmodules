@@ -1,0 +1,4 @@
+[submodule "Libraries"]
+	path = Libraries
+	url = git@bitbucket.org:thedistance/the-distance-kit.git
+	branch = develop
