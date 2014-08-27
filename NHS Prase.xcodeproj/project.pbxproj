@@ -13,6 +13,8 @@
 		A536994F19ADD1170045EEB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A536994D19ADD1170045EEB1 /* Main.storyboard */; };
 		A536995119ADD1170045EEB1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A536995019ADD1170045EEB1 /* Images.xcassets */; };
 		A536995D19ADD1170045EEB1 /* NHS_PraseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A536995C19ADD1170045EEB1 /* NHS_PraseTests.m */; };
+		A5466A8919AE070100240026 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5466A8819AE070100240026 /* HomeViewController.m */; };
+		A5466A9119AE124700240026 /* PRSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5466A9019AE124700240026 /* PRSelectionViewController.m */; };
 		A561093E19ADEED000488879 /* NHSPraseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A561093D19ADEED000488879 /* NHSPraseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A561094A19ADEED000488879 /* NHSPraseKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A561094919ADEED000488879 /* NHSPraseKitTests.m */; };
 		A561094D19ADEED000488879 /* NHSPraseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A561093919ADEED000488879 /* NHSPraseKit.framework */; };
@@ -101,6 +103,10 @@
 		A536995619ADD1170045EEB1 /* NHS PraseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NHS PraseTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A536995B19ADD1170045EEB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A536995C19ADD1170045EEB1 /* NHS_PraseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NHS_PraseTests.m; sourceTree = "<group>"; };
+		A5466A8719AE070100240026 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		A5466A8819AE070100240026 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		A5466A8F19AE124700240026 /* PRSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRSelectionViewController.h; sourceTree = "<group>"; };
+		A5466A9019AE124700240026 /* PRSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRSelectionViewController.m; sourceTree = "<group>"; };
 		A561091519ADEE8700488879 /* TheDistanceKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = TheDistanceKit.xcodeproj; sourceTree = "<group>"; };
 		A561093919ADEED000488879 /* NHSPraseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NHSPraseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A561093C19ADEED000488879 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -174,6 +180,11 @@
 				A536994819ADD1170045EEB1 /* AppDelegate.m */,
 				A536994A19ADD1170045EEB1 /* ViewController.h */,
 				A536994B19ADD1170045EEB1 /* ViewController.m */,
+				A5466A8719AE070100240026 /* HomeViewController.h */,
+				A5466A8819AE070100240026 /* HomeViewController.m */,
+				A5466A8F19AE124700240026 /* PRSelectionViewController.h */,
+				A5466A9019AE124700240026 /* PRSelectionViewController.m */,
+				A5466AA419AE287C00240026 /* Record View Controllers */,
 				A536994D19ADD1170045EEB1 /* Main.storyboard */,
 				A536995019ADD1170045EEB1 /* Images.xcassets */,
 				A536994319ADD1170045EEB1 /* Supporting Files */,
@@ -205,6 +216,13 @@
 				A536995B19ADD1170045EEB1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A5466AA419AE287C00240026 /* Record View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Record View Controllers";
 			sourceTree = "<group>";
 		};
 		A56108EF19ADEE8700488879 /* Libraries */ = {
@@ -457,6 +475,8 @@
 				A536994C19ADD1170045EEB1 /* ViewController.m in Sources */,
 				A536994919ADD1170045EEB1 /* AppDelegate.m in Sources */,
 				A536994619ADD1170045EEB1 /* main.m in Sources */,
+				A5466A8919AE070100240026 /* HomeViewController.m in Sources */,
+				A5466A9119AE124700240026 /* PRSelectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +636,10 @@
 				INFOPLIST_FILE = "NHS Prase/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TDForms/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -633,6 +657,10 @@
 				INFOPLIST_FILE = "NHS Prase/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TDForms/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -782,6 +810,7 @@
 				A561095419ADEED000488879 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A561095519ADEED000488879 /* Build configuration list for PBXNativeTarget "NHSPraseKitTests" */ = {
 			isa = XCConfigurationList;
@@ -790,6 +819,7 @@
 				A561095719ADEED000488879 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

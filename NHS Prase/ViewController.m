@@ -43,4 +43,23 @@
     self.scrollContainer = nil;
 }
 
+#pragma mark - Log In
+
+-(void)continueAsGuest:(id)sender
+{
+    [self performSegueWithIdentifier:@"Continue" sender:self];
+}
+
+-(void)login:(id)sender
+{
+    if ([usernameField.text isNonNullString] && [passwordField.text isNonNullString]) {
+        [self performSegueWithIdentifier:@"Continue" sender:self];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"Invalid Credentials" message:@"Please enter a valid username and password." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    }
+
+    
+}
+
+
 @end

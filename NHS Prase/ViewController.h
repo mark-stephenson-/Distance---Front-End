@@ -17,5 +17,8 @@
     IBOutlet UITextField *passwordField;
 }
 
+-(IBAction)continueAsGuest:(id)sender;
+-(IBAction)login:(id)sender;
+
 @end
 
