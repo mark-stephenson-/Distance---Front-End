@@ -1,0 +1,27 @@
+/* Staff login username. */
+"Username" = "[fr] Username:";
+
+/* Home screen label. */
+"home.label.home" = "[fr] Home";
+
+/* Field to select the desired hospital. */
+"home.field.ward-select" = "[fr] Tap to select";
+
+/* Button title to create a new record. */
+"home.button.create" = "[fr] ...";
+
+/* Field to select the desired hospital. */
+"home.field.hospital-select" = "[fr] Tap to select";
+
+/* Label for the hospital select field. */
+"home.label.hospital-title" = "[fr] Hospital:";
+
+/* Label for the ward select field. */
+"home.label.ward-title" = "[fr] Ward:";
+
+/* Button to return to the log in screen. */
+"home.button.back" = "[fr] ...";
+
+/* Button title to toggle the language between English and French. */
+"home.language-button" = "[fr] ...";
+

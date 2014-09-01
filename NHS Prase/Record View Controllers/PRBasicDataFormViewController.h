@@ -10,4 +10,7 @@
 
 @interface PRBasicDataFormViewController : TDFormViewController
 
+@property (nonatomic, readonly) NSDateFormatter *dateFormatter;
+
+
 @end

@@ -8,8 +8,6 @@
 
 #import "HomeViewController.h"
 
-#import "PRSelectionViewController.h"
-
 @interface HomeViewController ()
 
 @end
@@ -35,12 +33,32 @@
 {
     [super viewWillAppear:animated];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applyTheme) name:TDThemeLanguageChange object:nil];
+    
+    [self applyTheme];
     [self refreshViews];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:TDThemeLanguageChange object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Language Methods
+
+-(void)toggleLanguage:(id)sender
+{
+    static BOOL isFrench = NO;
+    
+    [[TDTheme sharedTheme] setLanguageIdentifier:isFrench ? @"en" : @"fr"];
+    isFrench = !isFrench;
 }
 
 /*
@@ -62,21 +80,29 @@
 
 -(void)createRecord:(id)sender
 {
-    if ([hospitalField.text isNonNullString] && [wardField.text isNonNullString]) {
+    if (true) { //[hospitalField.text isNonNullString] && [wardField.text isNonNullString]) {
+        
+        [self performSegueWithIdentifier:@"CreateRecord" sender:self];
         
     } else {
         
         NSString *errorMessage = @"";
         
         if (![hospitalField.text isNonNullString]) {
-            errorMessage = @"Please select your hospital.";
+            
+            errorMessage = TDLocalizedString(@"home.error.no-hospital", @"Error message shown when the user has not selected a hospital.");
         }
         
         if (![wardField.text isNonNullString]) {
-            errorMessage = [errorMessage stringByAppendingString:@"\nPlease select you ward."];
+            if (![hospitalField.text isNonNullString]) {
+                errorMessage = [errorMessage stringByAppendingString:@"\n"];
+            }
+
+            errorMessage = [errorMessage stringByAppendingString:TDLocalizedString(@"home.error.no-ward", @"Error message shown when the user has not selected a ward.")];
         }
         
-        [[[UIAlertView alloc] initWithTitle:@"Cannot Create Record" message:errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        NSString *errorTitle = TDLocalizedString(@"home.error.create-record", @"Error title when the user cannot create a record.");
+        [[[UIAlertView alloc] initWithTitle:errorTitle message:errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
 }
 
@@ -128,7 +154,7 @@
         selectionKey = @"ward";
     }
     
-    PRSelectionViewController *selectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"HospitalWardSelectionVC"];
+    TDSelectionViewController *selectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PRBasicSelectionVC"];
     [selectionVC setOptions:options withDetails:nil orderedAs:sortedKeys];
     
     if (selectedKey != nil) {
@@ -166,6 +192,11 @@
     }
     
     [self refreshViews];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)selectionViewControllerRequestsCancel:(TDSelectionViewController *)selectionVC
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

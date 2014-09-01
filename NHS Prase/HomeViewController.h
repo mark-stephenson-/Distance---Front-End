@@ -23,5 +23,6 @@
 
 -(IBAction)createRecord:(id)sender;
 -(IBAction)goToLogIn:(id)sender;
+-(IBAction)toggleLanguage:(id)sender;
 
 @end

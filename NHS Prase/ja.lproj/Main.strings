@@ -1,0 +1,162 @@
+
+/* Class = "IBUISegmentedControl"; 6OR-ym-fHJ.segmentTitles[0] = "Yes"; ObjectID = "6OR-ym-fHJ"; */
+"6OR-ym-fHJ.segmentTitles[0]" = "Yes";
+
+/* Class = "IBUISegmentedControl"; 6OR-ym-fHJ.segmentTitles[1] = "No"; ObjectID = "6OR-ym-fHJ"; */
+"6OR-ym-fHJ.segmentTitles[1]" = "No";
+
+/* Class = "IBUINavigationItem"; title = "Title"; ObjectID = "6bv-BT-PjK"; */
+"6bv-BT-PjK.title" = "Title";
+
+/* Class = "IBUITextField"; placeholder = "Tap to select"; ObjectID = "6tb-qq-WgS"; */
+"6tb-qq-WgS.placeholder" = "Tap to select";
+
+/* Class = "IBUIButton"; normalTitle = "Title"; ObjectID = "7Yp-eP-Rmb"; */
+"7Yp-eP-Rmb.normalTitle" = "Title";
+
+/* Class = "IBUITextField"; placeholder = "Tap to select"; ObjectID = "818-M6-sIy"; */
+"818-M6-sIy.placeholder" = "Tap to select";
+
+/* Class = "IBUILabel"; text = "When were you admitted to the hospital"; ObjectID = "8nW-bP-NgY"; */
+"8nW-bP-NgY.text" = "japnesasldfg iulagdfliuas hl";
+
+/* Class = "IBUILabel"; text = "How would you describe your ethnic group"; ObjectID = "A2x-Op-YGE"; */
+"A2x-Op-YGE.text" = "How would you describe your ethnic group";
+
+/* Class = "IBUITabBarItem"; title = "Basic Data Form"; ObjectID = "BBH-PM-Ir6"; */
+"BBH-PM-Ir6.title" = "Basic Data Form";
+
+/* Class = "IBUILabel"; text = "Username:"; ObjectID = "BNN-DY-I1N"; */
+"BNN-DY-I1N.text" = "Username:";
+
+/* Class = "IBUIButton"; normalTitle = "Patient"; ObjectID = "CWf-MH-Y3h"; */
+"CWf-MH-Y3h.normalTitle" = "Patient";
+
+/* Class = "IBUITextField"; placeholder = "Tap to edit"; ObjectID = "FRz-6b-dN2"; */
+"FRz-6b-dN2.placeholder" = "Tap to edit";
+
+/* Class = "IBUISegmentedControl"; Geo-td-Tnw.segmentTitles[0] = "Basic Data"; ObjectID = "Geo-td-Tnw"; */
+"Geo-td-Tnw.segmentTitles[0]" = "Basic Data";
+
+/* Class = "IBUISegmentedControl"; Geo-td-Tnw.segmentTitles[1] = "Questionnair"; ObjectID = "Geo-td-Tnw"; */
+"Geo-td-Tnw.segmentTitles[1]" = "Questionnair";
+
+/* Class = "IBUISegmentedControl"; Geo-td-Tnw.segmentTitles[2] = "Comments"; ObjectID = "Geo-td-Tnw"; */
+"Geo-td-Tnw.segmentTitles[2]" = "Comments";
+
+/* Class = "IBUISegmentedControl"; Geo-td-Tnw.segmentTitles[3] = "Summary"; ObjectID = "Geo-td-Tnw"; */
+"Geo-td-Tnw.segmentTitles[3]" = "Summary";
+
+/* Class = "IBUILabel"; text = "Are you receiving any ongoing treatment elsewhere in the hospital?"; ObjectID = "Ha1-rT-fBP"; */
+"Ha1-rT-fBP.text" = "Are you receiving any ongoing treatment elsewhere in the hospital?";
+
+/* Class = "IBUILabel"; text = "Password:"; ObjectID = "Jby-nF-Rud"; */
+"Jby-nF-Rud.text" = "Password:";
+
+/* Class = "IBUIButton"; normalTitle = "-"; ObjectID = "L5H-V9-Cn9"; */
+"L5H-V9-Cn9.normalTitle" = "-";
+
+/* Class = "IBUILabel"; text = "Ward:"; ObjectID = "Lzp-0N-sik"; */
+"Lzp-0N-sik.text" = "Ward:";
+
+/* Class = "IBUIButton"; normalTitle = "Staff Login"; ObjectID = "N0P-KI-k6f"; */
+"N0P-KI-k6f.normalTitle" = "Staff Login";
+
+/* Class = "IBUILabel"; text = "How many times have you been an inpatient at this hospital in the past 5 years?"; ObjectID = "N2q-GH-rUm"; */
+"N2q-GH-rUm.text" = "How many times have you been an inpatient at this hospital in the past 5 years?";
+
+/* Class = "IBUIButton"; normalTitle = "English"; ObjectID = "Ntb-5C-hSn"; */
+"Ntb-5C-hSn.normalTitle" = "English";
+
+/* Class = "IBUITabBarItem"; title = "Questionnaire"; ObjectID = "OAZ-PV-KS0"; */
+"OAZ-PV-KS0.title" = "Questionnaire";
+
+/* Class = "IBUITextField"; placeholder = "Tap to edit"; ObjectID = "QPr-fi-YK7"; */
+"QPr-fi-YK7.placeholder" = "Tap to edit";
+
+/* Class = "IBUIButton"; normalTitle = "+"; ObjectID = "Qlo-vz-nuM"; */
+"Qlo-vz-nuM.normalTitle" = "+";
+
+/* Class = "IBUISegmentedControl"; Rpk-rq-upS.segmentTitles[0] = "First"; ObjectID = "Rpk-rq-upS"; */
+"Rpk-rq-upS.segmentTitles[0]" = "First";
+
+/* Class = "IBUISegmentedControl"; Rpk-rq-upS.segmentTitles[1] = "Second"; ObjectID = "Rpk-rq-upS"; */
+"Rpk-rq-upS.segmentTitles[1]" = "Second";
+
+/* Class = "IBUIButton"; normalTitle = "Home"; ObjectID = "SHt-av-HgY"; */
+"SHt-av-HgY.normalTitle" = "Home";
+
+/* Class = "IBUISegmentedControl"; TFB-BX-epv.segmentTitles[0] = "Male"; ObjectID = "TFB-BX-epv"; */
+"TFB-BX-epv.segmentTitles[0]" = "Male";
+
+/* Class = "IBUISegmentedControl"; TFB-BX-epv.segmentTitles[1] = "Female"; ObjectID = "TFB-BX-epv"; */
+"TFB-BX-epv.segmentTitles[1]" = "Female";
+
+/* Class = "IBUITextField"; placeholder = "Tap to select a date"; ObjectID = "Tm0-nJ-tpV"; */
+"Tm0-nJ-tpV.placeholder" = "Tap to select a date";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "V6u-ta-5ut"; */
+"V6u-ta-5ut.text" = "Title";
+
+/* Class = "IBUITabBarItem"; title = "Summary"; ObjectID = "VBD-Kw-8Lg"; */
+"VBD-Kw-8Lg.title" = "Summary";
+
+/* Class = "IBUIButton"; normalTitle = "Create a new record"; ObjectID = "X3c-ov-aLv"; */
+"X3c-ov-aLv.normalTitle" = "Create a new record";
+
+/* Class = "IBUIButton"; normalTitle = "Back"; ObjectID = "ZNc-3z-mpS"; */
+"ZNc-3z-mpS.normalTitle" = "Back";
+
+/* Class = "IBUITextField"; placeholder = "Tap to edit"; ObjectID = "cov-cV-AEB"; */
+"cov-cV-AEB.placeholder" = "Tap to edit";
+
+/* Class = "IBUITabBarItem"; title = "Basic Data"; ObjectID = "cqE-ih-eKE"; */
+"cqE-ih-eKE.title" = "Basic Data";
+
+/* Class = "IBUILabel"; text = "Home"; ObjectID = "f9J-wH-8bx"; */
+"f9J-wH-8bx.text" = "Home";
+
+/* Class = "IBUILabel"; text = "What is your first language?"; ObjectID = "fQZ-PL-frX"; */
+"fQZ-PL-frX.text" = "What is your first language?";
+
+/* Class = "IBUILabel"; text = "Gender"; ObjectID = "g5Q-51-JJc"; */
+"g5Q-51-JJc.text" = "Gender";
+
+/* Class = "IBUITabBarItem"; title = "Comments"; ObjectID = "h4R-nt-LTq"; */
+"h4R-nt-LTq.title" = "Comments";
+
+/* Class = "IBUIButton"; normalTitle = "Next"; ObjectID = "nQU-3w-RyB"; */
+"nQU-3w-RyB.normalTitle" = "Next";
+
+/* Class = "IBUITextField"; placeholder = "Tap to select a date"; ObjectID = "oWN-RD-UQ6"; */
+"oWN-RD-UQ6.placeholder" = "Tap to select a date";
+
+/* Class = "IBUISegmentedControl"; sMc-kd-YdA.segmentTitles[0] = "First"; ObjectID = "sMc-kd-YdA"; */
+"sMc-kd-YdA.segmentTitles[0]" = "First";
+
+/* Class = "IBUISegmentedControl"; sMc-kd-YdA.segmentTitles[1] = "Second"; ObjectID = "sMc-kd-YdA"; */
+"sMc-kd-YdA.segmentTitles[1]" = "Second";
+
+/* Class = "IBUILabel"; text = "Hospital:"; ObjectID = "uN5-Ut-YRc"; */
+"uN5-Ut-YRc.text" = "Hospital:";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "v46-2i-k5F"; */
+"v46-2i-k5F.text" = "Title";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "vBF-lq-aZ5"; */
+"vBF-lq-aZ5.text" = "Title";
+
+/* Class = "IBUITextField"; placeholder = "Tap to select"; ObjectID = "vDw-g6-mcM"; */
+"vDw-g6-mcM.placeholder" = "Tap to select";
+
+/* Class = "IBUILabel"; text = "Date of birth"; ObjectID = "w9f-QG-gLz"; */
+"w9f-QG-gLz.text" = "Date of birth";
+
+/* Class = "IBUILabel"; text = "or"; ObjectID = "wIt-Bm-zuP"; */
+"wIt-Bm-zuP.text" = "or";
+
+/* Class = "IBUIButton"; normalTitle = "Previous"; ObjectID = "xP1-go-U80"; */
+"xP1-go-U80.normalTitle" = "Previous";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "xTa-ao-CJz"; */
+"xTa-ao-CJz.text" = "Label";

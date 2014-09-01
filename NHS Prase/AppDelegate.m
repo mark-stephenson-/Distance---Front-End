@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import <TheDistanceKit/TheDistanceKit.h>
+
 @interface AppDelegate ()
 
 @end
@@ -17,6 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[TDTheme sharedTheme] setLanguageIdentifier:@"en"];
+    
     return YES;
 }
 
