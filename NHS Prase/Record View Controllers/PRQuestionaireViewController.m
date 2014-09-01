@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 The Distance. All rights reserved.
 //
 
-#import "QuestionaireViewController.h"
+#import "PRQuestionaireViewController.h"
 
 #import "PRQuestionnaire.h"
 #import "PRQuestion.h"
@@ -17,11 +17,11 @@
 #import "PRQuestionStatementViewController.h"
 #import "PRQuestionOptionsViewController.h"
 
-@interface QuestionaireViewController ()
+@interface PRQuestionaireViewController ()
 
 @end
 
-@implementation QuestionaireViewController
+@implementation PRQuestionaireViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,7 +51,7 @@
 {
     shouldShowStatement = YES;
     
-    PRQuestionViewController *q0 = [self viewControllerForIndex:0];
+    PRQuestionViewController *q0 = [self viewControllerForIndex:-1];
     
     [pageController setViewControllers:@[q0]
                              direction:UIPageViewControllerNavigationDirectionForward
@@ -80,6 +80,29 @@
     }
 }
 
+#pragma mark - Pseudo Property
+
+-(NSInteger)currentQuestion
+{
+    NSInteger currentQuestion = [(PRQuestionViewController *)[pageController.viewControllers firstObject] questionIndex];
+    return currentQuestion;
+}
+
+-(void)setCurrentQuestion:(NSInteger)currentQuestion
+{
+    NSInteger cq = self.currentQuestion;
+    
+    if (cq != currentQuestion) {
+        PRQuestionViewController *q = [self viewControllerForIndex:currentQuestion];
+        
+        [pageController setViewControllers:@[q]
+                                 direction:currentQuestion > cq ? UIPageViewControllerNavigationDirectionForward : UIPageViewControllerNavigationDirectionReverse
+                                  animated:YES
+                                completion:nil];
+    }
+    
+}
+
 #pragma mark - Questionnaire Methods
 
 -(void)setQuestionnaire:(PRQuestionnaire *)questionnaire
@@ -93,11 +116,43 @@
     [self resetPageViewController];
 }
 
+-(BOOL)canGoToNextQuestion
+{
+    return self.currentQuestion < self.questionnaire.questions.count - 1;
+}
+
+-(BOOL)canGoToPreviousQuestion
+{
+    return self.currentQuestion > 0;
+}
+
+-(void)goToNextQuestion
+{
+    if ([self canGoToNextQuestion]) {
+        UIViewController *nextVC = [self viewControllerForIndex:self.currentQuestion + 1];
+        [pageController setViewControllers:@[nextVC]
+                                 direction:UIPageViewControllerNavigationDirectionForward
+                                  animated:YES
+                                completion:nil];
+    }
+}
+
+-(void)goToPreviousQuestion
+{
+    if ([self canGoToPreviousQuestion]) {
+        UIViewController *prevVC = [self viewControllerForIndex:self.currentQuestion - 1];
+        [pageController setViewControllers:@[prevVC]
+                                 direction:UIPageViewControllerNavigationDirectionReverse
+                                  animated:YES
+                                completion:nil];
+    }
+}
+
 #pragma mark - Page Data Source
 
 -(PRQuestionViewController *)viewControllerForIndex:(NSInteger) idx
 {
-    if (idx == 0) {
+    if (idx < 0) {
         
         if (shouldShowStatement) {
             shouldShowStatement = NO;
@@ -106,8 +161,8 @@
             return nil;
         }
         
-    } else if (idx > 0 && idx - 1 < self.questionnaire.questions.count) {
-        PRQuestion *thisQuestion = self.questionnaire.questions[idx - 1];
+    } else if (idx >= 0 && idx < self.questionnaire.questions.count) {
+        PRQuestion *thisQuestion = self.questionnaire.questions[idx];
         
         PRQuestionViewController *qvc = nil;
         
@@ -146,7 +201,5 @@
     
     return [self viewControllerForIndex:idx + 1];
 }
-
-#pragma mark - Page Delegate
 
 @end

@@ -8,6 +8,8 @@
 
 #import "HomeViewController.h"
 
+#define ALERT_GO_TITLE 111
+
 @interface HomeViewController ()
 
 @end
@@ -106,11 +108,6 @@
     }
 }
 
--(void)goToLogIn:(id)sender
-{
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
 #pragma mark - Delegate Methods
 
 // Show a TDSelectionViewController and prevent a keyboard from showing;
@@ -198,6 +195,59 @@
 -(void)selectionViewControllerRequestsCancel:(TDSelectionViewController *)selectionVC
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Navigation Methods
+
+-(void)goToLogIn:(id)sender
+{
+    NSString *alertTitle = @"Cancel Record";
+    NSString *alertMessage = @"Returning to the title screen will delete any entered data. Are you sure you want to continue?";
+    NSString *buttonTitle = @"Cancel Record";
+    NSString *cancelTitle = @"Continue";
+    
+    if ([UIAlertController class]) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
+                                                                                 message:alertMessage
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:buttonTitle
+                                                            style:UIAlertActionStyleDestructive
+                                                          handler:^(UIAlertAction *action) {
+                                                              [self.navigationController popViewControllerAnimated:YES];
+                                                          }]];
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:cancelTitle
+                                                            style:UIAlertActionStyleCancel
+                                                          handler:nil]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    } else {
+        // iOS 8 Deprecation
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle
+                                                        message:alertMessage
+                                                       delegate:self
+                                              cancelButtonTitle:cancelTitle
+                                              otherButtonTitles:buttonTitle, nil];
+        alert.tag = ALERT_GO_TITLE;
+        [alert show];
+    }
+}
+
+// iOS 8 Deprecation
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        if (alertView.tag == ALERT_GO_TITLE) {
+            [self continueTitle];
+        }
+    }
+}
+
+// iOS 8 Deprecation
+-(void)continueTitle
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

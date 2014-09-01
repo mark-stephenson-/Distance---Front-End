@@ -8,12 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PRRecordViewController : UIViewController
+@interface PRRecordViewController : UIViewController <UIAlertViewDelegate>
 {
     UITabBarController *tabController;
     IBOutlet UISegmentedControl *visibleSelector;
+    
+    IBOutlet UIButton *nextButton;
+    IBOutlet UIButton *prevButton;
 }
 
 -(IBAction)segmentChanged:(id)sender;
+-(IBAction)goNext:(id)sender;
+-(IBAction)goPrevious:(id)sender;
+-(IBAction)goHome:(id)sender;
+-(IBAction)goToTitle:(id)sender;
 
 @end

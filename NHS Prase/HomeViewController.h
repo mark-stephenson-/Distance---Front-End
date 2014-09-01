@@ -8,7 +8,7 @@
 
 #import <TheDistanceKit/TheDistanceKit.h>
 
-@interface HomeViewController : UIViewController <UITextFieldDelegate, TDSelectionViewControllerDelegate>
+@interface HomeViewController : UIViewController <UITextFieldDelegate, TDSelectionViewControllerDelegate, UIAlertViewDelegate>
 {
     IBOutlet UITextField *hospitalField;
     IBOutlet UITextField *wardField;
