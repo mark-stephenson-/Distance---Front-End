@@ -118,7 +118,7 @@
 
 -(BOOL)canGoToNextQuestion
 {
-    return self.currentQuestion < self.questionnaire.questions.count - 1;
+    return self.currentQuestion < self.questionnaire.questions.count - 1.0;
 }
 
 -(BOOL)canGoToPreviousQuestion
@@ -156,7 +156,9 @@
         
         if (shouldShowStatement) {
             shouldShowStatement = NO;
-            return [self.storyboard instantiateViewControllerWithIdentifier:@"StatementVC"];
+            PRQuestionViewController *statementVC = [self.storyboard instantiateViewControllerWithIdentifier:@"StatementVC"];
+            statementVC.questionIndex = -1;
+            return statementVC;
         } else {
             return nil;
         }

@@ -70,14 +70,17 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    PROptionCollectionViewCell *optionCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"OptionCell" forIndexPath:indexPath];
+    PROptionCollectionViewCell *optionCell = nil;
     
     if (indexPath.section == 1) {
-        NSString *title = nil;
+        optionCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"OptionCell" forIndexPath:indexPath];
         
+        NSString *title = nil;
+        UIImage *image = nil;
         switch (indexPath.row) {
             case 0:
                 title = @"Not Applicable";
+                image = [UIImage imageNamed:@"n_a"];
                 break;
             case 1:
                 title = @"Prefer not to answer";
@@ -86,11 +89,18 @@
                 break;
         }
         
-        [optionCell setOptionTitle:title andImage:nil];
+        [optionCell setOptionTitle:title image:image andSecondImage:nil];
     } else {
+        
         NSDictionary *thisOption = optionsQuestion.options[indexPath.row];
         
-        [optionCell setOptionTitle:thisOption[@"title"] andImage:thisOption[@"image"]];
+        NSString *identifier = @"OptionCell";
+        if (thisOption[@"image2"] != nil) {
+            identifier = @"OptionCell2";
+        }
+        
+        optionCell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+        [optionCell setOptionTitle:thisOption[@"title"] image:thisOption[@"image"] andSecondImage:thisOption[@"image2"]];
     }
     
     return optionCell;

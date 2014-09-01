@@ -9,16 +9,15 @@
 #import <UIKit/UIKit.h>
 
 IB_DESIGNABLE
-
 @interface PROptionCollectionViewCell : UICollectionViewCell
 {
-    
-    IBOutlet IBInspectable UILabel *optionTitleLabel;
-    IBOutlet IBInspectable UIImageView *optionImageView;
+    IBOutlet UILabel *optionTitleLabel;
+    IBOutlet UIImageView *optionImageView;
+    IBOutlet UIImageView *secondOptionImageView;
 }
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *labelHeightConstraint;
 
--(void)setOptionTitle:(NSString *) title andImage:(UIImage *) image;
+-(void)setOptionTitle:(NSString *)title image:(UIImage *)image andSecondImage:(UIImage *) image2;
 
 @end

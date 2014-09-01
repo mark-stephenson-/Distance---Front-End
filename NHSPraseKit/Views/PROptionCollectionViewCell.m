@@ -11,39 +11,36 @@
 @implementation PROptionCollectionViewCell
 
 
--(void)prepareForInterfaceBuilder
-{
-    [super prepareForInterfaceBuilder];
-    
-    self.contentView.layer.borderColor = [UIColor grayColor].CGColor;
-    self.contentView.layer.borderWidth = 1.0;
-    [self setOptionTitle:@"Strongly Agree" andImage:nil];
-}
-
--(void)setOptionTitle:(NSString *)title andImage:(UIImage *)image
+-(void)setOptionTitle:(NSString *)title image:(UIImage *)image andSecondImage:(UIImage *) image2
 {
     optionTitleLabel.text = title;
+    optionImageView.image = image;
+    secondOptionImageView.image = image2;
 }
 
 -(void)layoutSubviews
 {
     [super layoutSubviews];
     
-    self.contentView.layer.borderColor = [UIColor grayColor].CGColor;
-    self.contentView.layer.borderWidth = 1.0;
+    self.layer.borderColor = self.tintColor.CGColor;
+    self.layer.borderWidth = 2.0;
     
     if (self.selected) {
         optionTitleLabel.textColor = [UIColor whiteColor];
         optionImageView.tintColor = [UIColor whiteColor];
+        secondOptionImageView.tintColor = [UIColor whiteColor];
         
         self.contentView.backgroundColor = self.tintColor;
     } else {
         optionTitleLabel.textColor = self.tintColor;
         optionImageView.tintColor = nil;
+        secondOptionImageView.tintColor = nil;
         
         self.contentView.backgroundColor = [UIColor clearColor];
     }
 }
+
+
 
 -(void)setSelected:(BOOL)selected
 {

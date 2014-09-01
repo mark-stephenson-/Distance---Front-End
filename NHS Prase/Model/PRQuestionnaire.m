@@ -12,6 +12,7 @@
 #import "PRQuestionOptions.h"
 #import "PRQuestionStatement.h"
 
+#import <UIKit/UIKit.h>
 
 @implementation PRQuestionnaire
 
@@ -23,11 +24,15 @@
     dispatch_once(&onceToken, ^{
         prototype = [[PRQuestionnaire alloc] init];
         
-        NSArray *agreeOptions = @[@{@"title":@"Strongly Disagree"},
-                                  @{@"title":@"Disagree"},
-                                  @{@"title":@"Neither Agree or Disagree"},
-                                  @{@"title":@"Agree"},
-                                  @{@"title":@"Strongly Agree"}];
+        
+        UIImage *cross = [UIImage imageNamed:@"cross"];
+        UIImage *tick = [UIImage imageNamed:@"tick"];
+        
+        NSArray *agreeOptions = @[@{@"title":@"Strongly Disagree"},//, @"image":cross, @"image2":cross},
+                                  @{@"title":@"Disagree"},//, @"image":cross},
+                                  @{@"title":@"Neither Agree or Disagree", @"image":[UIImage imageNamed:@"dash"]},
+                                  @{@"title":@"Agree", @"image":tick},
+                                  @{@"title":@"Strongly Agree", @"image":tick, @"image2":tick}];
         
         PRQuestionOptions *agree = [PRQuestionOptions questionWithTitle:@"I knew what the different roles of the people caring for me were"];
         agree.options = agreeOptions;
