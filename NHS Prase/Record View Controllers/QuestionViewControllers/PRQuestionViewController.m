@@ -13,6 +13,10 @@
 #import "PRQuestion.h"
 #import "PRQuestionOptions.h"
 
+#import "PRNoteViewController.h"
+#import "PRGoodViewController.h"
+#import "PRPIRTViewController.h"
+
 @interface PRQuestionViewController ()
 
 @end
@@ -44,6 +48,30 @@
         PRNoteViewController *noteVC = (PRNoteViewController *) segue.destinationViewController;
         noteVC.delegate = self;
     }
+}
+
+#pragma mark - PIRT Methods
+
+-(void)addNote:(id)sender
+{
+    PRNoteViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
+    toPresent.delegate = self;
+    
+    [self presentViewController:toPresent animated:YES completion:nil];
+}
+
+-(void)addSomethingGood:(id)sender
+{
+    PRGoodViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"GoodVC"];
+    
+    [self presentViewController:toPresent animated:YES completion:nil];
+}
+
+-(void)addConcern:(id)sender
+{
+    PRNoteViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"PIRTVC"];
+    
+    [self presentViewController:toPresent animated:YES completion:nil];
 }
 
 #pragma mark - Note Delegate

@@ -24,4 +24,9 @@
 
 @property (nonatomic, assign) BOOL shouldHidePIRTView;
 
+-(IBAction)addNote:(id)sender;
+-(IBAction)addSomethingGood:(id)sender;
+-(IBAction)addConcern:(id)sender;
+
+
 @end

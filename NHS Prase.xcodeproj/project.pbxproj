@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A504416E19B5C2170000C9B3 /* PRPIRTQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A504416D19B5C2170000C9B3 /* PRPIRTQuestionsViewController.m */; };
 		A504417819B5CE920000C9B3 /* PRSegmentTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A504417719B5CE920000C9B3 /* PRSegmentTabViewController.m */; };
+		A504417D19B5D37B0000C9B3 /* PRCommentsSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A504417C19B5D37B0000C9B3 /* PRCommentsSummaryViewController.m */; };
 		A50671C519B0D279008557CE /* PRRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50671C419B0D279008557CE /* PRRecordViewController.m */; };
 		A50671C819B0D56C008557CE /* PRQuestionaireViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50671C719B0D56C008557CE /* PRQuestionaireViewController.m */; };
 		A50671CB19B0DABC008557CE /* PRQuestionStatementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50671CA19B0DABC008557CE /* PRQuestionStatementViewController.m */; };
@@ -143,6 +144,8 @@
 		A504416D19B5C2170000C9B3 /* PRPIRTQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRPIRTQuestionsViewController.m; path = "Record View Controllers/PIRT View Controllers/PRPIRTQuestionsViewController.m"; sourceTree = "<group>"; };
 		A504417619B5CE920000C9B3 /* PRSegmentTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRSegmentTabViewController.h; path = "Record View Controllers/PRSegmentTabViewController.h"; sourceTree = "<group>"; };
 		A504417719B5CE920000C9B3 /* PRSegmentTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRSegmentTabViewController.m; path = "Record View Controllers/PRSegmentTabViewController.m"; sourceTree = "<group>"; };
+		A504417B19B5D37B0000C9B3 /* PRCommentsSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRCommentsSummaryViewController.h; path = "Record View Controllers/PRCommentsSummaryViewController.h"; sourceTree = "<group>"; };
+		A504417C19B5D37B0000C9B3 /* PRCommentsSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRCommentsSummaryViewController.m; path = "Record View Controllers/PRCommentsSummaryViewController.m"; sourceTree = "<group>"; };
 		A50671C319B0D279008557CE /* PRRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRRecordViewController.h; path = "Record View Controllers/PRRecordViewController.h"; sourceTree = "<group>"; };
 		A50671C419B0D279008557CE /* PRRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRRecordViewController.m; path = "Record View Controllers/PRRecordViewController.m"; sourceTree = "<group>"; };
 		A50671C619B0D56C008557CE /* PRQuestionaireViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRQuestionaireViewController.h; path = "Record View Controllers/PRQuestionaireViewController.h"; sourceTree = "<group>"; };
@@ -355,6 +358,8 @@
 				A5466CBE19AE3B0500240026 /* PRBasicDataFormViewController.m */,
 				A50671C619B0D56C008557CE /* PRQuestionaireViewController.h */,
 				A50671C719B0D56C008557CE /* PRQuestionaireViewController.m */,
+				A504417B19B5D37B0000C9B3 /* PRCommentsSummaryViewController.h */,
+				A504417C19B5D37B0000C9B3 /* PRCommentsSummaryViewController.m */,
 				A52A3C8219B4C1BC00985BAB /* PIRT View Controllers */,
 				A50671CC19B0DAC0008557CE /* Question View Controllers */,
 			);
@@ -648,6 +653,7 @@
 				A576056519B0AC180018E9EA /* PRDateSelectionViewController.m in Sources */,
 				A50671C819B0D56C008557CE /* PRQuestionaireViewController.m in Sources */,
 				A52A3C8819B4C1F900985BAB /* PRNoteViewController.m in Sources */,
+				A504417D19B5D37B0000C9B3 /* PRCommentsSummaryViewController.m in Sources */,
 				A536994C19ADD1170045EEB1 /* ViewController.m in Sources */,
 				A52A3C8519B4C1E700985BAB /* PRGoodViewController.m in Sources */,
 				A52A3C7019B471E300985BAB /* PRQuestionOptionsViewController.m in Sources */,
