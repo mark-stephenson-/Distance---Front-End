@@ -214,7 +214,7 @@
         [alertController addAction:[UIAlertAction actionWithTitle:buttonTitle
                                                             style:UIAlertActionStyleDestructive
                                                           handler:^(UIAlertAction *action) {
-                                                              [self.navigationController popViewControllerAnimated:YES];
+                                                              [self continueTitle];
                                                           }]];
         
         [alertController addAction:[UIAlertAction actionWithTitle:cancelTitle

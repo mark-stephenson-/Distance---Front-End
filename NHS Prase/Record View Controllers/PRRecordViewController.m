@@ -21,44 +21,8 @@
 
 @implementation PRRecordViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    id child = [self.childViewControllers firstObject];
-    
-    if ([child isKindOfClass:[UITabBarController class]]) {
-        tabController = child;
-        tabController.tabBar.hidden = YES;
-        [tabController setSelectedIndex:0];
-    }
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-
-    [self refreshFooterView];
-}
-
--(void)segmentChanged:(id)sender
-{
-    NSInteger selectedTab = visibleSelector.selectedSegmentIndex;
-    
-    if (selectedTab < tabController.viewControllers.count) {
-        [tabController setSelectedIndex:selectedTab];
-    }
-    
-    [self refreshFooterView];
-}
-
 #pragma mark - Navigation
 
--(void)refreshFooterView
-{
-    nextButton.enabled = tabController.selectedIndex < tabController.viewControllers.count - 1;
-    prevButton.enabled = tabController.selectedIndex > 0;
-}
 
 -(void)goNext:(id)sender
 {
@@ -71,13 +35,8 @@
             [qvc goToNextQuestion];
             return;
         }
-    }
-    
-    NSInteger currentTab = tabController.selectedIndex;
-    
-    if (currentTab < tabController.viewControllers.count - 1) {
-        [visibleSelector setSelectedSegmentIndex:currentTab + 1];
-        [self segmentChanged:self];
+    } else {
+        [super goNext:sender];
     }
 }
 
@@ -92,13 +51,8 @@
             [qvc goToPreviousQuestion];
             return;
         }
-    }
-    
-    NSInteger currentTab = tabController.selectedIndex;
-    
-    if (currentTab > 0) {
-        [visibleSelector setSelectedSegmentIndex:currentTab - 1];
-        [self segmentChanged:self];
+    } else {
+        [super goPrevious:sender];
     }
 }
 
@@ -108,33 +62,15 @@
     NSString *alertMessage = @"Returning to the ward select screen will delete any entered data. Are you sure you want to continue?";
     NSString *buttonTitle = @"Go Home";
     NSString *cancelTitle = @"Cancel";
-    
-    if ([UIAlertController class]) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
-                                                                                 message:alertMessage
-                                                                          preferredStyle:UIAlertControllerStyleAlert];
-        
-        [alertController addAction:[UIAlertAction actionWithTitle:buttonTitle
-                                                            style:UIAlertActionStyleDestructive
-                                                          handler:^(UIAlertAction *action) {
-            [self.navigationController popViewControllerAnimated:YES];
-                                                          }]];
-        
-        [alertController addAction:[UIAlertAction actionWithTitle:cancelTitle
-                                                            style:UIAlertActionStyleCancel
-                                                          handler:nil]];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
-    } else {
-        // iOS 8 Deprecation
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle
-                                                        message:alertMessage
-                                                       delegate:self
-                                              cancelButtonTitle:cancelTitle
-                                              otherButtonTitles:buttonTitle, nil];
-        alert.tag = ALERT_GO_HOME;
-        [alert show];
-    }
+ 
+    [self showAlertWithTitle:alertTitle
+                     message:alertMessage
+                 buttonTitle:buttonTitle
+            buttonCompletion:^{
+                [self continueHome];
+            }
+                 cancelTitle:cancelTitle
+                    alertTag:ALERT_GO_HOME];
 }
 
 -(void)goToTitle:(id)sender
@@ -144,32 +80,14 @@
     NSString *buttonTitle = @"Cancel Record";
     NSString *cancelTitle = @"Continue";
     
-    if ([UIAlertController class]) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
-                                                                                 message:alertMessage
-                                                                          preferredStyle:UIAlertControllerStyleAlert];
-        
-        [alertController addAction:[UIAlertAction actionWithTitle:buttonTitle
-                                                            style:UIAlertActionStyleDestructive
-                                                          handler:^(UIAlertAction *action) {
-                                                              [self.navigationController popViewControllerAnimated:YES];
-                                                          }]];
-        
-        [alertController addAction:[UIAlertAction actionWithTitle:cancelTitle
-                                                            style:UIAlertActionStyleCancel
-                                                          handler:nil]];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
-    } else {
-        // iOS 8 Deprecation
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle
-                                                        message:alertMessage
-                                                       delegate:self
-                                              cancelButtonTitle:cancelTitle
-                                              otherButtonTitles:buttonTitle, nil];
-        alert.tag = ALERT_GO_TITLE;
-        [alert show];
-    }
+    [self showAlertWithTitle:alertTitle
+                     message:alertMessage
+                 buttonTitle:buttonTitle
+            buttonCompletion:^{
+                [self continueHome];
+            }
+                 cancelTitle:cancelTitle
+                    alertTag:ALERT_GO_TITLE];
 }
 
 // iOS 8 Deprecation
@@ -186,13 +104,11 @@
     }
 }
 
-// iOS 8 Deprecation
 -(void)continueHome
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-// iOS 8 Deprecation
 -(void)continueTitle
 {
     [self.navigationController popToRootViewControllerAnimated:YES];

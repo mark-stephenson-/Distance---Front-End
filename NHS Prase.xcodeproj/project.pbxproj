@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A504416E19B5C2170000C9B3 /* PRPIRTQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A504416D19B5C2170000C9B3 /* PRPIRTQuestionsViewController.m */; };
+		A504417819B5CE920000C9B3 /* PRSegmentTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A504417719B5CE920000C9B3 /* PRSegmentTabViewController.m */; };
 		A50671C519B0D279008557CE /* PRRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50671C419B0D279008557CE /* PRRecordViewController.m */; };
 		A50671C819B0D56C008557CE /* PRQuestionaireViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50671C719B0D56C008557CE /* PRQuestionaireViewController.m */; };
 		A50671CB19B0DABC008557CE /* PRQuestionStatementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50671CA19B0DABC008557CE /* PRQuestionStatementViewController.m */; };
@@ -18,6 +20,9 @@
 		A52A3C6C19B46A6100985BAB /* PROptionCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A52A3C6A19B46A6100985BAB /* PROptionCollectionViewCell.h */; };
 		A52A3C6D19B46A6100985BAB /* PROptionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A3C6B19B46A6100985BAB /* PROptionCollectionViewCell.m */; };
 		A52A3C7019B471E300985BAB /* PRQuestionOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A3C6F19B471E300985BAB /* PRQuestionOptionsViewController.m */; };
+		A52A3C8519B4C1E700985BAB /* PRGoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A3C8419B4C1E700985BAB /* PRGoodViewController.m */; };
+		A52A3C8819B4C1F900985BAB /* PRNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A3C8719B4C1F900985BAB /* PRNoteViewController.m */; };
+		A52A3C8B19B4D22000985BAB /* PRPIRTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A3C8A19B4D22000985BAB /* PRPIRTViewController.m */; };
 		A536994619ADD1170045EEB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A536994519ADD1170045EEB1 /* main.m */; };
 		A536994919ADD1170045EEB1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A536994819ADD1170045EEB1 /* AppDelegate.m */; };
 		A536994C19ADD1170045EEB1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A536994B19ADD1170045EEB1 /* ViewController.m */; };
@@ -134,6 +139,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A504416C19B5C2170000C9B3 /* PRPIRTQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRPIRTQuestionsViewController.h; path = "Record View Controllers/PIRT View Controllers/PRPIRTQuestionsViewController.h"; sourceTree = "<group>"; };
+		A504416D19B5C2170000C9B3 /* PRPIRTQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRPIRTQuestionsViewController.m; path = "Record View Controllers/PIRT View Controllers/PRPIRTQuestionsViewController.m"; sourceTree = "<group>"; };
+		A504417619B5CE920000C9B3 /* PRSegmentTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRSegmentTabViewController.h; path = "Record View Controllers/PRSegmentTabViewController.h"; sourceTree = "<group>"; };
+		A504417719B5CE920000C9B3 /* PRSegmentTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRSegmentTabViewController.m; path = "Record View Controllers/PRSegmentTabViewController.m"; sourceTree = "<group>"; };
 		A50671C319B0D279008557CE /* PRRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRRecordViewController.h; path = "Record View Controllers/PRRecordViewController.h"; sourceTree = "<group>"; };
 		A50671C419B0D279008557CE /* PRRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRRecordViewController.m; path = "Record View Controllers/PRRecordViewController.m"; sourceTree = "<group>"; };
 		A50671C619B0D56C008557CE /* PRQuestionaireViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRQuestionaireViewController.h; path = "Record View Controllers/PRQuestionaireViewController.h"; sourceTree = "<group>"; };
@@ -154,6 +163,12 @@
 		A52A3C6B19B46A6100985BAB /* PROptionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PROptionCollectionViewCell.m; path = Views/PROptionCollectionViewCell.m; sourceTree = "<group>"; };
 		A52A3C6E19B471E300985BAB /* PRQuestionOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRQuestionOptionsViewController.h; path = "Record View Controllers/QuestionViewControllers/PRQuestionOptionsViewController.h"; sourceTree = "<group>"; };
 		A52A3C6F19B471E300985BAB /* PRQuestionOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRQuestionOptionsViewController.m; path = "Record View Controllers/QuestionViewControllers/PRQuestionOptionsViewController.m"; sourceTree = "<group>"; };
+		A52A3C8319B4C1E700985BAB /* PRGoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRGoodViewController.h; path = "Record View Controllers/PIRT View Controllers/PRGoodViewController.h"; sourceTree = "<group>"; };
+		A52A3C8419B4C1E700985BAB /* PRGoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRGoodViewController.m; path = "Record View Controllers/PIRT View Controllers/PRGoodViewController.m"; sourceTree = "<group>"; };
+		A52A3C8619B4C1F900985BAB /* PRNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRNoteViewController.h; path = "Record View Controllers/PIRT View Controllers/PRNoteViewController.h"; sourceTree = "<group>"; };
+		A52A3C8719B4C1F900985BAB /* PRNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRNoteViewController.m; path = "Record View Controllers/PIRT View Controllers/PRNoteViewController.m"; sourceTree = "<group>"; };
+		A52A3C8919B4D22000985BAB /* PRPIRTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRPIRTViewController.h; path = "Record View Controllers/PIRT View Controllers/PRPIRTViewController.h"; sourceTree = "<group>"; };
+		A52A3C8A19B4D22000985BAB /* PRPIRTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRPIRTViewController.m; path = "Record View Controllers/PIRT View Controllers/PRPIRTViewController.m"; sourceTree = "<group>"; };
 		A536994019ADD1170045EEB1 /* NHS Prase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NHS Prase.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A536994419ADD1170045EEB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A536994519ADD1170045EEB1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -245,6 +260,21 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		A52A3C8219B4C1BC00985BAB /* PIRT View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A52A3C8619B4C1F900985BAB /* PRNoteViewController.h */,
+				A52A3C8719B4C1F900985BAB /* PRNoteViewController.m */,
+				A52A3C8319B4C1E700985BAB /* PRGoodViewController.h */,
+				A52A3C8419B4C1E700985BAB /* PRGoodViewController.m */,
+				A52A3C8919B4D22000985BAB /* PRPIRTViewController.h */,
+				A52A3C8A19B4D22000985BAB /* PRPIRTViewController.m */,
+				A504416C19B5C2170000C9B3 /* PRPIRTQuestionsViewController.h */,
+				A504416D19B5C2170000C9B3 /* PRPIRTQuestionsViewController.m */,
+			);
+			name = "PIRT View Controllers";
+			sourceTree = "<group>";
+		};
 		A536993719ADD1170045EEB1 = {
 			isa = PBXGroup;
 			children = (
@@ -317,12 +347,15 @@
 		A5466AA419AE287C00240026 /* Record View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A504417619B5CE920000C9B3 /* PRSegmentTabViewController.h */,
+				A504417719B5CE920000C9B3 /* PRSegmentTabViewController.m */,
 				A50671C319B0D279008557CE /* PRRecordViewController.h */,
 				A50671C419B0D279008557CE /* PRRecordViewController.m */,
 				A5466CBD19AE3B0500240026 /* PRBasicDataFormViewController.h */,
 				A5466CBE19AE3B0500240026 /* PRBasicDataFormViewController.m */,
 				A50671C619B0D56C008557CE /* PRQuestionaireViewController.h */,
 				A50671C719B0D56C008557CE /* PRQuestionaireViewController.m */,
+				A52A3C8219B4C1BC00985BAB /* PIRT View Controllers */,
 				A50671CC19B0DAC0008557CE /* Question View Controllers */,
 			);
 			name = "Record View Controllers";
@@ -614,18 +647,23 @@
 			files = (
 				A576056519B0AC180018E9EA /* PRDateSelectionViewController.m in Sources */,
 				A50671C819B0D56C008557CE /* PRQuestionaireViewController.m in Sources */,
+				A52A3C8819B4C1F900985BAB /* PRNoteViewController.m in Sources */,
 				A536994C19ADD1170045EEB1 /* ViewController.m in Sources */,
+				A52A3C8519B4C1E700985BAB /* PRGoodViewController.m in Sources */,
 				A52A3C7019B471E300985BAB /* PRQuestionOptionsViewController.m in Sources */,
 				A5466CBF19AE3B0500240026 /* PRBasicDataFormViewController.m in Sources */,
 				A50671CB19B0DABC008557CE /* PRQuestionStatementViewController.m in Sources */,
 				A50671C519B0D279008557CE /* PRRecordViewController.m in Sources */,
+				A504416E19B5C2170000C9B3 /* PRPIRTQuestionsViewController.m in Sources */,
 				A536994919ADD1170045EEB1 /* AppDelegate.m in Sources */,
 				A536994619ADD1170045EEB1 /* main.m in Sources */,
 				A52A3C6019B461DD00985BAB /* PRQuestion.m in Sources */,
 				A576056919B0AE150018E9EA /* PRDateSelectCell.m in Sources */,
 				A52A3C6619B462BC00985BAB /* PRQuestionStatement.m in Sources */,
 				A52A3C5D19B460EC00985BAB /* PRQuestionnaire.m in Sources */,
+				A52A3C8B19B4D22000985BAB /* PRPIRTViewController.m in Sources */,
 				A50671CF19B0DB40008557CE /* PRQuestionViewController.m in Sources */,
+				A504417819B5CE920000C9B3 /* PRSegmentTabViewController.m in Sources */,
 				A52A3C6319B4624200985BAB /* PRQuestionOptions.m in Sources */,
 				A5466A8919AE070100240026 /* HomeViewController.m in Sources */,
 			);

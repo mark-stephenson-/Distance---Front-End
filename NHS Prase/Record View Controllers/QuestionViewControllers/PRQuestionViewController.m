@@ -8,6 +8,8 @@
 
 #import "PRQuestionViewController.h"
 
+
+
 #import "PRQuestion.h"
 #import "PRQuestionOptions.h"
 
@@ -32,6 +34,28 @@
     [super viewWillAppear:animated];
     
     pirtView.hidden = self.shouldHidePIRTView;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [super prepareForSegue:segue sender:sender];
+    
+    if ([segue.identifier isEqualToString:@"AddNote"] || [segue.identifier isEqualToString:@"AddGood"]) {
+        PRNoteViewController *noteVC = (PRNoteViewController *) segue.destinationViewController;
+        noteVC.delegate = self;
+    }
+}
+
+#pragma mark - Note Delegate
+
+-(void)noteViewControllerDidFinish:(PRNoteViewController *)noteVC
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)noteViewControllerCancelled:(PRNoteViewController *)noteVC
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
