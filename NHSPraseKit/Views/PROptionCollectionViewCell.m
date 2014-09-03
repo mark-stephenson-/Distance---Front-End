@@ -14,8 +14,8 @@
 -(void)setOptionTitle:(NSString *)title image:(UIImage *)image andSecondImage:(UIImage *) image2
 {
     optionTitleLabel.text = title;
-    optionImageView.image = image;
-    secondOptionImageView.image = image2;
+    optionImageView.image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    secondOptionImageView.image = [image2 imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 }
 
 -(void)layoutSubviews

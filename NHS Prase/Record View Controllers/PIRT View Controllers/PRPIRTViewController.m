@@ -155,6 +155,13 @@
     
 }
 
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        [self continueCancel];
+    }
+}
+
 -(void)continueCancel
 {
     [self dismissViewControllerAnimated:YES completion:nil];

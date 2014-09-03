@@ -63,7 +63,7 @@
 
 -(void)createRecord:(id)sender
 {
-    if ([self.selectedTrust isNonNullString] && [self.selectedHospital isNonNullString] && [self.selectedTrust isNonNullString]) {
+    if (true) {//[self.selectedTrust isNonNullString] && [self.selectedHospital isNonNullString] && [self.selectedTrust isNonNullString]) {
         
         [[NSUserDefaults standardUserDefaults] setValue:self.selectedTrust forKey:@"trust"];
         [[NSUserDefaults standardUserDefaults] setValue:self.selectedHospital forKey:@"hospital"];
@@ -75,20 +75,25 @@
         
         NSString *errorMessage = @"";
         
-        if (![hospitalField.text isNonNullString]) {
+        if (![self.selectedTrust isNonNullString]) {
+            errorMessage = @"Please select a trust.\n";
+        }
+        
+        if (![self.selectedHospital isNonNullString]) {
             
-            errorMessage = TDLocalizedString(@"home.error.no-hospital", @"Error message shown when the user has not selected a hospital.");
+            
+            errorMessage = [errorMessage stringByAppendingString:@"Please select a hospital.\n"];// TDLocalizedString(@"home.error.no-hospital", @"Error message shown when the user has not selected a hospital.");
         }
         
         if (![wardField.text isNonNullString]) {
             if (![hospitalField.text isNonNullString]) {
-                errorMessage = [errorMessage stringByAppendingString:@"\n"];
+                //errorMessage = [errorMessage stringByAppendingString:@"\n"];
             }
 
-            errorMessage = [errorMessage stringByAppendingString:TDLocalizedString(@"home.error.no-ward", @"Error message shown when the user has not selected a ward.")];
+            errorMessage = [errorMessage stringByAppendingString:@"Please select a ward."];//[errorMessage stringByAppendingString:TDLocalizedString(@"home.error.no-ward", @"Error message shown when the user has not selected a ward.")];
         }
         
-        NSString *errorTitle = TDLocalizedString(@"home.error.create-record", @"Error title when the user cannot create a record.");
+        NSString *errorTitle = @"Cannot create record."; //TDLocalizedString(@"home.error.create-record", @"Error title when the user cannot create a record.");
         [[[UIAlertView alloc] initWithTitle:errorTitle message:errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }
 }

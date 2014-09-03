@@ -35,6 +35,8 @@
     _labelButtonBuffer = 20;
     _cornerRadius = 5.0;
     _borderWidth = 2.0;
+    
+    [self setImage:[self imageForState:UIControlStateNormal] forState:UIControlStateNormal];
 }
 
 -(void)prepareForInterfaceBuilder
@@ -53,11 +55,12 @@
     self.layer.cornerRadius = self.cornerRadius;
     self.contentEdgeInsets = UIEdgeInsetsMake(self.vBuffer, self.hBuffer, self.vBuffer, self.hBuffer);
     self.titleEdgeInsets = UIEdgeInsetsMake(0, self.labelButtonBuffer, 0, 0);
-    self.tintColor = nil;
+    self.tintColor = self.imageTint ? self.imageTint : [self titleColorForState:UIControlStateNormal];
     self.imageView.tintColor = self.imageTint ? self.imageTint : [self titleColorForState:UIControlStateNormal];
     
     self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     
+    /*
     if (self.frame.size.width < self.intrinsicContentSize.width) {
         self.titleLabel.numberOfLines = 0;
     
@@ -67,12 +70,24 @@
         
         //[self layoutIfNeeded];
     }
+     */
+}
+
+-(void)setImage:(UIImage *)image forState:(UIControlState)state
+{
+    [super setImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:state];
 }
 
 -(CGSize)intrinsicContentSize
 {
-    CGSize imgSize = [self.imageView intrinsicContentSize];
-    CGSize labelSize = [self.titleLabel intrinsicContentSize];
+    CGSize imgSize = [self imageForState:UIControlStateNormal].size;
+    NSString *title = [self titleForState:UIControlStateNormal];
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text = title;
+#warning JRC: Requires font set here, cannot use self. propertes as becomes cyclic.
+    CGSize labelSize = [titleLabel systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    labelSize.width += 5.0;
     
     UIEdgeInsets contentInsets = self.contentEdgeInsets;
     UIEdgeInsets imgInsets = self.imageEdgeInsets;

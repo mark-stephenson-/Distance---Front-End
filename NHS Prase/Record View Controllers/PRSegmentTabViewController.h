@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PRSegmentTabViewController : UIViewController
+@interface PRSegmentTabViewController : UIViewController <UIAlertViewDelegate>
 {
     UITabBarController *tabController;
     

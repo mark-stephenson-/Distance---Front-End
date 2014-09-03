@@ -58,18 +58,14 @@
 
 -(PRInputAccessoryView *)accessoryView
 {
-    static PRInputAccessoryView *view = nil;
+    PRInputAccessoryView *view = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
+    view.navigationDelegate = self;
     
-    if (view == nil) {
-        view = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
-        view.navigationDelegate = self;
-        
-        view.previousButton.hidden = YES;
-        
-        view.nextButton.backgroundColor = [[PRTheme sharedTheme] positiveColor];
-        [view.nextButton setTitle:@"Done" forState:UIControlStateNormal];
-        [view.nextButton setImage:[UIImage imageNamed:@"submit"] forState:UIControlStateNormal];
-    }
+    view.previousButton.hidden = YES;
+    
+    view.nextButton.backgroundColor = [[PRTheme sharedTheme] positiveColor];
+    [view.nextButton setTitle:@"Done" forState:UIControlStateNormal];
+    [view.nextButton setImage:[UIImage imageNamed:@"submit"] forState:UIControlStateNormal];
     
     return view;
 }

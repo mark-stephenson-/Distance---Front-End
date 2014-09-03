@@ -66,6 +66,8 @@
         [_cancelButton setContentCompressionResistancePriority:752 forAxis:UILayoutConstraintAxisVertical];
         
         [self setContentCompressionResistancePriority:752 forAxis:UILayoutConstraintAxisVertical];
+        
+        [self setNeedsUpdateConstraints];
     }
     
     return self;

@@ -44,6 +44,8 @@
 		A576056919B0AE150018E9EA /* PRDateSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A576056819B0AE150018E9EA /* PRDateSelectCell.m */; };
 		A5DE267F19B737ED000D3AF2 /* PRWardSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DE267E19B737ED000D3AF2 /* PRWardSelectViewController.m */; };
 		A5DE268619B739D9000D3AF2 /* PRPIRTWardSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DE268519B739D9000D3AF2 /* PRPIRTWardSelectViewController.m */; };
+		A5DE269E19B7410E000D3AF2 /* TheDistanceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5DE269C19B740AC000D3AF2 /* TheDistanceKit.framework */; };
+		A5DE269F19B74114000D3AF2 /* TheDistanceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5DE269C19B740AC000D3AF2 /* TheDistanceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5F521F519AF289800DC6C68 /* TDFormKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5466CB719AE3A3400240026 /* TDFormKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5F582AD19B6183500E838D0 /* PRTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A504419419B60D740000C9B3 /* PRTheme.m */; };
 /* End PBXBuildFile section */
@@ -128,6 +130,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				A5DE269F19B74114000D3AF2 /* TheDistanceKit.framework in Embed Frameworks */,
 				A5F521F519AF289800DC6C68 /* TDFormKit.framework in Embed Frameworks */,
 				A561094F19ADEED000488879 /* NHSPraseKit.framework in Embed Frameworks */,
 			);
@@ -211,11 +214,11 @@
 		A576056419B0AC180018E9EA /* PRDateSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRDateSelectionViewController.m; path = "Selection VCs/PRDateSelectionViewController.m"; sourceTree = "<group>"; };
 		A576056719B0AE150018E9EA /* PRDateSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRDateSelectCell.h; path = "Custom Form Cells/PRDateSelectCell.h"; sourceTree = "<group>"; };
 		A576056819B0AE150018E9EA /* PRDateSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRDateSelectCell.m; path = "Custom Form Cells/PRDateSelectCell.m"; sourceTree = "<group>"; };
-		A5807E9919B614D300B544BF /* TheDistanceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TheDistanceKit.framework; path = "Frameworks/TDForms/TDKit/build/Debug-iphoneos/TheDistanceKit.framework"; sourceTree = "<group>"; };
 		A5DE267D19B737ED000D3AF2 /* PRWardSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRWardSelectViewController.h; sourceTree = "<group>"; };
 		A5DE267E19B737ED000D3AF2 /* PRWardSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRWardSelectViewController.m; sourceTree = "<group>"; };
 		A5DE268419B739D9000D3AF2 /* PRPIRTWardSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRPIRTWardSelectViewController.h; sourceTree = "<group>"; };
 		A5DE268519B739D9000D3AF2 /* PRPIRTWardSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRPIRTWardSelectViewController.m; sourceTree = "<group>"; };
+		A5DE269C19B740AC000D3AF2 /* TheDistanceKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TheDistanceKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/NHS_Prase-ecdysqftmemteegnftvamtzwltcr/Build/Products/Debug-iphoneos/TheDistanceKit.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5DE269E19B7410E000D3AF2 /* TheDistanceKit.framework in Frameworks */,
 				A5466CBC19AE3A6300240026 /* TDFormKit.framework in Frameworks */,
 				A561094D19ADEED000488879 /* NHSPraseKit.framework in Frameworks */,
 			);
@@ -304,7 +308,7 @@
 		A536993719ADD1170045EEB1 = {
 			isa = PBXGroup;
 			children = (
-				A5807E9919B614D300B544BF /* TheDistanceKit.framework */,
+				A5DE269C19B740AC000D3AF2 /* TheDistanceKit.framework */,
 				A5466CA719AE3A3400240026 /* TDForms.xcodeproj */,
 				A536994219ADD1170045EEB1 /* NHS Prase */,
 				A536995919ADD1170045EEB1 /* NHS PraseTests */,
@@ -863,8 +867,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/**",
-					"$(PROJECT_DIR)/Frameworks/TDForms/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/Frameworks/TDKit/build/Debug-iphoneos",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/NHS_Prase-ecdysqftmemteegnftvamtzwltcr/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "NHS Prase/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -890,8 +893,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/**",
-					"$(PROJECT_DIR)/Frameworks/TDForms/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/Frameworks/TDKit/build/Debug-iphoneos",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/NHS_Prase-ecdysqftmemteegnftvamtzwltcr/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = "NHS Prase/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

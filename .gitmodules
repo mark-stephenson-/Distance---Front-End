@@ -2,3 +2,7 @@
 	path = Frameworks/TDForms
 	url = git@bitbucket.org:thedistance/tdforms.git
 	branch = v2.0_CocoaTouchFramework
+[submodule "TDKit"]
+	path = TDKit
+	url = git@bitbucket.org:thedistance/the-distance-kit.git
+	branch = develop

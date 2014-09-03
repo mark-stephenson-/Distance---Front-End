@@ -360,7 +360,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNc-3z-mpS" customClass="PRButton">
-                                <rect key="frame" x="0.0" y="540" width="160" height="60"/>
+                                <rect key="frame" x="0.0" y="540" width="167" height="60"/>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                 <accessibility key="accessibilityConfiguration" hint="Return to log in screen"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
@@ -376,6 +376,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="0.01"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="imageTint">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -425,7 +428,7 @@
                                 <rect key="frame" x="0.0" y="540" width="600" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQU-3w-RyB" customClass="PRButton">
-                                        <rect key="frame" x="462" y="0.0" width="138" height="60"/>
+                                        <rect key="frame" x="459" y="0.0" width="141" height="60"/>
                                         <color key="backgroundColor" red="0.25882352941176467" green="0.76862745098039209" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Next" image="next_arrow"/>
@@ -450,38 +453,8 @@
                                             <action selector="goNext:" destination="ilS-7W-Avn" eventType="touchUpInside" id="TPI-yB-8q4"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xP1-go-U80" customClass="PRButton">
-                                        <rect key="frame" x="297" y="0.0" width="165" height="60"/>
-                                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Previous" image="back_arrow">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="0.01"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="vBuffer">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="hBuffer">
-                                                <real key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="labelButtonBuffer">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="0.01"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="goPrevious:" destination="ilS-7W-Avn" eventType="touchUpInside" id="UKA-Xd-ukO"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5s-eL-H2D" customClass="PRButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="149" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="151" height="60"/>
                                         <color key="backgroundColor" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Home" image="home">
@@ -508,16 +481,42 @@
                                             <action selector="goHome:" destination="ilS-7W-Avn" eventType="touchUpInside" id="l1W-xq-zsL"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIA-3x-uva" customClass="PRButton">
+                                        <rect key="frame" x="287" y="0.0" width="172" height="60"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Previous" image="back_arrow"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.01"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="vBuffer">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="hBuffer">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="labelButtonBuffer">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.01"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="goNext:" destination="ilS-7W-Avn" eventType="touchUpInside" id="tIg-kS-I3n"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="xP1-go-U80" firstAttribute="top" secondItem="q1Z-jc-doS" secondAttribute="top" id="49t-qb-TeU"/>
-                                    <constraint firstItem="nQU-3w-RyB" firstAttribute="leading" secondItem="xP1-go-U80" secondAttribute="trailing" id="4KO-ci-xKn"/>
-                                    <constraint firstAttribute="bottom" secondItem="xP1-go-U80" secondAttribute="bottom" id="blf-Ax-TOL"/>
+                                    <constraint firstItem="KIA-3x-uva" firstAttribute="top" secondItem="q1Z-jc-doS" secondAttribute="top" id="4l5-bv-oSx"/>
+                                    <constraint firstAttribute="bottom" secondItem="KIA-3x-uva" secondAttribute="bottom" id="c2E-Mb-4RZ"/>
                                     <constraint firstItem="b5s-eL-H2D" firstAttribute="leading" secondItem="q1Z-jc-doS" secondAttribute="leading" id="cp3-lq-Jhf"/>
                                     <constraint firstItem="nQU-3w-RyB" firstAttribute="top" secondItem="q1Z-jc-doS" secondAttribute="top" id="h23-Xf-UcR"/>
                                     <constraint firstAttribute="bottom" secondItem="nQU-3w-RyB" secondAttribute="bottom" id="jSy-zg-VCo"/>
                                     <constraint firstAttribute="bottom" secondItem="b5s-eL-H2D" secondAttribute="bottom" id="pD0-dr-UX2"/>
+                                    <constraint firstItem="nQU-3w-RyB" firstAttribute="leading" secondItem="KIA-3x-uva" secondAttribute="trailing" id="w4p-7e-Fg9"/>
                                     <constraint firstAttribute="trailing" secondItem="nQU-3w-RyB" secondAttribute="trailing" id="ygO-Rx-G0Z"/>
                                     <constraint firstItem="b5s-eL-H2D" firstAttribute="top" secondItem="q1Z-jc-doS" secondAttribute="top" id="zsq-Sf-bgu"/>
                                 </constraints>
@@ -562,7 +561,6 @@
                         <outlet property="footerBottomConstraint" destination="qK5-ys-mti" id="zye-dq-Ynn"/>
                         <outlet property="footerView" destination="q1Z-jc-doS" id="eLc-MF-CqH"/>
                         <outlet property="nextButton" destination="nQU-3w-RyB" id="sDj-VN-vmG"/>
-                        <outlet property="prevButton" destination="xP1-go-U80" id="fl7-3c-gAA"/>
                         <outlet property="visibleSelector" destination="Geo-td-Tnw" id="EPr-r8-dyY"/>
                     </connections>
                 </viewController>
@@ -671,10 +669,10 @@ Please read the following statements carefully, keeping in mind your current sta
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="lC7-DT-rul">
-                                <rect key="frame" x="10" y="499" width="580" height="101"/>
+                                <rect key="frame" x="10" y="524" width="580" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VfP-EO-uCi" customClass="PRButton">
-                                        <rect key="frame" x="400" y="8" width="180" height="85"/>
+                                        <rect key="frame" x="400" y="8" width="180" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Add a note" image="edit">
                                             <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -690,7 +688,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIY-V1-Zja" customClass="PRButton">
-                                        <rect key="frame" x="200" y="8" width="180" height="85"/>
+                                        <rect key="frame" x="200" y="8" width="180" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Add something good" image="star">
                                             <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -706,7 +704,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ide-ms-1cZ" customClass="PRButton">
-                                        <rect key="frame" x="0.0" y="8" width="180" height="85"/>
+                                        <rect key="frame" x="0.0" y="8" width="180" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Add a concern" image="exclamation">
                                             <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -860,19 +858,19 @@ Please read the following statements carefully, keeping in mind your current sta
                                     <outlet property="dataSource" destination="fZg-fg-WDE" id="3cw-Z6-kkT"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Good Comments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBN-eX-yZT">
-                                <rect key="frame" x="20" y="85" width="210" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good Comments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBN-eX-yZT">
+                                <rect key="frame" x="20" y="85" width="220" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" misplaced="YES" text="Do you want to tell us something that has been good about your care?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="220" translatesAutoresizingMaskIntoConstraints="NO" id="jqs-CT-z23">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" text="Do you want to tell us something that has been good about your care?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="220" translatesAutoresizingMaskIntoConstraints="NO" id="jqs-CT-z23">
                                 <rect key="frame" x="20" y="269" width="220" height="83"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wq6-VB-9rC" customClass="PRButton">
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wq6-VB-9rC" customClass="PRButton">
                                 <rect key="frame" x="20" y="360" width="220" height="60"/>
                                 <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Add something good" image="star">
@@ -888,8 +886,8 @@ Please read the following statements carefully, keeping in mind your current sta
                                     <action selector="addSomethingGood:" destination="fZg-fg-WDE" eventType="touchUpInside" id="GB5-Lp-DCA"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Concerns" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cT-2A-9im">
-                                <rect key="frame" x="321" y="85" width="159" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Concerns" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cT-2A-9im">
+                                <rect key="frame" x="260" y="85" width="220" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -1079,14 +1077,14 @@ Please read the following statements carefully, keeping in mind your current sta
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5H-V9-Cn9">
-                                            <rect key="frame" x="512" y="12" width="30" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5H-V9-Cn9">
+                                            <rect key="frame" x="412" y="12" width="30" height="30"/>
                                             <state key="normal" title="-">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qlo-vz-nuM">
-                                            <rect key="frame" x="550" y="12" width="30" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qlo-vz-nuM">
+                                            <rect key="frame" x="450" y="12" width="30" height="30"/>
                                             <state key="normal" title="+">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -1455,10 +1453,10 @@ Please read the following statements carefully, keeping in mind your current sta
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="33v-de-gK9">
-                                <rect key="frame" x="10" y="499" width="580" height="101"/>
+                                <rect key="frame" x="10" y="524" width="580" height="76"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCb-F0-ZLX" customClass="PRButton">
-                                        <rect key="frame" x="400" y="8" width="180" height="85"/>
+                                        <rect key="frame" x="400" y="8" width="180" height="60"/>
                                         <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Add a note" image="edit">
                                             <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -1474,7 +1472,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubm-O3-fP7" customClass="PRButton">
-                                        <rect key="frame" x="200" y="8" width="180" height="85"/>
+                                        <rect key="frame" x="200" y="8" width="180" height="60"/>
                                         <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Add something good" image="star">
                                             <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -1490,7 +1488,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8A-jz-1xd" customClass="PRButton">
-                                        <rect key="frame" x="0.0" y="8" width="180" height="85"/>
+                                        <rect key="frame" x="0.0" y="8" width="180" height="60"/>
                                         <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Add a concern" image="exclamation">
                                             <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -1589,7 +1587,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                 <rect key="frame" x="0.0" y="540" width="600" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulD-8n-X4O" customClass="PRButton">
-                                        <rect key="frame" x="462" y="0.0" width="138" height="60"/>
+                                        <rect key="frame" x="459" y="0.0" width="141" height="60"/>
                                         <color key="backgroundColor" red="0.25882352939999997" green="0.76862745099999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Next" image="next_arrow"/>
@@ -1616,7 +1614,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vD4-Oq-4CS" customClass="PRButton">
-                                        <rect key="frame" x="297" y="0.0" width="165" height="60"/>
+                                        <rect key="frame" x="287" y="0.0" width="172" height="60"/>
                                         <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1647,7 +1645,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrE-tb-r6a" customClass="PRButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="156" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="159" height="60"/>
                                         <color key="backgroundColor" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Cancel" image="cross">
