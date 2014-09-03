@@ -20,10 +20,10 @@
 
 @end
 
-@interface PRNoteViewController : UIViewController <UITextViewDelegate>
+@interface PRNoteViewController : UIViewController <UITextViewDelegate, UIAlertViewDelegate>
 {
     BOOL canDismissKeyboard;
-    
+    BOOL canShowKeyboard;
     
     IBOutlet NSLayoutConstraint *bottomLayoutConstraint;
 }

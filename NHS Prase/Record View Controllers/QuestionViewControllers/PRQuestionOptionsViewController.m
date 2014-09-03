@@ -8,8 +8,9 @@
 
 #import "PRQuestionOptionsViewController.h"
 
-#import "PRQuestionOptions.h"
+#import <TheDistanceKit/TheDistanceKit.h>
 
+#import "PRQuestionOptions.h"
 #import "PROptionCollectionViewCell.h"
 
 @interface PRQuestionOptionsViewController ()
@@ -45,6 +46,13 @@
         
         [self.collectionView reloadData];
     }
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    collectionViewWidthConstraint.constant = self.collectionView.contentSize.width;
 }
 
 #pragma mark - CollectionView DataSource
@@ -100,8 +108,14 @@
         }
         
         optionCell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+        if (thisOption[@"imageTint"]) {
+            //NSLog(@"tint col: %@", thisOption[@"imageTint"]);
+            optionCell.imageTintColor = thisOption[@"imageTint"];
+        }
         [optionCell setOptionTitle:thisOption[@"title"] image:thisOption[@"image"] andSecondImage:thisOption[@"image2"]];
     }
+    
+    [self applyThemeToView:optionCell];
     
     return optionCell;
 }

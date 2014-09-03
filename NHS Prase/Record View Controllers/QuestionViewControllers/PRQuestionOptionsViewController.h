@@ -12,6 +12,7 @@
 
 @interface PRQuestionOptionsViewController : PRQuestionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 {
+    IBOutlet NSLayoutConstraint *collectionViewWidthConstraint;
     PRQuestionOptions *optionsQuestion;
 }
 

@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 #import "PRNoteViewController.h"
+#import "PRInputAccessoryView.h"
 
 @class PRQuestion;
 
-@interface PRQuestionViewController : UIViewController <PRNoteDelegate>
+@interface PRQuestionViewController : UIViewController <PRNoteDelegate, PRInputAccessoryDelegate>
 {
     IBOutlet UILabel *titleLabel;
     IBOutlet UIView *pirtView;

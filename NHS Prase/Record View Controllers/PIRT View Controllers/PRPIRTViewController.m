@@ -10,6 +10,8 @@
 
 #import "PRGoodViewController.h"
 #import "PRPIRTQuestionsViewController.h"
+#import "PRTheme.h"
+
 
 @interface PRPIRTViewController ()
 
@@ -24,14 +26,17 @@
     // Do any additional setup after loading the view.
     
     // create the input accessory view
-    noteVCToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 0, 40.0)];
+    noteVCToolbar = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
+    noteVCToolbar.navigationDelegate = self;
     
+    /*
     UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelConcern:)];
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *previous = [[UIBarButtonItem alloc] initWithTitle:@"Previous" style:UIBarButtonItemStyleBordered target:self action:@selector(goPrevious:)];
     UIBarButtonItem *next = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(goNext:)];
     
     noteVCToolbar.items = @[cancel, space, previous, next];
+    */
     
     // grab the storyboard created view controllers
     PRGoodViewController *wardSelectVC = tabController.viewControllers[0];
@@ -60,20 +65,24 @@
     preventViewController.noteView.inputAccessoryView = noteVCToolbar;
     
     [tabController setViewControllers:@[wardSelectVC, whatViewController, whyViewController, preventViewController, questionsVC]];
-    
 }
 
--(void)refreshFooterView
+#pragma mark - View Configuration
+
+-(void)configureNext:(BOOL) isLastSection
 {
-    [super refreshFooterView];
-    
-    if (tabController.selectedIndex == tabController.viewControllers.count - 1) {
-        [nextButton setTitle:@"Submit" forState:UIControlStateNormal];
-        nextButton.enabled = YES;
+    if (isLastSection) {
+        [nextButton setTitle:@"Done" forState:UIControlStateNormal];
+        [nextButton setImage:[UIImage imageNamed:@"submit"] forState:UIControlStateNormal];
+        [nextButton setBackgroundColor:[[PRTheme sharedTheme] positiveColor]];
     } else {
         [nextButton setTitle:@"Next" forState:UIControlStateNormal];
+        [nextButton setImage:[UIImage imageNamed:@"next_arrow"] forState:UIControlStateNormal];
+        [nextButton setBackgroundColor:[[PRTheme sharedTheme] neutralColor]];
     }
 }
+
+#pragma mark - Navigation
 
 -(void)goNext:(id)sender
 {
@@ -97,9 +106,33 @@
     //[self refreshFooterView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Input Accessory Delegate
+
+// The input accessory is only visible on the middle 3 screens so navigation to and from them can always occur.
+
+-(BOOL)inputAccessoryCanGoToNext:(TDInputAccessoryView *)inputAccessoryView
+{
+    return YES;
+}
+
+-(BOOL)inputAccessoryCanGoToPrevious:(TDInputAccessoryView *)inputAccessoryView
+{
+    return YES;
+}
+
+-(void)inputAccessoryRequestsNext:(TDInputAccessoryView *)inputAccessoryView
+{
+    [self goNext:self];
+}
+
+-(void)inputAccessoryRequestsPrevious:(TDInputAccessoryView *)inputAccessoryView
+{
+    [self goPrevious:self];
+}
+
+-(void)inputAccessoryRequestsDone:(TDInputAccessoryView *)inputAccessoryView
+{
+    [self cancelConcern:self];
 }
 
 #pragma mark - Note Delegate

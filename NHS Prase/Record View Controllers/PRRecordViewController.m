@@ -10,6 +10,7 @@
 
 #import "PRBasicDataFormViewController.h"
 #import "PRQuestionaireViewController.h"
+#import "PRTheme.h"
 
 // iOS 8 Deprecation
 #define ALERT_GO_HOME 111
@@ -20,6 +21,21 @@
 @end
 
 @implementation PRRecordViewController
+
+#pragma mark - View Configuration
+
+-(void)configureNext:(BOOL) isLastSection
+{
+    if (isLastSection) {
+        [nextButton setTitle:@"Submit" forState:UIControlStateNormal];
+        [nextButton setImage:[UIImage imageNamed:@"upload"] forState:UIControlStateNormal];
+        [nextButton setBackgroundColor:[[PRTheme sharedTheme] positiveColor]];
+    } else {
+        [nextButton setTitle:@"Next" forState:UIControlStateNormal];
+        [nextButton setImage:[UIImage imageNamed:@"next_arrow"] forState:UIControlStateNormal];
+        [nextButton setBackgroundColor:[[PRTheme sharedTheme] neutralColor]];
+    }
+}
 
 #pragma mark - Navigation
 
@@ -35,9 +51,9 @@
             [qvc goToNextQuestion];
             return;
         }
-    } else {
-        [super goNext:sender];
     }
+    
+    [super goNext:sender];
 }
 
 -(void)goPrevious:(id)sender
@@ -51,9 +67,9 @@
             [qvc goToPreviousQuestion];
             return;
         }
-    } else {
-        [super goPrevious:sender];
     }
+    
+    [super goPrevious:sender];
 }
 
 -(void)goHome:(id)sender

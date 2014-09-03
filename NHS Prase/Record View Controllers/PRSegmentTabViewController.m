@@ -8,6 +8,8 @@
 
 #import "PRSegmentTabViewController.h"
 
+#import "PRTheme.h"
+
 @interface PRSegmentTabViewController ()
 
 @end
@@ -70,10 +72,17 @@
 
 #pragma mark - View Configuration
 
+-(void)configureNext:(BOOL) isLastSection
+{
+    
+}
+
 -(void)refreshFooterView
 {
-    nextButton.enabled = tabController.selectedIndex < tabController.viewControllers.count - 1;
+    nextButton.enabled = YES;
     prevButton.enabled = tabController.selectedIndex > 0;
+    
+    [self configureNext:tabController.selectedIndex == tabController.viewControllers.count - 1];
     
     if (footerBottomConstraint.constant != 0.0) {
         footerBottomConstraint.constant = [footerView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;

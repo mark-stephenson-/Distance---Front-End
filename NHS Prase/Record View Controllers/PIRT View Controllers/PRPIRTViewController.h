@@ -9,10 +9,11 @@
 #import "PRSegmentTabViewController.h"
 
 #import "PRNoteViewController.h"
+#import "PRInputAccessoryView.h"
 
-@interface PRPIRTViewController : PRSegmentTabViewController <PRNoteDelegate>
+@interface PRPIRTViewController : PRSegmentTabViewController <PRNoteDelegate, PRInputAccessoryDelegate>
 {
-    UIToolbar *noteVCToolbar;
+    PRInputAccessoryView *noteVCToolbar;
 }
 
 -(IBAction)cancelConcern:(id) sender;

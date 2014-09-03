@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import <TheDistanceKit/TheDistanceKit.h>
+#import "PRTheme.h"
 
 @interface AppDelegate ()
 
@@ -20,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [[TDTheme sharedTheme] setLanguageIdentifier:@"en"];
+    [[PRTheme sharedTheme] setLanguageIdentifier:@"en"];
     
     return YES;
 }
@@ -46,5 +46,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end

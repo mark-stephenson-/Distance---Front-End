@@ -7,18 +7,11 @@
 //
 
 #import <TheDistanceKit/TheDistanceKit.h>
+#import "PRWardSelectViewController.h"
 
-@interface HomeViewController : UIViewController <UITextFieldDelegate, TDSelectionViewControllerDelegate, UIAlertViewDelegate>
+@interface HomeViewController : PRWardSelectViewController <UIAlertViewDelegate>
 {
-    IBOutlet UITextField *hospitalField;
-    IBOutlet UITextField *wardField;
     IBOutlet UIButton *createButton;
-    
-    NSArray *hospitals;
-    NSDictionary *wards;
-    
-    NSString *selectedHospital;
-    NSString *selectedWard;
 }
 
 -(IBAction)createRecord:(id)sender;

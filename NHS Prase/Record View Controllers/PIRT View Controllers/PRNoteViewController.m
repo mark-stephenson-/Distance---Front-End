@@ -22,6 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    canShowKeyboard = YES;
     canDismissKeyboard = NO;
     
     self.noteView.textInsets = UIEdgeInsetsMake(15, 15, 15, 15);
@@ -50,8 +51,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-
-    [self.noteView becomeFirstResponder];
 }
 
 #pragma mark - Keyboard Methods
@@ -60,7 +59,9 @@
 {
     [super viewDidAppear:animated];
     
-    
+    if (canShowKeyboard) {
+        [self.noteView becomeFirstResponder];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -143,6 +144,10 @@
     NSString *buttonTitle = @"Cancel Note";
     NSString *cancelTitle = @"Continue";
     
+    canDismissKeyboard = YES;
+    [self.noteView resignFirstResponder];
+    canShowKeyboard = NO;
+    
     if ([UIAlertController class]) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
                                                                                  message:alertMessage
@@ -156,7 +161,9 @@
         
         [alertController addAction:[UIAlertAction actionWithTitle:cancelTitle
                                                             style:UIAlertActionStyleCancel
-                                                          handler:nil]];
+                                                          handler:^(UIAlertAction *action) {
+                                                              [self cancelCancel];
+                                                          }]];
         
         [self presentViewController:alertController animated:YES completion:nil];
     } else {
@@ -174,11 +181,27 @@
 // iOS 8 Deprecation
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 1) {
-        if (alertView.tag == ALERT_CANCEL) {
+    if (alertView.tag == ALERT_CANCEL) {
+        if (buttonIndex == 1) {
             [self continueCancel];
         }
     }
+}
+
+-(void)alertViewCancel:(UIAlertView *)alertView
+{
+    if (alertView.tag == ALERT_CANCEL) {
+        
+        [self cancelCancel];
+        
+    }
+}
+
+-(void)cancelCancel
+{
+    canShowKeyboard = YES;
+    canDismissKeyboard = NO;
+    [self.noteView becomeFirstResponder];
 }
 
 // iOS 8 Deprecation
@@ -206,6 +229,7 @@
     if ([self.delegate respondsToSelector:@selector(noteViewControllerDidFinish:)]) {
         [self.delegate noteViewControllerDidFinish:self];
     }
+    
 }
 
 @end

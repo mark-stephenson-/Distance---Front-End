@@ -8,14 +8,16 @@
 
 #import "PRQuestionViewController.h"
 
-
-
 #import "PRQuestion.h"
 #import "PRQuestionOptions.h"
 
+#import "PRButton.h"
+#import "PRTheme.h"
 #import "PRNoteViewController.h"
 #import "PRGoodViewController.h"
 #import "PRPIRTViewController.h"
+
+#import <TheDistanceKit/TheDistanceKit.h>
 
 @interface PRQuestionViewController ()
 
@@ -38,6 +40,8 @@
     [super viewWillAppear:animated];
     
     pirtView.hidden = self.shouldHidePIRTView;
+    
+    [self applyTheme];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -52,26 +56,60 @@
 
 #pragma mark - PIRT Methods
 
+-(PRInputAccessoryView *)accessoryView
+{
+    static PRInputAccessoryView *view = nil;
+    
+    if (view == nil) {
+        view = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
+        view.navigationDelegate = self;
+        
+        view.previousButton.hidden = YES;
+        
+        view.nextButton.backgroundColor = [[PRTheme sharedTheme] positiveColor];
+        [view.nextButton setTitle:@"Done" forState:UIControlStateNormal];
+        [view.nextButton setImage:[UIImage imageNamed:@"submit"] forState:UIControlStateNormal];
+    }
+    
+    return view;
+}
+
 -(void)addNote:(id)sender
 {
     PRNoteViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
     toPresent.delegate = self;
     
-    [self presentViewController:toPresent animated:YES completion:nil];
+    UIView *loadView = toPresent.view;
+    PRInputAccessoryView *accessoryView = [self accessoryView];
+    toPresent.noteView.inputAccessoryView = accessoryView;
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self presentViewController:toPresent animated:YES completion:nil];
+    }];
 }
 
 -(void)addSomethingGood:(id)sender
 {
     PRGoodViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"GoodVC"];
+    toPresent.delegate = self;
     
-    [self presentViewController:toPresent animated:YES completion:nil];
+    
+    UIView *loadView = toPresent.view;
+    PRInputAccessoryView *accessoryView = [self accessoryView];
+    toPresent.noteView.inputAccessoryView = accessoryView;
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self presentViewController:toPresent animated:YES completion:nil];
+    }];
 }
 
 -(void)addConcern:(id)sender
 {
-    PRNoteViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"PIRTVC"];
+    PRPIRTViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"PIRTVC"];
     
-    [self presentViewController:toPresent animated:YES completion:nil];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self presentViewController:toPresent animated:YES completion:nil];
+    }];
 }
 
 #pragma mark - Note Delegate
@@ -86,5 +124,33 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - Input Delegate
+
+-(BOOL)inputAccessoryCanGoToNext:(TDInputAccessoryView *)inputAccessoryView
+{
+    return YES;
+}
+
+-(BOOL)inputAccessoryCanGoToPrevious:(TDInputAccessoryView *)inputAccessoryView
+{
+    return NO;
+}
+
+-(void)inputAccessoryRequestsDone:(TDInputAccessoryView *)inputAccessoryView
+{
+    PRNoteViewController *currentNote = (PRNoteViewController *) self.presentedViewController;
+    [currentNote cancel:self];
+}
+
+-(void)inputAccessoryRequestsPrevious:(TDInputAccessoryView *)inputAccessoryView
+{
+    
+}
+
+-(void)inputAccessoryRequestsNext:(TDInputAccessoryView *)inputAccessoryView
+{
+    PRNoteViewController *currentNote = (PRNoteViewController *) self.presentedViewController;
+    [currentNote submit:self];
+}
 
 @end

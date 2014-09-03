@@ -33,11 +33,19 @@
         self.contentView.backgroundColor = self.tintColor;
     } else {
         optionTitleLabel.textColor = self.tintColor;
-        optionImageView.tintColor = nil;
-        secondOptionImageView.tintColor = nil;
+        optionImageView.tintColor = self.imageTintColor;
+        secondOptionImageView.tintColor = self.imageTintColor;
         
         self.contentView.backgroundColor = [UIColor clearColor];
     }
+}
+
+-(void)setImageTintColor:(UIColor *)imageTintColor
+{
+    _imageTintColor = imageTintColor;
+    
+    optionImageView.tintColor = imageTintColor;
+    secondOptionImageView.tintColor = imageTintColor;
 }
 
 -(void)setSelected:(BOOL)selected

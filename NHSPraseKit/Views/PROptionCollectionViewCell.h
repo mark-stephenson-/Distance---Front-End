@@ -19,5 +19,6 @@ IB_DESIGNABLE
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *labelHeightConstraint;
 
 -(void)setOptionTitle:(NSString *)title image:(UIImage *)image andSecondImage:(UIImage *) image2;
+@property (nonatomic, strong) UIColor *imageTintColor;
 
 @end

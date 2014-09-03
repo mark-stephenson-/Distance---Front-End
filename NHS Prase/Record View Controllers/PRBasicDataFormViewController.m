@@ -26,6 +26,7 @@
                                                                 andKey:@"DOB"];
     dobInfo[@"reuseIdentifier"] = @"DateSelectCell";
     dobInfo[@"userInfo"][@"selectionIdentifier"] = @"DateSelectionVC";
+    dobInfo[@"userInfo"][@"selectionVCTitle"] = @"Date of Birth";
     dobInfo[@"userInfo"][@"modalPresentationStyle"] = presentationStyle;
     dobInfo[@"userInfo"][@"formatter"] = self.dateFormatter;
     
@@ -37,7 +38,7 @@
     
     // Ethnicity
     
-    NSArray *ethnicSections = @[@"White", @"Black or Black British", @"Asian or Asian British"];
+    NSArray *ethnicSections = @[@"White", @"Black or Black British", @"Asian or Asian British", @"Chinese", @"Mixed", @"Other"];
     
     NSDictionary *ethnicOptions = @{@"british" : @"British",
                                     @"irish" : @"Irish",
@@ -47,11 +48,21 @@
                                     @"other black": @"Other background",
                                     @"indian": @"Indian",
                                     @"pakistani": @"Pakistani",
-                                    @"bangladeshi": @"Bangladeshi"};
+                                    @"bangladeshi": @"Bangladeshi",
+                                    @"other asian": @"Other background",
+                                    @"chinese": @"Chinese",
+                                    @"white+asian": @"White & Asian",
+                                    @"white+black african": @"White & Black African",
+                                    @"white+black caribbean": @"White & Black Caribbean",
+                                    @"other mixed": @"Other mixed background",
+                                    @"other other": @"Other ethnic background"};
 
     NSArray *ethnicKeys = @[@[@"british", @"irish", @"other white"],
                             @[@"african", @"caribbean", @"other black"],
-                            @[@"indian", @"pakistani", @"bangladeshi"]];
+                            @[@"indian", @"pakistani", @"bangladeshi", @"other asian"],
+                            @[@"chinese"],
+                            @[@"white+asian", @"white+black african", @"white+black caribbean", @"other mixed",],
+                            @[@"other other"]];
     
     NSMutableDictionary *ethnicGroupCell = [TDSelectCell cellInfoWithTitle:@"How would you describe your ethnic group?"
                                                                placeholder:@"Tap to select"
@@ -70,8 +81,10 @@
     // Language
     
     NSDictionary *languageOptions = @{@"en": @"English",
-                                      @"fr": @"French"};
-    NSArray *languageKeys = @[@[@"en", @"fr"]];
+                                      @"mi": @"Mirpuri",
+                                      @"ur": @"Urdu",
+                                      @"other" : @"Other"};
+    NSArray *languageKeys = @[@[@"en", @"mi", @"ur", @"other"]];
     
     NSMutableDictionary *languageInfo = [TDSelectCell cellInfoWithTitle:@"What is your first language?"
                                                             placeholder:@"Tap to select"
@@ -81,7 +94,7 @@
                                                                   value:nil
                                                                  andKey:@"Language"];
     languageInfo[@"reuseIdentifier"] = @"SelectCell";
-    languageInfo[@"userInfo"][@"selectionVCTitle"] = @"Language";
+    languageInfo[@"userInfo"][@"selectionVCTitle"] = @"First Language";
     languageInfo[@"userInfo"][@"selectionIdentifier"] = @"PRBasicSelectionVC";
     languageInfo[@"userInfo"][@"modalPresentationStyle"] = presentationStyle;
     
@@ -91,6 +104,7 @@
                                                                 andKey:@"Admitted"];
     admittedInfo[@"reuseIdentifier"] = @"DateSelectCell";
     admittedInfo[@"userInfo"][@"selectionIdentifier"] = @"DateSelectionVC";
+    admittedInfo[@"userInfo"][@"selectionVCTitle"] = @"Date Admitted";
     admittedInfo[@"userInfo"][@"modalPresentationStyle"] = presentationStyle;
     admittedInfo[@"userInfo"][@"formatter"] = self.dateFormatter;
     

@@ -25,6 +25,7 @@
 
 -(void)showAlertWithTitle:(NSString *) alertTitle message:(NSString *) alertMessage buttonTitle:(NSString *) buttonTitle buttonCompletion:(void (^)(void)) completion cancelTitle:(NSString *) cancelTitle alertTag:(NSInteger) tag;
 
+-(void)configureNext:(BOOL) isLastSection;
 -(void)refreshFooterView;
 -(void)showFooterView:(BOOL) show animated:(BOOL) animated;
 

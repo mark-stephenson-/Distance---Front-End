@@ -52,7 +52,7 @@
 
 -(void)login:(id)sender
 {
-    if ([usernameField.text isNonNullString] && [passwordField.text isNonNullString]) {
+    if ([usernameField.text isEqualToString:@"user"] && [passwordField.text isEqualToString:@"123"]) {
         [self performSegueWithIdentifier:@"Continue" sender:self];
     } else {
         [[[UIAlertView alloc] initWithTitle:@"Invalid Credentials" message:@"Please enter a valid username and password." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
