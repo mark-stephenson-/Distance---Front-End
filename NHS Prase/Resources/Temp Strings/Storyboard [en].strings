@@ -1,14 +1,50 @@
-/* Staff login username. */
-"Username" = "Username:";
+/* Label for the username log in field */
+"login.label.username-title" = "Username:";
+
+/* Prompt to enter a username. */
+"login.field.username" = "Enter your staff username";
+
+/* Prompt to enter a password. */
+"login.label.password" = "Enter your staff password";
+
+/* Label for the password log in field */
+"home.label.password" = "Password:";
+
+/* Button title to log in as a staff member */
+"login.button.staff" = "...";
 
 /* Home screen label. */
 "home.label.home" = "Home";
 
-/* Field to select the desired hospital. */
+/* Button title to toggle the language between English and French. */
+"home.language-button" = "...";
+
+/* Prompt to select the desired hospital. */
 "home.field.ward-select" = "Tap to select";
 
 /* Button title to create a new record. */
 "home.button.create" = "...";
+
+/* Prompt to select the desired hospital. */
+"home.field.hospital-select" = "Tap to select";
+
+/* Label for the hospital select field. */
+"home.label.hospital-title" = "Hospital:";
+
+/* Label for the ward select field. */
+"home.label.ward-title" = "Ward:";
+
+/* Prompt to select the desired trust. */
+"home.field.trust-select" = "Tap to select";
+
+/* Label for the trust select field. */
+"home.label.trust-title" = "Trust:";
+
+/* Button to return to the log in screen. */
+"home.button.back" = "...";
+
+/* Field to select the desired hospital. */
+"home.field.ward-select" = "Tap to select";
 
 /* Field to select the desired hospital. */
 "home.field.hospital-select" = "Tap to select";
@@ -19,9 +55,9 @@
 /* Label for the ward select field. */
 "home.label.ward-title" = "Ward:";
 
-/* Button to return to the log in screen. */
-"home.button.back" = "...";
+/* Field to select the desired trust. */
+"home.field.trust-select" = "Tap to select";
 
-/* Button title to toggle the language between English and French. */
-"home.language-button" = "...";
+/* Label for the trust select field. */
+"home.label.trust-title" = "Trust:";
 

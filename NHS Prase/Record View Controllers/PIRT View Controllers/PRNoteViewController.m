@@ -28,7 +28,6 @@
     self.noteView.textInsets = UIEdgeInsetsMake(15, 15, 15, 15);
     self.noteView.layer.borderColor = self.view.tintColor.CGColor;
     self.noteView.layer.borderWidth = 2.0;
-    self.noteView.inputAccessoryView = [self createInputAccessoryViewOfHeight:40.0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -120,34 +119,22 @@
     
 }
 
--(UIToolbar *)createInputAccessoryViewOfHeight:(CGFloat) height;
-{
-    UIToolbar *tb = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 0, height)];
-    
-    UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancel:)];
-    
-    UIBarButtonItem *space1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    
-    UIBarButtonItem *submit = [[UIBarButtonItem alloc] initWithTitle:@"Submit" style:UIBarButtonItemStyleBordered target:self action:@selector(submit:)];
-    
-    tb.items = @[cancel, space1, submit];
-    
-    return tb;
-}
-
 #pragma mark - Cancelling
 
 -(void)cancel:(id)sender
 {
-    NSString *alertTitle = @"Cancel Note";
-    NSString *alertMessage = @"Cancelling a note will lose the text entered or sound recorded. Are you sure you want to cancel this note?";
-    NSString *buttonTitle = @"Cancel Note";
-    NSString *cancelTitle = @"Continue";
+    NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"note.cancel.error-title", nil, nil, @"Cancel Note", @"Error title shown when the user is about to cancel a note.");
+    
+    NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"note.cancel.error-message", nil, nil, @"Cancelling a note will lose the text entered or sound recorded. Are you sure you want to cancel this note?", @"Error message shown when the user is about to cancel a note.");
+    NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"note.cancel.error-title", nil, nil, nil, nil);
+    NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"note.cancel.cancel-title", nil, nil, @"Continue", @"Button title to continue creating a note when prompted about cancelling it.");
     
     canDismissKeyboard = YES;
     [self.noteView resignFirstResponder];
     canShowKeyboard = NO;
     
+#warning JRC: create a more general superclass method to handle multiple completions
+    // We need a cancel completion handler so the superclass method isn't called here
     if ([UIAlertController class]) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
                                                                                  message:alertMessage

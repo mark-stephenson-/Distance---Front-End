@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 The Distance. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PRViewController.h"
 
 @class TDTextView;
 @class PRNoteViewController;
@@ -20,7 +20,11 @@
 
 @end
 
-@interface PRNoteViewController : UIViewController <UITextViewDelegate, UIAlertViewDelegate>
+/*!
+ * @class PRNoteViewController
+ * @discussion Contains the UI and functionality for adding detailed information. This is used to add notes, something good and in the concern PIRT workflow. As this is either presented or displayed in a PRSegmentedTabViewController tab a delegate callback is used to request appropriate dismissal. The keyboard should always be visible on this screen, so two BOOL flags are used to control when the keyboard is hidden, allowing it to dismiss when the alert is shown but not otherwise. The keyboard showing and hiding methods are overriden to shrink the text view rather than scroll it.
+ */
+@interface PRNoteViewController : PRViewController <UITextViewDelegate, UIAlertViewDelegate>
 {
     BOOL canDismissKeyboard;
     BOOL canShowKeyboard;

@@ -31,7 +31,14 @@
     [super viewWillAppear:animated];
     
     statementLabel.text = statementQuestion.statement;
-    titleLabel.text = statementQuestion.questionTitle;
+    titleLabel.text = [NSString stringWithFormat:@"Q%ld: %@", self.questionIndex + 1, statementQuestion.questionTitle];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.question.answer = @YES;
 }
 
 -(void)setQuestion:(PRQuestion *)question

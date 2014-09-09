@@ -23,18 +23,11 @@
     wards = @{@"Bradford Teaching Hospital": @[@"Ward 6",
                                                @"Ward 18"],
               @"Barnsley Hospital": @[@"Ward 19"]};
-    
-    
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    //self.selectedTrust = [[NSUserDefaults standardUserDefaults] valueForKey:@"trust"];
-    //self.selectedHospital = [[NSUserDefaults standardUserDefaults] valueForKey:@"hospital"];
-    //self.selectedWard = [[NSUserDefaults standardUserDefaults] valueForKey:@"ward"];
     
     [self refreshViews];
 }
@@ -136,6 +129,7 @@
     return NO;
 }
 
+// Set the selection, clearing the hospital or ward if a corresponding parent has changed
 -(void)selectionViewControllerRequestsDismissal:(TDSelectionViewController *)selectionVC
 {
     NSString *selectionKey = selectionVC.key;

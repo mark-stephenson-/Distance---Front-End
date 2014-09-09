@@ -8,9 +8,15 @@
 
 #import "PRSegmentTabViewController.h"
 
+@class PRQuestionnaire;
+
 @interface PRRecordViewController : PRSegmentTabViewController <UIAlertViewDelegate>
+{
+    IBOutlet UILabel *progressLabel;
+}
+
+@property (nonatomic, strong) PRQuestionnaire *questionnaire;
 
 -(IBAction)goHome:(id)sender;
--(IBAction)goToTitle:(id)sender;
 
 @end

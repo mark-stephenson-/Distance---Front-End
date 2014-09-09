@@ -1,0 +1,134 @@
+/* Label for the username log in field */
+"login.label.username-title" = "[fr]Username:";
+
+/* Prompt to enter a username. */
+"login.field.username.placeholder" = "[fr]Enter your staff username";
+
+/* Prompt to enter a password. */
+"login.field.password.placeholder" = "[fr]Enter your staff password";
+
+/* Label for the password log in field */
+"login.label.password" = "[fr]Password:";
+
+/* Button title to log in as a staff member */
+"login.button.staff.normal" = "[fr]Staff Login";
+
+/* Title of the settings page */
+"settings.navigation.title" = "[fr]Settings";
+
+/* Home screen label. */
+"home.label.home" = "[fr]Home";
+
+/* Button title to toggle the language between English and French. */
+"home.language-button.normal" = "[fr]English";
+
+/* Prompt to select the desired hospital. */
+"home.field.ward-select.placeholder" = "[fr]Tap to select";
+
+/* Button title to create a new record. */
+"home.button.create.normal" = "[fr]Create a new record";
+
+/* Prompt to select the desired hospital. */
+"home.field.hospital-select.placeholder" = "[fr]Tap to select";
+
+/* Label for the hospital select field. */
+"home.label.hospital-title" = "[fr]Hospital:";
+
+/* Label for the ward select field. */
+"home.label.ward-title" = "[fr]Ward:";
+
+/* Prompt to select the desired trust. */
+"home.field.trust-select.placeholder" = "[fr]Tap to select";
+
+/* Label for the trust select field. */
+"home.label.trust-title" = "[fr]Trust:";
+
+/* Button title to return to the log in screen. */
+"home.button.log-out.normal" = "[fr]Log Out";
+
+/* Default title to move forwards to another screen or field or cell. */
+"button.next.normal" = "[fr]Next";
+
+/* Button title return from the record screen to the home screen. */
+"record.button.home.normal" = "[fr]Home";
+
+/* Default title to move backwards to another screen or another field or cell. */
+"button.previous.normal" = "[fr]Previous";
+
+/* Navigation title whilst creating a record. */
+"record.segment.navigation.segment_0" = "[fr]Basic Data";
+
+/* Navigation title whilst creating a record. */
+"record.segment.navigation.segment_1" = "[fr]Questionnaire";
+
+/* Navigation title whilst creating a record. */
+"record.segment.navigation.segment_2" = "[fr]Comments";
+
+/* Navigation title whilst creating a record. */
+"record.segment.navigation.segment_3" = "[fr]Summary";
+
+/* Disclaimer label at the start of the questionnaire. */
+"questionnaire.statement" = "[fr]This questionnaire aims to help us understand about patient safety from a patient's perspective and to identify areas of strength and weakness within hospitals. It contains factors that have been identified by patients that may affect their safety whilst using NHS services.
+
+Please read the following statements carefully, keeping in mind your current stay in hospital and pick one option for each question. If you have had no experience of, or do not know the answer to a statement, please choose 'not applicable'.";
+
+/* Button title to add a note to a question. */
+"question.button.note.normal" = "[fr]Add a note";
+
+/* Button title to add a 'Something Good' note to a question. */
+"question.button.good.normal" = "[fr]Add something good";
+
+/* Button title to begin the 'Add a concern' process. */
+"question.button.concern.normal" = "[fr]Add a concern";
+
+/* Title label when adding a note to a question. */
+"note.label.title" = "[fr]Type below or press record to add more details:";
+
+/* Title asking for any further comments to attach to the record. */
+"record.comments.title" = "[fr]We would like to know about your experience of care on this ward or any concerns you have had about your safety, or the safety of other patients, during this hospital visit.";
+
+/* Label asking the user to add something good about their care. */
+"record.comments.good-title" = "[fr]Do you want to tell us something that has been good about your care?";
+
+/* Label asking the user to add any conerns they had about their care. */
+"record.comments.concern-title" = "[fr]Do you want to tell us something that has concerned you about your care?";
+
+/* Default button title to cancel an action dismissing a screen. */
+"button.cancel" = "[fr]Cancel";
+
+/* Default button title to dismiss a view successfully. */
+"button.done" = "[fr]Done";
+
+/* Navigation title when adding a concern. */
+"pirt.segment.navigation.segment_0" = "[fr]Ward";
+
+/* Navigation title when adding a concern. */
+"pirt.segment.navigation.segment_1" = "[fr]What";
+
+/* Navigation title when adding a concern. */
+"pirt.segment.navigation.segment_2" = "[fr]Why";
+
+/* Navigation title when adding a concern. */
+"pirt.segment.navigation.segment_3" = "[fr]Prevent";
+
+/* Navigation title when adding a concern. */
+"pirt.segment.navigation.segment_4" = "[fr]Questions";
+
+/* Title when adding a note about something good to a question. */
+"good.label.title" = "[fr]Do you want to tell us something that has been good about your care?";
+
+/* Question asking however serious the users concern was. */
+"pirt.question.serious" = "[fr]On a scale of 1-10, how serious do you think your concern was?";
+
+/* Text if the concern is least serious. */
+"prit.questions.label.not-serious" = "[fr]Not Serious at all";
+
+/* Text if the concern is the most serious. */
+"pirt.questions.label.serious" = "[fr]Extremely Serious";
+
+/* Question asking the user if their concern could have been prevented. */
+"prit.questions.prevent" = "[fr]Do you think it would have been possible to have stopped what concerned you from happening?";
+
+/* Title when asking "Is this comment about this hospital ward?". */
+"concern.label.this-ward" = "[fr]Comment relating to this ward?";
+

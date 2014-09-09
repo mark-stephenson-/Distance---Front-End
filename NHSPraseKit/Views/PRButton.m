@@ -60,17 +60,7 @@
     
     self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     
-    /*
-    if (self.frame.size.width < self.intrinsicContentSize.width) {
-        self.titleLabel.numberOfLines = 0;
-    
-        [self layoutIfNeeded];
-    } else {
-        //self.titleLabel.numberOfLines = 1;
-        
-        //[self layoutIfNeeded];
-    }
-     */
+    [self layoutIfNeeded];
 }
 
 -(void)setImage:(UIImage *)image forState:(UIControlState)state

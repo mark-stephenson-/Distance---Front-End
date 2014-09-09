@@ -17,6 +17,7 @@ IB_DESIGNABLE
 @property (nonatomic, assign) IBInspectable CGFloat hBuffer;
 @property (nonatomic, assign) IBInspectable CGFloat labelButtonBuffer;
 
+@property (nonatomic, assign) IBInspectable NSString *testStr;
 
 @property (nonatomic, strong) IBInspectable UIColor *imageTint;
 

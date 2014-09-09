@@ -27,7 +27,7 @@
 
 /*!
  * @class PRInputAccessoryView
- * @discussion
+ * @discussion General view which should be used on all keyboards and footer views to provide consistent navigation throughout the app.
  */
 @interface PRInputAccessoryView : UIView
 {

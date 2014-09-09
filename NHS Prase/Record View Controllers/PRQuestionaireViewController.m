@@ -27,12 +27,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // Set up for prototype only
-    
-    self.questionnaire = [PRQuestionnaire prototypeQuestionnaire];
-    
-    // end prototype set up
-    
     pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                      navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                    options:nil];
@@ -150,6 +144,7 @@
 
 #pragma mark - Page Data Source
 
+/// Primary data source method for the UIPageViewController. nil is returned if there is no question for the given index. Index -1 corresponds to the statement screen, which is only should once.
 -(PRQuestionViewController *)viewControllerForIndex:(NSInteger) idx
 {
     if (idx < 0) {

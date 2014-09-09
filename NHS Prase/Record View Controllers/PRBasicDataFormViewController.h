@@ -8,6 +8,10 @@
 
 #import <TDFormKit/TDFormKit.h>
 
+/*!
+ * @class PRBasicDataFormViewController
+ * @discussion This class hard codes the first screen on the questionnaire, as such it should be appropriately  localized.
+ */
 @interface PRBasicDataFormViewController : TDFormViewController
 
 @property (nonatomic, readonly) NSDateFormatter *dateFormatter;

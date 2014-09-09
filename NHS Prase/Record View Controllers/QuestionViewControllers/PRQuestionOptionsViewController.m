@@ -10,6 +10,7 @@
 
 #import <TheDistanceKit/TheDistanceKit.h>
 
+#import "PRTheme.h"
 #import "PRQuestionOptions.h"
 #import "PROptionCollectionViewCell.h"
 
@@ -33,7 +34,12 @@
 {
     [super viewWillAppear:animated];
     
-    titleLabel.text = optionsQuestion.questionTitle;
+    titleLabel.text = [NSString stringWithFormat:@"Q%ld: %@", self.questionIndex + 1, optionsQuestion.questionTitle];
+    
+    if ([self.question.answer isKindOfClass:[NSIndexPath class]]) {
+        NSIndexPath *selected = self.question.answer;
+        [self.collectionView selectItemAtIndexPath:selected animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+    }
 }
 
 -(void)setQuestion:(PRQuestion *)question
@@ -42,7 +48,7 @@
         [super setQuestion:question];
         optionsQuestion = (PRQuestionOptions *) question;
         
-        titleLabel.text = optionsQuestion.questionTitle;
+        titleLabel.text = [NSString stringWithFormat:@"Q%ld: %@", self.questionIndex + 1, optionsQuestion.questionTitle];
         
         [self.collectionView reloadData];
     }
@@ -115,13 +121,29 @@
         [optionCell setOptionTitle:thisOption[@"title"] image:thisOption[@"image"] andSecondImage:thisOption[@"image2"]];
     }
     
+    if ([self.question.answer isKindOfClass:[NSIndexPath class]]) {
+        NSIndexPath *selectedPath = self.question.answer;
+        
+        if (indexPath.row == selectedPath.row && indexPath.section == selectedPath.section) {
+            
+            optionCell.tintColor = [[PRTheme sharedTheme] mainColor];
+            [optionCell setSelected:YES];
+            [optionCell layoutSubviews];
+        }
+    }
+    
     [self applyThemeToView:optionCell];
+    
     
     return optionCell;
 }
 
 #pragma mark - Collection Delegate
 
+-(void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
 
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -137,6 +159,16 @@
     }
     
     return YES;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.question.answer = indexPath;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.question.answer = nil;
 }
 
 @end

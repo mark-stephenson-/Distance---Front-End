@@ -29,15 +29,6 @@
     noteVCToolbar = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
     noteVCToolbar.navigationDelegate = self;
     
-    /*
-    UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelConcern:)];
-    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem *previous = [[UIBarButtonItem alloc] initWithTitle:@"Previous" style:UIBarButtonItemStyleBordered target:self action:@selector(goPrevious:)];
-    UIBarButtonItem *next = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(goNext:)];
-    
-    noteVCToolbar.items = @[cancel, space, previous, next];
-    */
-    
     // grab the storyboard created view controllers
     PRGoodViewController *wardSelectVC = tabController.viewControllers[0];
     PRPIRTQuestionsViewController *questionsVC = tabController.viewControllers[1];
@@ -48,19 +39,19 @@
     // create the simple view controllers
     PRNoteViewController *whatViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
     loadView = whatViewController.view;
-    whatViewController.titleLabel.text = @"Detail needed about what, where and when the concern happened.";
+    whatViewController.titleLabel.text = TDLocalizedStringWithDefaultValue(@"pirt.what.title", nil, nil, @"Detail needed about what, where and when the concern happened.", @"Concern section title");
     whatViewController.delegate = self;
     whatViewController.noteView.inputAccessoryView = noteVCToolbar;
     
     PRNoteViewController *whyViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
     loadView = whyViewController.view;
-    whyViewController.titleLabel.text = @"Why was this a concern for you?";
+    whyViewController.titleLabel.text = TDLocalizedStringWithDefaultValue(@"pirt.why.title", nil, nil, @"Why was this a concern for you?", @"Concern section title");
     whyViewController.delegate = self;
     whyViewController.noteView.inputAccessoryView = noteVCToolbar;
     
     PRNoteViewController *preventViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
     loadView = preventViewController.view;
-    preventViewController.titleLabel.text = @"What could be done to stop this from happening again to you or other patients?";
+    preventViewController.titleLabel.text = TDLocalizedStringWithDefaultValue(@"pirt.why.title", nil, nil, @"What could be done to stop this from happening again to you or other patients?", @"Concern section title");
     preventViewController.delegate = self;
     preventViewController.noteView.inputAccessoryView = noteVCToolbar;
     
@@ -72,18 +63,22 @@
 -(void)configureNext:(BOOL) isLastSection
 {
     if (isLastSection) {
-        [nextButton setTitle:@"Done" forState:UIControlStateNormal];
+        nextButton.TDLocalizedStringKey = @"button.done";
         [nextButton setImage:[UIImage imageNamed:@"submit"] forState:UIControlStateNormal];
         [nextButton setBackgroundColor:[[PRTheme sharedTheme] positiveColor]];
     } else {
+        nextButton.TDLocalizedStringKey = @"button.next";
         [nextButton setTitle:@"Next" forState:UIControlStateNormal];
         [nextButton setImage:[UIImage imageNamed:@"next_arrow"] forState:UIControlStateNormal];
         [nextButton setBackgroundColor:[[PRTheme sharedTheme] neutralColor]];
     }
+    
+    [self applyThemeToView:footerView];
 }
 
 #pragma mark - Navigation
 
+/// Overrides superclass method to dismiss on the final page
 -(void)goNext:(id)sender
 {
     if (tabController.selectedIndex == tabController.viewControllers.count - 1) {
@@ -93,6 +88,7 @@
     }
 }
 
+/// The footer view is replaced by a keyboard text input view on the PRNoteViewController screens so the footer is removed as it will be replaced by the textView's inputAccessoryView
 -(void)segmentChanged:(id)sender
 {
     [super segmentChanged:sender];
@@ -102,8 +98,6 @@
     } else {
         [self showFooterView:NO animated:NO];
     }
-    
-    //[self refreshFooterView];
 }
 
 #pragma mark - Input Accessory Delegate
@@ -139,15 +133,15 @@
 
 -(void)cancelConcern:(id) sender
 {
-    NSString *alertTitle = @"Cancel Concern";
-    NSString *alertMessage = @"Returning to the title screen will delete any entered data. Are you sure you want to continue?";
-    NSString *buttonTitle = @"Cancel Concern";
-    NSString *cancelTitle = @"Continue";
+    NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"pirt.cancel.alert-title", nil, nil, @"Cancel Concern", @"Alert title shown before the user cancels a concern workflow.");
+    NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"pirt.cancel.alert-message", nil, nil, @"Returning to the title screen will delete any entered data. Are you sure you want to continue?", @"Alert message shown before the user cancels a concern workflow");
+    NSString *buttonTitle = alertTitle;
+    NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"pirt.cancel.cancel-title", nil, nil, @"Continue", @"Cancel button title to continue a concern workflow dismissing the cancel alert.");
     
     [self showAlertWithTitle:alertTitle
                      message:alertMessage
                  buttonTitle:buttonTitle
-            buttonCompletion:^{
+            buttonCompletion:^(NSNumber *buttonIndex, UIAlertAction *action) {
                 [self continueCancel];
             }
                  cancelTitle:cancelTitle

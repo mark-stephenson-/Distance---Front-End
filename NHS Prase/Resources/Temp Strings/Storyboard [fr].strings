@@ -1,14 +1,50 @@
-/* Staff login username. */
-"Username" = "[fr] Username:";
+/* Label for the username log in field */
+"login.label.username-title" = "[fr] Username:";
+
+/* Prompt to enter a username. */
+"login.field.username" = "[fr] Enter your staff username";
+
+/* Prompt to enter a password. */
+"login.label.password" = "[fr] Enter your staff password";
+
+/* Label for the password log in field */
+"home.label.password" = "[fr] Password:";
+
+/* Button title to log in as a staff member */
+"login.button.staff" = "[fr] ...";
 
 /* Home screen label. */
 "home.label.home" = "[fr] Home";
 
-/* Field to select the desired hospital. */
+/* Button title to toggle the language between English and French. */
+"home.language-button" = "[fr] ...";
+
+/* Prompt to select the desired hospital. */
 "home.field.ward-select" = "[fr] Tap to select";
 
 /* Button title to create a new record. */
 "home.button.create" = "[fr] ...";
+
+/* Prompt to select the desired hospital. */
+"home.field.hospital-select" = "[fr] Tap to select";
+
+/* Label for the hospital select field. */
+"home.label.hospital-title" = "[fr] Hospital:";
+
+/* Label for the ward select field. */
+"home.label.ward-title" = "[fr] Ward:";
+
+/* Prompt to select the desired trust. */
+"home.field.trust-select" = "[fr] Tap to select";
+
+/* Label for the trust select field. */
+"home.label.trust-title" = "[fr] Trust:";
+
+/* Button to return to the log in screen. */
+"home.button.back" = "[fr] ...";
+
+/* Field to select the desired hospital. */
+"home.field.ward-select" = "[fr] Tap to select";
 
 /* Field to select the desired hospital. */
 "home.field.hospital-select" = "[fr] Tap to select";
@@ -19,9 +55,9 @@
 /* Label for the ward select field. */
 "home.label.ward-title" = "[fr] Ward:";
 
-/* Button to return to the log in screen. */
-"home.button.back" = "[fr] ...";
+/* Field to select the desired trust. */
+"home.field.trust-select" = "[fr] Tap to select";
 
-/* Button title to toggle the language between English and French. */
-"home.language-button" = "[fr] ...";
+/* Label for the trust select field. */
+"home.label.trust-title" = "[fr] Trust:";
 

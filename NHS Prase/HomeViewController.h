@@ -9,6 +9,10 @@
 #import <TheDistanceKit/TheDistanceKit.h>
 #import "PRWardSelectViewController.h"
 
+/*!
+ * @class HomeViewController
+ * @discussion Creates a new record based on the ward selected.
+ */
 @interface HomeViewController : PRWardSelectViewController <UIAlertViewDelegate>
 {
     IBOutlet UIButton *createButton;

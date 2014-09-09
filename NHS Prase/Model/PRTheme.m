@@ -10,6 +10,18 @@
 
 @implementation PRTheme
 
++(NSDictionary *)languageDictionary
+{
+    static NSDictionary *languageOptions = nil;
+    
+    if (languageOptions == nil) {
+        languageOptions = @{@"en": @"English",
+                            @"fr": @"Français"};
+    }
+    
+    return languageOptions;
+}
+
 -(instancetype)init
 {
     self = [super init];

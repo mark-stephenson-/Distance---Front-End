@@ -36,40 +36,6 @@
     [self refreshFooterView];
 }
 
-
-
--(void)showAlertWithTitle:(NSString *) alertTitle message:(NSString *) alertMessage buttonTitle:(NSString *) buttonTitle buttonCompletion:(void (^)(void)) completion cancelTitle:(NSString *) cancelTitle alertTag:(NSInteger) tag
-{
-    if ([UIAlertController class]) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
-                                                                                 message:alertMessage
-                                                                          preferredStyle:UIAlertControllerStyleAlert];
-        
-        [alertController addAction:[UIAlertAction actionWithTitle:buttonTitle
-                                                            style:UIAlertActionStyleDestructive
-                                                          handler:^(UIAlertAction *action) {
-                                                              if (completion != nil) {
-                                                                  completion();
-                                                              }
-                                                          }]];
-        
-        [alertController addAction:[UIAlertAction actionWithTitle:cancelTitle
-                                                            style:UIAlertActionStyleCancel
-                                                          handler:nil]];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
-    } else {
-        // iOS 8 Deprecation
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle
-                                                        message:alertMessage
-                                                       delegate:self
-                                              cancelButtonTitle:cancelTitle
-                                              otherButtonTitles:buttonTitle, nil];
-        alert.tag = tag;
-        [alert show];
-    }
-}
-
 #pragma mark - View Configuration
 
 -(void)configureNext:(BOOL) isLastSection
@@ -126,6 +92,8 @@
         [visibleSelector setSelectedSegmentIndex:currentTab + 1];
         [self segmentChanged:self];
     }
+    
+    [self refreshFooterView];
 }
 
 -(void)goPrevious:(id)sender
@@ -136,6 +104,8 @@
         [visibleSelector setSelectedSegmentIndex:currentTab - 1];
         [self segmentChanged:self];
     }
+    
+    [self refreshFooterView];
 }
 
 @end
