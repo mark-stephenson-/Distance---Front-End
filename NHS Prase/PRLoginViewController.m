@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,15 +36,18 @@
 {
     [super viewWillAppear:animated];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleThemeChange:) name:TDThemeChange object:nil];
+    
     self.keyboardAccessoryView = nil;
     
     inputView = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
     inputView.navigationDelegate = self;
+    [self applyThemeToView:inputView];
+    
+    self.keyboardAccessoryView = inputView;
     
     self.components = @[usernameField, passwordField];
-    usernameField.inputAccessoryView = inputView;
-    passwordField.inputAccessoryView = inputView;
-    
+
     self.scrollContainer = scrollView;
 }
 
@@ -51,6 +56,12 @@
     [super viewDidDisappear:animated];
     
     self.scrollContainer = nil;
+}
+
+-(void)handleThemeChange:(NSNotification *) note
+{
+    [self applyTheme];
+    [self applyThemeToView:inputView];
 }
 
 #pragma mark - Log In
@@ -79,13 +90,9 @@
 
 #pragma mark - Input Accessory Delegate Methods
 
-#warning JRC: +KeyboardResponders input accessory should be generalised to a category so a UIView can be used not just a UIToolBar to remove a lot of these duplicated implementations.
-
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    self.activeComponent = textField;
-    
-    [inputView refreshBarButtonItemStatus];
+    [super textFieldShouldBeginEditing:textField];
     
     if (self.activeComponent == passwordField) {
         inputView.nextButton.TDLocalizedStringKey = @"button.done";
@@ -102,12 +109,8 @@
     return YES;
 }
 
--(BOOL)inputAccessoryCanGoToPrevious:(PRInputAccessoryView *)inputAccessoryView
-{
-    return self.activeComponent == passwordField;
-}
 
--(BOOL)inputAccessoryCanGoToNext:(PRInputAccessoryView *)inputAccessoryView
+-(BOOL)inputAccessoryCanGoToNext:(id<TDInputAccessoryView>)inputAccessoryView
 {
     return YES;
 }
@@ -116,44 +119,11 @@
 {
     if (self.activeComponent == passwordField) {
         [self dismissKeyboard];
-        return;
+    } else {
+        [super inputAccessoryRequestsNext:(PRInputAccessoryView *)inputAccessoryView];
     }
     
-    self.swappingFields = YES;
-    
-    UIView *nextComponent = self.components[self.activeComponent.tag + 1];
-    
-    if ([self.activeComponent canResignFirstResponder]) {
-        [self.activeComponent resignFirstResponder];
-    }
-    
-    if ([nextComponent canBecomeFirstResponder]) {
-        [nextComponent becomeFirstResponder];
-    }
-    
-    [inputView refreshBarButtonItemStatus];
-}
-
--(void)inputAccessoryRequestsPrevious:(TDInputAccessoryView *)inputAccessoryView
-{
-    self.swappingFields = YES;
-    
-    UIView *prevComponent = self.components[self.activeComponent.tag - 1];
-    
-    if ([self.activeComponent canResignFirstResponder]) {
-        [self.activeComponent resignFirstResponder];
-    }
-    
-    if ([prevComponent canBecomeFirstResponder]) {
-        [prevComponent becomeFirstResponder];
-    }
-    
-    [inputView refreshBarButtonItemStatus];
-}
-
--(void)inputAccessoryRequestsDone:(TDInputAccessoryView *)inputAccessoryView
-{
-    [self dismissKeyboard];
+    return;
 }
 
 @end

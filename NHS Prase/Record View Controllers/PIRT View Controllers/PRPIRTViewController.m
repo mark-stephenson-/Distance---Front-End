@@ -28,6 +28,7 @@
     // create the input accessory view
     noteVCToolbar = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
     noteVCToolbar.navigationDelegate = self;
+    [self applyThemeToView:noteVCToolbar];
     
     // grab the storyboard created view controllers
     PRGoodViewController *wardSelectVC = tabController.viewControllers[0];
@@ -104,27 +105,27 @@
 
 // The input accessory is only visible on the middle 3 screens so navigation to and from them can always occur.
 
--(BOOL)inputAccessoryCanGoToNext:(TDInputAccessoryView *)inputAccessoryView
+-(BOOL)inputAccessoryCanGoToNext:(id<TDInputAccessoryView>)inputAccessoryView
 {
     return YES;
 }
 
--(BOOL)inputAccessoryCanGoToPrevious:(TDInputAccessoryView *)inputAccessoryView
+-(BOOL)inputAccessoryCanGoToPrevious:(id<TDInputAccessoryView>)inputAccessoryView
 {
     return YES;
 }
 
--(void)inputAccessoryRequestsNext:(TDInputAccessoryView *)inputAccessoryView
+-(void)inputAccessoryRequestsNext:(id<TDInputAccessoryView>)inputAccessoryView
 {
     [self goNext:self];
 }
 
--(void)inputAccessoryRequestsPrevious:(TDInputAccessoryView *)inputAccessoryView
+-(void)inputAccessoryRequestsPrevious:(id<TDInputAccessoryView>)inputAccessoryView
 {
     [self goPrevious:self];
 }
 
--(void)inputAccessoryRequestsDone:(TDInputAccessoryView *)inputAccessoryView
+-(void)inputAccessoryRequestsDone:(id<TDInputAccessoryView>)inputAccessoryView
 {
     [self cancelConcern:self];
 }

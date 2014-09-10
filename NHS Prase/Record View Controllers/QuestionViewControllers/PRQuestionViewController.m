@@ -64,7 +64,7 @@
     view.previousButton.hidden = YES;
     
     view.nextButton.backgroundColor = [[PRTheme sharedTheme] positiveColor];
-    [view.nextButton setTitle:@"Done" forState:UIControlStateNormal];
+    view.nextButton.TDLocalizedStringKey = @"button.done";
     [view.nextButton setImage:[UIImage imageNamed:@"submit"] forState:UIControlStateNormal];
     
     return view;
@@ -88,7 +88,6 @@
 {
     PRGoodViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"GoodVC"];
     toPresent.delegate = self;
-    
     
     UIView *loadView = toPresent.view;
     PRInputAccessoryView *accessoryView = [self accessoryView];
@@ -122,28 +121,28 @@
 
 #pragma mark - Input Delegate
 
--(BOOL)inputAccessoryCanGoToNext:(TDInputAccessoryView *)inputAccessoryView
+-(BOOL)inputAccessoryCanGoToNext:(id<TDInputAccessoryView>)inputAccessoryView
 {
     return YES;
 }
 
--(BOOL)inputAccessoryCanGoToPrevious:(TDInputAccessoryView *)inputAccessoryView
+-(BOOL)inputAccessoryCanGoToPrevious:(id<TDInputAccessoryView>)inputAccessoryView
 {
     return NO;
 }
 
--(void)inputAccessoryRequestsDone:(TDInputAccessoryView *)inputAccessoryView
+-(void)inputAccessoryRequestsDone:(id<TDInputAccessoryView>)inputAccessoryView
 {
     PRNoteViewController *currentNote = (PRNoteViewController *) self.presentedViewController;
     [currentNote cancel:self];
 }
 
--(void)inputAccessoryRequestsPrevious:(TDInputAccessoryView *)inputAccessoryView
+-(void)inputAccessoryRequestsPrevious:(id<TDInputAccessoryView>)inputAccessoryView
 {
     
 }
 
--(void)inputAccessoryRequestsNext:(TDInputAccessoryView *)inputAccessoryView
+-(void)inputAccessoryRequestsNext:(id<TDInputAccessoryView>)inputAccessoryView
 {
     PRNoteViewController *currentNote = (PRNoteViewController *) self.presentedViewController;
     [currentNote submit:self];

@@ -13,7 +13,7 @@
 
 @class PRQuestion;
 
-@interface PRQuestionViewController : UIViewController <PRNoteDelegate, PRInputAccessoryDelegate>
+@interface PRQuestionViewController : UIViewController <PRNoteDelegate, TDInputAccessoryDelegate>
 {
     IBOutlet UILabel *titleLabel;
     IBOutlet UIView *pirtView;

@@ -13,7 +13,7 @@
  * @class PRLoginViewController
  * @discussion The first screen the user sees, allowing log in to create a record. The methods in the KeyboardResponder UIViewController category are used to navigate between the log in fields.
  */
-@interface PRLoginViewController : PRViewController <PRInputAccessoryDelegate>
+@interface PRLoginViewController : PRViewController <TDInputAccessoryDelegate>
 {
     IBOutlet UIScrollView *scrollView;
 

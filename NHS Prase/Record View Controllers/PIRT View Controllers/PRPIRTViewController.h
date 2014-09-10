@@ -11,7 +11,7 @@
 #import "PRNoteViewController.h"
 #import "PRInputAccessoryView.h"
 
-@interface PRPIRTViewController : PRSegmentTabViewController <PRNoteDelegate, PRInputAccessoryDelegate>
+@interface PRPIRTViewController : PRSegmentTabViewController <PRNoteDelegate, TDInputAccessoryDelegate>
 {
     PRInputAccessoryView *noteVCToolbar;
 }

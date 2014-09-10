@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A501C80419C0496900F50737 /* ExampleRecord.json in Resources */ = {isa = PBXBuildFile; fileRef = A501C80319C0496900F50737 /* ExampleRecord.json */; };
+		A501C80C19C051E500F50737 /* ExampleQuestionnaire.json in Resources */ = {isa = PBXBuildFile; fileRef = A501C80B19C051E500F50737 /* ExampleQuestionnaire.json */; };
 		A504416E19B5C2170000C9B3 /* PRPIRTQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A504416D19B5C2170000C9B3 /* PRPIRTQuestionsViewController.m */; };
 		A504417819B5CE920000C9B3 /* PRSegmentTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A504417719B5CE920000C9B3 /* PRSegmentTabViewController.m */; };
 		A504417D19B5D37B0000C9B3 /* PRCommentsSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A504417C19B5D37B0000C9B3 /* PRCommentsSummaryViewController.m */; };
@@ -182,6 +184,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A501C80319C0496900F50737 /* ExampleRecord.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ExampleRecord.json; path = "NHS Prase/ExampleRecord.json"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
+		A501C80B19C051E500F50737 /* ExampleQuestionnaire.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = ExampleQuestionnaire.json; path = "NHS Prase/ExampleQuestionnaire.json"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
 		A504416C19B5C2170000C9B3 /* PRPIRTQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRPIRTQuestionsViewController.h; path = "Record View Controllers/PIRT View Controllers/PRPIRTQuestionsViewController.h"; sourceTree = "<group>"; };
 		A504416D19B5C2170000C9B3 /* PRPIRTQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRPIRTQuestionsViewController.m; path = "Record View Controllers/PIRT View Controllers/PRPIRTQuestionsViewController.m"; sourceTree = "<group>"; };
 		A504417619B5CE920000C9B3 /* PRSegmentTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRSegmentTabViewController.h; path = "Record View Controllers/PRSegmentTabViewController.h"; sourceTree = "<group>"; };
@@ -351,6 +355,8 @@
 		A536993719ADD1170045EEB1 = {
 			isa = PBXGroup;
 			children = (
+				A501C80319C0496900F50737 /* ExampleRecord.json */,
+				A501C80B19C051E500F50737 /* ExampleQuestionnaire.json */,
 				A5BCB3CE19BDE6E600092F50 /* Languages */,
 				A5882D0219B9FCDB00C04E4F /* TheDistanceKit.xcodeproj */,
 				A5466CA719AE3A3400240026 /* TDForms.xcodeproj */,
@@ -748,8 +754,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A501C80419C0496900F50737 /* ExampleRecord.json in Resources */,
 				A536994F19ADD1170045EEB1 /* Main.storyboard in Resources */,
 				A5BCB3D419BDE6E600092F50 /* Localizable.strings in Resources */,
+				A501C80C19C051E500F50737 /* ExampleQuestionnaire.json in Resources */,
 				A536995119ADD1170045EEB1 /* Images.xcassets in Resources */,
 				A5BCB3D519BDE6E600092F50 /* Storyboard.strings in Resources */,
 			);

@@ -26,6 +26,7 @@
  */
 @interface PRNoteViewController : PRViewController <UITextViewDelegate, UIAlertViewDelegate>
 {
+    
     BOOL canDismissKeyboard;
     BOOL canShowKeyboard;
     
@@ -33,6 +34,9 @@
 }
 
 @property (nonatomic, weak) id<PRNoteDelegate> delegate;
+
+// if no, shows on did appear
+@property (nonatomic, assign) BOOL showKeyboardOnWillAppear;
 
 /// Exposed as a property so the accessoryInputView can be set externally.
 @property (nonatomic, strong) IBOutlet TDTextView *noteView;

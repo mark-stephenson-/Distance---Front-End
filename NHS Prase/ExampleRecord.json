@@ -1,0 +1,188 @@
+{
+    "ward": {
+        "trust": "Barnsley Hospital NHS Foundation Trust",
+        "hospital": "Barnsley Hospital",
+        "ward": "Ward 19"
+    },
+    "surveyDate": "UTC_date_string",
+    "basicData": {
+    },
+    "questions": [
+                  {
+                  "title": "How likely are you to recommend this ward to your friends and family if they needed similar care or treatment?",
+                  "options": [
+                              {
+                              "value": -1,
+                              "optionTitle": "I prefer not to answer"
+                              },
+                              {
+                              "value": 0,
+                              "optionTitle": "Not Applicable"
+                              },
+                              {
+                              "value": 1,
+                              "optionTitle": "Extremely Unlikely"
+                              },
+                              {
+                              "value": 2,
+                              "optionTitle": "Unlikely"
+                              },
+                              {
+                              "value": 3,
+                              "optionTitle": "Neither Unlikely or likely"
+                              },
+                              {
+                              "value": 4,
+                              "optionTitle": "Likely"
+                              },
+                              {
+                              "value": 5,
+                              "optionTitle": "Extremely Likely"
+                              }
+                              ],
+                  "answer": 4,
+                  "goodNote": {
+                  "ward": {
+                  "trust": "Barnsley Hospital NHS Foundation Trust",
+                  "hospital": "Barnsley Hospital",
+                  "ward": "Ward 19"
+                  },
+                  "text": "",
+                  "recording": "???"
+                  }
+                  },
+                  {
+                  "title": "I was always treated with dignity and respect",
+                  "options": [
+                              {
+                              "value": -1,
+                              "optionTitle": "I prefer not to answer"
+                              },
+                              {
+                              "value": 0,
+                              "optionTitle": "Not Applicable"
+                              },
+                              {
+                              "value": 1,
+                              "optionTitle": "Strongly Disagree"
+                              },
+                              {
+                              "value": 2,
+                              "optionTitle": "Disagree"
+                              },
+                              {
+                              "value": 3,
+                              "optionTitle": "Neither Agree or Disagree"
+                              },
+                              {
+                              "value": 4,
+                              "optionTitle": "Agree"
+                              },
+                              {
+                              "value": 5,
+                              "optionTitle": "Strongly Agree"
+                              }
+                              ],
+                  "answer": 5
+                  },
+                  {
+                  "title": "Were you involved as much as you wanted to be in decisions about your care and treatment?",
+                  "options": [
+                              {
+                              "value": -1,
+                              "optionTitle": "I prefer not to answer"
+                              },
+                              {
+                              "value": 0,
+                              "optionTitle": "Not Applicable"
+                              },
+                              {
+                              "value": 1,
+                              "optionTitle": "No"
+                              },
+                              {
+                              "value": 2,
+                              "optionTitle": "Yes, to some extent"
+                              },
+                              {
+                              "value": 3,
+                              "optionTitle": "Yes, definitely"
+                              }
+                              ],
+                  "answer": 1,
+                  "concern": {
+                  "ward": {
+                  "trust": "Barnsley Hospital NHS Foundation Trust",
+                  "hospital": "Barnsley Hospital",
+                  "ward": "Ward 19"
+                  },
+                  "whatNote": {
+                  "text": "Sometimes I couldn't understand the technical terms the doctors used but all staff memebers were very supportive."
+                  },
+                  "whyNote": {
+                  "text": ""
+                  },
+                  "preventNote": {
+                  "text": ""
+                  },
+                  "serious": {
+                  "title": "On a scale of 1-10. how serious do you think your concern was?",
+                  "options": [
+                              {
+                              "value": -1,
+                              "optionTitle": "I prefer not to answer"
+                              },
+                              {
+                              "value": 0,
+                              "optionTitle": "Not Applicable"
+                              },
+                              {
+                              "value": 1,
+                              "optionTitle": "1"
+                              },
+                              {
+                              "value": 2,
+                              "optionTitle": "2"
+                              },
+                              {
+                              "value": 3,
+                              "optionTitle": "3"
+                              }
+                              ],
+                  "answer": 3
+                  },
+                  "prevent": {
+                  "title": "Do you think it would have been possible to have stopped what concerned you from happening?",
+                  "options": [
+                              {
+                              "value": 1,
+                              "optionTitle": "Definitely Not"
+                              },
+                              {
+                              "value": 2,
+                              "optionTitle": "Probably Not"
+                              },
+                              {
+                              "value": 3,
+                              "optionTitle": "Probably Yes"
+                              },
+                              {
+                              "value": 4,
+                              "optionTitle": "Definitely Yes"
+                              },
+                              {
+                              "value": 0,
+                              "optionTitle": "Don't know"
+                              },
+                              {
+                              "value": -1,
+                              "optionTitle": "I prefer not to answer"
+                              }
+                              ],
+                  "answer": 0
+                  }
+                  }
+                  }
+                  ],
+    "incompleteReason": " Patient was due for consultation before survey was completed."
+}

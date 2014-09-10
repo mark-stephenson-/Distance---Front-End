@@ -50,6 +50,10 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
+    if (canShowKeyboard && self.showKeyboardOnWillAppear) {
+        [self.noteView becomeFirstResponder];
+    }
 }
 
 #pragma mark - Keyboard Methods
@@ -58,7 +62,7 @@
 {
     [super viewDidAppear:animated];
     
-    if (canShowKeyboard) {
+    if (canShowKeyboard && !self.showKeyboardOnWillAppear) {
         [self.noteView becomeFirstResponder];
     }
 }
@@ -175,12 +179,10 @@
     }
 }
 
--(void)alertViewCancel:(UIAlertView *)alertView
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    if (alertView.tag == ALERT_CANCEL) {
-        
+    if (alertView.tag == ALERT_CANCEL && buttonIndex == 0) {
         [self cancelCancel];
-        
     }
 }
 

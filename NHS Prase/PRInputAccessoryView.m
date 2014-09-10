@@ -13,6 +13,23 @@
 
 @implementation PRInputAccessoryView
 
+@synthesize showsPrev = _showsPrev;
+@synthesize showsNext = _showsNext;
+@synthesize showsDone= _showsDone;
+
+@synthesize previousEnabled = _previousEnabled;
+@synthesize nextEnabled = _nextEnabled;
+@synthesize doneEnabled = _doneEnabled;
+
+@synthesize nextImage = _nextImage;
+@synthesize nextTitle = _nextTitle;
+
+@synthesize previousImage = _previousImage;
+@synthesize previousTitle = _previousTitle;
+
+@synthesize doneImage = _doneImage;
+@synthesize doneTitle = _doneTitle;
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -65,6 +82,7 @@
         [_cancelButton setContentHuggingPriority:252 forAxis:UILayoutConstraintAxisVertical];
         [_cancelButton setContentCompressionResistancePriority:752 forAxis:UILayoutConstraintAxisVertical];
         
+
         [self setContentCompressionResistancePriority:752 forAxis:UILayoutConstraintAxisVertical];
         
         [self setNeedsUpdateConstraints];
@@ -73,7 +91,7 @@
     return self;
 }
 
--(void)setNavigationDelegate:(id<PRInputAccessoryDelegate>)navigationDelegate
+-(void)setNavigationDelegate:(id<TDInputAccessoryDelegate>)navigationDelegate
 {
     // clear the old target receivers
     if (_navigationDelegate != nil) {
@@ -144,15 +162,98 @@
     [super updateConstraints];
 }
 
+-(void)refreshItems
+{
+    vConstrs = nil;
+    hConstrs = nil;
+    
+    [self updateConstraints];
+    [self layoutSubviews];
+}
+
 -(void)refreshBarButtonItemStatus
 {
     if (delegateCanGoToNext) {
-        self.nextButton.enabled = [self.navigationDelegate inputAccessoryCanGoToNext:self];
+        self.nextEnabled = [self.navigationDelegate inputAccessoryCanGoToNext:self];
     }
     
     if (delegateCanGoToPrevious) {
-        self.previousButton.enabled = [self.navigationDelegate inputAccessoryCanGoToPrevious:self];
+        self.previousEnabled = [self.navigationDelegate inputAccessoryCanGoToPrevious:self];
     }
+}
+
+#pragma mark - Input Accessory Setters
+
+-(void)setNextEnabled:(BOOL)nextEnabled
+{
+    _nextEnabled = nextEnabled;
+    self.nextButton.enabled = nextEnabled;
+}
+
+-(void)setPreviousEnabled:(BOOL)previousEnabled
+{
+    _previousEnabled = previousEnabled;
+    self.previousButton.enabled = previousEnabled;
+}
+
+-(void)setDoneEnabled:(BOOL)doneEnabled
+{
+    _doneEnabled = doneEnabled;
+    self.cancelButton.enabled = doneEnabled;
+}
+
+-(void)setShowsNext:(BOOL)showsNext
+{
+    _showsNext = showsNext;
+    self.nextButton.hidden = !showsNext;
+}
+
+-(void)setShowsPrev:(BOOL)showsPrev
+{
+    _showsPrev = showsPrev;
+    self.previousButton.hidden = !showsPrev;
+}
+
+-(void)setShowsDone:(BOOL)showsDone
+{
+    _showsDone = showsDone;
+    self.cancelButton.hidden = !showsDone;
+}
+
+-(void)setNextImage:(UIImage *)nextImage
+{
+    _nextImage = nextImage;
+    [self.nextButton setImage:nextImage forState:UIControlStateNormal];
+}
+
+-(void)setNextTitle:(NSString *)nextTitle
+{
+    _nextTitle = nextTitle;
+    [self.nextButton setTitle:nextTitle forState:UIControlStateNormal];
+}
+
+-(void)setPreviousImage:(UIImage *)previousImage
+{
+    _previousImage = previousImage;
+    [self.previousButton setImage:previousImage forState:UIControlStateNormal];
+}
+
+-(void)setPreviousTitle:(NSString *)previousTitle
+{
+    _previousTitle = previousTitle;
+    [self.previousButton setTitle:previousTitle forState:UIControlStateNormal];
+}
+
+-(void)setDoneImage:(UIImage *)doneImage
+{
+    _doneImage = doneImage;
+    [self.cancelButton setImage:doneImage forState:UIControlStateNormal];
+}
+
+-(void)setDoneTitle:(NSString *)doneTitle
+{
+    _doneTitle = doneTitle;
+    [self.cancelButton setTitle:doneTitle forState:UIControlStateNormal];
 }
 
 @end
