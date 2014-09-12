@@ -16,4 +16,5 @@ FOUNDATION_EXPORT const unsigned char NHSPraseKitVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <NHSPraseKit/PublicHeader.h>
 
-
+#import <NHSPraseKit/PROptionCollectionViewCell.h>
+#import <NHSPraseKit/PRButton.h>

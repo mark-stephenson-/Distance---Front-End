@@ -21,7 +21,8 @@
     UIPageViewController *pageController;
 }
 
-@property (nonatomic, strong) PRQuestionnaire *questionnaire;
+@property (nonatomic, strong) NSArray *questions;
+//@property (nonatomic, strong) PRQuestionnaire *questionnaire;
 
 /// The index of the question currently on screen. Question indexes are as they appear in self.questionnaire.questions. The first question is the statement page which is given index -1.
 @property (nonatomic, assign) NSInteger currentQuestion;

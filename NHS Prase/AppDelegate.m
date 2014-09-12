@@ -10,6 +10,8 @@
 
 #import "PRTheme.h"
 
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+
 @interface AppDelegate ()
 
 @end
@@ -21,6 +23,9 @@
     // Override point for customization after application launch.
     
     [[PRTheme sharedTheme] setLanguageIdentifier:@"en"];
+    
+    [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"PRModel.sqlite"];
+    
     
     return YES;
 }

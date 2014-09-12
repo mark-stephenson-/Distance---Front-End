@@ -15,9 +15,10 @@
 
 @interface PRQuestionViewController : UIViewController <PRNoteDelegate, TDInputAccessoryDelegate>
 {
+    IBOutlet UILabel *headerLabel;
+    IBOutlet UILabel *promptLabel;
     IBOutlet UILabel *titleLabel;
     IBOutlet UIView *pirtView;
-    
 }
 
 @property (nonatomic, strong) PRQuestion *question;

@@ -99,6 +99,9 @@ Please read the following statements carefully, keeping in mind your current sta
 /* Default button title to dismiss a view successfully. */
 "button.done" = "Done";
 
+/* Prompt explaining to the user how to answer a question. */
+"question.prompt" = "Please select an answer from the choices below.";
+
 /* Navigation title when adding a concern. */
 "pirt.segment.navigation.segment_0" = "Ward";
 

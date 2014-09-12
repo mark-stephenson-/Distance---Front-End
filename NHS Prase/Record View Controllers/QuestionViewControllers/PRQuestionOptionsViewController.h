@@ -6,14 +6,21 @@
 //  Copyright (c) 2014 The Distance. All rights reserved.
 //
 
+#import <NHSPraseKit/NHSPraseKit.h>
 #import "PRQuestionViewController.h"
+#import "PRAnswerOptionsLayout.h"
 
 @class PRQuestionOptions;
 
-@interface PRQuestionOptionsViewController : PRQuestionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface PRQuestionOptionsViewController : PRQuestionViewController <UICollectionViewDataSource, PRAnswerOptionsLayoutDelegate>
 {
+    IBOutlet UIView *collectionContainer;
     IBOutlet NSLayoutConstraint *collectionViewWidthConstraint;
-    PRQuestionOptions *optionsQuestion;
+    IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
+    
+    CGSize oldViewSize;
+    
+    NSMutableDictionary *layoutCells;
 }
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;

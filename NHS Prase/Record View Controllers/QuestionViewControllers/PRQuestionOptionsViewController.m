@@ -10,6 +10,11 @@
 
 #import <TheDistanceKit/TheDistanceKit.h>
 
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+
+#import "PRRecord.h"
+#import "PRAnswerOption.h"
+
 #import "PRTheme.h"
 #import "PRQuestionOptions.h"
 #import "PROptionCollectionViewCell.h"
@@ -23,6 +28,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    headerLabel.TDLocalizedStringKey = @"question.index_header";
+    titleLabel.TDLocalizedStringKey = self.question.questionID;
+    
+    ((UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout).minimumLineSpacing = 30.0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,26 +40,40 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)applyTheme
+{
+    [super applyTheme];
+
+    NSInteger thisQuestionIndex = [self.question.record.questions indexOfObject:self.question] + 1;
+    NSString *formatHeader = [NSString localizedStringWithFormat:TDLocalizedStringWithDefaultValue(@"question.index_header", nil, nil, @"Question %d:", @"The header identifiying the question number of this question in the PMOS questionnaire."), thisQuestionIndex];
+    headerLabel.text = formatHeader;
+    
+    if ([titleLabel.TDLocalizedStringKey isNonNullString]) {
+        titleLabel.text = PRLocalizedStringWithDefaultValue(titleLabel.TDLocalizedStringKey, nil, nil, nil, nil);
+    }
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    titleLabel.text = [NSString stringWithFormat:@"Q%ld: %@", self.questionIndex + 1, optionsQuestion.questionTitle];
-    
-    if ([self.question.answer isKindOfClass:[NSIndexPath class]]) {
-        NSIndexPath *selected = self.question.answer;
-        [self.collectionView selectItemAtIndexPath:selected animated:NO scrollPosition:UICollectionViewScrollPositionNone];
-    }
 }
 
 -(void)setQuestion:(PRQuestion *)question
 {
-    if ([question isKindOfClass:[PRQuestionOptions class]]) {
-        [super setQuestion:question];
-        optionsQuestion = (PRQuestionOptions *) question;
-        
-        titleLabel.text = [NSString stringWithFormat:@"Q%ld: %@", self.questionIndex + 1, optionsQuestion.questionTitle];
-        
+    [super setQuestion:question];
+    
+    
+    
+    if (headerLabel != nil) {
+        headerLabel.TDLocalizedStringKey = @"question.index_header";
+    }
+    
+    if (titleLabel != nil) {
+        titleLabel.TDLocalizedStringKey = self.question.questionID;
+    }
+    
+    if (headerLabel != nil && titleLabel != nil) {
+        [self applyTheme];
         [self.collectionView reloadData];
     }
 }
@@ -58,91 +82,108 @@
 {
     [super viewDidLayoutSubviews];
     
-    collectionViewWidthConstraint.constant = self.collectionView.contentSize.width;
+    if (CGSizeEqualToSize(CGSizeZero, oldViewSize) || !CGSizeEqualToSize(self.view.bounds.size, oldViewSize)) {
+        [self.collectionView.collectionViewLayout invalidateLayout];
+        [self.collectionView.collectionViewLayout prepareLayout];
+        
+        CGSize collectionSize = [self.collectionView.collectionViewLayout collectionViewContentSize];
+        collectionViewWidthConstraint.constant = collectionSize.width;
+        collectionViewHeightConstraint.constant = collectionSize.height;
+    }
 }
 
 #pragma mark - CollectionView DataSource
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    if (optionsQuestion.showsNA) {
-        return 2;
-    }
-    
-    return 1;
+    return self.question.answerOptionsArray.count;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if (section == 1) {
-        // two cells for NA and prefer not to answer
-        return 2;
-    } else {
-        return optionsQuestion.options.count;
-    }
+    NSArray *sectionOptions = self.question.answerOptionsArray[section];
+    return sectionOptions.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    PROptionCollectionViewCell *optionCell = nil;
+    NSString *identifier = [self cellIdentifierForIndexPath:indexPath];
     
-    if (indexPath.section == 1) {
-        optionCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"OptionCell" forIndexPath:indexPath];
-        
-        NSString *title = nil;
-        UIImage *image = nil;
-        switch (indexPath.row) {
-            case 0:
-                title = @"Not Applicable";
-                image = [UIImage imageNamed:@"n_a"];
-                break;
-            case 1:
-                title = @"Prefer not to answer";
-                break;
-            default:
-                break;
-        }
-        
-        [optionCell setOptionTitle:title image:image andSecondImage:nil];
-    } else {
-        
-        NSDictionary *thisOption = optionsQuestion.options[indexPath.row];
-        
-        NSString *identifier = @"OptionCell";
-        if (thisOption[@"image2"] != nil) {
-            identifier = @"OptionCell2";
-        }
-        
-        optionCell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-        if (thisOption[@"imageTint"]) {
-            //NSLog(@"tint col: %@", thisOption[@"imageTint"]);
-            optionCell.imageTintColor = thisOption[@"imageTint"];
-        }
-        [optionCell setOptionTitle:thisOption[@"title"] image:thisOption[@"image"] andSecondImage:thisOption[@"image2"]];
-    }
-    
-    if ([self.question.answer isKindOfClass:[NSIndexPath class]]) {
-        NSIndexPath *selectedPath = self.question.answer;
-        
-        if (indexPath.row == selectedPath.row && indexPath.section == selectedPath.section) {
-            
-            optionCell.tintColor = [[PRTheme sharedTheme] mainColor];
-            [optionCell setSelected:YES];
-            [optionCell layoutSubviews];
-        }
-    }
-    
-    [self applyThemeToView:optionCell];
-    
+    PROptionCollectionViewCell *optionCell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    [self configureCell:optionCell forIndexPath:indexPath];
     
     return optionCell;
 }
 
+-(NSString *)cellIdentifierForIndexPath:(NSIndexPath *) indexPath
+{
+    NSArray *sectionOptions = self.question.answerOptionsArray[indexPath.section];
+    PRAnswerOption *thisOption = sectionOptions[indexPath.row];
+    
+    NSString *identifier = @"OptionCell";
+    
+    if (thisOption.image2 != nil) {
+        identifier = @"OptionCell2";
+    }
+    
+    return identifier;
+}
+
+-(void)configureCell:(PROptionCollectionViewCell *) optionCell forIndexPath:(NSIndexPath *) indexPath
+{
+    NSArray *sectionOptions = self.question.answerOptionsArray[indexPath.section];
+    PRAnswerOption *thisOption = sectionOptions[indexPath.row];
+    
+    if ([thisOption.imageTintIdentifier isNonNullString]) {
+        optionCell.imageTintColor = [[PRTheme sharedTheme] colourForIdentifier:thisOption.imageTintIdentifier];
+    }
+    
+    NSString *localizedTitle = PRLocalizedStringWithDefaultValue(thisOption.optionID, nil, nil, nil, nil);
+    UIImage *image1 = [thisOption.image1 isNonNullString] ? [UIImage imageNamed:thisOption.image1] : nil;
+    UIImage *image2 = [thisOption.image2 isNonNullString] ? [UIImage imageNamed:thisOption.image2] : nil;
+    
+    [optionCell setOptionTitle:localizedTitle image:image1 andSecondImage:image2];
+    
+    [self applyThemeToView:optionCell];
+}
+
 #pragma mark - Collection Delegate
 
--(void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+-(CGFloat)maximumLayoutWidthForCollectionView:(UICollectionView *)collectionView
 {
+    return collectionContainer.frame.size.width;
+}
+
+-(CGFloat)maximumLayoutHeightForCollectionView:(UICollectionView *)collectionView
+{
+    return collectionContainer.frame.size.height;
+}
+
+-(CGFloat)collectionView:(UICollectionView *)collectionView heightForCellAtIndexPath:(NSIndexPath *)indexPath constrainedToWidth:(CGFloat)width
+{
+    NSString *identifier = [self cellIdentifierForIndexPath:indexPath];
     
+    if (layoutCells == nil) {
+        layoutCells = [NSMutableDictionary dictionary];
+    }
+    
+    PROptionCollectionViewCell *layoutCell = layoutCells[identifier];
+    
+    if (layoutCell == nil) {
+        UICollectionViewLayout *originalLayout = self.collectionView.collectionViewLayout;
+        
+        UICollectionViewFlowLayout *newLayout = [[UICollectionViewFlowLayout alloc] init];
+        newLayout.itemSize = CGSizeMake(width, 200);
+        collectionView.collectionViewLayout = newLayout;
+        layoutCell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:nil];
+        layoutCells[identifier] = layoutCell;
+        collectionView.collectionViewLayout = originalLayout;
+    }
+    
+    [self configureCell:layoutCell forIndexPath:indexPath];
+    
+    CGSize fittingSize = [layoutCell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize constrainedToWidth:width];
+    return fittingSize.height + 5.0;
 }
 
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -161,14 +202,14 @@
     return YES;
 }
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    self.question.answer = indexPath;
-}
-
--(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    self.question.answer = nil;
-}
+//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    self.question.answer = indexPath;
+//}
+//
+//-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    self.question.answer = nil;
+//}
 
 @end

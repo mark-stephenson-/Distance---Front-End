@@ -75,6 +75,11 @@
     
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = title;
+    
+    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1) {
+        titleLabel.font = self.titleLabel.font;
+    }
+    
 #warning JRC: Requires font set here, cannot use self. propertes as becomes cyclic.
     CGSize labelSize = [titleLabel systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     labelSize.width += 5.0;

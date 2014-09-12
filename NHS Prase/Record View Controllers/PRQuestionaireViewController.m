@@ -8,7 +8,6 @@
 
 #import "PRQuestionaireViewController.h"
 
-#import "PRQuestionnaire.h"
 #import "PRQuestion.h"
 #import "PRQuestionStatement.h"
 #import "PRQuestionOptions.h"
@@ -99,8 +98,17 @@
 
 #pragma mark - Questionnaire Methods
 
+-(void)setQuestions:(NSArray *)questions
+{
+    _questions = questions;
+    
+    [self resetPageViewController];
+}
+
+/*
 -(void)setQuestionnaire:(PRQuestionnaire *)questionnaire
 {
+    
     if (_questionnaire != nil) {
         // clear the existing questionnaire and remove any saved view controllers
     }
@@ -109,10 +117,11 @@
     
     [self resetPageViewController];
 }
+*/
 
 -(BOOL)canGoToNextQuestion
 {
-    return self.currentQuestion < self.questionnaire.questions.count - 1.0;
+    return self.currentQuestion < self.questions.count - 1.0;
 }
 
 -(BOOL)canGoToPreviousQuestion
@@ -158,19 +167,18 @@
             return nil;
         }
         
-    } else if (idx >= 0 && idx < self.questionnaire.questions.count) {
-        PRQuestion *thisQuestion = self.questionnaire.questions[idx];
+    } else if (idx >= 0 && idx < self.questions.count) {
+        PRQuestion *thisQuestion = self.questions[idx];
         
         PRQuestionViewController *qvc = nil;
         
         
-        if ([thisQuestion isKindOfClass:[PRQuestionStatement class]]) {
+        if (thisQuestion.options.count == 0) {
             
             PRQuestionStatementViewController *statementVC = [self.storyboard instantiateViewControllerWithIdentifier:@"QuestionStatementVC"];
-            
             qvc = statementVC;
             
-        } else if ([thisQuestion isKindOfClass:[PRQuestionOptions class]]){
+        } else {
             PRQuestionOptionsViewController *optionsVC = [self.storyboard instantiateViewControllerWithIdentifier:@"QuestionOptionsVC"];
             
             qvc = optionsVC;

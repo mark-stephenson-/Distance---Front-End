@@ -12,10 +12,12 @@
 #import "PRBasicDataFormViewController.h"
 #import "PRQuestionaireViewController.h"
 
+#import "PRRecord.h"
+
 #import "PRTheme.h"
 #import "PRButton.h"
 #import "PRQuestion.h"
-#import "PRQuestionnaire.h"
+
 
 // iOS 8 Deprecation
 #define ALERT_GO_HOME 111
@@ -32,11 +34,8 @@
 {
     [super viewDidLoad];
     
-    // Set up for prototype only
-    self.questionnaire = [PRQuestionnaire prototypeQuestionnaire];
-    
     PRQuestionaireViewController *qvc = tabController.viewControllers[1];
-    qvc.questionnaire = self.questionnaire;
+    qvc.questions = [self.record.questions array];
 }
 
 #pragma mark - View Configuration
@@ -77,7 +76,7 @@
         NSInteger currentQuestion = qvc.currentQuestion;
         
         progressLabel.hidden = NO;
-        progressLabel.text = [NSString stringWithFormat:@"Question %ld of %ld", currentQuestion + 1, self.questionnaire.questions.count];
+        progressLabel.text = [NSString stringWithFormat:@"Question %ld of %ld", currentQuestion + 1, self.record.questions.count];
     } else {
         progressLabel.hidden = YES;
     }
@@ -111,13 +110,13 @@
     
     NSInteger answered = 0;
     
-    for (PRQuestion *thisQuestion in self.questionnaire.questions) {
-        if (thisQuestion.answer != nil) {
+    for (PRQuestion *thisQuestion in self.record.questions) {
+        if (thisQuestion.answerID != nil) {
             answered++;
         }
     }
     
-    NSInteger total = self.questionnaire.questions.count;
+    NSInteger total = self.record.questions.count;
     
     summary.questionnaireLabel.text = [NSString stringWithFormat:@"%ld of %ld questions answered.", answered, total];
     summary.questionnaireLabel.textColor = (answered == total) ? [[PRTheme sharedTheme] positiveColor] : [[PRTheme sharedTheme] negativeColor];

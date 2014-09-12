@@ -8,17 +8,27 @@
 
 #import <UIKit/UIKit.h>
 
+#define OPTIONS_CELL_BORDER_WIDTH 2
+
 IB_DESIGNABLE
 @interface PROptionCollectionViewCell : UICollectionViewCell
 {
     IBOutlet UILabel *optionTitleLabel;
     IBOutlet UIImageView *optionImageView;
     IBOutlet UIImageView *secondOptionImageView;
+    
+    IBOutletCollection(NSLayoutConstraint) NSArray *vBufferConstraints;
+    
+    
+    CAShapeLayer *borderLayer;
 }
 
+@property (nonatomic, assign) IBInspectable CGFloat vBuffer;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *labelHeightConstraint;
 
 -(void)setOptionTitle:(NSString *)title image:(UIImage *)image andSecondImage:(UIImage *) image2;
 @property (nonatomic, strong) UIColor *imageTintColor;
+
+-(CGSize)systemLayoutSizeFittingSize:(CGSize)targetSize constrainedToWidth:(CGFloat)width;
 
 @end

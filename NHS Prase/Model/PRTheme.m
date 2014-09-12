@@ -8,7 +8,19 @@
 
 #import "PRTheme.h"
 
+
 @implementation PRTheme
+
+NSString * PRLocalizedStringWithDefaultValue(NSString *key, NSString *tbl, NSBundle *bundle, NSString *val, NSString *comment)
+{
+    NSString *localizedString = TDLocalizedStringWithDefaultValue(key, tbl, bundle, val, comment);
+    
+    if (![localizedString isNonNullString] || [localizedString isEqualToString:key]) {
+        localizedString = [[[TDTheme sharedTheme] localizedBundle] localizedStringForKey:key value:val table:@"Questionnaire"];
+    }
+    
+    return ([localizedString isNonNullString] && ![localizedString isEqualToString:key]) ? localizedString : val;
+}
 
 +(NSDictionary *)languageDictionary
 {

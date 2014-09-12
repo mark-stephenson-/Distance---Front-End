@@ -8,6 +8,9 @@
 
 #import "HomeViewController.h"
 
+#import "PRRecord.h"
+#import "PRRecordViewController.h"
+
 #define ALERT_GO_TITLE 111
 #define ALERT_CREATE_ERROR 222
 
@@ -20,6 +23,18 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"CreateRecord"]) {
+        PRRecord *newRecord = [PRRecord prototypeRecordWithTrust:self.selectedTrust
+                                                        hospital:self.selectedHospital
+                                                            ward:self.selectedWard];
+        
+        PRRecordViewController *recordVC = (PRRecordViewController *) segue.destinationViewController;
+        recordVC.record = newRecord;
+    }
 }
 
 #pragma mark - Language Methods
@@ -37,9 +52,7 @@
 {
     if (true) { // [self.selectedTrust isNonNullString] && [self.selectedHospital isNonNullString] && [self.selectedWard isNonNullString]) {
         
-        [[NSUserDefaults standardUserDefaults] setValue:self.selectedTrust forKey:@"trust"];
-        [[NSUserDefaults standardUserDefaults] setValue:self.selectedHospital forKey:@"hospital"];
-        [[NSUserDefaults standardUserDefaults] setValue:self.selectedWard forKey:@"ward"];
+        
         
         [self performSegueWithIdentifier:@"CreateRecord" sender:self];
         

@@ -8,6 +8,8 @@
 
 #import <TheDistanceKit/TheDistanceKit.h>
 
+NSString * PRLocalizedStringWithDefaultValue(NSString *key, NSString *tbl, NSBundle *bundle, NSString *val, NSString *comment);
+
 @interface PRTheme : TDTheme
 
 @property (nonatomic, strong) UIColor *negativeColor;

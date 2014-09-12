@@ -19,6 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    TDLocalizedStringWithDefaultValue(@"question.statement", nil, nil, @"Please add a concern, something good or a note to articulate as appropriate:", @"The text displayed if a question has no options to select from.");
+    statementLabel.TDLocalizedStringKey = @"question.statement";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,25 +34,26 @@
     [super viewWillAppear:animated];
     
     statementLabel.text = statementQuestion.statement;
-    titleLabel.text = [NSString stringWithFormat:@"Q%ld: %@", self.questionIndex + 1, statementQuestion.questionTitle];
+    titleLabel.text = [NSString stringWithFormat:@"Q%ld: %@", self.questionIndex + 1, statementQuestion.questionID];
+}
+
+-(void)configureQuestionLabel
+{
+    //NSString *localizedPrefix = NSLocalizeds
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    self.question.answer = @YES;
+    self.question.answerID = @"";
 }
 
 -(void)setQuestion:(PRQuestion *)question
 {
-    if ([question isKindOfClass:[PRQuestionStatement class]]) {
-        [super setQuestion:question];
-        statementQuestion = (PRQuestionStatement *) question;
-        
-        titleLabel.text = statementQuestion.questionTitle;
-        statementLabel.text = statementQuestion.statement;
-    }
+    [super setQuestion:question];
+    
+    titleLabel.TDLocalizedStringKey = TDLocalizedStringWithDefaultValue(question.questionID, nil, nil, nil, nil);
 }
 
 @end
