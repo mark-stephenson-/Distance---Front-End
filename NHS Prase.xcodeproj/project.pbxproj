@@ -61,6 +61,7 @@
 		A5882D1019B9FD0100C04E4F /* TheDistanceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5882D0919B9FCDB00C04E4F /* TheDistanceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5882D1119B9FD6400C04E4F /* TheDistanceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5882D0919B9FCDB00C04E4F /* TheDistanceKit.framework */; };
 		A5882D2B19BA0FE500C04E4F /* PRTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A504419419B60D740000C9B3 /* PRTheme.m */; };
+		A58A8D3D19C6EA1A0052EAB7 /* PRSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A8D3C19C6EA1A0052EAB7 /* PRSelectionTableViewCell.m */; };
 		A5BCB3C219BDBC7100092F50 /* PRSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BCB3C119BDBC7100092F50 /* PRSettingsViewController.m */; };
 		A5BCB3CB19BDE35700092F50 /* PRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BCB3CA19BDE35700092F50 /* PRViewController.m */; };
 		A5BCB3D419BDE6E600092F50 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5BCB3CF19BDE6E600092F50 /* Localizable.strings */; };
@@ -69,6 +70,7 @@
 		A5DE268619B739D9000D3AF2 /* PRPIRTWardSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DE268519B739D9000D3AF2 /* PRPIRTWardSelectViewController.m */; };
 		A5DE26A219B760B8000D3AF2 /* PRRecordSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DE26A119B760B8000D3AF2 /* PRRecordSummaryViewController.m */; };
 		A5F521F519AF289800DC6C68 /* TDFormKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5466CB719AE3A3400240026 /* TDFormKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5F565AA19C338E10080C692 /* PRSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F565A919C338E10080C692 /* PRSelectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -293,6 +295,8 @@
 		A576056719B0AE150018E9EA /* PRDateSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRDateSelectCell.h; path = "Custom Form Cells/PRDateSelectCell.h"; sourceTree = "<group>"; };
 		A576056819B0AE150018E9EA /* PRDateSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRDateSelectCell.m; path = "Custom Form Cells/PRDateSelectCell.m"; sourceTree = "<group>"; };
 		A5882D0219B9FCDB00C04E4F /* TheDistanceKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TheDistanceKit.xcodeproj; path = TDKit/TheDistanceKit.xcodeproj; sourceTree = "<group>"; };
+		A58A8D3B19C6EA1A0052EAB7 /* PRSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRSelectionTableViewCell.h; path = "NHS Prase/Selection VCs/PRSelectionTableViewCell.h"; sourceTree = "<group>"; };
+		A58A8D3C19C6EA1A0052EAB7 /* PRSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRSelectionTableViewCell.m; path = "NHS Prase/Selection VCs/PRSelectionTableViewCell.m"; sourceTree = "<group>"; };
 		A5BCB3C019BDBC7100092F50 /* PRSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRSettingsViewController.h; sourceTree = "<group>"; };
 		A5BCB3C119BDBC7100092F50 /* PRSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRSettingsViewController.m; sourceTree = "<group>"; };
 		A5BCB3C919BDE35700092F50 /* PRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRViewController.h; sourceTree = "<group>"; };
@@ -306,6 +310,8 @@
 		A5DE268519B739D9000D3AF2 /* PRPIRTWardSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRPIRTWardSelectViewController.m; sourceTree = "<group>"; };
 		A5DE26A019B760B8000D3AF2 /* PRRecordSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRRecordSummaryViewController.h; path = "Record View Controllers/PRRecordSummaryViewController.h"; sourceTree = "<group>"; };
 		A5DE26A119B760B8000D3AF2 /* PRRecordSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRRecordSummaryViewController.m; path = "Record View Controllers/PRRecordSummaryViewController.m"; sourceTree = "<group>"; };
+		A5F565A819C338E10080C692 /* PRSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRSelectionViewController.h; sourceTree = "<group>"; };
+		A5F565A919C338E10080C692 /* PRSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRSelectionViewController.m; sourceTree = "<group>"; };
 		B52AF8C77EDD4244ACFF7EC3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -452,6 +458,8 @@
 		A536993719ADD1170045EEB1 = {
 			isa = PBXGroup;
 			children = (
+				A58A8D3B19C6EA1A0052EAB7 /* PRSelectionTableViewCell.h */,
+				A58A8D3C19C6EA1A0052EAB7 /* PRSelectionTableViewCell.m */,
 				A501C80319C0496900F50737 /* ExampleRecord.json */,
 				A501C80B19C051E500F50737 /* ExampleQuestionnaire.json */,
 				A5BCB3CE19BDE6E600092F50 /* Languages */,
@@ -485,6 +493,8 @@
 				A536994819ADD1170045EEB1 /* AppDelegate.m */,
 				A5BCB3C919BDE35700092F50 /* PRViewController.h */,
 				A5BCB3CA19BDE35700092F50 /* PRViewController.m */,
+				A5F565A819C338E10080C692 /* PRSelectionViewController.h */,
+				A5F565A919C338E10080C692 /* PRSelectionViewController.m */,
 				A536994A19ADD1170045EEB1 /* PRLoginViewController.h */,
 				A536994B19ADD1170045EEB1 /* PRLoginViewController.m */,
 				A5BCB3C019BDBC7100092F50 /* PRSettingsViewController.h */,
@@ -950,6 +960,7 @@
 				A50671C819B0D56C008557CE /* PRQuestionaireViewController.m in Sources */,
 				A5DE26A219B760B8000D3AF2 /* PRRecordSummaryViewController.m in Sources */,
 				A502278D19C09B22005B31D2 /* PRQuestion.m in Sources */,
+				A5F565AA19C338E10080C692 /* PRSelectionViewController.m in Sources */,
 				A502279519C09B22005B31D2 /* _PRWard.m in Sources */,
 				A5DE268619B739D9000D3AF2 /* PRPIRTWardSelectViewController.m in Sources */,
 				A51A6F8019B6FEDF004BF779 /* PRInputAccessoryView.m in Sources */,
@@ -983,6 +994,7 @@
 				A50671CF19B0DB40008557CE /* PRQuestionViewController.m in Sources */,
 				A504417819B5CE920000C9B3 /* PRSegmentTabViewController.m in Sources */,
 				A52A3C6319B4624200985BAB /* PRQuestionOptions.m in Sources */,
+				A58A8D3D19C6EA1A0052EAB7 /* PRSelectionTableViewCell.m in Sources */,
 				A5466A8919AE070100240026 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1181,7 +1193,7 @@
 					"$(PROJECT_DIR)/Frameworks/**",
 				);
 				INFOPLIST_FILE = "NHS Prase/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -1205,7 +1217,7 @@
 					"$(PROJECT_DIR)/Frameworks/**",
 				);
 				INFOPLIST_FILE = "NHS Prase/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";

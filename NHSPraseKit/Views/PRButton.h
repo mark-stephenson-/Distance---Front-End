@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {kPRButtonImageAlignmentLeft, kPRButtonImageAlignmentRight, kPRButtonImageAlignmentTop} PRButtonImageAlignment;
+
 IB_DESIGNABLE
 @interface PRButton : UIButton
 
@@ -17,8 +19,8 @@ IB_DESIGNABLE
 @property (nonatomic, assign) IBInspectable CGFloat hBuffer;
 @property (nonatomic, assign) IBInspectable CGFloat labelButtonBuffer;
 
-@property (nonatomic, assign) IBInspectable NSString *testStr;
-
 @property (nonatomic, strong) IBInspectable UIColor *imageTint;
+
+@property (nonatomic, assign) IBInspectable PRButtonImageAlignment imageAlignment;
 
 @end

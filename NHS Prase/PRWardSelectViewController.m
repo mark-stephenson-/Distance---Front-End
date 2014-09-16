@@ -8,6 +8,8 @@
 
 #import "PRWardSelectViewController.h"
 
+#import "PRSelectionViewController.h"
+
 @implementation PRWardSelectViewController
 
 - (void)viewDidLoad {
@@ -53,7 +55,12 @@
     NSString *selectedKey;
     BOOL requiresSelection;
     NSString *selectionKey;
+    
     NSString *selectionTitle;
+    NSString *selectionTitleLocalizationKey;
+    
+    NSString *selectionSubTitle;
+    NSString *selectionSubtitleLocalizationKey;
     
     if (textField == trustField) {
         
@@ -68,8 +75,14 @@
         sortedKeys = @[trusts];
         selectedKey = self.selectedTrust;
         requiresSelection = YES;
+        
         selectionKey = @"trust";
-        selectionTitle = @"Trust";
+        
+        selectionTitle = TDLocalizedStringWithDefaultValue(@"ward-select.title.trust", nil, nil, @"Trust", @"Title when selecting a trust.");
+        selectionTitleLocalizationKey = @"ward-select.title.trust";
+        
+        selectionSubTitle = TDLocalizedStringWithDefaultValue(@"ward-select.subtitle.trust", nil, nil, @"Please select you trust from the list below:", @"Subtitle when selecting a trust.");
+        selectionSubtitleLocalizationKey = @"ward-select.subtitle.trust";
         
     } else if (textField == hospitalField) {
         
@@ -87,7 +100,12 @@
         selectedKey = self.selectedHospital;
         requiresSelection = YES;
         selectionKey = @"hospital";
-        selectionTitle = @"Hospital";
+        
+        selectionTitle = TDLocalizedStringWithDefaultValue(@"ward-select.title.hospital", nil, nil, @"Hospital", @"Title when selecting a hospital.");
+        selectionTitleLocalizationKey = @"ward-select.title.hospital";
+        
+        selectionSubTitle = TDLocalizedStringWithDefaultValue(@"ward-select.subtitle.hospital", nil, nil, @"Please select your hospital from the list below:", @"Subtitle when selecting a hospital.");
+        selectionSubtitleLocalizationKey = @"ward-select.subtitle.hospital";
         
     } else if (textField == wardField) {
         
@@ -104,10 +122,17 @@
         selectedKey = self.selectedWard;
         requiresSelection = NO;
         selectionKey = @"ward";
-        selectionTitle = @"Ward";
+        
+        selectionTitle = TDLocalizedStringWithDefaultValue(@"ward-select.title.ward", nil, nil, @"Ward", @"Title when selecting a ward.");
+        selectionTitleLocalizationKey = @"ward-select.title.ward";
+        
+        selectionSubTitle = TDLocalizedStringWithDefaultValue(@"ward-select.subtitle.ward", nil, nil, @"Please select your ward from the list below:", @"Subtitle when selecting a ward.");
+        selectionSubtitleLocalizationKey = @"ward-select.subtitle.ward";
     }
     
-    TDSelectionViewController *selectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PRBasicSelectionVC"];
+    PRSelectionViewController *selectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PRBasicSelectionVC"];
+    // force load the view to configure the labels
+    UIView *selectionView = selectionVC.view;
     [selectionVC setOptions:options withDetails:nil orderedAs:sortedKeys];
     
     if (selectedKey != nil) {
@@ -120,11 +145,16 @@
     selectionVC.key = selectionKey;
     selectionVC.title = selectionTitle;
     
-    // present the configured selection vc
-    UINavigationController *selectionNav = [[UINavigationController alloc] initWithRootViewController:selectionVC];
-    selectionNav.modalPresentationStyle = UIModalPresentationFormSheet;
+    selectionVC.titleLabel.text = selectionTitle;
+    selectionVC.titleLabel.TDLocalizedStringKey = selectionTitleLocalizationKey;
     
-    [self presentViewController:selectionNav animated:YES completion:nil];
+    selectionVC.subTitleLabel.text = selectionSubTitle;
+    selectionVC.subTitleLabel.TDLocalizedStringKey = selectionSubtitleLocalizationKey;
+    
+    // present the configured selection vc
+    selectionVC.modalPresentationStyle = UIModalPresentationFormSheet;
+    
+    [self presentViewController:selectionVC animated:YES completion:nil];
     
     return NO;
 }

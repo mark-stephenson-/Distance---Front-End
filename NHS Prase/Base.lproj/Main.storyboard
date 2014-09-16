@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3zb-xf-92k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3zb-xf-92k">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -9,7 +9,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PRLoginViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="PRLoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -18,14 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cok-27-Td8">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cok-27-Td8">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LhX-cU-o5B">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="wj5-Tc-78B">
-                                                <rect key="frame" x="50" y="275" width="500" height="192"/>
+                                                <rect key="frame" x="50" y="300" width="500" height="144"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNN-DY-I1N">
                                                         <rect key="frame" x="8" y="0.0" width="79" height="20"/>
@@ -40,22 +40,6 @@
                                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Label for the username log in field"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your staff username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FRz-6b-dN2">
-                                                        <rect key="frame" x="0.0" y="28" width="500" height="40"/>
-                                                        <accessibility key="accessibilityConfiguration" hint="Enter your staff log in username" label="Username"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="e8K-oR-K1x"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="login.field.username"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Prompt to enter a username."/>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="BYZ-38-t0r" id="htf-Ua-hkK"/>
-                                                        </connections>
-                                                    </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your staff password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QPr-fi-YK7">
                                                         <rect key="frame" x="0.0" y="104" width="500" height="40"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Enter your staff log in password" label="Password"/>
@@ -85,67 +69,109 @@
                                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Label for the password log in field"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0P-KI-k6f">
-                                                        <rect key="frame" x="0.0" y="152" width="500" height="40"/>
-                                                        <color key="backgroundColor" red="0.25882352939999997" green="0.76862745099999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <accessibility key="accessibilityConfiguration" hint="Log in using your credentials" label="Staff Log In"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your staff username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FRz-6b-dN2">
+                                                        <rect key="frame" x="0.0" y="28" width="500" height="40"/>
+                                                        <accessibility key="accessibilityConfiguration" hint="Enter your staff log in username" label="Username"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="e8K-oR-K1x"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
-                                                        <state key="normal" title="Staff Login">
-                                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        </state>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="5"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="login.button.staff"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Button title to log in as a staff member"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="login.field.username"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Prompt to enter a username."/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PMT-Tq-iyy"/>
+                                                            <outlet property="delegate" destination="BYZ-38-t0r" id="htf-Ua-hkK"/>
                                                         </connections>
-                                                    </button>
+                                                    </textField>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="N0P-KI-k6f" secondAttribute="bottom" constant="10" id="0Ew-IJ-qhK"/>
                                                     <constraint firstAttribute="trailing" secondItem="QPr-fi-YK7" secondAttribute="trailing" id="1Bn-AV-C2G"/>
-                                                    <constraint firstAttribute="bottom" secondItem="N0P-KI-k6f" secondAttribute="bottom" id="1MM-2O-Y0X"/>
                                                     <constraint firstAttribute="trailing" secondItem="FRz-6b-dN2" secondAttribute="trailing" id="2Qd-RB-hXg"/>
                                                     <constraint firstItem="Jby-nF-Rud" firstAttribute="top" secondItem="FRz-6b-dN2" secondAttribute="bottom" constant="8" id="2gn-YG-M3y"/>
                                                     <constraint firstItem="FRz-6b-dN2" firstAttribute="top" secondItem="BNN-DY-I1N" secondAttribute="bottom" constant="8" id="2oa-5d-UcD"/>
                                                     <constraint firstItem="BNN-DY-I1N" firstAttribute="leading" secondItem="Jby-nF-Rud" secondAttribute="leading" id="6CZ-MW-0EK"/>
                                                     <constraint firstItem="QPr-fi-YK7" firstAttribute="leading" secondItem="wj5-Tc-78B" secondAttribute="leading" id="ALj-9W-RWJ"/>
                                                     <constraint firstItem="BNN-DY-I1N" firstAttribute="leading" secondItem="wj5-Tc-78B" secondAttribute="leading" constant="8" id="Gnb-Sp-GX2"/>
-                                                    <constraint firstItem="N0P-KI-k6f" firstAttribute="top" secondItem="QPr-fi-YK7" secondAttribute="bottom" constant="8" id="LlC-9n-wn1"/>
                                                     <constraint firstItem="FRz-6b-dN2" firstAttribute="leading" secondItem="wj5-Tc-78B" secondAttribute="leading" id="QXQ-d0-vHR"/>
-                                                    <constraint firstAttribute="trailing" secondItem="N0P-KI-k6f" secondAttribute="trailing" id="TYU-O5-8SR"/>
                                                     <constraint firstItem="BNN-DY-I1N" firstAttribute="top" secondItem="wj5-Tc-78B" secondAttribute="top" id="Zvi-sV-1mL"/>
-                                                    <constraint firstItem="N0P-KI-k6f" firstAttribute="leading" secondItem="wj5-Tc-78B" secondAttribute="leading" id="dUj-VR-5Qb"/>
+                                                    <constraint firstAttribute="bottom" secondItem="QPr-fi-YK7" secondAttribute="bottom" id="bSa-Ct-Db0"/>
                                                     <constraint firstItem="QPr-fi-YK7" firstAttribute="top" secondItem="Jby-nF-Rud" secondAttribute="bottom" constant="8" id="sVe-Nz-69k"/>
                                                 </constraints>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="0Ew-IJ-qhK"/>
-                                                    </mask>
-                                                </variation>
                                             </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="MoJ-Ed-epR">
-                                                <rect key="frame" x="50" y="8" width="500" height="259"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="WmD-aO-zIs"/>
-                                                </constraints>
+                                                <rect key="frame" x="50" y="28" width="500" height="264"/>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nht-Zi-6BD">
-                                                <rect key="frame" x="277" y="475" width="46" height="30"/>
-                                                <state key="normal" title="Button">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="MSk-qT-BtF" kind="presentation" id="r80-LJ-Jcs"/>
-                                                </connections>
-                                            </button>
+                                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="754" translatesAutoresizingMaskIntoConstraints="NO" id="c9l-kp-fQt">
+                                                <rect key="frame" x="0.0" y="540" width="600" height="60"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cj0-dg-l2N" customClass="PRButton">
+                                                        <rect key="frame" x="453" y="0.0" width="147" height="60"/>
+                                                        <color key="backgroundColor" red="0.25882352939999997" green="0.76862745099999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <accessibility key="accessibilityConfiguration" hint="Return to log in screen"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <state key="normal" title="Log In" image="login">
+                                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="login.button.log-in"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Button title to log in."/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.01"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="0.01"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTint">
+                                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="imageAlignment">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sQc-OM-uUe"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBd-pW-g3A" customClass="PRButton">
+                                                        <rect key="frame" x="0.0" y="0.0" width="162" height="60"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <accessibility key="accessibilityConfiguration" hint="Return to log in screen"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <state key="normal" title="Settings" image="settings">
+                                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="button.settings"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Button launch the settings screen."/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.01"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="0.01"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTint">
+                                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <segue destination="MSk-qT-BtF" kind="presentation" id="GNc-Lq-ZJm"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="cj0-dg-l2N" secondAttribute="bottom" id="DqE-3g-LGh"/>
+                                                    <constraint firstItem="cj0-dg-l2N" firstAttribute="top" secondItem="c9l-kp-fQt" secondAttribute="top" id="Nkb-c4-q6U"/>
+                                                    <constraint firstItem="aBd-pW-g3A" firstAttribute="leading" secondItem="c9l-kp-fQt" secondAttribute="leading" id="at1-OZ-Z3Y"/>
+                                                    <constraint firstAttribute="trailing" secondItem="cj0-dg-l2N" secondAttribute="trailing" id="hZn-mf-LNx"/>
+                                                    <constraint firstAttribute="bottom" secondItem="aBd-pW-g3A" secondAttribute="bottom" id="lR9-Ms-ieC"/>
+                                                    <constraint firstItem="aBd-pW-g3A" firstAttribute="top" secondItem="c9l-kp-fQt" secondAttribute="top" id="nZe-AS-IGA"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
@@ -154,12 +180,12 @@
                                             <constraint firstAttribute="centerX" secondItem="wj5-Tc-78B" secondAttribute="centerX" id="3mg-dh-p26"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="wj5-Tc-78B" secondAttribute="bottom" constant="10" id="7jG-i8-9Em"/>
                                             <constraint firstItem="wj5-Tc-78B" firstAttribute="leading" secondItem="MoJ-Ed-epR" secondAttribute="leading" id="AW2-7Z-Omg"/>
-                                            <constraint firstItem="MoJ-Ed-epR" firstAttribute="top" secondItem="LhX-cU-o5B" secondAttribute="top" constant="8" id="K28-uN-Ftg"/>
-                                            <constraint firstItem="wj5-Tc-78B" firstAttribute="top" secondItem="LhX-cU-o5B" secondAttribute="centerY" id="O6S-xV-yKk"/>
-                                            <constraint firstAttribute="centerX" secondItem="nht-Zi-6BD" secondAttribute="centerX" id="Uhp-Uw-UVf"/>
+                                            <constraint firstAttribute="trailing" secondItem="c9l-kp-fQt" secondAttribute="trailing" id="F1T-EN-7os"/>
+                                            <constraint firstItem="wj5-Tc-78B" firstAttribute="top" secondItem="LhX-cU-o5B" secondAttribute="centerY" priority="751" id="O6S-xV-yKk"/>
+                                            <constraint firstAttribute="bottom" secondItem="c9l-kp-fQt" secondAttribute="bottom" id="ZF6-9Z-S9w"/>
                                             <constraint firstItem="wj5-Tc-78B" firstAttribute="top" secondItem="MoJ-Ed-epR" secondAttribute="bottom" constant="8" id="aJC-F2-G7e"/>
                                             <constraint firstItem="wj5-Tc-78B" firstAttribute="trailing" secondItem="MoJ-Ed-epR" secondAttribute="trailing" id="ec3-qz-knL"/>
-                                            <constraint firstItem="nht-Zi-6BD" firstAttribute="top" secondItem="wj5-Tc-78B" secondAttribute="bottom" constant="8" id="gDl-f4-8G0"/>
+                                            <constraint firstItem="c9l-kp-fQt" firstAttribute="leading" secondItem="LhX-cU-o5B" secondAttribute="leading" id="hkb-K8-lIR"/>
                                             <constraint firstAttribute="trailing" secondItem="wj5-Tc-78B" secondAttribute="trailing" constant="50" id="sOa-LI-BJI"/>
                                         </constraints>
                                     </view>
@@ -174,13 +200,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LhX-cU-o5B" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" constant="-50" id="0Ke-EJ-rgK"/>
+                            <constraint firstItem="LhX-cU-o5B" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="0Ke-EJ-rgK"/>
+                            <constraint firstItem="MoJ-Ed-epR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="9Wr-xX-8du"/>
                             <constraint firstItem="Cok-27-Td8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="QGP-QM-7Wp"/>
+                            <constraint firstItem="Cok-27-Td8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="RAI-TV-snE"/>
                             <constraint firstItem="Cok-27-Td8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="bDw-Wv-gdn"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Cok-27-Td8" secondAttribute="bottom" id="g4r-wo-MxG"/>
                             <constraint firstAttribute="trailing" secondItem="Cok-27-Td8" secondAttribute="trailing" id="kVe-JH-kZU"/>
                             <constraint firstItem="LhX-cU-o5B" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="mKv-FI-Hwe"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="bDw-Wv-gdn"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="LQi-xv-l8e"/>
                     <connections>
@@ -301,7 +334,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iDs-At-OQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1820" y="870"/>
+            <point key="canvasLocation" x="2499" y="1064"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="nNa-nK-nAZ">
@@ -315,37 +348,108 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcS-R3-RNd">
+                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="754" translatesAutoresizingMaskIntoConstraints="NO" id="fcS-R3-RNd">
                                 <rect key="frame" x="0.0" y="540" width="600" height="60"/>
-                                <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9J-wH-8bx">
-                                <rect key="frame" x="278" y="28" width="44" height="20"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.label.home"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Home screen label."/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ntb-5C-hSn">
-                                <rect key="frame" x="50" y="28" width="50" height="30"/>
-                                <state key="normal" title="English">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.language-button"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Button title to toggle the language between English and French."/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="toggleLanguage:" destination="ukD-2B-9El" eventType="touchUpInside" id="qB5-d7-vQh"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="s4r-2d-ErR">
-                                <rect key="frame" x="50" y="166" width="500" height="268"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="818-M6-sIy">
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNc-3z-mpS" customClass="PRButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="60"/>
+                                        <color key="backgroundColor" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Return to log in screen"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Log Out" image="logout">
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.button.log-out"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Button title to return to the log in screen."/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.01"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.01"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTint">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="goToLogIn:" destination="ukD-2B-9El" eventType="touchUpInside" id="EVS-DM-Scg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRV-6J-BEx" customClass="PRButton">
+                                        <rect key="frame" x="160" y="0.0" width="162" height="60"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Return to log in screen"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Settings" image="settings">
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="button.settings"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Button launch the settings screen."/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.01"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.01"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTint">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="MSk-qT-BtF" kind="presentation" id="mko-dx-oQJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJx-mh-ozD" customClass="PRButton">
+                                        <rect key="frame" x="341" y="0.0" width="259" height="60"/>
+                                        <color key="backgroundColor" red="0.25882352939999997" green="0.76862745099999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Return to log in screen"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Create a New Record" image="next_arrow">
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="login.button.log-in"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Button title to log in."/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.01"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.01"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTint">
+                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="imageAlignment">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="createRecord:" destination="ukD-2B-9El" eventType="touchUpInside" id="jJO-pC-YGe"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="dRV-6J-BEx" firstAttribute="leading" secondItem="ZNc-3z-mpS" secondAttribute="trailing" id="1N5-uE-6c4"/>
+                                    <constraint firstItem="ZNc-3z-mpS" firstAttribute="leading" secondItem="fcS-R3-RNd" secondAttribute="leading" id="2xb-i9-r2q"/>
+                                    <constraint firstAttribute="bottom" secondItem="dRV-6J-BEx" secondAttribute="bottom" id="6BU-7D-0wW"/>
+                                    <constraint firstItem="ZNc-3z-mpS" firstAttribute="top" secondItem="fcS-R3-RNd" secondAttribute="top" id="9tq-uW-T0f"/>
+                                    <constraint firstItem="dJx-mh-ozD" firstAttribute="top" secondItem="fcS-R3-RNd" secondAttribute="top" id="QeL-FZ-r44"/>
+                                    <constraint firstAttribute="bottom" secondItem="dJx-mh-ozD" secondAttribute="bottom" id="SSk-W4-cXw"/>
+                                    <constraint firstAttribute="trailing" secondItem="dJx-mh-ozD" secondAttribute="trailing" id="Yhi-wA-XWJ"/>
+                                    <constraint firstItem="dRV-6J-BEx" firstAttribute="top" secondItem="fcS-R3-RNd" secondAttribute="top" id="iof-SU-UXU"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZNc-3z-mpS" secondAttribute="bottom" id="jUU-Cn-Lvb"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="753" translatesAutoresizingMaskIntoConstraints="NO" id="s4r-2d-ErR">
+                                <rect key="frame" x="50" y="300" width="500" height="220"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="818-M6-sIy">
                                         <rect key="frame" x="0.0" y="180" width="500" height="40"/>
                                         <accessibility key="accessibilityConfiguration" hint="Tap to select a ward" label="Ward select">
                                             <accessibilityTraits key="traits" none="YES" button="YES"/>
@@ -363,27 +467,7 @@
                                             <outlet property="delegate" destination="ukD-2B-9El" id="onO-lb-kB2"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3c-ov-aLv">
-                                        <rect key="frame" x="0.0" y="228" width="500" height="40"/>
-                                        <color key="backgroundColor" red="0.25882352939999997" green="0.76862745099999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
-                                        <state key="normal" title="Create a new record">
-                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.button.create"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Button title to create a new record."/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="createRecord:" destination="ukD-2B-9El" eventType="touchUpInside" id="3NZ-9b-wPL"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6tb-qq-WgS" customClass="TDTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6tb-qq-WgS" customClass="TDTextField">
                                         <rect key="frame" x="0.0" y="104" width="500" height="40"/>
                                         <accessibility key="accessibilityConfiguration" hint="Tap to select a hospital" label="Hospital Select">
                                             <accessibilityTraits key="traits" none="YES" button="YES"/>
@@ -401,7 +485,7 @@
                                             <outlet property="delegate" destination="ukD-2B-9El" id="g5z-rD-DOd"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uN5-Ut-YRc" userLabel="home.hospital-title">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Hospital:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uN5-Ut-YRc" userLabel="home.hospital-title">
                                         <rect key="frame" x="8" y="76" width="65" height="20"/>
                                         <accessibility key="accessibilityConfiguration" label="">
                                             <accessibilityTraits key="traits" none="YES" staticText="YES"/>
@@ -414,7 +498,7 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Label for the hospital select field."/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ward:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lzp-0N-sik">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Ward:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lzp-0N-sik">
                                         <rect key="frame" x="8" y="152" width="43" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -424,7 +508,7 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Label for the ward select field."/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HC9-g4-HNH" customClass="TDTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HC9-g4-HNH" customClass="TDTextField">
                                         <rect key="frame" x="0.0" y="28" width="500" height="40"/>
                                         <accessibility key="accessibilityConfiguration" hint="Tap to select a hospital" label="Hospital Select">
                                             <accessibilityTraits key="traits" none="YES" button="YES"/>
@@ -442,7 +526,7 @@
                                             <outlet property="delegate" destination="ukD-2B-9El" id="DFy-hd-CNo"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trust:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJU-bx-mpe" userLabel="home.hospital-title">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Trust:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJU-bx-mpe" userLabel="home.hospital-title">
                                         <rect key="frame" x="8" y="0.0" width="41" height="20"/>
                                         <accessibility key="accessibilityConfiguration" label="">
                                             <accessibilityTraits key="traits" none="YES" staticText="YES"/>
@@ -456,11 +540,8 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="6tb-qq-WgS" secondAttribute="trailing" id="1Pp-oj-DiN"/>
-                                    <constraint firstAttribute="bottom" secondItem="X3c-ov-aLv" secondAttribute="bottom" id="6RK-5I-y2u"/>
-                                    <constraint firstAttribute="trailing" secondItem="X3c-ov-aLv" secondAttribute="trailing" id="6U6-MO-XDs"/>
                                     <constraint firstAttribute="trailing" secondItem="HC9-g4-HNH" secondAttribute="trailing" id="6ml-Jm-Ov4"/>
                                     <constraint firstAttribute="trailing" secondItem="818-M6-sIy" secondAttribute="trailing" id="FVn-OM-9Kx"/>
                                     <constraint firstItem="818-M6-sIy" firstAttribute="leading" secondItem="s4r-2d-ErR" secondAttribute="leading" id="Fjl-Pt-JIs"/>
@@ -471,13 +552,12 @@
                                     <constraint firstItem="vJU-bx-mpe" firstAttribute="top" secondItem="s4r-2d-ErR" secondAttribute="top" id="Xrd-xR-ymR"/>
                                     <constraint firstItem="HC9-g4-HNH" firstAttribute="leading" secondItem="s4r-2d-ErR" secondAttribute="leading" id="ZH6-L7-DE7"/>
                                     <constraint firstItem="6tb-qq-WgS" firstAttribute="top" secondItem="uN5-Ut-YRc" secondAttribute="bottom" constant="8" id="Zje-d9-stp"/>
-                                    <constraint firstItem="X3c-ov-aLv" firstAttribute="top" secondItem="818-M6-sIy" secondAttribute="bottom" constant="8" id="dEu-a6-vc1"/>
+                                    <constraint firstAttribute="bottom" secondItem="818-M6-sIy" secondAttribute="bottom" id="bFE-1G-gvr"/>
                                     <constraint firstItem="HC9-g4-HNH" firstAttribute="top" secondItem="vJU-bx-mpe" secondAttribute="bottom" constant="8" id="dYK-hY-AUH"/>
                                     <constraint firstItem="uN5-Ut-YRc" firstAttribute="leading" secondItem="s4r-2d-ErR" secondAttribute="leading" constant="5" id="eRD-jM-mhU"/>
                                     <constraint firstItem="Lzp-0N-sik" firstAttribute="leading" secondItem="s4r-2d-ErR" secondAttribute="leading" constant="5" id="fhZ-O6-ATj"/>
                                     <constraint firstItem="uN5-Ut-YRc" firstAttribute="top" secondItem="HC9-g4-HNH" secondAttribute="bottom" constant="8" id="ila-kx-DNe"/>
                                     <constraint firstItem="vJU-bx-mpe" firstAttribute="leading" secondItem="uN5-Ut-YRc" secondAttribute="leading" id="v3f-VD-ilx"/>
-                                    <constraint firstItem="X3c-ov-aLv" firstAttribute="leading" secondItem="s4r-2d-ErR" secondAttribute="leading" id="vBC-oJ-vdm"/>
                                     <constraint firstItem="818-M6-sIy" firstAttribute="top" secondItem="Lzp-0N-sik" secondAttribute="bottom" constant="8" id="x9O-h6-6pm"/>
                                     <constraint firstItem="vJU-bx-mpe" firstAttribute="leading" secondItem="s4r-2d-ErR" secondAttribute="leading" constant="8" id="zkj-Yd-s23"/>
                                 </constraints>
@@ -488,53 +568,42 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNc-3z-mpS" customClass="PRButton">
-                                <rect key="frame" x="0.0" y="540" width="167" height="60"/>
-                                <color key="backgroundColor" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration" hint="Return to log in screen"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Log Out" image="logout">
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.button.log-out"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Button title to return to the log in screen."/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.01"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="0.01"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="imageTint">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="goToLogIn:" destination="ukD-2B-9El" eventType="touchUpInside" id="EVS-DM-Scg"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Zaz-E0-WSa">
+                                <rect key="frame" x="50" y="28" width="500" height="264"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="3ys-cb-eTC"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="3ys-cb-eTC"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="s4r-2d-ErR" secondAttribute="centerY" id="0l5-fC-K7K"/>
+                            <constraint firstItem="Zaz-E0-WSa" firstAttribute="trailing" secondItem="s4r-2d-ErR" secondAttribute="trailing" id="491-kG-lr6"/>
+                            <constraint firstItem="s4r-2d-ErR" firstAttribute="top" secondItem="Zaz-E0-WSa" secondAttribute="bottom" constant="8" id="5Lt-e2-gDW"/>
+                            <constraint firstAttribute="centerX" secondItem="Zaz-E0-WSa" secondAttribute="centerX" id="CA9-Kb-VX1"/>
                             <constraint firstAttribute="trailing" secondItem="fcS-R3-RNd" secondAttribute="trailing" id="FFR-Uo-6Qg"/>
-                            <constraint firstItem="pAE-pp-oQL" firstAttribute="top" secondItem="ZNc-3z-mpS" secondAttribute="bottom" id="MWQ-Tc-Sim"/>
+                            <constraint firstItem="fcS-R3-RNd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="s4r-2d-ErR" secondAttribute="bottom" constant="10" id="I0q-e7-CnA"/>
                             <constraint firstItem="fcS-R3-RNd" firstAttribute="leading" secondItem="k6m-fB-lAz" secondAttribute="leading" id="Mt4-k8-rXH"/>
-                            <constraint firstItem="fcS-R3-RNd" firstAttribute="top" secondItem="ZNc-3z-mpS" secondAttribute="top" id="PfV-9Y-V0h"/>
-                            <constraint firstItem="fcS-R3-RNd" firstAttribute="bottom" secondItem="ZNc-3z-mpS" secondAttribute="bottom" id="Qdn-im-11t"/>
-                            <constraint firstAttribute="centerX" secondItem="f9J-wH-8bx" secondAttribute="centerX" id="VRX-iP-68w"/>
-                            <constraint firstItem="ZNc-3z-mpS" firstAttribute="leading" secondItem="k6m-fB-lAz" secondAttribute="leading" id="beH-EQ-tWd"/>
+                            <constraint firstItem="pAE-pp-oQL" firstAttribute="top" secondItem="fcS-R3-RNd" secondAttribute="bottom" id="YUI-m9-ore"/>
+                            <constraint firstItem="s4r-2d-ErR" firstAttribute="top" secondItem="k6m-fB-lAz" secondAttribute="centerY" priority="700" id="Zav-mV-f6t"/>
                             <constraint firstItem="s4r-2d-ErR" firstAttribute="leading" secondItem="k6m-fB-lAz" secondAttribute="leading" constant="50" id="jWM-R4-pUp"/>
+                            <constraint firstItem="s4r-2d-ErR" firstAttribute="top" secondItem="Zaz-E0-WSa" secondAttribute="bottom" constant="8" id="mRH-79-Nel"/>
+                            <constraint firstItem="Zaz-E0-WSa" firstAttribute="leading" secondItem="s4r-2d-ErR" secondAttribute="leading" id="oZo-3p-s8A"/>
+                            <constraint firstItem="Zaz-E0-WSa" firstAttribute="top" secondItem="BK1-QN-28f" secondAttribute="bottom" constant="8" id="q5y-aC-RJv"/>
                             <constraint firstAttribute="trailing" secondItem="s4r-2d-ErR" secondAttribute="trailing" constant="50" id="tdx-gz-UTs"/>
-                            <constraint firstItem="Ntb-5C-hSn" firstAttribute="top" secondItem="BK1-QN-28f" secondAttribute="bottom" constant="8" id="u8m-xr-9xZ"/>
-                            <constraint firstItem="f9J-wH-8bx" firstAttribute="top" secondItem="BK1-QN-28f" secondAttribute="bottom" constant="8" id="uAK-HM-RTB"/>
                             <constraint firstAttribute="centerX" secondItem="s4r-2d-ErR" secondAttribute="centerX" id="x95-A2-kEH"/>
-                            <constraint firstItem="Ntb-5C-hSn" firstAttribute="leading" secondItem="k6m-fB-lAz" secondAttribute="leading" constant="50" id="ye0-RA-wHX"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5Lt-e2-gDW"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="createButton" destination="X3c-ov-aLv" id="HXJ-EG-Sjd"/>
                         <outlet property="hospitalField" destination="6tb-qq-WgS" id="zvC-WF-J1u"/>
                         <outlet property="trustField" destination="HC9-g4-HNH" id="wzs-u0-8vd"/>
                         <outlet property="wardField" destination="818-M6-sIy" id="21Y-hU-Ul0"/>
@@ -560,8 +629,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1Z-jc-doS">
                                 <rect key="frame" x="0.0" y="540" width="600" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQU-3w-RyB" customClass="PRButton">
-                                        <rect key="frame" x="459" y="0.0" width="141" height="60"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Q number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ajz-T7-krP">
+                                        <rect key="frame" x="159" y="20" width="123" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQU-3w-RyB" customClass="PRButton">
+                                        <rect key="frame" x="462" y="0.0" width="138" height="60"/>
                                         <color key="backgroundColor" red="0.25882352941176467" green="0.76862745098039209" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Next" image="next_arrow"/>
@@ -569,27 +644,21 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="0.01"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="vBuffer">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="hBuffer">
-                                                <real key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="labelButtonBuffer">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="0.01"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="button.next"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Default title to move forwards to another screen or field or cell."/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="imageAlignment">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="goNext:" destination="ilS-7W-Avn" eventType="touchUpInside" id="TPI-yB-8q4"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5s-eL-H2D" customClass="PRButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="151" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5s-eL-H2D" customClass="PRButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="149" height="60"/>
                                         <color key="backgroundColor" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Home" image="home">
@@ -598,15 +667,6 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="0.01"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="vBuffer">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="hBuffer">
-                                                <real key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="labelButtonBuffer">
-                                                <real key="value" value="15"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="0.01"/>
@@ -618,23 +678,14 @@
                                             <action selector="goHome:" destination="ilS-7W-Avn" eventType="touchUpInside" id="l1W-xq-zsL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIA-3x-uva" customClass="PRButton">
-                                        <rect key="frame" x="287" y="0.0" width="172" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIA-3x-uva" customClass="PRButton">
+                                        <rect key="frame" x="292" y="0.0" width="170" height="60"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Previous" image="back_arrow"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="0.01"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="vBuffer">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="hBuffer">
-                                                <real key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="labelButtonBuffer">
-                                                <real key="value" value="15"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="0.01"/>
@@ -646,12 +697,6 @@
                                             <action selector="goPrevious:" destination="ilS-7W-Avn" eventType="touchUpInside" id="JLX-uy-ONY"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" misplaced="YES" text="Q number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ajz-T7-krP">
-                                        <rect key="frame" x="161" y="20" width="116" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -827,10 +872,10 @@ Please read the following statements carefully, keeping in mind your current sta
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="lC7-DT-rul">
-                                <rect key="frame" x="10" y="524" width="580" height="76"/>
+                                <rect key="frame" x="10" y="502" width="580" height="98"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VfP-EO-uCi" customClass="PRButton">
-                                        <rect key="frame" x="400" y="8" width="180" height="60"/>
+                                        <rect key="frame" x="400" y="8" width="180" height="82"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Add a note" image="edit">
                                             <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -842,13 +887,16 @@ Please read the following statements carefully, keeping in mind your current sta
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="question.button.note"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Button title to add a note to a question."/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="imageAlignment">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="addNote:" destination="E76-bW-pFC" eventType="touchUpInside" id="qFp-9j-NzM"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIY-V1-Zja" customClass="PRButton">
-                                        <rect key="frame" x="200" y="8" width="180" height="60"/>
+                                        <rect key="frame" x="200" y="8" width="180" height="82"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Add something good" image="star">
                                             <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -860,13 +908,16 @@ Please read the following statements carefully, keeping in mind your current sta
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="question.button.good"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Button title to add a 'Something Good' note to a question."/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="imageAlignment">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="addSomethingGood:" destination="E76-bW-pFC" eventType="touchUpInside" id="zPx-m2-NU6"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ide-ms-1cZ" customClass="PRButton">
-                                        <rect key="frame" x="0.0" y="8" width="180" height="60"/>
+                                        <rect key="frame" x="0.0" y="8" width="180" height="82"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Add a concern" image="exclamation">
                                             <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -878,6 +929,9 @@ Please read the following statements carefully, keeping in mind your current sta
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="question.button.concern"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Button title to begin the 'Add a concern' process."/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="imageAlignment">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="addConcern:" destination="E76-bW-pFC" eventType="touchUpInside" id="bFk-mh-mIT"/>
@@ -1206,8 +1260,8 @@ Please read the following statements carefully, keeping in mind your current sta
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRn-Ak-XzT" customClass="PRButton">
-                                <rect key="frame" x="250" y="130" width="191" height="60"/>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRn-Ak-XzT" customClass="PRButton">
+                                <rect key="frame" x="250" y="130" width="195" height="60"/>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Incomplete" image="cross">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1370,6 +1424,12 @@ Please read the following statements carefully, keeping in mind your current sta
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zXE-qz-nAW" id="q45-bz-qSZ">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Date Select" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="210" translatesAutoresizingMaskIntoConstraints="NO" id="0H5-Lw-aNR">
+                                            <rect key="frame" x="20" y="11" width="210" height="32"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="415-fs-gie" customClass="TDTextField">
                                             <rect key="frame" x="250" y="7" width="230" height="40"/>
                                             <constraints>
@@ -1378,12 +1438,6 @@ Please read the following statements carefully, keeping in mind your current sta
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Date Select" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="210" translatesAutoresizingMaskIntoConstraints="NO" id="0H5-Lw-aNR">
-                                            <rect key="frame" x="20" y="11" width="210" height="32"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="centerY" secondItem="415-fs-gie" secondAttribute="centerY" id="MQO-g6-fgL"/>
@@ -1425,7 +1479,7 @@ Please read the following statements carefully, keeping in mind your current sta
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="VRY-bo-uow">
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="VRY-bo-uow">
                                 <rect key="frame" x="0.0" y="192" width="600" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="431008717.26555502">
                                     <!--2014-08-29 12:38:37 +0000-->
@@ -1481,71 +1535,199 @@ Please read the following statements carefully, keeping in mind your current sta
             </objects>
             <point key="canvasLocation" x="3253" y="158"/>
         </scene>
-        <!--Title-->
-        <scene sceneID="vWc-VS-KqH">
+        <!--Selection View Controller-->
+        <scene sceneID="sT6-NH-fOc">
             <objects>
-                <tableViewController storyboardIdentifier="PRBasicSelectionVC" id="R5u-BB-CrF" customClass="TDSelectionViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="q41-1L-Lj7">
+                <viewController storyboardIdentifier="PRBasicSelectionVC" id="Vnc-Sh-yzz" customClass="PRSelectionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Oy3-Vg-CGb"/>
+                        <viewControllerLayoutGuide type="bottom" id="flB-Of-ZeH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aGK-xT-j09">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Basic" id="Dny-mI-cFX" customClass="TDTableViewCell">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dny-mI-cFX" id="VLL-sP-IaI">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="500" translatesAutoresizingMaskIntoConstraints="NO" id="xTa-ao-CJz">
-                                            <rect key="frame" x="50" y="11" width="500" height="21"/>
-                                            <accessibility key="accessibilityConfiguration" hint="Tap to select this option"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="xTa-ao-CJz" firstAttribute="top" secondItem="VLL-sP-IaI" secondAttribute="top" constant="11" id="7IM-YB-Zum"/>
-                                        <constraint firstAttribute="trailing" secondItem="xTa-ao-CJz" secondAttribute="trailing" constant="50" id="Uuc-HT-5uM"/>
-                                        <constraint firstItem="xTa-ao-CJz" firstAttribute="leading" secondItem="VLL-sP-IaI" secondAttribute="leading" constant="50" id="YOb-7j-dbc"/>
-                                        <constraint firstAttribute="bottom" secondItem="xTa-ao-CJz" secondAttribute="bottom" constant="11" id="sc3-as-Nmk"/>
-                                    </constraints>
-                                </tableViewCellContentView>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="VdR-Q1-ujH">
+                                <rect key="frame" x="20" y="140" width="560" height="380"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" verticalCompressionResistancePriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="Basic" id="87t-wX-r4c" customClass="PRSelectionTableViewCell">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" verticalCompressionResistancePriority="1000" tableViewCell="87t-wX-r4c" id="d2I-Ju-fXg">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="460" translatesAutoresizingMaskIntoConstraints="NO" id="2tc-Fz-3lh">
+                                                    <rect key="frame" x="50" y="15" width="410" height="29"/>
+                                                    <accessibility key="accessibilityConfiguration" hint="Tap to select this option"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="1000" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="Oh9-sU-awG">
+                                                    <rect key="frame" x="470" y="10" width="40" height="39"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Oh9-sU-awG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="d2I-Ju-fXg" secondAttribute="top" constant="10" id="5Dz-SB-vVs"/>
+                                                <constraint firstItem="2tc-Fz-3lh" firstAttribute="top" secondItem="d2I-Ju-fXg" secondAttribute="top" constant="15" id="DkI-PV-7kQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="Oh9-sU-awG" secondAttribute="trailing" constant="50" id="OUN-rs-ODw"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Oh9-sU-awG" secondAttribute="bottom" constant="10" id="SdC-u5-6o7"/>
+                                                <constraint firstAttribute="bottom" secondItem="2tc-Fz-3lh" secondAttribute="bottom" constant="15" id="fRn-NQ-aYK"/>
+                                                <constraint firstItem="2tc-Fz-3lh" firstAttribute="leading" secondItem="d2I-Ju-fXg" secondAttribute="leading" constant="50" id="iSI-Op-b9s"/>
+                                                <constraint firstItem="Oh9-sU-awG" firstAttribute="leading" secondItem="2tc-Fz-3lh" secondAttribute="trailing" constant="10" id="sQr-Jz-8fQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="selectionIndicator" destination="Oh9-sU-awG" id="mYJ-2t-bPB"/>
+                                            <outlet property="textLabelTD" destination="2tc-Fz-3lh" id="DVc-ot-byi"/>
+                                            <outletCollection property="hConstraints" destination="sQr-Jz-8fQ" id="yuX-zM-xs4"/>
+                                            <outletCollection property="hConstraints" destination="OUN-rs-ODw" id="QQS-ek-J7K"/>
+                                            <outletCollection property="hConstraints" destination="iSI-Op-b9s" id="bxA-D4-r4I"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <outlet property="textLabelTD" destination="xTa-ao-CJz" id="5ts-Og-Tyq"/>
+                                    <outlet property="dataSource" destination="Vnc-Sh-yzz" id="Wrd-lx-Nvf"/>
+                                    <outlet property="delegate" destination="Vnc-Sh-yzz" id="Tv0-TY-NVF"/>
                                 </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="R5u-BB-CrF" id="rUE-Eb-dqp"/>
-                            <outlet property="delegate" destination="R5u-BB-CrF" id="1Jo-RB-LhN"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="6bv-BT-PjK">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Gkl-Pk-Dqg">
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="button.cancel"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Default button title to cancel an action dismissing a screen."/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="cancelSelectionViewController:" destination="R5u-BB-CrF" id="4yY-2h-erf"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="bSs-Yw-4H2">
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="button.done"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Default button title to dismiss a view successfully."/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="dismissSelectionViewController:" destination="R5u-BB-CrF" id="XH2-fR-oA8"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wqm-yd-FFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="8J3-mh-ffr">
+                                <rect key="frame" x="0.0" y="540" width="600" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXo-HN-n66" customClass="PRButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="161" height="60"/>
+                                        <color key="backgroundColor" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Cancel" image="cross">
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.01"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="hBuffer">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="labelButtonBuffer">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.01"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="button.cancel"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelConcern:" destination="jmu-gL-fNg" eventType="touchUpInside" id="HZx-OR-IbG"/>
+                                            <action selector="cancelSelectionViewController:" destination="Vnc-Sh-yzz" eventType="touchUpInside" id="8TW-vJ-Fw9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bsT-Y0-j5Y" customClass="PRButton">
+                                        <rect key="frame" x="452" y="0.0" width="148" height="60"/>
+                                        <color key="backgroundColor" red="0.5450980392" green="0.7725490196" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Done" image="tick">
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.01"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="hBuffer">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="labelButtonBuffer">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.01"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="button.done"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelConcern:" destination="jmu-gL-fNg" eventType="touchUpInside" id="l9k-lu-6Zb"/>
+                                            <action selector="dismissSelectionViewController:" destination="Vnc-Sh-yzz" eventType="touchUpInside" id="4ts-g3-xOr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ZXo-HN-n66" firstAttribute="top" secondItem="8J3-mh-ffr" secondAttribute="top" id="0As-8g-lyo"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZXo-HN-n66" secondAttribute="bottom" id="ILA-NW-8Lg"/>
+                                    <constraint firstItem="ZXo-HN-n66" firstAttribute="leading" secondItem="8J3-mh-ffr" secondAttribute="leading" id="Ohc-qq-Ahx"/>
+                                    <constraint firstAttribute="bottom" secondItem="bsT-Y0-j5Y" secondAttribute="bottom" id="VoA-Zo-HF5"/>
+                                    <constraint firstAttribute="trailing" secondItem="bsT-Y0-j5Y" secondAttribute="trailing" id="b2X-0x-y8p"/>
+                                    <constraint firstItem="bsT-Y0-j5Y" firstAttribute="top" secondItem="8J3-mh-ffr" secondAttribute="top" id="dE9-Em-4C9"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="Qas-SE-oN0">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeC-N0-w7b">
+                                        <rect key="frame" x="20" y="20" width="560" height="20"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUU-6a-Qmn">
+                                        <rect key="frame" x="20" y="48" width="560" height="20"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="QyL-y6-L96">
+                                        <rect key="frame" x="50" y="76" width="500" height="44"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="QyL-y6-L96" secondAttribute="trailing" constant="50" id="7U1-5J-ceC"/>
+                                    <constraint firstAttribute="trailing" secondItem="WeC-N0-w7b" secondAttribute="trailing" constant="20" id="AFE-Qf-KMf"/>
+                                    <constraint firstItem="WeC-N0-w7b" firstAttribute="leading" secondItem="Qas-SE-oN0" secondAttribute="leading" constant="20" id="GQw-dv-bh1"/>
+                                    <constraint firstItem="DUU-6a-Qmn" firstAttribute="top" secondItem="WeC-N0-w7b" secondAttribute="bottom" constant="8" id="Z9M-qb-YTC"/>
+                                    <constraint firstItem="WeC-N0-w7b" firstAttribute="top" secondItem="Qas-SE-oN0" secondAttribute="top" constant="20" id="his-Gc-znR"/>
+                                    <constraint firstAttribute="bottom" secondItem="QyL-y6-L96" secondAttribute="bottom" id="io3-dx-pAE"/>
+                                    <constraint firstItem="DUU-6a-Qmn" firstAttribute="trailing" secondItem="WeC-N0-w7b" secondAttribute="trailing" id="ioq-v9-is6"/>
+                                    <constraint firstItem="QyL-y6-L96" firstAttribute="top" secondItem="DUU-6a-Qmn" secondAttribute="bottom" constant="8" id="mUD-MC-Eur"/>
+                                    <constraint firstItem="DUU-6a-Qmn" firstAttribute="leading" secondItem="WeC-N0-w7b" secondAttribute="leading" id="trq-oM-I8V"/>
+                                    <constraint firstItem="QyL-y6-L96" firstAttribute="leading" secondItem="Qas-SE-oN0" secondAttribute="leading" constant="50" id="yhL-jq-NGE"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="8J3-mh-ffr" secondAttribute="bottom" id="6t7-Na-sge"/>
+                            <constraint firstItem="Qas-SE-oN0" firstAttribute="leading" secondItem="aGK-xT-j09" secondAttribute="leading" id="Ekm-dX-6zT"/>
+                            <constraint firstAttribute="trailing" secondItem="VdR-Q1-ujH" secondAttribute="trailing" constant="20" id="Gct-NI-eM7"/>
+                            <constraint firstItem="8J3-mh-ffr" firstAttribute="leading" secondItem="aGK-xT-j09" secondAttribute="leading" id="Ge6-lZ-1Jg"/>
+                            <constraint firstItem="Qas-SE-oN0" firstAttribute="top" secondItem="aGK-xT-j09" secondAttribute="top" id="IHT-YT-7wa"/>
+                            <constraint firstItem="VdR-Q1-ujH" firstAttribute="top" secondItem="Qas-SE-oN0" secondAttribute="bottom" id="OdS-BA-7bW"/>
+                            <constraint firstAttribute="trailing" secondItem="8J3-mh-ffr" secondAttribute="trailing" id="RDN-8L-Yjr"/>
+                            <constraint firstAttribute="trailing" secondItem="Qas-SE-oN0" secondAttribute="trailing" id="Rdr-A6-sIf"/>
+                            <constraint firstItem="8J3-mh-ffr" firstAttribute="top" secondItem="VdR-Q1-ujH" secondAttribute="bottom" constant="20" id="S9t-NC-xRu"/>
+                            <constraint firstItem="VdR-Q1-ujH" firstAttribute="leading" secondItem="aGK-xT-j09" secondAttribute="leading" constant="20" id="guk-4B-0k7"/>
+                            <constraint firstItem="8J3-mh-ffr" firstAttribute="top" secondItem="VdR-Q1-ujH" secondAttribute="bottom" id="hTl-bs-EvT"/>
+                            <constraint firstItem="VdR-Q1-ujH" firstAttribute="top" secondItem="Qas-SE-oN0" secondAttribute="bottom" constant="20" id="xj6-sv-ZWS"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="OdS-BA-7bW"/>
+                                <exclude reference="hTl-bs-EvT"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="footerView" destination="8J3-mh-ffr" id="UUr-eC-3Xh"/>
+                        <outlet property="headerView" destination="Qas-SE-oN0" id="Vor-dQ-5s4"/>
+                        <outlet property="subTitleLabel" destination="DUU-6a-Qmn" id="8lV-mT-hUo"/>
+                        <outlet property="tableView" destination="VdR-Q1-ujH" id="47Q-0U-1Vh"/>
+                        <outlet property="titleLabel" destination="WeC-N0-w7b" id="dcr-w0-14t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hrH-Sn-bog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1757" y="-533"/>
+            <point key="canvasLocation" x="2414" y="-536"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nLD-tt-hF6">
@@ -1585,10 +1767,10 @@ Please read the following statements carefully, keeping in mind your current sta
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="33v-de-gK9">
-                                <rect key="frame" x="10" y="524" width="580" height="76"/>
+                                <rect key="frame" x="10" y="502" width="580" height="98"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCb-F0-ZLX" customClass="PRButton">
-                                        <rect key="frame" x="400" y="8" width="180" height="60"/>
+                                        <rect key="frame" x="400" y="8" width="180" height="82"/>
                                         <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Add a note" image="edit">
                                             <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -1599,13 +1781,16 @@ Please read the following statements carefully, keeping in mind your current sta
                                                 <color key="value" red="0.25882352939999997" green="0.76862745099999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="question.button.note"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="imageAlignment">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="addNote:" destination="3zY-5O-tMi" eventType="touchUpInside" id="mQJ-qk-62K"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubm-O3-fP7" customClass="PRButton">
-                                        <rect key="frame" x="200" y="8" width="180" height="60"/>
+                                        <rect key="frame" x="200" y="8" width="180" height="82"/>
                                         <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Add something good" image="star">
                                             <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -1616,13 +1801,16 @@ Please read the following statements carefully, keeping in mind your current sta
                                                 <color key="value" red="0.5450980392" green="0.7725490196" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="question.button.good"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="imageAlignment">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="addSomethingGood:" destination="3zY-5O-tMi" eventType="touchUpInside" id="Ifp-wQ-8xw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8A-jz-1xd" customClass="PRButton">
-                                        <rect key="frame" x="0.0" y="8" width="180" height="60"/>
+                                        <rect key="frame" x="0.0" y="8" width="180" height="82"/>
                                         <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Add a concern" image="exclamation">
                                             <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -1633,6 +1821,9 @@ Please read the following statements carefully, keeping in mind your current sta
                                                 <color key="value" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="question.button.concern"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="imageAlignment">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="addConcern:" destination="3zY-5O-tMi" eventType="touchUpInside" id="mcT-DY-b34"/>
@@ -1906,35 +2097,8 @@ Please read the following statements carefully, keeping in mind your current sta
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hiJ-aw-nLb">
                                 <rect key="frame" x="0.0" y="540" width="600" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulD-8n-X4O" customClass="PRButton">
-                                        <rect key="frame" x="459" y="0.0" width="141" height="60"/>
-                                        <color key="backgroundColor" red="0.25882352939999997" green="0.76862745099999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Next" image="next_arrow"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="0.01"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="vBuffer">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="hBuffer">
-                                                <real key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="labelButtonBuffer">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="0.01"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="button.next"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="goNext:" destination="jmu-gL-fNg" eventType="touchUpInside" id="hq7-at-Siw"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vD4-Oq-4CS" customClass="PRButton">
-                                        <rect key="frame" x="287" y="0.0" width="172" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vD4-Oq-4CS" customClass="PRButton">
+                                        <rect key="frame" x="297" y="0.0" width="165" height="60"/>
                                         <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1946,15 +2110,6 @@ Please read the following statements carefully, keeping in mind your current sta
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="0.01"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="vBuffer">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="hBuffer">
-                                                <real key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="labelButtonBuffer">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="0.01"/>
                                             </userDefinedRuntimeAttribute>
@@ -1964,8 +2119,8 @@ Please read the following statements carefully, keeping in mind your current sta
                                             <action selector="goPrevious:" destination="jmu-gL-fNg" eventType="touchUpInside" id="shE-AY-0X1"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrE-tb-r6a" customClass="PRButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="159" height="60"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrE-tb-r6a" customClass="PRButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="156" height="60"/>
                                         <color key="backgroundColor" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Cancel" image="cross">
@@ -1975,15 +2130,6 @@ Please read the following statements carefully, keeping in mind your current sta
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="0.01"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="vBuffer">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="hBuffer">
-                                                <real key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="labelButtonBuffer">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="0.01"/>
                                             </userDefinedRuntimeAttribute>
@@ -1991,6 +2137,27 @@ Please read the following statements carefully, keeping in mind your current sta
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="cancelConcern:" destination="jmu-gL-fNg" eventType="touchUpInside" id="RzV-sU-QaF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulD-8n-X4O" customClass="PRButton">
+                                        <rect key="frame" x="462" y="0.0" width="138" height="60"/>
+                                        <color key="backgroundColor" red="0.25882352939999997" green="0.76862745099999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Next" image="next_arrow"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.01"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.01"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="button.next"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="imageAlignment">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="goNext:" destination="jmu-gL-fNg" eventType="touchUpInside" id="hq7-at-Siw"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2636,7 +2803,7 @@ Please read the following statements carefully, keeping in mind your current sta
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1A6-Hg-4dS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1008" y="870"/>
+            <point key="canvasLocation" x="1757" y="1064"/>
         </scene>
     </scenes>
     <resources>
@@ -2648,10 +2815,15 @@ Please read the following statements carefully, keeping in mind your current sta
         <image name="face_not_sad" width="40" height="40"/>
         <image name="face_sad" width="40" height="40"/>
         <image name="home" width="40" height="40"/>
+        <image name="login" width="40" height="40"/>
         <image name="logout" width="40" height="40"/>
         <image name="next_arrow" width="40" height="40"/>
+        <image name="settings" width="40" height="40"/>
         <image name="star" width="40" height="40"/>
         <image name="tick" width="40" height="40"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="mko-dx-oQJ"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
 </document>

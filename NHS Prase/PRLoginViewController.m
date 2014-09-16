@@ -90,9 +90,10 @@
 
 #pragma mark - Input Accessory Delegate Methods
 
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+// configuring the active field or its accessory should be done on didBegin to ensure tapping to swap fields maintains the correct activeComponent.
+-(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [super textFieldShouldBeginEditing:textField];
+    [super textFieldDidBeginEditing:textField];
     
     if (self.activeComponent == passwordField) {
         inputView.nextButton.TDLocalizedStringKey = @"button.done";
@@ -105,8 +106,6 @@
     }
     
     [self applyThemeToView:inputView];
-    
-    return YES;
 }
 
 

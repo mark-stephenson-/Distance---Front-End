@@ -30,6 +30,8 @@
 @synthesize doneImage = _doneImage;
 @synthesize doneTitle = _doneTitle;
 
+@synthesize navigationDelegate = _navigationDelegate;
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -48,6 +50,7 @@
         _nextButton.backgroundColor = [[PRTheme sharedTheme] neutralColor];
         _nextButton.frame = (CGRect) {CGPointZero, _nextButton.intrinsicContentSize};
         _nextButton.borderWidth = 0.0;
+        _nextButton.imageAlignment = kPRButtonImageAlignmentRight;
         
         _previousButton = [[PRButton alloc] init];
         _previousButton.cornerRadius = 0.0;
@@ -94,17 +97,17 @@
 -(void)setNavigationDelegate:(id<TDInputAccessoryDelegate>)navigationDelegate
 {
     // clear the old target receivers
-    if (_navigationDelegate != nil) {
+    if (self.navigationDelegate != nil) {
         // assign all the new button targerts
-        [self.previousButton removeTarget:_navigationDelegate
+        [self.previousButton removeTarget:self.navigationDelegate
                               action:@selector(inputAccessoryRequestsPrevious:)
                     forControlEvents:UIControlEventTouchUpInside];
         
-        [self.nextButton removeTarget:_navigationDelegate
+        [self.nextButton removeTarget:self.navigationDelegate
                           action:@selector(inputAccessoryRequestsNext:)
                 forControlEvents:UIControlEventTouchUpInside];
         
-        [self.cancelButton removeTarget:_navigationDelegate
+        [self.cancelButton removeTarget:self.navigationDelegate
                             action:@selector(inputAccessoryRequestsDone:)
                   forControlEvents:UIControlEventTouchUpInside];
     }
@@ -135,7 +138,7 @@
     
     if (hConstrs == nil) {
         hConstrs = [NSLayoutConstraint constraintsWithVisualFormat:@"|[cancel]-(>=0)-[prev][next]|"
-                                                           options:NSLayoutFormatAlignAllBaseline
+                                                           options:0
                                                            metrics:nil
                                                              views:vDict];
         [self addConstraints:hConstrs];

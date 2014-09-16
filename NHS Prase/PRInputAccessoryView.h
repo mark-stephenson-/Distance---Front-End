@@ -24,8 +24,6 @@
     BOOL delegateCanGoToPrevious;
 }
 
-@property (nonatomic, strong) id<TDInputAccessoryDelegate> navigationDelegate;
-
 @property (nonatomic, readonly) PRButton *nextButton;
 @property (nonatomic, readonly) PRButton *previousButton;
 @property (nonatomic, readonly) PRButton *cancelButton;
