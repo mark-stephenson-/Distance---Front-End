@@ -7,17 +7,21 @@
 //
 
 #import <TDFormKit/TDFormKit.h>
-#import "PRDateSelectionViewController.h"
+#import <TheDistanceKit/TheDistanceKit.h>
 
-@interface PRDateSelectCell : TDTextFieldCell <PRDateSelectionDelegate>
+@class PRInputAccessoryView;
+
+@interface PRDateSelectCell : TDCell <TDInputAccessoryDelegate, UITextFieldDelegate>
 {
+    PRInputAccessoryView *inputView;
+    IBOutlet UITextField *dayField;
+    IBOutlet UITextField *monthField;
+    IBOutlet UITextField *yearField;
+    
     NSDate *selectedDate;
 }
 
 @property (nonatomic, weak) NSDateFormatter *formatter;
-@property (nonatomic, strong) NSString *selectionVCTitle;
-@property (nonatomic, strong) NSString *selectionIdentifier;
 
-@property (nonatomic, strong) NSNumber *modalPresentationStyle;
 
 @end

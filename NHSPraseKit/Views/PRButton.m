@@ -31,7 +31,7 @@
 -(void)setDefaults
 {
     _vBuffer = _vBuffer == 0 ? 10 : _vBuffer;
-    _hBuffer = 20;
+    _hBuffer = _hBuffer == 0 ? 20 : _hBuffer;
     _labelButtonBuffer = 20;
     _cornerRadius = 5.0;
     _borderWidth = 2.0;
@@ -54,35 +54,57 @@
     //self.imageView.backgroundColor = [UIColor blueColor];
     
     self.layer.borderWidth = self.borderWidth;
-    self.layer.borderColor = self.imageTint ? self.imageTint.CGColor : [self titleColorForState:UIControlStateNormal].CGColor;
     self.layer.cornerRadius = self.cornerRadius;
     self.contentEdgeInsets = UIEdgeInsetsMake(self.vBuffer, self.hBuffer, self.vBuffer, self.hBuffer);
     
     self.titleLabel.numberOfLines = 0;
     self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     
-    if (self.imageAlignment == kPRButtonImageAlignmentLeft) {
-        self.titleEdgeInsets = UIEdgeInsetsMake(0, self.labelButtonBuffer, 0, 0);
-        self.imageEdgeInsets = UIEdgeInsetsZero;
-    } else if (self.imageAlignment == kPRButtonImageAlignmentRight) {
-        self.titleEdgeInsets = UIEdgeInsetsZero;
-        self.imageEdgeInsets = UIEdgeInsetsMake(0, self.labelButtonBuffer, 0, 0);
-    } else if (self.imageAlignment == kPRButtonImageAlignmentTop) {
-        self.titleEdgeInsets = UIEdgeInsetsZero;
-        self.imageEdgeInsets = UIEdgeInsetsZero;
-        
-        self.titleLabel.textAlignment = NSTextAlignmentCenter;
-        self.titleLabel.preferredMaxLayoutWidth = [self titleRectForContentRect:[self contentRectForBounds:self.bounds]].size.width;
-        CGSize intrinsicTitleSize = [self.titleLabel intrinsicContentSize];
-        
-        if (intrinsicTitleSize.width > self.titleLabel.frame.size.width || intrinsicTitleSize.height > self.titleLabel.frame.size.height) {
-            [self invalidateIntrinsicContentSize];
-            [self setNeedsLayout];
+    // adjust the title insets for the labelButton buffer variable if an image exists for the current state
+    if ([self imageForState:self.state]) {
+        UIEdgeInsets cTitle = self.titleEdgeInsets;
+        if (self.imageAlignment == kPRButtonImageAlignmentLeft) {
+            
+            cTitle.left = self.labelButtonBuffer;
+            
+        } else if (self.imageAlignment == kPRButtonImageAlignmentRight) {
+            
+            cTitle.left = 0;
+            cTitle.right = self.labelButtonBuffer;
+            
+        } else if (self.imageAlignment == kPRButtonImageAlignmentTop) {
+            
+            cTitle.left = 0;
+            cTitle.right = 0;
+            
+            self.titleLabel.textAlignment = NSTextAlignmentCenter;
+            self.titleLabel.preferredMaxLayoutWidth = [self titleRectForContentRect:[self contentRectForBounds:self.bounds]].size.width;
+            CGSize intrinsicTitleSize = [self.titleLabel intrinsicContentSize];
+            
+            if (intrinsicTitleSize.width > self.titleLabel.frame.size.width || intrinsicTitleSize.height > self.titleLabel.frame.size.height) {
+                // causes size calculations to take too long
+                //[self invalidateIntrinsicContentSize];
+                //[self setNeedsLayout];
+            }
         }
+        
+        self.titleEdgeInsets = cTitle;
     }
     
-    self.tintColor = self.imageTint ? self.imageTint : [self titleColorForState:UIControlStateNormal];
-    self.imageView.tintColor = self.imageTint ? self.imageTint : [self titleColorForState:UIControlStateNormal];
+    // colour configuration
+    
+    if (self.state == UIControlStateDisabled) {
+        UIColor *disabledColour = [UIColor lightGrayColor];
+        
+        self.layer.borderColor = disabledColour.CGColor;
+        self.tintColor = disabledColour;
+        self.imageView.tintColor = disabledColour;
+    } else {
+        self.layer.borderColor = self.imageTint ? self.imageTint.CGColor : [self titleColorForState:UIControlStateNormal].CGColor;
+        self.tintColor = self.imageTint ? self.imageTint : [self titleColorForState:UIControlStateNormal];
+        self.imageView.tintColor = self.imageTint ? self.imageTint : [self titleColorForState:UIControlStateNormal];
+        
+    }
     
     
     [self layoutIfNeeded];
@@ -98,12 +120,6 @@
     CGSize imgSize = [self imageForState:UIControlStateNormal].size;
     
     CGSize labelSize = [self.titleLabel intrinsicContentSize];
-    
-    
-    if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1) {
-        // add a buffer for iOS 7 or lower to compensate for different font
-        labelSize.width += 5.0;
-    }
     
     UIEdgeInsets contentInsets = self.contentEdgeInsets;
     UIEdgeInsets imgInsets = self.imageEdgeInsets;
