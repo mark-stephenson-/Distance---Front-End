@@ -6,6 +6,7 @@
 #import "PRQuestion.h"
 #import "PRWard.h"
 #import "PRAnswerOption.h"
+#import <TheDistanceKit/TheDistanceKit.h>
 
 @interface PRRecord ()
 
@@ -137,6 +138,19 @@
     abstain2.imageTintIdentifier = @"main";
     
     return @[abstain1, abstain2];
+}
+
+-(NSInteger)answeredQuestions
+{
+    NSInteger answeredCount = 0;
+    
+    for (PRQuestion *question in self.questions) {
+        if ([question.answerID isNonNullString]) {
+            answeredCount++;
+        }
+    }
+    
+    return answeredCount;
 }
 
 

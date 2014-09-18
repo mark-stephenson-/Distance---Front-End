@@ -13,6 +13,8 @@
 
 @interface PRRecordViewController : PRSegmentTabViewController <UIAlertViewDelegate>
 {
+    IBOutlet UIView *progressFooter;
+    IBOutlet UIProgressView *progressView;
     IBOutlet UILabel *progressLabel;
 }
 

@@ -22,6 +22,69 @@ NSString * PRLocalizedStringWithDefaultValue(NSString *key, NSString *tbl, NSBun
     return ([localizedString isNonNullString] && ![localizedString isEqualToString:key]) ? localizedString : val;
 }
 
+-(UIFont *)preferredFontForTextStyle:(NSString *)fontStyle
+{
+    UIFont *themeFont = [super preferredFontForTextStyle:fontStyle];
+    
+    NSString *contentSize = [UIApplication sharedApplication].preferredContentSizeCategory;
+    
+    //  This is a good standard OS wide text size...
+    CGFloat fontSize = 14.0;
+    
+    // ... adjust the font size based on the user's choice ...
+    if ([contentSize isEqualToString:UIContentSizeCategoryExtraSmall]) {
+        fontSize = 11.0;
+        
+    } else if ([contentSize isEqualToString:UIContentSizeCategorySmall]) {
+        fontSize = 12.0;
+        
+    } else if ([contentSize isEqualToString:UIContentSizeCategoryMedium]) {
+        fontSize = 14.0;
+        
+    } else if ([contentSize isEqualToString:UIContentSizeCategoryLarge]) {
+        fontSize = 16.0;
+        
+    } else if ([contentSize isEqualToString:UIContentSizeCategoryExtraLarge]) {
+        fontSize = 18.0;
+        
+    } else if ([contentSize isEqualToString:UIContentSizeCategoryExtraExtraLarge]) {
+        fontSize = 20.0;
+        
+    } else if ([contentSize isEqualToString:UIContentSizeCategoryExtraExtraExtraLarge]) {
+        fontSize = 22.0;
+    }
+    
+    // increase as Prase uses large fonts throughout
+    fontSize += 3.0;
+    
+    if ([fontStyle isEqualToString:UIFontTextStyleHeadline]) {
+        // used only for dark blue headlines
+        fontSize += 4.0;
+        
+    } else if ([fontStyle isEqualToString:UIFontTextStyleSubheadline]) {
+        // used for most headings, explanations and prompts
+        fontSize += 0.0;
+        
+    } else if ([fontStyle isEqualToString:UIFontTextStyleBody]) {
+        // used for used inputted data
+        fontSize -= 2.0;
+        
+    } else if ([fontStyle isEqualToString:UIFontTextStyleCaption1]) {
+        // used for navigation buttons
+        fontSize -= 1.0;
+        
+    } else if ([fontStyle isEqualToString:UIFontTextStyleCaption2]) {
+        // used for the Questionnaire CMS introduction
+        fontSize += 2.0;
+        
+    } else if ([fontStyle isEqualToString:UIFontTextStyleFootnote]) {
+        
+        fontSize -= 4.0;
+    }
+    
+    return [themeFont fontWithSize:fontSize];
+}
+
 +(NSDictionary *)languageDictionary
 {
     static NSDictionary *languageOptions = nil;
@@ -44,6 +107,14 @@ NSString * PRLocalizedStringWithDefaultValue(NSString *key, NSString *tbl, NSBun
         _positiveColor = [UIColor colorWithHex:@"#8bc53f" alpha:1.0];
         _negativeColor = [UIColor colorWithHex:@"#eb008b" alpha:1.0];
         _backColor = [UIColor lightGrayColor];
+        
+        NSString *fontName = @"Helvetica";
+        self.preferredFontNameForHeadline = @"Helvetica Bold";
+        self.preferredFontNameForSubHeadline = @"Helvetica Bold";
+        self.preferredFontNameForBody = fontName;
+        self.preferredFontNameForCaption1 = @"Helvetica Bold";
+        self.preferredFontNameForCaption2 = fontName;
+        self.preferredFontNameForFootnote = fontName;
     }
     
     return self;

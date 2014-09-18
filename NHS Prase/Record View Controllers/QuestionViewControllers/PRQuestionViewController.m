@@ -54,6 +54,17 @@
     }
 }
 
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if (promptLabel.preferredMaxLayoutWidth != promptLabel.frame.size.width) {
+        promptLabel.preferredMaxLayoutWidth = promptLabel.frame.size.width;
+        //[self.view layoutIfNeeded];
+    }
+    
+}
+
 #pragma mark - PIRT Methods
 
 -(PRInputAccessoryView *)accessoryView

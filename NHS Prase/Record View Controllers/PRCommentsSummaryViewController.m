@@ -30,6 +30,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if (goodButtonPromptLabel.preferredMaxLayoutWidth != goodButtonPromptLabel.frame.size.width) {
+        goodButtonPromptLabel.preferredMaxLayoutWidth = goodButtonPromptLabel.frame.size.width;
+        [self.view setNeedsLayout];
+    }
+    
+    if (concernButtonPromptLabel.preferredMaxLayoutWidth != concernButtonPromptLabel.frame.size.width) {
+        concernButtonPromptLabel.preferredMaxLayoutWidth = concernButtonPromptLabel.frame.size.width;
+        [self.view setNeedsLayout];
+    }
+    
+    [self.view layoutIfNeeded];
+}
+
 #pragma mark - TableView Methods
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

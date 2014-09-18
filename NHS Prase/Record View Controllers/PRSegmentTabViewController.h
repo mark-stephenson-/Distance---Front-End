@@ -18,6 +18,7 @@
  */
 @interface PRSegmentTabViewController : PRViewController <UIAlertViewDelegate>
 {
+    IBOutlet UIView *containerView;
     UITabBarController *tabController;
     
     /// used to hide and show the footer view in showFooterView:animated:.
@@ -25,8 +26,10 @@
     IBOutlet UIView *footerView;
     IBOutlet UIButton *nextButton;
     IBOutlet UIButton *prevButton;
+    IBOutlet UIButton *settingsButton;
     
     IBOutlet UISegmentedControl *visibleSelector;
+    IBOutlet NSLayoutConstraint *selectorHeight;
 }
 
 -(IBAction)segmentChanged:(id)sender;

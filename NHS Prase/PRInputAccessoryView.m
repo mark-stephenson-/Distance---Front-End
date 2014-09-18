@@ -45,6 +45,7 @@
         _nextButton.translatesAutoresizingMaskIntoConstraints = NO;
         _nextButton.cornerRadius = 0.0;
         _nextButton.TDLocalizedStringKey = @"button.next";
+        _nextButton.TDTextStyleIdentifier = @"Caption 1";
         [_nextButton setImage:[UIImage imageNamed:@"next_arrow"] forState:UIControlStateNormal];
         [_nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _nextButton.backgroundColor = [[PRTheme sharedTheme] neutralColor];
@@ -55,6 +56,7 @@
         _previousButton = [[PRButton alloc] init];
         _previousButton.cornerRadius = 0.0;
         _previousButton.TDLocalizedStringKey = @"button.previous";
+        _previousButton.TDTextStyleIdentifier = @"Caption 1";
         [_previousButton setImage:[UIImage imageNamed:@"back_arrow"] forState:UIControlStateNormal];
         [_previousButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _previousButton.backgroundColor = [[PRTheme sharedTheme] backColor];
@@ -65,6 +67,7 @@
         _cancelButton = [[PRButton alloc] init];
         _cancelButton.cornerRadius = 0.0;
         _cancelButton.TDLocalizedStringKey = @"button.cancel";
+        _cancelButton.TDTextStyleIdentifier = @"Caption 1";
         [_cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_cancelButton setImage:[UIImage imageNamed:@"cross"] forState:UIControlStateNormal];
         _cancelButton.backgroundColor = [[PRTheme sharedTheme] negativeColor];

@@ -27,7 +27,6 @@
                                                                  value:nil
                                                                 andKey:@"DOB"];
     dobInfo[@"reuseIdentifier"] = @"DateSelectCell";
-    dobInfo[@"userInfo"][@"formatter"] = self.dateFormatter;
     
     NSMutableDictionary *genderInfo = [TDSegmentedCell cellInfoWithTitle:@"Gender"
                                                            segmentTitles:@[@"Male", @"Female"]
@@ -100,7 +99,6 @@
                                                                       value:[NSDate date]
                                                                      andKey:@"Admitted"];
     admittedInfo[@"reuseIdentifier"] = @"DateSelectCell";
-    admittedInfo[@"userInfo"][@"formatter"] = self.dateFormatter;
     
     NSMutableDictionary *inpatientInfo = [PRIncrementCell cellInfoWithTitle:@"How many times have you been an inpatient at this hospital in the past 5 years?"
                                                                       value:@0
@@ -116,19 +114,6 @@
     return @[@[dobInfo, genderInfo, ethnicGroupCell, languageInfo, admittedInfo, inpatientInfo, ongoingTreatmentInfo]];
 }
 
--(NSDateFormatter *)dateFormatter
-{
-    static NSDateFormatter *formatter = nil;
-    
-    if (formatter == nil) {
-        formatter = [[NSDateFormatter alloc] init];
-        formatter.dateStyle = NSDateFormatterShortStyle;
-        formatter.timeStyle = NSDateFormatterNoStyle;
-    }
-    
-    return formatter;
-}
-
 #pragma mark - SelectionCell Delegate Methods
 
 -(void)selectionCell:(TDSelectCell *)cell requestsPresentationOfSelectionViewController:(TDSelectionViewController *)selectionVC
@@ -141,10 +126,9 @@
         PRSelectionViewController *prSelection = (PRSelectionViewController *) selectionVC;
         
         // force load the view to configure its subclasses
-        UIView *selectionView = prSelection.view;
+        UIView *view = prSelection.view;
         prSelection.titleLabel.text = selectedCellInfo[@"title"];
         prSelection.subTitleLabel.text = @"Please select from the options below.";
-        prSelection.modalPresentationStyle = UIModalPresentationFormSheet;
         
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self presentViewController:prSelection animated:YES completion:nil];

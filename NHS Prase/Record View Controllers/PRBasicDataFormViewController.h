@@ -6,15 +6,13 @@
 //  Copyright (c) 2014 The Distance. All rights reserved.
 //
 
-#import <TDFormKit/TDFormKit.h>
+#import "PRFormViewController.h"
 
 /*!
  * @class PRBasicDataFormViewController
  * @discussion This class hard codes the first screen on the questionnaire, as such it should be appropriately  localized.
  */
-@interface PRBasicDataFormViewController : TDFormViewController <TDSelectCellDelegate>
-
-@property (nonatomic, readonly) NSDateFormatter *dateFormatter;
+@interface PRBasicDataFormViewController : PRFormViewController
 
 
 @end

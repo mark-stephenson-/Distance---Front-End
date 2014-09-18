@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "PRTheme.h"
+#import <TheDistanceKit/TheDistanceKit.h>
 
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 
@@ -26,6 +27,8 @@
     
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"PRModel.sqlite"];
     
+    // set up app wide inset
+    [[TDTextField appearance] setTextInsets:UIEdgeInsetsMake(6, 15, 6, 15)];
     
     return YES;
 }

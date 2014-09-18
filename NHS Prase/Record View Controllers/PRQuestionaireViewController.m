@@ -30,7 +30,7 @@
                                                      navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                    options:nil];
     
-    pageController.dataSource = self;
+    // pageController.dataSource = self;
     pageController.delegate = self;
     
     [self resetPageViewController];
@@ -104,20 +104,6 @@
     
     [self resetPageViewController];
 }
-
-/*
--(void)setQuestionnaire:(PRQuestionnaire *)questionnaire
-{
-    
-    if (_questionnaire != nil) {
-        // clear the existing questionnaire and remove any saved view controllers
-    }
-    
-    _questionnaire = questionnaire;
-    
-    [self resetPageViewController];
-}
-*/
 
 -(BOOL)canGoToNextQuestion
 {

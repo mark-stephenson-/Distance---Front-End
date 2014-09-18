@@ -14,9 +14,9 @@
 @interface PRDateSelectCell : TDCell <TDInputAccessoryDelegate, UITextFieldDelegate>
 {
     PRInputAccessoryView *inputView;
-    IBOutlet UITextField *dayField;
-    IBOutlet UITextField *monthField;
-    IBOutlet UITextField *yearField;
+    IBOutlet TDTextField *dayField;
+    IBOutlet TDTextField *monthField;
+    IBOutlet TDTextField *yearField;
     
     NSDate *selectedDate;
 }

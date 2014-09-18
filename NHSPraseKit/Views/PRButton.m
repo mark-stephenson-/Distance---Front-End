@@ -94,7 +94,8 @@
     // colour configuration
     
     if (self.state == UIControlStateDisabled) {
-        UIColor *disabledColour = [UIColor lightGrayColor];
+        // use the title colour as light grey my be used elsewhere and thus number be visible on the background.
+        UIColor *disabledColour = [self titleColorForState:UIControlStateDisabled];
         
         self.layer.borderColor = disabledColour.CGColor;
         self.tintColor = disabledColour;

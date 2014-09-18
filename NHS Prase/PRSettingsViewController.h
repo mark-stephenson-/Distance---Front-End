@@ -7,8 +7,9 @@
 //
 
 #import <TDFormKit/TDFormKit.h>
+#import <TheDistanceKit/TheDistanceKit.h>
 
-@interface PRSettingsViewController : TDFormViewController
+@interface PRSettingsViewController : TDFormViewController <TDSelectCellDelegate>
 
 -(IBAction)dismiss:(id)sender;
 

@@ -29,7 +29,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    headerLabel.TDLocalizedStringKey = @"question.index_header";
+    //UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
+    //layout.estimatedItemSize = CGSizeMake(140, 160);
+    
+    //headerLabel.TDLocalizedStringKey = @"question.index_header";
     titleLabel.TDLocalizedStringKey = self.question.questionID;
     
     ((UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout).minimumLineSpacing = 30.0;
@@ -45,6 +48,7 @@
     [super applyTheme];
 
     NSInteger thisQuestionIndex = [self.question.record.questions indexOfObject:self.question] + 1;
+
     NSString *formatHeader = [NSString localizedStringWithFormat:TDLocalizedStringWithDefaultValue(@"question.index_header", nil, nil, @"Question %d:", @"The header identifiying the question number of this question in the PMOS questionnaire."), thisQuestionIndex];
     headerLabel.text = formatHeader;
     
@@ -56,6 +60,17 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if ([self.question.answerID isNonNullString]) {
+        
+        NSIndexPath *selectedPath = [self.question indexPathForAnswerID:self.question.answerID];
+        [self.collectionView selectItemAtIndexPath:selectedPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+    }
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 -(void)setQuestion:(PRQuestion *)question
@@ -81,6 +96,7 @@
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    
     
     if (CGSizeEqualToSize(CGSizeZero, oldViewSize) || !CGSizeEqualToSize(self.view.bounds.size, oldViewSize)) {
         [self.collectionView.collectionViewLayout invalidateLayout];
@@ -202,14 +218,17 @@
     return YES;
 }
 
-//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    self.question.answer = indexPath;
-//}
-//
-//-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    self.question.answer = nil;
-//}
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *sectionOptions = self.question.answerOptionsArray[indexPath.section];
+    PRAnswerOption *thisOption = sectionOptions[indexPath.row];
+    
+    self.question.answerID = thisOption.optionID;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.question.answerID = nil;
+}
 
 @end

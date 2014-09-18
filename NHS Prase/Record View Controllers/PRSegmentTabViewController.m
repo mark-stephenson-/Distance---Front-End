@@ -36,6 +36,17 @@
     [self refreshFooterView];
 }
 
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    NSString *textStyle = [[TDTheme sharedTheme] textStyleForIdentifier:visibleSelector.TDTextStyleIdentifier];
+    UIFont *selectorFont = [[TDTheme sharedTheme] preferredFontForTextStyle:textStyle];
+    selectorHeight.constant = 40 + selectorFont.pointSize;
+    
+    [self.view layoutIfNeeded];
+}
+
 #pragma mark - View Configuration
 
 -(void)configureNext:(BOOL) isLastSection

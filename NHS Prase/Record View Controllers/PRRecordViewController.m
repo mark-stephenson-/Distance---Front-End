@@ -36,6 +36,36 @@
     
     PRQuestionaireViewController *qvc = tabController.viewControllers[1];
     qvc.questions = [self.record.questions array];
+    
+    PRRecordSummaryViewController *summary = [tabController.viewControllers lastObject];
+    summary.record = self.record;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleQuestionRequest:) name:@"QuestionRequest" object:nil];
+}
+
+-(void)handleQuestionRequest:(NSNotification *) note
+{
+    NSNumber *questionNumber = note.userInfo[@"questionNumber"];
+    
+    if (questionNumber != nil) {
+        
+        PRQuestionaireViewController *qvc = tabController.viewControllers[1];
+        if ([qvc isKindOfClass:[PRQuestionaireViewController class]]) {
+            [qvc setCurrentQuestion:questionNumber.integerValue];
+        }
+        [visibleSelector setSelectedSegmentIndex:1];
+        [self segmentChanged:self];
+    }
+}
+
+-(void)setRecord:(PRRecord *)record
+{
+    _record = record;
+    
+    PRRecordSummaryViewController *summary = [tabController.viewControllers lastObject];
+    if ([summary isKindOfClass:[PRRecordSummaryViewController class]]) {
+        summary.record = self.record;
+    }
 }
 
 #pragma mark - View Configuration
@@ -57,69 +87,78 @@
     [self applyThemeToView:footerView];
 }
 
--(void)segmentChanged:(id)sender
-{
-    [super segmentChanged:sender];
-    
-    if ([tabController.selectedViewController isKindOfClass:[PRRecordSummaryViewController class]]) {
-        [self configureSummary];
-    }
-}
-
 -(void)refreshFooterView
 {
     [super refreshFooterView];
+    
+    BOOL footerShows = NO;
     
     if ([tabController.selectedViewController isKindOfClass:[PRQuestionaireViewController class]]) {
         
         PRQuestionaireViewController *qvc = (PRQuestionaireViewController *) tabController.selectedViewController;
         NSInteger currentQuestion = qvc.currentQuestion;
         
-        progressLabel.hidden = NO;
-        progressLabel.text = [NSString stringWithFormat:@"Question %ld of %ld", currentQuestion + 1, self.record.questions.count];
-    } else {
-        progressLabel.hidden = YES;
+        if (currentQuestion + 1 > 0) {
+            footerShows = YES;
+            
+            progressLabel.text = [NSString stringWithFormat:@"Question %ld of %ld", currentQuestion + 1, self.record.questions.count];
+            progressView.progress = 1.0 * (currentQuestion + 1.0) / self.record.questions.count;
+        }
     }
+    
+    progressFooter.hidden = !footerShows;
 }
 
--(void)configureSummary
+-(void)viewDidLayoutSubviews
 {
-    PRRecordSummaryViewController *summary = [tabController.viewControllers lastObject];
+    [super viewDidLayoutSubviews];
     
-    PRBasicDataFormViewController *basicData = [tabController.viewControllers firstObject];
+    // force layout the footer view to ensure the difference between the buttons is caluclated correctly.
+    [footerView layoutSubviews];
+    
+    CGSize progressSize = [progressFooter systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    
+    CGFloat xDelta = CGRectGetMinX(prevButton.frame) - CGRectGetMaxX(settingsButton.frame);
+    
+    if (xDelta > progressSize.width && progressFooter.superview != footerView) {
+        [progressFooter removeFromSuperview];
+        
+        [footerView addSubview:progressFooter];
+        [footerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[settings][progress][previous]"
+                                                                           options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
+                                                                           metrics:nil
+                                                                             views:@{@"settings":settingsButton,
+                                                                                     @"progress":progressFooter,
+                                                                                     @"previous":prevButton}]];
+        
+    } else if (xDelta < progressSize.width && progressFooter.superview == footerView) {
+        [progressFooter removeFromSuperview];
+        
+        // storyboard constraints should be configured such that the container tries to be 20 away from the foot with a lower priority than the vertical content compression priority of the progress view. That way, when the progress footer is between container and the footer the gap will be 20, when it is in the way, the 20 spacing constraint will be ignored.
+        [self.view addSubview:progressFooter];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[container]-(20)-[progress]-(20)-[footer]"
+                                                                          options:0
+                                                                          metrics:nil
+                                                                            views:@{@"container":containerView,
+                                                                                    @"progress":progressFooter,
+                                                                                    @"footer":footerView}]];
 
-    BOOL basicDataComplete = YES;
-    
-    for (NSArray *section in basicData.cellInfo) {
-        for (NSDictionary *qInfo in section) {
-            if (qInfo[@"value"] == nil) {
-                basicDataComplete = NO;
-            }
-        }
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:progressFooter
+                                                              attribute:NSLayoutAttributeLeading
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:containerView
+                                                              attribute:NSLayoutAttributeLeading
+                                                             multiplier:1.0
+                                                               constant:0.0]];
+        
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:progressFooter
+                                                              attribute:NSLayoutAttributeTrailing
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:containerView
+                                                              attribute:NSLayoutAttributeTrailing
+                                                             multiplier:1.0
+                                                               constant:0.0]];
     }
-    
-    if (basicDataComplete) {
-        summary.basicDataButton.backgroundColor = [[PRTheme sharedTheme] positiveColor];
-        [summary.basicDataButton setTitle:@"Complete" forState:UIControlStateNormal];
-        [summary.basicDataButton setImage:[UIImage imageNamed:@"tick"] forState:UIControlStateNormal];
-    } else {
-        summary.basicDataButton.backgroundColor = [[PRTheme sharedTheme] negativeColor];
-        [summary.basicDataButton setTitle:@"Incomplete" forState:UIControlStateNormal];
-        [summary.basicDataButton setImage:[UIImage imageNamed:@"cross"] forState:UIControlStateNormal];
-    }
-    
-    NSInteger answered = 0;
-    
-    for (PRQuestion *thisQuestion in self.record.questions) {
-        if (thisQuestion.answerID != nil) {
-            answered++;
-        }
-    }
-    
-    NSInteger total = self.record.questions.count;
-    
-    summary.questionnaireLabel.text = [NSString stringWithFormat:@"%ld of %ld questions answered.", answered, total];
-    summary.questionnaireLabel.textColor = (answered == total) ? [[PRTheme sharedTheme] positiveColor] : [[PRTheme sharedTheme] negativeColor];
 }
 
 #pragma mark - Navigation

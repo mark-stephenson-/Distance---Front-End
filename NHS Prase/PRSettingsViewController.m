@@ -8,12 +8,18 @@
 
 #import "PRSettingsViewController.h"
 
-//#import <TheDistanceKit/TheDistanceKit.h>
-
 #import "PRTheme.h"
+#import "PRSelectionViewController.h"
 
 @implementation PRSettingsViewController
 
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.tableView.layer.borderColor = [[PRTheme sharedTheme] mainColor].CGColor;
+    self.tableView.layer.borderWidth = 2.0;
+}
 
 -(NSArray *)generateCellInfo
 {
@@ -30,9 +36,9 @@
                                                                   value:languageOptions[currentLanguageKey]
                                                                  andKey:@"Language"];
     
+    languageInfo[@"reuseIdentifier"] = @"LanguagSelect";
     languageInfo[@"userInfo"][@"selectionIdentifier"] = @"PRBasicSelectionVC";
-    languageInfo[@"userInfo"][@"selectionVCTitle"] = TDLocalizedStringWithDefaultValue(@"settings.language.options", nil, nil, @"Language Select", @"Title of the form when selecting a new language.");
-    languageInfo[@"userInfo"][@"modalPresentationStyle"] = @(UIModalPresentationFormSheet);
+    languageInfo[@"userInfo"][@"selectionDelegate"] = self;
     
     return @[@[languageInfo]];
 }
@@ -46,8 +52,6 @@
 
         NSString *selectedKey = [PRTheme keyForLanguage:cell.value];
         [[PRTheme sharedTheme] setLanguageIdentifier:selectedKey];
-        //[self applyTheme];
-        //[self reloadForm];
     }
 }
 
@@ -55,5 +59,29 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - SelectionCell Delegate Methods
+
+-(void)selectionCell:(TDSelectCell *)cell requestsPresentationOfSelectionViewController:(TDSelectionViewController *)selectionVC
+{
+    if ([selectionVC isKindOfClass:[PRSelectionViewController class]]) {
+        
+        NSIndexPath *selectedPath = [self indexPathForFormKey:cell.key];
+        NSDictionary *selectedCellInfo = self.cellInfo[selectedPath.section][selectedPath.row];
+        
+        PRSelectionViewController *prSelection = (PRSelectionViewController *) selectionVC;
+        
+        // force load the view to configure its subclasses
+        UIView *view = prSelection.view;
+        prSelection.titleLabel.text = selectedCellInfo[@"title"];
+        prSelection.subTitleLabel.text = @"Please select from the options below.";
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self presentViewController:prSelection animated:YES completion:nil];
+        }];
+    }
+}
+
+
 
 @end

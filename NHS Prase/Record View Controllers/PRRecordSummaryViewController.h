@@ -2,17 +2,16 @@
 //  PRRecordSummaryViewController.h
 //  NHS Prase
 //
-//  Created by Josh Campion on 03/09/2014.
+//  Created by Josh Campion on 18/09/2014.
 //  Copyright (c) 2014 The Distance. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PRFormViewController.h"
 
-@class PRButton;
+@class PRRecord;
 
-@interface PRRecordSummaryViewController : UIViewController
+@interface PRRecordSummaryViewController : PRFormViewController
 
-@property (nonatomic, strong) IBOutlet PRButton *basicDataButton;
-@property (nonatomic, strong) IBOutlet UILabel *questionnaireLabel;
+@property (nonatomic, strong) PRRecord *record;
 
 @end

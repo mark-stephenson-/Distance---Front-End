@@ -21,6 +21,15 @@
     inputView = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
     inputView.navigationDelegate = self;
     
+    // adjust the field insets
+    UIEdgeInsets fieldInsets = [[TDTextField appearance] textInsets];
+    fieldInsets.left = 6;
+    fieldInsets.right = 6;
+    
+    dayField.textInsets = fieldInsets;
+    monthField.textInsets = fieldInsets;
+    yearField.textInsets = fieldInsets;
+    
     self.scrollContainer = self.formViewController.tableView;
     self.keyboardAccessoryView = inputView;
     self.components = @[dayField, monthField, yearField];
@@ -46,6 +55,11 @@
 
 #pragma mark - Date Methods
 
+-(id)value
+{
+    return selectedDate;
+}
+
 -(void)setValue:(id)value
 {
     if ([value isKindOfClass:[NSString class]]) {
@@ -61,7 +75,10 @@
     }
     
     if (value == nil) {
-        [super setValue:nil];
+        // This should only be called externally. Setting to nil should clear the text.
+        dayField.text = @"";
+        monthField.text = @"";
+        yearField.text = @"";
     }
     
     [self applyDateToFields];
@@ -96,10 +113,44 @@
         [yearField setText:[NSString stringWithFormat:@"%04d",  yearField.text.intValue]];
     }
     
+    // validate the dates
+    if (yearField.text.intValue < 1864) {
+        yearField.text = nil;
+    }
+    
+    if (monthField.text.intValue > 12 ) {
+        monthField.text = nil;
+    }
+    
+    if ([monthField.text isNonNullString]) {
+        
+        int dayLimit = 31;
+        
+        switch (monthField.text.intValue) {
+            case 2:
+                dayLimit = 29;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                dayLimit = 30;
+            default:
+                break;
+        }
+        
+        if (dayField.text.intValue > dayLimit) {
+            dayField.text = nil;
+        }
+        
+    } else {
+        if (dayField.text.intValue > 31) {
+            dayField.text = nil;
+        }
+    }
     
     if (![dayField.text isNonNullString] || ![monthField.text isNonNullString] || ![yearField.text isNonNullString]) {
         selectedDate = nil;
-        self.value = nil;
         return;
     }
     

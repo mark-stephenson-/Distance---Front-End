@@ -20,6 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.tableView.layer.cornerRadius = 5.0;
     self.tableView.layer.borderWidth = 2.0;
     self.tableView.layer.borderColor = [[PRTheme sharedTheme] mainColor].CGColor;
 }
@@ -40,7 +41,6 @@
 }
 
 #pragma mark - TableView Delegate
-
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

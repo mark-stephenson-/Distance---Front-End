@@ -12,6 +12,9 @@
 {
     IBOutlet UITableView *commentsTableView;
     IBOutlet UITableView *concernsTableView;
+    
+    IBOutlet UILabel *goodButtonPromptLabel;
+    IBOutlet UILabel *concernButtonPromptLabel;
 }
 
 @end
