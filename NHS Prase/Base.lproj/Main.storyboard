@@ -907,10 +907,10 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Question x of y" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmP-iX-Vaz">
                                         <rect key="frame" x="20" y="15" width="460" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 1"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
@@ -1058,6 +1058,7 @@ Please read the following statements carefully, keeping in mind your current sta
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="borderView" destination="IcX-ve-s3D" id="BFJ-hY-Fku"/>
                         <outlet property="promptLabel" destination="uAm-CY-LWW" id="rhr-xv-zC6"/>
                     </connections>
                 </viewController>
@@ -1449,10 +1450,10 @@ Please read the following statements carefully, keeping in mind your current sta
                                     <constraint firstAttribute="height" constant="2" id="czj-01-KgA"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Lm-up-xF0">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Lm-up-xF0">
                                 <rect key="frame" x="0.0" y="51" width="500" height="328"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DCu-O0-zDK">
+                                    <tableView contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DCu-O0-zDK">
                                         <rect key="frame" x="0.0" y="0.0" width="500" height="328"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -1699,7 +1700,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                                                 <outlet property="delegate" destination="LMv-uc-3BW" id="fHM-jc-k1U"/>
                                                             </connections>
                                                         </textField>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="YYYY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hb2-kS-Zi5" customClass="TDTextField">
+                                                        <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="YYYY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hb2-kS-Zi5" customClass="TDTextField">
                                                             <rect key="frame" x="382" y="17" width="59" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="aWa-hf-O4d"/>
@@ -1727,7 +1728,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="beY-3R-HJy" customClass="TDTextField">
+                                                        <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="beY-3R-HJy" customClass="TDTextField">
                                                             <rect key="frame" x="314" y="17" width="46" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="LfV-ge-P2z"/>
@@ -1769,6 +1770,9 @@ Please read the following statements carefully, keeping in mind your current sta
                                                     <outlet property="monthField" destination="beY-3R-HJy" id="HMO-tz-Ss2"/>
                                                     <outlet property="titleLabel" destination="bNt-LH-5rd" id="ikw-3q-WSR"/>
                                                     <outlet property="yearField" destination="Hb2-kS-Zi5" id="a3h-5K-Ivn"/>
+                                                    <outletCollection property="textFields" destination="Vts-U4-atu" id="MlM-n0-m0o"/>
+                                                    <outletCollection property="textFields" destination="beY-3R-HJy" id="gpk-OA-CCK"/>
+                                                    <outletCollection property="textFields" destination="Hb2-kS-Zi5" id="reg-GY-qtJ"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -2042,7 +2046,7 @@ Please read the following statements carefully, keeping in mind your current sta
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hrH-Sn-bog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2414" y="-536"/>
+            <point key="canvasLocation" x="2491" y="-515"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nLD-tt-hF6">
@@ -3179,10 +3183,10 @@ Please read the following statements carefully, keeping in mind your current sta
                                     <constraint firstAttribute="height" constant="2" id="bYa-Cw-iwj"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9b-c6-M83">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9b-c6-M83">
                                 <rect key="frame" x="0.0" y="71" width="500" height="308"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zXZ-wU-nU1">
+                                    <tableView contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zXZ-wU-nU1">
                                         <rect key="frame" x="0.0" y="0.0" width="500" height="308"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -3190,12 +3194,12 @@ Please read the following statements carefully, keeping in mind your current sta
                                         </constraints>
                                         <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DateSelectCell" id="Hpo-y5-SLk" customClass="PRDateSelectCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TimeSelectCell" id="Hpo-y5-SLk" customClass="PRTimeSelectCell">
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hpo-y5-SLk" id="zRh-K7-KUE">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Date Select" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="210" translatesAutoresizingMaskIntoConstraints="NO" id="Sy8-gb-wwv">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Time Select" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sy8-gb-wwv">
                                                             <rect key="frame" x="20" y="27" width="210" height="20"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -3204,92 +3208,95 @@ Please read the following statements carefully, keeping in mind your current sta
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="DD" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bMH-t8-hch" customClass="TDTextField">
-                                                            <rect key="frame" x="250" y="17" width="42" height="40"/>
+                                                        <view contentMode="scaleToFill" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" translatesAutoresizingMaskIntoConstraints="NO" id="8LZ-nD-VTA">
+                                                            <rect key="frame" x="250" y="17" width="221" height="40"/>
+                                                            <subviews>
+                                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mm" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lsL-m0-p19" customClass="TDTextField">
+                                                                    <rect key="frame" x="175" y="0.0" width="46" height="40"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="40" id="Mzk-qO-3AU"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="date-select.month"/>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Text field prompt for requesting the 'month' part of a date in the dd/mm/yyyy format."/>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="Hpo-y5-SLk" id="Qad-O2-yzW"/>
+                                                                    </connections>
+                                                                </textField>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqy-Wm-WcR">
+                                                                    <rect key="frame" x="0.0" y="10" width="46" height="21"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 1"/>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSZ-Io-LeA">
+                                                                    <rect key="frame" x="106" y="10" width="61" height="21"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 1"/>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </label>
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="hh" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZoO-6l-Ndn" customClass="TDTextField">
+                                                                    <rect key="frame" x="54" y="0.0" width="37" height="40"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="40" id="I8V-kc-68V"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="date-select.year"/>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Text field prompt for requesting the 'year' part of a date in the dd/mm/yyyy format."/>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="Hpo-y5-SLk" id="QnR-RL-Cxa"/>
+                                                                    </connections>
+                                                                </textField>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="40" id="oHM-IY-nTc"/>
+                                                                <constraint firstAttribute="centerY" secondItem="Pqy-Wm-WcR" secondAttribute="centerY" id="1e9-km-eVf"/>
+                                                                <constraint firstItem="lsL-m0-p19" firstAttribute="top" secondItem="8LZ-nD-VTA" secondAttribute="top" id="5RF-GA-9fb"/>
+                                                                <constraint firstAttribute="centerY" secondItem="JSZ-Io-LeA" secondAttribute="centerY" id="GD7-JN-uDo"/>
+                                                                <constraint firstAttribute="trailing" secondItem="lsL-m0-p19" secondAttribute="trailing" id="H75-eR-fZX"/>
+                                                                <constraint firstItem="ZoO-6l-Ndn" firstAttribute="top" secondItem="8LZ-nD-VTA" secondAttribute="top" id="Jp7-UO-xlV"/>
+                                                                <constraint firstItem="ZoO-6l-Ndn" firstAttribute="leading" secondItem="Pqy-Wm-WcR" secondAttribute="trailing" constant="8" id="MeO-1A-ZP9"/>
+                                                                <constraint firstAttribute="bottom" secondItem="lsL-m0-p19" secondAttribute="bottom" id="ToG-ap-7xP"/>
+                                                                <constraint firstAttribute="bottom" secondItem="ZoO-6l-Ndn" secondAttribute="bottom" id="aJZ-sV-pUz"/>
+                                                                <constraint firstItem="lsL-m0-p19" firstAttribute="leading" secondItem="JSZ-Io-LeA" secondAttribute="trailing" constant="8" id="c6N-8q-mal"/>
+                                                                <constraint firstItem="JSZ-Io-LeA" firstAttribute="leading" secondItem="ZoO-6l-Ndn" secondAttribute="trailing" constant="15" id="i9b-bY-clb"/>
+                                                                <constraint firstItem="Pqy-Wm-WcR" firstAttribute="leading" secondItem="8LZ-nD-VTA" secondAttribute="leading" id="vfE-H5-MPt"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="date-select.day"/>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Text field prompt for requesting the 'day' part of a date in the dd/mm/yyyy format."/>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                            <connections>
-                                                                <outlet property="delegate" destination="Hpo-y5-SLk" id="PgB-Od-LD5"/>
-                                                            </connections>
-                                                        </textField>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="YYYY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZoO-6l-Ndn" customClass="TDTextField">
-                                                            <rect key="frame" x="382" y="17" width="59" height="40"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="40" id="I8V-kc-68V"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="date-select.year"/>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Text field prompt for requesting the 'year' part of a date in the dd/mm/yyyy format."/>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                            <connections>
-                                                                <outlet property="delegate" destination="Hpo-y5-SLk" id="QnR-RL-Cxa"/>
-                                                            </connections>
-                                                        </textField>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Way-Yk-WFs">
-                                                            <rect key="frame" x="300" y="26" width="6" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCm-Cd-bHh">
-                                                            <rect key="frame" x="368" y="26" width="6" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lsL-m0-p19" customClass="TDTextField">
-                                                            <rect key="frame" x="314" y="17" width="46" height="40"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="40" id="Mzk-qO-3AU"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="date-select.month"/>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Text field prompt for requesting the 'month' part of a date in the dd/mm/yyyy format."/>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                            <connections>
-                                                                <outlet property="delegate" destination="Hpo-y5-SLk" id="Qad-O2-yzW"/>
-                                                            </connections>
-                                                        </textField>
+                                                        </view>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Sy8-gb-wwv" secondAttribute="bottom" constant="15" id="0Bx-4x-14r"/>
-                                                        <constraint firstItem="bMH-t8-hch" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zRh-K7-KUE" secondAttribute="top" constant="15" id="3Qr-dh-oot"/>
-                                                        <constraint firstItem="bMH-t8-hch" firstAttribute="baseline" secondItem="lsL-m0-p19" secondAttribute="baseline" id="4Db-Ng-3Jw"/>
                                                         <constraint firstAttribute="centerY" secondItem="Sy8-gb-wwv" secondAttribute="centerY" id="4kn-5c-7Xa"/>
-                                                        <constraint firstItem="bMH-t8-hch" firstAttribute="leading" secondItem="Sy8-gb-wwv" secondAttribute="trailing" constant="20" id="6yq-u2-xR4"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="8LZ-nD-VTA" secondAttribute="bottom" constant="15" id="Cgp-4k-dNY"/>
                                                         <constraint firstItem="Sy8-gb-wwv" firstAttribute="leading" secondItem="zRh-K7-KUE" secondAttribute="leading" constant="20" id="FCG-Dx-U7V"/>
-                                                        <constraint firstItem="ZoO-6l-Ndn" firstAttribute="leading" secondItem="kCm-Cd-bHh" secondAttribute="trailing" constant="8" id="Kc4-nb-ARI"/>
-                                                        <constraint firstItem="kCm-Cd-bHh" firstAttribute="leading" secondItem="lsL-m0-p19" secondAttribute="trailing" constant="8" id="Nq7-QQ-irA"/>
+                                                        <constraint firstItem="8LZ-nD-VTA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zRh-K7-KUE" secondAttribute="top" constant="15" id="FFf-Rr-qd8"/>
                                                         <constraint firstItem="Sy8-gb-wwv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zRh-K7-KUE" secondAttribute="top" constant="15" id="Nv4-uc-uQq"/>
-                                                        <constraint firstAttribute="centerY" secondItem="Way-Yk-WFs" secondAttribute="centerY" id="Ox0-SQ-H0a"/>
-                                                        <constraint firstItem="lsL-m0-p19" firstAttribute="leading" secondItem="Way-Yk-WFs" secondAttribute="trailing" constant="8" id="T5D-4R-G9r"/>
-                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bMH-t8-hch" secondAttribute="bottom" constant="15" id="VkL-UN-0pJ"/>
-                                                        <constraint firstAttribute="centerY" secondItem="bMH-t8-hch" secondAttribute="centerY" id="WAm-VP-JRF"/>
-                                                        <constraint firstAttribute="centerY" secondItem="kCm-Cd-bHh" secondAttribute="centerY" id="bC0-Fu-HHz"/>
-                                                        <constraint firstItem="Way-Yk-WFs" firstAttribute="leading" secondItem="bMH-t8-hch" secondAttribute="trailing" constant="8" id="iTS-Qc-IQ2"/>
-                                                        <constraint firstItem="ZoO-6l-Ndn" firstAttribute="baseline" secondItem="bMH-t8-hch" secondAttribute="baseline" id="sZZ-YR-mFe"/>
-                                                        <constraint firstAttribute="centerX" secondItem="bMH-t8-hch" secondAttribute="leading" id="uzJ-R7-OLX"/>
+                                                        <constraint firstItem="8LZ-nD-VTA" firstAttribute="leading" secondItem="zRh-K7-KUE" secondAttribute="centerX" priority="250" id="kpv-qX-yKa"/>
+                                                        <constraint firstAttribute="centerY" secondItem="8LZ-nD-VTA" secondAttribute="centerY" id="psz-1P-iSr"/>
+                                                        <constraint firstItem="8LZ-nD-VTA" firstAttribute="leading" secondItem="Sy8-gb-wwv" secondAttribute="trailing" constant="20" id="yM5-lU-FIG"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8LZ-nD-VTA" secondAttribute="trailing" constant="15" id="zIu-vR-gP3"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="dayField" destination="bMH-t8-hch" id="BdM-9d-Rip"/>
-                                                    <outlet property="monthField" destination="lsL-m0-p19" id="huG-Ce-aMh"/>
-                                                    <outlet property="titleLabel" destination="Sy8-gb-wwv" id="zIi-Z4-Koy"/>
-                                                    <outlet property="yearField" destination="ZoO-6l-Ndn" id="e2Y-Oc-Or5"/>
+                                                    <outlet property="hourField" destination="ZoO-6l-Ndn" id="XrQ-QH-DXM"/>
+                                                    <outlet property="minuteField" destination="lsL-m0-p19" id="HcF-D0-QMs"/>
+                                                    <outlet property="titleLabel" destination="Sy8-gb-wwv" id="JZZ-JW-2z6"/>
+                                                    <outletCollection property="textFields" destination="ZoO-6l-Ndn" id="66k-2C-1V2"/>
+                                                    <outletCollection property="textFields" destination="lsL-m0-p19" id="OPo-wt-0YL"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="QuestionnaireCompleteCell" id="Hg2-he-XG0" customClass="PRQuestionnaireCompleteCell">

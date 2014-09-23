@@ -9,5 +9,9 @@
 #import "PRQuestionViewController.h"
 
 @interface PRAgreementViewController : PRQuestionViewController
+{
+    IBOutlet UIView *borderView;
+}
+
 
 @end

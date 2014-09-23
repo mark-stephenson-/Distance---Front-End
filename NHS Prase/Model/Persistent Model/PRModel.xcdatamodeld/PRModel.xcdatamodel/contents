@@ -49,8 +49,11 @@
     </entity>
     <entity name="PRRecord" representedClassName="PRRecord" syncable="YES">
         <attribute name="basicData" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="language" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="timeAdditionalPatient" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="timeAdditionalQuestionnaire" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="timeTracked" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="concerns" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PRConcern" inverseName="record" inverseEntity="PRConcern" syncable="YES"/>
         <relationship name="goodNotes" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PRNote" inverseName="recordAsGood" inverseEntity="PRNote" syncable="YES"/>
         <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PRNote" inverseName="record" inverseEntity="PRNote" syncable="YES"/>
@@ -73,11 +76,11 @@
     <elements>
         <element name="PRAnswerOption" positionX="-2297" positionY="-1171" width="128" height="118"/>
         <element name="PRConcern" positionX="-2061" positionY="-991" width="128" height="163"/>
+        <element name="PRHospital" positionX="-2952" positionY="-963" width="128" height="103"/>
         <element name="PRNote" positionX="-1863" positionY="-823" width="128" height="193"/>
         <element name="PRQuestion" positionX="-2304" positionY="-979" width="128" height="193"/>
-        <element name="PRRecord" positionX="-2529" positionY="-976" width="128" height="163"/>
-        <element name="PRWard" positionX="-2745" positionY="-972" width="128" height="133"/>
+        <element name="PRRecord" positionX="-2529" positionY="-976" width="128" height="208"/>
         <element name="PRTrust" positionX="-3141" positionY="-955" width="128" height="88"/>
-        <element name="PRHospital" positionX="-2952" positionY="-963" width="128" height="103"/>
+        <element name="PRWard" positionX="-2745" positionY="-972" width="128" height="133"/>
     </elements>
 </model>

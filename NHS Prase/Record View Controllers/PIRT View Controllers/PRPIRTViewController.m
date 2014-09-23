@@ -53,7 +53,7 @@
     
     PRNoteViewController *preventViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
     loadView = preventViewController.view;
-    preventViewController.titleLabel.text = TDLocalizedStringWithDefaultValue(@"pirt.why.title", nil, nil, @"What could be done to stop this from happening again to you or other patients?", @"Concern section title");
+    preventViewController.titleLabel.text = TDLocalizedStringWithDefaultValue(@"pirt.prevent.title", nil, nil, @"What could be done to stop this from happening again to you or other patients?", @"Concern section title");
     preventViewController.delegate = self;
     preventViewController.noteView.inputAccessoryView = noteVCToolbar;
     

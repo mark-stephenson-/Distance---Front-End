@@ -18,6 +18,8 @@
 #import "PRButton.h"
 #import "PRQuestion.h"
 
+#import <MagicalRecord/MagicalRecord.h>
+#import <MagicalRecord/CoreData+MagicalRecord.h>
 
 // iOS 8 Deprecation
 #define ALERT_GO_HOME 111
@@ -40,14 +42,40 @@
     PRRecordSummaryViewController *summary = [tabController.viewControllers lastObject];
     summary.record = self.record;
     
+    // Configure for time tracking. Do this on viewDidLoad as unloading will only occur when this view is popped, i.e. when the record is cancelled.
+    trackingDate = self.record.startDate;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleQuestionRequest:) name:@"QuestionRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleBasicDataRequest:) name:@"BasicDataRequest" object:nil];
+    
+    // listen for foreground / background notifications to save the time variables
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetTracking) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commitTracking) name:UIApplicationWillResignActiveNotification object:nil];
+}
+
+-(void)resetTracking
+{
+    // reset the tracking from date
+    trackingDate = [NSDate date];
+}
+
+-(void)commitTracking
+{
+    // append the tracked time for this stint and save the record
+    NSDate *now = [NSDate date];
+    NSTimeInterval tracked = [now timeIntervalSinceDate:trackingDate];
+    self.record.timeTracked = @(self.record.timeTracked.floatValue + tracked);
+    //NSLog(@"Appended %f for a total time of %d", tracked, self.record.timeTracked.intValue);
 }
 
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"QuestionRequest" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"BasicDataRequest" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
 }
 
 -(void)handleQuestionRequest:(NSNotification *) note
@@ -106,7 +134,20 @@
         self.record.basicData = [NSDictionary dictionaryWithDictionary:enteredBasicData];
     }
     
+    NSUInteger newSegment = visibleSelector.selectedSegmentIndex;
+    if (newSegment == visibleSelector.numberOfSegments - 1) {
+        // commit the tracked time to the record so it can be loaded by the summary view controller. The tracking is paused on the summary screen to prevent confusion
+        [self commitTracking];
+    }
+    
+    if (oldSegment == visibleSelector.numberOfSegments - 1 && newSegment != oldSegment) {
+        // unpause the tracking when navigating away from the summary
+        [self resetTracking];
+    }
+    
     [super segmentChanged:sender];
+    
+    
 }
 
 #pragma mark - View Configuration

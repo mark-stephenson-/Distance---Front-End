@@ -7,6 +7,7 @@
 //
 
 #import "PRAgreementViewController.h"
+#import "PRTheme.h"
 
 @interface PRAgreementViewController ()
 
@@ -14,9 +15,12 @@
 
 @implementation PRAgreementViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    borderView.layer.borderColor = [[PRTheme sharedTheme] mainColor].CGColor;
 }
 
 - (void)didReceiveMemoryWarning {

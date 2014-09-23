@@ -29,6 +29,7 @@
 {
     if ([segue.identifier isEqualToString:@"CreateRecord"]) {
         PRRecord *newRecord = [PRRecord prototypeRecordWithWard:self.selectedWard];
+        newRecord.startDate = [NSDate date];
         
         PRRecordViewController *recordVC = (PRRecordViewController *) segue.destinationViewController;
         recordVC.record = newRecord;

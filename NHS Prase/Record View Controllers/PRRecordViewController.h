@@ -16,6 +16,11 @@
     IBOutlet UIView *progressFooter;
     IBOutlet UIProgressView *progressView;
     IBOutlet UILabel *progressLabel;
+    
+    // Time tracking ivars
+    NSDate *trackingDate;
+    //NSTimeInterval trackedTime;
+    //NSTimeInterval additionalUserTime;
 }
 
 @property (nonatomic, strong) PRRecord *record;

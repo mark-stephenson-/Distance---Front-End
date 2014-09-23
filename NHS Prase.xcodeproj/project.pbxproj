@@ -78,6 +78,8 @@
 		A5DE267F19B737ED000D3AF2 /* PRWardSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DE267E19B737ED000D3AF2 /* PRWardSelectViewController.m */; };
 		A5DE268619B739D9000D3AF2 /* PRPIRTWardSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DE268519B739D9000D3AF2 /* PRPIRTWardSelectViewController.m */; };
 		A5EBFEC219D16B940056A44A /* PRAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBFEC119D16B940056A44A /* PRAgreementViewController.m */; };
+		A5EBFECB19D17D710056A44A /* PRTimeSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBFECA19D17D710056A44A /* PRTimeSelectCell.m */; };
+		A5EBFED619D1876C0056A44A /* PRMultiTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBFED519D1876C0056A44A /* PRMultiTextFieldCell.m */; };
 		A5F521F519AF289800DC6C68 /* TDFormKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5466CB719AE3A3400240026 /* TDFormKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5F565AA19C338E10080C692 /* PRSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F565A919C338E10080C692 /* PRSelectionViewController.m */; };
 /* End PBXBuildFile section */
@@ -337,6 +339,10 @@
 		A5DE268519B739D9000D3AF2 /* PRPIRTWardSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRPIRTWardSelectViewController.m; sourceTree = "<group>"; };
 		A5EBFEC019D16B940056A44A /* PRAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRAgreementViewController.h; path = "Record View Controllers/QuestionViewControllers/PRAgreementViewController.h"; sourceTree = "<group>"; };
 		A5EBFEC119D16B940056A44A /* PRAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRAgreementViewController.m; path = "Record View Controllers/QuestionViewControllers/PRAgreementViewController.m"; sourceTree = "<group>"; };
+		A5EBFEC919D17D710056A44A /* PRTimeSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRTimeSelectCell.h; path = "Custom Form Cells/PRTimeSelectCell.h"; sourceTree = "<group>"; };
+		A5EBFECA19D17D710056A44A /* PRTimeSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRTimeSelectCell.m; path = "Custom Form Cells/PRTimeSelectCell.m"; sourceTree = "<group>"; };
+		A5EBFED419D1876C0056A44A /* PRMultiTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRMultiTextFieldCell.h; path = "Custom Form Cells/PRMultiTextFieldCell.h"; sourceTree = "<group>"; };
+		A5EBFED519D1876C0056A44A /* PRMultiTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRMultiTextFieldCell.m; path = "Custom Form Cells/PRMultiTextFieldCell.m"; sourceTree = "<group>"; };
 		A5F565A819C338E10080C692 /* PRSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRSelectionViewController.h; sourceTree = "<group>"; };
 		A5F565A919C338E10080C692 /* PRSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRSelectionViewController.m; sourceTree = "<group>"; };
 		B52AF8C77EDD4244ACFF7EC3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -656,8 +662,12 @@
 		A576056619B0ADD60018E9EA /* Custom Form Cells */ = {
 			isa = PBXGroup;
 			children = (
+				A5EBFED419D1876C0056A44A /* PRMultiTextFieldCell.h */,
+				A5EBFED519D1876C0056A44A /* PRMultiTextFieldCell.m */,
 				A576056719B0AE150018E9EA /* PRDateSelectCell.h */,
 				A576056819B0AE150018E9EA /* PRDateSelectCell.m */,
+				A5EBFEC919D17D710056A44A /* PRTimeSelectCell.h */,
+				A5EBFECA19D17D710056A44A /* PRTimeSelectCell.m */,
 				A57B559719CAE62A0069FE65 /* PRQuestionnaireCompleteCell.h */,
 				A57B559819CAE62A0069FE65 /* PRQuestionnaireCompleteCell.m */,
 				A544EEC319C899F700160388 /* PRIncrementCell.h */,
@@ -993,6 +1003,7 @@
 				A5882D2B19BA0FE500C04E4F /* PRTheme.m in Sources */,
 				A502278E19C09B22005B31D2 /* PRRecord.m in Sources */,
 				A502276E19C0913E005B31D2 /* PRModel.xcdatamodeld in Sources */,
+				A5EBFED619D1876C0056A44A /* PRMultiTextFieldCell.m in Sources */,
 				A544EEC519C899F700160388 /* PRIncrementCell.m in Sources */,
 				A58699AE19CB2E4F002E0C14 /* PRBasicDataCompleteCell.m in Sources */,
 				A5023E4819CC3A1D0076923A /* PRHospital.m in Sources */,
@@ -1005,6 +1016,7 @@
 				A502279519C09B22005B31D2 /* _PRWard.m in Sources */,
 				A5DE268619B739D9000D3AF2 /* PRPIRTWardSelectViewController.m in Sources */,
 				A51A6F8019B6FEDF004BF779 /* PRInputAccessoryView.m in Sources */,
+				A5EBFECB19D17D710056A44A /* PRTimeSelectCell.m in Sources */,
 				A502279319C09B22005B31D2 /* _PRQuestion.m in Sources */,
 				A52A3C8819B4C1F900985BAB /* PRNoteViewController.m in Sources */,
 				A504417D19B5D37B0000C9B3 /* PRCommentsSummaryViewController.m in Sources */,

@@ -11,6 +11,7 @@
 
 #import "PRQuestionnaireCompleteCell.h"
 #import "PRBasicDataCompleteCell.h"
+#import "PRTimeSelectCell.h"
 
 #import "PRRecord.h"
 #import "PRQuestion.h"
@@ -37,6 +38,11 @@
     BOOL basicDataComplete = basicDataInfo.count == 7;
     
     [self setFormValue:@(basicDataComplete) forFormKey:@"BasicData"];
+    
+    NSTimeInterval totalPatient = self.record.timeTracked.doubleValue + self.record.timeAdditionalPatient.doubleValue;
+    NSTimeInterval totalQuestionnaire = self.record.timeTracked.doubleValue + self.record.timeAdditionalQuestionnaire.doubleValue;
+    [self setFormValue:@(totalPatient) forFormKey:@"PatientTime"];
+    [self setFormValue:@(totalQuestionnaire) forFormKey:@"QuestionnaireTime"];
     
     // re-generate the cells so the Questionnaire incomplete selectionvc has the correct list
     [self reloadForm];
@@ -87,7 +93,20 @@
     questionnaireCell[@"userInfo"][@"selectionIdentifier"] = @"PRBasicSelectionVC";
     questionnaireCell[@"userInfo"][@"selectionDelegate"] = self;
     
-    return @[@[basicDataCell, questionnaireCell]];
+    // generate the time cells
+    
+    NSMutableDictionary *patientTimeCell = [PRTimeSelectCell cellInfoWithTitle:TDLocalizedStringWithDefaultValue(@"summary.question.patient-time-label", nil, nil, @"Time spent with Patient", @"Title label for how long the volunteer has spent with the patient.")
+                                                                         value:self.record.timeTracked
+                                                                        andKey:@"PatientTime"];
+    patientTimeCell[@"reuseIdentifier"] = @"TimeSelectCell";
+    
+    NSMutableDictionary *questionnaireTimeCell = [PRTimeSelectCell cellInfoWithTitle:TDLocalizedStringWithDefaultValue(@"summary.question.questionnaire-time-label", nil, nil, @"Time spent on Questionnaire", @"Title label for how long the volunteer has spent completing the questionnaire.")
+                                                                               value:self.record.timeTracked
+                                                                              andKey:@"QuestionnaireTime"];
+    questionnaireTimeCell[@"reuseIdentifier"] = @"TimeSelectCell";
+    
+    
+    return @[@[basicDataCell, questionnaireCell, patientTimeCell, questionnaireTimeCell]];
 }
 
 -(void)selectionCell:(TDSelectCell *)cell requestsPresentationOfSelectionViewController:(TDSelectionViewController *)selectionVC
@@ -110,6 +129,21 @@
 -(void)goToBasicData:(id) sender
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"BasicDataRequest" object:nil];
+}
+
+-(void)cellValueChanged:(TDCell *)cell
+{
+    if ([cell.key isEqualToString:@"PatientTime"]) {
+        NSTimeInterval difference = ((NSNumber *)cell.value).doubleValue - self.record.timeTracked.doubleValue;
+        self.record.timeAdditionalPatient = @(difference);
+    }
+    
+    if ([cell.key isEqualToString:@"QuestionnaireTime"]) {
+        NSTimeInterval difference = ((NSNumber *)cell.value).doubleValue - self.record.timeTracked.doubleValue;
+        self.record.timeAdditionalQuestionnaire = @(difference);
+    }
+    
+    [super cellValueChanged:cell];
 }
 
 @end

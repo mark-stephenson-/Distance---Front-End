@@ -6,8 +6,11 @@
 
 extern const struct PRRecordAttributes {
 	__unsafe_unretained NSString *basicData;
-	__unsafe_unretained NSString *date;
 	__unsafe_unretained NSString *language;
+	__unsafe_unretained NSString *startDate;
+	__unsafe_unretained NSString *timeAdditionalPatient;
+	__unsafe_unretained NSString *timeAdditionalQuestionnaire;
+	__unsafe_unretained NSString *timeTracked;
 } PRRecordAttributes;
 
 extern const struct PRRecordRelationships {
@@ -28,6 +31,9 @@ extern const struct PRRecordFetchedProperties {
 @class PRWard;
 
 @class NSObject;
+
+
+
 
 
 
@@ -54,21 +60,63 @@ extern const struct PRRecordFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDate* date;
-
-
-
-//- (BOOL)validateDate:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
 @property (nonatomic, strong) NSString* language;
 
 
 
 //- (BOOL)validateLanguage:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSDate* startDate;
+
+
+
+//- (BOOL)validateStartDate:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* timeAdditionalPatient;
+
+
+
+@property int64_t timeAdditionalPatientValue;
+- (int64_t)timeAdditionalPatientValue;
+- (void)setTimeAdditionalPatientValue:(int64_t)value_;
+
+//- (BOOL)validateTimeAdditionalPatient:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* timeAdditionalQuestionnaire;
+
+
+
+@property int64_t timeAdditionalQuestionnaireValue;
+- (int64_t)timeAdditionalQuestionnaireValue;
+- (void)setTimeAdditionalQuestionnaireValue:(int64_t)value_;
+
+//- (BOOL)validateTimeAdditionalQuestionnaire:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* timeTracked;
+
+
+
+@property int64_t timeTrackedValue;
+- (int64_t)timeTrackedValue;
+- (void)setTimeTrackedValue:(int64_t)value_;
+
+//- (BOOL)validateTimeTracked:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -145,14 +193,41 @@ extern const struct PRRecordFetchedProperties {
 
 
 
-- (NSDate*)primitiveDate;
-- (void)setPrimitiveDate:(NSDate*)value;
-
-
-
-
 - (NSString*)primitiveLanguage;
 - (void)setPrimitiveLanguage:(NSString*)value;
+
+
+
+
+- (NSDate*)primitiveStartDate;
+- (void)setPrimitiveStartDate:(NSDate*)value;
+
+
+
+
+- (NSNumber*)primitiveTimeAdditionalPatient;
+- (void)setPrimitiveTimeAdditionalPatient:(NSNumber*)value;
+
+- (int64_t)primitiveTimeAdditionalPatientValue;
+- (void)setPrimitiveTimeAdditionalPatientValue:(int64_t)value_;
+
+
+
+
+- (NSNumber*)primitiveTimeAdditionalQuestionnaire;
+- (void)setPrimitiveTimeAdditionalQuestionnaire:(NSNumber*)value;
+
+- (int64_t)primitiveTimeAdditionalQuestionnaireValue;
+- (void)setPrimitiveTimeAdditionalQuestionnaireValue:(int64_t)value_;
+
+
+
+
+- (NSNumber*)primitiveTimeTracked;
+- (void)setPrimitiveTimeTracked:(NSNumber*)value;
+
+- (int64_t)primitiveTimeTrackedValue;
+- (void)setPrimitiveTimeTrackedValue:(int64_t)value_;
 
 
 
