@@ -8,6 +8,9 @@
 
 #import "PRWardSelectViewController.h"
 
+@class PRRecord;
+@class PRWard;
+
 /*!
  * @class PRPIRTWardSelectViewController
  * @discussion A PIRT concern can be applied to a ward which is not the same as that of the current record. This extends its superclass with a 'this ward' segment which overrides any previous choices with those entered as the record was created. Setting this ward to yes should prevent the user from changing the ward fields.
@@ -16,6 +19,8 @@
 {
     IBOutlet UISegmentedControl *currentWardSegment;
 }
+
+@property (nonatomic, strong) PRRecord *record;
 
 -(IBAction)segmentChanged:(id)sender;
 

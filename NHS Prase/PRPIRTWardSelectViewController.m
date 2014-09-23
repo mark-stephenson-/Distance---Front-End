@@ -8,15 +8,39 @@
 
 #import "PRPIRTWardSelectViewController.h"
 
+#import "PRRecord.h"
+
+#import "PRWard.h"
+#import "PRHospital.h"
+#import "PRTrust.h"
+
 @implementation PRPIRTWardSelectViewController
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (self.selectedWard == nil || self.selectedWard == self.record.ward) {
+        
+        self.selectedTrust = self.record.ward.hospital.trust;
+        self.selectedHospital = self.record.ward.hospital;
+        self.selectedWard = self.record.ward;
+        
+        currentWardSegment.selectedSegmentIndex = 0;
+    } else {
+        currentWardSegment.selectedSegmentIndex = 1;
+    }
+    
+    [self refreshViews];
+}
 
 -(void)refreshViews
 {
     if (currentWardSegment.selectedSegmentIndex == 0) {
-        
-        self.selectedTrust = [[NSUserDefaults standardUserDefaults] valueForKey:@"trust"];
-        self.selectedHospital = [[NSUserDefaults standardUserDefaults] valueForKey:@"hospital"];
-        self.selectedWard = [[NSUserDefaults standardUserDefaults] valueForKey:@"ward"];
+       
+        self.selectedTrust = self.record.ward.hospital.trust;
+        self.selectedHospital = self.record.ward.hospital;
+        self.selectedWard = self.record.ward;
         
         [super refreshViews];
         

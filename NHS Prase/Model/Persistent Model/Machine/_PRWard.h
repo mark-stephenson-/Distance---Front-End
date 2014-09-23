@@ -5,14 +5,14 @@
 
 
 extern const struct PRWardAttributes {
-	__unsafe_unretained NSString *hospital;
-	__unsafe_unretained NSString *trust;
-	__unsafe_unretained NSString *ward;
+	__unsafe_unretained NSString *id;
+	__unsafe_unretained NSString *name;
 } PRWardAttributes;
 
 extern const struct PRWardRelationships {
 	__unsafe_unretained NSString *concerns;
 	__unsafe_unretained NSString *goodNotes;
+	__unsafe_unretained NSString *hospital;
 	__unsafe_unretained NSString *records;
 } PRWardRelationships;
 
@@ -21,8 +21,8 @@ extern const struct PRWardFetchedProperties {
 
 @class PRConcern;
 @class PRNote;
+@class PRHospital;
 @class PRRecord;
-
 
 
 
@@ -40,31 +40,25 @@ extern const struct PRWardFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* hospital;
+@property (nonatomic, strong) NSNumber* id;
 
 
 
-//- (BOOL)validateHospital:(id*)value_ error:(NSError**)error_;
+@property int16_t idValue;
+- (int16_t)idValue;
+- (void)setIdValue:(int16_t)value_;
 
-
-
-
-
-@property (nonatomic, strong) NSString* trust;
-
-
-
-//- (BOOL)validateTrust:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateId:(id*)value_ error:(NSError**)error_;
 
 
 
 
 
-@property (nonatomic, strong) NSString* ward;
+@property (nonatomic, strong) NSString* name;
 
 
 
-//- (BOOL)validateWard:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -80,6 +74,13 @@ extern const struct PRWardFetchedProperties {
 @property (nonatomic, strong) NSSet *goodNotes;
 
 - (NSMutableSet*)goodNotesSet;
+
+
+
+
+@property (nonatomic, strong) PRHospital *hospital;
+
+//- (BOOL)validateHospital:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -116,20 +117,17 @@ extern const struct PRWardFetchedProperties {
 @interface _PRWard (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSString*)primitiveHospital;
-- (void)setPrimitiveHospital:(NSString*)value;
+- (NSNumber*)primitiveId;
+- (void)setPrimitiveId:(NSNumber*)value;
+
+- (int16_t)primitiveIdValue;
+- (void)setPrimitiveIdValue:(int16_t)value_;
 
 
 
 
-- (NSString*)primitiveTrust;
-- (void)setPrimitiveTrust:(NSString*)value;
-
-
-
-
-- (NSString*)primitiveWard;
-- (void)setPrimitiveWard:(NSString*)value;
+- (NSString*)primitiveName;
+- (void)setPrimitiveName:(NSString*)value;
 
 
 
@@ -142,6 +140,11 @@ extern const struct PRWardFetchedProperties {
 
 - (NSMutableSet*)primitiveGoodNotes;
 - (void)setPrimitiveGoodNotes:(NSMutableSet*)value;
+
+
+
+- (PRHospital*)primitiveHospital;
+- (void)setPrimitiveHospital:(PRHospital*)value;
 
 
 

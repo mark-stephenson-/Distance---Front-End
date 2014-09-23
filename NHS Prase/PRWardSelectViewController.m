@@ -10,6 +10,13 @@
 
 #import "PRSelectionViewController.h"
 
+#import "PRTrust.h"
+#import "PRHospital.h"
+#import "PRWard.h"
+
+#import <MagicalRecord/MagicalRecord.h>
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+
 @implementation PRWardSelectViewController
 
 - (void)viewDidLoad {
@@ -17,14 +24,9 @@
     // Do any additional setup after loading the view.
     
     
-    trusts = @[@"Bradford Teaching Hospital NHS Foundation Trust", @"Barnsley Hospital NHS Foundation Trust"];
+    [PRWard createPrototypeWards];
     
-    hospitals = @{@"Bradford Teaching Hospital NHS Foundation Trust": @[@"Bradford Teaching Hospital"],
-                  @"Barnsley Hospital NHS Foundation Trust": @[@"Barnsley Hospital"]};
-    
-    wards = @{@"Bradford Teaching Hospital": @[@"Ward 6",
-                                               @"Ward 18"],
-              @"Barnsley Hospital": @[@"Ward 19"]};
+    trusts = [PRTrust MR_findAllSortedBy:@"name" ascending:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -36,13 +38,13 @@
 
 -(void)refreshViews
 {
-    trustField.text = self.selectedTrust;
-    hospitalField.text = self.selectedHospital;
-    wardField.text = self.selectedWard;
+    trustField.text = self.selectedTrust.name;
+    hospitalField.text = self.selectedHospital.name;
+    wardField.text = self.selectedWard.name;
     
     trustField.enabled = YES;
-    hospitalField.enabled = [self.selectedTrust isNonNullString];
-    wardField.enabled = [self.selectedHospital isNonNullString];
+    hospitalField.enabled = self.selectedTrust != nil;
+    wardField.enabled = self.selectedHospital != nil;
 }
 
 #pragma mark - Delegate Methods
@@ -52,7 +54,7 @@
 {
     NSDictionary *options;
     NSArray *sortedKeys;
-    NSString *selectedKey;
+    id<NSCopying> selectedKey;
     BOOL requiresSelection;
     NSString *selectionKey;
     
@@ -64,16 +66,16 @@
     
     if (textField == trustField) {
         
-        NSMutableDictionary *tempOptions = [NSMutableDictionary dictionaryWithCapacity:hospitals.count];
+        NSMutableDictionary *tempOptions = [NSMutableDictionary dictionaryWithCapacity:trusts.count];
         
-        for (int h = 0; h < trusts.count; h++) {
-            // get localized string
-            tempOptions[trusts[h]] = trusts[h];
+        for (int t = 0; t < trusts.count; t++) {
+            PRTrust *thisTrust = trusts[t];
+            tempOptions[thisTrust.id] = thisTrust.name;
         }
         
         options = tempOptions;
-        sortedKeys = @[trusts];
-        selectedKey = self.selectedTrust;
+        sortedKeys = @[[trusts valueForKeyPath:@"id"]];
+        selectedKey = self.selectedTrust.id;
         requiresSelection = YES;
         
         selectionKey = @"trust";
@@ -81,23 +83,21 @@
         selectionTitle = TDLocalizedStringWithDefaultValue(@"ward-select.title.trust", nil, nil, @"Trust", @"Title when selecting a trust.");
         selectionTitleLocalizationKey = @"ward-select.title.trust";
         
-        selectionSubTitle = TDLocalizedStringWithDefaultValue(@"ward-select.subtitle.trust", nil, nil, @"Please select you trust from the list below:", @"Subtitle when selecting a trust.");
+        selectionSubTitle = TDLocalizedStringWithDefaultValue(@"ward-select.subtitle.trust", nil, nil, @"Please select your trust from the list below:", @"Subtitle when selecting a trust.");
         selectionSubtitleLocalizationKey = @"ward-select.subtitle.trust";
         
     } else if (textField == hospitalField) {
         
-        NSArray *trustHospitals = hospitals[self.selectedTrust];
-        NSMutableDictionary *tempOptions = [NSMutableDictionary dictionaryWithCapacity:trustHospitals.count];
+        NSMutableDictionary *tempOptions = [NSMutableDictionary dictionaryWithCapacity:hospitals.count];
         
-        
-        for (int h = 0; h < trustHospitals.count; h++) {
-            // get localized string
-            tempOptions[trustHospitals[h]] = trustHospitals[h];
+        for (int h = 0; h < hospitals.count; h++) {
+            PRHospital *thisHospital = hospitals[h];
+            tempOptions[thisHospital.id] = thisHospital.name;
         }
         
         options = tempOptions;
-        sortedKeys = @[trustHospitals];
-        selectedKey = self.selectedHospital;
+        sortedKeys = @[[hospitals valueForKeyPath:@"id"]];
+        selectedKey = self.selectedHospital.id;
         requiresSelection = YES;
         selectionKey = @"hospital";
         
@@ -109,17 +109,16 @@
         
     } else if (textField == wardField) {
         
-        NSArray *hospitalWards = wards[self.selectedHospital];
-        NSMutableDictionary *tempOptions = [NSMutableDictionary dictionaryWithCapacity:hospitalWards.count];
+        NSMutableDictionary *tempOptions = [NSMutableDictionary dictionaryWithCapacity:wards.count];
         
-        for (int w = 0; w < hospitalWards.count; w++) {
-            // get localized string
-            tempOptions[hospitalWards[w]] = hospitalWards[w];
+        for (int w = 0; w < wards.count; w++) {
+            PRWard *thisWard = wards[w];
+            tempOptions[thisWard.id] = thisWard.name;
         }
         
         options = tempOptions;
-        sortedKeys = @[hospitalWards];
-        selectedKey = self.selectedWard;
+        sortedKeys = @[[wards valueForKeyPath:@"id"]];
+        selectedKey = self.selectedWard.id;
         requiresSelection = NO;
         selectionKey = @"ward";
         
@@ -165,24 +164,42 @@
     NSString *selectionKey = selectionVC.key;
     
     if ([selectionKey isEqualToString:@"trust"]) {
-        NSString *newTrust = [[selectionVC selectedKeys] anyObject];
-        if (![newTrust isEqualToString:self.selectedTrust]) {
+        NSNumber *newTrustID = [[selectionVC selectedKeys] anyObject];
+        
+        
+        if (self.selectedTrust == nil || ![newTrustID isEqualToNumber:self.selectedTrust.id]) {
+            PRTrust *newTrust = [[trusts filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", newTrustID]] firstObject];
             self.selectedTrust = newTrust;
+            
+            // clear the existing hospital and ward as they will not be under this trust
             self.selectedHospital = nil;
             self.selectedWard = nil;
         }
     }
     
     if ([selectionKey isEqualToString:@"hospital"]) {
-        NSString *newHospital = [[selectionVC selectedKeys] anyObject];
-        if (![newHospital isEqualToString:self.selectedHospital]) {
+        NSNumber *newHospitalID = [[selectionVC selectedKeys] anyObject];
+        
+        if (self.selectedHospital == nil || ![newHospitalID isEqualToNumber:self.selectedHospital.id]) {
+            
+            PRHospital *newHospital = [[hospitals filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", newHospitalID]] firstObject];
             self.selectedHospital = newHospital;
+            
+            // clear the existing ward as it will not be under this hospital
             self.selectedWard = nil;
         }
     }
     
     if ([selectionKey isEqualToString:@"ward"]) {
-        self.selectedWard = [[selectionVC selectedKeys] anyObject];
+        
+        NSNumber *newWardID = [[selectionVC selectedKeys] anyObject];
+        
+        if (self.selectedWard == nil ||  ![newWardID isEqualToNumber:self.selectedWard.id]) {
+            PRWard *newWard = [[wards filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", newWardID]] firstObject];
+            
+            self.selectedWard = newWard;
+        }
+        
     }
     
     [self refreshViews];
@@ -192,6 +209,36 @@
 -(void)selectionViewControllerRequestsCancel:(TDSelectionViewController *)selectionVC
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Setters
+
+-(void)setSelectedTrust:(PRTrust *)selectedTrust
+{
+    if (_selectedTrust != selectedTrust) {
+        // only change and pull the new hospitals if changed to prevent too much CoreData work
+        _selectedTrust = selectedTrust;
+        
+        if (selectedTrust != nil) {
+            hospitals = [selectedTrust.hospitals sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+        } else {
+            hospitals = nil;
+        }
+    }
+}
+
+-(void)setSelectedHospital:(PRHospital *)selectedHospital
+{
+    if (_selectedHospital != selectedHospital) {
+        // only change and pull the new wards if changed to prevent too much CoreData work
+        _selectedHospital = selectedHospital;
+        
+        if (selectedHospital != nil) {
+            wards = [selectedHospital.wards sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+        } else {
+            wards = nil;
+        }
+    }
 }
 
 @end

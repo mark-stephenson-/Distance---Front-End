@@ -19,6 +19,7 @@
     IBOutlet UILabel *promptLabel;
     IBOutlet UILabel *titleLabel;
     IBOutlet UIView *pirtView;
+    IBOutletCollection(PRButton) NSArray *pirtButtons;
 }
 
 @property (nonatomic, strong) PRQuestion *question;

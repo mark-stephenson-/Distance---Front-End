@@ -11,10 +11,14 @@
 #import "PRNoteViewController.h"
 #import "PRInputAccessoryView.h"
 
+@class PRRecord;
+
 @interface PRPIRTViewController : PRSegmentTabViewController <PRNoteDelegate, TDInputAccessoryDelegate>
 {
     PRInputAccessoryView *noteVCToolbar;
 }
+
+@property (nonatomic, strong) PRRecord *record;
 
 -(IBAction)cancelConcern:(id) sender;
 

@@ -30,9 +30,13 @@
     monthField.textInsets = fieldInsets;
     yearField.textInsets = fieldInsets;
     
-    self.scrollContainer = self.formViewController.tableView;
     self.keyboardAccessoryView = inputView;
     self.components = @[dayField, monthField, yearField];
+}
+
+-(void)setFormViewController:(TDFormViewController *)formViewController
+{
+    [super setFormViewController:formViewController];
 }
 
 -(BOOL)select
@@ -64,14 +68,10 @@
 {
     if ([value isKindOfClass:[NSString class]]) {
         selectedDate = [self.formatter dateFromString:value];
-        if (selectedDate) {
-            [super setValue:value];
-        }
     }
     
     if ([value isKindOfClass:[NSDate class]]) {
         selectedDate = (NSDate *) value;
-        [super setValue:[self.formatter stringFromDate:selectedDate]];
     }
     
     if (value == nil) {
@@ -151,6 +151,7 @@
     
     if (![dayField.text isNonNullString] || ![monthField.text isNonNullString] || ![yearField.text isNonNullString]) {
         selectedDate = nil;
+        [self.formViewController cellValueChanged:self];
         return;
     }
     
@@ -158,11 +159,13 @@
     comps.day = [dayField.text integerValue];
     comps.month = [monthField.text integerValue];
     comps.year = [yearField.text integerValue];
+    comps.hour = 12; // set the time to be midday to ensure BST / GMT doesn't change the date component
     
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDate *date = [calendar dateFromComponents:comps];
     
     [self setValue:date];
+    [self.formViewController cellValueChanged:self];
 }
 
 #pragma mark - TextField Delegate
@@ -170,6 +173,9 @@
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [super textFieldDidBeginEditing:textField];
+    
+    // only set the scroll container when one of this cell's fields becomes active otherwiuse another cell in this tableview could pick up the keyboard notifications causing incorrect animations.
+    self.scrollContainer = self.formViewController.tableView;
     
     [textField selectAll:self];
 }
@@ -201,7 +207,10 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [self.formViewController textFieldDidEndEditing:textField];
+    [super textFieldDidEndEditing:textField];
+    
+    // clear the scroll container to prevent incorrect responses to any other cells' keyboard notifications in this tableview
+    self.scrollContainer = nil;
     
     [self applyFieldsAsDate];
 }

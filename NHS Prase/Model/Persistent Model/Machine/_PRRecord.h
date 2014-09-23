@@ -5,6 +5,7 @@
 
 
 extern const struct PRRecordAttributes {
+	__unsafe_unretained NSString *basicData;
 	__unsafe_unretained NSString *date;
 	__unsafe_unretained NSString *language;
 } PRRecordAttributes;
@@ -26,6 +27,7 @@ extern const struct PRRecordFetchedProperties {
 @class PRQuestion;
 @class PRWard;
 
+@class NSObject;
 
 
 
@@ -37,6 +39,16 @@ extern const struct PRRecordFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (PRRecordID*)objectID;
+
+
+
+
+
+@property (nonatomic, strong) id basicData;
+
+
+
+//- (BOOL)validateBasicData:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -125,6 +137,12 @@ extern const struct PRRecordFetchedProperties {
 @end
 
 @interface _PRRecord (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (id)primitiveBasicData;
+- (void)setPrimitiveBasicData:(id)value;
+
+
 
 
 - (NSDate*)primitiveDate;

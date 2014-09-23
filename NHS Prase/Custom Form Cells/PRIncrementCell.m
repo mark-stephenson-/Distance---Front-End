@@ -21,6 +21,11 @@
     return info;
 }
 
+-(id)value
+{
+    return currentValue;
+}
+
 -(void)setValue:(id)value
 {
     if ([value isKindOfClass:[NSNumber class]]) {
@@ -50,11 +55,13 @@
 -(void)increment:(id)sender
 {
     self.value = @(currentValue.integerValue + 1);
+    [self.formViewController cellValueChanged:self];
 }
 
 -(void)decrement:(id)sender
 {
     self.value = @(currentValue.integerValue - 1);
+    [self.formViewController cellValueChanged:self];
 }
 
 @end

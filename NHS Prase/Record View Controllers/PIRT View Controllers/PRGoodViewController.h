@@ -11,6 +11,8 @@
 #import <TheDistanceKit/TheDistanceKit.h>
 
 @class TDTextField;
+@class PRRecord;
+@class PRWard;
 
 @interface PRGoodViewController : PRNoteViewController <TDSelectionViewControllerDelegate>
 {
@@ -18,8 +20,8 @@
     IBOutlet TDTextField *wardSelectionField;
 }
 
-@property (nonatomic, strong) NSString *thisWard;
-@property (nonatomic, strong) NSString *ward;
+@property (nonatomic, strong) PRRecord *record;
+@property (nonatomic, strong) PRWard *selectedWard;
 
 -(IBAction)segmentChanged:(id)sender;
 

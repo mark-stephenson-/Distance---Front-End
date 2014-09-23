@@ -58,11 +58,13 @@
 {
     [super viewDidLayoutSubviews];
     
-    if (promptLabel.preferredMaxLayoutWidth != promptLabel.frame.size.width) {
-        promptLabel.preferredMaxLayoutWidth = promptLabel.frame.size.width;
-        //[self.view layoutIfNeeded];
+    CGSize viewSize = self.view.frame.size;
+    PRButtonImageAlignment alignment = viewSize.width > viewSize.height ? kPRButtonImageAlignmentLeft : kPRButtonImageAlignmentTop;
+    for (PRButton *button in pirtButtons) {
+        if (button.imageAlignment != alignment) {
+            button.imageAlignment = alignment;
+        }
     }
-    
 }
 
 #pragma mark - PIRT Methods
@@ -99,6 +101,7 @@
 {
     PRGoodViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"GoodVC"];
     toPresent.delegate = self;
+    toPresent.record = self.question.record;
     
     UIView *loadView = toPresent.view;
     PRInputAccessoryView *accessoryView = [self accessoryView];

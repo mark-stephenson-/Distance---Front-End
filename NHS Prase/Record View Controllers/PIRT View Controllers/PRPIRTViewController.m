@@ -8,7 +8,7 @@
 
 #import "PRPIRTViewController.h"
 
-#import "PRGoodViewController.h"
+#import "PRPIRTWardSelectViewController.h"
 #import "PRPIRTQuestionsViewController.h"
 #import "PRTheme.h"
 
@@ -31,7 +31,8 @@
     [self applyThemeToView:noteVCToolbar];
     
     // grab the storyboard created view controllers
-    PRGoodViewController *wardSelectVC = tabController.viewControllers[0];
+    PRPIRTWardSelectViewController *wardSelectVC = tabController.viewControllers[0];
+    wardSelectVC.record = self.record;
     PRPIRTQuestionsViewController *questionsVC = tabController.viewControllers[1];
     
     // force the view controllers to load their views so they can be configured here

@@ -4,14 +4,14 @@
 #import "_PRWard.h"
 
 const struct PRWardAttributes PRWardAttributes = {
-	.hospital = @"hospital",
-	.trust = @"trust",
-	.ward = @"ward",
+	.id = @"id",
+	.name = @"name",
 };
 
 const struct PRWardRelationships PRWardRelationships = {
 	.concerns = @"concerns",
 	.goodNotes = @"goodNotes",
+	.hospital = @"hospital",
 	.records = @"records",
 };
 
@@ -44,6 +44,11 @@ const struct PRWardFetchedProperties PRWardFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"idValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"id"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 
 	return keyPaths;
 }
@@ -51,21 +56,33 @@ const struct PRWardFetchedProperties PRWardFetchedProperties = {
 
 
 
-@dynamic hospital;
+@dynamic id;
+
+
+
+- (int16_t)idValue {
+	NSNumber *result = [self id];
+	return [result shortValue];
+}
+
+- (void)setIdValue:(int16_t)value_ {
+	[self setId:[NSNumber numberWithShort:value_]];
+}
+
+- (int16_t)primitiveIdValue {
+	NSNumber *result = [self primitiveId];
+	return [result shortValue];
+}
+
+- (void)setPrimitiveIdValue:(int16_t)value_ {
+	[self setPrimitiveId:[NSNumber numberWithShort:value_]];
+}
 
 
 
 
 
-
-@dynamic trust;
-
-
-
-
-
-
-@dynamic ward;
+@dynamic name;
 
 
 
@@ -96,6 +113,10 @@ const struct PRWardFetchedProperties PRWardFetchedProperties = {
 	[self didAccessValueForKey:@"goodNotes"];
 	return result;
 }
+	
+
+@dynamic hospital;
+
 	
 
 @dynamic records;

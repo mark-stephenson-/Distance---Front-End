@@ -8,6 +8,13 @@
 
 #import "PRGoodViewController.h"
 
+#import "PRGoodWardSelectViewController.h"
+#import "PRRecord.h"
+
+#import "PRWard.h"
+#import "PRHospital.h"
+#import "PRTrust.h"
+
 @interface PRGoodViewController ()
 
 @end
@@ -18,7 +25,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.thisWard = @"Bolton - Short stay";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,22 +36,25 @@
 {
     [super viewWillAppear:animated];
     
-    [self refreshViews];
-}
-
--(void)setWard:(NSString *)ward
-{
-    _ward = ward;
+    if (self.selectedWard == nil) {
+        self.selectedWard = self.record.ward;
+        thisWardControl.selectedSegmentIndex = 0;
+    } else {
+        thisWardControl.selectedSegmentIndex = 1;
+    }
     
-    wardSelectionField.text = ward;
+    [self refreshViews];
 }
 
 -(void)refreshViews
 {
     wardSelectionField.enabled = thisWardControl.selectedSegmentIndex != 0;
+    
     if (!wardSelectionField.enabled) {
-        wardSelectionField.text = self.thisWard;
+        self.selectedWard = self.record.ward;
     }
+    
+    wardSelectionField.text = [NSString stringWithFormat:@"%@, %@, %@", self.selectedWard.name, self.selectedWard.hospital.name, self.selectedWard.hospital.trust.name];
 }
 
 -(void)segmentChanged:(id)sender
@@ -55,49 +64,21 @@
 
 #pragma mark - TextField Delegate
 
--(NSDictionary *)wardOptions
-{
-    static NSDictionary *wards = nil;
-    
-    if (wards == nil) {
-        wards = @{@1:@"Bolton - Short stay",
-                  @2:@"Farndale - Trauma and orthopeadics",
-                  @3:@"Fountains - Short stay",
-                  @4:@"Granby - Elderly medical",
-                  @5:@"Harlow - Private patients",
-                  @6:@"Littondale - Male surgical"};
-    }
-    
-    return wards;
-}
-
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    TDSelectionViewController *basicSelection = (TDSelectionViewController *) [self.storyboard instantiateViewControllerWithIdentifier:@"PRBasicSelectionVC"];
+    PRGoodWardSelectViewController *wardSelect = [self.storyboard instantiateViewControllerWithIdentifier:@"GoodWardSelect"];
+    wardSelect.delegate = self;
+    wardSelect.record = self.record;
+    wardSelect.selectedWard = self.selectedWard;
+    wardSelect.modalPresentationStyle = UIModalPresentationFormSheet;
     
-    basicSelection.title = @"Ward";
-    
-    NSDictionary *wardOptions = [self wardOptions];
-    NSArray *order = @[[wardOptions.allKeys sortedArrayUsingSelector:@selector(compare:)]];
-    
-    [basicSelection setOptions:wardOptions
-                   withDetails:nil
-                     orderedAs:order];
-    
-    basicSelection.tableView.allowsMultipleSelection = NO;
-    basicSelection.delegate = self;
-    basicSelection.requiresSelection = YES;
-    
-    UINavigationController *selectionNav = [[UINavigationController alloc] initWithRootViewController:basicSelection];
-    
-    selectionNav.modalPresentationStyle = UIModalPresentationPageSheet;
-    
-    [self presentViewController:selectionNav animated:YES completion:nil];
+    [self presentViewController:wardSelect animated:YES completion:nil];
     
     return NO;
 }
 
 #pragma mark - Selection Methods
+
 
 -(void)selectionViewControllerRequestsCancel:(TDSelectionViewController *)selectionVC
 {
@@ -106,9 +87,13 @@
 
 -(void)selectionViewControllerRequestsDismissal:(TDSelectionViewController *)selectionVC
 {
-    NSNumber *selected = [selectionVC.selectedKeys anyObject];
-    self.ward = [self wardOptions][selected];
+    if ([selectionVC isKindOfClass:[PRGoodWardSelectViewController class]]) {
+        self.selectedWard = ((PRGoodWardSelectViewController *) selectionVC).selectedWard;
+        [self refreshViews];
+    }
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 @end

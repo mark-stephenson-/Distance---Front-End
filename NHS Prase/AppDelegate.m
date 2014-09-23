@@ -28,7 +28,7 @@
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"PRModel.sqlite"];
     
     // set up app wide inset
-    [[TDTextField appearance] setTextInsets:UIEdgeInsetsMake(6, 15, 6, 15)];
+    [[TDTextField appearance] setTextInsets:UIEdgeInsetsMake(10, 15, 10, 15)];
     
     return YES;
 }

@@ -28,9 +28,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"CreateRecord"]) {
-        PRRecord *newRecord = [PRRecord prototypeRecordWithTrust:self.selectedTrust
-                                                        hospital:self.selectedHospital
-                                                            ward:self.selectedWard];
+        PRRecord *newRecord = [PRRecord prototypeRecordWithWard:self.selectedWard];
         
         PRRecordViewController *recordVC = (PRRecordViewController *) segue.destinationViewController;
         recordVC.record = newRecord;
@@ -47,12 +45,10 @@
     isFrench = !isFrench;
 }
 
-
 -(void)createRecord:(id)sender
 {
-    if (true) { // [self.selectedTrust isNonNullString] && [self.selectedHospital isNonNullString] && [self.selectedWard isNonNullString]) {
-        
-        
+    // a ward can only be non-nil if the trust and hospital have been chosen
+    if (true) { //self.selectedWard != nil) {
         
         [self performSegueWithIdentifier:@"CreateRecord" sender:self];
         
@@ -60,11 +56,11 @@
         
         NSString *errorMessage = @"";
         
-        if (![self.selectedTrust isNonNullString]) {
+        if (self.selectedTrust == nil) {
             errorMessage = TDLocalizedStringWithDefaultValue(@"home.create-error.no-trust", nil, nil, @"Please select a trust.", @"The error shown in the user tries to create a new record without selecting a trust.");
         }
         
-        if (![self.selectedHospital isNonNullString]) {
+        if (self.selectedHospital == nil) {
             
             if (errorMessage.length > 0) {
                 errorMessage = [errorMessage stringByAppendingString:@"\n"];
@@ -74,7 +70,7 @@
             errorMessage = [errorMessage stringByAppendingString:hospitalError];
         }
         
-        if (![wardField.text isNonNullString]) {
+        if (self.selectedWard == nil) {
             
             if (errorMessage.length > 0) {
                 errorMessage = [errorMessage stringByAppendingString:@"\n"];

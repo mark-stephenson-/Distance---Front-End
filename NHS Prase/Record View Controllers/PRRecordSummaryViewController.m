@@ -7,8 +7,10 @@
 //
 
 #import "PRRecordSummaryViewController.h"
-#import "PRQuestionnaireCompleteCell.h"
 #import "PRSelectionViewController.h"
+
+#import "PRQuestionnaireCompleteCell.h"
+#import "PRBasicDataCompleteCell.h"
 
 #import "PRRecord.h"
 #import "PRQuestion.h"
@@ -23,15 +25,42 @@
 {
     [super viewWillAppear:animated];
     
+    // check the number of questions and update the value if necessry
     NSInteger answered = [self.record answeredQuestions];
     NSInteger total = self.record.questions.count;
-
+    
     [self setFormValue:@[@(answered), @(total)]
             forFormKey:@"Questionnaire"];
+    
+    // check if basic data is complete and update the value if necessary
+    NSDictionary *basicDataInfo = self.record.basicDataDictionary;
+    BOOL basicDataComplete = basicDataInfo.count == 7;
+    
+    [self setFormValue:@(basicDataComplete) forFormKey:@"BasicData"];
+    
+    // re-generate the cells so the Questionnaire incomplete selectionvc has the correct list
+    [self reloadForm];
 }
 
 -(NSArray *)generateCellInfo
 {
+    // Generate the basic data cell
+    
+    NSDictionary *basicDataInfo = self.record.basicDataDictionary;
+    BOOL basicDataComplete = basicDataInfo.count == 7;
+    
+    NSMutableDictionary *basicDataCell = [PRBasicDataCompleteCell cellInfoWithTitle:TDLocalizedStringWithDefaultValue(@"summary.question.basic-data-label", nil, nil, @"Basic Data:", @"The label identifiying that the basic has not been completed. Shown on the summary screen.")
+                                                                        buttonTitle:TDLocalizedStringWithDefaultValue(@"summary.question.basic-data-button", nil, nil, @"Complete Basic Data", @"The button title allowing the user to jump to the basic data screen. Shown on the summary screen.")
+                                                                        buttonImage:nil
+                                                                             target:self
+                                                                           selector:@selector(goToBasicData:)
+                                                                              value:@(basicDataComplete)
+                                                                             andKey:@"BasicData"];
+    
+    basicDataCell[@"reuseIdentifier"] = @"BasicDataCell";
+
+    
+    // Generate the questionnaire cell
     NSInteger answered = [self.record answeredQuestions];
     NSInteger total = self.record.questions.count;
     
@@ -41,7 +70,7 @@
         for (int q = 0; q < total; q++) {
             PRQuestion *thisQuestion = self.record.questions[q];
             if (![thisQuestion.answerID isNonNullString]) {
-                NSString *formatHeader = [NSString localizedStringWithFormat:TDLocalizedStringWithDefaultValue(@"summary.question.summary_label", nil, nil, @"Question %d", @"The label identifiying an unanswered PMOS question on the summary screen."), q + 1];
+                NSString *formatHeader = [NSString localizedStringWithFormat:TDLocalizedStringWithDefaultValue(@"summary.question.summary-label", nil, nil, @"Question %d", @"The label identifiying the number of unanswered PMOS question. Shown on the summary screen."), q + 1];
                 unansweredQuestions[@(q)] = formatHeader;
             }
         }
@@ -58,7 +87,7 @@
     questionnaireCell[@"userInfo"][@"selectionIdentifier"] = @"PRBasicSelectionVC";
     questionnaireCell[@"userInfo"][@"selectionDelegate"] = self;
     
-    return @[@[questionnaireCell]];
+    return @[@[basicDataCell, questionnaireCell]];
 }
 
 -(void)selectionCell:(TDSelectCell *)cell requestsPresentationOfSelectionViewController:(TDSelectionViewController *)selectionVC
@@ -76,6 +105,11 @@
             [self presentViewController:prSelection animated:YES completion:nil];
         }];
     }
+}
+
+-(void)goToBasicData:(id) sender
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"BasicDataRequest" object:nil];
 }
 
 @end

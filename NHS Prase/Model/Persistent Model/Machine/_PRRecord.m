@@ -4,6 +4,7 @@
 #import "_PRRecord.h"
 
 const struct PRRecordAttributes PRRecordAttributes = {
+	.basicData = @"basicData",
 	.date = @"date",
 	.language = @"language",
 };
@@ -48,6 +49,13 @@ const struct PRRecordFetchedProperties PRRecordFetchedProperties = {
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic basicData;
+
+
 
 
 

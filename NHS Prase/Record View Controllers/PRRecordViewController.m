@@ -41,6 +41,13 @@
     summary.record = self.record;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleQuestionRequest:) name:@"QuestionRequest" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleBasicDataRequest:) name:@"BasicDataRequest" object:nil];
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"QuestionRequest" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"BasicDataRequest" object:nil];
 }
 
 -(void)handleQuestionRequest:(NSNotification *) note
@@ -58,6 +65,12 @@
     }
 }
 
+-(void)handleBasicDataRequest:(NSNotification *) note
+{
+    [visibleSelector setSelectedSegmentIndex:0];
+    [self segmentChanged:self];
+}
+
 -(void)setRecord:(PRRecord *)record
 {
     _record = record;
@@ -66,6 +79,34 @@
     if ([summary isKindOfClass:[PRRecordSummaryViewController class]]) {
         summary.record = self.record;
     }
+}
+
+-(void)segmentChanged:(id)sender
+{
+    NSUInteger oldSegment = tabController.selectedIndex;
+    
+    if (oldSegment == 0) {
+        // set the basic data of the record based on the entered cell info before changing view controllers as the summary screen is configured in viewWillAppear, and the data model needs to be complete before that is called
+        
+        NSMutableDictionary *enteredBasicData = [NSMutableDictionary dictionaryWithCapacity:7];
+        
+        PRBasicDataFormViewController *bdVC = [tabController.viewControllers firstObject];
+        NSArray *infoDictionaries = bdVC.cellInfo[0]; // get the info in the first section
+        
+        for (int i = 0; i < infoDictionaries.count; i++) {
+            NSDictionary *cellInfo = infoDictionaries[i];
+            id value = cellInfo[@"value"];
+            id key = cellInfo[@"key"];
+            
+            if (value != nil && key != nil) {
+                enteredBasicData[key] = value;
+            }
+        }
+        
+        self.record.basicData = [NSDictionary dictionaryWithDictionary:enteredBasicData];
+    }
+    
+    [super segmentChanged:sender];
 }
 
 #pragma mark - View Configuration

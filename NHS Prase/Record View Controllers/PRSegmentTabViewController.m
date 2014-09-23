@@ -42,7 +42,7 @@
     
     NSString *textStyle = [[TDTheme sharedTheme] textStyleForIdentifier:visibleSelector.TDTextStyleIdentifier];
     UIFont *selectorFont = [[TDTheme sharedTheme] preferredFontForTextStyle:textStyle];
-    selectorHeight.constant = 40 + selectorFont.pointSize;
+    selectorHeight.constant = 30 + selectorFont.pointSize;
     
     [self.view layoutIfNeeded];
 }

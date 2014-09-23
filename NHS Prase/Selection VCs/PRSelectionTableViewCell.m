@@ -29,9 +29,11 @@
         self.textLabelTD.textColor = [UIColor darkTextColor];
     }
     
-    [self updateConstraints];
-    [self layoutSubviews];
+    [self setNeedsUpdateConstraints];
+    [self setNeedsLayout];
+    [self invalidateIntrinsicContentSize];
 }
+
 
 -(void)layoutSubviews
 {
@@ -39,8 +41,11 @@
     
     self.textLabelTD.preferredMaxLayoutWidth = self.textLabelTD.frame.size.width;
     
-    [self layoutIfNeeded];
+//    NSLog(@"Text Label: %@ [%@]", self.textLabelTD.text, NSStringFromCGSize(self.textLabelTD.intrinsicContentSize));
+    
+    //[self layoutIfNeeded];
 }
+
 
 -(void)updateConstraints
 {
@@ -65,6 +70,16 @@
     [self.contentView addConstraints:hConstraints];
     
     [super updateConstraints];
+}
+
+-(CGSize)sizeThatFits:(CGSize)size
+{
+    return [super sizeThatFits:size];
+}
+
+-(CGSize)intrinsicContentSize
+{
+    return [super intrinsicContentSize];
 }
 
 @end

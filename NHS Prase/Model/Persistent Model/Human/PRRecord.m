@@ -10,7 +10,7 @@
 
 @interface PRRecord ()
 
-// Private interface goes here.
+// Private interface goes here. 
 
 @end
 
@@ -19,23 +19,17 @@
 
 // Custom logic goes here.
 
-+(instancetype)prototypeRecordWithTrust:(NSString *) trust hospital:(NSString *) hospital ward:(NSString *) ward ;
++(instancetype)prototypeRecordWithWard:(PRWard *) ward
 {
     PRQuestion *q0 = [[self class] likelyQuestionWithID:@"question.recommend_ward"];
     PRQuestion *q1 = [[self class] agreeQuestionWithID:@"question.different_roles"];
     PRQuestion *q2 = [[self class] agreeQuestionWithID:@"question.dignity"];
     PRQuestion *q3 = [[self class] agreeQuestionWithID:@"question.who_to_ask"];
 
-    PRWard *thisWard = [PRWard MR_createEntity];
-    thisWard.trust = trust;
-    thisWard.hospital = hospital;
-    thisWard.ward = ward;
-    
     PRRecord *newRecord = [PRRecord MR_createEntity];
     
     newRecord.questions = [NSOrderedSet orderedSetWithArray:@[q0, q1, q2, q3]];
-    newRecord.ward = thisWard;
-    
+    newRecord.ward = ward;
     
     return newRecord;
 }
@@ -123,7 +117,7 @@
     likely5.image2 = @"cross";
     likely5.imageTintIdentifier = @"negative";
     
-    return @[likely1, likely2, likely3, likely4, likely5];
+    return @[likely5, likely4, likely3, likely2, likely1];
 }
 
 +(NSArray *)abstainOptions
@@ -139,6 +133,16 @@
     
     return @[abstain1, abstain2];
 }
+
+-(NSDictionary *)basicDataDictionary
+{
+    if ([self.basicData isKindOfClass:[NSDictionary class]]) {
+        return self.basicData;
+    }
+    
+    return nil;
+}
+
 
 -(NSInteger)answeredQuestions
 {

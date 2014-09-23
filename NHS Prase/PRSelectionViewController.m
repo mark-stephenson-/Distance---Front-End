@@ -46,11 +46,12 @@
 {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     
-    TDTableViewCell *cell = (TDTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryNone;
+    //TDTableViewCell *cell = (TDTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+    //cell.accessoryType = UITableViewCellAccessoryNone;
     
     // Reloading just the row or begin/endUpdates should resize cells but all appear not to. Probably a bug in iOS 8's resizing cells. Work around is to reload the entire table.
-    [self.tableView reloadData];
+    [self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.2];
+    
 }
 
 @end
