@@ -36,8 +36,6 @@
 {
     [super viewWillAppear:animated];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleThemeChange:) name:TDThemeChange object:nil];
-    
     self.keyboardAccessoryView = nil;
     
     inputView = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
@@ -58,9 +56,10 @@
     self.scrollContainer = nil;
 }
 
--(void)handleThemeChange:(NSNotification *) note
+-(void)applyTheme
 {
-    [self applyTheme];
+    [super applyTheme];
+    
     [self applyThemeToView:inputView];
 }
 

@@ -7,7 +7,8 @@
 //
 
 #import "PRAnswerOptionsLayout.h"
-#import <NHSPraseKit/NHSPraseKit.h>
+
+#import "PROptionCollectionViewCell.h"
 
 #define CELL_MAX_WIDTH 140
 
@@ -149,7 +150,12 @@
             break;
     }
     
-    cellFrame.origin.y = (indexPath.section) * (cellHeight + self.minimumLineSpacing);
+    CGFloat yOffset = 0;
+    for (int s = 0; s < indexPath.section; s++) {
+        yOffset += self.minimumLineSpacing + ((NSNumber *)sectionHeights[s]).floatValue;
+    }
+    
+    cellFrame.origin.y = yOffset;
     
     cellAttributes.frame = cellFrame;
     

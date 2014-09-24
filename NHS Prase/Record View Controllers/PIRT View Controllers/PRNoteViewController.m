@@ -100,7 +100,6 @@
     } else {
         bottomLayoutConstraint.constant = 10.0 + kbFrame.size.height;
     }
-    
 }
 
 -(void)keyboardWillHide:(NSNotification *)note

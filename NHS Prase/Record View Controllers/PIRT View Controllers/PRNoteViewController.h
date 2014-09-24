@@ -26,7 +26,6 @@
  */
 @interface PRNoteViewController : PRViewController <UITextViewDelegate, UIAlertViewDelegate>
 {
-    
     BOOL canDismissKeyboard;
     BOOL canShowKeyboard;
     

@@ -237,7 +237,7 @@
         <!--Settings View Controller-->
         <scene sceneID="IBI-6R-nrs">
             <objects>
-                <viewController id="LGc-Zn-tJB" customClass="PRSettingsViewController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="formSheet" id="LGc-Zn-tJB" customClass="PRSettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1eQ-4Y-FQ2"/>
                         <viewControllerLayoutGuide type="bottom" id="KF9-Ku-P4T"/>
@@ -258,7 +258,7 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Headline"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your language and configure the behaviour of the app." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3v-FM-j67">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your language and configure the behaviour of the app:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3v-FM-j67">
                                         <rect key="frame" x="20" y="48" width="570" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -302,6 +302,7 @@
                                                 <real key="value" value="0.01"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="button.done"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 1"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="cancelConcern:" destination="jmu-gL-fNg" eventType="touchUpInside" id="LpO-GY-apc"/>
@@ -317,18 +318,18 @@
                                     <constraint firstItem="Sil-MH-qNn" firstAttribute="top" secondItem="ibJ-qL-OKe" secondAttribute="top" id="dxk-fO-mcM"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rsQ-x0-mQz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="87" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rsQ-x0-mQz">
                                 <rect key="frame" x="20" y="88" width="560" height="432"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LanguagSelect" id="7te-JW-eOy" customClass="TDSelectCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LanguagSelect" id="7te-JW-eOy" customClass="TDSelectCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7te-JW-eOy" id="Vc2-Py-Zcj">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your language:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmr-WZ-h9e">
-                                                    <rect key="frame" x="20" y="11" width="167" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="Select your language:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmr-WZ-h9e">
+                                                    <rect key="frame" x="20" y="15" width="520" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -337,7 +338,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5j3-pn-LpA" customClass="TDTextField">
-                                                    <rect key="frame" x="202" y="7" width="338" height="30"/>
+                                                    <rect key="frame" x="30" y="46" width="500" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <userDefinedRuntimeAttributes>
@@ -349,30 +350,44 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="cmr-WZ-h9e" secondAttribute="bottom" constant="12" id="DIj-rv-k2W"/>
+                                                <constraint firstItem="5j3-pn-LpA" firstAttribute="top" secondItem="cmr-WZ-h9e" secondAttribute="bottom" constant="10" id="BkV-yI-dWN"/>
+                                                <constraint firstItem="5j3-pn-LpA" firstAttribute="leading" secondItem="Vc2-Py-Zcj" secondAttribute="leading" constant="30" id="DlK-VZ-D9C"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5j3-pn-LpA" secondAttribute="bottom" constant="15" id="FTk-n6-g7I"/>
                                                 <constraint firstItem="cmr-WZ-h9e" firstAttribute="leading" secondItem="Vc2-Py-Zcj" secondAttribute="leading" constant="20" id="Flm-Gp-23q"/>
                                                 <constraint firstAttribute="centerY" secondItem="5j3-pn-LpA" secondAttribute="centerY" id="Gti-MH-8Ot"/>
                                                 <constraint firstItem="5j3-pn-LpA" firstAttribute="leading" secondItem="cmr-WZ-h9e" secondAttribute="trailing" constant="15" id="WI9-UT-iSD"/>
-                                                <constraint firstAttribute="trailing" secondItem="5j3-pn-LpA" secondAttribute="trailing" constant="20" id="ff0-7x-6hK"/>
-                                                <constraint firstItem="cmr-WZ-h9e" firstAttribute="top" secondItem="Vc2-Py-Zcj" secondAttribute="top" constant="11" id="qQ2-S1-cXf"/>
+                                                <constraint firstAttribute="trailing" secondItem="5j3-pn-LpA" secondAttribute="trailing" constant="30" id="ff0-7x-6hK"/>
+                                                <constraint firstAttribute="trailing" secondItem="cmr-WZ-h9e" secondAttribute="trailing" constant="20" id="otY-vq-17x"/>
+                                                <constraint firstItem="cmr-WZ-h9e" firstAttribute="top" secondItem="Vc2-Py-Zcj" secondAttribute="top" constant="15" id="qQ2-S1-cXf"/>
+                                                <constraint firstAttribute="centerY" secondItem="cmr-WZ-h9e" secondAttribute="centerY" id="yX3-gb-Zax"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="yX3-gb-Zax"/>
+                                                    <exclude reference="Gti-MH-8Ot"/>
+                                                    <exclude reference="WI9-UT-iSD"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="textField" destination="5j3-pn-LpA" id="AnK-y1-nsa"/>
                                             <outlet property="titleLabel" destination="cmr-WZ-h9e" id="UJJ-be-nCn"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextSize" id="4p6-hC-wxq">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TextSize" id="4p6-hC-wxq" customClass="PRTextSizeSelectCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4p6-hC-wxq" id="VUZ-qa-eL8">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="JnD-dT-ppL">
-                                                    <rect key="frame" x="276" y="7" width="246" height="31"/>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="0.0" maxValue="6" translatesAutoresizingMaskIntoConstraints="NO" id="JnD-dT-ppL">
+                                                    <rect key="frame" x="48" y="46" width="464" height="31"/>
+                                                    <connections>
+                                                        <action selector="sliderChange:" destination="4p6-hC-wxq" eventType="valueChanged" id="QqR-K2-BwE"/>
+                                                    </connections>
                                                 </slider>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your prefered font size:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyA-g8-lBJ">
-                                                    <rect key="frame" x="20" y="11" width="230" height="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="Select your prefered font size:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyA-g8-lBJ">
+                                                    <rect key="frame" x="20" y="15" width="520" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -380,14 +395,14 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCS-uq-ZyK">
-                                                    <rect key="frame" x="258" y="12" width="12" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCS-uq-ZyK">
+                                                    <rect key="frame" x="30" y="51" width="12" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ec6-Ib-EEl">
-                                                    <rect key="frame" x="528" y="12" width="12" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="A" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ec6-Ib-EEl">
+                                                    <rect key="frame" x="518" y="51" width="12" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -395,23 +410,38 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="kyA-g8-lBJ" firstAttribute="leading" secondItem="VUZ-qa-eL8" secondAttribute="leading" constant="20" id="21r-RW-bLJ"/>
-                                                <constraint firstAttribute="bottom" secondItem="kyA-g8-lBJ" secondAttribute="bottom" constant="10" id="3mb-ll-RlJ"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="kyA-g8-lBJ" secondAttribute="bottom" constant="20" symbolic="YES" id="3mb-ll-RlJ"/>
+                                                <constraint firstItem="ec6-Ib-EEl" firstAttribute="centerY" secondItem="JnD-dT-ppL" secondAttribute="centerY" id="6Yi-Oa-lX6"/>
                                                 <constraint firstAttribute="centerX" secondItem="JnD-dT-ppL" secondAttribute="centerX" id="8F4-Kc-eSJ"/>
-                                                <constraint firstItem="kyA-g8-lBJ" firstAttribute="top" secondItem="VUZ-qa-eL8" secondAttribute="top" constant="11" id="ChN-Uc-dOv"/>
+                                                <constraint firstItem="kyA-g8-lBJ" firstAttribute="top" secondItem="VUZ-qa-eL8" secondAttribute="top" constant="15" id="ChN-Uc-dOv"/>
                                                 <constraint firstItem="ec6-Ib-EEl" firstAttribute="leading" secondItem="JnD-dT-ppL" secondAttribute="trailing" constant="8" id="Ctx-OS-9eF"/>
-                                                <constraint firstItem="gCS-uq-ZyK" firstAttribute="leading" secondItem="kyA-g8-lBJ" secondAttribute="trailing" constant="8" id="EaY-7W-tKH"/>
                                                 <constraint firstItem="JnD-dT-ppL" firstAttribute="leading" secondItem="gCS-uq-ZyK" secondAttribute="trailing" constant="8" id="HVC-pf-uFK"/>
-                                                <constraint firstAttribute="trailing" secondItem="ec6-Ib-EEl" secondAttribute="trailing" constant="20" id="NRe-YG-pBo"/>
-                                                <constraint firstAttribute="centerY" secondItem="JnD-dT-ppL" secondAttribute="centerY" id="VpH-gj-pSr"/>
+                                                <constraint firstAttribute="trailing" secondItem="ec6-Ib-EEl" secondAttribute="trailing" constant="30" id="NRe-YG-pBo"/>
                                                 <constraint firstItem="ec6-Ib-EEl" firstAttribute="baseline" secondItem="kyA-g8-lBJ" secondAttribute="baseline" id="YCp-MT-JAI"/>
+                                                <constraint firstAttribute="bottom" secondItem="JnD-dT-ppL" secondAttribute="bottom" constant="10" id="YsR-Vo-ywM"/>
                                                 <constraint firstItem="gCS-uq-ZyK" firstAttribute="baseline" secondItem="kyA-g8-lBJ" secondAttribute="baseline" id="alE-yE-U6Z"/>
+                                                <constraint firstItem="gCS-uq-ZyK" firstAttribute="centerY" secondItem="JnD-dT-ppL" secondAttribute="centerY" id="bdE-sg-gt0"/>
+                                                <constraint firstItem="JnD-dT-ppL" firstAttribute="top" secondItem="kyA-g8-lBJ" secondAttribute="bottom" constant="10" id="cA3-7n-ycz"/>
+                                                <constraint firstAttribute="centerY" secondItem="kyA-g8-lBJ" secondAttribute="centerY" id="hXK-EB-Lkk"/>
+                                                <constraint firstAttribute="trailing" secondItem="kyA-g8-lBJ" secondAttribute="trailing" constant="20" id="nZv-oL-zNV"/>
+                                                <constraint firstItem="gCS-uq-ZyK" firstAttribute="leading" secondItem="VUZ-qa-eL8" secondAttribute="leading" constant="30" id="ooN-ic-Hpq"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="3mb-ll-RlJ"/>
+                                                    <exclude reference="hXK-EB-Lkk"/>
+                                                    <exclude reference="alE-yE-U6Z"/>
                                                     <exclude reference="8F4-Kc-eSJ"/>
+                                                    <exclude reference="YCp-MT-JAI"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="largeTextLabel" destination="ec6-Ib-EEl" id="5SD-g8-2o5"/>
+                                            <outlet property="smallTextLabel" destination="gCS-uq-ZyK" id="4eY-aK-u4q"/>
+                                            <outlet property="textSizeSlider" destination="JnD-dT-ppL" id="agR-7O-VB8"/>
+                                            <outlet property="titleLabel" destination="kyA-g8-lBJ" id="PvE-AO-6iK"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -838,7 +868,7 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 1"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="LGc-Zn-tJB" kind="presentation" id="ng7-su-oys"/>
+                                            <segue destination="LGc-Zn-tJB" kind="presentation" identifier="PresentSettings" id="ng7-su-oys"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1231,20 +1261,24 @@ Please read the following statements carefully, keeping in mind your current sta
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type below or press record to add more details:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIC-Fi-lLJ">
-                                <rect key="frame" x="20" y="20" width="560" height="20"/>
+                                <rect key="frame" x="20" y="8" width="560" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="note.label.title"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Title label when adding a note to a question."/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u57-w1-1kG" customClass="TDTextView">
-                                <rect key="frame" x="20" y="48" width="560" height="532"/>
+                                <rect key="frame" x="20" y="36" width="560" height="544"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="delegate" destination="xJh-nw-w9p" id="Dpv-nm-I26"/>
                                 </connections>
@@ -1255,7 +1289,7 @@ Please read the following statements carefully, keeping in mind your current sta
                             <constraint firstItem="YIC-Fi-lLJ" firstAttribute="leading" secondItem="EeY-2S-GFD" secondAttribute="leading" constant="20" id="Khx-d7-02y"/>
                             <constraint firstAttribute="trailing" secondItem="YIC-Fi-lLJ" secondAttribute="trailing" constant="20" id="LvY-Nn-DEn"/>
                             <constraint firstItem="u57-w1-1kG" firstAttribute="top" secondItem="YIC-Fi-lLJ" secondAttribute="bottom" constant="8" id="UB5-mu-MPB"/>
-                            <constraint firstItem="YIC-Fi-lLJ" firstAttribute="top" secondItem="c9H-dn-13C" secondAttribute="bottom" constant="20" id="bE1-lQ-PAF"/>
+                            <constraint firstItem="YIC-Fi-lLJ" firstAttribute="top" secondItem="c9H-dn-13C" secondAttribute="bottom" constant="8" id="bE1-lQ-PAF"/>
                             <constraint firstItem="YIC-Fi-lLJ" firstAttribute="trailing" secondItem="u57-w1-1kG" secondAttribute="trailing" id="nWt-E2-kXH"/>
                             <constraint firstItem="YIC-Fi-lLJ" firstAttribute="leading" secondItem="u57-w1-1kG" secondAttribute="leading" id="qlZ-ZS-MPT"/>
                             <constraint firstItem="l0Y-xR-eJA" firstAttribute="top" secondItem="u57-w1-1kG" secondAttribute="bottom" constant="20" id="zsu-MA-24q"/>
@@ -1296,20 +1330,9 @@ Please read the following statements carefully, keeping in mind your current sta
                                     <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <view contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rBr-7s-gay">
-                                <rect key="frame" x="20" y="104" width="460" height="173"/>
+                            <view contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="rBr-7s-gay">
+                                <rect key="frame" x="20" y="103" width="460" height="173"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="901" verticalCompressionResistancePriority="752" text="Do you want to tell us something that has been good about your care?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="220" translatesAutoresizingMaskIntoConstraints="NO" id="jqs-CT-z23">
-                                        <rect key="frame" x="2" y="21" width="204" height="62"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="record.comments.good-title"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Label asking the user to add something good about their care."/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Do you want to tell us something that has concerned you about your care?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="220" translatesAutoresizingMaskIntoConstraints="NO" id="nsO-tF-0yN">
                                         <rect key="frame" x="256" y="0.0" width="204" height="83"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -1357,6 +1380,17 @@ Please read the following statements carefully, keeping in mind your current sta
                                             <action selector="addSomethingGood:" destination="fZg-fg-WDE" eventType="touchUpInside" id="GB5-Lp-DCA"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="901" verticalCompressionResistancePriority="752" text="Do you want to tell us something that has been good about your care?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="220" translatesAutoresizingMaskIntoConstraints="NO" id="jqs-CT-z23">
+                                        <rect key="frame" x="2" y="21" width="204" height="62"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="record.comments.good-title"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Label asking the user to add something good about their care."/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1374,10 +1408,10 @@ Please read the following statements carefully, keeping in mind your current sta
                                     <constraint firstItem="wq6-VB-9rC" firstAttribute="width" secondItem="fMv-Mh-d0u" secondAttribute="width" id="cWT-Cg-dHO"/>
                                     <constraint firstItem="fMv-Mh-d0u" firstAttribute="leading" secondItem="wq6-VB-9rC" secondAttribute="trailing" constant="50" id="df6-uW-sDq"/>
                                     <constraint firstItem="nsO-tF-0yN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rBr-7s-gay" secondAttribute="top" id="h0v-LT-2HI"/>
-                                    <constraint firstItem="wq6-VB-9rC" firstAttribute="top" secondItem="fMv-Mh-d0u" secondAttribute="top" id="jcr-gF-Ioi"/>
                                     <constraint firstAttribute="bottom" secondItem="wq6-VB-9rC" secondAttribute="bottom" id="oV3-nt-zyV"/>
-                                    <constraint firstItem="jqs-CT-z23" firstAttribute="top" secondItem="rBr-7s-gay" secondAttribute="top" multiplier="900" priority="249" id="oef-rh-hAY"/>
+                                    <constraint firstItem="jqs-CT-z23" firstAttribute="top" secondItem="rBr-7s-gay" secondAttribute="top" priority="249" id="oef-rh-hAY"/>
                                     <constraint firstItem="jqs-CT-z23" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rBr-7s-gay" secondAttribute="top" id="ozE-7K-hqw"/>
+                                    <constraint firstItem="wq6-VB-9rC" firstAttribute="height" secondItem="fMv-Mh-d0u" secondAttribute="height" id="ril-st-aUy"/>
                                     <constraint firstAttribute="trailing" secondItem="fMv-Mh-d0u" secondAttribute="trailing" id="sHY-UU-iGf"/>
                                     <constraint firstItem="nsO-tF-0yN" firstAttribute="top" secondItem="rBr-7s-gay" secondAttribute="top" priority="249" id="ww1-R9-dwh"/>
                                 </constraints>
@@ -1532,7 +1566,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                                             </userDefinedRuntimeAttributes>
                                                         </textField>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lil-H4-aqk" customClass="PRButton">
-                                                            <rect key="frame" x="308" y="18" width="50" height="37"/>
+                                                            <rect key="frame" x="308" y="17" width="50" height="40"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                             <color key="tintColor" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                                             <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="4"/>
@@ -1560,7 +1594,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lek-AS-PBa" customClass="PRButton">
-                                                            <rect key="frame" x="366" y="18" width="55" height="37"/>
+                                                            <rect key="frame" x="366" y="17" width="55" height="40"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                             <color key="tintColor" red="0.5450980392" green="0.7725490196" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                                             <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="4"/>
@@ -1589,18 +1623,20 @@ Please read the following statements carefully, keeping in mind your current sta
                                                         </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="centerY" secondItem="t0D-JR-qo2" secondAttribute="centerY" id="36P-ha-S3z"/>
                                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hjc-gd-qXc" secondAttribute="bottom" constant="15" id="5WX-C2-WA4"/>
                                                         <constraint firstItem="lil-H4-aqk" firstAttribute="leading" secondItem="t0D-JR-qo2" secondAttribute="trailing" constant="8" id="7vG-Sg-3I5"/>
+                                                        <constraint firstItem="t0D-JR-qo2" firstAttribute="top" secondItem="Lek-AS-PBa" secondAttribute="top" id="AS0-eP-65v"/>
                                                         <constraint firstAttribute="centerX" secondItem="t0D-JR-qo2" secondAttribute="leading" id="Cv0-en-B9f"/>
                                                         <constraint firstAttribute="centerY" secondItem="lil-H4-aqk" secondAttribute="centerY" id="E1f-HL-whY"/>
                                                         <constraint firstItem="hjc-gd-qXc" firstAttribute="leading" secondItem="F4a-XP-I5N" secondAttribute="leading" constant="20" id="FKe-3W-A5X"/>
-                                                        <constraint firstAttribute="centerY" secondItem="Lek-AS-PBa" secondAttribute="centerY" id="KJ3-Jk-SOE"/>
+                                                        <constraint firstItem="lil-H4-aqk" firstAttribute="top" secondItem="t0D-JR-qo2" secondAttribute="top" id="Tle-nL-rXY"/>
+                                                        <constraint firstItem="lil-H4-aqk" firstAttribute="bottom" secondItem="t0D-JR-qo2" secondAttribute="bottom" id="VLL-ga-Ak0"/>
                                                         <constraint firstItem="t0D-JR-qo2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="F4a-XP-I5N" secondAttribute="top" constant="15" id="VzO-I5-ly3"/>
                                                         <constraint firstItem="lil-H4-aqk" firstAttribute="baseline" secondItem="Lek-AS-PBa" secondAttribute="baseline" id="Xsy-dg-L9g"/>
                                                         <constraint firstAttribute="centerY" secondItem="Lek-AS-PBa" secondAttribute="centerY" id="auo-K7-NNE"/>
                                                         <constraint firstItem="hjc-gd-qXc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="F4a-XP-I5N" secondAttribute="top" constant="15" id="dUu-ck-c9X"/>
                                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="t0D-JR-qo2" secondAttribute="bottom" constant="15" id="eWL-6e-7SO"/>
+                                                        <constraint firstItem="t0D-JR-qo2" firstAttribute="bottom" secondItem="Lek-AS-PBa" secondAttribute="bottom" id="gG2-FH-kDU"/>
                                                         <constraint firstItem="Lek-AS-PBa" firstAttribute="leading" secondItem="lil-H4-aqk" secondAttribute="trailing" constant="8" id="kzw-Bc-Ajz"/>
                                                         <constraint firstItem="lil-H4-aqk" firstAttribute="leading" secondItem="t0D-JR-qo2" secondAttribute="trailing" constant="8" id="lZ4-qI-hOL"/>
                                                         <constraint firstItem="t0D-JR-qo2" firstAttribute="leading" secondItem="hjc-gd-qXc" secondAttribute="trailing" constant="20" id="qEH-38-96U"/>
@@ -2079,7 +2115,7 @@ Please read the following statements carefully, keeping in mind your current sta
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="&lt;title label>" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eS2-ZD-fQa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="&lt;title label>" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eS2-ZD-fQa">
                                 <rect key="frame" x="84" y="0.0" width="516" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2112,27 +2148,6 @@ Please read the following statements carefully, keeping in mind your current sta
                                             <action selector="addNote:" destination="3zY-5O-tMi" eventType="touchUpInside" id="mQJ-qk-62K"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubm-O3-fP7" customClass="PRButton">
-                                        <rect key="frame" x="207" y="0.0" width="186" height="103"/>
-                                        <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Add something good" image="star">
-                                            <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTint">
-                                                <color key="value" red="0.5450980392" green="0.7725490196" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="question.button.good"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="imageAlignment">
-                                                <integer key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 1"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="addSomethingGood:" destination="3zY-5O-tMi" eventType="touchUpInside" id="Ifp-wQ-8xw"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8A-jz-1xd" customClass="PRButton">
                                         <rect key="frame" x="0.0" y="0.0" width="187" height="103"/>
                                         <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -2152,6 +2167,27 @@ Please read the following statements carefully, keeping in mind your current sta
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="addConcern:" destination="3zY-5O-tMi" eventType="touchUpInside" id="mcT-DY-b34"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubm-O3-fP7" customClass="PRButton">
+                                        <rect key="frame" x="207" y="0.0" width="186" height="103"/>
+                                        <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Add something good" image="star">
+                                            <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTint">
+                                                <color key="value" red="0.5450980392" green="0.7725490196" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="question.button.good"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="imageAlignment">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 1"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="addSomethingGood:" destination="3zY-5O-tMi" eventType="touchUpInside" id="Ifp-wQ-8xw"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2211,9 +2247,10 @@ Please read the following statements carefully, keeping in mind your current sta
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJm-CK-Rxf">
                                 <rect key="frame" x="0.0" y="80" width="600" height="392"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Y8F-u2-1xN">
-                                        <rect key="frame" x="140" y="47" width="300" height="200"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Y8F-u2-1xN">
+                                        <rect key="frame" x="150" y="96" width="300" height="200"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="900" constant="200" id="sD9-XB-GDS"/>
                                             <constraint firstAttribute="width" priority="900" constant="300" id="yI4-B4-Z3Z"/>
@@ -2245,6 +2282,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
+                                                <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="rda-fP-17v" firstAttribute="width" secondItem="os9-6o-0Dr" secondAttribute="width" multiplier="0.5" constant="-8" id="BHN-7V-WLk"/>
                                                     <constraint firstAttribute="bottom" secondItem="rda-fP-17v" secondAttribute="bottom" constant="8" id="Kgo-sC-l0T"/>
@@ -2258,6 +2296,9 @@ Please read the following statements carefully, keeping in mind your current sta
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="vBuffer">
                                                         <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
@@ -2315,6 +2356,9 @@ Please read the following statements carefully, keeping in mind your current sta
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="vBuffer">
                                                         <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <variation key="default">
@@ -2556,6 +2600,7 @@ Please read the following statements carefully, keeping in mind your current sta
                         <outlet property="footerView" destination="hiJ-aw-nLb" id="1Vl-av-XPA"/>
                         <outlet property="nextButton" destination="ulD-8n-X4O" id="Nuf-ML-F7X"/>
                         <outlet property="prevButton" destination="vD4-Oq-4CS" id="Jqt-UO-M2N"/>
+                        <outlet property="selectorHeight" destination="JOn-8x-Wpd" id="zXI-eI-4VM"/>
                         <outlet property="visibleSelector" destination="IBO-Xd-9ZM" id="viu-lY-bOz"/>
                     </connections>
                 </viewController>
@@ -2611,15 +2656,6 @@ Please read the following statements carefully, keeping in mind your current sta
                                     <action selector="segmentChanged:" destination="EsT-K6-WZh" eventType="valueChanged" id="a3d-cd-0dn"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment relating to this ward?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZn-MZ-m0K">
-                                <rect key="frame" x="20" y="43" width="229" height="20"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a ward" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JTK-nS-UQ9" customClass="TDTextField">
                                 <rect key="frame" x="352" y="39" width="228" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2631,6 +2667,15 @@ Please read the following statements carefully, keeping in mind your current sta
                                     <outlet property="delegate" destination="EsT-K6-WZh" id="khF-8q-lFg"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment relating to this ward?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZn-MZ-m0K">
+                                <rect key="frame" x="20" y="43" width="229" height="20"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2689,6 +2734,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="pirt.question.serious"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Question asking however serious the users concern was."/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="E2p-OQ-UdO">
@@ -2717,6 +2763,9 @@ Please read the following statements carefully, keeping in mind your current sta
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </label>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2756,6 +2805,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="prit.questions.label.not-serious"/>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Text if the concern is least serious."/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Footnote"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                 </subviews>
@@ -2791,6 +2841,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Text if the concern is the most serious."/>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="pirt.questions.label.serious"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Footnote"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                 </subviews>
@@ -2814,6 +2865,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="prit.questions.prevent"/>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Question asking the user if their concern could have been prevented."/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tcx-hV-q6y">
@@ -2842,6 +2894,9 @@ Please read the following statements carefully, keeping in mind your current sta
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 1"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="bcy-WF-b6n">
                                                                     <rect key="frame" x="36" y="92" width="39" height="80"/>
@@ -2879,6 +2934,9 @@ Please read the following statements carefully, keeping in mind your current sta
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 1"/>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="c9m-HX-2fn">
                                                                     <rect key="frame" x="8" y="92" width="43" height="80"/>
@@ -2997,6 +3055,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.field.ward-select"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="delegate" destination="Vc8-DF-OTk" id="gfb-SJ-bYb"/>
@@ -3014,6 +3073,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.field.hospital-select"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="delegate" destination="Vc8-DF-OTk" id="rQC-l7-0JH"/>
@@ -3029,6 +3089,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.label.hospital-title"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ward:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hA9-H5-uEl">
@@ -3038,6 +3099,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.label.ward-title"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Pb-PF-djv" customClass="TDTextField">
@@ -3052,6 +3114,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.field.trust-select"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="delegate" destination="Vc8-DF-OTk" id="NTo-ed-bus"/>
@@ -3067,6 +3130,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.label.trust-title"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment relating to this ward?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDP-hS-xHj">
@@ -3077,6 +3141,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="concern.label.this-ward"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Title when asking &quot;Is this comment about this hospital ward?&quot;."/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f3M-mn-RD3">
@@ -3085,6 +3150,9 @@ Please read the following statements carefully, keeping in mind your current sta
                                             <segment title="Yes"/>
                                             <segment title="No"/>
                                         </segments>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="segmentChanged:" destination="Vc8-DF-OTk" eventType="valueChanged" id="7S1-cl-XxO"/>
                                         </connections>

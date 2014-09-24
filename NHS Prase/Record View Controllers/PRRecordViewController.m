@@ -78,6 +78,13 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"PresentSettings"]) {
+        [containerView layoutSubviews];
+    }
+}
+
 -(void)handleQuestionRequest:(NSNotification *) note
 {
     NSNumber *questionNumber = note.userInfo[@"questionNumber"];

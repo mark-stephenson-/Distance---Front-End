@@ -22,11 +22,16 @@ NSString * PRLocalizedStringWithDefaultValue(NSString *key, NSString *tbl, NSBun
     return ([localizedString isNonNullString] && ![localizedString isEqualToString:key]) ? localizedString : val;
 }
 
--(UIFont *)preferredFontForTextStyle:(NSString *)fontStyle
+-(UIFont *)preferredFontForTextStyle:(NSString *)fontStyle andCategorySize:(NSString *)categorySize
 {
-    UIFont *themeFont = [super preferredFontForTextStyle:fontStyle];
+    if ([[self class] sizeValueForCategorySize:categorySize] == nil) {
+        [self logErrorFromSelector:_cmd withFormat:@"Cannot create font with category size: %@", categorySize];
+        return nil;
+    }
     
-    NSString *contentSize = [UIApplication sharedApplication].preferredContentSizeCategory;
+    UIFont *themeFont = [super preferredFontForTextStyle:fontStyle andCategorySize:categorySize];
+    
+    NSString *contentSize = categorySize;
     
     //  This is a good standard OS wide text size...
     CGFloat fontSize = 14.0;
@@ -78,7 +83,7 @@ NSString * PRLocalizedStringWithDefaultValue(NSString *key, NSString *tbl, NSBun
         fontSize += 2.0;
         
     } else if ([fontStyle isEqualToString:UIFontTextStyleFootnote]) {
-        
+        // used for text under the PIRT concern faces
         fontSize -= 4.0;
     }
     
@@ -102,6 +107,7 @@ NSString * PRLocalizedStringWithDefaultValue(NSString *key, NSString *tbl, NSBun
     self = [super init];
     
     if (self != nil) {
+        
         _neutralColor = [UIColor colorWithHex:@"#42c4fa" alpha:1.0];
         _mainColor = [UIColor colorWithHex:@"#32327b" alpha:1.0];
         _positiveColor = [UIColor colorWithHex:@"#8bc53f" alpha:1.0];

@@ -36,6 +36,7 @@
     _cornerRadius = 5.0;
     _borderWidth = 2.0;
     
+    [self.titleLabel setContentCompressionResistancePriority:755 forAxis:UILayoutConstraintAxisVertical];
     [self setImage:[self imageForState:UIControlStateNormal] forState:UIControlStateNormal];
 }
 
@@ -78,18 +79,28 @@
             cTitle.right = 0;
             
             self.titleLabel.textAlignment = NSTextAlignmentCenter;
-            self.titleLabel.preferredMaxLayoutWidth = [self titleRectForContentRect:[self contentRectForBounds:self.bounds]].size.width;
-            CGSize intrinsicTitleSize = [self.titleLabel intrinsicContentSize];
             
-            if (intrinsicTitleSize.width > self.titleLabel.frame.size.width || intrinsicTitleSize.height > self.titleLabel.frame.size.height) {
-                // causes size calculations to take too long
-                //[self invalidateIntrinsicContentSize];
-                //[self setNeedsLayout];
+            // check the label is on the correct number of lines
+            if (self.titleLabel.text.length > 0) {
+                CGRect bounds = self.bounds;
+                CGRect contentRect = [self contentRectForBounds:bounds];
+                CGRect titleRect = [self titleRectForContentRect:contentRect];
+                self.titleLabel.preferredMaxLayoutWidth = titleRect.size.width;
+                CGSize intrinsicTitleSize = [self.titleLabel intrinsicContentSize];
+                
+                if (intrinsicTitleSize.width > self.titleLabel.frame.size.width || intrinsicTitleSize.height > self.titleLabel.frame.size.height) {
+                    // causes size calculations to take too long
+                    [self invalidateIntrinsicContentSize];
+                    //[self setNeedsLayout];
+                }
             }
         }
         
         self.titleEdgeInsets = cTitle;
     }
+    
+    
+    
     
     // colour configuration
     
@@ -104,7 +115,6 @@
         self.layer.borderColor = self.imageTint ? self.imageTint.CGColor : [self titleColorForState:UIControlStateNormal].CGColor;
         self.tintColor = self.imageTint ? self.imageTint : [self titleColorForState:UIControlStateNormal];
         self.imageView.tintColor = self.imageTint ? self.imageTint : [self titleColorForState:UIControlStateNormal];
-        
     }
     
     

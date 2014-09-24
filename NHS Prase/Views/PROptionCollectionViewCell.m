@@ -7,6 +7,7 @@
 //
 
 #import "PROptionCollectionViewCell.h"
+//#import "PRTheme.h"
 
 @implementation PROptionCollectionViewCell
 
@@ -34,7 +35,7 @@
     CGRect borderFrame = CGRectMake(OPTIONS_CELL_BORDER_WIDTH / 2.0, OPTIONS_CELL_BORDER_WIDTH / 2.0, self.frame.size.width - OPTIONS_CELL_BORDER_WIDTH, self.frame.size.height - OPTIONS_CELL_BORDER_WIDTH);
     borderLayer.path = [UIBezierPath bezierPathWithRect:borderFrame].CGPath;
     borderLayer.lineWidth = OPTIONS_CELL_BORDER_WIDTH;
-    borderLayer.strokeColor = self.tintColor.CGColor;
+    borderLayer.strokeColor = self.borderColor.CGColor;
     borderLayer.fillColor = [UIColor clearColor].CGColor;
     
     self.layer.masksToBounds = NO;
@@ -44,9 +45,9 @@
         optionImageView.tintColor = [UIColor whiteColor];
         secondOptionImageView.tintColor = [UIColor whiteColor];
         
-        self.contentView.backgroundColor = self.tintColor;
+        self.contentView.backgroundColor = self.borderColor;
     } else {
-        optionTitleLabel.textColor = self.tintColor;
+        optionTitleLabel.textColor = self.borderColor;
         optionImageView.tintColor = self.imageTintColor;
         secondOptionImageView.tintColor = self.imageTintColor;
         

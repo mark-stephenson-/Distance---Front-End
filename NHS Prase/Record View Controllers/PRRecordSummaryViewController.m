@@ -114,6 +114,7 @@
     if ([cell isKindOfClass:[PRQuestionnaireCompleteCell class]]) {
         
         PRSelectionViewController *prSelection = (PRSelectionViewController *) selectionVC;
+        [prSelection setSelectedKeys:[NSMutableSet set]];
         
         // force load the view to configure its subclasses
         UIView *view = prSelection.view;

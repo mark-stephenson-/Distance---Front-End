@@ -32,17 +32,14 @@
 		A504416E19B5C2170000C9B3 /* PRPIRTQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A504416D19B5C2170000C9B3 /* PRPIRTQuestionsViewController.m */; };
 		A504417819B5CE920000C9B3 /* PRSegmentTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A504417719B5CE920000C9B3 /* PRSegmentTabViewController.m */; };
 		A504417D19B5D37B0000C9B3 /* PRCommentsSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A504417C19B5D37B0000C9B3 /* PRCommentsSummaryViewController.m */; };
-		A504419119B6056C0000C9B3 /* PRButton.h in Headers */ = {isa = PBXBuildFile; fileRef = A504418F19B6056C0000C9B3 /* PRButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A504419219B6056C0000C9B3 /* PRButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A504419019B6056C0000C9B3 /* PRButton.m */; };
 		A50671C519B0D279008557CE /* PRRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50671C419B0D279008557CE /* PRRecordViewController.m */; };
 		A50671C819B0D56C008557CE /* PRQuestionaireViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50671C719B0D56C008557CE /* PRQuestionaireViewController.m */; };
 		A50671CB19B0DABC008557CE /* PRQuestionStatementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50671CA19B0DABC008557CE /* PRQuestionStatementViewController.m */; };
 		A50671CF19B0DB40008557CE /* PRQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50671CE19B0DB40008557CE /* PRQuestionViewController.m */; };
+		A50E31F819D2B705001C5AE6 /* PRButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A50E31F519D2B705001C5AE6 /* PRButton.m */; };
+		A50E31F919D2B705001C5AE6 /* PROptionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A50E31F719D2B705001C5AE6 /* PROptionCollectionViewCell.m */; };
 		A51A6F8019B6FEDF004BF779 /* PRInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = A51A6F7F19B6FEDF004BF779 /* PRInputAccessoryView.m */; };
-		A52A3C6319B4624200985BAB /* PRQuestionOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A3C6219B4624200985BAB /* PRQuestionOptions.m */; };
-		A52A3C6619B462BC00985BAB /* PRQuestionStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A3C6519B462BC00985BAB /* PRQuestionStatement.m */; };
-		A52A3C6C19B46A6100985BAB /* PROptionCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A52A3C6A19B46A6100985BAB /* PROptionCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A52A3C6D19B46A6100985BAB /* PROptionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A3C6B19B46A6100985BAB /* PROptionCollectionViewCell.m */; };
+		A5235E8519D1BE1500AE721A /* PRTextSizeSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5235E8419D1BE1500AE721A /* PRTextSizeSelectCell.m */; };
 		A52A3C7019B471E300985BAB /* PRQuestionOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A3C6F19B471E300985BAB /* PRQuestionOptionsViewController.m */; };
 		A52A3C8519B4C1E700985BAB /* PRGoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A3C8419B4C1E700985BAB /* PRGoodViewController.m */; };
 		A52A3C8819B4C1F900985BAB /* PRNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A3C8719B4C1F900985BAB /* PRNoteViewController.m */; };
@@ -58,10 +55,6 @@
 		A5466A8919AE070100240026 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5466A8819AE070100240026 /* HomeViewController.m */; };
 		A5466CBC19AE3A6300240026 /* TDFormKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5466CB719AE3A3400240026 /* TDFormKit.framework */; };
 		A5466CBF19AE3B0500240026 /* PRBasicDataFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5466CBE19AE3B0500240026 /* PRBasicDataFormViewController.m */; };
-		A561093E19ADEED000488879 /* NHSPraseKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A561093D19ADEED000488879 /* NHSPraseKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A561094A19ADEED000488879 /* NHSPraseKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A561094919ADEED000488879 /* NHSPraseKitTests.m */; };
-		A561094D19ADEED000488879 /* NHSPraseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A561093919ADEED000488879 /* NHSPraseKit.framework */; };
-		A561094F19ADEED000488879 /* NHSPraseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A561093919ADEED000488879 /* NHSPraseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A576056919B0AE150018E9EA /* PRDateSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A576056819B0AE150018E9EA /* PRDateSelectCell.m */; };
 		A57B558D19CAE4420069FE65 /* PRFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57B558C19CAE4420069FE65 /* PRFormViewController.m */; };
 		A57B559619CAE55C0069FE65 /* PRRecordSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57B559519CAE55C0069FE65 /* PRRecordSummaryViewController.m */; };
@@ -134,27 +127,6 @@
 			remoteGlobalIDString = A5466ACF19AE2ED900240026;
 			remoteInfo = TDFormKit;
 		};
-		A561094419ADEED000488879 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A536993819ADD1170045EEB1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A536993F19ADD1170045EEB1;
-			remoteInfo = "NHS Prase";
-		};
-		A561094B19ADEED000488879 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A536993819ADD1170045EEB1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A561093819ADEED000488879;
-			remoteInfo = NHSPraseKit;
-		};
-		A561095019ADEED000488879 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A536993819ADD1170045EEB1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A561093819ADEED000488879;
-			remoteInfo = NHSPraseKit;
-		};
 		A5882D0819B9FCDB00C04E4F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A5882D0219B9FCDB00C04E4F /* TheDistanceKit.xcodeproj */;
@@ -194,7 +166,6 @@
 			files = (
 				A5882D1019B9FD0100C04E4F /* TheDistanceKit.framework in Embed Frameworks */,
 				A5F521F519AF289800DC6C68 /* TDFormKit.framework in Embed Frameworks */,
-				A561094F19ADEED000488879 /* NHSPraseKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,8 +228,6 @@
 		A504417719B5CE920000C9B3 /* PRSegmentTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRSegmentTabViewController.m; path = "Record View Controllers/PRSegmentTabViewController.m"; sourceTree = "<group>"; };
 		A504417B19B5D37B0000C9B3 /* PRCommentsSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRCommentsSummaryViewController.h; path = "Record View Controllers/PRCommentsSummaryViewController.h"; sourceTree = "<group>"; };
 		A504417C19B5D37B0000C9B3 /* PRCommentsSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRCommentsSummaryViewController.m; path = "Record View Controllers/PRCommentsSummaryViewController.m"; sourceTree = "<group>"; };
-		A504418F19B6056C0000C9B3 /* PRButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRButton.h; path = Views/PRButton.h; sourceTree = "<group>"; };
-		A504419019B6056C0000C9B3 /* PRButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRButton.m; path = Views/PRButton.m; sourceTree = "<group>"; };
 		A504419319B60D740000C9B3 /* PRTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRTheme.h; path = Model/PRTheme.h; sourceTree = "<group>"; };
 		A504419419B60D740000C9B3 /* PRTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRTheme.m; path = Model/PRTheme.m; sourceTree = "<group>"; };
 		A50671C319B0D279008557CE /* PRRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRRecordViewController.h; path = "Record View Controllers/PRRecordViewController.h"; sourceTree = "<group>"; };
@@ -269,14 +238,14 @@
 		A50671CA19B0DABC008557CE /* PRQuestionStatementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRQuestionStatementViewController.m; path = "Record View Controllers/QuestionViewControllers/PRQuestionStatementViewController.m"; sourceTree = "<group>"; };
 		A50671CD19B0DB40008557CE /* PRQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRQuestionViewController.h; path = "Record View Controllers/QuestionViewControllers/PRQuestionViewController.h"; sourceTree = "<group>"; };
 		A50671CE19B0DB40008557CE /* PRQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRQuestionViewController.m; path = "Record View Controllers/QuestionViewControllers/PRQuestionViewController.m"; sourceTree = "<group>"; };
+		A50E31F419D2B705001C5AE6 /* PRButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRButton.h; sourceTree = "<group>"; };
+		A50E31F519D2B705001C5AE6 /* PRButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRButton.m; sourceTree = "<group>"; };
+		A50E31F619D2B705001C5AE6 /* PROptionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PROptionCollectionViewCell.h; sourceTree = "<group>"; };
+		A50E31F719D2B705001C5AE6 /* PROptionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PROptionCollectionViewCell.m; sourceTree = "<group>"; };
 		A51A6F7E19B6FEDF004BF779 /* PRInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRInputAccessoryView.h; sourceTree = "<group>"; };
 		A51A6F7F19B6FEDF004BF779 /* PRInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRInputAccessoryView.m; sourceTree = "<group>"; };
-		A52A3C6119B4624200985BAB /* PRQuestionOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRQuestionOptions.h; path = Model/PRQuestionOptions.h; sourceTree = "<group>"; };
-		A52A3C6219B4624200985BAB /* PRQuestionOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRQuestionOptions.m; path = Model/PRQuestionOptions.m; sourceTree = "<group>"; };
-		A52A3C6419B462BC00985BAB /* PRQuestionStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRQuestionStatement.h; path = Model/PRQuestionStatement.h; sourceTree = "<group>"; };
-		A52A3C6519B462BC00985BAB /* PRQuestionStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRQuestionStatement.m; path = Model/PRQuestionStatement.m; sourceTree = "<group>"; };
-		A52A3C6A19B46A6100985BAB /* PROptionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PROptionCollectionViewCell.h; path = Views/PROptionCollectionViewCell.h; sourceTree = "<group>"; };
-		A52A3C6B19B46A6100985BAB /* PROptionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PROptionCollectionViewCell.m; path = Views/PROptionCollectionViewCell.m; sourceTree = "<group>"; };
+		A5235E8319D1BE1500AE721A /* PRTextSizeSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRTextSizeSelectCell.h; path = "Custom Form Cells/PRTextSizeSelectCell.h"; sourceTree = "<group>"; };
+		A5235E8419D1BE1500AE721A /* PRTextSizeSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRTextSizeSelectCell.m; path = "Custom Form Cells/PRTextSizeSelectCell.m"; sourceTree = "<group>"; };
 		A52A3C6E19B471E300985BAB /* PRQuestionOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRQuestionOptionsViewController.h; path = "Record View Controllers/QuestionViewControllers/PRQuestionOptionsViewController.h"; sourceTree = "<group>"; };
 		A52A3C6F19B471E300985BAB /* PRQuestionOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRQuestionOptionsViewController.m; path = "Record View Controllers/QuestionViewControllers/PRQuestionOptionsViewController.m"; sourceTree = "<group>"; };
 		A52A3C8319B4C1E700985BAB /* PRGoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRGoodViewController.h; path = "Record View Controllers/PIRT View Controllers/PRGoodViewController.h"; sourceTree = "<group>"; };
@@ -307,12 +276,6 @@
 		A5466CA719AE3A3400240026 /* TDForms.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TDForms.xcodeproj; path = Frameworks/TDForms/TDForms.xcodeproj; sourceTree = "<group>"; };
 		A5466CBD19AE3B0500240026 /* PRBasicDataFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRBasicDataFormViewController.h; path = "Record View Controllers/PRBasicDataFormViewController.h"; sourceTree = "<group>"; };
 		A5466CBE19AE3B0500240026 /* PRBasicDataFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRBasicDataFormViewController.m; path = "Record View Controllers/PRBasicDataFormViewController.m"; sourceTree = "<group>"; };
-		A561093919ADEED000488879 /* NHSPraseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NHSPraseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A561093C19ADEED000488879 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A561093D19ADEED000488879 /* NHSPraseKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NHSPraseKit.h; sourceTree = "<group>"; };
-		A561094319ADEED000488879 /* NHSPraseKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NHSPraseKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A561094819ADEED000488879 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A561094919ADEED000488879 /* NHSPraseKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NHSPraseKitTests.m; sourceTree = "<group>"; };
 		A576056719B0AE150018E9EA /* PRDateSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRDateSelectCell.h; path = "Custom Form Cells/PRDateSelectCell.h"; sourceTree = "<group>"; };
 		A576056819B0AE150018E9EA /* PRDateSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRDateSelectCell.m; path = "Custom Form Cells/PRDateSelectCell.m"; sourceTree = "<group>"; };
 		A57B558B19CAE4420069FE65 /* PRFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRFormViewController.h; path = "Record View Controllers/PRFormViewController.h"; sourceTree = "<group>"; };
@@ -355,26 +318,11 @@
 			files = (
 				A5882D1119B9FD6400C04E4F /* TheDistanceKit.framework in Frameworks */,
 				A5466CBC19AE3A6300240026 /* TDFormKit.framework in Frameworks */,
-				A561094D19ADEED000488879 /* NHSPraseKit.framework in Frameworks */,
 				408CC42810B9480D918B020E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A536995319ADD1170045EEB1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A561093519ADEED000488879 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A561094019ADEED000488879 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -465,15 +413,22 @@
 			name = "Question View Controllers";
 			sourceTree = "<group>";
 		};
+		A50E31F319D2B705001C5AE6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A50E31F419D2B705001C5AE6 /* PRButton.h */,
+				A50E31F519D2B705001C5AE6 /* PRButton.m */,
+				A50E31F619D2B705001C5AE6 /* PROptionCollectionViewCell.h */,
+				A50E31F719D2B705001C5AE6 /* PROptionCollectionViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A52A3C5619B4600500985BAB /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				A504419319B60D740000C9B3 /* PRTheme.h */,
 				A504419419B60D740000C9B3 /* PRTheme.m */,
-				A52A3C6119B4624200985BAB /* PRQuestionOptions.h */,
-				A52A3C6219B4624200985BAB /* PRQuestionOptions.m */,
-				A52A3C6419B462BC00985BAB /* PRQuestionStatement.h */,
-				A52A3C6519B462BC00985BAB /* PRQuestionStatement.m */,
 				A502276519C08F15005B31D2 /* Persistent Model */,
 			);
 			name = Model;
@@ -512,8 +467,6 @@
 				A5466CA719AE3A3400240026 /* TDForms.xcodeproj */,
 				A536994219ADD1170045EEB1 /* NHS Prase */,
 				A536995919ADD1170045EEB1 /* NHS PraseTests */,
-				A561093A19ADEED000488879 /* NHSPraseKit */,
-				A561094619ADEED000488879 /* NHSPraseKitTests */,
 				A536994119ADD1170045EEB1 /* Products */,
 				1A30B6F8810544E9A86B1BC4 /* Pods.xcconfig */,
 				792E3E2641A0445DAC8F4667 /* Frameworks */,
@@ -525,8 +478,6 @@
 			children = (
 				A536994019ADD1170045EEB1 /* NHS Prase.app */,
 				A536995619ADD1170045EEB1 /* NHS PraseTests.xctest */,
-				A561093919ADEED000488879 /* NHSPraseKit.framework */,
-				A561094319ADEED000488879 /* NHSPraseKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -534,6 +485,7 @@
 		A536994219ADD1170045EEB1 /* NHS Prase */ = {
 			isa = PBXGroup;
 			children = (
+				A50E31F319D2B705001C5AE6 /* Views */,
 				A536994719ADD1170045EEB1 /* AppDelegate.h */,
 				A536994819ADD1170045EEB1 /* AppDelegate.m */,
 				A5BCB3C919BDE35700092F50 /* PRViewController.h */,
@@ -621,44 +573,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A561093A19ADEED000488879 /* NHSPraseKit */ = {
-			isa = PBXGroup;
-			children = (
-				A561093D19ADEED000488879 /* NHSPraseKit.h */,
-				A52A3C6A19B46A6100985BAB /* PROptionCollectionViewCell.h */,
-				A52A3C6B19B46A6100985BAB /* PROptionCollectionViewCell.m */,
-				A504418F19B6056C0000C9B3 /* PRButton.h */,
-				A504419019B6056C0000C9B3 /* PRButton.m */,
-				A561093B19ADEED000488879 /* Supporting Files */,
-			);
-			path = NHSPraseKit;
-			sourceTree = "<group>";
-		};
-		A561093B19ADEED000488879 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A561093C19ADEED000488879 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		A561094619ADEED000488879 /* NHSPraseKitTests */ = {
-			isa = PBXGroup;
-			children = (
-				A561094919ADEED000488879 /* NHSPraseKitTests.m */,
-				A561094719ADEED000488879 /* Supporting Files */,
-			);
-			path = NHSPraseKitTests;
-			sourceTree = "<group>";
-		};
-		A561094719ADEED000488879 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A561094819ADEED000488879 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		A576056619B0ADD60018E9EA /* Custom Form Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -674,6 +588,8 @@
 				A544EEC419C899F700160388 /* PRIncrementCell.m */,
 				A58699AC19CB2E4F002E0C14 /* PRBasicDataCompleteCell.h */,
 				A58699AD19CB2E4F002E0C14 /* PRBasicDataCompleteCell.m */,
+				A5235E8319D1BE1500AE721A /* PRTextSizeSelectCell.h */,
+				A5235E8419D1BE1500AE721A /* PRTextSizeSelectCell.m */,
 			);
 			name = "Custom Form Cells";
 			sourceTree = "<group>";
@@ -701,19 +617,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		A561093619ADEED000488879 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A52A3C6C19B46A6100985BAB /* PROptionCollectionViewCell.h in Headers */,
-				A504419119B6056C0000C9B3 /* PRButton.h in Headers */,
-				A561093E19ADEED000488879 /* NHSPraseKit.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		A536993F19ADD1170045EEB1 /* NHS Prase */ = {
 			isa = PBXNativeTarget;
@@ -733,8 +636,6 @@
 			dependencies = (
 				A5882D0F19B9FCFA00C04E4F /* PBXTargetDependency */,
 				A5466CBB19AE3A5C00240026 /* PBXTargetDependency */,
-				A561094C19ADEED000488879 /* PBXTargetDependency */,
-				A561095119ADEED000488879 /* PBXTargetDependency */,
 			);
 			name = "NHS Prase";
 			productName = "NHS Prase";
@@ -759,42 +660,6 @@
 			productReference = A536995619ADD1170045EEB1 /* NHS PraseTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A561093819ADEED000488879 /* NHSPraseKit */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A561095219ADEED000488879 /* Build configuration list for PBXNativeTarget "NHSPraseKit" */;
-			buildPhases = (
-				A561093419ADEED000488879 /* Sources */,
-				A561093519ADEED000488879 /* Frameworks */,
-				A561093619ADEED000488879 /* Headers */,
-				A561093719ADEED000488879 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = NHSPraseKit;
-			productName = NHSPraseKit;
-			productReference = A561093919ADEED000488879 /* NHSPraseKit.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		A561094219ADEED000488879 /* NHSPraseKitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A561095519ADEED000488879 /* Build configuration list for PBXNativeTarget "NHSPraseKitTests" */;
-			buildPhases = (
-				A561093F19ADEED000488879 /* Sources */,
-				A561094019ADEED000488879 /* Frameworks */,
-				A561094119ADEED000488879 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A561094519ADEED000488879 /* PBXTargetDependency */,
-			);
-			name = NHSPraseKitTests;
-			productName = NHSPraseKitTests;
-			productReference = A561094319ADEED000488879 /* NHSPraseKitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -808,13 +673,6 @@
 						CreatedOnToolsVersion = 6.0;
 					};
 					A536995519ADD1170045EEB1 = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = A536993F19ADD1170045EEB1;
-					};
-					A561093819ADEED000488879 = {
-						CreatedOnToolsVersion = 6.0;
-					};
-					A561094219ADEED000488879 = {
 						CreatedOnToolsVersion = 6.0;
 						TestTargetID = A536993F19ADD1170045EEB1;
 					};
@@ -846,8 +704,6 @@
 			targets = (
 				A536993F19ADD1170045EEB1 /* NHS Prase */,
 				A536995519ADD1170045EEB1 /* NHS PraseTests */,
-				A561093819ADEED000488879 /* NHSPraseKit */,
-				A561094219ADEED000488879 /* NHSPraseKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -933,20 +789,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A561093719ADEED000488879 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A561094119ADEED000488879 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1003,10 +845,12 @@
 				A5882D2B19BA0FE500C04E4F /* PRTheme.m in Sources */,
 				A502278E19C09B22005B31D2 /* PRRecord.m in Sources */,
 				A502276E19C0913E005B31D2 /* PRModel.xcdatamodeld in Sources */,
+				A50E31F819D2B705001C5AE6 /* PRButton.m in Sources */,
 				A5EBFED619D1876C0056A44A /* PRMultiTextFieldCell.m in Sources */,
 				A544EEC519C899F700160388 /* PRIncrementCell.m in Sources */,
 				A58699AE19CB2E4F002E0C14 /* PRBasicDataCompleteCell.m in Sources */,
 				A5023E4819CC3A1D0076923A /* PRHospital.m in Sources */,
+				A50E31F919D2B705001C5AE6 /* PROptionCollectionViewCell.m in Sources */,
 				A5023E3D19CC2E5A0076923A /* PRGoodWardSelectViewController.m in Sources */,
 				A50671C819B0D56C008557CE /* PRQuestionaireViewController.m in Sources */,
 				A502278D19C09B22005B31D2 /* PRQuestion.m in Sources */,
@@ -1028,6 +872,7 @@
 				A502279019C09B22005B31D2 /* _PRAnswerOption.m in Sources */,
 				A57B559619CAE55C0069FE65 /* PRRecordSummaryViewController.m in Sources */,
 				A540640419C1FC9800C38EF9 /* PRAnswerOptionsLayout.m in Sources */,
+				A5235E8519D1BE1500AE721A /* PRTextSizeSelectCell.m in Sources */,
 				A5466CBF19AE3B0500240026 /* PRBasicDataFormViewController.m in Sources */,
 				A50671CB19B0DABC008557CE /* PRQuestionStatementViewController.m in Sources */,
 				A50671C519B0D279008557CE /* PRRecordViewController.m in Sources */,
@@ -1043,14 +888,12 @@
 				A536994619ADD1170045EEB1 /* main.m in Sources */,
 				A57B559919CAE62A0069FE65 /* PRQuestionnaireCompleteCell.m in Sources */,
 				A576056919B0AE150018E9EA /* PRDateSelectCell.m in Sources */,
-				A52A3C6619B462BC00985BAB /* PRQuestionStatement.m in Sources */,
 				A57B558D19CAE4420069FE65 /* PRFormViewController.m in Sources */,
 				A52A3C8B19B4D22000985BAB /* PRPIRTViewController.m in Sources */,
 				A5023E4919CC3A1D0076923A /* PRTrust.m in Sources */,
 				A5BCB3C219BDBC7100092F50 /* PRSettingsViewController.m in Sources */,
 				A50671CF19B0DB40008557CE /* PRQuestionViewController.m in Sources */,
 				A504417819B5CE920000C9B3 /* PRSegmentTabViewController.m in Sources */,
-				A52A3C6319B4624200985BAB /* PRQuestionOptions.m in Sources */,
 				A5023E4219CC3A130076923A /* _PRHospital.m in Sources */,
 				A58A8D3D19C6EA1A0052EAB7 /* PRSelectionTableViewCell.m in Sources */,
 				A5466A8919AE070100240026 /* HomeViewController.m in Sources */,
@@ -1062,23 +905,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A536995D19ADD1170045EEB1 /* NHS_PraseTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A561093419ADEED000488879 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A52A3C6D19B46A6100985BAB /* PROptionCollectionViewCell.m in Sources */,
-				A504419219B6056C0000C9B3 /* PRButton.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A561093F19ADEED000488879 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A561094A19ADEED000488879 /* NHSPraseKitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1094,21 +920,6 @@
 			isa = PBXTargetDependency;
 			name = TDFormKit;
 			targetProxy = A5466CBA19AE3A5C00240026 /* PBXContainerItemProxy */;
-		};
-		A561094519ADEED000488879 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A536993F19ADD1170045EEB1 /* NHS Prase */;
-			targetProxy = A561094419ADEED000488879 /* PBXContainerItemProxy */;
-		};
-		A561094C19ADEED000488879 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A561093819ADEED000488879 /* NHSPraseKit */;
-			targetProxy = A561094B19ADEED000488879 /* PBXContainerItemProxy */;
-		};
-		A561095119ADEED000488879 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A561093819ADEED000488879 /* NHSPraseKit */;
-			targetProxy = A561095019ADEED000488879 /* PBXContainerItemProxy */;
 		};
 		A5882D0F19B9FCFA00C04E4F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1318,90 +1129,6 @@
 			};
 			name = Release;
 		};
-		A561095319ADEED000488879 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks/TDForms/TDKit/build/Debug-iphoneos",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = NHSPraseKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		A561095419ADEED000488879 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks/TDForms/TDKit/build/Debug-iphoneos",
-				);
-				INFOPLIST_FILE = NHSPraseKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		A561095619ADEED000488879 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = NHSPraseKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NHS Prase.app/NHS Prase";
-			};
-			name = Debug;
-		};
-		A561095719ADEED000488879 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = NHSPraseKitTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NHS Prase.app/NHS Prase";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1428,24 +1155,6 @@
 			buildConfigurations = (
 				A536996419ADD1170045EEB1 /* Debug */,
 				A536996519ADD1170045EEB1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A561095219ADEED000488879 /* Build configuration list for PBXNativeTarget "NHSPraseKit" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A561095319ADEED000488879 /* Debug */,
-				A561095419ADEED000488879 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A561095519ADEED000488879 /* Build configuration list for PBXNativeTarget "NHSPraseKitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A561095619ADEED000488879 /* Debug */,
-				A561095719ADEED000488879 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

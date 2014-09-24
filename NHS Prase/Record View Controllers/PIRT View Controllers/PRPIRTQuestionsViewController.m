@@ -65,8 +65,8 @@
         
         UIColor *positiveColour = [[PRTheme sharedTheme] positiveColor];
         UIColor *negativeColour = [[PRTheme sharedTheme] negativeColor];
-        UIColor *neutralColour = [[PRTheme sharedTheme] neutralColor];
-        UIColor *mainColour = [[PRTheme sharedTheme] mainColor];
+        //UIColor *neutralColour = [[PRTheme sharedTheme] neutralColor];
+        //UIColor *mainColour = [[PRTheme sharedTheme] mainColor];
         
         NSString *title = titles[indexPath.row];
         NSString *identifier = (indexPath.row == 0 || indexPath.row == 3) ? @"OptionCell2" : @"OptionCell";

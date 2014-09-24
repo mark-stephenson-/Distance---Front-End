@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 The Distance. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PRViewController.h"
 
 #import "PRNoteViewController.h"
 #import "PRInputAccessoryView.h"
 
 @class PRQuestion;
 
-@interface PRQuestionViewController : UIViewController <PRNoteDelegate, TDInputAccessoryDelegate>
+@interface PRQuestionViewController : PRViewController <PRNoteDelegate, TDInputAccessoryDelegate>
 {
     IBOutlet UILabel *headerLabel;
     IBOutlet UILabel *promptLabel;

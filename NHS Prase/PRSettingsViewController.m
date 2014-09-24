@@ -10,6 +10,7 @@
 
 #import "PRTheme.h"
 #import "PRSelectionViewController.h"
+#import "PRTextSizeSelectCell.h"
 
 @implementation PRSettingsViewController
 
@@ -23,6 +24,7 @@
 
 -(NSArray *)generateCellInfo
 {
+    // Create the language select cell
     NSString *currentLanguageKey = [[PRTheme sharedTheme] languageIdentifier];
     NSString *languageTitle = TDLocalizedStringWithDefaultValue(@"settings.cell.language", nil, nil, @"Select your language:", @"Cell title to change the app's language.");
     NSDictionary *languageOptions = [PRTheme languageDictionary];
@@ -40,7 +42,14 @@
     languageInfo[@"userInfo"][@"selectionIdentifier"] = @"PRBasicSelectionVC";
     languageInfo[@"userInfo"][@"selectionDelegate"] = self;
     
-    return @[@[languageInfo]];
+    // Create the text size cell
+    
+    NSMutableDictionary *textSizeCell = [PRTextSizeSelectCell cellInfoWithTitle:TDLocalizedStringWithDefaultValue(@"settings.cell.text-size", nil, nil, @"Change the font size:", @"The title label on the settings screen to set the user's preferred font size for the app")
+                                                                          value:[[PRTheme sharedTheme] currentContentSizeCategory]
+                                                                         andKey:@"TextSize"];
+    textSizeCell[@"reuseIdentifier"] = @"TextSize";
+    
+    return @[@[languageInfo, textSizeCell]];
 }
 
 
@@ -49,9 +58,12 @@
     [super cellValueChanged:cell];
     
     if ([cell.key isEqualToString:@"Language"]) {
-
         NSString *selectedKey = [PRTheme keyForLanguage:cell.value];
         [[PRTheme sharedTheme] setLanguageIdentifier:selectedKey];
+    }
+    
+    if ([cell.key isEqualToString:@"TextSize"]) {
+        [self reloadForm];
     }
 }
 

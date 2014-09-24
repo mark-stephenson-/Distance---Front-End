@@ -25,10 +25,10 @@ IB_DESIGNABLE
 
 @property (nonatomic, assign) IBInspectable CGFloat vBuffer;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *labelHeightConstraint;
+@property (nonatomic, strong) IBInspectable UIColor *imageTintColor;
+@property (nonatomic, strong) IBInspectable UIColor *borderColor;
 
 -(void)setOptionTitle:(NSString *)title image:(UIImage *)image andSecondImage:(UIImage *) image2;
-@property (nonatomic, strong) UIColor *imageTintColor;
-
 -(CGSize)systemLayoutSizeFittingSize:(CGSize)targetSize constrainedToWidth:(CGFloat)width;
 
 @end

@@ -9,7 +9,6 @@
 #import "PRQuestionViewController.h"
 
 #import "PRQuestion.h"
-#import "PRQuestionOptions.h"
 
 #import "PRButton.h"
 #import "PRTheme.h"
@@ -40,8 +39,6 @@
     [super viewWillAppear:animated];
     
     pirtView.hidden = self.shouldHidePIRTView;
-    
-    [self applyTheme];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -79,6 +76,8 @@
     view.nextButton.backgroundColor = [[PRTheme sharedTheme] positiveColor];
     view.nextButton.TDLocalizedStringKey = @"button.done";
     [view.nextButton setImage:[UIImage imageNamed:@"submit"] forState:UIControlStateNormal];
+    
+    [self applyThemeToView:view];
     
     return view;
 }

@@ -9,8 +9,6 @@
 #import "PRQuestionaireViewController.h"
 
 #import "PRQuestion.h"
-#import "PRQuestionStatement.h"
-#import "PRQuestionOptions.h"
 
 #import "PRQuestionViewController.h"
 #import "PRQuestionStatementViewController.h"

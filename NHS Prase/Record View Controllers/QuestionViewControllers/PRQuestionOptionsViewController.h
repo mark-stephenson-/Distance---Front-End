@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 The Distance. All rights reserved.
 //
 
-#import <NHSPraseKit/NHSPraseKit.h>
 #import "PRQuestionViewController.h"
 #import "PRAnswerOptionsLayout.h"
 

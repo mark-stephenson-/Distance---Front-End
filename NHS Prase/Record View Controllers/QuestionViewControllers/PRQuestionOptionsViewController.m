@@ -16,7 +16,7 @@
 #import "PRAnswerOption.h"
 
 #import "PRTheme.h"
-#import "PRQuestionOptions.h"
+#import "PRQuestion.h"
 #import "PROptionCollectionViewCell.h"
 
 @interface PRQuestionOptionsViewController ()
@@ -29,10 +29,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
-    //layout.estimatedItemSize = CGSizeMake(140, 160);
-    
-    //headerLabel.TDLocalizedStringKey = @"question.index_header";
     titleLabel.TDLocalizedStringKey = self.question.questionID;
     
     ((UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout).minimumLineSpacing = 30.0;
@@ -55,17 +51,15 @@
     if ([titleLabel.TDLocalizedStringKey isNonNullString]) {
         titleLabel.text = PRLocalizedStringWithDefaultValue(titleLabel.TDLocalizedStringKey, nil, nil, nil, nil);
     }
+    
+    [self.collectionView.collectionViewLayout invalidateLayout];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    if ([self.question.answerID isNonNullString]) {
-        
-        NSIndexPath *selectedPath = [self.question indexPathForAnswerID:self.question.answerID];
-        [self.collectionView selectItemAtIndexPath:selectedPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
-    }
+    [self selectAnswer];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -76,8 +70,6 @@
 -(void)setQuestion:(PRQuestion *)question
 {
     [super setQuestion:question];
-    
-    
     
     if (headerLabel != nil) {
         headerLabel.TDLocalizedStringKey = @"question.index_header";
@@ -90,6 +82,15 @@
     if (headerLabel != nil && titleLabel != nil) {
         [self applyTheme];
         [self.collectionView reloadData];
+        [self selectAnswer];
+    }
+}
+
+-(void)selectAnswer
+{
+    if ([self.question.answerID isNonNullString]) {
+        NSIndexPath *selectedPath = [self.question indexPathForAnswerID:self.question.answerID];
+        [self.collectionView selectItemAtIndexPath:selectedPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     }
 }
 
@@ -97,6 +98,7 @@
 {
     [super viewDidLayoutSubviews];
     
+    self.collectionView.tintColor = [[PRTheme sharedTheme] mainColor];
     
     if (CGSizeEqualToSize(CGSizeZero, oldViewSize) || !CGSizeEqualToSize(self.view.bounds.size, oldViewSize)) {
         [self.collectionView.collectionViewLayout invalidateLayout];
