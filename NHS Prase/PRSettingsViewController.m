@@ -49,7 +49,20 @@
                                                                          andKey:@"TextSize"];
     textSizeCell[@"reuseIdentifier"] = @"TextSize";
     
-    return @[@[languageInfo, textSizeCell]];
+    // create the rotation preference cell
+    
+    
+    NSArray *rotationTitles = @[TDLocalizedStringWithDefaultValue(@"settings.rotation.protrait", nil, nil, @"Portrait", @"Interface rotation preference is portrait."),
+                                TDLocalizedStringWithDefaultValue(@"settings.rotation.protrait", nil, nil, @"Landscape", @"Interface rotation preference is portrait."),
+                                TDLocalizedStringWithDefaultValue(@"settings.rotation.protrait", nil, nil, @"Rotates to Device", @"Interface rotation preference is to rotate to match the device.")];
+    NSMutableDictionary *rotationCell = [TDSegmentedCell cellInfoWithTitle:TDLocalizedStringWithDefaultValue(@"settings.cell.rotation", nil, nil, @"Please select your screen rotation prreference", @"The title label on the settings screen to set the user's prefference on interface orientation.")
+                                                             segmentTitles:rotationTitles
+                                                                       value:@([[PRTheme sharedTheme] currentRotationPreference])
+                                                                      andKey:@"Rotation"];
+    rotationCell[@"reuseIdentifier"] = @"Rotation";
+    
+    
+    return @[@[languageInfo, textSizeCell, rotationCell]];
 }
 
 
@@ -64,6 +77,12 @@
     
     if ([cell.key isEqualToString:@"TextSize"]) {
         [self reloadForm];
+    }
+    
+    if ([cell.key isEqualToString:@"Rotation"]) {
+        TDSegmentedCell *segCell = (TDSegmentedCell *) cell;
+        NSUInteger index = [segCell.segmentTitles indexOfObject:cell.value];
+        [[PRTheme sharedTheme] setCurrentRotationPreference:(RotationPreference) index];
     }
 }
 

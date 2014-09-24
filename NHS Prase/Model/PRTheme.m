@@ -95,8 +95,7 @@ NSString * PRLocalizedStringWithDefaultValue(NSString *key, NSString *tbl, NSBun
     static NSDictionary *languageOptions = nil;
     
     if (languageOptions == nil) {
-        languageOptions = @{@"en": @"English",
-                            @"fr": @"Français"};
+        languageOptions = @{@"en": @"English"};
     }
     
     return languageOptions;
@@ -121,6 +120,8 @@ NSString * PRLocalizedStringWithDefaultValue(NSString *key, NSString *tbl, NSBun
         self.preferredFontNameForCaption1 = @"Helvetica Bold";
         self.preferredFontNameForCaption2 = fontName;
         self.preferredFontNameForFootnote = fontName;
+        
+        _currentRotationPreference = kRotationPreferenceBoth;
     }
     
     return self;

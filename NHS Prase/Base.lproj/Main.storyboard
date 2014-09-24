@@ -328,7 +328,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7te-JW-eOy" id="Vc2-Py-Zcj">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="Select your language:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmr-WZ-h9e">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmr-WZ-h9e">
                                                     <rect key="frame" x="20" y="15" width="520" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -386,7 +386,7 @@
                                                         <action selector="sliderChange:" destination="4p6-hC-wxq" eventType="valueChanged" id="QqR-K2-BwE"/>
                                                     </connections>
                                                 </slider>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="Select your prefered font size:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyA-g8-lBJ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyA-g8-lBJ">
                                                     <rect key="frame" x="20" y="15" width="520" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -441,6 +441,59 @@
                                             <outlet property="smallTextLabel" destination="gCS-uq-ZyK" id="4eY-aK-u4q"/>
                                             <outlet property="textSizeSlider" destination="JnD-dT-ppL" id="agR-7O-VB8"/>
                                             <outlet property="titleLabel" destination="kyA-g8-lBJ" id="PvE-AO-6iK"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Rotation" rowHeight="95" id="31T-6X-C9K" customClass="TDSegmentedCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="31T-6X-C9K" id="ocJ-zd-d0O">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEo-NK-Qag">
+                                                    <rect key="frame" x="20" y="15" width="520" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                                <segmentedControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="Jpd-y1-J7Y">
+                                                    <rect key="frame" x="30" y="51" width="500" height="29"/>
+                                                    <segments>
+                                                        <segment title="Portrait"/>
+                                                        <segment title="Landscape"/>
+                                                        <segment title="Rotates to Device"/>
+                                                    </segments>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="segmentChanged:" destination="31T-6X-C9K" eventType="valueChanged" id="NeF-81-B51"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="yEo-NK-Qag" firstAttribute="top" secondItem="ocJ-zd-d0O" secondAttribute="top" constant="15" id="0Fd-I3-BLz"/>
+                                                <constraint firstItem="Jpd-y1-J7Y" firstAttribute="leading" secondItem="ocJ-zd-d0O" secondAttribute="leading" constant="30" id="4su-qe-MtA"/>
+                                                <constraint firstAttribute="bottom" secondItem="Jpd-y1-J7Y" secondAttribute="bottom" constant="15" id="I92-bC-xEi"/>
+                                                <constraint firstItem="Jpd-y1-J7Y" firstAttribute="top" secondItem="yEo-NK-Qag" secondAttribute="bottom" constant="15" id="Jss-cP-Oq8"/>
+                                                <constraint firstAttribute="trailing" secondItem="Jpd-y1-J7Y" secondAttribute="trailing" constant="30" id="X7C-2V-WHV"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="yEo-NK-Qag" secondAttribute="bottom" constant="20" symbolic="YES" id="YdM-US-i1H"/>
+                                                <constraint firstItem="yEo-NK-Qag" firstAttribute="leading" secondItem="ocJ-zd-d0O" secondAttribute="leading" constant="20" id="fxt-Xi-uAX"/>
+                                                <constraint firstAttribute="centerY" secondItem="yEo-NK-Qag" secondAttribute="centerY" id="qEM-Ab-Ypd"/>
+                                                <constraint firstAttribute="trailing" secondItem="yEo-NK-Qag" secondAttribute="trailing" constant="20" id="rqM-TZ-eh5"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="YdM-US-i1H"/>
+                                                    <exclude reference="qEM-Ab-Ypd"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="segmentControl" destination="Jpd-y1-J7Y" id="Kkc-rY-ce4"/>
+                                            <outlet property="titleLabel" destination="yEo-NK-Qag" id="3rA-DH-lYO"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

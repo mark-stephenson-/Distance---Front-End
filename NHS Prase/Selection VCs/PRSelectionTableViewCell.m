@@ -46,7 +46,7 @@
     //[self layoutIfNeeded];
 }
 
-
+/*
 -(void)updateConstraints
 {
     [self.contentView removeConstraints:hConstraints];
@@ -71,7 +71,7 @@
     
     [super updateConstraints];
 }
-
+*/
 -(CGSize)sizeThatFits:(CGSize)size
 {
     return [super sizeThatFits:size];

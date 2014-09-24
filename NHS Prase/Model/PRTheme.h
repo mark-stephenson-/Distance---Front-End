@@ -8,6 +8,8 @@
 
 #import <TheDistanceKit/TheDistanceKit.h>
 
+typedef enum {kRotationPreferencePortrait, kRotationPreferenceLandscape, kRotationPreferenceBoth} RotationPreference;
+
 NSString * PRLocalizedStringWithDefaultValue(NSString *key, NSString *tbl, NSBundle *bundle, NSString *val, NSString *comment);
 
 @interface PRTheme : TDTheme
@@ -17,5 +19,7 @@ NSString * PRLocalizedStringWithDefaultValue(NSString *key, NSString *tbl, NSBun
 @property (nonatomic, strong) UIColor *neutralColor;
 @property (nonatomic, strong) UIColor *mainColor;
 @property (nonatomic, strong) UIColor *backColor;
+
+@property (nonatomic, assign) RotationPreference currentRotationPreference;;
 
 @end
