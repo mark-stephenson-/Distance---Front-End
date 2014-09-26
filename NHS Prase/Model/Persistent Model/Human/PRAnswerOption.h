@@ -2,4 +2,7 @@
 
 @interface PRAnswerOption : _PRAnswerOption {}
 // Custom logic goes here.
+
+-(NSString *)localizationKeyForAnswerID;
+
 @end

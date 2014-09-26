@@ -13,6 +13,8 @@
 
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 
+#import "PRAPIManager.h"
+
 @interface AppDelegate ()
 
 @end
@@ -30,6 +32,8 @@
     // set up app wide inset
     [[TDTextField appearance] setTextInsets:UIEdgeInsetsMake(10, 15, 10, 15)];
     
+    PRAPIManager *manager = [PRAPIManager sharedManager];
+    [manager getTrustHierarchy];
     return YES;
 }
 

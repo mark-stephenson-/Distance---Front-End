@@ -1,5 +1,6 @@
 #import "PRQuestion.h"
 #import "PRAnswerOption.h"
+#import "PRAPIManager.h"
 
 #import <UIKit/UIKit.h>
 
@@ -14,6 +15,16 @@
 
 // Custom logic goes here.
 
+-(NSString *)localizationKeyForAnswerID
+{
+    return [[PRAPIManager sharedManager] TDCLocalizationsKeyForTDCoreIdentifier:self.answerID forEntityNamed:@"PRAnswerOption"];
+}
+
+-(NSString *)localizationKeyForQuestionID
+{
+    return [[PRAPIManager sharedManager] TDCLocalizationsKeyForTDCoreIdentifier:self.questionID forEntityNamed:@"PRQuestion"];
+}
+
 -(NSArray *)answerOptionsArray
 {
     return self.answerOptions;
@@ -24,7 +35,7 @@
     [super setAnswerOptions:answerOptionsArray];
 }
 
--(NSIndexPath *)indexPathForAnswerID:(NSString *)answerID
+-(NSIndexPath *)indexPathForAnswerID:(NSNumber *)answerID
 {
     NSIndexPath *selectedPath = nil;
     
@@ -34,7 +45,7 @@
         for (int r = 0 ; r < sectionOptions.count; r++) {
             PRAnswerOption *thisOption = sectionOptions[r];
             
-            if ([thisOption.optionID isEqualToString:answerID]) {
+            if ([thisOption.answerID isEqualToNumber:answerID]) {
                 selectedPath = [NSIndexPath indexPathForRow:r inSection:s];
             }
         }

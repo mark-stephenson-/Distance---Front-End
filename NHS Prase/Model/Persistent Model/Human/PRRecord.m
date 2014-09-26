@@ -19,6 +19,7 @@
 
 // Custom logic goes here.
 
+/*
 +(instancetype)prototypeRecordWithWard:(PRWard *) ward
 {
     PRQuestion *q0 = [[self class] likelyQuestionWithID:@"question.recommend_ward"];
@@ -133,6 +134,7 @@
     
     return @[abstain1, abstain2];
 }
+*/
 
 -(NSDictionary *)basicDataDictionary
 {
@@ -149,7 +151,7 @@
     NSInteger answeredCount = 0;
     
     for (PRQuestion *question in self.questions) {
-        if ([question.answerID isNonNullString]) {
+        if (question.answerID != nil) {
             answeredCount++;
         }
     }

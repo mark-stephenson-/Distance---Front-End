@@ -1,5 +1,6 @@
 #import "PRAnswerOption.h"
 
+#import "PRAPIManager.h"
 
 @interface PRAnswerOption ()
 
@@ -11,5 +12,10 @@
 @implementation PRAnswerOption
 
 // Custom logic goes here.
+
+-(NSString *)localizationKeyForAnswerID
+{
+    return [[PRAPIManager sharedManager] TDCLocalizationsKeyForTDCoreIdentifier:self.answerID forEntityNamed:@"PRAnswerOption"];
+}
 
 @end

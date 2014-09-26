@@ -68,6 +68,7 @@
 		A5BCB3CB19BDE35700092F50 /* PRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BCB3CA19BDE35700092F50 /* PRViewController.m */; };
 		A5BCB3D419BDE6E600092F50 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5BCB3CF19BDE6E600092F50 /* Localizable.strings */; };
 		A5BCB3D519BDE6E600092F50 /* Storyboard.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5BCB3D119BDE6E600092F50 /* Storyboard.strings */; };
+		A5D40FD019D2F8FE00CD6FAD /* PRAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D40FCF19D2F8FE00CD6FAD /* PRAPIManager.m */; };
 		A5DE267F19B737ED000D3AF2 /* PRWardSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DE267E19B737ED000D3AF2 /* PRWardSelectViewController.m */; };
 		A5DE268619B739D9000D3AF2 /* PRPIRTWardSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DE268519B739D9000D3AF2 /* PRPIRTWardSelectViewController.m */; };
 		A5EBFEC219D16B940056A44A /* PRAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBFEC119D16B940056A44A /* PRAgreementViewController.m */; };
@@ -296,6 +297,8 @@
 		A5BCB3D019BDE6E600092F50 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A5BCB3D219BDE6E600092F50 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Storyboard.strings; sourceTree = "<group>"; };
 		A5BCB3D319BDE6E600092F50 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Storyboard.strings; sourceTree = "<group>"; };
+		A5D40FCE19D2F8FE00CD6FAD /* PRAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRAPIManager.h; path = Model/PRAPIManager.h; sourceTree = "<group>"; };
+		A5D40FCF19D2F8FE00CD6FAD /* PRAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRAPIManager.m; path = Model/PRAPIManager.m; sourceTree = "<group>"; };
 		A5DE267D19B737ED000D3AF2 /* PRWardSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRWardSelectViewController.h; sourceTree = "<group>"; };
 		A5DE267E19B737ED000D3AF2 /* PRWardSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRWardSelectViewController.m; sourceTree = "<group>"; };
 		A5DE268419B739D9000D3AF2 /* PRPIRTWardSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRPIRTWardSelectViewController.h; sourceTree = "<group>"; };
@@ -488,6 +491,8 @@
 				A50E31F319D2B705001C5AE6 /* Views */,
 				A536994719ADD1170045EEB1 /* AppDelegate.h */,
 				A536994819ADD1170045EEB1 /* AppDelegate.m */,
+				A5D40FCE19D2F8FE00CD6FAD /* PRAPIManager.h */,
+				A5D40FCF19D2F8FE00CD6FAD /* PRAPIManager.m */,
 				A5BCB3C919BDE35700092F50 /* PRViewController.h */,
 				A5BCB3CA19BDE35700092F50 /* PRViewController.m */,
 				A5F565A819C338E10080C692 /* PRSelectionViewController.h */,
@@ -842,6 +847,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5D40FD019D2F8FE00CD6FAD /* PRAPIManager.m in Sources */,
 				A5882D2B19BA0FE500C04E4F /* PRTheme.m in Sources */,
 				A502278E19C09B22005B31D2 /* PRRecord.m in Sources */,
 				A502276E19C0913E005B31D2 /* PRModel.xcdatamodeld in Sources */,

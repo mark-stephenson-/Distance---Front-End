@@ -23,9 +23,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
-    [PRWard createPrototypeWards];
-    
     trusts = [PRTrust MR_findAllSortedBy:@"name" ascending:YES];
 }
 

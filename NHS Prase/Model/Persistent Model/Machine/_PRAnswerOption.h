@@ -5,10 +5,11 @@
 
 
 extern const struct PRAnswerOptionAttributes {
+	__unsafe_unretained NSString *answerID;
 	__unsafe_unretained NSString *image1;
 	__unsafe_unretained NSString *image2;
 	__unsafe_unretained NSString *imageTintIdentifier;
-	__unsafe_unretained NSString *optionID;
+	__unsafe_unretained NSString *title;
 } PRAnswerOptionAttributes;
 
 extern const struct PRAnswerOptionRelationships {
@@ -25,6 +26,7 @@ extern const struct PRAnswerOptionFetchedProperties {
 
 
 
+
 @interface PRAnswerOptionID : NSManagedObjectID {}
 @end
 
@@ -33,6 +35,20 @@ extern const struct PRAnswerOptionFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (PRAnswerOptionID*)objectID;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* answerID;
+
+
+
+@property int64_t answerIDValue;
+- (int64_t)answerIDValue;
+- (void)setAnswerIDValue:(int64_t)value_;
+
+//- (BOOL)validateAnswerID:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -68,11 +84,11 @@ extern const struct PRAnswerOptionFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* optionID;
+@property (nonatomic, strong) NSString* title;
 
 
 
-//- (BOOL)validateOptionID:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateTitle:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -95,6 +111,15 @@ extern const struct PRAnswerOptionFetchedProperties {
 @interface _PRAnswerOption (CoreDataGeneratedPrimitiveAccessors)
 
 
+- (NSNumber*)primitiveAnswerID;
+- (void)setPrimitiveAnswerID:(NSNumber*)value;
+
+- (int64_t)primitiveAnswerIDValue;
+- (void)setPrimitiveAnswerIDValue:(int64_t)value_;
+
+
+
+
 - (NSString*)primitiveImage1;
 - (void)setPrimitiveImage1:(NSString*)value;
 
@@ -113,8 +138,8 @@ extern const struct PRAnswerOptionFetchedProperties {
 
 
 
-- (NSString*)primitiveOptionID;
-- (void)setPrimitiveOptionID:(NSString*)value;
+- (NSString*)primitiveTitle;
+- (void)setPrimitiveTitle:(NSString*)value;
 
 
 

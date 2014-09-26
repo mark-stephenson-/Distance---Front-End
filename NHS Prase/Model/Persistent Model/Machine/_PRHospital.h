@@ -40,9 +40,9 @@ extern const struct PRHospitalFetchedProperties {
 
 
 
-@property int16_t idValue;
-- (int16_t)idValue;
-- (void)setIdValue:(int16_t)value_;
+@property int64_t idValue;
+- (int64_t)idValue;
+- (void)setIdValue:(int64_t)value_;
 
 //- (BOOL)validateId:(id*)value_ error:(NSError**)error_;
 
@@ -92,8 +92,8 @@ extern const struct PRHospitalFetchedProperties {
 - (NSNumber*)primitiveId;
 - (void)setPrimitiveId:(NSNumber*)value;
 
-- (int16_t)primitiveIdValue;
-- (void)setPrimitiveIdValue:(int16_t)value_;
+- (int64_t)primitiveIdValue;
+- (void)setPrimitiveIdValue:(int64_t)value_;
 
 
 

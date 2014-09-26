@@ -58,22 +58,22 @@ const struct PRHospitalFetchedProperties PRHospitalFetchedProperties = {
 
 
 
-- (int16_t)idValue {
+- (int64_t)idValue {
 	NSNumber *result = [self id];
-	return [result shortValue];
+	return [result longLongValue];
 }
 
-- (void)setIdValue:(int16_t)value_ {
-	[self setId:[NSNumber numberWithShort:value_]];
+- (void)setIdValue:(int64_t)value_ {
+	[self setId:[NSNumber numberWithLongLong:value_]];
 }
 
-- (int16_t)primitiveIdValue {
+- (int64_t)primitiveIdValue {
 	NSNumber *result = [self primitiveId];
-	return [result shortValue];
+	return [result longLongValue];
 }
 
-- (void)setPrimitiveIdValue:(int16_t)value_ {
-	[self setPrimitiveId:[NSNumber numberWithShort:value_]];
+- (void)setPrimitiveIdValue:(int64_t)value_ {
+	[self setPrimitiveId:[NSNumber numberWithLongLong:value_]];
 }
 
 

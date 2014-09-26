@@ -75,7 +75,7 @@
     if (answered < total) {
         for (int q = 0; q < total; q++) {
             PRQuestion *thisQuestion = self.record.questions[q];
-            if (![thisQuestion.answerID isNonNullString]) {
+            if (thisQuestion.answerID != nil) {
                 NSString *formatHeader = [NSString localizedStringWithFormat:TDLocalizedStringWithDefaultValue(@"summary.question.summary-label", nil, nil, @"Question %d", @"The label identifiying the number of unanswered PMOS question. Shown on the summary screen."), q + 1];
                 unansweredQuestions[@(q)] = formatHeader;
             }

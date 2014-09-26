@@ -19,6 +19,8 @@
 #import "PRQuestion.h"
 #import "PROptionCollectionViewCell.h"
 
+//#import "PRAPIManager.h"
+
 @interface PRQuestionOptionsViewController ()
 
 @end
@@ -28,8 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    titleLabel.TDLocalizedStringKey = self.question.questionID;
+    titleLabel.TDLocalizedStringKey = self.question.localizationKeyForQuestionID;
     
     ((UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout).minimumLineSpacing = 30.0;
 }
@@ -76,7 +77,7 @@
     }
     
     if (titleLabel != nil) {
-        titleLabel.TDLocalizedStringKey = self.question.questionID;
+        titleLabel.TDLocalizedStringKey = self.question.localizationKeyForQuestionID;
     }
     
     if (headerLabel != nil && titleLabel != nil) {
@@ -88,7 +89,7 @@
 
 -(void)selectAnswer
 {
-    if ([self.question.answerID isNonNullString]) {
+    if (self.question.answerID != nil) {
         NSIndexPath *selectedPath = [self.question indexPathForAnswerID:self.question.answerID];
         [self.collectionView selectItemAtIndexPath:selectedPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     }
@@ -156,7 +157,8 @@
         optionCell.imageTintColor = [[PRTheme sharedTheme] colourForIdentifier:thisOption.imageTintIdentifier];
     }
     
-    NSString *localizedTitle = PRLocalizedStringWithDefaultValue(thisOption.optionID, nil, nil, nil, nil);
+    NSString *localizationKey = [thisOption localizationKeyForAnswerID];
+    NSString *localizedTitle = PRLocalizedStringWithDefaultValue(localizationKey, nil, nil, nil, nil);
     UIImage *image1 = [thisOption.image1 isNonNullString] ? [UIImage imageNamed:thisOption.image1] : nil;
     UIImage *image2 = [thisOption.image2 isNonNullString] ? [UIImage imageNamed:thisOption.image2] : nil;
     
@@ -225,7 +227,7 @@
     NSArray *sectionOptions = self.question.answerOptionsArray[indexPath.section];
     PRAnswerOption *thisOption = sectionOptions[indexPath.row];
     
-    self.question.answerID = thisOption.optionID;
+    self.question.answerID = thisOption.answerID;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath

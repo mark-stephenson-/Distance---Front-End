@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="PRAnswerOption" representedClassName="PRAnswerOption" syncable="YES">
+        <attribute name="answerID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="image1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageTintIdentifier" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="optionID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRQuestion" inverseName="options" inverseEntity="PRQuestion" syncable="YES"/>
     </entity>
     <entity name="PRConcern" representedClassName="PRConcern" syncable="YES">
@@ -18,7 +19,7 @@
         <relationship name="whyNote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRNote" inverseName="concernAsWhy" inverseEntity="PRNote" syncable="YES"/>
     </entity>
     <entity name="PRHospital" representedClassName="PRHospital" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="trust" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRTrust" inverseName="hospitals" inverseEntity="PRTrust" syncable="YES"/>
         <relationship name="wards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRWard" inverseName="hospital" inverseEntity="PRWard" syncable="YES"/>
@@ -36,9 +37,10 @@
         <relationship name="ward" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRWard" inverseName="goodNotes" inverseEntity="PRWard" syncable="YES"/>
     </entity>
     <entity name="PRQuestion" representedClassName="PRQuestion" syncable="YES">
-        <attribute name="answerID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="answerID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="answerOptions" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="questionID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="questionID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="concern" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRConcern" inverseName="question" inverseEntity="PRConcern" syncable="YES"/>
         <relationship name="concernAsPrevent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRConcern" inverseName="preventQuestion" inverseEntity="PRConcern" syncable="YES"/>
         <relationship name="concernAsSerious" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRConcern" inverseName="seriousQuestion" inverseEntity="PRConcern" syncable="YES"/>
@@ -61,12 +63,12 @@
         <relationship name="ward" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRWard" inverseName="records" inverseEntity="PRWard" syncable="YES"/>
     </entity>
     <entity name="PRTrust" representedClassName="PRTrust" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="hospitals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRHospital" inverseName="trust" inverseEntity="PRHospital" syncable="YES"/>
     </entity>
     <entity name="PRWard" representedClassName="PRWard" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="concerns" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRConcern" inverseName="ward" inverseEntity="PRConcern" syncable="YES"/>
         <relationship name="goodNotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRNote" inverseName="ward" inverseEntity="PRNote" syncable="YES"/>
@@ -74,11 +76,11 @@
         <relationship name="records" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRRecord" inverseName="ward" inverseEntity="PRRecord" syncable="YES"/>
     </entity>
     <elements>
-        <element name="PRAnswerOption" positionX="-2297" positionY="-1171" width="128" height="118"/>
+        <element name="PRAnswerOption" positionX="-2297" positionY="-1171" width="128" height="133"/>
         <element name="PRConcern" positionX="-2061" positionY="-991" width="128" height="163"/>
         <element name="PRHospital" positionX="-2952" positionY="-963" width="128" height="103"/>
         <element name="PRNote" positionX="-1863" positionY="-823" width="128" height="193"/>
-        <element name="PRQuestion" positionX="-2304" positionY="-979" width="128" height="193"/>
+        <element name="PRQuestion" positionX="-2304" positionY="-979" width="128" height="208"/>
         <element name="PRRecord" positionX="-2529" positionY="-976" width="128" height="208"/>
         <element name="PRTrust" positionX="-3141" positionY="-955" width="128" height="88"/>
         <element name="PRWard" positionX="-2745" positionY="-972" width="128" height="133"/>

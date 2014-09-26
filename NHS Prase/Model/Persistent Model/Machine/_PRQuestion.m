@@ -7,6 +7,7 @@ const struct PRQuestionAttributes PRQuestionAttributes = {
 	.answerID = @"answerID",
 	.answerOptions = @"answerOptions",
 	.questionID = @"questionID",
+	.title = @"title",
 };
 
 const struct PRQuestionRelationships PRQuestionRelationships = {
@@ -48,6 +49,16 @@ const struct PRQuestionFetchedProperties PRQuestionFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"answerIDValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"answerID"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+	if ([key isEqualToString:@"questionIDValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"questionID"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 
 	return keyPaths;
 }
@@ -57,6 +68,25 @@ const struct PRQuestionFetchedProperties PRQuestionFetchedProperties = {
 
 @dynamic answerID;
 
+
+
+- (int64_t)answerIDValue {
+	NSNumber *result = [self answerID];
+	return [result longLongValue];
+}
+
+- (void)setAnswerIDValue:(int64_t)value_ {
+	[self setAnswerID:[NSNumber numberWithLongLong:value_]];
+}
+
+- (int64_t)primitiveAnswerIDValue {
+	NSNumber *result = [self primitiveAnswerID];
+	return [result longLongValue];
+}
+
+- (void)setPrimitiveAnswerIDValue:(int64_t)value_ {
+	[self setPrimitiveAnswerID:[NSNumber numberWithLongLong:value_]];
+}
 
 
 
@@ -70,6 +100,32 @@ const struct PRQuestionFetchedProperties PRQuestionFetchedProperties = {
 
 
 @dynamic questionID;
+
+
+
+- (int64_t)questionIDValue {
+	NSNumber *result = [self questionID];
+	return [result longLongValue];
+}
+
+- (void)setQuestionIDValue:(int64_t)value_ {
+	[self setQuestionID:[NSNumber numberWithLongLong:value_]];
+}
+
+- (int64_t)primitiveQuestionIDValue {
+	NSNumber *result = [self primitiveQuestionID];
+	return [result longLongValue];
+}
+
+- (void)setPrimitiveQuestionIDValue:(int64_t)value_ {
+	[self setPrimitiveQuestionID:[NSNumber numberWithLongLong:value_]];
+}
+
+
+
+
+
+@dynamic title;
 
 
 

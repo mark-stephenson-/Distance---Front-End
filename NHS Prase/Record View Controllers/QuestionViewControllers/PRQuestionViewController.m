@@ -114,6 +114,7 @@
 -(void)addConcern:(id)sender
 {
     PRPIRTViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"PIRTVC"];
+    toPresent.record = self.question.record;
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self presentViewController:toPresent animated:YES completion:nil];

@@ -4,8 +4,10 @@
 // Custom logic goes here.
 
 @property (nonatomic, strong) NSArray *answerOptionsArray;
+@property (nonatomic, readonly) NSString *localizationKeyForQuestionID;
+@property (nonatomic, readonly) NSString *localizationKeyForAnswerID;
 
 /// Helper method to return the indexPath of the answer in this questions options arrays.
--(NSIndexPath *)indexPathForAnswerID:(NSString *)answerID;
+-(NSIndexPath *)indexPathForAnswerID:(NSNumber *)answerID;
 
 @end

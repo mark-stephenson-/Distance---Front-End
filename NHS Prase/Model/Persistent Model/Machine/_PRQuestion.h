@@ -8,6 +8,7 @@ extern const struct PRQuestionAttributes {
 	__unsafe_unretained NSString *answerID;
 	__unsafe_unretained NSString *answerOptions;
 	__unsafe_unretained NSString *questionID;
+	__unsafe_unretained NSString *title;
 } PRQuestionAttributes;
 
 extern const struct PRQuestionRelationships {
@@ -35,6 +36,7 @@ extern const struct PRQuestionFetchedProperties {
 @class NSObject;
 
 
+
 @interface PRQuestionID : NSManagedObjectID {}
 @end
 
@@ -48,9 +50,13 @@ extern const struct PRQuestionFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* answerID;
+@property (nonatomic, strong) NSNumber* answerID;
 
 
+
+@property int64_t answerIDValue;
+- (int64_t)answerIDValue;
+- (void)setAnswerIDValue:(int64_t)value_;
 
 //- (BOOL)validateAnswerID:(id*)value_ error:(NSError**)error_;
 
@@ -68,11 +74,25 @@ extern const struct PRQuestionFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* questionID;
+@property (nonatomic, strong) NSNumber* questionID;
 
 
+
+@property int64_t questionIDValue;
+- (int64_t)questionIDValue;
+- (void)setQuestionIDValue:(int64_t)value_;
 
 //- (BOOL)validateQuestionID:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* title;
+
+
+
+//- (BOOL)validateTitle:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -142,8 +162,11 @@ extern const struct PRQuestionFetchedProperties {
 @interface _PRQuestion (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSString*)primitiveAnswerID;
-- (void)setPrimitiveAnswerID:(NSString*)value;
+- (NSNumber*)primitiveAnswerID;
+- (void)setPrimitiveAnswerID:(NSNumber*)value;
+
+- (int64_t)primitiveAnswerIDValue;
+- (void)setPrimitiveAnswerIDValue:(int64_t)value_;
 
 
 
@@ -154,8 +177,17 @@ extern const struct PRQuestionFetchedProperties {
 
 
 
-- (NSString*)primitiveQuestionID;
-- (void)setPrimitiveQuestionID:(NSString*)value;
+- (NSNumber*)primitiveQuestionID;
+- (void)setPrimitiveQuestionID:(NSNumber*)value;
+
+- (int64_t)primitiveQuestionIDValue;
+- (void)setPrimitiveQuestionIDValue:(int64_t)value_;
+
+
+
+
+- (NSString*)primitiveTitle;
+- (void)setPrimitiveTitle:(NSString*)value;
 
 
 
