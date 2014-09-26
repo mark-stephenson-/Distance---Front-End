@@ -33,6 +33,7 @@
     [[TDTextField appearance] setTextInsets:UIEdgeInsetsMake(10, 15, 10, 15)];
     
     PRAPIManager *manager = [PRAPIManager sharedManager];
+    manager.baseURL = [NSURL URLWithString:@"http://prase.staging2.thedistance.co.uk"];
     [manager getTrustHierarchy];
     return YES;
 }
