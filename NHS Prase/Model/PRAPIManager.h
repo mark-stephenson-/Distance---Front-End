@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import <TheDistanceKit/TheDistanceKit.h>
 
 @interface PRAPIManager : TDAPIManager
 
 -(void)getTrustHierarchy;
 -(void)getQuestionHierarchy;
+-(void)getLocalizations;
 
 @end

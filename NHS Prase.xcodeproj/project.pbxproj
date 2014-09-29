@@ -21,7 +21,6 @@
 		A502279319C09B22005B31D2 /* _PRQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = A502278519C09B22005B31D2 /* _PRQuestion.m */; };
 		A502279419C09B22005B31D2 /* _PRRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = A502278719C09B22005B31D2 /* _PRRecord.m */; };
 		A502279519C09B22005B31D2 /* _PRWard.m in Sources */ = {isa = PBXBuildFile; fileRef = A502278919C09B22005B31D2 /* _PRWard.m */; };
-		A502279919C0A2E5005B31D2 /* Questionnaire.strings in Resources */ = {isa = PBXBuildFile; fileRef = A502279719C0A2E5005B31D2 /* Questionnaire.strings */; };
 		A5023E3D19CC2E5A0076923A /* PRGoodWardSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5023E3C19CC2E5A0076923A /* PRGoodWardSelectViewController.m */; };
 		A5023E4219CC3A130076923A /* _PRHospital.m in Sources */ = {isa = PBXBuildFile; fileRef = A5023E3F19CC3A130076923A /* _PRHospital.m */; };
 		A5023E4319CC3A130076923A /* _PRTrust.m in Sources */ = {isa = PBXBuildFile; fileRef = A5023E4119CC3A130076923A /* _PRTrust.m */; };
@@ -224,8 +223,6 @@
 		A502278719C09B22005B31D2 /* _PRRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _PRRecord.m; sourceTree = "<group>"; };
 		A502278819C09B22005B31D2 /* _PRWard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _PRWard.h; sourceTree = "<group>"; };
 		A502278919C09B22005B31D2 /* _PRWard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _PRWard.m; sourceTree = "<group>"; };
-		A502279819C0A2E5005B31D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Languages/en.lproj/Questionnaire.strings; sourceTree = "<group>"; };
-		A502279A19C0A3E0005B31D2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Languages/fr.lproj/Questionnaire.strings; sourceTree = "<group>"; };
 		A5023E3B19CC2E5A0076923A /* PRGoodWardSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRGoodWardSelectViewController.h; path = "Record View Controllers/PIRT View Controllers/PRGoodWardSelectViewController.h"; sourceTree = "<group>"; };
 		A5023E3C19CC2E5A0076923A /* PRGoodWardSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRGoodWardSelectViewController.m; path = "Record View Controllers/PIRT View Controllers/PRGoodWardSelectViewController.m"; sourceTree = "<group>"; };
 		A5023E3E19CC3A130076923A /* _PRHospital.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _PRHospital.h; sourceTree = "<group>"; };
@@ -637,7 +634,6 @@
 		A5BCB3CE19BDE6E600092F50 /* Languages */ = {
 			isa = PBXGroup;
 			children = (
-				A502279719C0A2E5005B31D2 /* Questionnaire.strings */,
 				A5BCB3CF19BDE6E600092F50 /* Localizable.strings */,
 				A5BCB3D119BDE6E600092F50 /* Storyboard.strings */,
 			);
@@ -855,7 +851,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A502279919C0A2E5005B31D2 /* Questionnaire.strings in Resources */,
 				A536994F19ADD1170045EEB1 /* Main.storyboard in Resources */,
 				A5BCB3D419BDE6E600092F50 /* Localizable.strings in Resources */,
 				A536995119ADD1170045EEB1 /* Images.xcassets in Resources */,
@@ -1012,16 +1007,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A502279719C0A2E5005B31D2 /* Questionnaire.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A502279819C0A2E5005B31D2 /* en */,
-				A502279A19C0A3E0005B31D2 /* fr */,
-			);
-			name = Questionnaire.strings;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		A536994D19ADD1170045EEB1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

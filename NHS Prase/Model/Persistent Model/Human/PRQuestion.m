@@ -17,14 +17,9 @@
 
 // Custom logic goes here.
 
--(NSString *)localizationKeyForAnswerID
+-(NSString *)localizationKeyForQuestion
 {
-    return [[PRAPIManager sharedManager] TDCLocalizationsKeyForTDCoreIdentifier:self.answerID forEntityNamed:@"PRAnswerOption"];
-}
-
--(NSString *)localizationKeyForQuestionID
-{
-    return [[PRAPIManager sharedManager] TDCLocalizationsKeyForTDCoreIdentifier:self.pmosQuestion.questionID forEntityNamed:@"PRPMOSQuestion"];
+    return [[PRAPIManager sharedManager] TDCLocalizationsKeyForTDCoreIdentifier:self.pmosQuestion.localizationID];
 }
 
 /*

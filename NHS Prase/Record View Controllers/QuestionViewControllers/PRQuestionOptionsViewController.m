@@ -32,7 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    titleLabel.TDLocalizedStringKey = self.question.localizationKeyForQuestionID;
+    titleLabel.TDLocalizedStringKey = self.question.localizationKeyForQuestion;
     
     ((UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout).minimumLineSpacing = 30.0;
 }
@@ -52,7 +52,7 @@
     headerLabel.text = formatHeader;
     
     if ([titleLabel.TDLocalizedStringKey isNonNullString]) {
-        titleLabel.text = PRLocalizedStringWithDefaultValue(titleLabel.TDLocalizedStringKey, nil, nil, nil, nil);
+        titleLabel.text = TDLocalizedStringWithDefaultValue(titleLabel.TDLocalizedStringKey, nil, nil, nil, nil);
     }
     
     [self.collectionView.collectionViewLayout invalidateLayout];
@@ -79,7 +79,7 @@
     }
     
     if (titleLabel != nil) {
-        titleLabel.TDLocalizedStringKey = self.question.localizationKeyForQuestionID;
+        titleLabel.TDLocalizedStringKey = self.question.localizationKeyForQuestion;
     }
     
     if (headerLabel != nil && titleLabel != nil) {
@@ -159,8 +159,8 @@
         optionCell.imageTintColor = [[PRTheme sharedTheme] colourForIdentifier:thisOption.imageTintIdentifier];
     }
     
-    NSString *localizationKey = [thisOption localizationKeyForAnswerID];
-    NSString *localizedTitle = PRLocalizedStringWithDefaultValue(localizationKey, nil, nil, nil, nil);
+    NSString *localizationKey = [thisOption localizationKeyForAnswer];
+    NSString *localizedTitle = TDLocalizedStringWithDefaultValue(localizationKey, nil, nil, nil, nil);
     UIImage *image1 = [thisOption.image1 isNonNullString] ? [UIImage imageNamed:thisOption.image1] : nil;
     UIImage *image2 = [thisOption.image2 isNonNullString] ? [UIImage imageNamed:thisOption.image2] : nil;
     

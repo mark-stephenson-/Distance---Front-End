@@ -10,7 +10,7 @@
 
 typedef enum {kRotationPreferencePortrait, kRotationPreferenceLandscape, kRotationPreferenceBoth} RotationPreference;
 
-NSString * PRLocalizedStringWithDefaultValue(NSString *key, NSString *tbl, NSBundle *bundle, NSString *val, NSString *comment);
+//NSString * PRLocalizedStringWithDefaultValue(NSString *key, NSString *tbl, NSBundle *bundle, NSString *val, NSString *comment);
 
 @interface PRTheme : TDTheme
 

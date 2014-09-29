@@ -102,16 +102,35 @@
             
             currentPmos.questions = [NSOrderedSet orderedSetWithOrderedSet:questionSet];
             
-            // already on a background thread so no need to complete
-            [hierarchyContext MR_saveToPersistentStoreWithCompletion:^(BOOL success, NSError *error) {
-                NSLog(@"Completed hierarchy with error: %@", error);
+            // called from background thread but will complete on main thread
+            [hierarchyContext MR_saveToPersistentStoreWithCompletion:^(BOOL success, NSError *commitError) {
+                
+                if (commitError != nil) {
+                    NSError *coreDataError = [[self class] createCommitDownloadErrorForSavingError:commitError];
+                    NSLog(@"Failed to get hierarchy: %@", coreDataError);
+                } else {
+                    NSLog(@"Completed hierarchy sync.");
+                }
             }];
         } else {
-            // use single generate warning method
+            NSError *error = [[self class] createUnexpectedReponseErrorForRequest:task.currentRequest];
+            [self logErrorFromSelector:_cmd withFormat:@"Unable to get hierarchy.\nFailingTask: %@\nError: %@", task, error];
         }
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+        [self logErrorFromSelector:_cmd withFormat:@"Unable to get hierarchy.\nFailingTask: %@\nError: %@", task, error];
+    }];
+}
+
+-(NSArray *)customLocalizationTables
+{
+    return @[@"PMOSQuestions"];
+}
+
+-(void)getLocalizations
+{
+    [self TDCGetLocalizationsToTableNamed:@"PMOSQuestions" withCompletion:^(BOOL success, NSArray *errors) {
+        NSLog(@"Translations Completed with errors: %@", errors);
     }];
 }
 
