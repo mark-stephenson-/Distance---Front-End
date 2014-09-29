@@ -17,6 +17,8 @@
 
 #import "PRTheme.h"
 #import "PRQuestion.h"
+#import "PRPMOSQuestion.h"
+#import "PRAnswerSet.h"
 #import "PROptionCollectionViewCell.h"
 
 //#import "PRAPIManager.h"
@@ -115,13 +117,13 @@
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return self.question.answerOptionsArray.count;
+    return self.question.pmosQuestion.answerSets.count;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSArray *sectionOptions = self.question.answerOptionsArray[section];
-    return sectionOptions.count;
+    PRAnswerSet *theseAnswers = self.question.pmosQuestion.answerSets[section];
+    return theseAnswers.options.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -136,8 +138,8 @@
 
 -(NSString *)cellIdentifierForIndexPath:(NSIndexPath *) indexPath
 {
-    NSArray *sectionOptions = self.question.answerOptionsArray[indexPath.section];
-    PRAnswerOption *thisOption = sectionOptions[indexPath.row];
+    PRAnswerSet *sectionAnswers = self.question.pmosQuestion.answerSets[indexPath.section];
+    PRAnswerOption *thisOption = sectionAnswers.options[indexPath.row];
     
     NSString *identifier = @"OptionCell";
     
@@ -150,8 +152,8 @@
 
 -(void)configureCell:(PROptionCollectionViewCell *) optionCell forIndexPath:(NSIndexPath *) indexPath
 {
-    NSArray *sectionOptions = self.question.answerOptionsArray[indexPath.section];
-    PRAnswerOption *thisOption = sectionOptions[indexPath.row];
+    PRAnswerSet *sectionAnswers = self.question.pmosQuestion.answerSets[indexPath.section];
+    PRAnswerOption *thisOption = sectionAnswers.options[indexPath.row];
     
     if ([thisOption.imageTintIdentifier isNonNullString]) {
         optionCell.imageTintColor = [[PRTheme sharedTheme] colourForIdentifier:thisOption.imageTintIdentifier];
@@ -224,8 +226,8 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *sectionOptions = self.question.answerOptionsArray[indexPath.section];
-    PRAnswerOption *thisOption = sectionOptions[indexPath.row];
+    PRAnswerSet *sectionAnswers = self.question.pmosQuestion.answerSets[indexPath.section];
+    PRAnswerOption *thisOption = sectionAnswers.options[indexPath.row];
     
     self.question.answerID = thisOption.answerID;
 }

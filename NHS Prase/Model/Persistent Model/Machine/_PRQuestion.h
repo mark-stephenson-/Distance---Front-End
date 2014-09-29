@@ -6,9 +6,6 @@
 
 extern const struct PRQuestionAttributes {
 	__unsafe_unretained NSString *answerID;
-	__unsafe_unretained NSString *answerOptions;
-	__unsafe_unretained NSString *questionID;
-	__unsafe_unretained NSString *title;
 } PRQuestionAttributes;
 
 extern const struct PRQuestionRelationships {
@@ -17,7 +14,7 @@ extern const struct PRQuestionRelationships {
 	__unsafe_unretained NSString *concernAsSerious;
 	__unsafe_unretained NSString *goodNote;
 	__unsafe_unretained NSString *note;
-	__unsafe_unretained NSString *options;
+	__unsafe_unretained NSString *pmosQuestion;
 	__unsafe_unretained NSString *record;
 } PRQuestionRelationships;
 
@@ -29,11 +26,8 @@ extern const struct PRQuestionFetchedProperties {
 @class PRConcern;
 @class PRNote;
 @class PRNote;
-@class PRAnswerOption;
+@class PRPMOSQuestion;
 @class PRRecord;
-
-
-@class NSObject;
 
 
 
@@ -59,40 +53,6 @@ extern const struct PRQuestionFetchedProperties {
 - (void)setAnswerIDValue:(int64_t)value_;
 
 //- (BOOL)validateAnswerID:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) id answerOptions;
-
-
-
-//- (BOOL)validateAnswerOptions:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSNumber* questionID;
-
-
-
-@property int64_t questionIDValue;
-- (int64_t)questionIDValue;
-- (void)setQuestionIDValue:(int64_t)value_;
-
-//- (BOOL)validateQuestionID:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSString* title;
-
-
-
-//- (BOOL)validateTitle:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -133,9 +93,9 @@ extern const struct PRQuestionFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSOrderedSet *options;
+@property (nonatomic, strong) PRPMOSQuestion *pmosQuestion;
 
-- (NSMutableOrderedSet*)optionsSet;
+//- (BOOL)validatePmosQuestion:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -152,11 +112,6 @@ extern const struct PRQuestionFetchedProperties {
 
 @interface _PRQuestion (CoreDataGeneratedAccessors)
 
-- (void)addOptions:(NSOrderedSet*)value_;
-- (void)removeOptions:(NSOrderedSet*)value_;
-- (void)addOptionsObject:(PRAnswerOption*)value_;
-- (void)removeOptionsObject:(PRAnswerOption*)value_;
-
 @end
 
 @interface _PRQuestion (CoreDataGeneratedPrimitiveAccessors)
@@ -167,27 +122,6 @@ extern const struct PRQuestionFetchedProperties {
 
 - (int64_t)primitiveAnswerIDValue;
 - (void)setPrimitiveAnswerIDValue:(int64_t)value_;
-
-
-
-
-- (id)primitiveAnswerOptions;
-- (void)setPrimitiveAnswerOptions:(id)value;
-
-
-
-
-- (NSNumber*)primitiveQuestionID;
-- (void)setPrimitiveQuestionID:(NSNumber*)value;
-
-- (int64_t)primitiveQuestionIDValue;
-- (void)setPrimitiveQuestionIDValue:(int64_t)value_;
-
-
-
-
-- (NSString*)primitiveTitle;
-- (void)setPrimitiveTitle:(NSString*)value;
 
 
 
@@ -218,8 +152,8 @@ extern const struct PRQuestionFetchedProperties {
 
 
 
-- (NSMutableOrderedSet*)primitiveOptions;
-- (void)setPrimitiveOptions:(NSMutableOrderedSet*)value;
+- (PRPMOSQuestion*)primitivePmosQuestion;
+- (void)setPrimitivePmosQuestion:(PRPMOSQuestion*)value;
 
 
 

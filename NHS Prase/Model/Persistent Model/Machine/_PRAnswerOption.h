@@ -9,17 +9,19 @@ extern const struct PRAnswerOptionAttributes {
 	__unsafe_unretained NSString *image1;
 	__unsafe_unretained NSString *image2;
 	__unsafe_unretained NSString *imageTintIdentifier;
+	__unsafe_unretained NSString *localizationID;
 	__unsafe_unretained NSString *title;
 } PRAnswerOptionAttributes;
 
 extern const struct PRAnswerOptionRelationships {
-	__unsafe_unretained NSString *question;
+	__unsafe_unretained NSString *answerSet;
 } PRAnswerOptionRelationships;
 
 extern const struct PRAnswerOptionFetchedProperties {
 } PRAnswerOptionFetchedProperties;
 
-@class PRQuestion;
+@class PRAnswerSet;
+
 
 
 
@@ -84,6 +86,20 @@ extern const struct PRAnswerOptionFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSNumber* localizationID;
+
+
+
+@property int64_t localizationIDValue;
+- (int64_t)localizationIDValue;
+- (void)setLocalizationIDValue:(int64_t)value_;
+
+//- (BOOL)validateLocalizationID:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
 @property (nonatomic, strong) NSString* title;
 
 
@@ -94,9 +110,9 @@ extern const struct PRAnswerOptionFetchedProperties {
 
 
 
-@property (nonatomic, strong) PRQuestion *question;
+@property (nonatomic, strong) NSSet *answerSet;
 
-//- (BOOL)validateQuestion:(id*)value_ error:(NSError**)error_;
+- (NSMutableSet*)answerSetSet;
 
 
 
@@ -105,6 +121,11 @@ extern const struct PRAnswerOptionFetchedProperties {
 @end
 
 @interface _PRAnswerOption (CoreDataGeneratedAccessors)
+
+- (void)addAnswerSet:(NSSet*)value_;
+- (void)removeAnswerSet:(NSSet*)value_;
+- (void)addAnswerSetObject:(PRAnswerSet*)value_;
+- (void)removeAnswerSetObject:(PRAnswerSet*)value_;
 
 @end
 
@@ -138,6 +159,15 @@ extern const struct PRAnswerOptionFetchedProperties {
 
 
 
+- (NSNumber*)primitiveLocalizationID;
+- (void)setPrimitiveLocalizationID:(NSNumber*)value;
+
+- (int64_t)primitiveLocalizationIDValue;
+- (void)setPrimitiveLocalizationIDValue:(int64_t)value_;
+
+
+
+
 - (NSString*)primitiveTitle;
 - (void)setPrimitiveTitle:(NSString*)value;
 
@@ -145,8 +175,8 @@ extern const struct PRAnswerOptionFetchedProperties {
 
 
 
-- (PRQuestion*)primitiveQuestion;
-- (void)setPrimitiveQuestion:(PRQuestion*)value;
+- (NSMutableSet*)primitiveAnswerSet;
+- (void)setPrimitiveAnswerSet:(NSMutableSet*)value;
 
 
 @end

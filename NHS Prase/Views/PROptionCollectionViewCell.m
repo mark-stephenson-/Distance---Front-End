@@ -57,6 +57,7 @@
     [self layoutIfNeeded];
 }
 
+
 -(void)setImageTintColor:(UIColor *)imageTintColor
 {
     _imageTintColor = imageTintColor;

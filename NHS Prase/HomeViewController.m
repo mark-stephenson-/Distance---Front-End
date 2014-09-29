@@ -28,7 +28,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"CreateRecord"]) {
-        PRRecord *newRecord = [PRRecord prototypeRecordWithWard:self.selectedWard];
+        PRRecord *newRecord = [PRRecord newRecordWithWard:self.selectedWard];
         newRecord.startDate = [NSDate date];
         
         PRRecordViewController *recordVC = (PRRecordViewController *) segue.destinationViewController;

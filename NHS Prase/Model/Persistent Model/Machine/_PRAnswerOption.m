@@ -8,11 +8,12 @@ const struct PRAnswerOptionAttributes PRAnswerOptionAttributes = {
 	.image1 = @"image1",
 	.image2 = @"image2",
 	.imageTintIdentifier = @"imageTintIdentifier",
+	.localizationID = @"localizationID",
 	.title = @"title",
 };
 
 const struct PRAnswerOptionRelationships PRAnswerOptionRelationships = {
-	.question = @"question",
+	.answerSet = @"answerSet",
 };
 
 const struct PRAnswerOptionFetchedProperties PRAnswerOptionFetchedProperties = {
@@ -46,6 +47,11 @@ const struct PRAnswerOptionFetchedProperties PRAnswerOptionFetchedProperties = {
 	
 	if ([key isEqualToString:@"answerIDValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"answerID"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+	if ([key isEqualToString:@"localizationIDValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"localizationID"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -103,6 +109,32 @@ const struct PRAnswerOptionFetchedProperties PRAnswerOptionFetchedProperties = {
 
 
 
+@dynamic localizationID;
+
+
+
+- (int64_t)localizationIDValue {
+	NSNumber *result = [self localizationID];
+	return [result longLongValue];
+}
+
+- (void)setLocalizationIDValue:(int64_t)value_ {
+	[self setLocalizationID:[NSNumber numberWithLongLong:value_]];
+}
+
+- (int64_t)primitiveLocalizationIDValue {
+	NSNumber *result = [self primitiveLocalizationID];
+	return [result longLongValue];
+}
+
+- (void)setPrimitiveLocalizationIDValue:(int64_t)value_ {
+	[self setPrimitiveLocalizationID:[NSNumber numberWithLongLong:value_]];
+}
+
+
+
+
+
 @dynamic title;
 
 
@@ -110,8 +142,17 @@ const struct PRAnswerOptionFetchedProperties PRAnswerOptionFetchedProperties = {
 
 
 
-@dynamic question;
+@dynamic answerSet;
 
+	
+- (NSMutableSet*)answerSetSet {
+	[self willAccessValueForKey:@"answerSet"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"answerSet"];
+  
+	[self didAccessValueForKey:@"answerSet"];
+	return result;
+}
 	
 
 

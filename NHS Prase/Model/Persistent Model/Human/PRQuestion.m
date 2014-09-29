@@ -1,4 +1,6 @@
 #import "PRQuestion.h"
+#import "PRPMOSQuestion.h"
+#import "PRAnswerSet.h"
 #import "PRAnswerOption.h"
 #import "PRAPIManager.h"
 
@@ -22,28 +24,41 @@
 
 -(NSString *)localizationKeyForQuestionID
 {
-    return [[PRAPIManager sharedManager] TDCLocalizationsKeyForTDCoreIdentifier:self.questionID forEntityNamed:@"PRQuestion"];
+    return [[PRAPIManager sharedManager] TDCLocalizationsKeyForTDCoreIdentifier:self.pmosQuestion.questionID forEntityNamed:@"PRPMOSQuestion"];
 }
 
+/*
 -(NSArray *)answerOptionsArray
 {
-    return self.answerOptions;
+    if (answerOptions == nil) {
+        NSOrderedSet *answerSets = self.pmosQuestion.answerSets;
+        
+        NSMutableArray *answerOptions = [NSMutableArray arrayWithCapacity:answerSets.count];
+        
+        for (int s = 0; s < answerSets.count; s++) {
+            PRAnswerSet *thisSet = answerSets[s];
+            NSMutableArray *theseOptions = [NSMutableArray arrayWithCapacity:thisSet.options.count];
+            
+            for (int a = 0; a < thisSet.options.count; a++) {
+                [theseOptions addObject:thisSet.options[a]];
+            }
+            
+            [answerOptions addObject:theseOptions];
+        }
+    }
+    
+    return  answerOptions;
 }
-
--(void)setAnswerOptionsArray:(NSArray *)answerOptionsArray
-{
-    [super setAnswerOptions:answerOptionsArray];
-}
-
+*/
 -(NSIndexPath *)indexPathForAnswerID:(NSNumber *)answerID
 {
     NSIndexPath *selectedPath = nil;
     
-    for (int s = 0; s < self.answerOptionsArray.count; s++) {
-        NSArray *sectionOptions = self.answerOptionsArray[s];
+    for (int s = 0; s < self.pmosQuestion.answerSets.count && selectedPath == nil; s++) {
+        PRAnswerSet *thisSet = self.pmosQuestion.answerSets[s];
         
-        for (int r = 0 ; r < sectionOptions.count; r++) {
-            PRAnswerOption *thisOption = sectionOptions[r];
+        for (int r = 0 ; r < thisSet.options.count && selectedPath == nil; r++) {
+            PRAnswerOption *thisOption = thisSet.options[r];
             
             if ([thisOption.answerID isEqualToNumber:answerID]) {
                 selectedPath = [NSIndexPath indexPathForRow:r inSection:s];

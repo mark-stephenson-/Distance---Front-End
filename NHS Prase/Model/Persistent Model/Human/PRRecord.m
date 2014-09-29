@@ -6,6 +6,9 @@
 #import "PRQuestion.h"
 #import "PRWard.h"
 #import "PRAnswerOption.h"
+#import "PRPMOS.h"
+#import "PRPMOSQuestion.h"
+
 #import <TheDistanceKit/TheDistanceKit.h>
 
 @interface PRRecord ()
@@ -18,6 +21,30 @@
 @implementation PRRecord
 
 // Custom logic goes here.
+
++(instancetype)newRecordWithWard:(PRWard *)ward
+{
+    PRRecord *newRecord = [PRRecord MR_createEntity];
+    newRecord.ward = ward;
+    
+    // create a set of PRQuestions based on the PMOS. There should only ever be 1 PMOS in CoreData.
+    PRPMOS *currentQuestionnaire = [PRPMOS MR_findFirst];
+    //NSArray *pmosQs = [PRPMOSQuestion MR_findAll];
+    NSMutableOrderedSet *recordQuestions = [NSMutableOrderedSet orderedSetWithCapacity:currentQuestionnaire.questions.count];
+
+    for (int q = 0; q < currentQuestionnaire.questions.count; q++) {
+        PRPMOSQuestion *pmosQuestion = currentQuestionnaire.questions[q];
+        
+        PRQuestion *blankQuestion = [PRQuestion MR_createEntity];
+        blankQuestion.pmosQuestion = pmosQuestion;
+        
+        [recordQuestions addObject:blankQuestion];
+    }
+    
+    newRecord.questions = [NSOrderedSet orderedSetWithOrderedSet:recordQuestions];
+    
+    return newRecord;
+}
 
 /*
 +(instancetype)prototypeRecordWithWard:(PRWard *) ward

@@ -11,14 +11,8 @@
 #import <TheDistanceKit/TheDistanceKit.h>
 
 @interface PRAPIManager : TDAPIManager
-{
-   
-}
 
-
-/// Success and Failure block are called on the main thread. AlertController in the failure block is configured to have  retry button.
 -(void)getTrustHierarchy;
-
-
+-(void)getQuestionHierarchy;
 
 @end

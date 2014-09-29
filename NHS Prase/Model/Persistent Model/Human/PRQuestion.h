@@ -1,9 +1,13 @@
 #import "_PRQuestion.h"
 
-@interface PRQuestion : _PRQuestion {}
+@interface PRQuestion : _PRQuestion
+{
+    NSArray *answerOptions;
+}
+
 // Custom logic goes here.
 
-@property (nonatomic, strong) NSArray *answerOptionsArray;
+//@property (nonatomic, readonly) NSArray *answerOptionsArray;
 @property (nonatomic, readonly) NSString *localizationKeyForQuestionID;
 @property (nonatomic, readonly) NSString *localizationKeyForAnswerID;
 

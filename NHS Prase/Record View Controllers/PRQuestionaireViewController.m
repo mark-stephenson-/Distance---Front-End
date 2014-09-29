@@ -9,6 +9,7 @@
 #import "PRQuestionaireViewController.h"
 
 #import "PRQuestion.h"
+#import "PRPMOSQuestion.h"
 
 #import "PRQuestionViewController.h"
 #import "PRQuestionStatementViewController.h"
@@ -157,7 +158,7 @@
         PRQuestionViewController *qvc = nil;
         
         
-        if (thisQuestion.options.count == 0) {
+        if (thisQuestion.pmosQuestion.answerSets.count == 0) {
             
             PRQuestionStatementViewController *statementVC = [self.storyboard instantiateViewControllerWithIdentifier:@"QuestionStatementVC"];
             qvc = statementVC;

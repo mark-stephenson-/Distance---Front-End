@@ -5,9 +5,6 @@
 
 const struct PRQuestionAttributes PRQuestionAttributes = {
 	.answerID = @"answerID",
-	.answerOptions = @"answerOptions",
-	.questionID = @"questionID",
-	.title = @"title",
 };
 
 const struct PRQuestionRelationships PRQuestionRelationships = {
@@ -16,7 +13,7 @@ const struct PRQuestionRelationships PRQuestionRelationships = {
 	.concernAsSerious = @"concernAsSerious",
 	.goodNote = @"goodNote",
 	.note = @"note",
-	.options = @"options",
+	.pmosQuestion = @"pmosQuestion",
 	.record = @"record",
 };
 
@@ -54,11 +51,6 @@ const struct PRQuestionFetchedProperties PRQuestionFetchedProperties = {
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
-	if ([key isEqualToString:@"questionIDValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"questionID"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
-	}
 
 	return keyPaths;
 }
@@ -92,46 +84,6 @@ const struct PRQuestionFetchedProperties PRQuestionFetchedProperties = {
 
 
 
-@dynamic answerOptions;
-
-
-
-
-
-
-@dynamic questionID;
-
-
-
-- (int64_t)questionIDValue {
-	NSNumber *result = [self questionID];
-	return [result longLongValue];
-}
-
-- (void)setQuestionIDValue:(int64_t)value_ {
-	[self setQuestionID:[NSNumber numberWithLongLong:value_]];
-}
-
-- (int64_t)primitiveQuestionIDValue {
-	NSNumber *result = [self primitiveQuestionID];
-	return [result longLongValue];
-}
-
-- (void)setPrimitiveQuestionIDValue:(int64_t)value_ {
-	[self setPrimitiveQuestionID:[NSNumber numberWithLongLong:value_]];
-}
-
-
-
-
-
-@dynamic title;
-
-
-
-
-
-
 @dynamic concern;
 
 	
@@ -152,17 +104,8 @@ const struct PRQuestionFetchedProperties PRQuestionFetchedProperties = {
 
 	
 
-@dynamic options;
+@dynamic pmosQuestion;
 
-	
-- (NSMutableOrderedSet*)optionsSet {
-	[self willAccessValueForKey:@"options"];
-  
-	NSMutableOrderedSet *result = (NSMutableOrderedSet*)[self mutableOrderedSetValueForKey:@"options"];
-  
-	[self didAccessValueForKey:@"options"];
-	return result;
-}
 	
 
 @dynamic record;

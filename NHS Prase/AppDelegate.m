@@ -35,6 +35,8 @@
     PRAPIManager *manager = [PRAPIManager sharedManager];
     manager.baseURL = [NSURL URLWithString:@"http://prase.staging2.thedistance.co.uk"];
     [manager getTrustHierarchy];
+    [manager getQuestionHierarchy];
+    
     return YES;
 }
 
