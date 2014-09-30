@@ -9,6 +9,8 @@
 #import "PRCommentsSummaryViewController.h"
 
 #import "PRRecord.h"
+#import "PRNote.h"
+#import "PRConcern.h"
 
 @interface PRCommentsSummaryViewController ()
 
@@ -51,14 +53,18 @@
 
 -(void)noteViewControllerDidFinish:(PRNoteViewController *)noteVC withNote:(PRNote *)note
 {
-    [self.record addGoodNotesObject:note];
+    if ([note isValid]) {
+        [self.record addGoodNotesObject:note];
+    }
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)pirtViewControllerDidFinish:(PRPIRTViewController *)pirtVC withConcern:(PRConcern *)concern
 {
-    [self.record addConcernsObject:concern];
+    if ([concern isValid]) {
+        [self.record addConcernsObject:concern];
+    }
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [pirtVC dismissViewControllerAnimated:YES completion:nil];

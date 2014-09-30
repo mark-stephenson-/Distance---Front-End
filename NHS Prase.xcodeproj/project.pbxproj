@@ -51,7 +51,8 @@
 		A544EEC519C899F700160388 /* PRIncrementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A544EEC419C899F700160388 /* PRIncrementCell.m */; };
 		A5466A8919AE070100240026 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5466A8819AE070100240026 /* HomeViewController.m */; };
 		A5466CBF19AE3B0500240026 /* PRBasicDataFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5466CBE19AE3B0500240026 /* PRBasicDataFormViewController.m */; };
-		A55DFD7B19DA9E9D0016F86D /* TheDistanceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5C0731919D59C24003446F7 /* TheDistanceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A557C7FB19DABB5100E0E647 /* TheDistanceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C0731919D59C24003446F7 /* TheDistanceKit.framework */; };
+		A557C7FC19DABB5900E0E647 /* TheDistanceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5C0731919D59C24003446F7 /* TheDistanceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A576056919B0AE150018E9EA /* PRDateSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A576056819B0AE150018E9EA /* PRDateSelectCell.m */; };
 		A57B558D19CAE4420069FE65 /* PRFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57B558C19CAE4420069FE65 /* PRFormViewController.m */; };
 		A57B559619CAE55C0069FE65 /* PRRecordSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57B559519CAE55C0069FE65 /* PRRecordSummaryViewController.m */; };
@@ -79,6 +80,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A51FC1DD19DAB6BB00BF952A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A51FC1D719DAB6BB00BF952A /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 21491156D04F4C69AEBA1CF7;
+			remoteInfo = Pods;
+		};
+		A51FC1DF19DAB6BB00BF952A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A51FC1D719DAB6BB00BF952A /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D764E7897D794D56A36A593A;
+			remoteInfo = "Pods-AFNetworking";
+		};
+		A51FC1E119DAB6BB00BF952A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A51FC1D719DAB6BB00BF952A /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2C54A4B699AA46BE9D6180C3;
+			remoteInfo = "Pods-MagicalRecord";
+		};
+		A520E0B719DAB5D9009C6D89 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5C0731219D59C23003446F7 /* TheDistanceKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A520E07019DAB55A009C6D89;
+			remoteInfo = TheDistanceKitLibary;
+		};
 		A536995719ADD1170045EEB1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A536993819ADD1170045EEB1 /* Project object */;
@@ -86,7 +115,7 @@
 			remoteGlobalIDString = A536993F19ADD1170045EEB1;
 			remoteInfo = "NHS Prase";
 		};
-		A55DFD7919DA9E930016F86D /* PBXContainerItemProxy */ = {
+		A557C7F919DABB4E00E0E647 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A5C0731219D59C23003446F7 /* TheDistanceKit.xcodeproj */;
 			proxyType = 1;
@@ -114,27 +143,6 @@
 			remoteGlobalIDString = A50B3D2919AF8BF3001E05B2;
 			remoteInfo = StoryboardGenStrings;
 		};
-		A5C0748819D5A2BA003446F7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A5C0748219D5A2BA003446F7 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 21491156D04F4C69AEBA1CF7;
-			remoteInfo = Pods;
-		};
-		A5C0748A19D5A2BA003446F7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A5C0748219D5A2BA003446F7 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D764E7897D794D56A36A593A;
-			remoteInfo = "Pods-AFNetworking";
-		};
-		A5C0748C19D5A2BA003446F7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A5C0748219D5A2BA003446F7 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2C54A4B699AA46BE9D6180C3;
-			remoteInfo = "Pods-MagicalRecord";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -144,7 +152,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A55DFD7B19DA9E9D0016F86D /* TheDistanceKit.framework in Embed Frameworks */,
+				A557C7FC19DABB5900E0E647 /* TheDistanceKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,6 +227,7 @@
 		A50E31F719D2B705001C5AE6 /* PROptionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PROptionCollectionViewCell.m; sourceTree = "<group>"; };
 		A51A6F7E19B6FEDF004BF779 /* PRInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRInputAccessoryView.h; sourceTree = "<group>"; };
 		A51A6F7F19B6FEDF004BF779 /* PRInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRInputAccessoryView.m; sourceTree = "<group>"; };
+		A51FC1D719DAB6BB00BF952A /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = TDKit/Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		A5235E8319D1BE1500AE721A /* PRTextSizeSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRTextSizeSelectCell.h; path = "Custom Form Cells/PRTextSizeSelectCell.h"; sourceTree = "<group>"; };
 		A5235E8419D1BE1500AE721A /* PRTextSizeSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRTextSizeSelectCell.m; path = "Custom Form Cells/PRTextSizeSelectCell.m"; sourceTree = "<group>"; };
 		A52A3C6E19B471E300985BAB /* PRQuestionOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRQuestionOptionsViewController.h; path = "Record View Controllers/QuestionViewControllers/PRQuestionOptionsViewController.h"; sourceTree = "<group>"; };
@@ -270,7 +279,6 @@
 		A5BCB3D219BDE6E600092F50 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Storyboard.strings; sourceTree = "<group>"; };
 		A5BCB3D319BDE6E600092F50 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Storyboard.strings; sourceTree = "<group>"; };
 		A5C0731219D59C23003446F7 /* TheDistanceKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TheDistanceKit.xcodeproj; path = TDKit/TheDistanceKit.xcodeproj; sourceTree = "<group>"; };
-		A5C0748219D5A2BA003446F7 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = TDKit/Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		A5C0749619D5A819003446F7 /* _PRAnswerSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _PRAnswerSet.h; sourceTree = "<group>"; };
 		A5C0749719D5A819003446F7 /* _PRAnswerSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _PRAnswerSet.m; sourceTree = "<group>"; };
 		A5C0749819D5A819003446F7 /* _PRPMOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _PRPMOS.h; sourceTree = "<group>"; };
@@ -305,6 +313,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A557C7FB19DABB5100E0E647 /* TheDistanceKit.framework in Frameworks */,
 				408CC42810B9480D918B020E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +432,16 @@
 				A58A8D3C19C6EA1A0052EAB7 /* PRSelectionTableViewCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A51FC1D819DAB6BB00BF952A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A51FC1DE19DAB6BB00BF952A /* libPods.a */,
+				A51FC1E019DAB6BB00BF952A /* libPods-AFNetworking.a */,
+				A51FC1E219DAB6BB00BF952A /* libPods-MagicalRecord.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		A52A3C5619B4600500985BAB /* Model */ = {
@@ -594,18 +613,9 @@
 			isa = PBXGroup;
 			children = (
 				A5C0731919D59C24003446F7 /* TheDistanceKit.framework */,
+				A520E0B819DAB5D9009C6D89 /* libTheDistanceKitLibrary.a */,
 				A5C0731B19D59C24003446F7 /* TheDistanceKitTests.xctest */,
 				A5C0731D19D59C24003446F7 /* StoryboardGenStrings */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		A5C0748319D5A2BA003446F7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A5C0748919D5A2BA003446F7 /* libPods.a */,
-				A5C0748B19D5A2BA003446F7 /* libPods-AFNetworking.a */,
-				A5C0748D19D5A2BA003446F7 /* libPods-MagicalRecord.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -613,7 +623,7 @@
 		A5C0749519D5A2C0003446F7 /* TheDistanceKit */ = {
 			isa = PBXGroup;
 			children = (
-				A5C0748219D5A2BA003446F7 /* Pods.xcodeproj */,
+				A51FC1D719DAB6BB00BF952A /* Pods.xcodeproj */,
 				A5C0731219D59C23003446F7 /* TheDistanceKit.xcodeproj */,
 			);
 			name = TheDistanceKit;
@@ -638,7 +648,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				A55DFD7A19DA9E930016F86D /* PBXTargetDependency */,
+				A557C7FA19DABB4E00E0E647 /* PBXTargetDependency */,
 			);
 			name = "NHS Prase";
 			productName = "NHS Prase";
@@ -695,8 +705,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = A5C0748319D5A2BA003446F7 /* Products */;
-					ProjectRef = A5C0748219D5A2BA003446F7 /* Pods.xcodeproj */;
+					ProductGroup = A51FC1D819DAB6BB00BF952A /* Products */;
+					ProjectRef = A51FC1D719DAB6BB00BF952A /* Pods.xcodeproj */;
 				},
 				{
 					ProductGroup = A5C0731319D59C23003446F7 /* Products */;
@@ -712,6 +722,34 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		A51FC1DE19DAB6BB00BF952A /* libPods.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPods.a;
+			remoteRef = A51FC1DD19DAB6BB00BF952A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A51FC1E019DAB6BB00BF952A /* libPods-AFNetworking.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libPods-AFNetworking.a";
+			remoteRef = A51FC1DF19DAB6BB00BF952A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A51FC1E219DAB6BB00BF952A /* libPods-MagicalRecord.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libPods-MagicalRecord.a";
+			remoteRef = A51FC1E119DAB6BB00BF952A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A520E0B819DAB5D9009C6D89 /* libTheDistanceKitLibrary.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libTheDistanceKitLibrary.a;
+			remoteRef = A520E0B719DAB5D9009C6D89 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		A5C0731919D59C24003446F7 /* TheDistanceKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -731,27 +769,6 @@
 			fileType = "compiled.mach-o.executable";
 			path = StoryboardGenStrings;
 			remoteRef = A5C0731C19D59C24003446F7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A5C0748919D5A2BA003446F7 /* libPods.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPods.a;
-			remoteRef = A5C0748819D5A2BA003446F7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A5C0748B19D5A2BA003446F7 /* libPods-AFNetworking.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libPods-AFNetworking.a";
-			remoteRef = A5C0748A19D5A2BA003446F7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A5C0748D19D5A2BA003446F7 /* libPods-MagicalRecord.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libPods-MagicalRecord.a";
-			remoteRef = A5C0748C19D5A2BA003446F7 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -909,10 +926,10 @@
 			target = A536993F19ADD1170045EEB1 /* NHS Prase */;
 			targetProxy = A536995719ADD1170045EEB1 /* PBXContainerItemProxy */;
 		};
-		A55DFD7A19DA9E930016F86D /* PBXTargetDependency */ = {
+		A557C7FA19DABB4E00E0E647 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = TheDistanceKit;
-			targetProxy = A55DFD7919DA9E930016F86D /* PBXContainerItemProxy */;
+			targetProxy = A557C7F919DABB4E00E0E647 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

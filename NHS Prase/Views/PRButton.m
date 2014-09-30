@@ -99,9 +99,6 @@
         self.titleEdgeInsets = cTitle;
     }
     
-    
-    
-    
     // colour configuration
     
     if (self.state == UIControlStateDisabled) {

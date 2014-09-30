@@ -16,6 +16,7 @@
 #import "PRGoodViewController.h"
 #import "PRPIRTViewController.h"
 #import "PRNote.h"
+#import "PRConcern.h"
 
 #import <TheDistanceKit/TheDistanceKit.h>
 
@@ -40,6 +41,7 @@
     [super viewWillAppear:animated];
     
     pirtView.hidden = self.shouldHidePIRTView;
+    [self refreshPIRTViews];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -65,6 +67,42 @@
     }
 }
 
+-(void)refreshPIRTViews
+{
+    concernButton.selected = [self.question.concern isValid];
+    goodButton.selected = [self.question.goodNote isValid];
+    noteButton.selected = [self.question.note isValid];
+    
+    
+    if ([self.question.concern isValid]) {
+        concernButton.backgroundColor = [[PRTheme sharedTheme] negativeColor];
+        concernButton.imageTint = [UIColor whiteColor];
+        [concernButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    } else {
+        concernButton.backgroundColor = [UIColor clearColor];
+        concernButton.imageTint = [[PRTheme sharedTheme] negativeColor];
+    }
+    
+    if ([self.question.goodNote isValid]) {
+        goodButton.backgroundColor = [[PRTheme sharedTheme] positiveColor];
+        goodButton.imageTint = [UIColor whiteColor];
+        [goodButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    } else {
+        goodButton.backgroundColor = [UIColor clearColor];
+        goodButton.imageTint = [[PRTheme sharedTheme] positiveColor];
+    }
+    
+    if ([self.question.note isValid]) {
+        noteButton.backgroundColor = [[PRTheme sharedTheme] neutralColor];
+        noteButton.imageTint = [UIColor whiteColor];
+        [noteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    } else {
+        noteButton.backgroundColor = [UIColor clearColor];
+        noteButton.imageTint = [[PRTheme sharedTheme] neutralColor];
+    }
+}
+
+
 #pragma mark - PIRT Methods
 
 -(PRInputAccessoryView *)accessoryView
@@ -87,6 +125,7 @@
 {
     PRNoteViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
     toPresent.delegate = self;
+    toPresent.note = self.question.note;
     
     UIView *loadView = toPresent.view;
     PRInputAccessoryView *accessoryView = [self accessoryView];
@@ -102,6 +141,7 @@
     PRGoodViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"GoodVC"];
     toPresent.delegate = self;
     toPresent.record = self.question.record;
+    toPresent.note = self.question.goodNote;
     
     UIView *loadView = toPresent.view;
     PRInputAccessoryView *accessoryView = [self accessoryView];
@@ -117,6 +157,7 @@
     PRPIRTViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"PIRTVC"];
     toPresent.record = self.question.record;
     toPresent.pirtDelegate = self;
+    toPresent.concern = self.question.concern;
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self presentViewController:toPresent animated:YES completion:nil];
@@ -128,10 +169,20 @@
 -(void)noteViewControllerDidFinish:(PRNoteViewController *)noteVC withNote:(PRNote *)note
 {
     if ([noteVC isKindOfClass:[PRGoodViewController class]]) {
-        self.question.goodNote = note;
+        if ([note isValid]) {
+            self.question.goodNote = note;
+        } else {
+            self.question.goodNote = nil;
+        }
     } else {
-        self.question.note = note;
+        if ([note isValid]) {
+            self.question.note = note;
+        } else {
+            self.question.note = nil;
+        }
     }
+    
+    [self refreshPIRTViews];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -152,7 +203,13 @@
 
 -(void)pirtViewControllerDidFinish:(PRPIRTViewController *)pirtVC withConcern:(PRConcern *)concern
 {
-    self.question.concern = concern;
+    if ([concern isValid]) {
+        self.question.concern = concern;
+    } else {
+        self.question.concern = nil;
+    }
+    
+    [self refreshPIRTViews];
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [pirtVC dismissViewControllerAnimated:YES completion:nil];

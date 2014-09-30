@@ -11,6 +11,7 @@
 #import <TheDistanceKit/TheDistanceKit.h>
 #import "PRButton.h"
 #import "PRTheme.h"
+#import "PRAPIManager.h"
 
 #define ALERT_LOGIN 111
 
@@ -49,6 +50,16 @@
     self.components = @[usernameField, passwordField];
 
     self.scrollContainer = scrollView;
+    
+    // start download operations
+    void (^downloadCompletion)(SEL selector, BOOL success, NSArray *errors) = ^(SEL selector, BOOL success, NSArray *errors){
+        
+    };
+    
+    PRAPIManager *manager = [PRAPIManager sharedManager];
+    [manager getTrustHierarchyWithCompletion:downloadCompletion];
+    [manager getQuestionHierarchy];
+    [manager getLocalizations];
 }
 
 -(void)viewDidDisappear:(BOOL)animated

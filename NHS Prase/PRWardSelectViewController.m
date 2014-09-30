@@ -238,4 +238,9 @@
     }
 }
 
+-(void)setSelectedWard:(PRWard *)selectedWard
+{
+    _selectedWard = selectedWard;
+}
+
 @end

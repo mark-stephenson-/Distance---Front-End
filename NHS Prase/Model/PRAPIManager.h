@@ -13,7 +13,7 @@
 
 @interface PRAPIManager : TDAPIManager
 
--(void)getTrustHierarchy;
+-(void)getTrustHierarchyWithCompletion:(void (^)(SEL selector, BOOL success, NSArray *errors)) completion;
 -(void)getQuestionHierarchy;
 -(void)getLocalizations;
 

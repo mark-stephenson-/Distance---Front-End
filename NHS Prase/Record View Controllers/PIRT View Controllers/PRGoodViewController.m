@@ -40,6 +40,8 @@
 {
     [super viewWillAppear:animated];
     
+    self.selectedWard = self.note.ward;
+    
     if (self.selectedWard == nil) {
         self.selectedWard = self.record.ward;
         thisWardControl.selectedSegmentIndex = 0;

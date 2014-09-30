@@ -49,14 +49,10 @@
 
 #pragma mark - Prase Methods
 
--(void)getTrustHierarchy
+-(void)getTrustHierarchyWithCompletion:(void (^)(SEL selector, BOOL success, NSArray *errors)) completion
 {
     [self TDCGetCommitAndLinkRelatedObjectsOfNodes:@[@"trust", @"hospital", @"ward"] withCompletion:^(BOOL success, NSArray *errors) {
-        if (success) {
-            NSLog(@"Got trusts, hospitals and wards.");
-        } else {
-            NSLog(@"Failed to get trusts, hospitals and wards: %@", errors);
-        }
+        completion(_cmd, success, errors);
     }];
 }
 

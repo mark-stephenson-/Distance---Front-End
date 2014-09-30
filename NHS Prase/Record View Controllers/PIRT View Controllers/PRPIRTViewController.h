@@ -29,6 +29,9 @@
 
 @interface PRPIRTViewController : PRSegmentTabViewController <PRNoteDelegate, TDInputAccessoryDelegate>
 {
+    /// computed property
+    PRConcern *_concern;
+    
     PRPIRTWardSelectViewController *wardSelectVC;
     PRNoteViewController *whatViewController;
     PRNoteViewController *whyViewController;
@@ -38,6 +41,7 @@
     PRInputAccessoryView *noteVCToolbar;
 }
 
+@property (nonatomic, strong) PRConcern *concern;
 @property (nonatomic, strong) PRRecord *record;
 @property (nonatomic, weak) id<PRPIRTDelegate> pirtDelegate;
 

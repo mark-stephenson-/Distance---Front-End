@@ -27,11 +27,16 @@
  */
 @interface PRNoteViewController : PRViewController <UITextViewDelegate, UIAlertViewDelegate>
 {
+    /// computed property
+    PRNote *_note;
+    
     BOOL canDismissKeyboard;
     BOOL canShowKeyboard;
     
     IBOutlet NSLayoutConstraint *bottomLayoutConstraint;
 }
+
+@property (nonatomic, strong) PRNote *note;
 
 @property (nonatomic, weak) id<PRNoteDelegate> delegate;
 
@@ -47,7 +52,5 @@
 
 -(IBAction)submit:(id)sender;
 -(IBAction)cancel:(id)sender;
-
--(PRNote *)currentNote;
 
 @end

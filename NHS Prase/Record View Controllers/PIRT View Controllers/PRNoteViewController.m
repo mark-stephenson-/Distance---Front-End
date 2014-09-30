@@ -50,6 +50,7 @@
 {
     [super viewWillAppear:animated];
     
+    self.noteText = self.note.text;
     self.noteView.text = self.noteText;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -219,10 +220,25 @@
 -(void)submit:(id)sender
 {
     if ([self.delegate respondsToSelector:@selector(noteViewControllerDidFinish:withNote:)]) {
-        PRNote *newNote = [self currentNote];
-        [self.delegate noteViewControllerDidFinish:self withNote:newNote];
+        [self.delegate noteViewControllerDidFinish:self withNote:self.note];
+    }
+}
+
+-(PRNote *)note
+{
+    if (_note == nil) {
+        _note = [self currentNote];
+    } else {
+        _note.text = self.noteText;
     }
     
+    return _note;
+}
+
+-(void)setNote:(PRNote *)note
+{
+    _note = note;
+    self.noteText = note.text;
 }
 
 -(PRNote *)currentNote

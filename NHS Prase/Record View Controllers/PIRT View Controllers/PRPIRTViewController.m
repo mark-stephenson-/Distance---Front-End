@@ -65,7 +65,50 @@
     preventViewController.titleLabel.TDLocalizedStringKey = @"pirt.prevent.title";
     preventViewController.noteView.inputAccessoryView = noteVCToolbar;
     
+    // call the setter again to assign all the properties to the view conctrollers
+    self.concern = _concern;
+    
     [tabController setViewControllers:@[wardSelectVC, whatViewController, whyViewController, preventViewController, questionsVC]];
+}
+
+-(PRConcern *)concern
+{
+    if (_concern == nil) {
+        _concern = [self currentConcern];
+    }
+    
+    if (wardSelectVC.selectedWard != nil) {
+        _concern.ward = wardSelectVC.selectedWard;
+    }
+    
+    return _concern;
+}
+
+-(void)setConcern:(PRConcern *)concern
+{
+    _concern = concern;
+    
+    wardSelectVC.selectedWard = concern.ward;
+    whatViewController.note = concern.whatNote;
+    whyViewController.note = concern.whyNote;
+    preventViewController.note = concern.preventNote;
+    questionsVC.seriousQuestion = concern.seriousQuestion;
+    questionsVC.preventQuestion = concern.preventQuestion;
+}
+
+-(PRConcern *)currentConcern
+{
+    PRConcern *newConcern = [PRConcern MR_createEntity];
+    
+    newConcern.ward = wardSelectVC.selectedWard;
+    newConcern.whatNote = [whatViewController note];
+    newConcern.whyNote = [whyViewController note];
+    newConcern.preventNote = [preventViewController note];
+    
+    newConcern.seriousQuestion = questionsVC.seriousQuestion;
+    newConcern.preventQuestion = questionsVC.preventQuestion;
+    
+    return newConcern;
 }
 
 #pragma mark - View Configuration
@@ -86,6 +129,7 @@
     [self applyThemeToView:footerView];
 }
 
+
 #pragma mark - Navigation
 
 /// Overrides superclass method to dismiss on the final page
@@ -93,20 +137,12 @@
 {
     if (tabController.selectedIndex == tabController.viewControllers.count - 1) {
         if ([self.pirtDelegate respondsToSelector:@selector(pirtViewControllerDidFinish:withConcern:)]) {
-            PRConcern *newConcern = [PRConcern MR_createEntity];
             
-            newConcern.ward = wardSelectVC.selectedWard;
-            newConcern.whatNote = [whatViewController currentNote];
-            newConcern.whyNote = [whyViewController currentNote];
-            newConcern.preventNote = [preventViewController currentNote];
-            
-            newConcern.seriousQuestion = questionsVC.seriousQuestion;
-            newConcern.preventQuestion = questionsVC.preventQuestion;
-            
-            [self.pirtDelegate pirtViewControllerDidFinish:self withConcern:newConcern];
+            [self.pirtDelegate pirtViewControllerDidFinish:self withConcern:self.concern];
         } else {
             [self dismissViewControllerAnimated:YES completion:nil];
         }
+
     } else {
         [super goNext:sender];
     }

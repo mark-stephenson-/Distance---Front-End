@@ -1,5 +1,6 @@
 #import "PRNote.h"
 
+#import <TheDistanceKit/TheDistanceKit.h>
 
 @interface PRNote ()
 
@@ -11,5 +12,10 @@
 @implementation PRNote
 
 // Custom logic goes here.
+
+-(BOOL)isValid
+{
+    return [self.text isNonNullString];
+}
 
 @end

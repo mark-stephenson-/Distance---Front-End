@@ -1773,7 +1773,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="DD" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vts-U4-atu" customClass="TDTextField">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="DD" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vts-U4-atu" customClass="TDTextField">
                                                             <rect key="frame" x="250" y="17" width="42" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="lSW-ok-mLe"/>
@@ -1789,7 +1789,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                                                 <outlet property="delegate" destination="LMv-uc-3BW" id="fHM-jc-k1U"/>
                                                             </connections>
                                                         </textField>
-                                                        <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="YYYY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hb2-kS-Zi5" customClass="TDTextField">
+                                                        <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="YYYY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hb2-kS-Zi5" customClass="TDTextField">
                                                             <rect key="frame" x="382" y="17" width="59" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="aWa-hf-O4d"/>
@@ -1805,19 +1805,19 @@ Please read the following statements carefully, keeping in mind your current sta
                                                                 <outlet property="delegate" destination="LMv-uc-3BW" id="H4q-l6-0hr"/>
                                                             </connections>
                                                         </textField>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpR-Q7-Oul">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpR-Q7-Oul">
                                                             <rect key="frame" x="300" y="26" width="6" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="770-L3-u20">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="770-L3-u20">
                                                             <rect key="frame" x="368" y="26" width="6" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="beY-3R-HJy" customClass="TDTextField">
+                                                        <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="beY-3R-HJy" customClass="TDTextField">
                                                             <rect key="frame" x="314" y="17" width="46" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="LfV-ge-P2z"/>
@@ -2498,7 +2498,10 @@ Please read the following statements carefully, keeping in mind your current sta
                         <outlet property="collectionView" destination="Y8F-u2-1xN" id="ehL-ro-f2w"/>
                         <outlet property="collectionViewHeightConstraint" destination="sD9-XB-GDS" id="LQX-nB-0uo"/>
                         <outlet property="collectionViewWidthConstraint" destination="yI4-B4-Z3Z" id="BAT-Mh-vMj"/>
+                        <outlet property="concernButton" destination="v8A-jz-1xd" id="Ekg-X4-col"/>
+                        <outlet property="goodButton" destination="ubm-O3-fP7" id="7bh-Sn-ioN"/>
                         <outlet property="headerLabel" destination="gwG-OB-mvO" id="PmB-wK-Vgm"/>
+                        <outlet property="noteButton" destination="XCb-F0-ZLX" id="alB-OP-YrP"/>
                         <outlet property="pirtView" destination="33v-de-gK9" id="tnz-le-a8y"/>
                         <outlet property="promptLabel" destination="GfQ-LJ-qAW" id="0hJ-qP-ImS"/>
                         <outlet property="titleLabel" destination="eS2-ZD-fQa" id="HDZ-HA-O6d"/>
@@ -2829,6 +2832,11 @@ Please read the following statements carefully, keeping in mind your current sta
                                                             <constraint firstItem="6EC-wo-jDL" firstAttribute="top" secondItem="7Hz-fm-nLf" secondAttribute="top" id="Z70-v7-Ji9"/>
                                                             <constraint firstItem="6EC-wo-jDL" firstAttribute="leading" secondItem="7Hz-fm-nLf" secondAttribute="leading" id="oTq-Ja-Eol"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="optionTitleLabel" destination="6EC-wo-jDL" id="dd5-oG-JSX"/>
                                                         </connections>
@@ -2969,6 +2977,11 @@ Please read the following statements carefully, keeping in mind your current sta
                                                             <constraint firstAttribute="bottom" secondItem="bcy-WF-b6n" secondAttribute="bottom" constant="8" id="v6c-7K-dXn"/>
                                                             <constraint firstItem="3UV-Aq-ssI" firstAttribute="leading" secondItem="maY-jt-t01" secondAttribute="leading" constant="8" id="xG9-aF-R4D"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="labelHeightConstraint" destination="r3Q-Jx-Cce" id="UYK-cn-uBW"/>
                                                             <outlet property="optionImageView" destination="bcy-WF-b6n" id="cNI-tP-lgu"/>
@@ -3016,6 +3029,11 @@ Please read the following statements carefully, keeping in mind your current sta
                                                             <constraint firstItem="qfc-Sl-ERQ" firstAttribute="leading" secondItem="c9m-HX-2fn" secondAttribute="trailing" constant="8" id="cpm-75-zuR"/>
                                                             <constraint firstItem="c9m-HX-2fn" firstAttribute="height" secondItem="qfc-Sl-ERQ" secondAttribute="height" id="uMc-0j-4d6"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="labelHeightConstraint" destination="ofT-jC-8eb" id="nkj-Y7-w9K"/>
                                                             <outlet property="optionImageView" destination="c9m-HX-2fn" id="4fm-kd-psK"/>
@@ -3096,7 +3114,7 @@ Please read the following statements carefully, keeping in mind your current sta
                             <view contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="QR8-aE-Qez">
                                 <rect key="frame" x="50" y="101" width="500" height="258"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qOu-m0-KaP">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qOu-m0-KaP" customClass="TDTextField">
                                         <rect key="frame" x="0.0" y="218" width="500" height="40"/>
                                         <accessibility key="accessibilityConfiguration" hint="Tap to select a ward" label="Ward select">
                                             <accessibilityTraits key="traits" none="YES" button="YES"/>
@@ -3329,10 +3347,10 @@ Please read the following statements carefully, keeping in mind your current sta
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
-                                                        <view contentMode="scaleToFill" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8LZ-nD-VTA">
+                                                        <view contentMode="scaleToFill" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" translatesAutoresizingMaskIntoConstraints="NO" id="8LZ-nD-VTA">
                                                             <rect key="frame" x="250" y="17" width="221" height="40"/>
                                                             <subviews>
-                                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mm" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lsL-m0-p19" customClass="TDTextField">
+                                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mm" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lsL-m0-p19" customClass="TDTextField">
                                                                     <rect key="frame" x="175" y="0.0" width="46" height="40"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="40" id="Mzk-qO-3AU"/>
@@ -3357,7 +3375,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                                                         <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 1"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSZ-Io-LeA">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSZ-Io-LeA">
                                                                     <rect key="frame" x="106" y="10" width="61" height="21"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -3366,7 +3384,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                                                         <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 1"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
-                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="hh" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZoO-6l-Ndn" customClass="TDTextField">
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="hh" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZoO-6l-Ndn" customClass="TDTextField">
                                                                     <rect key="frame" x="54" y="0.0" width="37" height="40"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="40" id="I8V-kc-68V"/>
@@ -3770,7 +3788,7 @@ Please read the following statements carefully, keeping in mind your current sta
                             <view contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="u0J-Tz-faB">
                                 <rect key="frame" x="50" y="107" width="500" height="258"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JqK-sv-UYh">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JqK-sv-UYh" customClass="TDTextField">
                                         <rect key="frame" x="0.0" y="218" width="500" height="40"/>
                                         <accessibility key="accessibilityConfiguration" hint="Tap to select a ward" label="Ward select">
                                             <accessibilityTraits key="traits" none="YES" button="YES"/>

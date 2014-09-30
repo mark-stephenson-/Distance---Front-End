@@ -43,6 +43,18 @@
 -(void)applyValueToFields
 {
     if (selectedDate == nil) {
+        if (![dayField.text isNonNullString]) {
+            [self configureField:dayField toInvalid:NO];
+        }
+        
+        if (![monthField.text isNonNullString]) {
+            [self configureField:monthField toInvalid:NO];
+        }
+        
+        if (![dayField.text isNonNullString]) {
+            [self configureField:yearField toInvalid:NO];
+        }
+        
         return;
     }
     
@@ -57,6 +69,9 @@
 
 -(void)applyFieldsToValue
 {
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *todayComps = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+    
     if ([dayField.text isNonNullString]) {
         [dayField setText:[NSString stringWithFormat:@"%02d", dayField.text.intValue]];
     }
@@ -69,16 +84,26 @@
         [yearField setText:[NSString stringWithFormat:@"%04d",  yearField.text.intValue]];
     }
     
+    
+    
     // validate the dates
-    if (yearField.text.intValue < 1864) {
-        yearField.text = nil;
+    BOOL invalidYear = (yearField.text.intValue < 1864) || (yearField.text.intValue > todayComps.year);
+    if ([yearField.text isNonNullString]) {
+        [self configureField:yearField toInvalid:invalidYear];
+    } else {
+        [self configureField:yearField toInvalid:NO];
     }
     
-    if (monthField.text.intValue > 12 ) {
-        monthField.text = nil;
-    }
+    BOOL invalidMonth = (monthField.text.intValue > 12) || (monthField.text.intValue < 1) || (yearField.text.intValue == todayComps.year && monthField.text.intValue > todayComps.month);
     
     if ([monthField.text isNonNullString]) {
+        [self configureField:monthField toInvalid:invalidMonth];
+    } else {
+        [self configureField:monthField toInvalid:NO];
+    }
+    
+    BOOL invalidDay = NO;
+    if (!invalidMonth) {
         
         int dayLimit = 31;
         
@@ -96,16 +121,24 @@
         }
         
         if (dayField.text.intValue > dayLimit) {
-            dayField.text = nil;
+            invalidDay = YES;
         }
         
     } else {
         if (dayField.text.intValue > 31) {
-            dayField.text = nil;
+            invalidDay = YES;
         }
     }
     
-    if (![dayField.text isNonNullString] || ![monthField.text isNonNullString] || ![yearField.text isNonNullString]) {
+    if (!invalidDay) {
+        if (yearField.text.intValue == todayComps.year && monthField.text.intValue == todayComps.month && dayField.text.intValue > todayComps.day) {
+            invalidDay = YES;
+        }
+    }
+    
+    [self configureField:dayField toInvalid:invalidDay];
+    
+    if (invalidDay || invalidMonth || invalidYear) {
         selectedDate = nil;
         [self.formViewController cellValueChanged:self];
         return;
@@ -116,12 +149,23 @@
     comps.month = [monthField.text integerValue];
     comps.year = [yearField.text integerValue];
     comps.hour = 12; // set the time to be midday to ensure BST / GMT doesn't change the date component
-    
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDate *date = [calendar dateFromComponents:comps];
     
     selectedDate = date;
     [self.formViewController cellValueChanged:self];
+}
+
+-(void)configureField:(TDTextField *)textField toInvalid:(BOOL) invalid
+{
+        if (invalid) {
+            textField.textColor = [[PRTheme sharedTheme] negativeColor];
+            textField.borderColor = [[PRTheme sharedTheme] negativeColor];
+            textField.borderWidth = 2.0;
+        } else {
+            textField.textColor = [UIColor darkTextColor];
+            textField.borderColor = [[TDTextField appearance] borderColor];
+            textField.borderWidth = [[TDTextField appearance] borderWidth];
+        }
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
