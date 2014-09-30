@@ -112,6 +112,32 @@
                                             <view contentMode="scaleToFill" verticalCompressionResistancePriority="754" translatesAutoresizingMaskIntoConstraints="NO" id="c9l-kp-fQt">
                                                 <rect key="frame" x="0.0" y="540" width="600" height="60"/>
                                                 <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAT-bL-5HY" customClass="PRButton">
+                                                        <rect key="frame" x="0.0" y="0.0" width="226" height="60"/>
+                                                        <color key="backgroundColor" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" priority="200" id="ipV-on-m0O"/>
+                                                        </constraints>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <state key="normal" title="Download Error" image="exclamation">
+                                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="0.01"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.01"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="login.button.download-error"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Button title retry download."/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 1"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="goHome:" destination="ilS-7W-Avn" eventType="touchUpInside" id="WCn-Pp-8AL"/>
+                                                            <action selector="retryPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Ze-J7-KaZ"/>
+                                                        </connections>
+                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cj0-dg-l2N" customClass="PRButton">
                                                         <rect key="frame" x="453" y="0.0" width="147" height="60"/>
                                                         <color key="backgroundColor" red="0.25882352939999997" green="0.76862745099999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -143,7 +169,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBd-pW-g3A" customClass="PRButton">
-                                                        <rect key="frame" x="0.0" y="0.0" width="162" height="60"/>
+                                                        <rect key="frame" x="226" y="0.0" width="162" height="60"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Return to log in screen"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
@@ -172,13 +198,22 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="wAT-bL-5HY" firstAttribute="leading" secondItem="c9l-kp-fQt" secondAttribute="leading" id="1yr-aA-6TV"/>
+                                                    <constraint firstItem="wAT-bL-5HY" firstAttribute="top" secondItem="c9l-kp-fQt" secondAttribute="top" id="4N9-hi-E8R"/>
                                                     <constraint firstAttribute="bottom" secondItem="cj0-dg-l2N" secondAttribute="bottom" id="DqE-3g-LGh"/>
                                                     <constraint firstItem="cj0-dg-l2N" firstAttribute="top" secondItem="c9l-kp-fQt" secondAttribute="top" id="Nkb-c4-q6U"/>
                                                     <constraint firstItem="aBd-pW-g3A" firstAttribute="leading" secondItem="c9l-kp-fQt" secondAttribute="leading" id="at1-OZ-Z3Y"/>
+                                                    <constraint firstItem="aBd-pW-g3A" firstAttribute="leading" secondItem="wAT-bL-5HY" secondAttribute="trailing" id="fNR-73-Oci"/>
                                                     <constraint firstAttribute="trailing" secondItem="cj0-dg-l2N" secondAttribute="trailing" id="hZn-mf-LNx"/>
+                                                    <constraint firstAttribute="bottom" secondItem="wAT-bL-5HY" secondAttribute="bottom" id="juj-FN-SJc"/>
                                                     <constraint firstAttribute="bottom" secondItem="aBd-pW-g3A" secondAttribute="bottom" id="lR9-Ms-ieC"/>
                                                     <constraint firstItem="aBd-pW-g3A" firstAttribute="top" secondItem="c9l-kp-fQt" secondAttribute="top" id="nZe-AS-IGA"/>
                                                 </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="at1-OZ-Z3Y"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                         </subviews>
                                         <constraints>
@@ -225,6 +260,7 @@
                     <navigationItem key="navigationItem" id="LQi-xv-l8e"/>
                     <connections>
                         <outlet property="passwordField" destination="QPr-fi-YK7" id="xdp-aQ-9K9"/>
+                        <outlet property="retryWidthConstraint" destination="ipV-on-m0O" id="eEt-rb-BWV"/>
                         <outlet property="scrollView" destination="Cok-27-Td8" id="2hO-ua-ZA1"/>
                         <outlet property="usernameField" destination="FRz-6b-dN2" id="2Cr-mG-fkN"/>
                         <segue destination="ukD-2B-9El" kind="show" identifier="Continue" id="5S1-Ee-Ve4"/>

@@ -31,6 +31,8 @@
     NSDictionary *loginCredentials = @{@"00001":@"nhs123",
                                        @"00002":@"bradfordnhs",
                                        @"00003":@"barnsleyhospital"};
+    
+    retryWidthConstraint.priority = 999;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,8 +40,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)retryPressed:(id)sender {
+    [self downloadData];
+}
+
 - (void)downloadData
 {
+    
+    
     __block NSMutableArray *allErrors = [NSMutableArray array];
     __block BOOL allSuccess = YES;
     __block int completionCount = 0;
@@ -73,15 +81,47 @@
                 
                 NSString *errorTitle = TDLocalizedStringWithDefaultValue(@"login.download-error.title", nil, nil, @"Cannot Download Data", @"Error title when the data download failed.");
                 NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"login.download.button-title", nil, nil, @"Retry", @"Button title to retry downloading data.");
+                NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"alert.cancel-title", nil, nil, @"OK", @"The default button to dismiss an alert view.");
                 
-                [self showAlertWithTitle:errorTitle
-                                 message:errorMessage
-                             buttonTitle:buttonTitle
-                        buttonCompletion:^(NSNumber *buttonIndex, UIAlertAction *action) {
-                            [self downloadData];
-                        }
-                             cancelTitle:nil
-                                alertTag:ALERT_DOWNLOAD_ERROR];
+                
+                // We need a cancel completion handler so the superclass method isn't called here
+                if ([UIAlertController class]) {
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:errorTitle
+                                                                                             message:errorMessage
+                                                                                      preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    [alertController addAction:[UIAlertAction actionWithTitle:buttonTitle
+                                                                        style:UIAlertActionStyleDestructive
+                                                                      handler:^(UIAlertAction *action) {
+                                                                          [self downloadData];
+                                                                      }]];
+                    
+                    [alertController addAction:[UIAlertAction actionWithTitle:cancelTitle
+                                                                        style:UIAlertActionStyleCancel
+                                                                      handler:^(UIAlertAction *action) {
+                                                                          retryWidthConstraint.priority = 1;
+                                                                          [UIView animateWithDuration:0.2 animations:^{
+                                                                              [self.view layoutIfNeeded];
+                                                                          }];
+                                                                      }]];
+                    
+                    [self presentViewController:alertController animated:YES completion:nil];
+                } else {
+                    // iOS 8 Deprecation
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:errorTitle
+                                                                    message:errorMessage
+                                                                   delegate:self
+                                                          cancelButtonTitle:cancelTitle
+                                                          otherButtonTitles:buttonTitle, nil];
+                    alert.tag = ALERT_DOWNLOAD_ERROR;
+                    [alert show];
+                }
+
+            } else {
+                retryWidthConstraint.priority = 999;
+                [UIView animateWithDuration:0.2 animations:^{
+                    [self.view layoutIfNeeded];
+                }];
             }
         }
     };
@@ -93,6 +133,26 @@
     [manager getTrustHierarchyWithCompletion:downloadCompletion];
     [manager getQuestionHierarchyWithCompletion:downloadCompletion];
     [manager getLocalizationsWithCompletion:downloadCompletion];
+}
+
+// iOS 8 Deprecation
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == ALERT_DOWNLOAD_ERROR) {
+        if (buttonIndex == 1) {
+            [self downloadData];
+        }
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == ALERT_DOWNLOAD_ERROR && buttonIndex == 0) {
+        retryWidthConstraint.priority = 1;
+        [UIView animateWithDuration:0.2 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
