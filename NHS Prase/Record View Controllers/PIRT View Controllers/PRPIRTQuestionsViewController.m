@@ -15,6 +15,10 @@
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import <MagicalRecord/MagicalRecord.h>
 
+#import "PRAnswerOptionsLayout.h"
+
+#import "PRImageView.h"
+
 @interface PRPIRTQuestionsViewController ()
 
 @end
@@ -29,6 +33,12 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [sadFace setImage:[UIImage imageNamed:@"face_sad"]];
+    [sadFace setTintColor:[[PRTheme sharedTheme] negativeColor]];
+    
+    [notSadFace setImage:[UIImage imageNamed:@"face_not_sad"]];
+    [notSadFace setTintColor:[[PRTheme sharedTheme] neutralColor]];
     
     if (self.seriousQuestion == nil) {
         self.seriousQuestion = [PRQuestion MR_createEntity];
@@ -50,6 +60,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    q1WidthConstr.constant = [q1CV.collectionViewLayout collectionViewContentSize].width;
+    q2WidthConstr.constant = [q2CV.collectionViewLayout collectionViewContentSize].width;
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -146,5 +164,6 @@
         self.preventQuestion.answerID = nil;
     }
 }
+
 
 @end

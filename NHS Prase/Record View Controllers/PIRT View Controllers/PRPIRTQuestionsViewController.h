@@ -8,10 +8,18 @@
 
 #import "PRQuestionOptionsViewController.h"
 
+@class PRImageView;
+
 @interface PRPIRTQuestionsViewController : PRQuestionOptionsViewController
 {
     IBOutlet UICollectionView *q1CV;
     IBOutlet UICollectionView *q2CV;
+    
+    IBOutlet NSLayoutConstraint *q1WidthConstr;
+    IBOutlet NSLayoutConstraint *q2WidthConstr;
+    
+    IBOutlet PRImageView *sadFace;
+    IBOutlet PRImageView *notSadFace;
 }
 
 @property (nonatomic, strong) PRQuestion *seriousQuestion;

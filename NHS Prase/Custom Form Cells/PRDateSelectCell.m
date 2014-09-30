@@ -14,7 +14,6 @@
 
 @implementation PRDateSelectCell
 
-
 -(id)value
 {
     return selectedDate;

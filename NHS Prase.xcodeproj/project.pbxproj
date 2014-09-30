@@ -57,6 +57,7 @@
 		A57B558D19CAE4420069FE65 /* PRFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57B558C19CAE4420069FE65 /* PRFormViewController.m */; };
 		A57B559619CAE55C0069FE65 /* PRRecordSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57B559519CAE55C0069FE65 /* PRRecordSummaryViewController.m */; };
 		A57B559919CAE62A0069FE65 /* PRQuestionnaireCompleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A57B559819CAE62A0069FE65 /* PRQuestionnaireCompleteCell.m */; };
+		A5866CB319DAF723006EDFB0 /* PRImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5866CB219DAF723006EDFB0 /* PRImageView.m */; };
 		A58699AE19CB2E4F002E0C14 /* PRBasicDataCompleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A58699AD19CB2E4F002E0C14 /* PRBasicDataCompleteCell.m */; };
 		A5882D2B19BA0FE500C04E4F /* PRTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A504419419B60D740000C9B3 /* PRTheme.m */; };
 		A58A8D3D19C6EA1A0052EAB7 /* PRSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A8D3C19C6EA1A0052EAB7 /* PRSelectionTableViewCell.m */; };
@@ -267,6 +268,8 @@
 		A57B559519CAE55C0069FE65 /* PRRecordSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRRecordSummaryViewController.m; path = "Record View Controllers/PRRecordSummaryViewController.m"; sourceTree = "<group>"; };
 		A57B559719CAE62A0069FE65 /* PRQuestionnaireCompleteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRQuestionnaireCompleteCell.h; path = "Custom Form Cells/PRQuestionnaireCompleteCell.h"; sourceTree = "<group>"; };
 		A57B559819CAE62A0069FE65 /* PRQuestionnaireCompleteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRQuestionnaireCompleteCell.m; path = "Custom Form Cells/PRQuestionnaireCompleteCell.m"; sourceTree = "<group>"; };
+		A5866CB119DAF723006EDFB0 /* PRImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRImageView.h; sourceTree = "<group>"; };
+		A5866CB219DAF723006EDFB0 /* PRImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRImageView.m; sourceTree = "<group>"; };
 		A58699AC19CB2E4F002E0C14 /* PRBasicDataCompleteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRBasicDataCompleteCell.h; path = "Custom Form Cells/PRBasicDataCompleteCell.h"; sourceTree = "<group>"; };
 		A58699AD19CB2E4F002E0C14 /* PRBasicDataCompleteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRBasicDataCompleteCell.m; path = "Custom Form Cells/PRBasicDataCompleteCell.m"; sourceTree = "<group>"; };
 		A58A8D3B19C6EA1A0052EAB7 /* PRSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRSelectionTableViewCell.h; path = "../Selection VCs/PRSelectionTableViewCell.h"; sourceTree = "<group>"; };
@@ -426,6 +429,8 @@
 			children = (
 				A50E31F419D2B705001C5AE6 /* PRButton.h */,
 				A50E31F519D2B705001C5AE6 /* PRButton.m */,
+				A5866CB119DAF723006EDFB0 /* PRImageView.h */,
+				A5866CB219DAF723006EDFB0 /* PRImageView.m */,
 				A50E31F619D2B705001C5AE6 /* PROptionCollectionViewCell.h */,
 				A50E31F719D2B705001C5AE6 /* PROptionCollectionViewCell.m */,
 				A58A8D3B19C6EA1A0052EAB7 /* PRSelectionTableViewCell.h */,
@@ -888,6 +893,7 @@
 				A502279219C09B22005B31D2 /* _PRNote.m in Sources */,
 				A502278C19C09B22005B31D2 /* PRNote.m in Sources */,
 				A502279419C09B22005B31D2 /* _PRRecord.m in Sources */,
+				A5866CB319DAF723006EDFB0 /* PRImageView.m in Sources */,
 				A5DE267F19B737ED000D3AF2 /* PRWardSelectViewController.m in Sources */,
 				A504416E19B5C2170000C9B3 /* PRPIRTQuestionsViewController.m in Sources */,
 				A502278A19C09B22005B31D2 /* PRAnswerOption.m in Sources */,

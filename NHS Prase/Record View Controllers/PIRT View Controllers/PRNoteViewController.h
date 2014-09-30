@@ -33,6 +33,7 @@
     BOOL canDismissKeyboard;
     BOOL canShowKeyboard;
     
+    IBOutlet NSLayoutConstraint *topLayoutConstraint;
     IBOutlet NSLayoutConstraint *bottomLayoutConstraint;
 }
 

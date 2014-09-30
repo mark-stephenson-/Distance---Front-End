@@ -26,6 +26,7 @@
     
     for (TDTextField *tf in textFields) {
         tf.textInsets = fieldInsets;
+        tf.accessoryImage = nil;
     }
 }
 

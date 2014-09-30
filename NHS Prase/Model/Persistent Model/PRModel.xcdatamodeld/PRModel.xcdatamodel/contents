@@ -69,6 +69,7 @@
         <attribute name="timeAdditionalPatient" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="timeAdditionalQuestionnaire" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="timeTracked" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="user" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="concerns" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRConcern" inverseName="record" inverseEntity="PRConcern" syncable="YES"/>
         <relationship name="goodNotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRNote" inverseName="recordAsGood" inverseEntity="PRNote" syncable="YES"/>
         <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRNote" inverseName="record" inverseEntity="PRNote" syncable="YES"/>
@@ -97,7 +98,7 @@
         <element name="PRPMOS" positionX="-2493" positionY="-900" width="128" height="58"/>
         <element name="PRPMOSQuestion" positionX="-2531" positionY="-1168" width="128" height="118"/>
         <element name="PRQuestion" positionX="-2324" positionY="-1170" width="128" height="165"/>
-        <element name="PRRecord" positionX="-2529" positionY="-976" width="128" height="208"/>
+        <element name="PRRecord" positionX="-2529" positionY="-976" width="128" height="225"/>
         <element name="PRTrust" positionX="-3141" positionY="-955" width="128" height="88"/>
         <element name="PRWard" positionX="-2745" positionY="-972" width="128" height="133"/>
     </elements>

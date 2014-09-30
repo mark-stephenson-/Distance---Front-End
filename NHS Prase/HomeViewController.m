@@ -30,6 +30,7 @@
     if ([segue.identifier isEqualToString:@"CreateRecord"]) {
         PRRecord *newRecord = [PRRecord newRecordWithWard:self.selectedWard];
         newRecord.startDate = [NSDate date];
+        newRecord.user = [[NSUserDefaults standardUserDefaults] valueForKey:@"user"];
         
         PRRecordViewController *recordVC = (PRRecordViewController *) segue.destinationViewController;
         recordVC.record = newRecord;

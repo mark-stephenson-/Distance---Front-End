@@ -86,6 +86,7 @@
 -(void)login:(id)sender
 {
     if (true) {//logInCredentials[usernameField.text] != nil && [passwordField.text isEqualToString:logInCredentials[usernameField.text]]) {
+        [[NSUserDefaults standardUserDefaults] setValue:usernameField.text forKey:@"user"];
         [self performSegueWithIdentifier:@"Continue" sender:self];
     } else {
         NSString *title = TDLocalizedStringWithDefaultValue(@"login.error.title", nil, nil, @"Invalid Credentials", @"Error title if the user enters an incorrect username or password.");

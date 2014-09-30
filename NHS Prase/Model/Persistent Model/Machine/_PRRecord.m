@@ -10,6 +10,7 @@ const struct PRRecordAttributes PRRecordAttributes = {
 	.timeAdditionalPatient = @"timeAdditionalPatient",
 	.timeAdditionalQuestionnaire = @"timeAdditionalQuestionnaire",
 	.timeTracked = @"timeTracked",
+	.user = @"user",
 };
 
 const struct PRRecordRelationships PRRecordRelationships = {
@@ -165,6 +166,13 @@ const struct PRRecordFetchedProperties PRRecordFetchedProperties = {
 - (void)setPrimitiveTimeTrackedValue:(int64_t)value_ {
 	[self setPrimitiveTimeTracked:[NSNumber numberWithLongLong:value_]];
 }
+
+
+
+
+
+@dynamic user;
+
 
 
 

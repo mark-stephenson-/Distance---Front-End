@@ -20,6 +20,8 @@
 {
     [super viewWillAppear:animated];
     
+    hasAppeared = YES;
+    
     if (self.selectedWard == nil || self.selectedWard == self.record.ward) {
         
         self.selectedTrust = self.record.ward.hospital.trust;
@@ -34,9 +36,16 @@
     [self refreshViews];
 }
 
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    hasAppeared = NO;
+}
+
 -(void)refreshViews
 {
-    if (currentWardSegment.selectedSegmentIndex == 0) {
+    if (hasAppeared && currentWardSegment.selectedSegmentIndex == 0) {
        
         self.selectedTrust = self.record.ward.hospital.trust;
         self.selectedHospital = self.record.ward.hospital;

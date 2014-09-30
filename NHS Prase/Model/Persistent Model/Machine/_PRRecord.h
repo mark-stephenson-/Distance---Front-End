@@ -11,6 +11,7 @@ extern const struct PRRecordAttributes {
 	__unsafe_unretained NSString *timeAdditionalPatient;
 	__unsafe_unretained NSString *timeAdditionalQuestionnaire;
 	__unsafe_unretained NSString *timeTracked;
+	__unsafe_unretained NSString *user;
 } PRRecordAttributes;
 
 extern const struct PRRecordRelationships {
@@ -31,6 +32,7 @@ extern const struct PRRecordFetchedProperties {
 @class PRWard;
 
 @class NSObject;
+
 
 
 
@@ -117,6 +119,16 @@ extern const struct PRRecordFetchedProperties {
 - (void)setTimeTrackedValue:(int64_t)value_;
 
 //- (BOOL)validateTimeTracked:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* user;
+
+
+
+//- (BOOL)validateUser:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -228,6 +240,12 @@ extern const struct PRRecordFetchedProperties {
 
 - (int64_t)primitiveTimeTrackedValue;
 - (void)setPrimitiveTimeTrackedValue:(int64_t)value_;
+
+
+
+
+- (NSString*)primitiveUser;
+- (void)setPrimitiveUser:(NSString*)value;
 
 
 

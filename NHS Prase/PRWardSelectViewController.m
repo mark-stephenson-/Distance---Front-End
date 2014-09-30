@@ -236,11 +236,20 @@
             wards = nil;
         }
     }
+    
+    if (self.selectedTrust == nil) {
+        self.selectedTrust = selectedHospital.trust;
+    }
 }
 
 -(void)setSelectedWard:(PRWard *)selectedWard
 {
     _selectedWard = selectedWard;
+    
+    if (self.selectedHospital == nil) {
+        self.selectedHospital = selectedWard.hospital;
+    }
+    
 }
 
 @end

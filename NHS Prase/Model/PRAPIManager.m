@@ -216,6 +216,7 @@
     jsonRecord[@"notes"] = noteEntries;
     jsonRecord[@"goodNotes"] = goodEntries;
     jsonRecord[@"concerns"] = concernEntries;
+    jsonRecord[@"user"] = [[NSUserDefaults standardUserDefaults] valueForKey:@"user"] ? : [NSNull null];
     
     NSLog(@"POSTING: %@", jsonRecord);
     

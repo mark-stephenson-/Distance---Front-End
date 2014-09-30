@@ -21,6 +21,12 @@
     return info;
 }
 
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+    numberField.accessoryImage = nil;
+}
+
 -(id)value
 {
     return currentValue;
