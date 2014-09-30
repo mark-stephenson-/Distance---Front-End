@@ -65,7 +65,6 @@
     
     basicDataCell[@"reuseIdentifier"] = @"BasicDataCell";
 
-    
     // Generate the questionnaire cell
     NSInteger answered = [self.record answeredQuestions];
     NSInteger total = self.record.questions.count;
@@ -75,7 +74,7 @@
     if (answered < total) {
         for (int q = 0; q < total; q++) {
             PRQuestion *thisQuestion = self.record.questions[q];
-            if (thisQuestion.answerID != nil) {
+            if (thisQuestion.answerID == nil || [thisQuestion.answerID isKindOfClass:[NSNull class]]) {
                 NSString *formatHeader = [NSString localizedStringWithFormat:TDLocalizedStringWithDefaultValue(@"summary.question.summary-label", nil, nil, @"Question %d", @"The label identifiying the number of unanswered PMOS question. Shown on the summary screen."), q + 1];
                 unansweredQuestions[@(q)] = formatHeader;
             }

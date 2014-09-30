@@ -31,9 +31,11 @@
 - (instancetype)init
 {
     self = [super init];
+    
     if (self) {
         dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
     }
+    
     return self;
 }
 

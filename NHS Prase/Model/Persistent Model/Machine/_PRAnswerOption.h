@@ -6,8 +6,7 @@
 
 extern const struct PRAnswerOptionAttributes {
 	__unsafe_unretained NSString *answerID;
-	__unsafe_unretained NSString *image1;
-	__unsafe_unretained NSString *image2;
+	__unsafe_unretained NSString *imageName;
 	__unsafe_unretained NSString *imageTintIdentifier;
 	__unsafe_unretained NSString *localizationID;
 	__unsafe_unretained NSString *title;
@@ -21,7 +20,6 @@ extern const struct PRAnswerOptionFetchedProperties {
 } PRAnswerOptionFetchedProperties;
 
 @class PRAnswerSet;
-
 
 
 
@@ -56,21 +54,11 @@ extern const struct PRAnswerOptionFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* image1;
+@property (nonatomic, strong) NSString* imageName;
 
 
 
-//- (BOOL)validateImage1:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSString* image2;
-
-
-
-//- (BOOL)validateImage2:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateImageName:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -141,14 +129,8 @@ extern const struct PRAnswerOptionFetchedProperties {
 
 
 
-- (NSString*)primitiveImage1;
-- (void)setPrimitiveImage1:(NSString*)value;
-
-
-
-
-- (NSString*)primitiveImage2;
-- (void)setPrimitiveImage2:(NSString*)value;
+- (NSString*)primitiveImageName;
+- (void)setPrimitiveImageName:(NSString*)value;
 
 
 

@@ -5,8 +5,7 @@
 
 const struct PRAnswerOptionAttributes PRAnswerOptionAttributes = {
 	.answerID = @"answerID",
-	.image1 = @"image1",
-	.image2 = @"image2",
+	.imageName = @"imageName",
 	.imageTintIdentifier = @"imageTintIdentifier",
 	.localizationID = @"localizationID",
 	.title = @"title",
@@ -88,14 +87,7 @@ const struct PRAnswerOptionFetchedProperties PRAnswerOptionFetchedProperties = {
 
 
 
-@dynamic image1;
-
-
-
-
-
-
-@dynamic image2;
+@dynamic imageName;
 
 
 

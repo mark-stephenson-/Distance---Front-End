@@ -138,14 +138,7 @@
 
 -(NSString *)cellIdentifierForIndexPath:(NSIndexPath *) indexPath
 {
-    PRAnswerSet *sectionAnswers = self.question.pmosQuestion.answerSets[indexPath.section];
-    PRAnswerOption *thisOption = sectionAnswers.options[indexPath.row];
-    
     NSString *identifier = @"OptionCell";
-    
-    if (thisOption.image2 != nil) {
-        identifier = @"OptionCell2";
-    }
     
     return identifier;
 }
@@ -161,10 +154,9 @@
     
     NSString *localizationKey = [thisOption localizationKeyForAnswer];
     NSString *localizedTitle = TDLocalizedStringWithDefaultValue(localizationKey, nil, nil, nil, nil);
-    UIImage *image1 = [thisOption.image1 isNonNullString] ? [UIImage imageNamed:thisOption.image1] : nil;
-    UIImage *image2 = [thisOption.image2 isNonNullString] ? [UIImage imageNamed:thisOption.image2] : nil;
+    UIImage *image1 = [thisOption.imageName isNonNullString] ? [UIImage imageNamed:thisOption.imageName] : nil;
     
-    [optionCell setOptionTitle:localizedTitle image:image1 andSecondImage:image2];
+    [optionCell setOptionTitle:localizedTitle image:image1 andSecondImage:nil];
     
     [self applyThemeToView:optionCell];
 }
