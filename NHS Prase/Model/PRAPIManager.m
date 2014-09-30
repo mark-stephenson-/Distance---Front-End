@@ -17,11 +17,25 @@
 
 #import "PRPMOS.h"
 #import "PRPMOSQuestion.h"
+#import "PRQuestion.h"
+#import "PRRecord.h"
+
+#import "PRNote.h"
+#import "PRConcern.h"
 
 #define PR_COLLECTION_TOKEN @"26e72f9ad86c8ef4802bc5cdaccf58cf"
 #define PR_API_KEY @"a7ceffb72de96b5c17f3d70a76853348"
 
 @implementation PRAPIManager
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
+    }
+    return self;
+}
 
 -(void)setBaseURL:(NSURL *)baseURL
 {
@@ -134,6 +148,149 @@
     }];
 }
 
+-(void)submitRecord:(PRRecord *)record withCompletion:(void (^)(BOOL, NSError *))completion
+{
+    // convert record to json
+    NSMutableDictionary *jsonRecord = [NSMutableDictionary dictionary];
+    
+    if ([record.basicData isKindOfClass:[NSDictionary class]]) {
+        
+        // ensure all basic data keys are included even in the data is incomplete
+        NSMutableDictionary *fullBasicData = [NSMutableDictionary dictionaryWithCapacity:7];
+        NSArray *basicDataKeys = @[@"DOB", @"Gender", @"Ethnicity", @"Language", @"Admitted", @"InpatientCount", @"OngoingTreatment"];
+        
+        for (NSString *key in basicDataKeys) {
+            id value = record.basicDataDictionary[key];
+            
+            if ([value isKindOfClass:[NSDate class]]) {
+                value = [dateFormatter stringFromDate:value];
+            }
+            
+            fullBasicData[key] = value ? : [NSNull null];
+        }
+        
+        jsonRecord[@"basicData"] = fullBasicData;
+    } else {
+        NSError *serialisationError = [NSError errorWithDomain:TDAPIErrorDomain
+                                                          code:kTDCAPIErrorUnexpectedRequest
+                                                      userInfo:@{NSLocalizedDescriptionKey: @"Internal App Error Occured.",
+                                                                 NSLocalizedFailureReasonErrorKey: @"Cannot submit a record with a non-dictionary basic data."}];
+        completion(NO, serialisationError);
+        return;
+    }
+    
+    // format in standard ISO date format
+    jsonRecord[@"startDate"] = [dateFormatter stringFromDate:record.startDate] ? : [NSNull null];
+    
+    // submitted in seconds
+    jsonRecord[@"totalTimePatient"] = @(record.timeAdditionalPatient.longLongValue + record.timeTracked.longLongValue);
+    jsonRecord[@"totalTimeQuestionnaire"] = @(record.timeAdditionalQuestionnaire.longLongValue + record.timeTracked.longLongValue);
+    
+    // the id will uniquely identify the ward, hospital and trust in TheCore
+    jsonRecord[@"ward"] = record.ward.id ? : [NSNull null];
+    
+    // create the questions entry
+    NSMutableArray *questionsEntry = [NSMutableArray arrayWithCapacity:record.questions.count];
+    for (int q = 0; q < record.questions.count; q++) {
+        PRQuestion *question = record.questions[q];
+        NSDictionary *entry = [self serializeQuestion:question];
+        [questionsEntry addObject:entry];
+    }
+    jsonRecord[@"pmos"] = questionsEntry;
+    
+    // serialize the notes, good notes and concerns
+    NSMutableArray *noteEntries = [NSMutableArray arrayWithCapacity:record.notes.count];
+    for (PRNote *note in record.notes) {
+        NSDictionary *noteEntry = [self serializeNote:note];
+        [noteEntries addObject:noteEntry];
+    }
+    
+    NSMutableArray *goodEntries = [NSMutableArray arrayWithCapacity:record.goodNotes.count];
+    for (PRNote *note in record.goodNotes) {
+        NSDictionary *noteEntry = [self serializeNote:note];
+        [goodEntries addObject:noteEntry];
+    }
+    
+    NSMutableArray *concernEntries = [NSMutableArray arrayWithCapacity:record.concerns.count];
+    for (PRConcern *concern in record.concerns) {
+        NSDictionary *noteEntry = [self serializeConcern:concern];
+        [noteEntries addObject:noteEntry];
+    }
+    
+    jsonRecord[@"notes"] = noteEntries;
+    jsonRecord[@"goodNotes"] = goodEntries;
+    jsonRecord[@"concerns"] = concernEntries;
+    
+    NSLog(@"POSTING: %@", jsonRecord);
+    
+    // post to the server
+    [sessionManager POST:@"api/submit"
+              parameters:jsonRecord
+                 success:^(NSURLSessionDataTask *task, id responseObject) {
+                     
+                     NSLog(@"Survey submitted.");
+                     
+                     if (completion != nil) {
+                         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                             completion(YES, nil);
+                         }];
+                         
+                     }
+                 } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                     
+                     [self logErrorFromSelector:_cmd withFormat:@"Cannot submit survey.\nFailing Task: %@\nError: %@", task, error];
+                     
+                     if (completion) {
+                         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                             completion(NO, error);
+                         }];
+                     }
+                 }];
+}
+
+-(NSDictionary *)serializeQuestion:(PRQuestion *) question
+{
+    NSMutableDictionary *thisEntry = [NSMutableDictionary dictionaryWithCapacity:5];
+    thisEntry[@"questionID"] = question.pmosQuestion ? question.pmosQuestion.questionID : [NSNull null];
+    thisEntry[@"answerID"] = question.answerID ? : [NSNull null];
+    
+    thisEntry[@"note"] = question.note ? [self serializeNote:question.note] : [NSNull null];
+    thisEntry[@"somethingGood"] = question.goodNote ? [self serializeNote:question.goodNote] : [NSNull null];
+    thisEntry[@"concern"] = question.concern ? [self serializeConcern:question.concern] : [NSNull null];
+    
+    return thisEntry;
+}
+
+-(NSDictionary *)serializeNote:(PRNote *) note
+{
+    NSMutableDictionary *thisEntry = [NSMutableDictionary dictionaryWithCapacity:1];
+    
+    thisEntry[@"text"] = [note.text isNonNullString] ? note.text : [NSNull null];
+    
+    return thisEntry;
+}
+
+-(NSDictionary *)serializeConcern:(PRConcern *) concern
+{
+    NSMutableDictionary *thisEntry = [NSMutableDictionary dictionaryWithCapacity:8];
+    
+    thisEntry[@"ward"] = concern.ward;
+
+    thisEntry[@"whatNote"] = concern.whatNote ? [self serializeNote:concern.whatNote] : [NSNull null];
+    thisEntry[@"whyNote"] = concern.whyNote ? [self serializeNote:concern.whyNote] : [NSNull null];
+    thisEntry[@"preventNote"] = concern.preventNote ? [self serializeNote:concern.preventNote] : [NSNull null];
+    
+    PRQuestion *seriousQuestion = concern.seriousQuestion;
+    thisEntry[@"seriousQuestion"] = seriousQuestion.pmosQuestion ? seriousQuestion.pmosQuestion.questionID : [NSNull null];
+    thisEntry[@"seriousAnswer"] = seriousQuestion.answerID ? : [NSNull null];
+    
+    PRQuestion *preventQuestion = concern.preventQuestion;
+    thisEntry[@"preventQuestion"] = preventQuestion.pmosQuestion ? preventQuestion.pmosQuestion.questionID : [NSNull null];
+    thisEntry[@"preventAnswer"] = preventQuestion.answerID ? : [NSNull null];
+    
+    return thisEntry;
+}
+
 #pragma mark - TDAPIManager SubClass Methods
 
 -(NSString *)TDCEntityNameForNode:(NSObject *) node
@@ -152,8 +309,6 @@
     
     return nodeInfo[node] != nil ? nodeInfo[node] : node;
 }
-
-
 
 -(NSDictionary *)translations
 {

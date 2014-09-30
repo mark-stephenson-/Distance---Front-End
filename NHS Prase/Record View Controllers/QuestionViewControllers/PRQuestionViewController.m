@@ -15,6 +15,7 @@
 #import "PRNoteViewController.h"
 #import "PRGoodViewController.h"
 #import "PRPIRTViewController.h"
+#import "PRNote.h"
 
 #import <TheDistanceKit/TheDistanceKit.h>
 
@@ -115,6 +116,7 @@
 {
     PRPIRTViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"PIRTVC"];
     toPresent.record = self.question.record;
+    toPresent.pirtDelegate = self;
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self presentViewController:toPresent animated:YES completion:nil];
@@ -123,14 +125,38 @@
 
 #pragma mark - Note Delegate
 
--(void)noteViewControllerDidFinish:(PRNoteViewController *)noteVC
+-(void)noteViewControllerDidFinish:(PRNoteViewController *)noteVC withNote:(PRNote *)note
 {
+    if ([noteVC isKindOfClass:[PRGoodViewController class]]) {
+        self.question.goodNote = note;
+    } else {
+        self.question.note = note;
+    }
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)noteViewControllerCancelled:(PRNoteViewController *)noteVC
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - PIRT Delegate
+
+-(void)pirtViewControllerDidCancel:(PRPIRTViewController *)pirtVC
+{
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [pirtVC dismissViewControllerAnimated:YES completion:nil];
+    }];
+}
+
+-(void)pirtViewControllerDidFinish:(PRPIRTViewController *)pirtVC withConcern:(PRConcern *)concern
+{
+    self.question.concern = concern;
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [pirtVC dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 #pragma mark - Input Delegate

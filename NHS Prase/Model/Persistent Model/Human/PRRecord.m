@@ -8,6 +8,7 @@
 #import "PRAnswerOption.h"
 #import "PRPMOS.h"
 #import "PRPMOSQuestion.h"
+#import "PRQuestion.h"
 
 #import <TheDistanceKit/TheDistanceKit.h>
 
@@ -178,7 +179,7 @@
     NSInteger answeredCount = 0;
     
     for (PRQuestion *question in self.questions) {
-        if (question.answerID != nil) {
+        if (question.answerID != nil && ![question.answerID isKindOfClass:[NSNull class]]) {
             answeredCount++;
         }
     }

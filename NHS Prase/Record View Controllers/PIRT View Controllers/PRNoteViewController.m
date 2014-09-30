@@ -9,6 +9,10 @@
 #import "PRNoteViewController.h"
 #import <TheDistanceKit/TheDistanceKit.h>
 
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
+#import "PRNote.h"
+
 @interface PRNoteViewController ()
 
 @end
@@ -214,10 +218,22 @@
 
 -(void)submit:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(noteViewControllerDidFinish:)]) {
-        [self.delegate noteViewControllerDidFinish:self];
+    if ([self.delegate respondsToSelector:@selector(noteViewControllerDidFinish:withNote:)]) {
+        PRNote *newNote = [self currentNote];
+        [self.delegate noteViewControllerDidFinish:self withNote:newNote];
     }
     
+}
+
+-(PRNote *)currentNote
+{
+    if ([self.noteText isNonNullString]) {
+        PRNote *newNote = [PRNote MR_createEntity];
+        newNote.text = self.noteText;
+        return newNote;
+    }
+    
+    return nil;
 }
 
 @end

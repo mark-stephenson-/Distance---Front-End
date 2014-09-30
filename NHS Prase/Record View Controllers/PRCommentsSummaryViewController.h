@@ -8,6 +8,8 @@
 
 #import "PRQuestionViewController.h"
 
+@class PRRecord;
+
 @interface PRCommentsSummaryViewController : PRQuestionViewController <UITableViewDataSource>
 {
     IBOutlet UITableView *commentsTableView;
@@ -16,5 +18,7 @@
     IBOutlet UILabel *goodButtonPromptLabel;
     IBOutlet UILabel *concernButtonPromptLabel;
 }
+
+@property (nonatomic, strong) PRRecord *record;
 
 @end

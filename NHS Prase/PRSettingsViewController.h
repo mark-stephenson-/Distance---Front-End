@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 The Distance. All rights reserved.
 //
 
-#import <TDFormKit/TDFormKit.h>
 #import <TheDistanceKit/TheDistanceKit.h>
 
 @interface PRSettingsViewController : TDFormViewController <TDSelectCellDelegate>

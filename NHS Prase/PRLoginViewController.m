@@ -24,7 +24,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    
+    NSDictionary *loginCredentials = @{@"00001":@"nhs123",
+                                       @"00002":@"bradfordnhs",
+                                       @"00003":@"barnsleyhospital"};
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,7 +74,7 @@
 
 -(void)login:(id)sender
 {
-    if (true) { //[usernameField.text isEqualToString:@"user"] && [passwordField.text isEqualToString:@"1234"]) {
+    if (true) {//logInCredentials[usernameField.text] != nil && [passwordField.text isEqualToString:logInCredentials[usernameField.text]]) {
         [self performSegueWithIdentifier:@"Continue" sender:self];
     } else {
         NSString *title = TDLocalizedStringWithDefaultValue(@"login.error.title", nil, nil, @"Invalid Credentials", @"Error title if the user enters an incorrect username or password.");

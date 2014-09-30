@@ -10,12 +10,13 @@
 
 @class TDTextView;
 @class PRNoteViewController;
+@class PRNote;
 
 @protocol PRNoteDelegate <NSObject>
 
 @optional
 
--(void)noteViewControllerDidFinish:(PRNoteViewController *) noteVC;
+-(void)noteViewControllerDidFinish:(PRNoteViewController *) noteVC withNote:(PRNote *) note;
 -(void)noteViewControllerCancelled:(PRNoteViewController *) noteVC;
 
 @end
@@ -46,5 +47,7 @@
 
 -(IBAction)submit:(id)sender;
 -(IBAction)cancel:(id)sender;
+
+-(PRNote *)currentNote;
 
 @end

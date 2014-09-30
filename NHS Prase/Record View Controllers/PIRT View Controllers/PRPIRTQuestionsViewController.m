@@ -11,6 +11,10 @@
 #import "PROptionCollectionViewCell.h"
 #import "PRTheme.h"
 
+#import "PRQuestion.h"
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
+
 @interface PRPIRTQuestionsViewController ()
 
 @end
@@ -20,6 +24,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (self.seriousQuestion == nil) {
+        self.seriousQuestion = [PRQuestion MR_createEntity];
+    }
+    
+    if (self.preventQuestion == nil) {
+        self.preventQuestion = [PRQuestion MR_createEntity];
+    }
+    
+    if (self.seriousQuestion.answerID) {
+        [q1CV selectItemAtIndexPath:[NSIndexPath indexPathForItem:self.seriousQuestion.answerID.integerValue inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+    }
+    
+    if (self.preventQuestion.answerID) {
+        [q2CV selectItemAtIndexPath:[NSIndexPath indexPathForItem:self.preventQuestion.answerID.integerValue inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,8 +90,6 @@
         
         UIColor *positiveColour = [[PRTheme sharedTheme] positiveColor];
         UIColor *negativeColour = [[PRTheme sharedTheme] negativeColor];
-        //UIColor *neutralColour = [[PRTheme sharedTheme] neutralColor];
-        //UIColor *mainColour = [[PRTheme sharedTheme] mainColor];
         
         NSString *title = titles[indexPath.row];
         NSString *identifier = (indexPath.row == 0 || indexPath.row == 3) ? @"OptionCell2" : @"OptionCell";
@@ -102,8 +125,26 @@
     return nil;
 }
 
-#pragma mark - IBActions
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (collectionView == q1CV) {
+        self.seriousQuestion.answerID = @(indexPath.row);
+    }
+    
+    if (collectionView == q2CV) {
+        self.preventQuestion.answerID = @(indexPath.row);
+    }
+}
 
-
+-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (collectionView == q1CV) {
+        self.seriousQuestion.answerID = nil;
+    }
+    
+    if (collectionView == q2CV) {
+        self.preventQuestion.answerID = nil;
+    }
+}
 
 @end

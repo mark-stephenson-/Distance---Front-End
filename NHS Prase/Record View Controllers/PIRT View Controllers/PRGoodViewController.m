@@ -15,6 +15,10 @@
 #import "PRHospital.h"
 #import "PRTrust.h"
 
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
+#import "PRNote.h"
+
 @interface PRGoodViewController ()
 
 @end
@@ -60,6 +64,18 @@
 -(void)segmentChanged:(id)sender
 {
     [self refreshViews];
+}
+
+-(void)submit:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(noteViewControllerDidFinish:withNote:)]) {
+        
+        PRNote *newNote = [PRNote MR_createEntity];
+        newNote.text = self.noteText;
+        newNote.ward = self.selectedWard;
+        
+        [self.delegate noteViewControllerDidFinish:self withNote:newNote];
+    }
 }
 
 #pragma mark - TextField Delegate

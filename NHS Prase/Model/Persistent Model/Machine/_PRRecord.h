@@ -122,23 +122,23 @@ extern const struct PRRecordFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSOrderedSet *concerns;
+@property (nonatomic, strong) NSSet *concerns;
 
-- (NSMutableOrderedSet*)concernsSet;
-
-
-
-
-@property (nonatomic, strong) NSOrderedSet *goodNotes;
-
-- (NSMutableOrderedSet*)goodNotesSet;
+- (NSMutableSet*)concernsSet;
 
 
 
 
-@property (nonatomic, strong) NSOrderedSet *notes;
+@property (nonatomic, strong) NSSet *goodNotes;
 
-- (NSMutableOrderedSet*)notesSet;
+- (NSMutableSet*)goodNotesSet;
+
+
+
+
+@property (nonatomic, strong) NSSet *notes;
+
+- (NSMutableSet*)notesSet;
 
 
 
@@ -162,18 +162,18 @@ extern const struct PRRecordFetchedProperties {
 
 @interface _PRRecord (CoreDataGeneratedAccessors)
 
-- (void)addConcerns:(NSOrderedSet*)value_;
-- (void)removeConcerns:(NSOrderedSet*)value_;
+- (void)addConcerns:(NSSet*)value_;
+- (void)removeConcerns:(NSSet*)value_;
 - (void)addConcernsObject:(PRConcern*)value_;
 - (void)removeConcernsObject:(PRConcern*)value_;
 
-- (void)addGoodNotes:(NSOrderedSet*)value_;
-- (void)removeGoodNotes:(NSOrderedSet*)value_;
+- (void)addGoodNotes:(NSSet*)value_;
+- (void)removeGoodNotes:(NSSet*)value_;
 - (void)addGoodNotesObject:(PRNote*)value_;
 - (void)removeGoodNotesObject:(PRNote*)value_;
 
-- (void)addNotes:(NSOrderedSet*)value_;
-- (void)removeNotes:(NSOrderedSet*)value_;
+- (void)addNotes:(NSSet*)value_;
+- (void)removeNotes:(NSSet*)value_;
 - (void)addNotesObject:(PRNote*)value_;
 - (void)removeNotesObject:(PRNote*)value_;
 
@@ -233,18 +233,18 @@ extern const struct PRRecordFetchedProperties {
 
 
 
-- (NSMutableOrderedSet*)primitiveConcerns;
-- (void)setPrimitiveConcerns:(NSMutableOrderedSet*)value;
+- (NSMutableSet*)primitiveConcerns;
+- (void)setPrimitiveConcerns:(NSMutableSet*)value;
 
 
 
-- (NSMutableOrderedSet*)primitiveGoodNotes;
-- (void)setPrimitiveGoodNotes:(NSMutableOrderedSet*)value;
+- (NSMutableSet*)primitiveGoodNotes;
+- (void)setPrimitiveGoodNotes:(NSMutableSet*)value;
 
 
 
-- (NSMutableOrderedSet*)primitiveNotes;
-- (void)setPrimitiveNotes:(NSMutableOrderedSet*)value;
+- (NSMutableSet*)primitiveNotes;
+- (void)setPrimitiveNotes:(NSMutableSet*)value;
 
 
 

@@ -173,10 +173,10 @@ const struct PRRecordFetchedProperties PRRecordFetchedProperties = {
 @dynamic concerns;
 
 	
-- (NSMutableOrderedSet*)concernsSet {
+- (NSMutableSet*)concernsSet {
 	[self willAccessValueForKey:@"concerns"];
   
-	NSMutableOrderedSet *result = (NSMutableOrderedSet*)[self mutableOrderedSetValueForKey:@"concerns"];
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"concerns"];
   
 	[self didAccessValueForKey:@"concerns"];
 	return result;
@@ -186,10 +186,10 @@ const struct PRRecordFetchedProperties PRRecordFetchedProperties = {
 @dynamic goodNotes;
 
 	
-- (NSMutableOrderedSet*)goodNotesSet {
+- (NSMutableSet*)goodNotesSet {
 	[self willAccessValueForKey:@"goodNotes"];
   
-	NSMutableOrderedSet *result = (NSMutableOrderedSet*)[self mutableOrderedSetValueForKey:@"goodNotes"];
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"goodNotes"];
   
 	[self didAccessValueForKey:@"goodNotes"];
 	return result;
@@ -199,10 +199,10 @@ const struct PRRecordFetchedProperties PRRecordFetchedProperties = {
 @dynamic notes;
 
 	
-- (NSMutableOrderedSet*)notesSet {
+- (NSMutableSet*)notesSet {
 	[self willAccessValueForKey:@"notes"];
   
-	NSMutableOrderedSet *result = (NSMutableOrderedSet*)[self mutableOrderedSetValueForKey:@"notes"];
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"notes"];
   
 	[self didAccessValueForKey:@"notes"];
 	return result;

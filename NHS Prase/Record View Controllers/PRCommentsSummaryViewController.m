@@ -8,6 +8,8 @@
 
 #import "PRCommentsSummaryViewController.h"
 
+#import "PRRecord.h"
+
 @interface PRCommentsSummaryViewController ()
 
 @end
@@ -46,6 +48,23 @@
     
     [self.view layoutIfNeeded];
 }
+
+-(void)noteViewControllerDidFinish:(PRNoteViewController *)noteVC withNote:(PRNote *)note
+{
+    [self.record addGoodNotesObject:note];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)pirtViewControllerDidFinish:(PRPIRTViewController *)pirtVC withConcern:(PRConcern *)concern
+{
+    [self.record addConcernsObject:concern];
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [pirtVC dismissViewControllerAnimated:YES completion:nil];
+    }];
+}
+
 
 #pragma mark - TableView Methods
 

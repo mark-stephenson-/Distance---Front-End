@@ -10,10 +10,11 @@
 
 #import "PRNoteViewController.h"
 #import "PRInputAccessoryView.h"
+#import "PRPIRTViewController.h"
 
 @class PRQuestion;
 
-@interface PRQuestionViewController : PRViewController <PRNoteDelegate, TDInputAccessoryDelegate>
+@interface PRQuestionViewController : PRViewController <PRNoteDelegate, PRPIRTDelegate, TDInputAccessoryDelegate>
 {
     IBOutlet UILabel *headerLabel;
     IBOutlet UILabel *promptLabel;

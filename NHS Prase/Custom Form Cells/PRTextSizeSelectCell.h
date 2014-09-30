@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 The Distance. All rights reserved.
 //
 
-#import <TDFormKit/TDFormKit.h>
+#import <TheDistanceKit/TheDistanceKit.h>
 
 /// Value can be an NSNumber in {0...6} or one of the UIKit extension NSStrings of the form UIContentSizeCategory*
 @interface PRTextSizeSelectCell : TDCell

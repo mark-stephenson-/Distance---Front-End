@@ -15,6 +15,8 @@
  */
 @interface PRLoginViewController : PRViewController <TDInputAccessoryDelegate>
 {
+    NSDictionary *logInCredentials;
+    
     IBOutlet UIScrollView *scrollView;
 
     IBOutlet UITextField *usernameField;

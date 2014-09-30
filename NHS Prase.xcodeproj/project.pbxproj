@@ -50,8 +50,8 @@
 		A540640419C1FC9800C38EF9 /* PRAnswerOptionsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A540640319C1FC9800C38EF9 /* PRAnswerOptionsLayout.m */; };
 		A544EEC519C899F700160388 /* PRIncrementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A544EEC419C899F700160388 /* PRIncrementCell.m */; };
 		A5466A8919AE070100240026 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5466A8819AE070100240026 /* HomeViewController.m */; };
-		A5466CBC19AE3A6300240026 /* TDFormKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5466CB719AE3A3400240026 /* TDFormKit.framework */; };
 		A5466CBF19AE3B0500240026 /* PRBasicDataFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5466CBE19AE3B0500240026 /* PRBasicDataFormViewController.m */; };
+		A55DFD7B19DA9E9D0016F86D /* TheDistanceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5C0731919D59C24003446F7 /* TheDistanceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A576056919B0AE150018E9EA /* PRDateSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A576056819B0AE150018E9EA /* PRDateSelectCell.m */; };
 		A57B558D19CAE4420069FE65 /* PRFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57B558C19CAE4420069FE65 /* PRFormViewController.m */; };
 		A57B559619CAE55C0069FE65 /* PRRecordSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57B559519CAE55C0069FE65 /* PRRecordSummaryViewController.m */; };
@@ -75,7 +75,6 @@
 		A5EBFEC219D16B940056A44A /* PRAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBFEC119D16B940056A44A /* PRAgreementViewController.m */; };
 		A5EBFECB19D17D710056A44A /* PRTimeSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBFECA19D17D710056A44A /* PRTimeSelectCell.m */; };
 		A5EBFED619D1876C0056A44A /* PRMultiTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBFED519D1876C0056A44A /* PRMultiTextFieldCell.m */; };
-		A5F521F519AF289800DC6C68 /* TDFormKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5466CB719AE3A3400240026 /* TDFormKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5F565AA19C338E10080C692 /* PRSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F565A919C338E10080C692 /* PRSelectionViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -87,47 +86,12 @@
 			remoteGlobalIDString = A536993F19ADD1170045EEB1;
 			remoteInfo = "NHS Prase";
 		};
-		A5466CB019AE3A3400240026 /* PBXContainerItemProxy */ = {
+		A55DFD7919DA9E930016F86D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A5466CA719AE3A3400240026 /* TDForms.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 047888CC17730D3500158F8E;
-			remoteInfo = TDForms;
-		};
-		A5466CB219AE3A3400240026 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A5466CA719AE3A3400240026 /* TDForms.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A5ECFF891982622600CC1E4B;
-			remoteInfo = TDFormLibrary;
-		};
-		A5466CB419AE3A3400240026 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A5466CA719AE3A3400240026 /* TDForms.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A5ECFF961982622700CC1E4B;
-			remoteInfo = TDFormLibraryTests;
-		};
-		A5466CB619AE3A3400240026 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A5466CA719AE3A3400240026 /* TDForms.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A5466AD019AE2ED900240026;
-			remoteInfo = TDFormKit;
-		};
-		A5466CB819AE3A3400240026 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A5466CA719AE3A3400240026 /* TDForms.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A5466ADA19AE2EDA00240026;
-			remoteInfo = TDFormKitTests;
-		};
-		A5466CBA19AE3A5C00240026 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A5466CA719AE3A3400240026 /* TDForms.xcodeproj */;
+			containerPortal = A5C0731219D59C23003446F7 /* TheDistanceKit.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = A5466ACF19AE2ED900240026;
-			remoteInfo = TDFormKit;
+			remoteGlobalIDString = A53698D919ADC7EA0045EEB1;
+			remoteInfo = TheDistanceKit;
 		};
 		A5C0731819D59C24003446F7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -180,7 +144,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A5F521F519AF289800DC6C68 /* TDFormKit.framework in Embed Frameworks */,
+				A55DFD7B19DA9E9D0016F86D /* TheDistanceKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,7 +248,6 @@
 		A544EEC419C899F700160388 /* PRIncrementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRIncrementCell.m; path = "Custom Form Cells/PRIncrementCell.m"; sourceTree = "<group>"; };
 		A5466A8719AE070100240026 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		A5466A8819AE070100240026 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		A5466CA719AE3A3400240026 /* TDForms.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TDForms.xcodeproj; path = Frameworks/TDForms/TDForms.xcodeproj; sourceTree = "<group>"; };
 		A5466CBD19AE3B0500240026 /* PRBasicDataFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRBasicDataFormViewController.h; path = "Record View Controllers/PRBasicDataFormViewController.h"; sourceTree = "<group>"; };
 		A5466CBE19AE3B0500240026 /* PRBasicDataFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRBasicDataFormViewController.m; path = "Record View Controllers/PRBasicDataFormViewController.m"; sourceTree = "<group>"; };
 		A576056719B0AE150018E9EA /* PRDateSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRDateSelectCell.h; path = "Custom Form Cells/PRDateSelectCell.h"; sourceTree = "<group>"; };
@@ -342,7 +305,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5466CBC19AE3A6300240026 /* TDFormKit.framework in Frameworks */,
 				408CC42810B9480D918B020E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,7 +461,6 @@
 			children = (
 				A5BCB3CE19BDE6E600092F50 /* Languages */,
 				A5C0749519D5A2C0003446F7 /* TheDistanceKit */,
-				A5466CA719AE3A3400240026 /* TDForms.xcodeproj */,
 				A536994219ADD1170045EEB1 /* NHS Prase */,
 				A536995919ADD1170045EEB1 /* NHS PraseTests */,
 				A536994119ADD1170045EEB1 /* Products */,
@@ -598,18 +559,6 @@
 			name = "Record View Controllers";
 			sourceTree = "<group>";
 		};
-		A5466CA819AE3A3400240026 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A5466CB119AE3A3400240026 /* TDForms.app */,
-				A5466CB319AE3A3400240026 /* libTDFormLibrary.a */,
-				A5466CB519AE3A3400240026 /* TDFormLibraryTests.xctest */,
-				A5466CB719AE3A3400240026 /* TDFormKit.framework */,
-				A5466CB919AE3A3400240026 /* TDFormKitTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		A576056619B0ADD60018E9EA /* Custom Form Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -689,7 +638,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				A5466CBB19AE3A5C00240026 /* PBXTargetDependency */,
+				A55DFD7A19DA9E930016F86D /* PBXTargetDependency */,
 			);
 			name = "NHS Prase";
 			productName = "NHS Prase";
@@ -750,10 +699,6 @@
 					ProjectRef = A5C0748219D5A2BA003446F7 /* Pods.xcodeproj */;
 				},
 				{
-					ProductGroup = A5466CA819AE3A3400240026 /* Products */;
-					ProjectRef = A5466CA719AE3A3400240026 /* TDForms.xcodeproj */;
-				},
-				{
 					ProductGroup = A5C0731319D59C23003446F7 /* Products */;
 					ProjectRef = A5C0731219D59C23003446F7 /* TheDistanceKit.xcodeproj */;
 				},
@@ -767,41 +712,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		A5466CB119AE3A3400240026 /* TDForms.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = TDForms.app;
-			remoteRef = A5466CB019AE3A3400240026 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A5466CB319AE3A3400240026 /* libTDFormLibrary.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libTDFormLibrary.a;
-			remoteRef = A5466CB219AE3A3400240026 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A5466CB519AE3A3400240026 /* TDFormLibraryTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = TDFormLibraryTests.xctest;
-			remoteRef = A5466CB419AE3A3400240026 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A5466CB719AE3A3400240026 /* TDFormKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = TDFormKit.framework;
-			remoteRef = A5466CB619AE3A3400240026 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A5466CB919AE3A3400240026 /* TDFormKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = TDFormKitTests.xctest;
-			remoteRef = A5466CB819AE3A3400240026 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		A5C0731919D59C24003446F7 /* TheDistanceKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -999,10 +909,10 @@
 			target = A536993F19ADD1170045EEB1 /* NHS Prase */;
 			targetProxy = A536995719ADD1170045EEB1 /* PBXContainerItemProxy */;
 		};
-		A5466CBB19AE3A5C00240026 /* PBXTargetDependency */ = {
+		A55DFD7A19DA9E930016F86D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = TDFormKit;
-			targetProxy = A5466CBA19AE3A5C00240026 /* PBXContainerItemProxy */;
+			name = TheDistanceKit;
+			targetProxy = A55DFD7919DA9E930016F86D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

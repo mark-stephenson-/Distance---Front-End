@@ -53,7 +53,7 @@
         <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRQuestion" inverseName="pmosQuestion" inverseEntity="PRQuestion" syncable="YES"/>
     </entity>
     <entity name="PRQuestion" representedClassName="PRQuestion" syncable="YES">
-        <attribute name="answerID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="answerID" optional="YES" attributeType="Integer 64" syncable="YES"/>
         <relationship name="concern" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRConcern" inverseName="question" inverseEntity="PRConcern" syncable="YES"/>
         <relationship name="concernAsPrevent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRConcern" inverseName="preventQuestion" inverseEntity="PRConcern" syncable="YES"/>
         <relationship name="concernAsSerious" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRConcern" inverseName="seriousQuestion" inverseEntity="PRConcern" syncable="YES"/>
@@ -69,9 +69,9 @@
         <attribute name="timeAdditionalPatient" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="timeAdditionalQuestionnaire" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="timeTracked" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <relationship name="concerns" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PRConcern" inverseName="record" inverseEntity="PRConcern" syncable="YES"/>
-        <relationship name="goodNotes" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PRNote" inverseName="recordAsGood" inverseEntity="PRNote" syncable="YES"/>
-        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PRNote" inverseName="record" inverseEntity="PRNote" syncable="YES"/>
+        <relationship name="concerns" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRConcern" inverseName="record" inverseEntity="PRConcern" syncable="YES"/>
+        <relationship name="goodNotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRNote" inverseName="recordAsGood" inverseEntity="PRNote" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRNote" inverseName="record" inverseEntity="PRNote" syncable="YES"/>
         <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PRQuestion" inverseName="record" inverseEntity="PRQuestion" syncable="YES"/>
         <relationship name="ward" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRWard" inverseName="records" inverseEntity="PRWard" syncable="YES"/>
     </entity>
@@ -90,15 +90,15 @@
     </entity>
     <elements>
         <element name="PRAnswerOption" positionX="-2952" positionY="-1170" width="128" height="148"/>
+        <element name="PRAnswerSet" positionX="-2745" positionY="-1165" width="128" height="88"/>
         <element name="PRConcern" positionX="-2061" positionY="-991" width="128" height="163"/>
         <element name="PRHospital" positionX="-2952" positionY="-963" width="128" height="103"/>
         <element name="PRNote" positionX="-1845" positionY="-828" width="128" height="193"/>
-        <element name="PRQuestion" positionX="-2324" positionY="-1170" width="128" height="163"/>
+        <element name="PRPMOS" positionX="-2493" positionY="-900" width="128" height="58"/>
+        <element name="PRPMOSQuestion" positionX="-2531" positionY="-1168" width="128" height="118"/>
+        <element name="PRQuestion" positionX="-2324" positionY="-1170" width="128" height="165"/>
         <element name="PRRecord" positionX="-2529" positionY="-976" width="128" height="208"/>
         <element name="PRTrust" positionX="-3141" positionY="-955" width="128" height="88"/>
         <element name="PRWard" positionX="-2745" positionY="-972" width="128" height="133"/>
-        <element name="PRAnswerSet" positionX="-2745" positionY="-1165" width="128" height="88"/>
-        <element name="PRPMOSQuestion" positionX="-2531" positionY="-1168" width="128" height="118"/>
-        <element name="PRPMOS" positionX="-2493" positionY="-900" width="128" height="58"/>
     </elements>
 </model>

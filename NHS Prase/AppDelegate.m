@@ -31,7 +31,9 @@
     
     // set up app wide inset
     [[TDTextField appearance] setTextInsets:UIEdgeInsetsMake(10, 15, 10, 15)];
+    [[TDTextField appearance] setBorderColor:[[PRTheme sharedTheme] mainColor]];
     
+    //[[TDTextField appearance] setbord]
     PRAPIManager *manager = [PRAPIManager sharedManager];
     manager.baseURL = [NSURL URLWithString:@"http://prase.staging2.thedistance.co.uk"];
     [manager getTrustHierarchy];

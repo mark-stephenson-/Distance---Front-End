@@ -35,7 +35,7 @@
     
     // check if basic data is complete and update the value if necessary
     NSDictionary *basicDataInfo = self.record.basicDataDictionary;
-    BOOL basicDataComplete = basicDataInfo.count == 7;
+    BOOL basicDataComplete = basicDataInfo.count == 7 && ![basicDataInfo.allValues containsObject:[NSNull null]];
     
     [self setFormValue:@(basicDataComplete) forFormKey:@"BasicData"];
     

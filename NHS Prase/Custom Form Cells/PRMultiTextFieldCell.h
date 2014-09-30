@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 The Distance. All rights reserved.
 //
 
-#import <TDFormKit/TDFormKit.h>
+#import <TheDistanceKit/TheDistanceKit.h>
 
 @class PRInputAccessoryView;
 

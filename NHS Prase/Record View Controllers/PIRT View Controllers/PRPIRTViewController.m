@@ -12,6 +12,10 @@
 #import "PRPIRTQuestionsViewController.h"
 #import "PRTheme.h"
 
+#import "PRNote.h"
+#import "PRConcern.h"
+#import <MagicalRecord/MagicalRecord.h>
+#import <MagicalRecord/CoreData+MagicalRecord.h>
 
 @interface PRPIRTViewController ()
 
@@ -31,30 +35,34 @@
     [self applyThemeToView:noteVCToolbar];
     
     // grab the storyboard created view controllers
-    PRPIRTWardSelectViewController *wardSelectVC = tabController.viewControllers[0];
+    wardSelectVC = tabController.viewControllers[0];
     wardSelectVC.record = self.record;
-    PRPIRTQuestionsViewController *questionsVC = tabController.viewControllers[1];
+    
+    questionsVC = tabController.viewControllers[1];
     
     // force the view controllers to load their views so they can be configured here
     UIView *loadView = nil;
     
     // create the simple view controllers
-    PRNoteViewController *whatViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
+    whatViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
     loadView = whatViewController.view;
     whatViewController.titleLabel.text = TDLocalizedStringWithDefaultValue(@"pirt.what.title", nil, nil, @"Detail needed about what, where and when the concern happened.", @"Concern section title");
     whatViewController.delegate = self;
+    whatViewController.titleLabel.TDLocalizedStringKey = @"pirt.what.title";
     whatViewController.noteView.inputAccessoryView = noteVCToolbar;
     
-    PRNoteViewController *whyViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
+    whyViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
     loadView = whyViewController.view;
     whyViewController.titleLabel.text = TDLocalizedStringWithDefaultValue(@"pirt.why.title", nil, nil, @"Why was this a concern for you?", @"Concern section title");
+    whyViewController.titleLabel.TDLocalizedStringKey = @"pirt.why.title";
     whyViewController.delegate = self;
     whyViewController.noteView.inputAccessoryView = noteVCToolbar;
     
-    PRNoteViewController *preventViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
+    preventViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
     loadView = preventViewController.view;
     preventViewController.titleLabel.text = TDLocalizedStringWithDefaultValue(@"pirt.prevent.title", nil, nil, @"What could be done to stop this from happening again to you or other patients?", @"Concern section title");
     preventViewController.delegate = self;
+    preventViewController.titleLabel.TDLocalizedStringKey = @"pirt.prevent.title";
     preventViewController.noteView.inputAccessoryView = noteVCToolbar;
     
     [tabController setViewControllers:@[wardSelectVC, whatViewController, whyViewController, preventViewController, questionsVC]];
@@ -84,7 +92,21 @@
 -(void)goNext:(id)sender
 {
     if (tabController.selectedIndex == tabController.viewControllers.count - 1) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        if ([self.pirtDelegate respondsToSelector:@selector(pirtViewControllerDidFinish:withConcern:)]) {
+            PRConcern *newConcern = [PRConcern MR_createEntity];
+            
+            newConcern.ward = wardSelectVC.selectedWard;
+            newConcern.whatNote = [whatViewController currentNote];
+            newConcern.whyNote = [whyViewController currentNote];
+            newConcern.preventNote = [preventViewController currentNote];
+            
+            newConcern.seriousQuestion = questionsVC.seriousQuestion;
+            newConcern.preventQuestion = questionsVC.preventQuestion;
+            
+            [self.pirtDelegate pirtViewControllerDidFinish:self withConcern:newConcern];
+        } else {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     } else {
         [super goNext:sender];
     }
@@ -160,7 +182,11 @@
 
 -(void)continueCancel
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([self.pirtDelegate respondsToSelector:@selector(pirtViewControllerDidCancel:)]) {
+        [self.pirtDelegate pirtViewControllerDidCancel:self];
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 @end

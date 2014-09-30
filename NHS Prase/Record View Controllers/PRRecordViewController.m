@@ -11,12 +11,15 @@
 #import "PRRecordSummaryViewController.h"
 #import "PRBasicDataFormViewController.h"
 #import "PRQuestionaireViewController.h"
+#import "PRCommentsSummaryViewController.h"
 
 #import "PRRecord.h"
 
 #import "PRTheme.h"
 #import "PRButton.h"
 #import "PRQuestion.h"
+
+#import "PRAPIManager.h"
 
 #import <MagicalRecord/MagicalRecord.h>
 #import <MagicalRecord/CoreData+MagicalRecord.h>
@@ -38,6 +41,9 @@
     
     PRQuestionaireViewController *qvc = tabController.viewControllers[1];
     qvc.questions = [self.record.questions array];
+    
+    PRCommentsSummaryViewController *commentsVC = [tabController.viewControllers objectAtIndex:tabController.viewControllers.count - 2];
+    commentsVC.record = self.record;
     
     PRRecordSummaryViewController *summary = [tabController.viewControllers lastObject];
     summary.record = self.record;
@@ -324,7 +330,17 @@
 
 -(void)continueSubmit
 {
-    [self continueHome];
+    [[PRAPIManager sharedManager] submitRecord:self.record
+                                withCompletion:^(BOOL success, NSError *error) {
+                                    if (success) {
+                                        [self.record MR_deleteEntity];
+                                        self.record = nil;
+                                    } else {
+                                        [self logErrorFromSelector:_cmd withFormat:@"Unable to submit record: %@", error];
+                                    }
+                                    
+                                    [self continueHome];
+                                }];
 }
 
 @end

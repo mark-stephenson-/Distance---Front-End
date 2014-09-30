@@ -9,10 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <TheDistanceKit/TheDistanceKit.h>
 
+@class PRRecord;
+
 @interface PRAPIManager : TDAPIManager
 
 -(void)getTrustHierarchy;
 -(void)getQuestionHierarchy;
 -(void)getLocalizations;
+
+-(void)submitRecord:(PRRecord *) record withCompletion:(void (^)(BOOL success, NSError *error)) completion;
 
 @end

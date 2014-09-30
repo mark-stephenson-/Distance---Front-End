@@ -14,4 +14,7 @@
     IBOutlet UICollectionView *q2CV;
 }
 
+@property (nonatomic, strong) PRQuestion *seriousQuestion;
+@property (nonatomic, strong) PRQuestion *preventQuestion;
+
 @end
