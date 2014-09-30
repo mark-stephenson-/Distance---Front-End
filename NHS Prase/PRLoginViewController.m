@@ -12,8 +12,11 @@
 #import "PRButton.h"
 #import "PRTheme.h"
 #import "PRAPIManager.h"
+#import "MBProgressHUD.h"
+#import "AppDelegate.h"
 
 #define ALERT_LOGIN 111
+#define ALERT_DOWNLOAD_ERROR 222
 
 @interface PRLoginViewController ()
 
@@ -35,6 +38,63 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)downloadData
+{
+    __block NSMutableArray *allErrors = [NSMutableArray array];
+    __block BOOL allSuccess = YES;
+    __block int completionCount = 0;
+    
+    // start download operations
+    void (^downloadCompletion)(SEL selector, BOOL success, NSArray *errors) = ^(SEL selector, BOOL success, NSArray *errors){
+        [allErrors addObjectsFromArray:errors];
+        allSuccess = allSuccess && success;
+        
+        completionCount++;
+        
+        if (completionCount == 3) {
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            NSMutableString *errorMessage = [NSMutableString string];
+            
+            if ([allErrors count] > 0) {
+                NSMutableArray *errorCodes = [NSMutableArray array];
+                for (NSError *error in allErrors) {
+                    if (![errorCodes containsObject:@(error.code)]) {
+                        [errorCodes addObject:@(error.code)];
+                        
+                        if (errorMessage.length > 0) {
+                            [errorMessage appendFormat:@", %@", [error localizedFailureReason]];
+                        } else {
+                            [errorMessage appendString:[error localizedFailureReason]];
+                        }
+                    }
+                }
+                
+                NSString *errorTitle = TDLocalizedStringWithDefaultValue(@"login.download-error.title", nil, nil, @"Cannot Download Data", @"Error title when the data download failed.");
+                NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"login.download.button-title", nil, nil, @"Retry", @"Button title to retry downloading data.");
+                
+                [self showAlertWithTitle:errorTitle
+                                 message:errorMessage
+                             buttonTitle:buttonTitle
+                        buttonCompletion:^(NSNumber *buttonIndex, UIAlertAction *action) {
+                            [self downloadData];
+                        }
+                             cancelTitle:nil
+                                alertTag:ALERT_DOWNLOAD_ERROR];
+            }
+        }
+    };
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = TDLocalizedStringWithDefaultValue(@"login.hud.download", nil, nil, @"Downloading...", @"The label identifying that data is being downloaded. Shown on the login screen.");
+    
+    PRAPIManager *manager = [PRAPIManager sharedManager];
+    [manager getTrustHierarchyWithCompletion:downloadCompletion];
+    [manager getQuestionHierarchyWithCompletion:downloadCompletion];
+    [manager getLocalizationsWithCompletion:downloadCompletion];
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -51,15 +111,7 @@
 
     self.scrollContainer = scrollView;
     
-    // start download operations
-    void (^downloadCompletion)(SEL selector, BOOL success, NSArray *errors) = ^(SEL selector, BOOL success, NSArray *errors){
-        
-    };
-    
-    PRAPIManager *manager = [PRAPIManager sharedManager];
-    [manager getTrustHierarchyWithCompletion:downloadCompletion];
-    [manager getQuestionHierarchy];
-    [manager getLocalizations];
+    [self downloadData];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
