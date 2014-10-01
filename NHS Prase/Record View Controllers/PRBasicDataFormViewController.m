@@ -8,6 +8,7 @@
 
 #import "PRBasicDataFormViewController.h"
 
+#import "PRTheme.h"
 #import "PRDateSelectCell.h"
 #import "PRIncrementCell.h"
 #import "PRSelectionViewController.h"
@@ -134,6 +135,63 @@
             [self presentViewController:prSelection animated:YES completion:nil];
         }];
     }
+}
+
+-(CGFloat)selectionViewController:(TDSelectionViewController *)selectionVC heightForHeaderInSection:(NSInteger)section
+{
+    if ([selectionVC.key isEqualToString:@"Ethnicity"]) {
+        NSString *thisSectionTitle = selectionVC.sectionTitles[section];
+        
+        UIView *view = [self createHeaderWithTitle:thisSectionTitle];
+        CGSize layoutSize = [view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+        
+        return layoutSize.height + 2.0;;
+    }
+    
+    return 0;
+}
+
+-(UIView *)selectionViewController:(TDSelectionViewController *)selectionVC viewForHeaderInSection:(NSInteger)section
+{
+    if ([selectionVC.key isEqualToString:@"Ethnicity"]) {
+        NSString *thisSectionTitle = selectionVC.sectionTitles[section];
+        
+        UIView *view = [self createHeaderWithTitle:thisSectionTitle];
+        
+        return view;
+    }
+    
+    return nil;
+}
+
+-(UIView *)createHeaderWithTitle:(NSString *) title
+{
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
+    [view setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.text = title;
+    label.TDTextStyleIdentifier = @"SubHeadline";
+    label.translatesAutoresizingMaskIntoConstraints = NO;
+    label.textColor = [[PRTheme sharedTheme] mainColor];
+    [label setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    
+    [view addSubview:label];
+    [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(15)-[label]-(15)-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"label": label}]];
+    
+    [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(8)-[label]-(8)-|"
+                                                                 options:0
+                                                                 metrics:nil
+                                                                   views:@{@"label": label}]];
+    
+    [self applyThemeToView:view];
+    //[view layoutIfNeeded];
+    
+    return view;
 }
 
 @end

@@ -28,9 +28,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    NSDictionary *loginCredentials = @{@"00001":@"nhs123",
-                                       @"00002":@"bradfordnhs",
-                                       @"00003":@"barnsleyhospital"};
+    logInCredentials = @{@"00001":@"nhs123",
+                         @"00002":@"bradfordnhs",
+                         @"00003":@"barnsleyhospital"};
     
     retryWidthConstraint.priority = 999;
 }
@@ -219,7 +219,12 @@
 
 -(void)login:(id)sender
 {
-    if (true) {//logInCredentials[usernameField.text] != nil && [passwordField.text isEqualToString:logInCredentials[usernameField.text]]) {
+    BOOL canContinue = logInCredentials[usernameField.text] != nil && [passwordField.text isEqualToString:logInCredentials[usernameField.text]];
+
+//    canContinue = true;
+
+    
+    if (canContinue) {
         [[NSUserDefaults standardUserDefaults] setValue:usernameField.text forKey:@"user"];
         [self performSegueWithIdentifier:@"Continue" sender:self];
     } else {

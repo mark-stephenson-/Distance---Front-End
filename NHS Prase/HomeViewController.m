@@ -50,7 +50,12 @@
 -(void)createRecord:(id)sender
 {
     // a ward can only be non-nil if the trust and hospital have been chosen
-    if (true) { //self.selectedWard != nil) {
+    BOOL canCreate = self.selectedWard != nil;
+
+//    canCreate = true;
+
+    
+    if (canCreate) {
         
         [self performSegueWithIdentifier:@"CreateRecord" sender:self];
         

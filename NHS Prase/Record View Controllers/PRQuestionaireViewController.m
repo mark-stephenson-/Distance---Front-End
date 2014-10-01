@@ -118,6 +118,7 @@
 {
     if ([self canGoToNextQuestion]) {
         UIViewController *nextVC = [self viewControllerForIndex:self.currentQuestion + 1];
+        
         [pageController setViewControllers:@[nextVC]
                                  direction:UIPageViewControllerNavigationDirectionForward
                                   animated:YES

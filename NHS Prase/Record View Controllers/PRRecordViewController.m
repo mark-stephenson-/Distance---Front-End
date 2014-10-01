@@ -334,13 +334,17 @@
 -(void)continueSubmit
 {
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
     hud.labelText = TDLocalizedStringWithDefaultValue(@"record.hud.submit", nil, nil, @"Submitting...", @"The label identifying that record is being submitted. Shown on the record screen.");
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [hud show:YES];
+    }];
     
     [[PRAPIManager sharedManager] submitRecord:self.record
                                 withCompletion:^(BOOL success, NSError *error) {
                                     
-                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                    [hud hide:YES];
                                     
                                     if (success) {
                                         [self.record MR_deleteEntity];
