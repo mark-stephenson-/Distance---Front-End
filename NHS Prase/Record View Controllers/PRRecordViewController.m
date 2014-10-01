@@ -24,10 +24,13 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 
+#import "MBProgressHUD.h"
+
 // iOS 8 Deprecation
 #define ALERT_GO_HOME 111
 #define ALERT_GO_TITLE 222
 #define ALERT_SUBMIT 333
+#define ALERT_SUBMIT_ERROR 444
 
 @interface PRRecordViewController ()
 
@@ -55,7 +58,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleBasicDataRequest:) name:@"BasicDataRequest" object:nil];
     
     // listen for foreground / background notifications to save the time variables
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetTracking) name:UIApplicationDidBecomeActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commitTracking) name:UIApplicationWillResignActiveNotification object:nil];
 }
@@ -237,7 +240,7 @@
                                                                             views:@{@"container":containerView,
                                                                                     @"progress":progressFooter,
                                                                                     @"footer":footerView}]];
-
+        
         [self.view addConstraint:[NSLayoutConstraint constraintWithItem:progressFooter
                                                               attribute:NSLayoutAttributeLeading
                                                               relatedBy:NSLayoutRelationEqual
@@ -312,7 +315,7 @@
     NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.cancel.error-message", nil, nil, @"Returning to the title screen will delete any entered data. Are you sure you want to continue?", @"Alert message shown when returning to the app's title screen") ;
     NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.button-title", nil, nil, @"Cancel Record", @"Button title to cancel a record.");
     NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.cancel-title", nil, nil, @"Continue", @"Button title to continue creating a record when prompted about cancelling a record.");
- 
+    
     [self showAlertWithTitle:alertTitle
                      message:alertMessage
                  buttonTitle:buttonTitle
@@ -330,17 +333,40 @@
 
 -(void)continueSubmit
 {
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = TDLocalizedStringWithDefaultValue(@"record.hud.submit", nil, nil, @"Submitting...", @"The label identifying that record is being submitted. Shown on the record screen.");
+    
     [[PRAPIManager sharedManager] submitRecord:self.record
                                 withCompletion:^(BOOL success, NSError *error) {
+                                    
+                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                    
                                     if (success) {
                                         [self.record MR_deleteEntity];
                                         self.record = nil;
+                                        
+                                        [self continueHome];
                                     } else {
                                         [self logErrorFromSelector:_cmd withFormat:@"Unable to submit record: %@", error];
+                                        
+                                        
+                                        NSString *errorTitle = TDLocalizedStringWithDefaultValue(@"record.submit-error.title", nil, nil, @"Cannot Submit Record", @"Error title when the record submit failed.");
+                                        NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"button.retry", nil, nil, @"Retry", @"Button title to retry submitting record.");
+                                        
+                                        [self showAlertWithTitle:errorTitle
+                                                         message:[error localizedFailureReason]
+                                                     buttonTitle:buttonTitle
+                                                buttonCompletion:^(NSNumber *buttonIndex, UIAlertAction *action) {
+                                                    [self continueSubmit];
+                                                }
+                                                     cancelTitle:nil
+                                                        alertTag:ALERT_SUBMIT_ERROR];
+                                        
                                     }
-                                    
-                                    [self continueHome];
                                 }];
 }
+
+
 
 @end

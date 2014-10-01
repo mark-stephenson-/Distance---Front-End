@@ -14,8 +14,8 @@
 @interface PRAPIManager : TDAPIManager
 
 -(void)getTrustHierarchyWithCompletion:(void (^)(SEL selector, BOOL success, NSArray *errors)) completion;
--(void)getQuestionHierarchy;
--(void)getLocalizations;
+-(void)getQuestionHierarchyWithCompletion:(void (^)(SEL selector, BOOL success, NSArray *errors)) completion;
+-(void)getLocalizationsWithCompletion:(void (^)(SEL selector, BOOL success, NSArray *errors)) completion;
 
 -(void)submitRecord:(PRRecord *) record withCompletion:(void (^)(BOOL success, NSError *error)) completion;
 

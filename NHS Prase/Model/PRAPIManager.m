@@ -58,23 +58,23 @@
     }];
 }
 
--(void)getQuestionHierarchy
+-(void)getQuestionHierarchyWithCompletion:(void (^)(SEL selector, BOOL success, NSArray *errors)) completion
 {
     [self TDCGetCommitAndLinkRelatedObjectsOfNodes:@[@"question", @"answer-type", @"option"] withCompletion:^(BOOL success, NSArray *errors) {
         if (success) {
             NSLog(@"Got questions");
             // link in the PMOS questions from the question set
             
-            [self getPMOSHierarchy];
+            [self getPMOSHierarchyWithCompletion:completion];
             
             
         } else {
-            NSLog(@"Failed to get questions: %@", errors);
+            completion(_cmd, success, errors);
         }
     }];
 }
 
--(void)getPMOSHierarchy
+-(void)getPMOSHierarchyWithCompletion:(void (^)(SEL selector, BOOL success, NSArray *errors)) completion
 {
     [sessionManager GET:@"api/hierarchy" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         // This isn't on the main thread.
@@ -120,17 +120,25 @@
                 if (commitError != nil) {
                     NSError *coreDataError = [[self class] createCommitDownloadErrorForSavingError:commitError];
                     NSLog(@"Failed to get hierarchy: %@", coreDataError);
+                    
+                    completion(_cmd, NO, @[coreDataError]);
                 } else {
                     NSLog(@"Completed hierarchy sync.");
+                    
+                    completion(_cmd, YES, nil);
                 }
             }];
         } else {
             NSError *error = [[self class] createUnexpectedReponseErrorForRequest:task.currentRequest];
             [self logErrorFromSelector:_cmd withFormat:@"Unable to get hierarchy.\nFailingTask: %@\nError: %@", task, error];
+            
+            completion(_cmd, NO, @[error]);
         }
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self logErrorFromSelector:_cmd withFormat:@"Unable to get hierarchy.\nFailingTask: %@\nError: %@", task, error];
+        
+        completion(_cmd, NO, @[error]);
     }];
 }
 
@@ -139,10 +147,10 @@
     return @[@"PMOSQuestions"];
 }
 
--(void)getLocalizations
+-(void)getLocalizationsWithCompletion:(void (^)(SEL selector, BOOL success, NSArray *errors)) completion
 {
     [self TDCGetLocalizationsToTableNamed:@"PMOSQuestions" withCompletion:^(BOOL success, NSArray *errors) {
-        NSLog(@"Translations Completed with errors: %@", errors);
+        completion(_cmd, success, errors);
     }];
 }
 

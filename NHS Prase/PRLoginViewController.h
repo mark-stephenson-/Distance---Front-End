@@ -23,6 +23,8 @@
     IBOutlet UITextField *passwordField;
     
     PRInputAccessoryView *inputView;
+    
+    __weak IBOutlet NSLayoutConstraint *retryWidthConstraint;
 }
 
 -(IBAction)continueAsGuest:(id)sender;

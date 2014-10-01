@@ -12,8 +12,11 @@
 #import "PRButton.h"
 #import "PRTheme.h"
 #import "PRAPIManager.h"
+#import "MBProgressHUD.h"
+#import "AppDelegate.h"
 
 #define ALERT_LOGIN 111
+#define ALERT_DOWNLOAD_ERROR 222
 
 @interface PRLoginViewController ()
 
@@ -28,11 +31,145 @@
     NSDictionary *loginCredentials = @{@"00001":@"nhs123",
                                        @"00002":@"bradfordnhs",
                                        @"00003":@"barnsleyhospital"};
+    
+    retryWidthConstraint.priority = 999;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)retryPressed:(id)sender {
+    [self downloadData];
+}
+
+- (void)downloadData
+{
+    __block NSMutableArray *allErrors = [NSMutableArray array];
+    __block BOOL allSuccess = YES;
+    __block int completionCount = 0;
+    
+    // start download operations
+    void (^downloadCompletion)(SEL selector, BOOL success, NSArray *errors) = ^(SEL selector, BOOL success, NSArray *errors){
+        [allErrors addObjectsFromArray:errors];
+        allSuccess = allSuccess && success;
+        
+        completionCount++;
+        
+        if (completionCount == 3) {
+            
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            }];
+            
+            NSMutableString *errorMessage = [NSMutableString string];
+            
+            if ([allErrors count] > 0) {
+                NSMutableArray *errorCodes = [NSMutableArray array];
+                for (NSError *error in allErrors) {
+                    if (![errorCodes containsObject:@(error.code)]) {
+                        [errorCodes addObject:@(error.code)];
+                        
+                        NSMutableString *thisErrorString = [NSMutableString stringWithFormat:@""];
+                        
+                        if ([[error localizedDescription] isNonNullString]) {
+                            [thisErrorString appendFormat:@"%@", [error localizedFailureReason]];
+                        }
+                        
+                        if ([[error localizedFailureReason] isNonNullString]) {
+                            
+                            if (thisErrorString.length > 0) {
+                                [thisErrorString appendString:@"\n"];
+                            }
+                            
+                            [thisErrorString appendString:error.localizedFailureReason];
+                        }
+                        
+                        if (errorMessage.length > 0) {
+                            
+                            [errorMessage appendFormat:@", %@", thisErrorString];
+                            
+                        } else {
+                            [errorMessage appendString:thisErrorString];
+                        }
+                    }
+                }
+                
+                NSString *errorTitle = TDLocalizedStringWithDefaultValue(@"login.download-error.title", nil, nil, @"Cannot Download Data", @"Error title when the data download failed.");
+                NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"login.download.button-title", nil, nil, @"Retry", @"Button title to retry downloading data.");
+                NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"alert.cancel-title", nil, nil, @"OK", @"The default button to dismiss an alert view.");
+                
+                
+                // We need a cancel completion handler so the superclass method isn't called here
+                if ([UIAlertController class]) {
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:errorTitle
+                                                                                             message:errorMessage
+                                                                                      preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    [alertController addAction:[UIAlertAction actionWithTitle:buttonTitle
+                                                                        style:UIAlertActionStyleDestructive
+                                                                      handler:^(UIAlertAction *action) {
+                                                                          [self downloadData];
+                                                                      }]];
+                    
+                    [alertController addAction:[UIAlertAction actionWithTitle:cancelTitle
+                                                                        style:UIAlertActionStyleCancel
+                                                                      handler:^(UIAlertAction *action) {
+                                                                          retryWidthConstraint.priority = 1;
+                                                                          [UIView animateWithDuration:0.2 animations:^{
+                                                                              [self.view layoutIfNeeded];
+                                                                          }];
+                                                                      }]];
+                    
+                    [self presentViewController:alertController animated:YES completion:nil];
+                } else {
+                    // iOS 8 Deprecation
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:errorTitle
+                                                                    message:errorMessage
+                                                                   delegate:self
+                                                          cancelButtonTitle:cancelTitle
+                                                          otherButtonTitles:buttonTitle, nil];
+                    alert.tag = ALERT_DOWNLOAD_ERROR;
+                    [alert show];
+                }
+
+            } else {
+                retryWidthConstraint.priority = 999;
+                [UIView animateWithDuration:0.2 animations:^{
+                    [self.view layoutIfNeeded];
+                }];
+            }
+        }
+    };
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = TDLocalizedStringWithDefaultValue(@"login.hud.download", nil, nil, @"Downloading...", @"The label identifying that data is being downloaded. Shown on the login screen.");
+    
+    PRAPIManager *manager = [PRAPIManager sharedManager];
+    [manager getTrustHierarchyWithCompletion:downloadCompletion];
+    [manager getQuestionHierarchyWithCompletion:downloadCompletion];
+    [manager getLocalizationsWithCompletion:downloadCompletion];
+}
+
+// iOS 8 Deprecation
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == ALERT_DOWNLOAD_ERROR) {
+        if (buttonIndex == 1) {
+            [self downloadData];
+        }
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == ALERT_DOWNLOAD_ERROR && buttonIndex == 0) {
+        retryWidthConstraint.priority = 1;
+        [UIView animateWithDuration:0.2 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -50,16 +187,13 @@
     self.components = @[usernameField, passwordField];
 
     self.scrollContainer = scrollView;
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
-    // start download operations
-    void (^downloadCompletion)(SEL selector, BOOL success, NSArray *errors) = ^(SEL selector, BOOL success, NSArray *errors){
-        
-    };
-    
-    PRAPIManager *manager = [PRAPIManager sharedManager];
-    [manager getTrustHierarchyWithCompletion:downloadCompletion];
-    [manager getQuestionHierarchy];
-    [manager getLocalizations];
+    [self downloadData];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
