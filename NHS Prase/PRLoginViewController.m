@@ -221,7 +221,7 @@
 {
     BOOL canContinue = logInCredentials[usernameField.text] != nil && [passwordField.text isEqualToString:logInCredentials[usernameField.text]];
 
-//    canContinue = true;
+    canContinue = true;
 
     
     if (canContinue) {

@@ -19,6 +19,7 @@
 #import "PRPMOSQuestion.h"
 #import "PRQuestion.h"
 #import "PRRecord.h"
+#import "PRAnswerOption.h"
 
 #import "PRNote.h"
 #import "PRConcern.h"
@@ -66,7 +67,6 @@
             // link in the PMOS questions from the question set
             
             [self getPMOSHierarchyWithCompletion:completion];
-            
             
         } else {
             completion(_cmd, success, errors);
@@ -142,6 +142,8 @@
     }];
 }
 
+#pragma mark - Localizations
+
 -(NSArray *)customLocalizationTables
 {
     return @[@"PMOSQuestions"];
@@ -153,6 +155,21 @@
         completion(_cmd, success, errors);
     }];
 }
+
+#pragma mark - Resources
+
+-(NSDictionary *)resourceTranslations
+{
+    static NSDictionary *resources = nil;
+    
+    if (resources == nil) {
+        resources = @{@"PRAnswerOption": @[@{@"id":@"imageID", @"filename":@"imageName"}]};
+    }
+    
+    return resources;
+}
+
+#pragma mark - Submission
 
 -(void)submitRecord:(PRRecord *)record withCompletion:(void (^)(BOOL, NSError *))completion
 {
@@ -327,46 +344,13 @@
                                               @"question":@"localizationID"},
                          @"PRAnswerOption": @{@"id": @"answerID",
                                               @"tint": @"imageTintIdentifier",
-                                              @"text": @"localizationID"}};
+                                              @"text": @"localizationID",
+                                              @"image":@"imageID"}};
     }
     
     return translations;
 }
 
--(NSDictionary *)reverseTranslations
-{
-    static NSDictionary *reverseTranslations = nil;
-    
-    if (reverseTranslations == nil) {
-        NSDictionary *translations = [self translations];
-        
-        NSMutableDictionary *tempReverse = [NSMutableDictionary dictionaryWithCapacity:translations.count];
-        for (NSString *class in translations.allKeys) {
-            
-            NSMutableDictionary *classDict = translations[class];
-            NSMutableDictionary *tempClassDict = [NSMutableDictionary dictionaryWithCapacity:classDict.count];
-            for (NSString *tdcKey in classDict.allKeys) {
-                NSString *entityKey = classDict[tdcKey];
-                tempClassDict[entityKey] = tdcKey;
-            }
-            
-            tempReverse[class] = tempClassDict;
-        }
-        
-        reverseTranslations = tempReverse;
-    }
-    
-    return reverseTranslations;
-}
 
--(NSString *)TDCEntityKeyForTDCKey:(NSString *) tdcKey forEntityNamed:(NSString *) entityName
-{
-    return ((NSDictionary *)[self translations][entityName])[tdcKey] ? : tdcKey;
-}
-
--(NSString *)TDCKeyForEntityKeyPath:(NSString *) entityKeyPath forEntityNamed:(NSString *) entityName
-{
-    return ((NSDictionary *)[self reverseTranslations][entityName])[entityKeyPath] ? : entityKeyPath;
-}
 
 @end

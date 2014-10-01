@@ -2348,7 +2348,7 @@ Please read the following statements carefully, keeping in mind your current sta
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Agree" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="os9-6o-0Dr">
-                                                            <rect key="frame" x="8" y="8" width="124" height="56"/>
+                                                            <rect key="frame" x="8" y="8" width="124" height="66"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
@@ -2357,10 +2357,16 @@ Please read the following statements carefully, keeping in mind your current sta
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="rda-fP-17v">
-                                                            <rect key="frame" x="43" y="72" width="54" height="80"/>
+                                                            <rect key="frame" x="10" y="82" width="120" height="70"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" priority="900" constant="80" id="jg3-Wq-O38"/>
+                                                                <constraint firstAttribute="width" priority="900" constant="80" id="j82-E5-0hu"/>
+                                                                <constraint firstAttribute="height" priority="900" constant="70" id="jg3-Wq-O38"/>
                                                             </constraints>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="j82-E5-0hu"/>
+                                                                </mask>
+                                                            </variation>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2368,7 +2374,9 @@ Please read the following statements carefully, keeping in mind your current sta
                                                 <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="rda-fP-17v" firstAttribute="width" secondItem="os9-6o-0Dr" secondAttribute="width" multiplier="0.5" constant="-8" id="BHN-7V-WLk"/>
+                                                    <constraint firstItem="rda-fP-17v" firstAttribute="leading" secondItem="7NH-Uv-goI" secondAttribute="leading" constant="10" id="HDK-Qd-FBe"/>
                                                     <constraint firstAttribute="bottom" secondItem="rda-fP-17v" secondAttribute="bottom" constant="8" id="Kgo-sC-l0T"/>
+                                                    <constraint firstAttribute="trailing" secondItem="rda-fP-17v" secondAttribute="trailing" constant="10" id="M1D-dz-Hbz"/>
                                                     <constraint firstAttribute="centerX" secondItem="rda-fP-17v" secondAttribute="centerX" id="WgC-eV-ifu"/>
                                                     <constraint firstAttribute="trailing" secondItem="os9-6o-0Dr" secondAttribute="trailing" constant="8" id="YwO-hb-S01"/>
                                                     <constraint firstItem="rda-fP-17v" firstAttribute="top" secondItem="os9-6o-0Dr" secondAttribute="bottom" constant="8" id="cJM-5q-oEz"/>
@@ -2384,79 +2392,17 @@ Please read the following statements carefully, keeping in mind your current sta
                                                         <color key="value" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="BHN-7V-WLk"/>
+                                                    </mask>
+                                                </variation>
                                                 <connections>
                                                     <outlet property="optionImageView" destination="rda-fP-17v" id="MjO-Bi-0XZ"/>
                                                     <outlet property="optionTitleLabel" destination="os9-6o-0Dr" id="IGA-co-R4L"/>
                                                     <outletCollection property="vBufferConstraints" destination="fO2-JY-fqe" id="6I3-kX-lwV"/>
                                                     <outletCollection property="vBufferConstraints" destination="Kgo-sC-l0T" id="0lT-zP-nDZ"/>
                                                     <outletCollection property="vBufferConstraints" destination="cJM-5q-oEz" id="xOW-7M-3On"/>
-                                                </connections>
-                                            </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OptionCell2" id="hYo-he-IPh" customClass="PROptionCollectionViewCell">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="160"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Neither Agree or Disagree" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80t-jH-aeJ">
-                                                            <rect key="frame" x="8" y="8" width="124" height="56"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 1"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="VLD-Qw-cL4">
-                                                            <rect key="frame" x="74" y="72" width="58" height="80"/>
-                                                        </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="s88-0N-s0G">
-                                                            <rect key="frame" x="8" y="72" width="58" height="80"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" priority="900" constant="80" id="cM5-vx-CVe"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </view>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="80t-jH-aeJ" secondAttribute="trailing" constant="8" id="28d-Je-59H"/>
-                                                    <constraint firstItem="s88-0N-s0G" firstAttribute="bottom" secondItem="VLD-Qw-cL4" secondAttribute="bottom" id="5e9-El-D4q"/>
-                                                    <constraint firstAttribute="bottom" secondItem="VLD-Qw-cL4" secondAttribute="bottom" constant="15" id="6cR-mh-12F"/>
-                                                    <constraint firstItem="s88-0N-s0G" firstAttribute="width" secondItem="VLD-Qw-cL4" secondAttribute="width" id="7pC-rq-rly"/>
-                                                    <constraint firstItem="80t-jH-aeJ" firstAttribute="leading" secondItem="hYo-he-IPh" secondAttribute="leading" constant="8" id="DzT-Kf-1Qr"/>
-                                                    <constraint firstItem="VLD-Qw-cL4" firstAttribute="leading" secondItem="s88-0N-s0G" secondAttribute="trailing" constant="8" id="Jup-eM-MoY"/>
-                                                    <constraint firstItem="s88-0N-s0G" firstAttribute="height" secondItem="VLD-Qw-cL4" secondAttribute="height" id="MzF-rN-55Y"/>
-                                                    <constraint firstItem="s88-0N-s0G" firstAttribute="leading" secondItem="hYo-he-IPh" secondAttribute="leading" constant="8" id="NHF-4s-gbJ"/>
-                                                    <constraint firstItem="80t-jH-aeJ" firstAttribute="top" secondItem="hYo-he-IPh" secondAttribute="top" constant="8" id="Qnp-Vi-thy"/>
-                                                    <constraint firstItem="s88-0N-s0G" firstAttribute="top" secondItem="VLD-Qw-cL4" secondAttribute="top" id="SDn-AV-wac"/>
-                                                    <constraint firstAttribute="bottom" secondItem="s88-0N-s0G" secondAttribute="bottom" constant="8" id="Weq-BK-Ox3"/>
-                                                    <constraint firstItem="s88-0N-s0G" firstAttribute="top" secondItem="80t-jH-aeJ" secondAttribute="bottom" constant="8" id="Xd6-Cg-8MB"/>
-                                                    <constraint firstAttribute="trailing" secondItem="VLD-Qw-cL4" secondAttribute="trailing" constant="8" id="nD1-wt-nsA"/>
-                                                </constraints>
-                                                <size key="customSize" width="140" height="160"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="vBuffer">
-                                                        <real key="value" value="8"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="6cR-mh-12F"/>
-                                                    </mask>
-                                                </variation>
-                                                <connections>
-                                                    <outlet property="optionImageView" destination="s88-0N-s0G" id="cyj-A1-Qdd"/>
-                                                    <outlet property="optionTitleLabel" destination="80t-jH-aeJ" id="sg9-rE-Ybe"/>
-                                                    <outlet property="secondOptionImageView" destination="VLD-Qw-cL4" id="Gwx-ay-lUN"/>
-                                                    <outletCollection property="vBufferConstraints" destination="6cR-mh-12F" id="OpF-Nq-lV3"/>
-                                                    <outletCollection property="vBufferConstraints" destination="Xd6-Cg-8MB" id="0tZ-Gd-CKG"/>
-                                                    <outletCollection property="vBufferConstraints" destination="Weq-BK-Ox3" id="4N9-au-MAb"/>
-                                                    <outletCollection property="vBufferConstraints" destination="Qnp-Vi-thy" id="JM0-4w-T7b"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
