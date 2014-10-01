@@ -19,8 +19,8 @@
     
     IBOutlet UIScrollView *scrollView;
 
-    IBOutlet UITextField *usernameField;
-    IBOutlet UITextField *passwordField;
+    IBOutlet TDTextField *usernameField;
+    IBOutlet TDTextField *passwordField;
     
     PRInputAccessoryView *inputView;
     

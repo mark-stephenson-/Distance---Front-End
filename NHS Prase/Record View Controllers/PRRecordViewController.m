@@ -328,6 +328,7 @@
 
 -(void)continueHome
 {
+    [self.record MR_deleteEntity];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -358,6 +359,26 @@
                                         NSString *errorTitle = TDLocalizedStringWithDefaultValue(@"record.submit-error.title", nil, nil, @"Cannot Submit Record", @"Error title when the record submit failed.");
                                         NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"button.retry", nil, nil, @"Retry", @"Button title to retry submitting record.");
                                         
+                                        NSString *errorMessage = [NSString stringWithFormat:@"%@\nEither retry now, or the record will be automatically saved and retried when possible.", error.localizedDescription];
+                                        
+                                        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:errorTitle
+                                                                                                                 message:errorMessage
+                                                                                                          preferredStyle:UIAlertControllerStyleAlert];
+                                        
+                                        [alertController addAction:[UIAlertAction actionWithTitle:buttonTitle
+                                                                                            style:UIAlertActionStyleDestructive
+                                                                                          handler:^(UIAlertAction *action) {
+                                                                                              [self continueSubmit];
+                                                                                          }]];
+                                        
+                                        [alertController addAction:[UIAlertAction actionWithTitle:@"Later"
+                                                                                            style:UIAlertActionStyleCancel
+                                                                                          handler:^(UIAlertAction *action) {
+                                                                                              [self submitLater];
+                                                                                          }]];
+                                        
+                                        [self presentViewController:alertController animated:YES completion:nil];
+                                        
                                         [self showAlertWithTitle:errorTitle
                                                          message:[error localizedFailureReason]
                                                      buttonTitle:buttonTitle
@@ -371,6 +392,13 @@
                                 }];
 }
 
-
+-(void)submitLater
+{
+    NSMutableArray *savedRecords = [[NSUserDefaults standardUserDefaults] valueForKey:@"savedRecords"];
+    
+    [savedRecords addObject:self.record];
+    
+    [self continueHome];
+}
 
 @end

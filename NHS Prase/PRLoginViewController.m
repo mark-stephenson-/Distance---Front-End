@@ -8,12 +8,14 @@
 
 #import "PRLoginViewController.h"
 
+#import <MagicalRecord/CoreData+MagicalRecord.h>
 #import <TheDistanceKit/TheDistanceKit.h>
 #import "PRButton.h"
 #import "PRTheme.h"
 #import "PRAPIManager.h"
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
+#import "PRRecord.h"
 
 #define ALERT_LOGIN 111
 #define ALERT_DOWNLOAD_ERROR 222
@@ -33,6 +35,9 @@
                          @"00003":@"barnsleyhospital"};
     
     retryWidthConstraint.priority = 999;
+    
+    usernameField.accessoryImage = nil;
+    passwordField.accessoryImage = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,6 +55,19 @@
     __block BOOL allSuccess = YES;
     __block int completionCount = 0;
     
+    NSMutableArray *savedRecords = [[NSUserDefaults standardUserDefaults] valueForKey:@"savedRecords"];
+    if (savedRecords == nil) {
+        savedRecords = [NSMutableArray array];
+    }
+    
+    for (PRRecord *toSubmit in savedRecords) {
+        [[PRAPIManager sharedManager] submitRecord:toSubmit withCompletion:^(BOOL success, NSError *error) {
+            if (success) {
+                [toSubmit MR_deleteEntity];
+            }
+        }];
+    }
+    
     // start download operations
     void (^downloadCompletion)(SEL selector, BOOL success, NSArray *errors) = ^(SEL selector, BOOL success, NSArray *errors){
         [allErrors addObjectsFromArray:errors];
@@ -63,7 +81,7 @@
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
             }];
             
-            NSMutableString *errorMessage = [NSMutableString string];
+            NSMutableString *errorMessage = [NSMutableString stringWithFormat:@""];
             
             if ([allErrors count] > 0) {
                 NSMutableArray *errorCodes = [NSMutableArray array];
@@ -74,7 +92,7 @@
                         NSMutableString *thisErrorString = [NSMutableString stringWithFormat:@""];
                         
                         if ([[error localizedDescription] isNonNullString]) {
-                            [thisErrorString appendFormat:@"%@", [error localizedFailureReason]];
+                            [thisErrorString appendFormat:@"%@", [error localizedDescription]];
                         }
                         
                         if ([[error localizedFailureReason] isNonNullString]) {
@@ -182,6 +200,8 @@
     inputView.navigationDelegate = self;
     [self applyThemeToView:inputView];
     
+    passwordField.text = nil;
+    
     self.keyboardAccessoryView = inputView;
     
     self.components = @[usernameField, passwordField];
@@ -221,7 +241,7 @@
 {
     BOOL canContinue = logInCredentials[usernameField.text] != nil && [passwordField.text isEqualToString:logInCredentials[usernameField.text]];
 
-    canContinue = true;
+//    canContinue = true;
 
     
     if (canContinue) {

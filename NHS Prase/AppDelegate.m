@@ -34,7 +34,7 @@
     [[TDTextField appearance] setBorderColor:[[PRTheme sharedTheme] mainColor]];
     [[TDTextField appearance] setBorderWidth:1.0];
     [[TDTextField appearance] setAccessoryImage:[UIImage imageNamed:@"select"]];
-    [[TDTextField appearance] setImageInsets:UIEdgeInsetsMake(5, 10, 5, 10)];
+    [[TDTextField appearance] setImageInsets:UIEdgeInsetsMake(5, 0, 5, 10)];
     
     PRAPIManager *manager = [PRAPIManager sharedManager];
     manager.baseURL = [NSURL URLWithString:@"http://prase.staging2.thedistance.co.uk"];

@@ -52,9 +52,8 @@
     // a ward can only be non-nil if the trust and hospital have been chosen
     BOOL canCreate = self.selectedWard != nil;
 
-    canCreate = true;
+//    canCreate = true;
 
-    
     if (canCreate) {
         
         [self performSegueWithIdentifier:@"CreateRecord" sender:self];

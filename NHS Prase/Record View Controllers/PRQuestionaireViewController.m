@@ -89,7 +89,7 @@
         
         [pageController setViewControllers:@[q]
                                  direction:currentQuestion > cq ? UIPageViewControllerNavigationDirectionForward : UIPageViewControllerNavigationDirectionReverse
-                                  animated:YES
+                                  animated:NO
                                 completion:nil];
     }
     
@@ -121,7 +121,7 @@
         
         [pageController setViewControllers:@[nextVC]
                                  direction:UIPageViewControllerNavigationDirectionForward
-                                  animated:YES
+                                  animated:NO
                                 completion:nil];
     }
 }
@@ -132,7 +132,7 @@
         UIViewController *prevVC = [self viewControllerForIndex:self.currentQuestion - 1];
         [pageController setViewControllers:@[prevVC]
                                  direction:UIPageViewControllerNavigationDirectionReverse
-                                  animated:YES
+                                  animated:NO
                                 completion:nil];
     }
 }

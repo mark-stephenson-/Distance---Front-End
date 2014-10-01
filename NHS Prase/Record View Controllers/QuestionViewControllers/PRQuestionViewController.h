@@ -36,5 +36,6 @@
 -(IBAction)addSomethingGood:(id)sender;
 -(IBAction)addConcern:(id)sender;
 
+-(PRInputAccessoryView *)accessoryView;
 
 @end

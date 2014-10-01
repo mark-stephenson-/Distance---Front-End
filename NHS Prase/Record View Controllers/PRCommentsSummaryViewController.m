@@ -12,6 +12,9 @@
 #import "PRNote.h"
 #import "PRConcern.h"
 
+#import "PRGoodViewController.h"
+#import "PRPIRTViewController.h"
+
 @interface PRCommentsSummaryViewController ()
 
 @end
@@ -70,6 +73,33 @@
         [pirtVC dismissViewControllerAnimated:YES completion:nil];
     }];
 }
+
+-(void)addSomethingGood:(id)sender
+{
+    PRGoodViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"GoodVC"];
+    toPresent.delegate = self;
+    toPresent.record = self.record;
+    
+    UIView *loadView = toPresent.view;
+    PRInputAccessoryView *accessoryView = [self accessoryView];
+    toPresent.noteView.inputAccessoryView = accessoryView;
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self presentViewController:toPresent animated:YES completion:nil];
+    }];
+}
+
+-(void)addConcern:(id)sender
+{
+    PRPIRTViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"PIRTVC"];
+    toPresent.record = self.record;
+    toPresent.pirtDelegate = self;
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self presentViewController:toPresent animated:YES completion:nil];
+    }];
+}
+
 
 
 #pragma mark - TableView Methods

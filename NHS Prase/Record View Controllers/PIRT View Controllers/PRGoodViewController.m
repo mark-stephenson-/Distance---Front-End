@@ -106,12 +106,14 @@
 -(void)selectionViewControllerRequestsDismissal:(TDSelectionViewController *)selectionVC
 {
     if ([selectionVC isKindOfClass:[PRGoodWardSelectViewController class]]) {
-        self.selectedWard = ((PRGoodWardSelectViewController *) selectionVC).selectedWard;
-        [self refreshViews];
+        PRWard *newWard = ((PRGoodWardSelectViewController *) selectionVC).selectedWard;
+        if (newWard != nil) {
+            self.selectedWard = newWard;
+            [self refreshViews];
+        }
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 @end
