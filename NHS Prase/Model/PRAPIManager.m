@@ -29,17 +29,6 @@
 
 @implementation PRAPIManager
 
-- (instancetype)init
-{
-    self = [super init];
-    
-    if (self) {
-        dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
-    }
-    
-    return self;
-}
-
 -(void)setBaseURL:(NSURL *)baseURL
 {
     [super setBaseURL:baseURL];
@@ -331,10 +320,10 @@
                      };
     }
     
-    return nodeInfo[node] != nil ? nodeInfo[node] : node;
+    return nodeInfo[node] != nil ? nodeInfo[node] : [super TDCEntityNameForNode:node];
 }
 
--(NSDictionary *)translations
+-(NSDictionary *)keyPathTranslations
 {
     static NSDictionary *translations = nil;
     

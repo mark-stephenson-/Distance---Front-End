@@ -34,12 +34,54 @@
 
 -(void)applyValueToFields
 {
-    NSInteger hours = floorf(interval / 3600.0);
-    NSInteger minutes = ceilf((interval - hours * 3600) / 60.0);
+    int hours = floorf(interval / 3600.0);
+    int minutes = ceilf((interval - hours * 3600) / 60.0);
     
-    hourField.text = [NSString stringWithFormat:@"%ld", hours];
-    minuteField.text = [NSString stringWithFormat:@"%ld", minutes];
+    hourField.text = [NSString stringWithFormat:@"%d", hours];
+    minuteField.text = [NSString stringWithFormat:@"%d", minutes];
     [self.formViewController cellValueChanged:self];
+}
+
+#pragma mark - Increment / Decrement Methods
+
+-(void)increment:(id)sender
+{
+    NSInteger newMins = minuteField.text.integerValue + 1;
+    NSInteger newHours = hourField.text.integerValue;
+    
+    if (newMins > 0 || newHours > 0) {
+        decrementButton.enabled = YES;
+    }
+    
+    if (newMins == 60) {
+        newMins = 0;
+        newHours++;
+    }
+    
+    minuteField.text = [@(newMins) stringValue];
+    hourField.text = [@(newHours) stringValue];
+    
+    [self applyFieldsToValue];
+}
+
+-(void)decrement:(id)sender
+{
+    NSInteger newMins = minuteField.text.integerValue - 1;
+    NSInteger newHours = hourField.text.integerValue;
+    
+    if (newMins == 0 && newHours == 0) {
+        decrementButton.enabled = NO;
+    }
+    
+    if (newMins == -1) {
+        newMins = 59;
+        newHours--;
+    }
+    
+    minuteField.text = [@(newMins) stringValue];
+    hourField.text = [@(newHours) stringValue];
+    
+    [self applyFieldsToValue];
 }
 
 

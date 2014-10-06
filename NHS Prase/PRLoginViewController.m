@@ -10,10 +10,12 @@
 
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import <TheDistanceKit/TheDistanceKit.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+
 #import "PRButton.h"
 #import "PRTheme.h"
 #import "PRAPIManager.h"
-#import "MBProgressHUD.h"
+
 #import "AppDelegate.h"
 #import "PRRecord.h"
 
@@ -241,7 +243,7 @@
 {
     BOOL canContinue = logInCredentials[usernameField.text] != nil && [passwordField.text isEqualToString:logInCredentials[usernameField.text]];
 
-//    canContinue = true;
+    canContinue = true;
 
     
     if (canContinue) {

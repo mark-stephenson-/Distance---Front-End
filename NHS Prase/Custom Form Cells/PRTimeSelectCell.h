@@ -13,7 +13,13 @@
     IBOutlet TDTextField *hourField;
     IBOutlet TDTextField *minuteField;
     
+    IBOutlet UIButton *decrementButton;
+    IBOutlet UIButton *incrementButton;
+    
     NSTimeInterval interval;
 }
+
+-(IBAction)increment:(id)sender;
+-(IBAction)decrement:(id)sender;
 
 @end

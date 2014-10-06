@@ -3300,7 +3300,7 @@ Serious</string>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Time Select" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sy8-gb-wwv">
-                                                            <rect key="frame" x="20" y="27" width="210" height="20"/>
+                                                            <rect key="frame" x="20" y="27" width="96" height="20"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
@@ -3309,7 +3309,7 @@ Serious</string>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <view contentMode="scaleToFill" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" translatesAutoresizingMaskIntoConstraints="NO" id="8LZ-nD-VTA">
-                                                            <rect key="frame" x="250" y="17" width="221" height="40"/>
+                                                            <rect key="frame" x="136" y="17" width="349" height="40"/>
                                                             <subviews>
                                                                 <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="mm" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lsL-m0-p19" customClass="TDTextField">
                                                                     <rect key="frame" x="175" y="0.0" width="46" height="40"/>
@@ -3361,21 +3361,89 @@ Serious</string>
                                                                         <outlet property="delegate" destination="Hpo-y5-SLk" id="QnR-RL-Cxa"/>
                                                                     </connections>
                                                                 </textField>
+                                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUr-bm-PdK" customClass="PRButton">
+                                                                    <rect key="frame" x="236" y="0.0" width="50" height="40"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                                    <color key="tintColor" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="4"/>
+                                                                    <state key="normal" title="-">
+                                                                        <color key="titleColor" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <state key="disabled">
+                                                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="imageTint">
+                                                                            <color key="value" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="vBuffer">
+                                                                            <real key="value" value="2"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="labelButtonBuffer">
+                                                                            <real key="value" value="0.10000000000000001"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="decrement:" destination="Hpo-y5-SLk" eventType="touchUpInside" id="6F2-J7-EQ9"/>
+                                                                    </connections>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReH-ig-XfO" customClass="PRButton">
+                                                                    <rect key="frame" x="294" y="0.0" width="55" height="40"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                                    <color key="tintColor" red="0.5450980392" green="0.7725490196" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="4"/>
+                                                                    <state key="normal" title="+">
+                                                                        <color key="titleColor" red="0.5450980392" green="0.7725490196" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <state key="disabled">
+                                                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="imageTint">
+                                                                            <color key="value" red="0.5450980392" green="0.7725490196" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="vBuffer">
+                                                                            <real key="value" value="2"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="labelButtonBuffer">
+                                                                            <real key="value" value="0.10000000000000001"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="increment:" destination="Hpo-y5-SLk" eventType="touchUpInside" id="lwu-gb-LsE"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="centerY" secondItem="Pqy-Wm-WcR" secondAttribute="centerY" id="1e9-km-eVf"/>
                                                                 <constraint firstItem="lsL-m0-p19" firstAttribute="top" secondItem="8LZ-nD-VTA" secondAttribute="top" id="5RF-GA-9fb"/>
+                                                                <constraint firstAttribute="trailing" secondItem="ReH-ig-XfO" secondAttribute="trailing" id="8jz-I4-3QK"/>
                                                                 <constraint firstAttribute="centerY" secondItem="JSZ-Io-LeA" secondAttribute="centerY" id="GD7-JN-uDo"/>
                                                                 <constraint firstAttribute="trailing" secondItem="lsL-m0-p19" secondAttribute="trailing" id="H75-eR-fZX"/>
                                                                 <constraint firstItem="ZoO-6l-Ndn" firstAttribute="top" secondItem="8LZ-nD-VTA" secondAttribute="top" id="Jp7-UO-xlV"/>
                                                                 <constraint firstItem="ZoO-6l-Ndn" firstAttribute="leading" secondItem="Pqy-Wm-WcR" secondAttribute="trailing" constant="8" id="MeO-1A-ZP9"/>
+                                                                <constraint firstItem="GUr-bm-PdK" firstAttribute="leading" secondItem="lsL-m0-p19" secondAttribute="trailing" constant="15" id="QPP-kU-ozE"/>
+                                                                <constraint firstItem="ReH-ig-XfO" firstAttribute="top" secondItem="8LZ-nD-VTA" secondAttribute="top" id="T7y-Lq-nfY"/>
                                                                 <constraint firstAttribute="bottom" secondItem="lsL-m0-p19" secondAttribute="bottom" id="ToG-ap-7xP"/>
+                                                                <constraint firstItem="ReH-ig-XfO" firstAttribute="leading" secondItem="GUr-bm-PdK" secondAttribute="trailing" constant="8" id="XLG-i7-cZP"/>
                                                                 <constraint firstAttribute="bottom" secondItem="ZoO-6l-Ndn" secondAttribute="bottom" id="aJZ-sV-pUz"/>
                                                                 <constraint firstItem="lsL-m0-p19" firstAttribute="leading" secondItem="JSZ-Io-LeA" secondAttribute="trailing" constant="8" id="c6N-8q-mal"/>
+                                                                <constraint firstAttribute="bottom" secondItem="ReH-ig-XfO" secondAttribute="bottom" id="fyM-QX-QZz"/>
+                                                                <constraint firstItem="GUr-bm-PdK" firstAttribute="top" secondItem="8LZ-nD-VTA" secondAttribute="top" id="hJT-XZ-Kau"/>
                                                                 <constraint firstItem="JSZ-Io-LeA" firstAttribute="leading" secondItem="ZoO-6l-Ndn" secondAttribute="trailing" constant="15" id="i9b-bY-clb"/>
+                                                                <constraint firstAttribute="bottom" secondItem="GUr-bm-PdK" secondAttribute="bottom" id="tvs-aM-kLg"/>
                                                                 <constraint firstItem="Pqy-Wm-WcR" firstAttribute="leading" secondItem="8LZ-nD-VTA" secondAttribute="leading" id="vfE-H5-MPt"/>
                                                             </constraints>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="H75-eR-fZX"/>
+                                                                </mask>
+                                                            </variation>
                                                         </view>
                                                     </subviews>
                                                     <constraints>
@@ -3392,7 +3460,9 @@ Serious</string>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
+                                                    <outlet property="decrementButton" destination="GUr-bm-PdK" id="0SF-ot-dzr"/>
                                                     <outlet property="hourField" destination="ZoO-6l-Ndn" id="XrQ-QH-DXM"/>
+                                                    <outlet property="incrementButton" destination="ReH-ig-XfO" id="gPg-OW-7GM"/>
                                                     <outlet property="minuteField" destination="lsL-m0-p19" id="HcF-D0-QMs"/>
                                                     <outlet property="titleLabel" destination="Sy8-gb-wwv" id="JZZ-JW-2z6"/>
                                                     <outletCollection property="textFields" destination="ZoO-6l-Ndn" id="66k-2C-1V2"/>
@@ -3590,7 +3660,7 @@ Serious</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exQ-lu-r1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4045" y="479.5"/>
+            <point key="canvasLocation" x="4045" y="473.5"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="OBQ-h5-OEW">
