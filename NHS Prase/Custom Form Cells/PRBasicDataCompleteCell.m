@@ -9,6 +9,7 @@
 #import "PRBasicDataCompleteCell.h"
 
 #import "PRTheme.h"
+#import "PRButton.h"
 
 @implementation PRBasicDataCompleteCell
 
@@ -17,17 +18,23 @@
     if ([value isKindOfClass:[NSNumber class]]) {
         [super setValue:value];
         
+        PRButton *prButton = (PRButton *) self.button;
+        
         NSNumber *complete = (NSNumber *) value;
         if (complete.boolValue) {
             summaryLabel.text = TDLocalizedStringWithDefaultValue(@"summary.basic-data.complete", nil, nil, @"Complete", @"Label to show that the basic data has been completed.");
             summaryLabel.textColor = [[PRTheme sharedTheme] positiveColor];
             
-            self.button.hidden = YES;
+            prButton.imageTint = prButton.tintColor = [[PRTheme sharedTheme] positiveColor];
+            [prButton setTitleColor:[[PRTheme sharedTheme] positiveColor] forState:UIControlStateNormal];
+            
         } else {
+            
             summaryLabel.text = TDLocalizedStringWithDefaultValue(@"summary.basic-data.incomplete", nil, nil, @"Incomplete", @"Label to show that the basic data has not been completed.");
             summaryLabel.textColor = [[PRTheme sharedTheme] negativeColor];
             
-            self.button.hidden = NO;
+            prButton.imageTint = prButton.tintColor = [[PRTheme sharedTheme] negativeColor];
+            [prButton setTitleColor:[[PRTheme sharedTheme] negativeColor] forState:UIControlStateNormal];
         }
     }
 }

@@ -30,11 +30,13 @@
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"PRModel.sqlite"];
     
     // set up app wide inset
-    [[TDTextField appearance] setTextInsets:UIEdgeInsetsMake(10, 15, 10, 15)];
+    [[TDTextField appearance] setTextInsets:UIEdgeInsetsMake(6, 15, 6, 15)];
     [[TDTextField appearance] setBorderColor:[[PRTheme sharedTheme] mainColor]];
     [[TDTextField appearance] setBorderWidth:1.0];
     [[TDTextField appearance] setAccessoryImage:[UIImage imageNamed:@"select"]];
-    [[TDTextField appearance] setImageInsets:UIEdgeInsetsMake(5, 0, 5, 10)];
+    [[TDTextField appearance] setImageInsets:UIEdgeInsetsMake(4, 0, 4, 10)];
+    
+    [[TDSegmentedControl appearance] setTextBuffer:20];
     
     PRAPIManager *manager = [PRAPIManager sharedManager];
     manager.baseURL = [NSURL URLWithString:@"http://prase.staging2.thedistance.co.uk"];

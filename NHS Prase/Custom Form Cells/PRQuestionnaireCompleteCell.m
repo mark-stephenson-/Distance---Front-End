@@ -8,6 +8,7 @@
 
 #import "PRQuestionnaireCompleteCell.h"
 #import "PRTheme.h"
+#import "PRButton.h"
 
 @implementation PRQuestionnaireCompleteCell
 
@@ -41,19 +42,27 @@
 // configure the views based on whether all questions are answered or not.
 -(void)refreshViews
 {
+    PRButton *prButton = (PRButton *) self.button;
+    
+    NSString *buttonTitle = [NSString localizedStringWithFormat:TDLocalizedStringWithDefaultValue(@"summary.questionnaire-summary", nil, nil, @"%d of %d Questions Answered", @"Summary of how many questions the user has answered. 1$: number of answered questions. 2$: total number of questions."), answered, total];
+    [prButton setTitle:buttonTitle forState:UIControlStateNormal];
+    
     if (total > 0 && answered == total) {
 
         summaryLabel.text = TDLocalizedStringWithDefaultValue(@"summary.questionnaire-complete", nil, nil, @"Complete", @"Label shown when the user has answered all the PMOS questions.");
         
         summaryLabel.textColor = [[PRTheme sharedTheme] positiveColor];
-        self.button.hidden = YES;
+        prButton.imageTint = prButton.tintColor = [[PRTheme sharedTheme] positiveColor];
+
     } else {
 
-        summaryLabel.text = [NSString localizedStringWithFormat:TDLocalizedStringWithDefaultValue(@"summary.questionnaire-summary", nil, nil, @"%d of %d questions answered", @"Summary of how many questions the user has answered. 1$: number of answered questions. 2$: total number of questions."), answered, total];
+        TDLocalizedStringWithDefaultValue(@"summary.questionnaire-complete", nil, nil, @"Incomplete", @"Label shown when the user has not answered all the PMOS questions.");
         
         summaryLabel.textColor = [[PRTheme sharedTheme] negativeColor];
-        self.button.hidden = NO;
+        prButton.imageTint = prButton.tintColor = [[PRTheme sharedTheme] negativeColor];
     }
+    
+    [prButton setTitleColor:prButton.imageTint forState:UIControlStateNormal];
 }
 
 -(void)selectionViewControllerRequestsDismissal:(TDSelectionViewController *)selectionVC

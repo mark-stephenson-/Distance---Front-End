@@ -14,12 +14,8 @@
  * @discussion Creates a new record based on the ward selected.
  */
 @interface HomeViewController : PRWardSelectViewController <UIAlertViewDelegate>
-{
-    IBOutlet UIButton *createButton;
-}
 
 -(IBAction)createRecord:(id)sender;
 -(IBAction)goToLogIn:(id)sender;
--(IBAction)toggleLanguage:(id)sender;
 
 @end

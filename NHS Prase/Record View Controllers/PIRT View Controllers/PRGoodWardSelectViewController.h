@@ -8,17 +8,16 @@
 
 #import "PRSelectionViewController.h"
 
-@class PRPIRTWardSelectViewController;
+@class PRWardSelectViewController;
 
 @class PRRecord;
 @class PRWard;
 
 @interface PRGoodWardSelectViewController : PRSelectionViewController
 {
-    PRPIRTWardSelectViewController *childSelect;
+    PRWardSelectViewController *childSelect;
 }
 
 @property (nonatomic, strong) PRWard *selectedWard;
-@property (nonatomic, strong) PRRecord *record;
 
 @end

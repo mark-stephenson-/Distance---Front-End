@@ -44,6 +44,49 @@
     wardField.enabled = self.selectedHospital != nil;
 }
 
+-(BOOL)validateSelectedWard
+{
+    if (self.selectedWard == nil) {
+        NSString *errorMessage = @"";
+        
+        if (self.selectedTrust == nil) {
+            errorMessage = TDLocalizedStringWithDefaultValue(@"home.create-error.no-trust", nil, nil, @"Please select a trust.", @"The error shown in the user tries to create a new record without selecting a trust.");
+        }
+        
+        if (self.selectedHospital == nil) {
+            
+            if (errorMessage.length > 0) {
+                errorMessage = [errorMessage stringByAppendingString:@"\n"];
+            }
+            
+            NSString *hospitalError = TDLocalizedStringWithDefaultValue(@"home.create-error.no-hospital", nil, nil, @"Please select a hospital.", @"The error shown in the user tries to create a new record without selecting a trust.");
+            errorMessage = [errorMessage stringByAppendingString:hospitalError];
+        }
+        
+        if (self.selectedWard == nil) {
+            
+            if (errorMessage.length > 0) {
+                errorMessage = [errorMessage stringByAppendingString:@"\n"];
+            }
+            
+            NSString *wardError = TDLocalizedStringWithDefaultValue(@"home.create-error.no-ward", nil, nil, @"Please select a ward.", @"The error shown in the user tries to create a new record without selecting a ward.");
+            errorMessage = [errorMessage stringByAppendingString:wardError];
+        }
+        
+        NSString *errorTitle = TDLocalizedStringWithDefaultValue(@"home.create-error.title", nil, nil, @"Cannot Create Record", @"Error title when the user cannot create a record.");
+        
+        [self showAlertWithTitle:errorTitle
+                         message:errorMessage
+                     buttonTitle:nil
+                buttonCompletion:nil
+                     cancelTitle:nil
+                        alertTag:ALERT_CREATE_ERROR];
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 #pragma mark - Delegate Methods
 
 // Show a TDSelectionViewController and prevent a keyboard from showing;

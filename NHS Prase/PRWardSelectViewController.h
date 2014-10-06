@@ -10,6 +10,8 @@
 #import <TheDistanceKit/TheDistanceKit.h>
 #import "PRViewController.h"
 
+#define ALERT_CREATE_ERROR 222
+
 @class PRTrust;
 @class PRHospital;
 @class PRWard;
@@ -34,5 +36,7 @@
 @property (nonatomic, strong) PRWard *selectedWard;
 
 -(void)refreshViews;
+
+-(BOOL)validateSelectedWard;
 
 @end

@@ -75,6 +75,8 @@
     ethnicGroupCell[@"userInfo"][@"selectionDelegate"] = wSelf;
     ethnicGroupCell[@"userInfo"][@"selectionVCInfo"] = @{@"sectionTitles": ethnicSections};
     ethnicGroupCell[@"userInfo"][@"selectionIdentifier"] = @"PRBasicSelectionVC";
+    ethnicGroupCell[@"userInfo"][@"textField.textInsets"] = [NSValue valueWithUIEdgeInsets:UIEdgeInsetsMake(4, 15, 4, 15)];
+    ethnicGroupCell[@"userInfo"][@"textField.imageInsets"] = [NSValue valueWithUIEdgeInsets:UIEdgeInsetsMake(2, 0, 2, 15)];
     
     // Language
     
@@ -95,6 +97,8 @@
     languageInfo[@"reuseIdentifier"] = @"SelectCell";
     languageInfo[@"userInfo"][@"selectionDelegate"] = wSelf;
     languageInfo[@"userInfo"][@"selectionIdentifier"] = @"PRBasicSelectionVC";
+    languageInfo[@"userInfo"][@"textField.textInsets"] = [NSValue valueWithUIEdgeInsets:UIEdgeInsetsMake(4, 15, 4, 15)];
+    languageInfo[@"userInfo"][@"textField.imageInsets"] = [NSValue valueWithUIEdgeInsets:UIEdgeInsetsMake(2, 0, 2, 10)];
     
     NSMutableDictionary *admittedInfo = [PRDateSelectCell cellInfoWithTitle:@"When were you admitted to the hospital?"
                                                                       value:[NSDate date]

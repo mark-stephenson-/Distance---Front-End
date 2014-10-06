@@ -8,6 +8,8 @@
 
 #import "PRViewController.h"
 
+@class TDSegmentedControl;
+
 /*!
  * @class PRSegmentTabViewController
  * @discussion Main navigation controller throughout the app. This class contains a child tab controller but hides its tab bar. Navigation is controlled using a segmented controler, which is used to switch the tabs. A footview is used to allow easier navigation switching between tabs. 
@@ -28,8 +30,8 @@
     IBOutlet UIButton *prevButton;
     IBOutlet UIButton *settingsButton;
     
-    IBOutlet UISegmentedControl *visibleSelector;
-    IBOutlet NSLayoutConstraint *selectorHeight;
+    IBOutlet TDSegmentedControl *visibleSelector;
+    //IBOutlet NSLayoutConstraint *selectorHeight;
 }
 
 -(IBAction)segmentChanged:(id)sender;

@@ -13,7 +13,7 @@
 #import "PRTrust.h"
 
 #import "PRRecord.h"
-#import "PRPIRTWardSelectViewController.h"
+#import "PRWardSelectViewController.h"
 
 @interface PRGoodWardSelectViewController ()
 
@@ -26,7 +26,6 @@
     // Do any additional setup after loading the view.
     
     childSelect = self.childViewControllers.firstObject;
-    childSelect.record = self.record;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -46,9 +45,12 @@
 
 -(void)dismissSelectionViewController:(id)sender
 {
-    self.selectedWard = childSelect.selectedWard;
+    BOOL validWard = [childSelect validateSelectedWard];
     
-    [super dismissSelectionViewController:sender];
+    if (validWard) {
+        self.selectedWard = childSelect.selectedWard;
+        [super dismissSelectionViewController:sender];
+    }
 }
 
 @end

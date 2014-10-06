@@ -195,8 +195,8 @@
     jsonRecord[@"startDate"] = [dateFormatter stringFromDate:record.startDate] ? : [NSNull null];
     
     // submitted in seconds
-    jsonRecord[@"totalTimePatient"] = @(record.timeAdditionalPatient.longLongValue + record.timeTracked.longLongValue);
-    jsonRecord[@"totalTimeQuestionnaire"] = @(record.timeAdditionalQuestionnaire.longLongValue + record.timeTracked.longLongValue);
+    jsonRecord[@"totalTimePatient"] = @(record.timeAdditionalPatient.intValue + record.timeTracked.intValue) ? : [NSNull null];
+    jsonRecord[@"totalTimeQuestionnaire"] = @(record.timeAdditionalQuestionnaire.intValue + record.timeTracked.intValue) ? : [NSNull null];
     
     // the id will uniquely identify the ward, hospital and trust in TheCore
     jsonRecord[@"ward"] = record.ward.id ? : [NSNull null];
@@ -234,8 +234,24 @@
     jsonRecord[@"concerns"] = concernEntries;
     jsonRecord[@"user"] = [[NSUserDefaults standardUserDefaults] valueForKey:@"user"] ? : [NSNull null];
     
-    NSLog(@"POSTING: %@", jsonRecord);
+
     
+    NSError *jsonError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonRecord options:NSJSONWritingPrettyPrinted error:&jsonError];
+
+    if (jsonError != nil) {
+        [self logErrorFromSelector:_cmd withFormat:@"Cannot submit survey. Error creating the json: %@", jsonError];
+        if (completion != nil) {
+            completion(NO, jsonError);
+        }
+        
+        return;
+    }
+    
+    char *jsonChars = jsonData.bytes;
+    NSString *jsonString = [NSString stringWithCString:jsonChars encoding:NSUTF8StringEncoding];
+    NSLog(@"POSTING: %@", jsonString);
+                               
     // post to the server
     [sessionManager POST:@"api/submit"
               parameters:jsonRecord

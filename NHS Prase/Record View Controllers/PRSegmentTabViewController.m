@@ -27,6 +27,8 @@
         tabController.tabBar.hidden = YES;
         [tabController setSelectedIndex:0];
     }
+    
+    visibleSelector.textBuffer = 25.0;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -40,9 +42,9 @@
 {
     [super viewDidLayoutSubviews];
     
-    NSString *textStyle = [[TDTheme sharedTheme] textStyleForIdentifier:visibleSelector.TDTextStyleIdentifier];
-    UIFont *selectorFont = [[TDTheme sharedTheme] preferredFontForTextStyle:textStyle];
-    selectorHeight.constant = 30 + selectorFont.pointSize;
+//    NSString *textStyle = [[TDTheme sharedTheme] textStyleForIdentifier:visibleSelector.TDTextStyleIdentifier];
+//    UIFont *selectorFont = [[TDTheme sharedTheme] preferredFontForTextStyle:textStyle];
+//    selectorHeight.constant = 30 + selectorFont.pointSize;
     
     [self.view layoutIfNeeded];
 }

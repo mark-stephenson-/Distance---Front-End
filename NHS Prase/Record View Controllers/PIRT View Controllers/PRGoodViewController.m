@@ -86,7 +86,6 @@
 {
     PRGoodWardSelectViewController *wardSelect = [self.storyboard instantiateViewControllerWithIdentifier:@"GoodWardSelect"];
     wardSelect.delegate = self;
-    wardSelect.record = self.record;
     wardSelect.selectedWard = self.selectedWard;
     wardSelect.modalPresentationStyle = UIModalPresentationFormSheet;
     

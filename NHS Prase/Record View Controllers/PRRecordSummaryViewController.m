@@ -56,7 +56,7 @@
     BOOL basicDataComplete = basicDataInfo.count == 7;
     
     NSMutableDictionary *basicDataCell = [PRBasicDataCompleteCell cellInfoWithTitle:TDLocalizedStringWithDefaultValue(@"summary.question.basic-data-label", nil, nil, @"Basic Data:", @"The label identifiying that the basic has not been completed. Shown on the summary screen.")
-                                                                        buttonTitle:TDLocalizedStringWithDefaultValue(@"summary.question.basic-data-button", nil, nil, @"Complete Basic Data", @"The button title allowing the user to jump to the basic data screen. Shown on the summary screen.")
+                                                                        buttonTitle:TDLocalizedStringWithDefaultValue(@"summary.question.basic-data-button", nil, nil, @"Go To Basic Data", @"The button title allowing the user to jump to the basic data screen. Shown on the summary screen.")
                                                                         buttonImage:nil
                                                                              target:self
                                                                            selector:@selector(goToBasicData:)

@@ -103,31 +103,28 @@
                             @"Definitely yes",
                             @"Don't know"];
         
-        UIImage *cross = [UIImage imageNamed:@"cross"];
-        UIImage *tick = [UIImage imageNamed:@"tick"];
-        
         UIColor *positiveColour = [[PRTheme sharedTheme] positiveColor];
         UIColor *negativeColour = [[PRTheme sharedTheme] negativeColor];
         
         NSString *title = titles[indexPath.row];
-        NSString *identifier = (indexPath.row == 0 || indexPath.row == 3) ? @"OptionCell2" : @"OptionCell";
+        NSString *identifier = @"OptionCell";
         PROptionCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
         
         switch (indexPath.row) {
             case 0:
-                [cell setOptionTitle:title image:cross andSecondImage:cross];
+                [cell setOptionTitle:title image:[UIImage imageNamed:@"two_crosses"] andSecondImage:nil];
                 [cell setImageTintColor:negativeColour];
                 break;
             case 1:
-                [cell setOptionTitle:title image:cross andSecondImage:nil];
+                [cell setOptionTitle:title image:[UIImage imageNamed:@"cross"] andSecondImage:nil];
                 [cell setImageTintColor:negativeColour];
                 break;
             case 2:
-                [cell setOptionTitle:title image:tick andSecondImage:nil];
+                [cell setOptionTitle:title image:[UIImage imageNamed:@"tick"] andSecondImage:nil];
                 [cell setImageTintColor:positiveColour];
                 break;
             case 3:
-                [cell setOptionTitle:title image:tick andSecondImage:tick];
+                [cell setOptionTitle:title image:[UIImage imageNamed:@"two_ticks"] andSecondImage:nil];
                 [cell setImageTintColor:positiveColour];
                 break;
             case 4:
