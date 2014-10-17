@@ -73,7 +73,7 @@
             errorMessage = [errorMessage stringByAppendingString:wardError];
         }
         
-        NSString *errorTitle = TDLocalizedStringWithDefaultValue(@"home.create-error.title", nil, nil, @"Cannot Create Record", @"Error title when the user cannot create a record.");
+        NSString *errorTitle = TDLocalizedStringWithDefaultValue(@"home.create-error.title", nil, nil, @"Invalid Ward", @"Error title when the user has only partially selected a ward.");
         
         [self showAlertWithTitle:errorTitle
                          message:errorMessage

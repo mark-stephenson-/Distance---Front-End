@@ -25,6 +25,10 @@
     IBOutlet PRButton *concernButton;
     IBOutlet PRButton *goodButton;
     IBOutlet PRButton *noteButton;
+    
+    BOOL validConcern;
+    BOOL validNote;
+    BOOL validGoodNote;
 }
 
 @property (nonatomic, strong) PRQuestion *question;
@@ -37,5 +41,6 @@
 -(IBAction)addConcern:(id)sender;
 
 -(PRInputAccessoryView *)accessoryView;
+-(void)refreshPIRTViews;
 
 @end

@@ -226,7 +226,7 @@
     NSMutableArray *concernEntries = [NSMutableArray arrayWithCapacity:record.concerns.count];
     for (PRConcern *concern in record.concerns) {
         NSDictionary *noteEntry = [self serializeConcern:concern];
-        [noteEntries addObject:noteEntry];
+        [concernEntries addObject:noteEntry];
     }
     
     jsonRecord[@"notes"] = noteEntries;
@@ -295,6 +295,7 @@
     NSMutableDictionary *thisEntry = [NSMutableDictionary dictionaryWithCapacity:1];
     
     thisEntry[@"text"] = [note.text isNonNullString] ? note.text : [NSNull null];
+    thisEntry[@"ward"] = note.ward.id ? : [NSNull null];
     
     return thisEntry;
 }
@@ -303,7 +304,7 @@
 {
     NSMutableDictionary *thisEntry = [NSMutableDictionary dictionaryWithCapacity:8];
     
-    thisEntry[@"ward"] = concern.ward;
+    thisEntry[@"ward"] = concern.ward.id ? : [NSNull null];
 
     thisEntry[@"whatNote"] = concern.whatNote ? [self serializeNote:concern.whatNote] : [NSNull null];
     thisEntry[@"whyNote"] = concern.whyNote ? [self serializeNote:concern.whyNote] : [NSNull null];

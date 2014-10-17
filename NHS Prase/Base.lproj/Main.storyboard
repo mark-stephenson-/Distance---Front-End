@@ -1548,7 +1548,9 @@ Please read the following statements carefully, keeping in mind your current sta
                     <tabBarItem key="tabBarItem" title="Comments" image="tick" id="h4R-nt-LTq"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="concernButton" destination="fMv-Mh-d0u" id="PCG-Fd-you"/>
                         <outlet property="concernButtonPromptLabel" destination="nsO-tF-0yN" id="y07-Y6-N7r"/>
+                        <outlet property="goodButton" destination="wq6-VB-9rC" id="WbJ-8K-vuM"/>
                         <outlet property="goodButtonPromptLabel" destination="jqs-CT-z23" id="tvM-rf-uoU"/>
                         <outlet property="promptLabel" destination="WJp-Dv-eiv" id="FfJ-HI-q4a"/>
                     </connections>

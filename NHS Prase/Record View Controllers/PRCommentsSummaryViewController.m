@@ -56,18 +56,36 @@
 
 -(void)noteViewControllerDidFinish:(PRNoteViewController *)noteVC withNote:(PRNote *)note
 {
-    if ([note isValid]) {
-        [self.record addGoodNotesObject:note];
+    validGoodNote = [note isValid];
+    if (validGoodNote) {
+        if (self.record.goodNotes.count == 0) {
+            [self.record addGoodNotesObject:note];
+        }
+    } else {
+        if (self.record.goodNotes.count > 0) {
+            self.record.goodNotes = [NSSet set];
+        }
     }
+    
+    [self refreshPIRTViews];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)pirtViewControllerDidFinish:(PRPIRTViewController *)pirtVC withConcern:(PRConcern *)concern
 {
-    if ([concern isValid]) {
-        [self.record addConcernsObject:concern];
+    validConcern = [concern isValid];
+    if (validConcern) {
+        if (self.record.concerns.count == 0) {
+            [self.record addConcernsObject:concern];
+        }
+    } else {
+        if (self.record.concerns.count > 0) {
+            self.record.concerns = [NSSet set];
+        }
     }
+    
+    [self refreshPIRTViews];
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [pirtVC dismissViewControllerAnimated:YES completion:nil];
@@ -79,6 +97,10 @@
     PRGoodViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"GoodVC"];
     toPresent.delegate = self;
     toPresent.record = self.record;
+    
+    if (self.record.goodNotes.count > 0) {
+        toPresent.note = [self.record.goodNotes anyObject];
+    }
     
     UIView *loadView = toPresent.view;
     PRInputAccessoryView *accessoryView = [self accessoryView];
@@ -94,6 +116,10 @@
     PRPIRTViewController *toPresent = [self.storyboard instantiateViewControllerWithIdentifier:@"PIRTVC"];
     toPresent.record = self.record;
     toPresent.pirtDelegate = self;
+    
+    if (self.record.concerns.count > 0) {
+        toPresent.concern = [self.record.concerns anyObject];
+    }
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self presentViewController:toPresent animated:YES completion:nil];

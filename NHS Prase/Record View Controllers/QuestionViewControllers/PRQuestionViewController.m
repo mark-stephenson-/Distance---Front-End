@@ -69,12 +69,12 @@
 
 -(void)refreshPIRTViews
 {
-    concernButton.selected = [self.question.concern isValid];
-    goodButton.selected = [self.question.goodNote isValid];
-    noteButton.selected = [self.question.note isValid];
+    concernButton.selected = validConcern;
+    goodButton.selected = validGoodNote;
+    noteButton.selected = validNote;
     
     
-    if ([self.question.concern isValid]) {
+    if (validConcern) {
         concernButton.backgroundColor = [[PRTheme sharedTheme] negativeColor];
         concernButton.imageTint = [UIColor whiteColor];
         [concernButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
@@ -83,7 +83,7 @@
         concernButton.imageTint = [[PRTheme sharedTheme] negativeColor];
     }
     
-    if ([self.question.goodNote isValid]) {
+    if (validGoodNote) {
         goodButton.backgroundColor = [[PRTheme sharedTheme] positiveColor];
         goodButton.imageTint = [UIColor whiteColor];
         [goodButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
@@ -92,7 +92,7 @@
         goodButton.imageTint = [[PRTheme sharedTheme] positiveColor];
     }
     
-    if ([self.question.note isValid]) {
+    if (validNote) {
         noteButton.backgroundColor = [[PRTheme sharedTheme] neutralColor];
         noteButton.imageTint = [UIColor whiteColor];
         [noteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
@@ -169,13 +169,17 @@
 -(void)noteViewControllerDidFinish:(PRNoteViewController *)noteVC withNote:(PRNote *)note
 {
     if ([noteVC isKindOfClass:[PRGoodViewController class]]) {
-        if ([note isValid]) {
+        validGoodNote = [note isValid];
+        
+        if (validGoodNote) {
             self.question.goodNote = note;
         } else {
             self.question.goodNote = nil;
         }
     } else {
-        if ([note isValid]) {
+        validNote = [note isValid];
+        
+        if (validNote) {
             self.question.note = note;
         } else {
             self.question.note = nil;
@@ -203,7 +207,8 @@
 
 -(void)pirtViewControllerDidFinish:(PRPIRTViewController *)pirtVC withConcern:(PRConcern *)concern
 {
-    if ([concern isValid]) {
+    validConcern = [concern isValid];
+    if (validConcern) {
         self.question.concern = concern;
     } else {
         self.question.concern = nil;

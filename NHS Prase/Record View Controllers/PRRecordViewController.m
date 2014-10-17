@@ -12,6 +12,7 @@
 #import "PRBasicDataFormViewController.h"
 #import "PRQuestionaireViewController.h"
 #import "PRCommentsSummaryViewController.h"
+#import "PRDateSelectCell.h"
 
 #import "PRRecord.h"
 
@@ -145,6 +146,42 @@
             if (value != nil && key != nil) {
                 enteredBasicData[key] = value;
             }
+        }
+        
+        BOOL invalidDateEntered = NO;
+        NSIndexPath *invalidDatePath = nil;
+        
+        for (NSDictionary *info in infoDictionaries) {
+            NSString *className = NSStringFromClass(info[@"class"]);
+            if ([className isEqualToString:@"PRDateSelectCell"]) {
+                if ([info[@"value"] isKindOfClass:[NSArray class]]) {
+                    invalidDateEntered = YES;
+                    invalidDatePath = [bdVC indexPathForFormKey:info[@"key"]];
+                    break;
+                }
+            }
+        }
+        
+        if (invalidDateEntered) {
+            [bdVC.tableView scrollToRowAtIndexPath:invalidDatePath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            
+            NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"invalid_date.title", nil, nil, @"Invalid Date", @"Error title when the user has entered an invalid date and tries to move forwards.");
+            NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"invalid_date.message", nil, nil, @"Please enter a valid date or leave it blank.", @"Error message when the user has entered an invalid date and tries to move forwards.");
+            NSString *alertButton = TDLocalizedStringWithDefaultValue(@"invalid_date.button", nil, nil, @"OK", @"Button title to dismiss the invalid date error.");
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:alertTitle
+                                                                           message:alertMessage
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            [alert addAction:[UIAlertAction actionWithTitle:alertButton
+                                                      style:UIAlertActionStyleCancel
+                                                    handler:nil]];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+            
+            // swap back to the new segment
+            visibleSelector.selectedSegmentIndex = oldSegment;
+             return;
         }
         
         self.record.basicData = [NSDictionary dictionaryWithDictionary:enteredBasicData];

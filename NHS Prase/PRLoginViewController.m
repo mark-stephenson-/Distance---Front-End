@@ -243,9 +243,8 @@
 {
     BOOL canContinue = logInCredentials[usernameField.text] != nil && [passwordField.text isEqualToString:logInCredentials[usernameField.text]];
 
-    canContinue = true;
+//    canContinue = true;
 
-    
     if (canContinue) {
         [[NSUserDefaults standardUserDefaults] setValue:usernameField.text forKey:@"user"];
         [self performSegueWithIdentifier:@"Continue" sender:self];

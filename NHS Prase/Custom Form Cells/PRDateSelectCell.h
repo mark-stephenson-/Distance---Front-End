@@ -8,6 +8,7 @@
 
 #import "PRMultiTextFieldCell.h"
 
+/// Value is either a date if all fields are valid, an NSArray with 3 objects object (NSNumbers or NSNull) if multiple fields are invalid, or nil if no text has been entered in any fields.
 @interface PRDateSelectCell : PRMultiTextFieldCell
 {
     IBOutlet TDTextField *dayField;
@@ -15,6 +16,11 @@
     IBOutlet TDTextField *yearField;
     
     NSDate *selectedDate;
+    NSArray *partialDate;
+    
+    BOOL invalidDay;
+    BOOL invalidMonth;
+    BOOL invalidYear;
 }
 
 @property (nonatomic, weak) NSDateFormatter *formatter;

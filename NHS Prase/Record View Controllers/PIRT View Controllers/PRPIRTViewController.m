@@ -135,13 +135,21 @@
 /// Overrides superclass method to dismiss on the final page
 -(void)goNext:(id)sender
 {
+    
     if (tabController.selectedIndex == tabController.viewControllers.count - 1) {
-        if ([self.pirtDelegate respondsToSelector:@selector(pirtViewControllerDidFinish:withConcern:)]) {
-            
-            [self.pirtDelegate pirtViewControllerDidFinish:self withConcern:self.concern];
+        
+        if ([wardSelectVC validateSelectedWard]) {
+            if ([self.pirtDelegate respondsToSelector:@selector(pirtViewControllerDidFinish:withConcern:)]) {
+                
+                [self.pirtDelegate pirtViewControllerDidFinish:self withConcern:self.concern];
+            } else {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
         } else {
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [visibleSelector setSelectedSegmentIndex:0];
+            [self segmentChanged:self];
         }
+        
 
     } else {
         [super goNext:sender];
