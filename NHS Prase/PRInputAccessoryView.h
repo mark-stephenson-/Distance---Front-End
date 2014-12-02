@@ -8,7 +8,7 @@
 
 #import <TheDistanceKit/TheDistanceKit.h>
 
-@class PRButton;
+@class TDButton;
 
 /*!
  * @class PRInputAccessoryView
@@ -24,8 +24,8 @@
     BOOL delegateCanGoToPrevious;
 }
 
-@property (nonatomic, readonly) PRButton *nextButton;
-@property (nonatomic, readonly) PRButton *previousButton;
-@property (nonatomic, readonly) PRButton *cancelButton;
+@property (nonatomic, readonly) TDButton *nextButton;
+@property (nonatomic, readonly) TDButton *previousButton;
+@property (nonatomic, readonly) TDButton *cancelButton;
 
 @end

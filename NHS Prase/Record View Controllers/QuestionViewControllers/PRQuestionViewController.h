@@ -13,6 +13,7 @@
 #import "PRPIRTViewController.h"
 
 @class PRQuestion;
+@class TDButton;
 
 @interface PRQuestionViewController : PRViewController <PRNoteDelegate, PRPIRTDelegate, TDInputAccessoryDelegate>
 {
@@ -20,11 +21,11 @@
     IBOutlet UILabel *promptLabel;
     IBOutlet UILabel *titleLabel;
     IBOutlet UIView *pirtView;
-    IBOutletCollection(PRButton) NSArray *pirtButtons;
+    IBOutletCollection(TDButton) NSArray *pirtButtons;
     
-    IBOutlet PRButton *concernButton;
-    IBOutlet PRButton *goodButton;
-    IBOutlet PRButton *noteButton;
+    IBOutlet TDButton *concernButton;
+    IBOutlet TDButton *goodButton;
+    IBOutlet TDButton *noteButton;
     
     BOOL validConcern;
     BOOL validNote;

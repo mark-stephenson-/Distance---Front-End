@@ -8,7 +8,7 @@
 
 #import "PRQuestionnaireCompleteCell.h"
 #import "PRTheme.h"
-#import "PRButton.h"
+
 
 @implementation PRQuestionnaireCompleteCell
 
@@ -42,7 +42,7 @@
 // configure the views based on whether all questions are answered or not.
 -(void)refreshViews
 {
-    PRButton *prButton = (PRButton *) self.button;
+    TDButton *prButton = (TDButton *) self.button;
     
     NSString *buttonTitle = [NSString localizedStringWithFormat:TDLocalizedStringWithDefaultValue(@"summary.questionnaire-summary", nil, nil, @"%d of %d Questions Answered", @"Summary of how many questions the user has answered. 1$: number of answered questions. 2$: total number of questions."), answered, total];
     [prButton setTitle:buttonTitle forState:UIControlStateNormal];

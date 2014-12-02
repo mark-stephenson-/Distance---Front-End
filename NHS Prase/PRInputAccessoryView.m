@@ -8,7 +8,6 @@
 
 #import "PRInputAccessoryView.h"
 
-#import "PRButton.h"
 #import "PRTheme.h"
 
 @implementation PRInputAccessoryView
@@ -41,7 +40,7 @@
         self.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
         
         // configure the visuals
-        _nextButton = [[PRButton alloc] init];
+        _nextButton = [[TDButton alloc] init];
         _nextButton.translatesAutoresizingMaskIntoConstraints = NO;
         _nextButton.cornerRadius = 0.0;
         _nextButton.TDLocalizedStringKey = @"button.next";
@@ -51,9 +50,9 @@
         _nextButton.backgroundColor = [[PRTheme sharedTheme] neutralColor];
         _nextButton.frame = (CGRect) {CGPointZero, _nextButton.intrinsicContentSize};
         _nextButton.borderWidth = 0.0;
-        _nextButton.imageAlignment = kPRButtonImageAlignmentRight;
+        _nextButton.imageAlignment = kTDButtonImageAlignmentRight;
         
-        _previousButton = [[PRButton alloc] init];
+        _previousButton = [[TDButton alloc] init];
         _previousButton.cornerRadius = 0.0;
         _previousButton.TDLocalizedStringKey = @"button.previous";
         _previousButton.TDTextStyleIdentifier = @"Caption 1";
@@ -64,7 +63,7 @@
         _previousButton.borderWidth = 0.0;
         _previousButton.translatesAutoresizingMaskIntoConstraints = NO;
         
-        _cancelButton = [[PRButton alloc] init];
+        _cancelButton = [[TDButton alloc] init];
         _cancelButton.cornerRadius = 0.0;
         _cancelButton.TDLocalizedStringKey = @"button.cancel";
         _cancelButton.TDTextStyleIdentifier = @"Caption 1";

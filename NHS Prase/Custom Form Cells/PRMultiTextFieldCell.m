@@ -10,7 +10,6 @@
 #import "PRInputAccessoryView.h"
 
 #import <TheDistanceKit/TheDistanceKit.h>
-#import "PRButton.h"
 #import "PRTheme.h"
 
 @implementation PRMultiTextFieldCell

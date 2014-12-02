@@ -12,7 +12,6 @@
 #import <TheDistanceKit/TheDistanceKit.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
-#import "PRButton.h"
 #import "PRTheme.h"
 #import "PRAPIManager.h"
 

@@ -10,7 +10,6 @@
 
 #import "PRQuestion.h"
 
-#import "PRButton.h"
 #import "PRTheme.h"
 #import "PRNoteViewController.h"
 #import "PRGoodViewController.h"
@@ -59,8 +58,8 @@
     [super viewDidLayoutSubviews];
     
     CGSize viewSize = self.view.frame.size;
-    PRButtonImageAlignment alignment = viewSize.width > viewSize.height ? kPRButtonImageAlignmentLeft : kPRButtonImageAlignmentTop;
-    for (PRButton *button in pirtButtons) {
+    TDButtonImageAlignment alignment = viewSize.width > viewSize.height ? kTDButtonImageAlignmentLeft : kTDButtonImageAlignmentTop;
+    for (TDButton *button in pirtButtons) {
         if (button.imageAlignment != alignment) {
             button.imageAlignment = alignment;
         }

@@ -8,8 +8,8 @@
 
 #import "PRBasicDataCompleteCell.h"
 
+#import <TheDistanceKit/TheDistanceKit.h>
 #import "PRTheme.h"
-#import "PRButton.h"
 
 @implementation PRBasicDataCompleteCell
 
@@ -18,7 +18,7 @@
     if ([value isKindOfClass:[NSNumber class]]) {
         [super setValue:value];
         
-        PRButton *prButton = (PRButton *) self.button;
+        TDButton *prButton = (TDButton *) self.button;
         
         NSNumber *complete = (NSNumber *) value;
         if (complete.boolValue) {

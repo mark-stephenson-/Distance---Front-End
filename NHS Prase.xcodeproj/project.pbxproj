@@ -33,7 +33,6 @@
 		A50671C819B0D56C008557CE /* PRQuestionaireViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50671C719B0D56C008557CE /* PRQuestionaireViewController.m */; };
 		A50671CB19B0DABC008557CE /* PRQuestionStatementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50671CA19B0DABC008557CE /* PRQuestionStatementViewController.m */; };
 		A50671CF19B0DB40008557CE /* PRQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50671CE19B0DB40008557CE /* PRQuestionViewController.m */; };
-		A50E31F819D2B705001C5AE6 /* PRButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A50E31F519D2B705001C5AE6 /* PRButton.m */; };
 		A50E31F919D2B705001C5AE6 /* PROptionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A50E31F719D2B705001C5AE6 /* PROptionCollectionViewCell.m */; };
 		A51A6F8019B6FEDF004BF779 /* PRInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = A51A6F7F19B6FEDF004BF779 /* PRInputAccessoryView.m */; };
 		A5235E8519D1BE1500AE721A /* PRTextSizeSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5235E8419D1BE1500AE721A /* PRTextSizeSelectCell.m */; };
@@ -258,8 +257,6 @@
 		A50671CA19B0DABC008557CE /* PRQuestionStatementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRQuestionStatementViewController.m; path = "Record View Controllers/QuestionViewControllers/PRQuestionStatementViewController.m"; sourceTree = "<group>"; };
 		A50671CD19B0DB40008557CE /* PRQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRQuestionViewController.h; path = "Record View Controllers/QuestionViewControllers/PRQuestionViewController.h"; sourceTree = "<group>"; };
 		A50671CE19B0DB40008557CE /* PRQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRQuestionViewController.m; path = "Record View Controllers/QuestionViewControllers/PRQuestionViewController.m"; sourceTree = "<group>"; };
-		A50E31F419D2B705001C5AE6 /* PRButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRButton.h; sourceTree = "<group>"; };
-		A50E31F519D2B705001C5AE6 /* PRButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRButton.m; sourceTree = "<group>"; };
 		A50E31F619D2B705001C5AE6 /* PROptionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PROptionCollectionViewCell.h; sourceTree = "<group>"; };
 		A50E31F719D2B705001C5AE6 /* PROptionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PROptionCollectionViewCell.m; sourceTree = "<group>"; };
 		A51A6F7E19B6FEDF004BF779 /* PRInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRInputAccessoryView.h; sourceTree = "<group>"; };
@@ -473,8 +470,6 @@
 		A50E31F319D2B705001C5AE6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A50E31F419D2B705001C5AE6 /* PRButton.h */,
-				A50E31F519D2B705001C5AE6 /* PRButton.m */,
 				A5866CB119DAF723006EDFB0 /* PRImageView.h */,
 				A5866CB219DAF723006EDFB0 /* PRImageView.m */,
 				A50E31F619D2B705001C5AE6 /* PROptionCollectionViewCell.h */,
@@ -941,7 +936,6 @@
 				A5882D2B19BA0FE500C04E4F /* PRTheme.m in Sources */,
 				A502278E19C09B22005B31D2 /* PRRecord.m in Sources */,
 				A502276E19C0913E005B31D2 /* PRModel.xcdatamodeld in Sources */,
-				A50E31F819D2B705001C5AE6 /* PRButton.m in Sources */,
 				A5EBFED619D1876C0056A44A /* PRMultiTextFieldCell.m in Sources */,
 				A544EEC519C899F700160388 /* PRIncrementCell.m in Sources */,
 				A58699AE19CB2E4F002E0C14 /* PRBasicDataCompleteCell.m in Sources */,
@@ -1156,7 +1150,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f1282d45-823d-4c13-a8d4-b44e9dc13d17";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1181,7 +1175,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f1282d45-823d-4c13-a8d4-b44e9dc13d17";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
