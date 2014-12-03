@@ -41,37 +41,31 @@ extern const struct PRAnswerOptionFetchedProperties {
 
 
 
-
-@property (nonatomic, strong) NSNumber* answerID;
-
+@property (nonatomic, strong) NSNumber *answerID;
 
 
-@property int64_t answerIDValue;
-- (int64_t)answerIDValue;
-- (void)setAnswerIDValue:(int64_t)value_;
+@property long long answerIDValue;
+- (long long)answerIDValue;
+- (void)setAnswerIDValue:(long long)value_;
 
 //- (BOOL)validateAnswerID:(id*)value_ error:(NSError**)error_;
 
 
 
 
-
-@property (nonatomic, strong) NSNumber* imageID;
-
+@property (nonatomic, strong) NSNumber *imageID;
 
 
-@property int64_t imageIDValue;
-- (int64_t)imageIDValue;
-- (void)setImageIDValue:(int64_t)value_;
+@property long long imageIDValue;
+- (long long)imageIDValue;
+- (void)setImageIDValue:(long long)value_;
 
 //- (BOOL)validateImageID:(id*)value_ error:(NSError**)error_;
 
 
 
 
-
-@property (nonatomic, strong) NSString* imageName;
-
+@property (nonatomic, strong) NSString *imageName;
 
 
 //- (BOOL)validateImageName:(id*)value_ error:(NSError**)error_;
@@ -79,9 +73,7 @@ extern const struct PRAnswerOptionFetchedProperties {
 
 
 
-
-@property (nonatomic, strong) NSString* imageTintIdentifier;
-
+@property (nonatomic, strong) NSString *imageTintIdentifier;
 
 
 //- (BOOL)validateImageTintIdentifier:(id*)value_ error:(NSError**)error_;
@@ -89,23 +81,19 @@ extern const struct PRAnswerOptionFetchedProperties {
 
 
 
-
-@property (nonatomic, strong) NSNumber* localizationID;
-
+@property (nonatomic, strong) NSNumber *localizationID;
 
 
-@property int64_t localizationIDValue;
-- (int64_t)localizationIDValue;
-- (void)setLocalizationIDValue:(int64_t)value_;
+@property long long localizationIDValue;
+- (long long)localizationIDValue;
+- (void)setLocalizationIDValue:(long long)value_;
 
 //- (BOOL)validateLocalizationID:(id*)value_ error:(NSError**)error_;
 
 
 
 
-
-@property (nonatomic, strong) NSString* title;
-
+@property (nonatomic, strong) NSString *title;
 
 
 //- (BOOL)validateTitle:(id*)value_ error:(NSError**)error_;
@@ -114,10 +102,9 @@ extern const struct PRAnswerOptionFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet *answerSet;
+@property (nonatomic, strong) NSSet* answerSet;
 
 - (NSMutableSet*)answerSetSet;
-
 
 
 
@@ -139,8 +126,8 @@ extern const struct PRAnswerOptionFetchedProperties {
 - (NSNumber*)primitiveAnswerID;
 - (void)setPrimitiveAnswerID:(NSNumber*)value;
 
-- (int64_t)primitiveAnswerIDValue;
-- (void)setPrimitiveAnswerIDValue:(int64_t)value_;
+- (long long)primitiveAnswerIDValue;
+- (void)setPrimitiveAnswerIDValue:(long long)value_;
 
 
 
@@ -148,8 +135,8 @@ extern const struct PRAnswerOptionFetchedProperties {
 - (NSNumber*)primitiveImageID;
 - (void)setPrimitiveImageID:(NSNumber*)value;
 
-- (int64_t)primitiveImageIDValue;
-- (void)setPrimitiveImageIDValue:(int64_t)value_;
+- (long long)primitiveImageIDValue;
+- (void)setPrimitiveImageIDValue:(long long)value_;
 
 
 
@@ -169,8 +156,8 @@ extern const struct PRAnswerOptionFetchedProperties {
 - (NSNumber*)primitiveLocalizationID;
 - (void)setPrimitiveLocalizationID:(NSNumber*)value;
 
-- (int64_t)primitiveLocalizationIDValue;
-- (void)setPrimitiveLocalizationIDValue:(int64_t)value_;
+- (long long)primitiveLocalizationIDValue;
+- (void)setPrimitiveLocalizationIDValue:(long long)value_;
 
 
 

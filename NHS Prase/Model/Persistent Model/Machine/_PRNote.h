@@ -47,9 +47,7 @@ extern const struct PRNoteFetchedProperties {
 
 
 
-
-@property (nonatomic, strong) NSData* recording;
-
+@property (nonatomic, strong) NSData *recording;
 
 
 //- (BOOL)validateRecording:(id*)value_ error:(NSError**)error_;
@@ -57,9 +55,7 @@ extern const struct PRNoteFetchedProperties {
 
 
 
-
-@property (nonatomic, strong) NSString* text;
-
+@property (nonatomic, strong) NSString *text;
 
 
 //- (BOOL)validateText:(id*)value_ error:(NSError**)error_;
@@ -68,59 +64,58 @@ extern const struct PRNoteFetchedProperties {
 
 
 
-@property (nonatomic, strong) PRConcern *concernAsPrevent;
+@property (nonatomic, strong) PRConcern* concernAsPrevent;
 
 //- (BOOL)validateConcernAsPrevent:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRConcern *concernAsWhat;
+@property (nonatomic, strong) PRConcern* concernAsWhat;
 
 //- (BOOL)validateConcernAsWhat:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRConcern *concernAsWhy;
+@property (nonatomic, strong) PRConcern* concernAsWhy;
 
 //- (BOOL)validateConcernAsWhy:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSSet *questionAsGood;
+@property (nonatomic, strong) NSSet* questionAsGood;
 
 - (NSMutableSet*)questionAsGoodSet;
 
 
 
 
-@property (nonatomic, strong) PRQuestion *questionAsNote;
+@property (nonatomic, strong) PRQuestion* questionAsNote;
 
 //- (BOOL)validateQuestionAsNote:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRRecord *record;
+@property (nonatomic, strong) PRRecord* record;
 
 //- (BOOL)validateRecord:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRRecord *recordAsGood;
+@property (nonatomic, strong) PRRecord* recordAsGood;
 
 //- (BOOL)validateRecordAsGood:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRWard *ward;
+@property (nonatomic, strong) PRWard* ward;
 
 //- (BOOL)validateWard:(id*)value_ error:(NSError**)error_;
-
 
 
 
