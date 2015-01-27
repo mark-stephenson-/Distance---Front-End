@@ -12,7 +12,7 @@
 #import <TheDistanceKit/TheDistanceKit.h>
 
 #import <MagicalRecord/CoreData+MagicalRecord.h>
-
+#import <Crashlytics/Crashlytics.h>
 #import "PRAPIManager.h"
 
 @interface AppDelegate ()
@@ -40,6 +40,10 @@
     
     PRAPIManager *manager = [PRAPIManager sharedManager];
     manager.baseURL = [NSURL URLWithString:@"http://prase.staging2.thedistance.co.uk"];
+    
+#ifndef DEBUG
+    [Crashlytics startWithAPIKey:@"015a3121c76ea8baec90c4a97c7bd1976400adad"];
+#endif
     
     return YES;
 }
