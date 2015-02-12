@@ -43,12 +43,14 @@ extern const struct PRQuestionFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber *answerID;
+
+@property (nonatomic, strong) NSNumber* answerID;
 
 
-@property long long answerIDValue;
-- (long long)answerIDValue;
-- (void)setAnswerIDValue:(long long)value_;
+
+@property int64_t answerIDValue;
+- (int64_t)answerIDValue;
+- (void)setAnswerIDValue:(int64_t)value_;
 
 //- (BOOL)validateAnswerID:(id*)value_ error:(NSError**)error_;
 
@@ -56,51 +58,52 @@ extern const struct PRQuestionFetchedProperties {
 
 
 
-@property (nonatomic, strong) PRConcern* concern;
+@property (nonatomic, strong) PRConcern *concern;
 
 //- (BOOL)validateConcern:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRConcern* concernAsPrevent;
+@property (nonatomic, strong) PRConcern *concernAsPrevent;
 
 //- (BOOL)validateConcernAsPrevent:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRConcern* concernAsSerious;
+@property (nonatomic, strong) PRConcern *concernAsSerious;
 
 //- (BOOL)validateConcernAsSerious:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRNote* goodNote;
+@property (nonatomic, strong) PRNote *goodNote;
 
 //- (BOOL)validateGoodNote:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRNote* note;
+@property (nonatomic, strong) PRNote *note;
 
 //- (BOOL)validateNote:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRPMOSQuestion* pmosQuestion;
+@property (nonatomic, strong) PRPMOSQuestion *pmosQuestion;
 
 //- (BOOL)validatePmosQuestion:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRRecord* record;
+@property (nonatomic, strong) PRRecord *record;
 
 //- (BOOL)validateRecord:(id*)value_ error:(NSError**)error_;
+
 
 
 
@@ -117,8 +120,8 @@ extern const struct PRQuestionFetchedProperties {
 - (NSNumber*)primitiveAnswerID;
 - (void)setPrimitiveAnswerID:(NSNumber*)value;
 
-- (long long)primitiveAnswerIDValue;
-- (void)setPrimitiveAnswerIDValue:(long long)value_;
+- (int64_t)primitiveAnswerIDValue;
+- (void)setPrimitiveAnswerIDValue:(int64_t)value_;
 
 
 

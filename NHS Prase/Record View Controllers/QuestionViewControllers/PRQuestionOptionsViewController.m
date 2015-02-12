@@ -8,7 +8,7 @@
 
 #import "PRQuestionOptionsViewController.h"
 
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 

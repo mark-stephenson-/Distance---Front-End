@@ -9,7 +9,7 @@
 #import "PRMultiTextFieldCell.h"
 #import "PRInputAccessoryView.h"
 
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 #import "PRTheme.h"
 
 @implementation PRMultiTextFieldCell

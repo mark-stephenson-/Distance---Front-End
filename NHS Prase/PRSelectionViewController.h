@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 The Distance. All rights reserved.
 //
 
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 
 /*!
  * @class PRSelectionViewController

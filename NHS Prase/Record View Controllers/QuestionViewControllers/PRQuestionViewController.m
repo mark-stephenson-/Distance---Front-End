@@ -17,7 +17,7 @@
 #import "PRNote.h"
 #import "PRConcern.h"
 
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 
 @interface PRQuestionViewController ()
 

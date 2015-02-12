@@ -1,6 +1,6 @@
 #import "PRNote.h"
 
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 
 @interface PRNote ()
 

@@ -30,9 +30,10 @@ extern const struct PRPMOSFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSOrderedSet* questions;
+@property (nonatomic, strong) NSOrderedSet *questions;
 
 - (NSMutableOrderedSet*)questionsSet;
+
 
 
 

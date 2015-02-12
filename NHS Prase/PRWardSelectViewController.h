@@ -7,7 +7,7 @@
 //
 
 
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 #import "PRViewController.h"
 
 #define ALERT_CREATE_ERROR 222

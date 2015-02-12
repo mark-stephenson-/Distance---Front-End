@@ -38,12 +38,13 @@ const struct PRTrustFetchedProperties PRTrustFetchedProperties = {
 	return (PRTrustID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 	if ([key isEqualToString:@"idValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"id"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 
 	return keyPaths;
@@ -56,21 +57,21 @@ const struct PRTrustFetchedProperties PRTrustFetchedProperties = {
 
 
 
-- (long long)idValue {
+- (int64_t)idValue {
 	NSNumber *result = [self id];
 	return [result longLongValue];
 }
 
-- (void)setIdValue:(long long)value_ {
+- (void)setIdValue:(int64_t)value_ {
 	[self setId:[NSNumber numberWithLongLong:value_]];
 }
 
-- (long long)primitiveIdValue {
+- (int64_t)primitiveIdValue {
 	NSNumber *result = [self primitiveId];
 	return [result longLongValue];
 }
 
-- (void)setPrimitiveIdValue:(long long)value_ {
+- (void)setPrimitiveIdValue:(int64_t)value_ {
 	[self setPrimitiveId:[NSNumber numberWithLongLong:value_]];
 }
 
@@ -97,6 +98,7 @@ const struct PRTrustFetchedProperties PRTrustFetchedProperties = {
 	return result;
 }
 	
+
 
 
 

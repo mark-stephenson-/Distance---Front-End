@@ -10,7 +10,7 @@
 #import "PRPMOSQuestion.h"
 #import "PRQuestion.h"
 
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 
 @interface PRRecord ()
 

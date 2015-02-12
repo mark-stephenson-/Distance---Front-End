@@ -51,7 +51,9 @@ extern const struct PRRecordFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSObject *basicData;
+
+@property (nonatomic, strong) id basicData;
+
 
 
 //- (BOOL)validateBasicData:(id*)value_ error:(NSError**)error_;
@@ -59,7 +61,9 @@ extern const struct PRRecordFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString *language;
+
+@property (nonatomic, strong) NSString* language;
+
 
 
 //- (BOOL)validateLanguage:(id*)value_ error:(NSError**)error_;
@@ -67,7 +71,9 @@ extern const struct PRRecordFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDate *startDate;
+
+@property (nonatomic, strong) NSDate* startDate;
+
 
 
 //- (BOOL)validateStartDate:(id*)value_ error:(NSError**)error_;
@@ -75,43 +81,51 @@ extern const struct PRRecordFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber *timeAdditionalPatient;
+
+@property (nonatomic, strong) NSNumber* timeAdditionalPatient;
 
 
-@property long long timeAdditionalPatientValue;
-- (long long)timeAdditionalPatientValue;
-- (void)setTimeAdditionalPatientValue:(long long)value_;
+
+@property int64_t timeAdditionalPatientValue;
+- (int64_t)timeAdditionalPatientValue;
+- (void)setTimeAdditionalPatientValue:(int64_t)value_;
 
 //- (BOOL)validateTimeAdditionalPatient:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSNumber *timeAdditionalQuestionnaire;
+
+@property (nonatomic, strong) NSNumber* timeAdditionalQuestionnaire;
 
 
-@property long long timeAdditionalQuestionnaireValue;
-- (long long)timeAdditionalQuestionnaireValue;
-- (void)setTimeAdditionalQuestionnaireValue:(long long)value_;
+
+@property int64_t timeAdditionalQuestionnaireValue;
+- (int64_t)timeAdditionalQuestionnaireValue;
+- (void)setTimeAdditionalQuestionnaireValue:(int64_t)value_;
 
 //- (BOOL)validateTimeAdditionalQuestionnaire:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSNumber *timeTracked;
+
+@property (nonatomic, strong) NSNumber* timeTracked;
 
 
-@property long long timeTrackedValue;
-- (long long)timeTrackedValue;
-- (void)setTimeTrackedValue:(long long)value_;
+
+@property int64_t timeTrackedValue;
+- (int64_t)timeTrackedValue;
+- (void)setTimeTrackedValue:(int64_t)value_;
 
 //- (BOOL)validateTimeTracked:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSString *user;
+
+@property (nonatomic, strong) NSString* user;
+
 
 
 //- (BOOL)validateUser:(id*)value_ error:(NSError**)error_;
@@ -120,37 +134,38 @@ extern const struct PRRecordFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet* concerns;
+@property (nonatomic, strong) NSSet *concerns;
 
 - (NSMutableSet*)concernsSet;
 
 
 
 
-@property (nonatomic, strong) NSSet* goodNotes;
+@property (nonatomic, strong) NSSet *goodNotes;
 
 - (NSMutableSet*)goodNotesSet;
 
 
 
 
-@property (nonatomic, strong) NSSet* notes;
+@property (nonatomic, strong) NSSet *notes;
 
 - (NSMutableSet*)notesSet;
 
 
 
 
-@property (nonatomic, strong) NSOrderedSet* questions;
+@property (nonatomic, strong) NSOrderedSet *questions;
 
 - (NSMutableOrderedSet*)questionsSet;
 
 
 
 
-@property (nonatomic, strong) PRWard* ward;
+@property (nonatomic, strong) PRWard *ward;
 
 //- (BOOL)validateWard:(id*)value_ error:(NSError**)error_;
+
 
 
 
@@ -184,8 +199,8 @@ extern const struct PRRecordFetchedProperties {
 @interface _PRRecord (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSObject*)primitiveBasicData;
-- (void)setPrimitiveBasicData:(NSObject*)value;
+- (id)primitiveBasicData;
+- (void)setPrimitiveBasicData:(id)value;
 
 
 
@@ -205,8 +220,8 @@ extern const struct PRRecordFetchedProperties {
 - (NSNumber*)primitiveTimeAdditionalPatient;
 - (void)setPrimitiveTimeAdditionalPatient:(NSNumber*)value;
 
-- (long long)primitiveTimeAdditionalPatientValue;
-- (void)setPrimitiveTimeAdditionalPatientValue:(long long)value_;
+- (int64_t)primitiveTimeAdditionalPatientValue;
+- (void)setPrimitiveTimeAdditionalPatientValue:(int64_t)value_;
 
 
 
@@ -214,8 +229,8 @@ extern const struct PRRecordFetchedProperties {
 - (NSNumber*)primitiveTimeAdditionalQuestionnaire;
 - (void)setPrimitiveTimeAdditionalQuestionnaire:(NSNumber*)value;
 
-- (long long)primitiveTimeAdditionalQuestionnaireValue;
-- (void)setPrimitiveTimeAdditionalQuestionnaireValue:(long long)value_;
+- (int64_t)primitiveTimeAdditionalQuestionnaireValue;
+- (void)setPrimitiveTimeAdditionalQuestionnaireValue:(int64_t)value_;
 
 
 
@@ -223,8 +238,8 @@ extern const struct PRRecordFetchedProperties {
 - (NSNumber*)primitiveTimeTracked;
 - (void)setPrimitiveTimeTracked:(NSNumber*)value;
 
-- (long long)primitiveTimeTrackedValue;
-- (void)setPrimitiveTimeTrackedValue:(long long)value_;
+- (int64_t)primitiveTimeTrackedValue;
+- (void)setPrimitiveTimeTrackedValue:(int64_t)value_;
 
 
 

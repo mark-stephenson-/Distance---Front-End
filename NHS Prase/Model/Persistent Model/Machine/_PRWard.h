@@ -39,19 +39,23 @@ extern const struct PRWardFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber *id;
+
+@property (nonatomic, strong) NSNumber* id;
 
 
-@property long long idValue;
-- (long long)idValue;
-- (void)setIdValue:(long long)value_;
+
+@property int64_t idValue;
+- (int64_t)idValue;
+- (void)setIdValue:(int64_t)value_;
 
 //- (BOOL)validateId:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSString *name;
+
+@property (nonatomic, strong) NSString* name;
+
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
@@ -60,30 +64,31 @@ extern const struct PRWardFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet* concerns;
+@property (nonatomic, strong) NSSet *concerns;
 
 - (NSMutableSet*)concernsSet;
 
 
 
 
-@property (nonatomic, strong) NSSet* goodNotes;
+@property (nonatomic, strong) NSSet *goodNotes;
 
 - (NSMutableSet*)goodNotesSet;
 
 
 
 
-@property (nonatomic, strong) PRHospital* hospital;
+@property (nonatomic, strong) PRHospital *hospital;
 
 //- (BOOL)validateHospital:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSSet* records;
+@property (nonatomic, strong) NSSet *records;
 
 - (NSMutableSet*)recordsSet;
+
 
 
 
@@ -115,8 +120,8 @@ extern const struct PRWardFetchedProperties {
 - (NSNumber*)primitiveId;
 - (void)setPrimitiveId:(NSNumber*)value;
 
-- (long long)primitiveIdValue;
-- (void)setPrimitiveIdValue:(long long)value_;
+- (int64_t)primitiveIdValue;
+- (void)setPrimitiveIdValue:(int64_t)value_;
 
 
 

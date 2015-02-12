@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import "PRTheme.h"
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import <Crashlytics/Crashlytics.h>

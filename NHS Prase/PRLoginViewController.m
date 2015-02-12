@@ -9,7 +9,7 @@
 #import "PRLoginViewController.h"
 
 #import <MagicalRecord/CoreData+MagicalRecord.h>
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
 #import "PRTheme.h"

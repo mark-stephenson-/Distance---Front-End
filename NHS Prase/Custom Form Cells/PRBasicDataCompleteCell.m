@@ -8,7 +8,7 @@
 
 #import "PRBasicDataCompleteCell.h"
 
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 #import "PRTheme.h"
 
 @implementation PRBasicDataCompleteCell

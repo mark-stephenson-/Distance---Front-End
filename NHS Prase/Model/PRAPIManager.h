@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 
 @class PRRecord;
 
