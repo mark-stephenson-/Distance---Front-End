@@ -10,6 +10,45 @@
 
 @implementation PRTheme
 
+-(CGFloat)preferredBaseFontSizeForCategory:(NSString *)currentContentSizeCategory
+{
+    return [super preferredBaseFontSizeForCategory:currentContentSizeCategory] + 3.0;
+}
+
+-(CGFloat)preferredFontSizeForTextStyle:(NSString *)fontStyle andCategorySize:(NSString *)categorySize
+{
+    // ... set the font size adjustment based on the chosen style
+    CGFloat fontSize = [self preferredBaseFontSizeForCategory:categorySize];
+    
+    if ([fontStyle isEqualToString:UIFontTextStyleHeadline]) {
+        // used only for dark blue headlines
+        fontSize += 4.0;
+        
+    } else if ([fontStyle isEqualToString:UIFontTextStyleSubheadline]) {
+        // used for most headings, explanations and prompts
+        fontSize += 0.0;
+        
+    } else if ([fontStyle isEqualToString:UIFontTextStyleBody]) {
+        // used for used inputted data
+        fontSize -= 2.0;
+        
+    } else if ([fontStyle isEqualToString:UIFontTextStyleCaption1]) {
+        // used for navigation buttons
+        fontSize -= 1.0;
+        
+    } else if ([fontStyle isEqualToString:UIFontTextStyleCaption2]) {
+        // used for the Questionnaire CMS introduction
+        fontSize += 2.0;
+        
+    } else if ([fontStyle isEqualToString:UIFontTextStyleFootnote]) {
+        // used for text under the PIRT concern faces
+        fontSize -= 4.0;
+    }
+    
+    return fontSize;
+}
+
+/*
 -(UIFont *)preferredFontForTextStyle:(NSString *)fontStyle andCategorySize:(NSString *)categorySize
 {
     if ([[self class] sizeValueForCategorySize:categorySize] == nil) {
@@ -23,7 +62,7 @@
     
     //  This is a good standard OS wide text size...
     CGFloat fontSize = 14.0;
-    
+
     // ... adjust the font size based on the user's choice ...
     if ([contentSize isEqualToString:UIContentSizeCategoryExtraSmall]) {
         fontSize = 11.0;
@@ -77,7 +116,7 @@
     
     return [themeFont fontWithSize:fontSize];
 }
-
+    
 +(NSDictionary *)languageDictionary
 {
     static NSDictionary *languageOptions = nil;
@@ -88,6 +127,7 @@
     
     return languageOptions;
 }
+*/
 
 -(instancetype)init
 {

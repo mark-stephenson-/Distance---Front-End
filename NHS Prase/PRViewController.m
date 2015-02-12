@@ -9,8 +9,35 @@
 #import "PRViewController.h"
 #import "PRTheme.h"
 
+NSString *const PRLocalisationKeyOK = @"pr.ok";
+NSString *const PRLocalisationKeyCancel = @"pr.cancel";
+NSString *const PRLocalisationKeyRetry = @"pr.retry";
+NSString *const PRLocalisationKeySubmit = @"button.submit";
+NSString *const PRLocalisationKeyNext = @"button.next";
+
 @implementation PRViewController
 
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+        // explicitly add a string to be picked up in gen strings
+    TDLocalizedStringWithDefaultValue(PRLocalisationKeyCancel, nil, nil, @"Cancel", @"Used as a button title to cancel an action or event throughout the app.");
+    TDLocalizedStringWithDefaultValue(PRLocalisationKeyOK, nil, nil, @"OK", @"Used as a button title  to confirm an action or event throughout the app.");
+    TDLocalizedStringWithDefaultValue(PRLocalisationKeyCancel, nil, nil, @"Retry", @"Used as a button title  to retry an action or event throughout the app.");
+    TDLocalizedStringWithDefaultValue(PRLocalisationKeySubmit, nil, nil, @"Submit", @"Used as a button title throughout the app to complete a task, such as adding a concern or submitting a record.");
+}
+
+-(void)showAlertWithStyle:(TDAlertStyle)style sourceItem:(id)sourceItem title:(NSString *)title message:(NSString *)message cancelTitle:(NSString *)cancel buttonTitles:(NSArray *)titles actions:(NSArray *)actions
+{
+    if (cancel == nil && titles.count == 0) {
+        cancel = TDLocalizedStringWithDefaultValue(PRLocalisationKeyOK, nil, nil, nil, nil);
+    }
+    
+    [super showAlertWithStyle:style sourceItem:sourceItem title:title message:message cancelTitle:cancel buttonTitles:titles actions:actions];
+}
+
+/*
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -77,5 +104,6 @@
         buttonCompletion(@(buttonIndex), nil);
     }
 }
+*/
 
 @end

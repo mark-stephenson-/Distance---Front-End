@@ -77,10 +77,9 @@
         
         [self showAlertWithTitle:errorTitle
                          message:errorMessage
-                     buttonTitle:nil
-                buttonCompletion:nil
                      cancelTitle:nil
-                        alertTag:ALERT_CREATE_ERROR];
+                    buttonTitles:nil
+                         actions:nil];
         return NO;
     } else {
         return YES;
@@ -171,29 +170,30 @@
     
     PRSelectionViewController *selectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PRBasicSelectionVC"];
     // force load the view to configure the labels
-    UIView *selectionView = selectionVC.view;
-    [selectionVC setOptions:options withDetails:nil orderedAs:sortedKeys];
-    
-    if (selectedKey != nil) {
-        selectionVC.selectedKeys = [NSMutableSet setWithObject:selectedKey];
+    if (selectionVC.view != nil) {
+        [selectionVC setOptions:options withDetails:nil orderedAs:sortedKeys];
+        
+        if (selectedKey != nil) {
+            selectionVC.selectedKeys = [NSMutableSet setWithObject:selectedKey];
+        }
+        
+        selectionVC.requiresSelection = requiresSelection;
+        selectionVC.tableView.allowsMultipleSelection = NO;
+        selectionVC.delegate = self;
+        selectionVC.key = selectionKey;
+        selectionVC.title = selectionTitle;
+        
+        selectionVC.titleLabel.text = selectionTitle;
+        selectionVC.titleLabel.TDLocalizedStringKey = selectionTitleLocalizationKey;
+        
+        selectionVC.subTitleLabel.text = selectionSubTitle;
+        selectionVC.subTitleLabel.TDLocalizedStringKey = selectionSubtitleLocalizationKey;
+        
+        // present the configured selection vc
+        selectionVC.modalPresentationStyle = UIModalPresentationFormSheet;
+        
+        [self presentViewController:selectionVC animated:YES completion:nil];
     }
-    
-    selectionVC.requiresSelection = requiresSelection;
-    selectionVC.tableView.allowsMultipleSelection = NO;
-    selectionVC.delegate = self;
-    selectionVC.key = selectionKey;
-    selectionVC.title = selectionTitle;
-    
-    selectionVC.titleLabel.text = selectionTitle;
-    selectionVC.titleLabel.TDLocalizedStringKey = selectionTitleLocalizationKey;
-    
-    selectionVC.subTitleLabel.text = selectionSubTitle;
-    selectionVC.subTitleLabel.TDLocalizedStringKey = selectionSubtitleLocalizationKey;
-    
-    // present the configured selection vc
-    selectionVC.modalPresentationStyle = UIModalPresentationFormSheet;
-    
-    [self presentViewController:selectionVC animated:YES completion:nil];
     
     return NO;
 }

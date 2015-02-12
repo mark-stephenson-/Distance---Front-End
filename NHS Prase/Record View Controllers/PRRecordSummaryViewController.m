@@ -116,13 +116,14 @@
         [prSelection setSelectedKeys:[NSMutableSet set]];
         
         // force load the view to configure its subclasses
-        UIView *view = prSelection.view;
-        prSelection.titleLabel.text = @"Incomplete Questions";
-        prSelection.subTitleLabel.text = @"Please complete as many questions as possible. Tap a question to answer to it.";
-        
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [self presentViewController:prSelection animated:YES completion:nil];
-        }];
+        if (prSelection.view != nil) {
+            prSelection.titleLabel.text = @"Incomplete Questions";
+            prSelection.subTitleLabel.text = @"Please complete as many questions as possible. Tap a question to answer to it.";
+            
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self presentViewController:prSelection animated:YES completion:nil];
+            }];
+        }
     }
 }
 

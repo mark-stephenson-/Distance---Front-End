@@ -12,6 +12,8 @@
 
 #import <TheDistanceKit/TheDistanceKit_API.h>
 
+NSString *const PRRecordUsernameKey = @"user";
+
 @interface PRRecord ()
 
 // Private interface goes here. 

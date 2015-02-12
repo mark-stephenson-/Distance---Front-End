@@ -17,7 +17,6 @@
  */
 @interface PRPIRTWardSelectViewController : PRWardSelectViewController
 {
-    BOOL hasAppeared;
     IBOutlet UISegmentedControl *currentWardSegment;
 }
 

@@ -232,7 +232,7 @@
     jsonRecord[@"notes"] = noteEntries;
     jsonRecord[@"goodNotes"] = goodEntries;
     jsonRecord[@"concerns"] = concernEntries;
-    jsonRecord[@"user"] = [[NSUserDefaults standardUserDefaults] valueForKey:@"user"] ? : [NSNull null];
+    jsonRecord[@"user"] = [[NSUserDefaults standardUserDefaults] valueForKey:PRRecordUsernameKey] ? : [NSNull null];
     
 
     
@@ -248,7 +248,7 @@
         return;
     }
     
-    char *jsonChars = jsonData.bytes;
+    const char *jsonChars = jsonData.bytes;
     NSString *jsonString = [NSString stringWithCString:jsonChars encoding:NSUTF8StringEncoding];
     NSLog(@"POSTING: %@", jsonString);
                                

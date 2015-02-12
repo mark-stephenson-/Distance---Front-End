@@ -131,13 +131,14 @@
         PRSelectionViewController *prSelection = (PRSelectionViewController *) selectionVC;
         
         // force load the view to configure its subclasses
-        UIView *view = prSelection.view;
-        prSelection.titleLabel.text = selectedCellInfo[@"title"];
-        prSelection.subTitleLabel.text = @"Please select from the options below.";
-        
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [self presentViewController:prSelection animated:YES completion:nil];
-        }];
+        if (prSelection.view != nil) {
+            prSelection.titleLabel.text = selectedCellInfo[@"title"];
+            prSelection.subTitleLabel.text = @"Please select from the options below.";
+            
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self presentViewController:prSelection animated:YES completion:nil];
+            }];
+        }
     }
 }
 

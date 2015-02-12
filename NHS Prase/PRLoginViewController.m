@@ -41,10 +41,56 @@
     passwordField.accessoryImage = nil;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.keyboardAccessoryView = nil;
+    
+    inputView = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
+    inputView.navigationDelegate = self;
+    
+    passwordField.text = nil;
+    
+    self.keyboardAccessoryView = inputView;
+    
+    self.components = @[usernameField, passwordField];
+    
+    self.scrollContainer = scrollView;
+    
+#ifdef DEBUG
+    usernameField.text = logInCredentials.allKeys[0];
+    passwordField.text = logInCredentials[usernameField.text];
+#endif
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self downloadData];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    self.scrollContainer = nil;
+}
+
+-(void)handleThemeChange:(NSNotification *)note
+{
+    [super handleThemeChange:note];
+    
+    [self applyThemeToView:inputView];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Data Methods
 
 - (IBAction)retryPressed:(id)sender {
     [self downloadData];
@@ -63,6 +109,7 @@
     
     for (PRRecord *toSubmit in savedRecords) {
         [[PRAPIManager sharedManager] submitRecord:toSubmit withCompletion:^(BOOL success, NSError *error) {
+            
             if (success) {
                 [toSubmit MR_deleteEntity];
             }
@@ -82,9 +129,33 @@
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
             }];
             
+            if ([allErrors count] > 0) {
+                
+                NSString *errorTitle = TDLocalizedStringWithDefaultValue(@"login.download-error.title", nil, nil, @"Cannot Download Data", @"Error title when the data download failed.");
+                NSString *errorMessage = TDLocalizedStringWithDefaultValue(@"login.download-error.message", nil, nil, @"Unable to update local database.", @"Error message prefix when the data download fails.");
+                NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"login.download.button-title", nil, nil, @"Retry", @"Button title to retry downloading data.");
+                NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"alert.cancel-title", nil, nil, @"OK", @"The default button to dismiss an alert view.");
+                
+                [PRAPIManager showAlertFromViewController:self
+                                                forErrors:allErrors
+                                                withTitle:errorTitle
+                                                  message:errorMessage
+                                               retryTitle:buttonTitle
+                                               retryBlock:^(UIAlertAction *action) {
+                                                   [self downloadData];
+                                               } cancelTitle:cancelTitle
+                                           andCancelBlock:^(UIAlertAction *action, NSString *errorMessage) {
+                                               retryWidthConstraint.priority = 1;
+                                               [UIView animateWithDuration:0.2 animations:^{
+                                                   [self.view layoutIfNeeded];
+                                               }];
+                                           } contactSupportTitle:nil
+                                      contactSupportBlock:nil];
+                
+            /*
             NSMutableString *errorMessage = [NSMutableString stringWithFormat:@""];
             
-            if ([allErrors count] > 0) {
+            
                 NSMutableArray *errorCodes = [NSMutableArray array];
                 for (NSError *error in allErrors) {
                     if (![errorCodes containsObject:@(error.code)]) {
@@ -114,10 +185,6 @@
                         }
                     }
                 }
-                
-                NSString *errorTitle = TDLocalizedStringWithDefaultValue(@"login.download-error.title", nil, nil, @"Cannot Download Data", @"Error title when the data download failed.");
-                NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"login.download.button-title", nil, nil, @"Retry", @"Button title to retry downloading data.");
-                NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"alert.cancel-title", nil, nil, @"OK", @"The default button to dismiss an alert view.");
                 
                 
                 // We need a cancel completion handler so the superclass method isn't called here
@@ -152,7 +219,8 @@
                     alert.tag = ALERT_DOWNLOAD_ERROR;
                     [alert show];
                 }
-
+             */
+            
             } else {
                 retryWidthConstraint.priority = 999;
                 [UIView animateWithDuration:0.2 animations:^{
@@ -171,6 +239,7 @@
     [manager getLocalizationsWithCompletion:downloadCompletion];
 }
 
+/*
 // iOS 8 Deprecation
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -190,46 +259,7 @@
         }];
     }
 }
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    self.keyboardAccessoryView = nil;
-    
-    inputView = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
-    inputView.navigationDelegate = self;
-    [self applyThemeToView:inputView];
-    
-    passwordField.text = nil;
-    
-    self.keyboardAccessoryView = inputView;
-    
-    self.components = @[usernameField, passwordField];
-
-    self.scrollContainer = scrollView;
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    [self downloadData];
-}
-
--(void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    
-    self.scrollContainer = nil;
-}
-
--(void)applyTheme
-{
-    [super applyTheme];
-    
-    [self applyThemeToView:inputView];
-}
+*/
 
 #pragma mark - Log In
 
@@ -242,10 +272,8 @@
 {
     BOOL canContinue = logInCredentials[usernameField.text] != nil && [passwordField.text isEqualToString:logInCredentials[usernameField.text]];
 
-//    canContinue = true;
-
     if (canContinue) {
-        [[NSUserDefaults standardUserDefaults] setValue:usernameField.text forKey:@"user"];
+        [[NSUserDefaults standardUserDefaults] setValue:usernameField.text forKey:PRRecordUsernameKey];
         [self performSegueWithIdentifier:@"Continue" sender:self];
     } else {
         NSString *title = TDLocalizedStringWithDefaultValue(@"login.error.title", nil, nil, @"Invalid Credentials", @"Error title if the user enters an incorrect username or password.");
@@ -253,10 +281,9 @@
         
         [self showAlertWithTitle:title
                          message:message
-                     buttonTitle:nil
-                buttonCompletion:nil
                      cancelTitle:nil
-                        alertTag:ALERT_LOGIN];
+                    buttonTitles:nil
+                         actions:nil];
     }
 }
 

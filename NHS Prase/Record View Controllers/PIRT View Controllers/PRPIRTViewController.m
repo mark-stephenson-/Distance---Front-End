@@ -206,24 +206,26 @@
     NSString *buttonTitle = alertTitle;
     NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"pirt.cancel.cancel-title", nil, nil, @"Continue", @"Cancel button title to continue a concern workflow dismissing the cancel alert.");
     
+    void (^deletePIRTCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+        [self continueCancel];
+    };
+    
     [self showAlertWithTitle:alertTitle
                      message:alertMessage
-                 buttonTitle:buttonTitle
-            buttonCompletion:^(NSNumber *buttonIndex, UIAlertAction *action) {
-                [self continueCancel];
-            }
                  cancelTitle:cancelTitle
-                    alertTag:ALERT_CANCEL];
-    
+                buttonTitles:@[buttonTitle]
+                     actions:@[deletePIRTCompletion]];
 }
 
+/*
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
         [self continueCancel];
     }
 }
-
+*/
+ 
 -(void)continueCancel
 {
     if ([self.pirtDelegate respondsToSelector:@selector(pirtViewControllerDidCancel:)]) {

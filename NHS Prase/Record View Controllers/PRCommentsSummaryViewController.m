@@ -102,13 +102,15 @@
         toPresent.note = [self.record.goodNotes anyObject];
     }
     
-    UIView *loadView = toPresent.view;
+    // force load the view to configure the note view
     PRInputAccessoryView *accessoryView = [self accessoryView];
-    toPresent.noteView.inputAccessoryView = accessoryView;
-    
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        [self presentViewController:toPresent animated:YES completion:nil];
-    }];
+    if (toPresent.view != nil) {
+        toPresent.noteView.inputAccessoryView = accessoryView;
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self presentViewController:toPresent animated:YES completion:nil];
+        }];
+    }
 }
 
 -(void)addConcern:(id)sender

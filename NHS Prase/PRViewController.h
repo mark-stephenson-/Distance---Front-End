@@ -7,14 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
+
+/// Default localisation key to use for any "OK" string.
+extern NSString *const PRLocalisationKeyOK;
+
+/// Default localisation key to use for any "Cancel" string.
+extern NSString *const PRLocalisationKeyCancel;
+
+/// Default localisation key to use for any "Retry" string.
+extern NSString *const PRLocalisationKeyRetry;
+
+/// Default localisation key to use for any "Submit" button title.
+extern NSString *const PRLocalisationKeySubmit;
+
+/// Default localisation key to use for any "Next" button title.
+extern NSString *const PRLocalisationKeyNext;
 
 /*!
  * @class PRViewController
- * @discussion Base class to be the root superclass of all view controllers. Provides methods to show alerts based on iOS version to centralise deprecation. Sets up themeing appropriately in viewWillAppear: and viewWillDisappear:.
+ * @discussion Base class to be the root superclass of all view controllers. Adds default functionality to showAlertWithTitle: to set the default cancel button title.
  */
-@interface PRViewController : UIViewController <UIAlertViewDelegate>
+@interface PRViewController : TDViewController <UIAlertViewDelegate>
 {
-    NSMutableDictionary *alertCompletions;
+//    NSMutableDictionary *alertCompletions;
 }
 
 /*!
@@ -23,8 +39,7 @@
  * @param completion The completion handler which runs when the button is clicked, either from the UIAlertView delegate method alertView:clickedButtonAtIndex: or as a UIAlertAction handler.
  * @param cancelTitle If this is nil, the localized string with key "alert.cancel-title" is used.
  */
-/// If cancel
--(void)showAlertWithTitle:(NSString *) alertTitle message:(NSString *) alertMessage buttonTitle:(NSString *) buttonTitle buttonCompletion:(void (^)(NSNumber *buttonIndex, UIAlertAction *action)) completion cancelTitle:(NSString *) cancelTitle alertTag:(NSInteger) tag;
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
+///-(void)showAlertWithTitle:(NSString *) alertTitle message:(NSString *) alertMessage buttonTitle:(NSString *) buttonTitle buttonCompletion:(void (^)(NSNumber *buttonIndex, UIAlertAction *action)) completion cancelTitle:(NSString *) cancelTitle alertTag:(NSInteger) tag;
+///-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 @end

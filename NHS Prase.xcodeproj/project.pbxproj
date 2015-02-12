@@ -910,6 +910,7 @@
 				INFOPLIST_FILE = "NHS PraseTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "abd5ec32-248c-48eb-a04d-6f3966e0a0c5";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NHS Prase.app/NHS Prase";
 			};
 			name = "Beta Testing";
@@ -1062,6 +1063,7 @@
 				INFOPLIST_FILE = "NHS PraseTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "abd5ec32-248c-48eb-a04d-6f3966e0a0c5";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NHS Prase.app/NHS Prase";
 			};
 			name = Debug;
@@ -1077,6 +1079,7 @@
 				INFOPLIST_FILE = "NHS PraseTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "abd5ec32-248c-48eb-a04d-6f3966e0a0c5";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NHS Prase.app/NHS Prase";
 			};
 			name = Release;

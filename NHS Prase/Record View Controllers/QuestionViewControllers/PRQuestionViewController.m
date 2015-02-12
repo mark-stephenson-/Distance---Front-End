@@ -126,13 +126,15 @@
     toPresent.delegate = self;
     toPresent.note = self.question.note;
     
-    UIView *loadView = toPresent.view;
-    PRInputAccessoryView *accessoryView = [self accessoryView];
-    toPresent.noteView.inputAccessoryView = accessoryView;
-    
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        [self presentViewController:toPresent animated:YES completion:nil];
-    }];
+    // force load the view to configure the subviews
+    if (toPresent.view != nil) {
+        PRInputAccessoryView *accessoryView = [self accessoryView];
+        toPresent.noteView.inputAccessoryView = accessoryView;
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self presentViewController:toPresent animated:YES completion:nil];
+        }];
+    }
 }
 
 -(void)addSomethingGood:(id)sender
@@ -142,13 +144,15 @@
     toPresent.record = self.question.record;
     toPresent.note = self.question.goodNote;
     
-    UIView *loadView = toPresent.view;
-    PRInputAccessoryView *accessoryView = [self accessoryView];
-    toPresent.noteView.inputAccessoryView = accessoryView;
-    
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        [self presentViewController:toPresent animated:YES completion:nil];
-    }];
+    // force load the view to configure the subviews
+    if (toPresent.view != nil) {
+        PRInputAccessoryView *accessoryView = [self accessoryView];
+        toPresent.noteView.inputAccessoryView = accessoryView;
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self presentViewController:toPresent animated:YES completion:nil];
+        }];
+    }
 }
 
 -(void)addConcern:(id)sender

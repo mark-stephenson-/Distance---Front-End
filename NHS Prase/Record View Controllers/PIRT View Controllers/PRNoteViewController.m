@@ -138,75 +138,30 @@
     NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"note.cancel.error-title", nil, nil, @"Cancel Note", @"Error title shown when the user is about to cancel a note.");
     
     NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"note.cancel.error-message", nil, nil, @"Cancelling a note will lose the text entered or sound recorded. Are you sure you want to cancel this note?", @"Error message shown when the user is about to cancel a note.");
-    NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"note.cancel.error-title", nil, nil, nil, nil);
-    NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"note.cancel.cancel-title", nil, nil, @"Continue", @"Button title to continue creating a note when prompted about cancelling it.");
+    NSString *cancelNoteTitle = TDLocalizedStringWithDefaultValue(@"note.cancel.error-title", nil, nil, nil, nil);
+    NSString *continueNoteTitle = TDLocalizedStringWithDefaultValue(@"note.cancel.cancel-title", nil, nil, @"Continue Note", @"Button title to continue creating a note when prompted about cancelling it.");
     
     canDismissKeyboard = YES;
     [self.noteView resignFirstResponder];
     canShowKeyboard = NO;
     
-#warning JRC: create a more general superclass method to handle multiple completions
-    // We need a cancel completion handler so the superclass method isn't called here
-    if ([UIAlertController class]) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
-                                                                                 message:alertMessage
-                                                                          preferredStyle:UIAlertControllerStyleAlert];
-        
-        [alertController addAction:[UIAlertAction actionWithTitle:buttonTitle
-                                                            style:UIAlertActionStyleDestructive
-                                                          handler:^(UIAlertAction *action) {
-                                                              [self continueCancel];
-                                                          }]];
-        
-        [alertController addAction:[UIAlertAction actionWithTitle:cancelTitle
-                                                            style:UIAlertActionStyleCancel
-                                                          handler:^(UIAlertAction *action) {
-                                                              [self cancelCancel];
-                                                          }]];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
-    } else {
-        // iOS 8 Deprecation
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertTitle
-                                                        message:alertMessage
-                                                       delegate:self
-                                              cancelButtonTitle:cancelTitle
-                                              otherButtonTitles:buttonTitle, nil];
-        alert.tag = ALERT_CANCEL;
-        [alert show];
-    }
-}
-
-// iOS 8 Deprecation
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (alertView.tag == ALERT_CANCEL) {
-        if (buttonIndex == 1) {
-            [self continueCancel];
+    void (^continueNoteCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+        canShowKeyboard = YES;
+        canDismissKeyboard = NO;
+        [self.noteView becomeFirstResponder];
+    };
+    
+    void (^cancelNoteCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+        if ([self.delegate respondsToSelector:@selector(noteViewControllerCancelled:)]) {
+            [self.delegate noteViewControllerCancelled:self];
         }
-    }
-}
-
--(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if (alertView.tag == ALERT_CANCEL && buttonIndex == 0) {
-        [self cancelCancel];
-    }
-}
-
--(void)cancelCancel
-{
-    canShowKeyboard = YES;
-    canDismissKeyboard = NO;
-    [self.noteView becomeFirstResponder];
-}
-
-// iOS 8 Deprecation
--(void)continueCancel
-{
-    if ([self.delegate respondsToSelector:@selector(noteViewControllerCancelled:)]) {
-        [self.delegate noteViewControllerCancelled:self];
-    }
+    };
+    
+    [self showAlertWithTitle:alertTitle
+                     message:alertMessage
+                 cancelTitle:nil
+                buttonTitles:@[continueNoteTitle, cancelNoteTitle]
+                     actions:@[continueNoteCompletion, cancelNoteCompletion]];
 }
 
 #pragma mark - Delegate Methods

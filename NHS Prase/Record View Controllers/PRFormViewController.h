@@ -8,7 +8,7 @@
 
 #import <TheDistanceKit/TheDistanceKit_API.h>
 
-@interface PRFormViewController : TDFormViewController  <TDSelectCellDelegate>
+@interface PRFormViewController : TDFormViewController // <TDSelectCellDelegate>
 {
     // height is constrained to be the content height at a low priority so it will never grow beyond its superview's frame but will be centered and clipped if it is smaller.
     IBOutlet NSLayoutConstraint *tableHeight;
