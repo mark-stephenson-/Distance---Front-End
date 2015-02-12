@@ -47,23 +47,20 @@ const struct PRRecordFetchedProperties PRRecordFetchedProperties = {
 	return (PRRecordID*)[super objectID];
 }
 
-+ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
++ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 	if ([key isEqualToString:@"timeAdditionalPatientValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"timeAdditionalPatient"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
 	}
 	if ([key isEqualToString:@"timeAdditionalQuestionnaireValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"timeAdditionalQuestionnaire"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
 	}
 	if ([key isEqualToString:@"timeTrackedValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"timeTracked"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
 	}
 
 	return keyPaths;
@@ -97,21 +94,21 @@ const struct PRRecordFetchedProperties PRRecordFetchedProperties = {
 
 
 
-- (int64_t)timeAdditionalPatientValue {
+- (long long)timeAdditionalPatientValue {
 	NSNumber *result = [self timeAdditionalPatient];
 	return [result longLongValue];
 }
 
-- (void)setTimeAdditionalPatientValue:(int64_t)value_ {
+- (void)setTimeAdditionalPatientValue:(long long)value_ {
 	[self setTimeAdditionalPatient:[NSNumber numberWithLongLong:value_]];
 }
 
-- (int64_t)primitiveTimeAdditionalPatientValue {
+- (long long)primitiveTimeAdditionalPatientValue {
 	NSNumber *result = [self primitiveTimeAdditionalPatient];
 	return [result longLongValue];
 }
 
-- (void)setPrimitiveTimeAdditionalPatientValue:(int64_t)value_ {
+- (void)setPrimitiveTimeAdditionalPatientValue:(long long)value_ {
 	[self setPrimitiveTimeAdditionalPatient:[NSNumber numberWithLongLong:value_]];
 }
 
@@ -123,21 +120,21 @@ const struct PRRecordFetchedProperties PRRecordFetchedProperties = {
 
 
 
-- (int64_t)timeAdditionalQuestionnaireValue {
+- (long long)timeAdditionalQuestionnaireValue {
 	NSNumber *result = [self timeAdditionalQuestionnaire];
 	return [result longLongValue];
 }
 
-- (void)setTimeAdditionalQuestionnaireValue:(int64_t)value_ {
+- (void)setTimeAdditionalQuestionnaireValue:(long long)value_ {
 	[self setTimeAdditionalQuestionnaire:[NSNumber numberWithLongLong:value_]];
 }
 
-- (int64_t)primitiveTimeAdditionalQuestionnaireValue {
+- (long long)primitiveTimeAdditionalQuestionnaireValue {
 	NSNumber *result = [self primitiveTimeAdditionalQuestionnaire];
 	return [result longLongValue];
 }
 
-- (void)setPrimitiveTimeAdditionalQuestionnaireValue:(int64_t)value_ {
+- (void)setPrimitiveTimeAdditionalQuestionnaireValue:(long long)value_ {
 	[self setPrimitiveTimeAdditionalQuestionnaire:[NSNumber numberWithLongLong:value_]];
 }
 
@@ -149,21 +146,21 @@ const struct PRRecordFetchedProperties PRRecordFetchedProperties = {
 
 
 
-- (int64_t)timeTrackedValue {
+- (long long)timeTrackedValue {
 	NSNumber *result = [self timeTracked];
 	return [result longLongValue];
 }
 
-- (void)setTimeTrackedValue:(int64_t)value_ {
+- (void)setTimeTrackedValue:(long long)value_ {
 	[self setTimeTracked:[NSNumber numberWithLongLong:value_]];
 }
 
-- (int64_t)primitiveTimeTrackedValue {
+- (long long)primitiveTimeTrackedValue {
 	NSNumber *result = [self primitiveTimeTracked];
 	return [result longLongValue];
 }
 
-- (void)setPrimitiveTimeTrackedValue:(int64_t)value_ {
+- (void)setPrimitiveTimeTrackedValue:(long long)value_ {
 	[self setPrimitiveTimeTracked:[NSNumber numberWithLongLong:value_]];
 }
 
@@ -233,7 +230,6 @@ const struct PRRecordFetchedProperties PRRecordFetchedProperties = {
 @dynamic ward;
 
 	
-
 
 
 

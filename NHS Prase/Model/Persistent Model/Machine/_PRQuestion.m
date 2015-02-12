@@ -43,13 +43,12 @@ const struct PRQuestionFetchedProperties PRQuestionFetchedProperties = {
 	return (PRQuestionID*)[super objectID];
 }
 
-+ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
++ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 	if ([key isEqualToString:@"answerIDValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"answerID"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
 	}
 
 	return keyPaths;
@@ -62,21 +61,21 @@ const struct PRQuestionFetchedProperties PRQuestionFetchedProperties = {
 
 
 
-- (int64_t)answerIDValue {
+- (long long)answerIDValue {
 	NSNumber *result = [self answerID];
 	return [result longLongValue];
 }
 
-- (void)setAnswerIDValue:(int64_t)value_ {
+- (void)setAnswerIDValue:(long long)value_ {
 	[self setAnswerID:[NSNumber numberWithLongLong:value_]];
 }
 
-- (int64_t)primitiveAnswerIDValue {
+- (long long)primitiveAnswerIDValue {
 	NSNumber *result = [self primitiveAnswerID];
 	return [result longLongValue];
 }
 
-- (void)setPrimitiveAnswerIDValue:(int64_t)value_ {
+- (void)setPrimitiveAnswerIDValue:(long long)value_ {
 	[self setPrimitiveAnswerID:[NSNumber numberWithLongLong:value_]];
 }
 
@@ -111,7 +110,6 @@ const struct PRQuestionFetchedProperties PRQuestionFetchedProperties = {
 @dynamic record;
 
 	
-
 
 
 

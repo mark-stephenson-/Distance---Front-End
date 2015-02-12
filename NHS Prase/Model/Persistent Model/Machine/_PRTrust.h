@@ -33,23 +33,19 @@ extern const struct PRTrustFetchedProperties {
 
 
 
-
-@property (nonatomic, strong) NSNumber* id;
-
+@property (nonatomic, strong) NSNumber *id;
 
 
-@property int64_t idValue;
-- (int64_t)idValue;
-- (void)setIdValue:(int64_t)value_;
+@property long long idValue;
+- (long long)idValue;
+- (void)setIdValue:(long long)value_;
 
 //- (BOOL)validateId:(id*)value_ error:(NSError**)error_;
 
 
 
 
-
-@property (nonatomic, strong) NSString* name;
-
+@property (nonatomic, strong) NSString *name;
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
@@ -58,10 +54,9 @@ extern const struct PRTrustFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet *hospitals;
+@property (nonatomic, strong) NSSet* hospitals;
 
 - (NSMutableSet*)hospitalsSet;
-
 
 
 
@@ -83,8 +78,8 @@ extern const struct PRTrustFetchedProperties {
 - (NSNumber*)primitiveId;
 - (void)setPrimitiveId:(NSNumber*)value;
 
-- (int64_t)primitiveIdValue;
-- (void)setPrimitiveIdValue:(int64_t)value_;
+- (long long)primitiveIdValue;
+- (void)setPrimitiveIdValue:(long long)value_;
 
 
 

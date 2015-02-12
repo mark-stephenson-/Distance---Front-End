@@ -33,14 +33,12 @@ extern const struct PRAnswerSetFetchedProperties {
 
 
 
-
-@property (nonatomic, strong) NSNumber* id;
-
+@property (nonatomic, strong) NSNumber *id;
 
 
-@property int64_t idValue;
-- (int64_t)idValue;
-- (void)setIdValue:(int64_t)value_;
+@property long long idValue;
+- (long long)idValue;
+- (void)setIdValue:(long long)value_;
 
 //- (BOOL)validateId:(id*)value_ error:(NSError**)error_;
 
@@ -48,17 +46,16 @@ extern const struct PRAnswerSetFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSOrderedSet *options;
+@property (nonatomic, strong) NSOrderedSet* options;
 
 - (NSMutableOrderedSet*)optionsSet;
 
 
 
 
-@property (nonatomic, strong) NSSet *pmosQuestion;
+@property (nonatomic, strong) NSSet* pmosQuestion;
 
 - (NSMutableSet*)pmosQuestionSet;
-
 
 
 
@@ -85,8 +82,8 @@ extern const struct PRAnswerSetFetchedProperties {
 - (NSNumber*)primitiveId;
 - (void)setPrimitiveId:(NSNumber*)value;
 
-- (int64_t)primitiveIdValue;
-- (void)setPrimitiveIdValue:(int64_t)value_;
+- (long long)primitiveIdValue;
+- (void)setPrimitiveIdValue:(long long)value_;
 
 
 

@@ -50,8 +50,6 @@
 		A544EEC519C899F700160388 /* PRIncrementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A544EEC419C899F700160388 /* PRIncrementCell.m */; };
 		A5466A8919AE070100240026 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5466A8819AE070100240026 /* HomeViewController.m */; };
 		A5466CBF19AE3B0500240026 /* PRBasicDataFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5466CBE19AE3B0500240026 /* PRBasicDataFormViewController.m */; };
-		A557C7FB19DABB5100E0E647 /* TheDistanceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C0731919D59C24003446F7 /* TheDistanceKit.framework */; };
-		A557C7FC19DABB5900E0E647 /* TheDistanceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5C0731919D59C24003446F7 /* TheDistanceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A576056919B0AE150018E9EA /* PRDateSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A576056819B0AE150018E9EA /* PRDateSelectCell.m */; };
 		A57B558D19CAE4420069FE65 /* PRFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57B558C19CAE4420069FE65 /* PRFormViewController.m */; };
 		A57B559619CAE55C0069FE65 /* PRRecordSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57B559519CAE55C0069FE65 /* PRRecordSummaryViewController.m */; };
@@ -77,6 +75,9 @@
 		A5EBFECB19D17D710056A44A /* PRTimeSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBFECA19D17D710056A44A /* PRTimeSelectCell.m */; };
 		A5EBFED619D1876C0056A44A /* PRMultiTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBFED519D1876C0056A44A /* PRMultiTextFieldCell.m */; };
 		A5F565AA19C338E10080C692 /* PRSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F565A919C338E10080C692 /* PRSelectionViewController.m */; };
+		E7C2EEF21A77E7C70047D66A /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C2EEF11A77E7C70047D66A /* Crashlytics.framework */; };
+		E7C2EEF31A77E91D0047D66A /* TheDistanceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C0731919D59C24003446F7 /* TheDistanceKit.framework */; };
+		E7C2EEF41A77E9240047D66A /* TheDistanceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5C0731919D59C24003446F7 /* TheDistanceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,7 +188,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A557C7FC19DABB5900E0E647 /* TheDistanceKit.framework in Embed Frameworks */,
+				E7C2EEF41A77E9240047D66A /* TheDistanceKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,6 +344,7 @@
 		A5F565A819C338E10080C692 /* PRSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRSelectionViewController.h; sourceTree = "<group>"; };
 		A5F565A919C338E10080C692 /* PRSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRSelectionViewController.m; sourceTree = "<group>"; };
 		B52AF8C77EDD4244ACFF7EC3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7C2EEF11A77E7C70047D66A /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,8 +352,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A557C7FB19DABB5100E0E647 /* TheDistanceKit.framework in Frameworks */,
+				E7C2EEF31A77E91D0047D66A /* TheDistanceKit.framework in Frameworks */,
 				408CC42810B9480D918B020E /* libPods.a in Frameworks */,
+				E7C2EEF21A77E7C70047D66A /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +380,7 @@
 		792E3E2641A0445DAC8F4667 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E7C2EEF11A77E7C70047D66A /* Crashlytics.framework */,
 				B52AF8C77EDD4244ACFF7EC3 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -696,6 +700,7 @@
 				A561094E19ADEED000488879 /* Embed Frameworks */,
 				A5F521F919AF29B600DC6C68 /* CopyFiles */,
 				6DD37551D3FD435CB6FCD6DC /* Copy Pods Resources */,
+				E7C2EEE51A77E7620047D66A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -925,6 +930,19 @@
 			shellPath = /bin/sh;
 			shellScript = "cd NHS\\ Prase/Model/Persistent\\ Model\nmogenerator --template-var arc=true -m PRModel.xcdatamodeld/PRModel.xcdatamodel/ -M Machine/ -H Human/";
 		};
+		E7C2EEE51A77E7620047D66A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 015a3121c76ea8baec90c4a97c7bd1976400adad dc9c94e3c240c0f762b3ba151b9bb3c0ddf4271bf6be439432c002315672794f";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1142,6 +1160,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/**",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "NHS Prase/Info.plist";
 				INFOPLIST_PREFIX_HEADER = "\"/NHS Prase/NHS Prase Info.h\"";
@@ -1150,7 +1169,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "26283be1-41de-4058-a274-a129309c23ec";
 			};
 			name = Debug;
 		};
@@ -1161,12 +1180,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Anthony Main (6D22PCH782)";
+				CODE_SIGN_IDENTITY = "iOS Distribution: Bradford Teaching Hospitals NHS Foundation Trust";
 				DEFINES_MODULE = YES;
 				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch *.xcode* (*) .DS_Store CVS .svn .git .hg *.framework";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/**",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "NHS Prase/Info.plist";
 				INFOPLIST_PREFIX_HEADER = "\"/NHS Prase/NHS Prase Info.h\"";
@@ -1175,7 +1195,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4d3bb57d-e0dd-4123-9bd0-ef7382083bff";
 			};
 			name = Release;
 		};

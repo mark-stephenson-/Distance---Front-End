@@ -38,13 +38,12 @@ const struct PRAnswerSetFetchedProperties PRAnswerSetFetchedProperties = {
 	return (PRAnswerSetID*)[super objectID];
 }
 
-+ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
++ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 	if ([key isEqualToString:@"idValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"id"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
 	}
 
 	return keyPaths;
@@ -57,21 +56,21 @@ const struct PRAnswerSetFetchedProperties PRAnswerSetFetchedProperties = {
 
 
 
-- (int64_t)idValue {
+- (long long)idValue {
 	NSNumber *result = [self id];
 	return [result longLongValue];
 }
 
-- (void)setIdValue:(int64_t)value_ {
+- (void)setIdValue:(long long)value_ {
 	[self setId:[NSNumber numberWithLongLong:value_]];
 }
 
-- (int64_t)primitiveIdValue {
+- (long long)primitiveIdValue {
 	NSNumber *result = [self primitiveId];
 	return [result longLongValue];
 }
 
-- (void)setPrimitiveIdValue:(int64_t)value_ {
+- (void)setPrimitiveIdValue:(long long)value_ {
 	[self setPrimitiveId:[NSNumber numberWithLongLong:value_]];
 }
 
@@ -104,7 +103,6 @@ const struct PRAnswerSetFetchedProperties PRAnswerSetFetchedProperties = {
 	return result;
 }
 	
-
 
 
 
