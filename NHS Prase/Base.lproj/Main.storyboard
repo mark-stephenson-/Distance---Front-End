@@ -1142,50 +1142,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IcX-ve-s3D">
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="755" translatesAutoresizingMaskIntoConstraints="NO" id="IcX-ve-s3D">
                                 <rect key="frame" x="10" y="181" width="580" height="239"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="462" translatesAutoresizingMaskIntoConstraints="NO" id="uAm-CY-LWW">
-                                        <rect key="frame" x="15" y="15" width="550" height="209"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="WVX-Tt-9c6"/>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="800" id="eX2-6E-iEK"/>
-                                        </constraints>
-                                        <string key="text">This questionnaire aims to help us understand about patient safety from a patient's perspective and to identify areas of strength and weakness within hospitals. It contains factors that have been identified by patients that may affect their safety whilst using NHS services.
-
-Please read the following statements carefully, keeping in mind your current stay in hospital and pick one option for each question. If you have had no experience of, or do not know the answer to a statement, please choose 'not applicable'.</string>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="questionnaire.statement"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Disclaimer label at the start of the questionnaire."/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 2"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="uAm-CY-LWW" firstAttribute="leading" secondItem="IcX-ve-s3D" secondAttribute="leading" constant="15" id="3Hp-zb-iFh"/>
-                                    <constraint firstAttribute="bottom" secondItem="uAm-CY-LWW" secondAttribute="bottom" constant="15" id="NdD-3y-XpG"/>
-                                    <constraint firstItem="uAm-CY-LWW" firstAttribute="top" secondItem="IcX-ve-s3D" secondAttribute="top" constant="15" id="gSA-gX-eLS"/>
-                                    <constraint firstAttribute="trailing" secondItem="uAm-CY-LWW" secondAttribute="trailing" constant="15" id="hyE-yF-61A"/>
-                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                         <integer key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="462" translatesAutoresizingMaskIntoConstraints="NO" id="uAm-CY-LWW">
+                                <rect key="frame" x="25" y="196" width="550" height="209"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="WVX-Tt-9c6"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="800" id="eX2-6E-iEK"/>
+                                </constraints>
+                                <string key="text">This questionnaire aims to help us understand about patient safety from a patient's perspective and to identify areas of strength and weakness within hospitals. It contains factors that have been identified by patients that may affect their safety whilst using NHS services.
+
+Please read the following statements carefully, keeping in mind your current stay in hospital and pick one option for each question. If you have had no experience of, or do not know the answer to a statement, please choose 'not applicable'.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="questionnaire.statement"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Disclaimer label at the start of the questionnaire."/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 2"/>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="WVX-Tt-9c6"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="uAm-CY-LWW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="N1w-eX-1LK" secondAttribute="leading" constant="25" id="3Nj-uS-wb4"/>
+                            <constraint firstItem="IcX-ve-s3D" firstAttribute="bottom" secondItem="uAm-CY-LWW" secondAttribute="bottom" constant="15" id="5CF-rH-nlC"/>
                             <constraint firstAttribute="centerY" secondItem="IcX-ve-s3D" secondAttribute="centerY" id="5H0-xI-rOW"/>
+                            <constraint firstItem="uAm-CY-LWW" firstAttribute="leading" secondItem="N1w-eX-1LK" secondAttribute="leading" priority="800" constant="25" id="6L1-Pp-4Z9"/>
                             <constraint firstAttribute="centerX" secondItem="IcX-ve-s3D" secondAttribute="centerX" id="81f-JY-7q0"/>
+                            <constraint firstItem="IcX-ve-s3D" firstAttribute="leading" secondItem="uAm-CY-LWW" secondAttribute="leading" constant="-15" id="BG7-xH-apB"/>
+                            <constraint firstAttribute="trailing" secondItem="uAm-CY-LWW" secondAttribute="trailing" priority="800" constant="25" id="DVB-Mk-479"/>
+                            <constraint firstItem="uAm-CY-LWW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JRc-5Z-PFg" secondAttribute="bottom" constant="25" id="EMg-sE-XYn"/>
                             <constraint firstItem="lE1-At-5pf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="IcX-ve-s3D" secondAttribute="bottom" constant="50" id="Fq2-oN-cB2"/>
+                            <constraint firstItem="lE1-At-5pf" firstAttribute="top" secondItem="uAm-CY-LWW" secondAttribute="bottom" constant="25" id="Pgg-ak-QE5"/>
                             <constraint firstItem="IcX-ve-s3D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="N1w-eX-1LK" secondAttribute="leading" priority="900" constant="10" id="T8m-34-Kaa"/>
+                            <constraint firstItem="IcX-ve-s3D" firstAttribute="top" secondItem="uAm-CY-LWW" secondAttribute="top" constant="-15" id="YSb-xm-fQM"/>
                             <constraint firstItem="IcX-ve-s3D" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JRc-5Z-PFg" secondAttribute="bottom" constant="50" id="g29-5E-byA"/>
+                            <constraint firstAttribute="centerY" secondItem="uAm-CY-LWW" secondAttribute="centerY" id="h98-X9-Ipy"/>
+                            <constraint firstAttribute="centerX" secondItem="uAm-CY-LWW" secondAttribute="centerX" id="hkG-C8-XLP"/>
+                            <constraint firstItem="uAm-CY-LWW" firstAttribute="top" secondItem="JRc-5Z-PFg" secondAttribute="bottom" constant="25" id="lDf-nZ-ct4"/>
+                            <constraint firstItem="lE1-At-5pf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uAm-CY-LWW" secondAttribute="bottom" constant="25" id="pCi-Uj-0qE"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uAm-CY-LWW" secondAttribute="trailing" constant="25" id="pVv-Gp-RGs"/>
+                            <constraint firstItem="IcX-ve-s3D" firstAttribute="trailing" secondItem="uAm-CY-LWW" secondAttribute="trailing" constant="15" id="yJB-rW-e4D"/>
                             <constraint firstAttribute="trailing" secondItem="IcX-ve-s3D" secondAttribute="trailing" priority="900" constant="10" id="zik-1j-IyU"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5H0-xI-rOW"/>
+                                <exclude reference="81f-JY-7q0"/>
+                                <exclude reference="T8m-34-Kaa"/>
+                                <exclude reference="g29-5E-byA"/>
+                                <exclude reference="zik-1j-IyU"/>
+                                <exclude reference="lDf-nZ-ct4"/>
+                                <exclude reference="Fq2-oN-cB2"/>
+                                <exclude reference="Pgg-ak-QE5"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="borderView" destination="IcX-ve-s3D" id="BFJ-hY-Fku"/>
