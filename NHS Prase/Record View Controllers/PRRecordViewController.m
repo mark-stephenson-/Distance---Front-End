@@ -382,7 +382,7 @@
 -(void)continueSubmit
 {
     
-    MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:self.view];
     hud.labelText = TDLocalizedStringWithDefaultValue(@"record.hud.submit", nil, nil, @"Submitting...", @"The label identifying that record is being submitted. Shown on the record screen.");
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -398,7 +398,19 @@
                                         [self.record MR_deleteEntity];
                                         self.record = nil;
                                         
-                                        [self continueHome];
+                                        NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"record.submission-complete.title", nil, nil, @"Questionnaire Submitted", @"Title for alert when the record has been successfully submitted.");
+                                        NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.submission-complete.title", nil, nil, @"Questionnaire submitted, thank you for your time.", @"Message for alert when the record has been successfully submitted.");
+                                        NSString *buttonTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyOK, nil, nil, nil, nil);
+                                        
+                                        void (^buttonCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+                                            [self continueHome];
+                                        };
+                                        
+                                        [self showAlertWithTitle:alertTitle
+                                                         message:alertMessage
+                                                     cancelTitle:nil
+                                                    buttonTitles:@[buttonTitle]
+                                                         actions:@[buttonCompletion]];
                                     } else {
                                         [self logErrorFromSelector:_cmd withFormat:@"Unable to submit record: %@", error];
                                         
@@ -428,11 +440,49 @@
 
 -(void)submitLater
 {
-    NSMutableArray *savedRecords = [[NSUserDefaults standardUserDefaults] valueForKey:@"savedRecords"];
+    MBProgressHUD *savingHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    savingHUD.labelText = TDLocalizedStringWithDefaultValue(@"record.hud.saving", nil, nil, @"Saving", @"HUD title shown whilst a record is being saved to disk if it cannot be submitted to the server.");
     
-    [savedRecords addObject:self.record];
-    
-    [self continueHome];
+    // saving the context will commit this record to disk. This will be re-uploaded again on the login screen
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:^(BOOL success, NSError *error) {
+        
+        [savingHUD hide:YES];
+        
+        if (error != nil) {
+            NSString *saveErrorTitle = TDLocalizedStringWithDefaultValue(@"record.save.title", nil, nil, @"Save Error", @"Alert title shown when a record could not be saved to disk.");
+            NSString *saveErrorMessage = TDLocalizedStringWithDefaultValue(@"record.save.message", nil, nil, @"Unable to save this questionnaire", @"Alert message shown when a record could not be saved to disk.");
+            NSString *retryTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyRetry, nil, nil, nil, nil);
+            NSString *cancelTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyCancel, nil, nil, nil, nil);
+            
+            void (^retryCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+                [self submitLater];
+            };
+            
+            void (^cancelCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+                
+            };
+            
+            [self showAlertWithTitle:saveErrorTitle
+                             message:[NSString stringWithFormat:@"%@\n%@", saveErrorMessage, error.localizedDescription]
+                         cancelTitle:nil
+                        buttonTitles:@[retryTitle, cancelTitle]
+                             actions:@[retryCompletion, cancelCompletion]];
+        } else {
+            NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"record.submission-later.title", nil, nil, @"Questionnaire Saved", @"Title for alert when the record has been successfully submitted.");
+            NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.submission-later.title", nil, nil, @"Questionnaire has been saved and will be automatically submitted when a network connection becomes available. Thank you for your time.", @"Message for alert when the record has been successfully submitted.");
+            NSString *buttonTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyOK, nil, nil, nil, nil);
+            
+            void (^buttonCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+                [self continueHome];
+            };
+            
+            [self showAlertWithTitle:alertTitle
+                             message:alertMessage
+                         cancelTitle:nil
+                        buttonTitles:@[buttonTitle]
+                             actions:@[buttonCompletion]];
+        }
+    }];
 }
 
 @end

@@ -98,25 +98,24 @@
 
 - (void)downloadData
 {
-    __block NSMutableArray *allErrors = [NSMutableArray array];
-    __block BOOL allSuccess = YES;
-    __block int completionCount = 0;
-    
-    NSMutableArray *savedRecords = [[NSUserDefaults standardUserDefaults] valueForKey:@"savedRecords"];
-    if (savedRecords == nil) {
-        savedRecords = [NSMutableArray array];
-    }
+    NSArray *savedRecords = [PRRecord MR_findAll];
     
     for (PRRecord *toSubmit in savedRecords) {
         [[PRAPIManager sharedManager] submitRecord:toSubmit withCompletion:^(BOOL success, NSError *error) {
-            
             if (success) {
+                NSLog(@"Successfully submitted previously saved record.");
                 [toSubmit MR_deleteEntity];
+                [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
             }
         }];
     }
     
     // start download operations
+    
+    __block NSMutableArray *allErrors = [NSMutableArray array];
+    __block BOOL allSuccess = YES;
+    __block int completionCount = 0;
+    
     void (^downloadCompletion)(SEL selector, BOOL success, NSArray *errors) = ^(SEL selector, BOOL success, NSArray *errors){
         [allErrors addObjectsFromArray:errors];
         allSuccess = allSuccess && success;
