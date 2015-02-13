@@ -306,19 +306,31 @@
     
     if ([currentVC isKindOfClass:[PRRecordSummaryViewController class]]) {
         
+        // check the number of questions and update the value if necessry
+        NSInteger answered = [self.record answeredQuestions];
+        NSInteger total = self.record.questions.count;
+    
         NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-title", nil, nil, @"Submit Record", @"The alert title shown when the user attempts to submit a record with incomplete data.");
-        NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-message", nil, nil, @"Please ensure you have answered all the questions before submitting this record.", @"The alert message shown when the user attempts to submit a record with incomplete data.");
-        NSString *submitTitle = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-", nil, nil, @"", @"The alert button for continuing with submission even if questions are unanswered.");
+        NSString *submitTitle = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-submit", nil, nil, @"Submit", @"The alert button for continuing with submission even if questions are unanswered.");
         NSString *cancelTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyCancel, nil, nil, nil, nil);
         
         void (^submitCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
             [self continueSubmit];
         };
         
+        NSString *alertMessage = nil;
+        
+        if (answered != total) {
+            alertMessage = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-message", nil, nil, @"This questionnaire has been partially completed. Please review questions missed and complete as much as you can.", @"The alert message shown when the user attempts to submit a record with incomplete data.");
+        } else {
+            alertMessage = TDLocalizedStringWithDefaultValue(@"submit.alert.answered-message", nil, nil, @"Thank you for completing this questionnaire. Once this questionnaire has been submitted it can no longer be editted.", @"The alert message shown when the user attempts to submit a record with complete data.");
+        }
+        
         [self showAlertWithTitle:alertTitle
                          message:alertMessage
                      cancelTitle:cancelTitle
                     buttonTitles:@[submitTitle] actions:@[submitCompletion]];
+        
         return;
     }
     
@@ -348,7 +360,7 @@
     NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.error-title", nil, nil, @"Cancel Record", @"Alert title to cancel a record and return to the home or title screen.");
     NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.cancel.error-message", nil, nil, @"Returning to the title screen will delete any entered data. Are you sure you want to continue?", @"Alert message shown when returning to the app's title screen") ;
     NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.button-title", nil, nil, @"Cancel Record", @"Button title to cancel a record.");
-    NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.cancel-title", nil, nil, @"Continue", @"Button title to continue creating a record when prompted about cancelling a record.");
+    NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.cancel-title", nil, nil, @"Continue Record", @"Button title to continue creating a record when prompted about cancelling a record.");
     
     void (^homeCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
         [self continueHome];

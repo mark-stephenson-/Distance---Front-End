@@ -97,7 +97,7 @@
     }
     
     if (collectionView == q2CV) {
-        NSArray *titles = @[@"Defintely not",
+        NSArray *titles = @[@"Definitely not",
                             @"Probably not",
                             @"Probably yes",
                             @"Definitely yes",

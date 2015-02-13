@@ -276,7 +276,7 @@
         [[NSUserDefaults standardUserDefaults] setValue:usernameField.text forKey:PRRecordUsernameKey];
         [self performSegueWithIdentifier:@"Continue" sender:self];
     } else {
-        NSString *title = TDLocalizedStringWithDefaultValue(@"login.error.title", nil, nil, @"Invalid Credentials", @"Error title if the user enters an incorrect username or password.");
+        NSString *title = TDLocalizedStringWithDefaultValue(@"login.error.title", nil, nil, @"Incorrect Username or Password", @"Error title if the user enters an incorrect username or password.");
         NSString *message = TDLocalizedStringWithDefaultValue(@"login.error.message", nil, nil, @"Please enter a valid username and password.", @"Error message when the user enters an incorrect username or password.");
         
         [self showAlertWithTitle:title
@@ -299,7 +299,7 @@
         inputView.nextButton.backgroundColor = [[PRTheme sharedTheme] positiveColor];
         [inputView.nextButton setImage:[UIImage imageNamed:@"tick"] forState:UIControlStateNormal];
     } else {
-        inputView.nextButton.TDLocalizedStringKey = @"button.next";
+        inputView.nextButton.TDLocalizedStringKey = PRLocalisationKeyNext;
         [inputView.nextButton setImage:[UIImage imageNamed:@"next_arrow"] forState:UIControlStateNormal];
         inputView.nextButton.backgroundColor = [[PRTheme sharedTheme] neutralColor];
     }

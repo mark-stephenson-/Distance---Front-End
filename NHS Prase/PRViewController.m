@@ -10,7 +10,7 @@
 #import "PRTheme.h"
 
 NSString *const PRLocalisationKeyOK = @"pr.ok";
-NSString *const PRLocalisationKeyCancel = @"pr.cancel";
+NSString *const PRLocalisationKeyCancel = @"button.cancel";
 NSString *const PRLocalisationKeyRetry = @"pr.retry";
 NSString *const PRLocalisationKeySubmit = @"button.submit";
 NSString *const PRLocalisationKeyNext = @"button.next";
@@ -22,10 +22,12 @@ NSString *const PRLocalisationKeyNext = @"button.next";
     [super viewDidLoad];
     
         // explicitly add a string to be picked up in gen strings
-    TDLocalizedStringWithDefaultValue(PRLocalisationKeyCancel, nil, nil, @"Cancel", @"Used as a button title to cancel an action or event throughout the app.");
-    TDLocalizedStringWithDefaultValue(PRLocalisationKeyOK, nil, nil, @"OK", @"Used as a button title  to confirm an action or event throughout the app.");
-    TDLocalizedStringWithDefaultValue(PRLocalisationKeyCancel, nil, nil, @"Retry", @"Used as a button title  to retry an action or event throughout the app.");
-    TDLocalizedStringWithDefaultValue(PRLocalisationKeySubmit, nil, nil, @"Submit", @"Used as a button title throughout the app to complete a task, such as adding a concern or submitting a record.");
+    NSString *loadString = nil;
+    loadString = TDLocalizedStringWithDefaultValue(@"button.cancel", nil, nil, @"Cancel", @"Used as a button title to cancel an action or event throughout the app.");
+    loadString = TDLocalizedStringWithDefaultValue(@"pr.ok", nil, nil, @"OK", @"Used as a button title  to confirm an action or event throughout the app.");
+    loadString = TDLocalizedStringWithDefaultValue(@"pr.retry", nil, nil, @"Retry", @"Used as a button title  to retry an action or event throughout the app.");
+    loadString = TDLocalizedStringWithDefaultValue(@"button.submit", nil, nil, @"Submit", @"Used as a button title throughout the app to complete a task, such as adding a concern or submitting a record.");
+    loadString = TDLocalizedStringWithDefaultValue(@"button.next", nil, nil, @"Next", @"Used as a button title throughout the app to advance a task.");
 }
 
 -(void)showAlertWithStyle:(TDAlertStyle)style sourceItem:(id)sourceItem title:(NSString *)title message:(NSString *)message cancelTitle:(NSString *)cancel buttonTitles:(NSArray *)titles actions:(NSArray *)actions

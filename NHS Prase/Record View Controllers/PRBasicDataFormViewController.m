@@ -105,18 +105,23 @@
                                                                      andKey:@"Admitted"];
     admittedInfo[@"reuseIdentifier"] = @"DateSelectCell";
     
+    /*
+     // question removed by client but prototype
     NSMutableDictionary *inpatientInfo = [PRIncrementCell cellInfoWithTitle:@"How many times have you been an inpatient at this hospital in the past 5 years?"
                                                                       value:@0
                                                                      andKey:@"InpatientCount"];
     inpatientInfo[@"reuseIdentifier"] = @"IncrementCell";
+    */
     
+    /*
     NSMutableDictionary *ongoingTreatmentInfo = [TDSegmentedCell cellInfoWithTitle:@"Are you receiving any ongoing treatment elsewhere in the hospital?"
                                                                      segmentTitles:@[@"Yes", @"No"]
                                                                              value:@1
                                                                             andKey:@"OngoingTreatment"];
     ongoingTreatmentInfo[@"reuseIdentifier"] = @"SegmentCell";
+    */
     
-    return @[@[dobInfo, genderInfo, ethnicGroupCell, languageInfo, admittedInfo, inpatientInfo, ongoingTreatmentInfo]];
+    return @[@[dobInfo, genderInfo, ethnicGroupCell, languageInfo, admittedInfo]];
 }
 
 #pragma mark - SelectionCell Delegate Methods

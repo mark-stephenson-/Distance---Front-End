@@ -120,7 +120,7 @@
         [nextButton setImage:[UIImage imageNamed:@"submit"] forState:UIControlStateNormal];
         [nextButton setBackgroundColor:[[PRTheme sharedTheme] positiveColor]];
     } else {
-        nextButton.TDLocalizedStringKey = @"button.next";
+        nextButton.TDLocalizedStringKey = PRLocalisationKeyNext;
         [nextButton setTitle:@"Next" forState:UIControlStateNormal];
         [nextButton setImage:[UIImage imageNamed:@"next_arrow"] forState:UIControlStateNormal];
         [nextButton setBackgroundColor:[[PRTheme sharedTheme] neutralColor]];

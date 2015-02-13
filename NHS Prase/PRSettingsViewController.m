@@ -52,10 +52,10 @@
     // create the rotation preference cell
     
     
-    NSArray *rotationTitles = @[TDLocalizedStringWithDefaultValue(@"settings.rotation.protrait", nil, nil, @"Portrait", @"Interface rotation preference is portrait."),
-                                TDLocalizedStringWithDefaultValue(@"settings.rotation.protrait", nil, nil, @"Landscape", @"Interface rotation preference is portrait."),
-                                TDLocalizedStringWithDefaultValue(@"settings.rotation.protrait", nil, nil, @"Rotates to Device", @"Interface rotation preference is to rotate to match the device.")];
-    NSMutableDictionary *rotationCell = [TDSegmentedCell cellInfoWithTitle:TDLocalizedStringWithDefaultValue(@"settings.cell.rotation", nil, nil, @"Please select your screen rotation prreference", @"The title label on the settings screen to set the user's prefference on interface orientation.")
+    NSArray *rotationTitles = @[TDLocalizedStringWithDefaultValue(@"settings.rotation.portrait", nil, nil, @"Portrait", @"Interface rotation preference is portrait."),
+                                TDLocalizedStringWithDefaultValue(@"settings.rotation.landscape", nil, nil, @"Landscape", @"Interface rotation preference is portrait."),
+                                TDLocalizedStringWithDefaultValue(@"settings.rotation.automatic", nil, nil, @"Automatic Rotation", @"Interface rotation preference is to rotate to match the device.")];
+    NSMutableDictionary *rotationCell = [TDSegmentedCell cellInfoWithTitle:TDLocalizedStringWithDefaultValue(@"settings.cell.rotation", nil, nil, @"Please select your screen rotation preference", @"The title label on the settings screen to set the user's preference on interface orientation.")
                                                              segmentTitles:rotationTitles
                                                                        value:@([[PRTheme sharedTheme] currentRotationPreference])
                                                                       andKey:@"Rotation"];

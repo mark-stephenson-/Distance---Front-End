@@ -11,6 +11,7 @@
 
 #import <TheDistanceKit/TheDistanceKit_API.h>
 #import "PRTheme.h"
+#import "PRViewController.h"
 
 @implementation PRMultiTextFieldCell
 
@@ -73,7 +74,7 @@
         [inputView.nextButton setImage:[UIImage imageNamed:@"tick"] forState:UIControlStateNormal];
         [inputView.nextButton setBackgroundColor:[[PRTheme sharedTheme] positiveColor]];
     } else {
-        inputView.nextButton.TDLocalizedStringKey = @"button.next";
+        inputView.nextButton.TDLocalizedStringKey = PRLocalisationKeyNext;
         [inputView.nextButton setImage:[UIImage imageNamed:@"next_arrow"] forState:UIControlStateNormal];
         [inputView.nextButton setBackgroundColor:[[PRTheme sharedTheme] neutralColor]];
     }

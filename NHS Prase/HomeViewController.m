@@ -66,20 +66,20 @@
 
 -(void)goToLogIn:(id)sender
 {
-    NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.error-title", nil, nil, @"Cancel Record", @"Alert title to cancel a record and return to the home or title screen.");
-    NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.cancel.error-message", nil, nil, @"Returning to the title screen will delete any entered data. Are you sure you want to continue?", @"Alert message shown when returning to the app's title screen") ;
-    NSString *cancelRecordTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.button-title", nil, nil, @"Cancel Record", @"Button title to cancel a record.");
-    NSString *continueRecordTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.cancel-title", nil, nil, @"Continue Record", @"Button title to continue creating a record when prompted about cancelling a record.");
+    NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"home.logout.title", nil, nil, @"Log Out", @"Alert title to log out of a session.");
+    NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"home.logout.error-message", nil, nil, @"Do you want to Log out of the PRASE app?", @"Alert message shown when returning to the app's title screen") ;
+    NSString *logoutTitle = TDLocalizedStringWithDefaultValue(@"home.logout.button", nil, nil, @"Log Out", @"Button title to log out.");
+    NSString *continueRecordTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyCancel, nil, nil, nil, nil);
     
-    void (^cancelRecordCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+    void (^logoutCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
         [self.navigationController popToRootViewControllerAnimated:YES];
     };
     
     [self showAlertWithTitle:alertTitle
                      message:alertMessage
                  cancelTitle:continueRecordTitle
-                buttonTitles:@[cancelRecordTitle]
-                     actions:@[cancelRecordCompletion]];
+                buttonTitles:@[logoutTitle]
+                     actions:@[logoutCompletion]];
 }
 
 @end
