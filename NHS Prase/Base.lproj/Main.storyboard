@@ -501,7 +501,7 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <segmentedControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="Jpd-y1-J7Y" customClass="TDSegmentedControl">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="Jpd-y1-J7Y" customClass="TDSegmentedControl">
                                                     <rect key="frame" x="30" y="51" width="500" height="29"/>
                                                     <segments>
                                                         <segment title="Portrait"/>

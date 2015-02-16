@@ -8,7 +8,7 @@
 
 #import <TheDistanceKit/TheDistanceKit_API.h>
 
-typedef enum {kRotationPreferencePortrait, kRotationPreferenceLandscape, kRotationPreferenceBoth} RotationPreference;
+typedef enum {kRotationPreferenceBoth = 0, kRotationPreferencePortrait, kRotationPreferenceLandscape} RotationPreference;
 
 @interface PRTheme : TDTheme
 

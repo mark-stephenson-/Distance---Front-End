@@ -70,5 +70,26 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+-(NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    RotationPreference currentPreference = [[PRTheme sharedTheme] currentRotationPreference];
+    
+    NSUInteger orientation = UIInterfaceOrientationMaskAll;
+    switch (currentPreference) {
+        case kRotationPreferenceLandscape:
+            orientation = UIInterfaceOrientationMaskLandscape;
+            break;
+        case kRotationPreferencePortrait:
+            orientation = UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+            break;
+        default:
+            break;
+    }
+    
+//    NSLog(@"[%@] Getting rotation preference: %lu", self, (unsigned long)orientation);
+    
+    return orientation;
+}
+
 
 @end

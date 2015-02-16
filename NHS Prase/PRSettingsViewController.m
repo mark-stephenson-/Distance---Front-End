@@ -51,13 +51,27 @@
     
     // create the rotation preference cell
     
+    NSNumber *rotationValue = nil;
+    switch ([[PRTheme sharedTheme] currentRotationPreference]) {
+        case kRotationPreferencePortrait:
+            rotationValue = @0;
+            break;
+        case kRotationPreferenceLandscape:
+            rotationValue = @1;
+            break;
+        case kRotationPreferenceBoth:
+            rotationValue = @2;
+            break;
+        default:
+            break;
+    }
     
     NSArray *rotationTitles = @[TDLocalizedStringWithDefaultValue(@"settings.rotation.portrait", nil, nil, @"Portrait", @"Interface rotation preference is portrait."),
                                 TDLocalizedStringWithDefaultValue(@"settings.rotation.landscape", nil, nil, @"Landscape", @"Interface rotation preference is portrait."),
                                 TDLocalizedStringWithDefaultValue(@"settings.rotation.automatic", nil, nil, @"Automatic Rotation", @"Interface rotation preference is to rotate to match the device.")];
     NSMutableDictionary *rotationCell = [TDSegmentedCell cellInfoWithTitle:TDLocalizedStringWithDefaultValue(@"settings.cell.rotation", nil, nil, @"Please select your screen rotation preference", @"The title label on the settings screen to set the user's preference on interface orientation.")
                                                              segmentTitles:rotationTitles
-                                                                       value:@([[PRTheme sharedTheme] currentRotationPreference])
+                                                                       value:rotationValue
                                                                       andKey:@"Rotation"];
     rotationCell[@"reuseIdentifier"] = @"Rotation";
     
@@ -82,7 +96,23 @@
     if ([cell.key isEqualToString:@"Rotation"]) {
         TDSegmentedCell *segCell = (TDSegmentedCell *) cell;
         NSUInteger index = [segCell.segmentTitles indexOfObject:cell.value];
-        [[PRTheme sharedTheme] setCurrentRotationPreference:(RotationPreference) index];
+        
+        RotationPreference newPref;
+        switch (index) {
+            case 0:
+                newPref = kRotationPreferencePortrait;
+                break;
+            case 1:
+                newPref = kRotationPreferenceLandscape;
+                break;
+            case 2:
+                newPref = kRotationPreferenceBoth;
+                break;
+            default:
+                break;
+        }
+        
+        [[PRTheme sharedTheme] setCurrentRotationPreference:newPref];
     }
 }
 
