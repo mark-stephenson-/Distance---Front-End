@@ -14,22 +14,10 @@
  */
 @interface PRSelectionViewController : TDSelectionViewController
 {
-    IBOutlet UIView *scrollButtonView;
-    IBOutlet UIButton *scrollUpButton;
-    IBOutlet UIButton *scrollDownButton;
-    
-    // searching \\
-    
-    IBOutlet UISearchBar *searchBar;
+    IBOutlet UIView *tableContainer;
 }
-
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
 @property (nonatomic, strong) IBOutlet UILabel *subTitleLabel;;
-
--(IBAction)scrollUp:(id)sender;
--(IBAction)scrollDown:(id)sender;
-
--(void)showButtons:(BOOL) show animated:(BOOL) animated;
 
 
 @end

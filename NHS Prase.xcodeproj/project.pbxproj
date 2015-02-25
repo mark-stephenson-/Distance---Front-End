@@ -54,6 +54,8 @@
 		A57B558D19CAE4420069FE65 /* PRFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57B558C19CAE4420069FE65 /* PRFormViewController.m */; };
 		A57B559619CAE55C0069FE65 /* PRRecordSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57B559519CAE55C0069FE65 /* PRRecordSummaryViewController.m */; };
 		A57B559919CAE62A0069FE65 /* PRQuestionnaireCompleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A57B559819CAE62A0069FE65 /* PRQuestionnaireCompleteCell.m */; };
+		A58591E81A9CD15F008DB220 /* UIViewController+Scrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = A58591E71A9CD15F008DB220 /* UIViewController+Scrolling.m */; };
+		A58591EB1A9CDB7D008DB220 /* PRScrollButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = A58591EA1A9CDB7D008DB220 /* PRScrollButtonView.m */; };
 		A5866CB319DAF723006EDFB0 /* PRImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5866CB219DAF723006EDFB0 /* PRImageView.m */; };
 		A58699AE19CB2E4F002E0C14 /* PRBasicDataCompleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A58699AD19CB2E4F002E0C14 /* PRBasicDataCompleteCell.m */; };
 		A5882D2B19BA0FE500C04E4F /* PRTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A504419419B60D740000C9B3 /* PRTheme.m */; };
@@ -208,6 +210,10 @@
 		A57B559519CAE55C0069FE65 /* PRRecordSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRRecordSummaryViewController.m; path = "Record View Controllers/PRRecordSummaryViewController.m"; sourceTree = "<group>"; };
 		A57B559719CAE62A0069FE65 /* PRQuestionnaireCompleteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = PRQuestionnaireCompleteCell.h; path = "Custom Form Cells/PRQuestionnaireCompleteCell.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		A57B559819CAE62A0069FE65 /* PRQuestionnaireCompleteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRQuestionnaireCompleteCell.m; path = "Custom Form Cells/PRQuestionnaireCompleteCell.m"; sourceTree = "<group>"; };
+		A58591E61A9CD15F008DB220 /* UIViewController+Scrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Scrolling.h"; path = "Categories/UIViewController+Scrolling.h"; sourceTree = "<group>"; };
+		A58591E71A9CD15F008DB220 /* UIViewController+Scrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Scrolling.m"; path = "Categories/UIViewController+Scrolling.m"; sourceTree = "<group>"; };
+		A58591E91A9CDB7D008DB220 /* PRScrollButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRScrollButtonView.h; sourceTree = "<group>"; };
+		A58591EA1A9CDB7D008DB220 /* PRScrollButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRScrollButtonView.m; sourceTree = "<group>"; };
 		A5866CB119DAF723006EDFB0 /* PRImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRImageView.h; sourceTree = "<group>"; };
 		A5866CB219DAF723006EDFB0 /* PRImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRImageView.m; sourceTree = "<group>"; };
 		A58699AC19CB2E4F002E0C14 /* PRBasicDataCompleteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = PRBasicDataCompleteCell.h; path = "Custom Form Cells/PRBasicDataCompleteCell.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -384,6 +390,8 @@
 				A50E31F719D2B705001C5AE6 /* PROptionCollectionViewCell.m */,
 				A58A8D3B19C6EA1A0052EAB7 /* PRSelectionTableViewCell.h */,
 				A58A8D3C19C6EA1A0052EAB7 /* PRSelectionTableViewCell.m */,
+				A58591E91A9CDB7D008DB220 /* PRScrollButtonView.h */,
+				A58591EA1A9CDB7D008DB220 /* PRScrollButtonView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -451,6 +459,8 @@
 				A5D40FCF19D2F8FE00CD6FAD /* PRAPIManager.m */,
 				A5BCB3C919BDE35700092F50 /* PRViewController.h */,
 				A5BCB3CA19BDE35700092F50 /* PRViewController.m */,
+				A58591E61A9CD15F008DB220 /* UIViewController+Scrolling.h */,
+				A58591E71A9CD15F008DB220 /* UIViewController+Scrolling.m */,
 				A5F565A819C338E10080C692 /* PRSelectionViewController.h */,
 				A5F565A919C338E10080C692 /* PRSelectionViewController.m */,
 				A536994A19ADD1170045EEB1 /* PRLoginViewController.h */,
@@ -745,6 +755,7 @@
 				A502279319C09B22005B31D2 /* _PRQuestion.m in Sources */,
 				A52A3C8819B4C1F900985BAB /* PRNoteViewController.m in Sources */,
 				A504417D19B5D37B0000C9B3 /* PRCommentsSummaryViewController.m in Sources */,
+				A58591EB1A9CDB7D008DB220 /* PRScrollButtonView.m in Sources */,
 				A536994C19ADD1170045EEB1 /* PRLoginViewController.m in Sources */,
 				A52A3C8519B4C1E700985BAB /* PRGoodViewController.m in Sources */,
 				A52A3C7019B471E300985BAB /* PRQuestionOptionsViewController.m in Sources */,
@@ -779,6 +790,7 @@
 				A5023E4919CC3A1D0076923A /* PRTrust.m in Sources */,
 				A5BCB3C219BDBC7100092F50 /* PRSettingsViewController.m in Sources */,
 				A50671CF19B0DB40008557CE /* PRQuestionViewController.m in Sources */,
+				A58591E81A9CD15F008DB220 /* UIViewController+Scrolling.m in Sources */,
 				A504417819B5CE920000C9B3 /* PRSegmentTabViewController.m in Sources */,
 				A5023E4219CC3A130076923A /* _PRHospital.m in Sources */,
 				A58A8D3D19C6EA1A0052EAB7 /* PRSelectionTableViewCell.m in Sources */,
