@@ -24,13 +24,17 @@
     // save a weak reference of self to store in the dictionary to prevent retain cycles caused in self.cellInfo
     __weak PRBasicDataFormViewController *wSelf = self;
     
-    NSMutableDictionary *dobInfo = [PRDateSelectCell cellInfoWithTitle:@"Date of Birth"
+    NSString *dobTitle = TDLocalizedStringWithDefaultValue(@"basic-data.dob.title", nil, nil, @"Date of Birth", @"Basic Data Question: Date of Birth");
+    NSMutableDictionary *dobInfo = [PRDateSelectCell cellInfoWithTitle:dobTitle
                                                                  value:nil
                                                                 andKey:@"DOB"];
     dobInfo[@"reuseIdentifier"] = @"DateSelectCell";
     
-    NSMutableDictionary *genderInfo = [TDSegmentedCell cellInfoWithTitle:@"Gender"
-                                                           segmentTitles:@[@"Male", @"Female"]
+    NSString *genderTitle = TDLocalizedStringWithDefaultValue(@"basic-data.gender.title", nil, nil, @"Gender", @"Basic Data Question: Gender");
+    NSString *genderMale = TDLocalizedStringWithDefaultValue(@"basic-data.gender.male", nil, nil, @"Male", @"Basic Data Question: Gender-Male");
+    NSString *genderFemale = TDLocalizedStringWithDefaultValue(@"basic-data.gender.female", nil, nil, @"Female", @"Basic Data Question: Gender-Female");
+    NSMutableDictionary *genderInfo = [TDSegmentedCell cellInfoWithTitle:genderTitle
+                                                           segmentTitles:@[genderMale, genderFemale]
                                                                    value:nil
                                                                   andKey:@"Gender"];
     genderInfo[@"reuseIdentifier"] = @"SegmentCell";
@@ -100,27 +104,13 @@
     languageInfo[@"userInfo"][@"textField.textInsets"] = [NSValue valueWithUIEdgeInsets:UIEdgeInsetsMake(4, 15, 4, 15)];
     languageInfo[@"userInfo"][@"textField.imageInsets"] = [NSValue valueWithUIEdgeInsets:UIEdgeInsetsMake(2, 0, 2, 10)];
     
-    NSMutableDictionary *admittedInfo = [PRIncrementCell cellInfoWithTitle:@"Home many days have you been in hospital?"
+    NSString *admittedTitle = TDLocalizedStringWithDefaultValue(@"basic-data.admitted.title", nil, nil, @"Home many days have you been in hospital?", @"Basic Data Question: Home many days have you been in hospital?");
+    
+    NSMutableDictionary *admittedInfo = [PRIncrementCell cellInfoWithTitle:admittedTitle
                                                                       value:@0
                                                                      andKey:@"StayLength"];
     admittedInfo[@"reuseIdentifier"] = @"IncrementCell";
-    
-    /*
-     // question removed by client but prototype
-    NSMutableDictionary *inpatientInfo = [PRIncrementCell cellInfoWithTitle:@"How many times have you been an inpatient at this hospital in the past 5 years?"
-                                                                      value:@0
-                                                                     andKey:@"InpatientCount"];
-    inpatientInfo[@"reuseIdentifier"] = @"IncrementCell";
-    */
-    
-    /*
-    NSMutableDictionary *ongoingTreatmentInfo = [TDSegmentedCell cellInfoWithTitle:@"Are you receiving any ongoing treatment elsewhere in the hospital?"
-                                                                     segmentTitles:@[@"Yes", @"No"]
-                                                                             value:@1
-                                                                            andKey:@"OngoingTreatment"];
-    ongoingTreatmentInfo[@"reuseIdentifier"] = @"SegmentCell";
-    */
-    
+
     return @[@[dobInfo, genderInfo, ethnicGroupCell, languageInfo, admittedInfo]];
 }
 
