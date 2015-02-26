@@ -359,9 +359,10 @@
 -(void)goHome:(id)sender
 {
     NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.error-title", nil, nil, @"Cancel Record", @"Alert title to cancel a record and return to the home or title screen.");
-    NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.cancel.error-message", nil, nil, @"Returning to the title screen will delete any entered data. Are you sure you want to continue?", @"Alert message shown when returning to the app's title screen") ;
-    NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.button-title", nil, nil, @"Cancel Record", @"Button title to cancel a record.");
-    NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.cancel-title", nil, nil, @"Continue Record", @"Button title to continue creating a record when prompted about cancelling a record.");
+    
+    NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.cancel.error-message", nil, nil, @"Returning to the home screen will cancel this record and any questions answered or data entered will not be saved. Are you sure you want to cancel this record and return to the home screen?", @"Alert message shown when returning to the app's title screen") ;
+    NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.button-title", nil, nil, @"Go Home", @"Button title to cancel a record and return to the home screen.");
+    NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.cancel-title", nil, nil, @"Continue with Record", @"Button title to continue creating a record when prompted about cancelling a record.");
     
     void (^homeCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
         [self continueHome];
@@ -402,7 +403,7 @@
                                         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
                                         
                                         NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"record.submission-complete.title", nil, nil, @"Questionnaire Submitted", @"Title for alert when the record has been successfully submitted.");
-                                        NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.submission-complete.title", nil, nil, @"Questionnaire submitted, thank you for your time.", @"Message for alert when the record has been successfully submitted.");
+                                        NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.submission-complete.message", nil, nil, @"Questionnaire submitted, thank you for your time.", @"Message for alert when the record has been successfully submitted.");
                                         NSString *buttonTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyOK, nil, nil, nil, nil);
                                         
                                         void (^buttonCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
@@ -418,7 +419,7 @@
                                         [self logErrorFromSelector:_cmd withFormat:@"Unable to submit record: %@", error];
                                         
                                         NSString *errorTitle = TDLocalizedStringWithDefaultValue(@"record.submit-error.title", nil, nil, @"Cannot Submit Record", @"Error title when the record submit failed.");
-                                        NSString *errorMessage = [NSString stringWithFormat:@"The record could not be saved, either retry now, or the record will be automatically saved and retried when possible."];
+                                        NSString *errorMessage = TDLocalizedStringWithDefaultValue(@"record.submit-error.message", nil, nil, @"The record could not be saved, either retry now, or the record will be automatically saved and retried when possible.", @"Error message when the record submit failed.");
                                         
                                         NSString *retryTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyRetry, nil, nil, nil, nil);
                                         NSString *laterTitle = TDLocalizedStringWithDefaultValue(@"record.submit-error.later", nil, nil, @"Later", @"Button title to save a record for later as an error occured trying to submit the data.");
@@ -472,7 +473,7 @@
                              actions:@[retryCompletion, cancelCompletion]];
         } else {
             NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"record.submission-later.title", nil, nil, @"Questionnaire Saved", @"Title for alert when the record has been successfully submitted.");
-            NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.submission-later.title", nil, nil, @"Questionnaire has been saved and will be automatically submitted when a network connection becomes available. Thank you for your time.", @"Message for alert when the record has been successfully submitted.");
+            NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.submission-later.message", nil, nil, @"Questionnaire has been saved and will be automatically submitted when a network connection becomes available. Thank you for your time.", @"Message for alert when the record has been successfully submitted.");
             NSString *buttonTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyOK, nil, nil, nil, nil);
             
             void (^buttonCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){

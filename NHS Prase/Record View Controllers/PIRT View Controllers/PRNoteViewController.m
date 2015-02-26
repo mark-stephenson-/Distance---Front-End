@@ -137,9 +137,9 @@
 {
     NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"note.cancel.error-title", nil, nil, @"Cancel Note", @"Error title shown when the user is about to cancel a note.");
     
-    NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"note.cancel.error-message", nil, nil, @"Cancelling a note will lose the text entered or sound recorded. Are you sure you want to cancel this note?", @"Error message shown when the user is about to cancel a note.");
-    NSString *cancelNoteTitle = TDLocalizedStringWithDefaultValue(@"note.cancel.error-title", nil, nil, nil, nil);
-    NSString *continueNoteTitle = TDLocalizedStringWithDefaultValue(@"note.cancel.cancel-title", nil, nil, @"Continue Note", @"Button title to continue creating a note when prompted about cancelling it.");
+    NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"note.cancel.error-message", nil, nil, @"By cancelling this note any text entered will not be saved. Are you sure you want to cancel this note?", @"Error message shown when the user is about to cancel a note.");
+    NSString *cancelNoteTitle = alertTitle;
+    NSString *continueNoteTitle = TDLocalizedStringWithDefaultValue(@"note.cancel.cancel-title", nil, nil, @"Continue with Note", @"Button title to continue creating a note when prompted about cancelling it.");
     
     canDismissKeyboard = YES;
     [self.noteView resignFirstResponder];

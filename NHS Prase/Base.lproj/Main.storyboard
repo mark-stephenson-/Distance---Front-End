@@ -855,7 +855,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="755" translatesAutoresizingMaskIntoConstraints="NO" id="IcX-ve-s3D">
-                                <rect key="frame" x="10" y="181" width="580" height="239"/>
+                                <rect key="frame" x="10" y="139" width="580" height="323"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                         <integer key="value" value="2"/>
@@ -863,14 +863,12 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" preferredMaxLayoutWidth="462" translatesAutoresizingMaskIntoConstraints="NO" id="uAm-CY-LWW">
-                                <rect key="frame" x="25" y="196" width="550" height="209"/>
+                                <rect key="frame" x="25" y="154" width="550" height="293"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="WVX-Tt-9c6"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="800" id="eX2-6E-iEK"/>
                                 </constraints>
-                                <string key="text">This questionnaire aims to help us understand about patient safety from a patient's perspective and to identify areas of strength and weakness within hospitals. It contains factors that have been identified by patients that may affect their safety whilst using NHS services.
-
-Please read the following statements carefully, keeping in mind your current stay in hospital and pick one option for each question. If you have had no experience of, or do not know the answer to a statement, please choose 'not applicable'.</string>
+                                <mutableString key="text"> What is PRASE?  It means Patient Reporting and Action for a Safe Environment. The PRASE tool, which is the questionnaire, will allow you provide feedback on the safety and quality of care you have experienced during your stay on this ward. Any specific examples of your safety concerns or positive experiences for yourself or other patients around you during this ward stay would be appreciated This experience does not need to have caused harm to you or other patients. Your feedback will be used by the ward to make safety improvements as identified. Please note that you or your carer / family member can complete this questionnaire independently or with support of a patient safety volunteer. Once your willingness to participate is confirmed by the patient safety volunteer, you can then proceed to complete the questionnaire.</mutableString>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>

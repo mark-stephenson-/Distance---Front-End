@@ -171,7 +171,7 @@
     if (savedRecords.count > 0) {
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = TDLocalizedStringWithDefaultValue(@"login.hud.download", nil, nil, nil, nil);
+        hud.labelText = TDLocalizedStringWithDefaultValue(@"login.hud.submitting", nil, nil, @"Submitting...", @"The label identifying that old records is being re-submitted. Shown on the login screen.");
         
         __block NSMutableArray *allErrors = [NSMutableArray array];
         __block NSInteger submissionCount = savedRecords.count;

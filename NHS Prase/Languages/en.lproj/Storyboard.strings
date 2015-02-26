@@ -71,9 +71,7 @@
 "record.segment.navigation.segment_3" = "Summary";
 
 /* Disclaimer label at the start of the questionnaire. */
-"questionnaire.statement" = "This questionnaire aims to help us understand about patient safety from a patient's perspective and to identify areas of strength and weakness within hospitals. It contains factors that have been identified by patients that may affect their safety whilst using NHS services.
-
-Please read the following statements carefully, keeping in mind your current stay in hospital and pick one option for each question. If you have had no experience of, or do not know the answer to a statement, please choose 'not applicable'.";
+"questionnaire.statement" = " What is PRASE?  It means Patient Reporting and Action for a Safe Environment. The PRASE tool, which is the questionnaire, will allow you provide feedback on the safety and quality of care you have experienced during your stay on this ward. Any specific examples of your safety concerns or positive experiences for yourself or other patients around you during this ward stay would be appreciated This experience does not need to have caused harm to you or other patients. Your feedback will be used by the ward to make safety improvements as identified. Please note that you or your carer / family member can complete this questionnaire independently or with support of a patient safety volunteer. Once your willingness to participate is confirmed by the patient safety volunteer, you can then proceed to complete the questionnaire.";
 
 /* Button title to add a note to a question. */
 "question.button.note.normal" = "Add a note";

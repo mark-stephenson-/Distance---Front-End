@@ -207,9 +207,9 @@
 -(void)cancelConcern:(id) sender
 {
     NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"pirt.cancel.alert-title", nil, nil, @"Cancel Concern", @"Alert title shown before the user cancels a concern workflow.");
-    NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"pirt.cancel.alert-message", nil, nil, @"Returning to the title screen will delete any entered data. Are you sure you want to continue?", @"Alert message shown before the user cancels a concern workflow");
+    NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"pirt.cancel.alert-message", nil, nil, @"By cancelling this concern any data entered about this concern will not be saved. Are you sure you want to cancel this concern?", @"Alert message shown before the user cancels a concern workflow");
     NSString *buttonTitle = alertTitle;
-    NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"pirt.cancel.cancel-title", nil, nil, @"Continue", @"Cancel button title to continue a concern workflow dismissing the cancel alert.");
+    NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"pirt.cancel.cancel-title", nil, nil, @"Continue with Concern", @"Cancel button title to continue a concern workflow dismissing the cancel alert.");
     
     void (^deletePIRTCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
         [self continueCancel];
