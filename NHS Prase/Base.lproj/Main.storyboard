@@ -1129,8 +1129,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="460" translatesAutoresizingMaskIntoConstraints="NO" id="WJp-Dv-eiv">
-                                <rect key="frame" x="20" y="8" width="460" height="62"/>
-                                <string key="text">We would like to know about your experience of care on this ward or any concerns you have had about your safety, or the safety of other patients, during this hospital visit.</string>
+                                <rect key="frame" x="20" y="8" width="460" height="83"/>
+                                <string key="text">Thank you for sharing your perspectives of the quality and safety of care you have experienced during your stay on this ward. Is there anything you think has not been covered already which you feel strongly about good or bad?</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -1233,7 +1233,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4b-tS-CJ2">
-                                <rect key="frame" x="20" y="85" width="460" height="2"/>
+                                <rect key="frame" x="20" y="106" width="460" height="2"/>
                                 <color key="backgroundColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="kCZ-BC-Wc5"/>
@@ -1774,44 +1774,29 @@
                                     <constraint firstItem="bsT-Y0-j5Y" firstAttribute="top" secondItem="8J3-mh-ffr" secondAttribute="top" id="dE9-Em-4C9"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="Qas-SE-oN0">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeC-N0-w7b">
-                                        <rect key="frame" x="20" y="20" width="560" height="20"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Headline"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUU-6a-Qmn">
-                                        <rect key="frame" x="20" y="48" width="560" height="20"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="DUU-6a-Qmn" secondAttribute="bottom" id="7eh-ju-fMy"/>
-                                    <constraint firstAttribute="trailing" secondItem="WeC-N0-w7b" secondAttribute="trailing" constant="20" id="AFE-Qf-KMf"/>
-                                    <constraint firstItem="WeC-N0-w7b" firstAttribute="leading" secondItem="Qas-SE-oN0" secondAttribute="leading" constant="20" id="GQw-dv-bh1"/>
-                                    <constraint firstItem="DUU-6a-Qmn" firstAttribute="top" secondItem="WeC-N0-w7b" secondAttribute="bottom" constant="8" id="Z9M-qb-YTC"/>
-                                    <constraint firstItem="WeC-N0-w7b" firstAttribute="top" secondItem="Qas-SE-oN0" secondAttribute="top" constant="20" id="his-Gc-znR"/>
-                                    <constraint firstItem="DUU-6a-Qmn" firstAttribute="trailing" secondItem="WeC-N0-w7b" secondAttribute="trailing" id="ioq-v9-is6"/>
-                                    <constraint firstItem="DUU-6a-Qmn" firstAttribute="leading" secondItem="WeC-N0-w7b" secondAttribute="leading" id="trq-oM-I8V"/>
-                                </constraints>
-                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeC-N0-w7b">
+                                <rect key="frame" x="20" y="17" width="560" height="20"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Headline"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Subtitle" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUU-6a-Qmn">
+                                <rect key="frame" x="20" y="45" width="560" height="20"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MkE-cT-KPH">
-                                <rect key="frame" x="20" y="88" width="560" height="452"/>
+                                <rect key="frame" x="20" y="85" width="560" height="455"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="VdR-Q1-ujH">
-                                        <rect key="frame" x="0.0" y="0.0" width="516" height="452"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="516" height="455"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <prototypes>
@@ -1909,7 +1894,7 @@
                                         </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="752" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="2b8-io-1kz" customClass="PRScrollButtonView">
-                                        <rect key="frame" x="516" y="0.0" width="44" height="452"/>
+                                        <rect key="frame" x="516" y="0.0" width="44" height="455"/>
                                         <color key="backgroundColor" white="0.95000000000000007" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" priority="990" constant="44" id="33A-ie-x9G"/>
@@ -1936,20 +1921,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="MkE-cT-KPH" secondAttribute="trailing" constant="20" id="0oI-Vu-LAC"/>
-                            <constraint firstItem="MkE-cT-KPH" firstAttribute="top" secondItem="Qas-SE-oN0" secondAttribute="bottom" constant="20" id="6SR-1P-kHp"/>
                             <constraint firstAttribute="bottom" secondItem="8J3-mh-ffr" secondAttribute="bottom" id="6t7-Na-sge"/>
-                            <constraint firstItem="Qas-SE-oN0" firstAttribute="leading" secondItem="aGK-xT-j09" secondAttribute="leading" id="Ekm-dX-6zT"/>
+                            <constraint firstItem="DUU-6a-Qmn" firstAttribute="top" secondItem="WeC-N0-w7b" secondAttribute="bottom" constant="8" id="7VE-Gc-wFz"/>
                             <constraint firstItem="MkE-cT-KPH" firstAttribute="leading" secondItem="aGK-xT-j09" secondAttribute="leading" constant="20" id="FkG-gk-vjK"/>
                             <constraint firstItem="8J3-mh-ffr" firstAttribute="leading" secondItem="aGK-xT-j09" secondAttribute="leading" id="Ge6-lZ-1Jg"/>
-                            <constraint firstItem="Qas-SE-oN0" firstAttribute="top" secondItem="aGK-xT-j09" secondAttribute="top" id="IHT-YT-7wa"/>
                             <constraint firstAttribute="trailing" secondItem="8J3-mh-ffr" secondAttribute="trailing" id="RDN-8L-Yjr"/>
-                            <constraint firstAttribute="trailing" secondItem="Qas-SE-oN0" secondAttribute="trailing" id="Rdr-A6-sIf"/>
+                            <constraint firstItem="WeC-N0-w7b" firstAttribute="top" secondItem="aGK-xT-j09" secondAttribute="top" constant="17" id="Y2I-6b-1kb"/>
+                            <constraint firstItem="WeC-N0-w7b" firstAttribute="leading" secondItem="aGK-xT-j09" secondAttribute="leading" constant="20" id="btn-uW-Wtv"/>
+                            <constraint firstItem="DUU-6a-Qmn" firstAttribute="trailing" secondItem="WeC-N0-w7b" secondAttribute="trailing" id="eFJ-am-SwZ"/>
+                            <constraint firstAttribute="trailing" secondItem="WeC-N0-w7b" secondAttribute="trailing" constant="20" id="eHe-Dd-Sqb"/>
                             <constraint firstItem="8J3-mh-ffr" firstAttribute="top" secondItem="MkE-cT-KPH" secondAttribute="bottom" constant="20" id="rKR-hf-9Pm"/>
+                            <constraint firstItem="MkE-cT-KPH" firstAttribute="top" secondItem="DUU-6a-Qmn" secondAttribute="bottom" constant="20" id="rin-u3-mb1"/>
+                            <constraint firstItem="DUU-6a-Qmn" firstAttribute="leading" secondItem="WeC-N0-w7b" secondAttribute="leading" id="xzn-mL-ypc"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="footerView" destination="8J3-mh-ffr" id="UUr-eC-3Xh"/>
-                        <outlet property="headerView" destination="Qas-SE-oN0" id="Vor-dQ-5s4"/>
                         <outlet property="scrollButtonView" destination="2b8-io-1kz" id="fjZ-Vw-3Uy"/>
                         <outlet property="subTitleLabel" destination="DUU-6a-Qmn" id="8lV-mT-hUo"/>
                         <outlet property="tableContainer" destination="MkE-cT-KPH" id="HhR-B2-INv"/>

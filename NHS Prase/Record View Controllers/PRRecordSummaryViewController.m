@@ -117,8 +117,8 @@
         
         // force load the view to configure its subclasses
         if (prSelection.view != nil) {
-            prSelection.titleLabel.text = @"Incomplete Questions";
-            prSelection.subTitleLabel.text = @"Please complete as many questions as possible. Tap a question to answer to it.";
+            prSelection.titleLabel.text = TDLocalizedStringWithDefaultValue(@"record-summary.incomplete-question-selection.title", nil, nil, @"Incomplete Questions", @"The selection view title shown when a list of unansered questions is presented to the user from the record summary screen.");
+            prSelection.subTitleLabel.text = TDLocalizedStringWithDefaultValue(@"record-summary.incomplete-question-selection.subtitle", nil, nil, @"Please complete as many questions as possible. Tap a question to answer to it.", @"The selection view subtitle shown when a list of unansered questions is presented to the user from the record summary screen.");
             
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [self presentViewController:prSelection animated:YES completion:nil];
