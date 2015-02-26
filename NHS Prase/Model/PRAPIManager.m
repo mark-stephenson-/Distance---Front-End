@@ -199,7 +199,12 @@
     jsonRecord[@"totalTimeQuestionnaire"] = @(record.timeAdditionalQuestionnaire.intValue + record.timeTracked.intValue) ? : [NSNull null];
     
     // the id will uniquely identify the ward, hospital and trust in TheCore
-    jsonRecord[@"ward"] = record.ward.id ? : [NSNull null];
+    if (record.ward.id.integerValue >= 0) {
+        jsonRecord[@"ward"] = record.ward.id ? : [NSNull null];
+    } else {
+        jsonRecord[@"ward"] = record.ward.name;
+    }
+    
     
     // create the questions entry
     NSMutableArray *questionsEntry = [NSMutableArray arrayWithCapacity:record.questions.count];
@@ -248,10 +253,10 @@
         return;
     }
     
-    const char *jsonChars = jsonData.bytes;
-    NSString *jsonString = [NSString stringWithCString:jsonChars encoding:NSUTF8StringEncoding];
-    NSLog(@"POSTING: %@", jsonString);
-                               
+//    const char *jsonChars = jsonData.bytes;
+//    NSString *jsonString = [NSString stringWithCString:jsonChars encoding:NSUTF8StringEncoding];
+//    NSLog(@"POSTING: %@", jsonString);
+    
     // post to the server
     [sessionManager POST:@"api/submit"
               parameters:jsonRecord
@@ -295,7 +300,13 @@
     NSMutableDictionary *thisEntry = [NSMutableDictionary dictionaryWithCapacity:1];
     
     thisEntry[@"text"] = [note.text isNonNullString] ? note.text : [NSNull null];
-    thisEntry[@"ward"] = note.ward.id ? : [NSNull null];
+    
+    if (note.ward.id.integerValue >= 0) {
+        thisEntry[@"ward"] = note.ward.id ? : [NSNull null];
+    } else {
+        thisEntry[@"ward"] = note.ward.name;
+    }
+    
     
     return thisEntry;
 }
@@ -304,7 +315,11 @@
 {
     NSMutableDictionary *thisEntry = [NSMutableDictionary dictionaryWithCapacity:8];
     
-    thisEntry[@"ward"] = concern.ward.id ? : [NSNull null];
+    if (concern.ward.id.integerValue >= 0) {
+        thisEntry[@"ward"] = concern.ward.id ? : [NSNull null];
+    } else {
+        thisEntry[@"ward"] = concern.ward.name;
+    }
 
     thisEntry[@"whatNote"] = concern.whatNote ? [self serializeNote:concern.whatNote] : [NSNull null];
     thisEntry[@"whyNote"] = concern.whyNote ? [self serializeNote:concern.whyNote] : [NSNull null];

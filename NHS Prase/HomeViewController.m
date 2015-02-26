@@ -8,11 +8,14 @@
 
 #import "HomeViewController.h"
 
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+
 #import "PRRecord.h"
 #import "PRRecordViewController.h"
 
 #import "PRTrust.h"
 #import "PRHospital.h"
+#import "PRWard.h"
 
 #define ALERT_GO_TITLE 111
 
@@ -60,6 +63,7 @@
     canCreate = true;
 
     if (canCreate) {
+        [self commitCustomWard];
         [self performSegueWithIdentifier:@"CreateRecord" sender:self];
     }
 }

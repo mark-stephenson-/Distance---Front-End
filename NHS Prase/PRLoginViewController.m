@@ -17,6 +17,10 @@
 
 #import "AppDelegate.h"
 #import "PRRecord.h"
+#import "PRWard.h"
+#import "PRQuestion.h"
+#import "PRConcern.h"
+#import "PRNote.h"
 
 #define ALERT_LOGIN 111
 #define ALERT_DOWNLOAD_ERROR 222
@@ -31,7 +35,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    logInCredentials = @{@"00001":@"nhs123",
+    logInCredentials = @{@"TheDistance": @"PraseTheDistance",
+                         @"00001":@"nhs123",
                          @"00002":@"bradfordnhs",
                          @"00003":@"barnsleyhospital"};
     
@@ -62,13 +67,20 @@
     usernameField.text = logInCredentials.allKeys[0];
     passwordField.text = logInCredentials[usernameField.text];
 #endif
+    
+    // assume both will be successful in order to not show the download error button straight away
+    submissionSucces = YES;
+    dataSuccess = YES;
+    [self refreshDownloadErrorButton];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    [self downloadData];
+    [self submitSavedRecordsWithCompletion:^{
+        [self downloadData];
+    }];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -93,23 +105,159 @@
 #pragma mark - Data Methods
 
 - (IBAction)retryPressed:(id)sender {
-    [self downloadData];
+    [self submitSavedRecordsWithCompletion:^{
+        [self downloadData];
+    }];
+}
+
+-(void)clearCustomWards
+{
+    NSMutableArray *customWardsToRemove = [NSMutableArray arrayWithArray:[PRWard MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"id < 0"]]];
+    NSArray *allRecords = [PRRecord MR_findAll];
+    
+    NSLog(@"testing %ld records, with %ld custom wards", (long) allRecords.count, (long) customWardsToRemove.count);
+    for (PRRecord *record in allRecords) {
+        
+        if (customWardsToRemove.count == 0) {
+            break;
+        }
+        
+        if (record.ward.id.integerValue < 0) {
+            PRWard *toKeep = record.ward;
+            [customWardsToRemove removeObject:toKeep];
+        }
+        
+        for (PRQuestion *question in record.questions) {
+            if (question.goodNote.ward != nil && question.goodNote.ward.id.integerValue < 0) {
+                PRWard *toKeep = question.goodNote.ward;
+                [customWardsToRemove removeObject:toKeep];
+            }
+            
+            if (question.concern.ward != nil && question.concern.ward.id.integerValue < 0) {
+                PRWard *toKeep = question.concern.ward;
+                [customWardsToRemove removeObject:toKeep];
+            }
+        }
+        
+        for (PRNote *goodNote in record.goodNotes) {
+            if (goodNote.ward != nil && goodNote.ward.id.integerValue < 0) {
+                PRWard *toKeep = goodNote.ward;
+                [customWardsToRemove removeObject:toKeep];
+            }
+        }
+        
+        for (PRConcern *concern in record.concerns) {
+            if (concern.ward != nil && concern.ward.id.integerValue < 0) {
+                PRWard *toKeep = concern.ward;
+                [customWardsToRemove removeObject:toKeep];
+            }
+        }
+    }
+    
+    NSLog(@"removing %ld unused custom wards", (long) customWardsToRemove.count);
+    
+    for (PRWard *unusedWard in customWardsToRemove) {
+        [unusedWard MR_deleteEntity];
+    }
+    
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
+}
+
+-(void)submitSavedRecordsWithCompletion:(void (^)(void)) completion
+{
+    // attempt to submit any records which haven't been submitted yet
+    NSArray *savedRecords = [PRRecord MR_findAll];
+    
+    if (savedRecords.count > 0) {
+        
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = TDLocalizedStringWithDefaultValue(@"login.hud.download", nil, nil, nil, nil);
+        
+        __block NSMutableArray *allErrors = [NSMutableArray array];
+        __block NSInteger submissionCount = savedRecords.count;
+        __block NSInteger successCount = 0;
+        __block NSInteger completedCount = 0;
+        
+        for (PRRecord *toSubmit in savedRecords) {
+            [[PRAPIManager sharedManager] submitRecord:toSubmit withCompletion:^(BOOL success, NSError *error) {
+                completedCount++;
+                if (success) {
+                    successCount++;
+                    NSLog(@"Successfully submitted previously saved record.");
+                    [toSubmit MR_deleteEntity];
+                    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
+                } else {
+                    [allErrors addObject:error];
+                }
+                
+                if (completedCount == submissionCount) {
+                    
+                    [hud hide:YES];
+                    [self clearCustomWards];
+                    
+                    if (successCount == submissionCount) {
+                        
+                        submissionSucces = YES;
+                        
+                        [self refreshDownloadErrorButton];
+                        
+                        NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"record.resubmit.title", nil, nil, @"Records Submitted", @"The alert title shown when previously saved records have been successfully submitted.");
+                        NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.resubmit.message", nil, nil, @"Previously saved records have now been submitted. Thank you for your time.", @"The alert message shown when previously saved records have been successfully submitted.");
+                        NSString *buttonTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyOK, nil, nil, nil, nil);
+                        void (^okCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+                            if (completion != nil) {
+                                completion();
+                            }
+                        };
+                        
+                        [self showAlertWithTitle:alertTitle
+                                         message:alertMessage
+                                     cancelTitle:nil
+                                    buttonTitles:@[buttonTitle]
+                                         actions:@[okCompletion]];
+                    } else {
+                        
+                        submissionSucces = NO;
+                        
+                        NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"record.resubmit-error.title", nil, nil, @"Records Not Submitted", @"The alert title shown when previously saved records have not been successfully submitted.");
+                        NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.resubmit-error.message", nil, nil, @"Previously saved records could not be submitted at this time.", @"The alert message shown when previously saved records have not been successfully submitted.");
+                        NSString *cancelTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyOK, nil, nil, nil, nil);
+                        
+                        [PRAPIManager showAlertFromViewController:self
+                                                        forErrors:allErrors
+                                                        withTitle:alertTitle
+                                                          message:alertMessage
+                                                       retryTitle:TDLocalizedStringWithDefaultValue(PRLocalisationKeyRetry, nil, nil, nil, nil)
+                                                       retryBlock:^(UIAlertAction *action) {
+                                                           [self submitSavedRecordsWithCompletion:completion];
+                                                       } cancelTitle:cancelTitle
+                                                   andCancelBlock:^(UIAlertAction *action, NSString *errorMessage) {
+                                                       
+                                                       [self refreshDownloadErrorButton];
+                                                       
+                                                       if (completion != nil) {
+                                                           completion();
+                                                       }
+                                                       
+                                                   } contactSupportTitle:nil
+                                              contactSupportBlock:nil];
+                    }
+                }
+            }];
+        }
+    } else {
+        submissionSucces = YES;
+        [self refreshDownloadErrorButton];
+        [self clearCustomWards];
+        
+        if (completion != nil) {
+            completion();
+        }
+    }
 }
 
 - (void)downloadData
 {
-    NSArray *savedRecords = [PRRecord MR_findAll];
-    
-    for (PRRecord *toSubmit in savedRecords) {
-        [[PRAPIManager sharedManager] submitRecord:toSubmit withCompletion:^(BOOL success, NSError *error) {
-            if (success) {
-                NSLog(@"Successfully submitted previously saved record.");
-                [toSubmit MR_deleteEntity];
-                [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
-            }
-        }];
-    }
-    
     // start download operations
     
     __block NSMutableArray *allErrors = [NSMutableArray array];
@@ -130,6 +278,8 @@
             
             if ([allErrors count] > 0) {
                 
+                dataSuccess = NO;
+                
                 NSString *errorTitle = TDLocalizedStringWithDefaultValue(@"login.download-error.title", nil, nil, @"Cannot Download Data", @"Error title when the data download failed.");
                 NSString *errorMessage = TDLocalizedStringWithDefaultValue(@"login.download-error.message", nil, nil, @"Unable to update local database.", @"Error message prefix when the data download fails.");
                 NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"login.download.button-title", nil, nil, @"Retry", @"Button title to retry downloading data.");
@@ -144,87 +294,13 @@
                                                    [self downloadData];
                                                } cancelTitle:cancelTitle
                                            andCancelBlock:^(UIAlertAction *action, NSString *errorMessage) {
-                                               retryWidthConstraint.priority = 1;
-                                               [UIView animateWithDuration:0.2 animations:^{
-                                                   [self.view layoutIfNeeded];
-                                               }];
+                                               [self refreshDownloadErrorButton];
                                            } contactSupportTitle:nil
                                       contactSupportBlock:nil];
-                
-            /*
-            NSMutableString *errorMessage = [NSMutableString stringWithFormat:@""];
-            
-            
-                NSMutableArray *errorCodes = [NSMutableArray array];
-                for (NSError *error in allErrors) {
-                    if (![errorCodes containsObject:@(error.code)]) {
-                        [errorCodes addObject:@(error.code)];
-                        
-                        NSMutableString *thisErrorString = [NSMutableString stringWithFormat:@""];
-                        
-                        if ([[error localizedDescription] isNonNullString]) {
-                            [thisErrorString appendFormat:@"%@", [error localizedDescription]];
-                        }
-                        
-                        if ([[error localizedFailureReason] isNonNullString]) {
-                            
-                            if (thisErrorString.length > 0) {
-                                [thisErrorString appendString:@"\n"];
-                            }
-                            
-                            [thisErrorString appendString:error.localizedFailureReason];
-                        }
-                        
-                        if (errorMessage.length > 0) {
-                            
-                            [errorMessage appendFormat:@", %@", thisErrorString];
-                            
-                        } else {
-                            [errorMessage appendString:thisErrorString];
-                        }
-                    }
-                }
-                
-                
-                // We need a cancel completion handler so the superclass method isn't called here
-                if ([UIAlertController class]) {
-                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:errorTitle
-                                                                                             message:errorMessage
-                                                                                      preferredStyle:UIAlertControllerStyleAlert];
-                    
-                    [alertController addAction:[UIAlertAction actionWithTitle:buttonTitle
-                                                                        style:UIAlertActionStyleDestructive
-                                                                      handler:^(UIAlertAction *action) {
-                                                                          [self downloadData];
-                                                                      }]];
-                    
-                    [alertController addAction:[UIAlertAction actionWithTitle:cancelTitle
-                                                                        style:UIAlertActionStyleCancel
-                                                                      handler:^(UIAlertAction *action) {
-                                                                          retryWidthConstraint.priority = 1;
-                                                                          [UIView animateWithDuration:0.2 animations:^{
-                                                                              [self.view layoutIfNeeded];
-                                                                          }];
-                                                                      }]];
-                    
-                    [self presentViewController:alertController animated:YES completion:nil];
-                } else {
-                    // iOS 8 Deprecation
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:errorTitle
-                                                                    message:errorMessage
-                                                                   delegate:self
-                                                          cancelButtonTitle:cancelTitle
-                                                          otherButtonTitles:buttonTitle, nil];
-                    alert.tag = ALERT_DOWNLOAD_ERROR;
-                    [alert show];
-                }
-             */
             
             } else {
-                retryWidthConstraint.priority = 999;
-                [UIView animateWithDuration:0.2 animations:^{
-                    [self.view layoutIfNeeded];
-                }];
+                dataSuccess = YES;
+                [self refreshDownloadErrorButton];
             }
         }
     };
@@ -238,27 +314,24 @@
     [manager getLocalizationsWithCompletion:downloadCompletion];
 }
 
-/*
-// iOS 8 Deprecation
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+-(void)refreshDownloadErrorButton
 {
-    if (alertView.tag == ALERT_DOWNLOAD_ERROR) {
-        if (buttonIndex == 1) {
-            [self downloadData];
-        }
+    if (!submissionSucces || !dataSuccess) {
+        // there has been an error so ignore the width == 0 constraint
+        retryWidthConstraint.priority = 90;
+        retryButton.alpha = 1.0;
+    } else {
+        // no errors so button.width == 0
+        retryButton.alpha = 0.0;
+        retryWidthConstraint.priority = 990;
     }
-}
-
--(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if (alertView.tag == ALERT_DOWNLOAD_ERROR && buttonIndex == 0) {
-        retryWidthConstraint.priority = 1;
+    
+    if (hasAppeared) {
         [UIView animateWithDuration:0.2 animations:^{
             [self.view layoutIfNeeded];
         }];
     }
 }
-*/
 
 #pragma mark - Log In
 

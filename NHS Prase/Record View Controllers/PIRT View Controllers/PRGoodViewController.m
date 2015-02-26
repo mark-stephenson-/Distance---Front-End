@@ -84,6 +84,9 @@
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    canDismissKeyboard = YES;
+    [self.noteView resignFirstResponder];
+    
     PRGoodWardSelectViewController *wardSelect = [self.storyboard instantiateViewControllerWithIdentifier:@"GoodWardSelect"];
     wardSelect.delegate = self;
     wardSelect.selectedWard = self.selectedWard;
@@ -99,11 +102,14 @@
 
 -(void)selectionViewControllerRequestsCancel:(TDSelectionViewController *)selectionVC
 {
+    canDismissKeyboard = NO;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)selectionViewControllerRequestsDismissal:(TDSelectionViewController *)selectionVC
 {
+    canDismissKeyboard = NO;
+    
     if ([selectionVC isKindOfClass:[PRGoodWardSelectViewController class]]) {
         PRWard *newWard = ((PRGoodWardSelectViewController *) selectionVC).selectedWard;
         if (newWard != nil) {

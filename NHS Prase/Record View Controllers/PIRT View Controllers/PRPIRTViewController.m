@@ -129,28 +129,26 @@
     [self applyThemeToView:footerView];
 }
 
-
 #pragma mark - Navigation
 
 /// Overrides superclass method to dismiss on the final page
 -(void)goNext:(id)sender
 {
+    if (tabController.selectedIndex == 0) {
+        if ([wardSelectVC validateSelectedWard]) {
+            [wardSelectVC commitCustomWard];
+        }
+    }
     
     if (tabController.selectedIndex == tabController.viewControllers.count - 1) {
         
-        if ([wardSelectVC validateSelectedWard]) {
-            if ([self.pirtDelegate respondsToSelector:@selector(pirtViewControllerDidFinish:withConcern:)]) {
-                
-                [self.pirtDelegate pirtViewControllerDidFinish:self withConcern:self.concern];
-            } else {
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
+        if ([self.pirtDelegate respondsToSelector:@selector(pirtViewControllerDidFinish:withConcern:)]) {
+            
+            [self.pirtDelegate pirtViewControllerDidFinish:self withConcern:self.concern];
         } else {
-            [visibleSelector setSelectedSegmentIndex:0];
-            [self segmentChanged:self];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
         
-
     } else {
         [super goNext:sender];
     }
@@ -159,6 +157,13 @@
 /// The footer view is replaced by a keyboard text input view on the PRNoteViewController screens so the footer is removed as it will be replaced by the textView's inputAccessoryView
 -(void)segmentChanged:(id)sender
 {
+    if (tabController.selectedIndex == 0) {
+        [self.view endEditing:YES];
+        if ([wardSelectVC validateSelectedWard]) {
+            [wardSelectVC commitCustomWard];
+        }
+    }
+    
     [super segmentChanged:sender];
     
     if (visibleSelector.selectedSegmentIndex == 0 || visibleSelector.selectedSegmentIndex == 4) {

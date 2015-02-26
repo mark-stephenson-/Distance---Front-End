@@ -22,9 +22,17 @@
     IBOutlet TDTextField *usernameField;
     IBOutlet TDTextField *passwordField;
     
+    IBOutlet UIButton *retryButton;
+    
     PRInputAccessoryView *inputView;
     
     __weak IBOutlet NSLayoutConstraint *retryWidthConstraint;
+    
+    /// Flag to determine whether there are previously saved records that cannot be submitted. If there are none to submit this is YES.
+    BOOL submissionSucces;
+    
+    /// Flag to determine whether an attempt to download the latest data from the server was successful.
+    BOOL dataSuccess;
 }
 
 -(IBAction)continueAsGuest:(id)sender;

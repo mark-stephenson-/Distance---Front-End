@@ -15,6 +15,7 @@
 #import "PRDateSelectCell.h"
 
 #import "PRRecord.h"
+#import "PRWard.h"
 
 #import "PRTheme.h"
 #import "PRQuestion.h"
@@ -375,7 +376,6 @@
 
 -(void)continueHome
 {
-    [self.record MR_deleteEntity];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -395,8 +395,11 @@
                                     [hud hide:YES];
                                     
                                     if (success) {
+                                        
+                                        // clear the un-needed entities from CoreData
                                         [self.record MR_deleteEntity];
                                         self.record = nil;
+                                        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
                                         
                                         NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"record.submission-complete.title", nil, nil, @"Questionnaire Submitted", @"Title for alert when the record has been successfully submitted.");
                                         NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.submission-complete.title", nil, nil, @"Questionnaire submitted, thank you for your time.", @"Message for alert when the record has been successfully submitted.");
@@ -414,26 +417,26 @@
                                     } else {
                                         [self logErrorFromSelector:_cmd withFormat:@"Unable to submit record: %@", error];
                                         
-                                        
                                         NSString *errorTitle = TDLocalizedStringWithDefaultValue(@"record.submit-error.title", nil, nil, @"Cannot Submit Record", @"Error title when the record submit failed.");
-                                        NSString *errorMessage = [NSString stringWithFormat:@"%@\nEither retry now, or the record will be automatically saved and retried when possible.", error.localizedDescription];
+                                        NSString *errorMessage = [NSString stringWithFormat:@"The record could not be saved, either retry now, or the record will be automatically saved and retried when possible."];
                                         
                                         NSString *retryTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyRetry, nil, nil, nil, nil);
                                         NSString *laterTitle = TDLocalizedStringWithDefaultValue(@"record.submit-error.later", nil, nil, @"Later", @"Button title to save a record for later as an error occured trying to submit the data.");
                                         
-                                        void (^retryCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
-                                            [self continueSubmit];
-                                        };
-                                        
-                                        void (^laterCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
-                                            [self submitLater];
-                                        };
-                                        
-                                        [self showAlertWithTitle:errorTitle
-                                                         message:errorMessage
-                                                     cancelTitle:nil
-                                                    buttonTitles:@[retryTitle, laterTitle]
-                                                         actions:@[retryCompletion, laterCompletion]];
+                                        [PRAPIManager showAlertFromViewController:self
+                                                                        forErrors:@[error]
+                                                                        withTitle:errorTitle
+                                                                          message:errorMessage
+                                                                       retryTitle:retryTitle
+                                                                       retryBlock:^(UIAlertAction *action) {
+                                                                           [self continueSubmit];
+                                                                       }
+                                                                      cancelTitle:laterTitle
+                                                                   andCancelBlock:^(UIAlertAction *action, NSString *errorMessage) {
+                                                                       [self submitLater];
+                                                                   }
+                                                              contactSupportTitle:nil
+                                                              contactSupportBlock:nil];
                                     }
                                 }];
 }

@@ -24,6 +24,7 @@
     // Do any additional setup after loading the view.
     
     trusts = [PRTrust MR_findAllSortedBy:@"name" ascending:YES];
+    otherWardField.accessoryImage = nil;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -31,17 +32,55 @@
     [super viewWillAppear:animated];
     
     [self refreshViews];
+    
+    if (otherWardField != nil) {
+        self.components = @[otherWardField];
+        self.scrollContainer = scrollView;
+    }
+    
+    // reload the ward component incase any new custom wards have been created for this hospital
+    if (self.selectedHospital != nil) {
+        wards = [self.selectedHospital.wards sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+    }
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    self.scrollContainer = nil;
+    
+    // if the user has created a custom ward but not chosen it the id will still be -1. Delete this now so it doesn't show up in later ward selection screens
+    NSArray *emptyCustomWards = [PRWard MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"id == %@", @(-1)]];
+    NSLog(@"Deleting %ld custom wards", (long) emptyCustomWards.count);
+    for (PRWard *emptyCustomWard in emptyCustomWards) {
+        [emptyCustomWard MR_deleteEntity];
+    }
 }
 
 -(void)refreshViews
 {
     trustField.text = self.selectedTrust.name;
     hospitalField.text = self.selectedHospital.name;
-    wardField.text = self.selectedWard.name;
+    wardField.text = (self.selectedWard.id.integerValue < 0) ? @"Other" : self.selectedWard.name;
+
+    otherWardField.text = [self.selectedWard.id isEqualToNumber:@(-1)] ? self.selectedWard.name : @"";
     
     trustField.enabled = YES;
     hospitalField.enabled = self.selectedTrust != nil;
     wardField.enabled = self.selectedHospital != nil;
+    otherWardField.enabled = [self.selectedWard.id isEqualToNumber:@(-1)];
+    
+    // show / hide the custom ward text field
+    if (self.selectedWard != nil && self.selectedWard.id.integerValue < 0) {
+        wardSelectBottomConstraint.priority = 100;
+        otherWardBottomConstraint.priority = 900;
+        
+        otherWardField.text = self.selectedWard.name;
+    } else {
+        wardSelectBottomConstraint.priority = 900;
+        otherWardBottomConstraint.priority = 100;
+    }
 }
 
 -(BOOL)validateSelectedWard
@@ -81,8 +120,49 @@
                     buttonTitles:nil
                          actions:nil];
         return NO;
+    } else if ([self.selectedWard.id isEqualToNumber:@(-1)] && ![self.selectedWard.name isNonNullString]) {
+        
+        NSString *errorTitle = TDLocalizedStringWithDefaultValue(@"home.create-error.invalid-custom-ward.title", nil, nil, @"Invalid Ward", @"Error title shown when the user hasn't entered a name for a custom ward.");
+        NSString *errorMessage = TDLocalizedStringWithDefaultValue(@"home.create-error.invalid-custom-ward.messgae", nil, nil, @"Please enter a name for this ward.", @"The error message shown when the user hasn't entered a name for a custom ward.");
+        
+        [self showAlertWithTitle:errorTitle
+                         message:errorMessage
+                     cancelTitle:nil
+                    buttonTitles:nil
+                         actions:nil];
+        return NO;
     } else {
         return YES;
+    }
+}
+
+-(PRWard *)blankCustomWard
+{
+    PRWard *blankWard = [PRWard MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"id == %@", @(-1)]];
+    
+    if (blankWard == nil) {
+        blankWard = [PRWard MR_createEntity];
+        blankWard.id = @(-1);
+    }
+    
+    blankWard.hospital = self.selectedHospital;
+
+    return blankWard;
+}
+
+-(void)commitCustomWard
+{
+    if ([self.selectedWard.id isEqualToNumber:@(-1)]) {
+        NSInteger customWardCount = [PRWard MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"id < %@", @0]];
+        
+        if (self.selectedWard.id != nil) {
+            // account for this ward already being in the count
+            customWardCount--;
+        }
+        self.selectedWard.id = @(-2 - customWardCount);
+        wards = [wards arrayByAddingObject:self.selectedWard];
+        
+        NSLog(@"Setting ward [%@] as id [%@]", self.selectedWard.name, self.selectedWard.id);
     }
 }
 
@@ -91,6 +171,10 @@
 // Show a TDSelectionViewController and prevent a keyboard from showing;
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    if (textField == otherWardField) {
+        return [super textFieldShouldBeginEditing:textField];
+    }
+    
     NSDictionary *options;
     NSArray *sortedKeys;
     id<NSCopying> selectedKey;
@@ -102,6 +186,9 @@
     
     NSString *selectionSubTitle;
     NSString *selectionSubtitleLocalizationKey;
+    
+    // The custom wards show a detail sting to imply they are custom
+    NSMutableDictionary *optionDetails = [NSMutableDictionary dictionary];
     
     if (textField == trustField) {
         
@@ -153,11 +240,35 @@
         for (int w = 0; w < wards.count; w++) {
             PRWard *thisWard = wards[w];
             tempOptions[thisWard.id] = thisWard.name;
+            if (thisWard.id.integerValue < 0) {
+                optionDetails[thisWard.id] = TDLocalizedStringWithDefaultValue(@"ward-select.custom-ward.label", nil, nil, @"User Ward", @"The label shown to indicate that a ward has been entered using the \"Other\" field.");
+            }
         }
         
+        // add an option for the user to select a different ward
+        tempOptions[@(-1)] = TDLocalizedStringWithDefaultValue(@"ward-select.ward.other", nil, nil, @"Other", @"Selection option to enter a ward not in the CMS.");
+        
         options = tempOptions;
-        sortedKeys = @[[wards valueForKeyPath:@"id"]];
+        sortedKeys = [wards valueForKeyPath:@"id"];
+        sortedKeys = [sortedKeys sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            NSInteger id1 = ((NSNumber *)obj1).integerValue;
+            NSInteger id2 = ((NSNumber *)obj2).integerValue;
+            
+            if (id1 < 0 && id2 > 0) {
+                return NSOrderedAscending;
+            } else if (id1 > 0 && id2 < 0) {
+                return NSOrderedDescending;
+            } else {
+                NSString *ward1Name = tempOptions[obj1];
+                NSString *ward2Name = tempOptions[obj2];
+                
+                return [ward1Name compare:ward2Name];
+            }
+        }];
+        sortedKeys = @[[sortedKeys arrayByAddingObject:@(-1)]];
         selectedKey = self.selectedWard.id;
+        
+        
         requiresSelection = NO;
         selectionKey = @"ward";
         
@@ -171,7 +282,7 @@
     PRSelectionViewController *selectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PRBasicSelectionVC"];
     // force load the view to configure the labels
     if (selectionVC.view != nil) {
-        [selectionVC setOptions:options withDetails:nil orderedAs:sortedKeys];
+        [selectionVC setOptions:options withDetails:optionDetails orderedAs:sortedKeys];
         
         if (selectedKey != nil) {
             selectionVC.selectedKeys = [NSMutableSet setWithObject:selectedKey];
@@ -196,6 +307,15 @@
     }
     
     return NO;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [super textFieldDidEndEditing:textField];
+    
+    if (textField == otherWardField) {
+        self.selectedWard.name = textField.text;
+    }
 }
 
 // Set the selection, clearing the hospital or ward if a corresponding parent has changed
@@ -234,12 +354,19 @@
         
         NSNumber *newWardID = [[selectionVC selectedKeys] anyObject];
         
-        if (self.selectedWard == nil ||  ![newWardID isEqualToNumber:self.selectedWard.id]) {
-            PRWard *newWard = [[wards filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", newWardID]] firstObject];
+        if ([newWardID isEqualToNumber:@(-1)]) {
+            // create / load a blank custom ward
+            PRWard *customWard = [self blankCustomWard];
+            self.selectedWard = customWard;
             
-            self.selectedWard = newWard;
+        } else {
+            
+            if (self.selectedWard == nil ||  ![newWardID isEqualToNumber:self.selectedWard.id]) {
+                PRWard *newWard = [[wards filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", newWardID]] firstObject];
+                
+                self.selectedWard = newWard;
+            }
         }
-        
     }
     
     [self refreshViews];

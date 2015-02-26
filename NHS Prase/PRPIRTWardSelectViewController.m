@@ -8,6 +8,8 @@
 
 #import "PRPIRTWardSelectViewController.h"
 
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+
 #import "PRRecord.h"
 
 #import "PRWard.h"
@@ -49,14 +51,24 @@
         trustField.enabled = NO;
         hospitalField.enabled = NO;
         wardField.enabled = NO;
+        otherWardField.enabled = NO;
         
     } else {
+        
         [super refreshViews];
     }
 }
 
 -(void)segmentChanged:(id)sender
 {
+    if (currentWardSegment.selectedSegmentIndex == 1) {
+        // don't overwrite the current ward, instead load a new custom selection
+        if (self.selectedWard.id.integerValue < -1) {
+            PRWard *blankWard = [self blankCustomWard];
+            self.selectedWard = blankWard;
+        }
+    }
+    
     [self refreshViews];
 }
 

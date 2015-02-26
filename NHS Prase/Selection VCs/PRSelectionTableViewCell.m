@@ -7,6 +7,7 @@
 //
 
 #import "PRSelectionTableViewCell.h"
+#import "PRTheme.h"
 
 @implementation PRSelectionTableViewCell
 
@@ -23,10 +24,11 @@
     if (selected) {
         self.contentView.backgroundColor = self.tintColor;
         self.textLabelTD.textColor = [UIColor whiteColor];
-        
+        self.detailTextLabelTD.textColor = [UIColor whiteColor];
     } else {
-        self.contentView.backgroundColor = [UIColor clearColor];
+        self.contentView.backgroundColor = [self.detailTextLabelTD.text isNonNullString] ? [[[PRTheme sharedTheme] neutralColor] colorWithAlphaComponent:0.3] : [UIColor clearColor];
         self.textLabelTD.textColor = [UIColor darkTextColor];
+        self.detailTextLabelTD.textColor = [UIColor whiteColor];
     }
     
     [self setNeedsUpdateConstraints];
@@ -34,52 +36,12 @@
     [self invalidateIntrinsicContentSize];
 }
 
-
 -(void)layoutSubviews
 {
     [super layoutSubviews];
     
     self.textLabelTD.preferredMaxLayoutWidth = self.textLabelTD.frame.size.width;
-    
-//    NSLog(@"Text Label: %@ [%@]", self.textLabelTD.text, NSStringFromCGSize(self.textLabelTD.intrinsicContentSize));
-    
-    //[self layoutIfNeeded];
-}
-
-/*
--(void)updateConstraints
-{
-    [self.contentView removeConstraints:hConstraints];
-    
-    NSDictionary *vDict = @{@"label": self.textLabelTD, @"image": selectionIndicator};
-    
-    if (self.selected) {
-        
-        hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"|-(hBuffer)-[label]-(10)-[image]-(hBuffer)-|"
-                                                               options:NSLayoutFormatAlignAllCenterY
-                                                               metrics:@{@"hBuffer": @50}
-                                                                 views:vDict];
-
-    } else {
-        hConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"|-(hBuffer)-[label]-(10)-[image(==0)]-(sBuffer)-|"
-                                                                                 options:NSLayoutFormatAlignAllCenterY
-                                                               metrics:@{@"hBuffer": @50, @"sBuffer": @40}
-                                                                                   views:vDict];
-    }
-    
-    [self.contentView addConstraints:hConstraints];
-    
-    [super updateConstraints];
-}
-*/
--(CGSize)sizeThatFits:(CGSize)size
-{
-    return [super sizeThatFits:size];
-}
-
--(CGSize)intrinsicContentSize
-{
-    return [super intrinsicContentSize];
+    self.detailTextLabelTD.preferredMaxLayoutWidth = self.textLabelTD.frame.size.width;
 }
 
 @end

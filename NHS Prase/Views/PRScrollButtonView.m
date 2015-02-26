@@ -16,6 +16,8 @@
     [super awakeFromNib];
     
     self.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
+    self.clipsToBounds = YES;
+    
     if (self.scrollUpButton == nil) {
         self.scrollUpButton = [UIButton buttonWithType:UIButtonTypeCustom];
     }
