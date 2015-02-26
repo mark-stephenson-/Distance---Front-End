@@ -965,30 +965,8 @@
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="lC7-DT-rul">
                                 <rect key="frame" x="10" y="544" width="580" height="56"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VfP-EO-uCi" customClass="TDButton">
-                                        <rect key="frame" x="400" y="8" width="180" height="40"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Add a note" image="edit">
-                                            <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTint">
-                                                <color key="value" red="0.25882352939999997" green="0.76862745099999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="question.button.note"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Button title to add a note to a question."/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="imageAlignment">
-                                                <integer key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 1"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="addNote:" destination="E76-bW-pFC" eventType="touchUpInside" id="qFp-9j-NzM"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIY-V1-Zja" customClass="TDButton">
-                                        <rect key="frame" x="200" y="8" width="180" height="40"/>
+                                        <rect key="frame" x="300" y="8" width="280" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Add something good" image="star">
                                             <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -1010,7 +988,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ide-ms-1cZ" customClass="TDButton">
-                                        <rect key="frame" x="0.0" y="8" width="180" height="40"/>
+                                        <rect key="frame" x="0.0" y="8" width="280" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Add a concern" image="exclamation">
                                             <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -1035,21 +1013,20 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="NIY-V1-Zja" firstAttribute="leading" secondItem="Ide-ms-1cZ" secondAttribute="trailing" constant="20" id="0F5-zG-XzG"/>
-                                    <constraint firstItem="VfP-EO-uCi" firstAttribute="bottom" secondItem="Ide-ms-1cZ" secondAttribute="bottom" id="4Wa-0A-mTs"/>
+                                    <constraint firstAttribute="trailing" secondItem="NIY-V1-Zja" secondAttribute="trailing" id="4ds-zq-4UO"/>
                                     <constraint firstItem="Ide-ms-1cZ" firstAttribute="leading" secondItem="lC7-DT-rul" secondAttribute="leading" id="5Rd-qo-1cy"/>
-                                    <constraint firstAttribute="trailing" secondItem="VfP-EO-uCi" secondAttribute="trailing" id="67L-fa-qDj"/>
                                     <constraint firstItem="NIY-V1-Zja" firstAttribute="bottom" secondItem="Ide-ms-1cZ" secondAttribute="bottom" id="B2K-aE-vcu"/>
-                                    <constraint firstItem="VfP-EO-uCi" firstAttribute="width" secondItem="NIY-V1-Zja" secondAttribute="width" id="Ecj-7s-41m"/>
-                                    <constraint firstItem="VfP-EO-uCi" firstAttribute="height" secondItem="Ide-ms-1cZ" secondAttribute="height" id="H8x-jh-Kc4"/>
+                                    <constraint firstItem="Ide-ms-1cZ" firstAttribute="width" secondItem="NIY-V1-Zja" secondAttribute="width" id="C4U-7M-wKC"/>
                                     <constraint firstItem="NIY-V1-Zja" firstAttribute="top" secondItem="Ide-ms-1cZ" secondAttribute="top" id="Jge-tg-EOM"/>
                                     <constraint firstItem="Ide-ms-1cZ" firstAttribute="top" secondItem="lC7-DT-rul" secondAttribute="top" constant="8" id="MQG-hf-Aki"/>
                                     <constraint firstAttribute="bottom" secondItem="Ide-ms-1cZ" secondAttribute="bottom" constant="8" id="O4R-Ne-Xrp"/>
-                                    <constraint firstItem="VfP-EO-uCi" firstAttribute="leading" secondItem="NIY-V1-Zja" secondAttribute="trailing" constant="20" id="PEw-fQ-vzL"/>
-                                    <constraint firstItem="VfP-EO-uCi" firstAttribute="height" secondItem="NIY-V1-Zja" secondAttribute="height" id="Tcl-e9-yRh"/>
                                     <constraint firstAttribute="centerX" secondItem="NIY-V1-Zja" secondAttribute="centerX" id="WbM-Ua-MDV"/>
-                                    <constraint firstItem="VfP-EO-uCi" firstAttribute="top" secondItem="Ide-ms-1cZ" secondAttribute="top" id="aUK-Tq-LKt"/>
-                                    <constraint firstItem="VfP-EO-uCi" firstAttribute="width" secondItem="Ide-ms-1cZ" secondAttribute="width" id="nmO-mg-ie5"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="WbM-Ua-MDV"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1074,7 +1051,6 @@
                         <outlet property="titleLabel" destination="hMd-LB-Xq5" id="w7Z-NG-3Rr"/>
                         <outletCollection property="pirtButtons" destination="Ide-ms-1cZ" id="3Fi-6D-Fes"/>
                         <outletCollection property="pirtButtons" destination="NIY-V1-Zja" id="beS-ZD-uJ4"/>
-                        <outletCollection property="pirtButtons" destination="VfP-EO-uCi" id="E9H-KN-YVu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lhh-6d-kXL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2028,29 +2004,8 @@
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="33v-de-gK9">
                                 <rect key="frame" x="0.0" y="560" width="600" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCb-F0-ZLX" customClass="TDButton">
-                                        <rect key="frame" x="413" y="0.0" width="187" height="40"/>
-                                        <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Add a note" image="edit">
-                                            <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="imageTint">
-                                                <color key="value" red="0.25882352939999997" green="0.76862745099999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="question.button.note"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="imageAlignment">
-                                                <integer key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 1"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="addNote:" destination="3zY-5O-tMi" eventType="touchUpInside" id="mQJ-qk-62K"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8A-jz-1xd" customClass="TDButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="187" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="40"/>
                                         <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Add a concern" image="exclamation">
                                             <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -2071,7 +2026,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubm-O3-fP7" customClass="TDButton">
-                                        <rect key="frame" x="207" y="0.0" width="186" height="40"/>
+                                        <rect key="frame" x="310" y="0.0" width="290" height="40"/>
                                         <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Add something good" image="star">
                                             <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -2096,29 +2051,20 @@
                                     <constraint firstItem="v8A-jz-1xd" firstAttribute="top" secondItem="33v-de-gK9" secondAttribute="top" id="6qY-IK-0aX"/>
                                     <constraint firstItem="ubm-O3-fP7" firstAttribute="top" secondItem="v8A-jz-1xd" secondAttribute="top" id="IK4-Lr-JsD"/>
                                     <constraint firstAttribute="centerX" secondItem="ubm-O3-fP7" secondAttribute="centerX" id="Mr3-Ai-OrO"/>
-                                    <constraint firstItem="XCb-F0-ZLX" firstAttribute="height" secondItem="ubm-O3-fP7" secondAttribute="height" id="Nze-RJ-y1e"/>
+                                    <constraint firstAttribute="trailing" secondItem="ubm-O3-fP7" secondAttribute="trailing" id="PQI-DC-YN7"/>
                                     <constraint firstItem="v8A-jz-1xd" firstAttribute="leading" secondItem="33v-de-gK9" secondAttribute="leading" id="TMj-ZF-9EJ"/>
-                                    <constraint firstItem="XCb-F0-ZLX" firstAttribute="bottom" secondItem="v8A-jz-1xd" secondAttribute="bottom" id="chU-dd-yZ0"/>
-                                    <constraint firstAttribute="bottom" secondItem="XCb-F0-ZLX" secondAttribute="bottom" id="eUN-nT-IRb"/>
-                                    <constraint firstItem="XCb-F0-ZLX" firstAttribute="width" secondItem="v8A-jz-1xd" secondAttribute="width" id="gcf-zn-mzm"/>
-                                    <constraint firstItem="XCb-F0-ZLX" firstAttribute="top" secondItem="v8A-jz-1xd" secondAttribute="top" id="hhF-Fi-oS7"/>
                                     <constraint firstItem="ubm-O3-fP7" firstAttribute="bottom" secondItem="v8A-jz-1xd" secondAttribute="bottom" id="iMZ-Or-eZa"/>
                                     <constraint firstAttribute="bottom" secondItem="ubm-O3-fP7" secondAttribute="bottom" id="jei-gx-2sk"/>
-                                    <constraint firstItem="XCb-F0-ZLX" firstAttribute="leading" secondItem="ubm-O3-fP7" secondAttribute="trailing" constant="20" id="nuH-xH-jDD"/>
-                                    <constraint firstItem="XCb-F0-ZLX" firstAttribute="width" secondItem="ubm-O3-fP7" secondAttribute="width" id="pKJ-eY-M2u"/>
                                     <constraint firstAttribute="bottom" secondItem="v8A-jz-1xd" secondAttribute="bottom" id="qlE-h4-PGA"/>
-                                    <constraint firstItem="XCb-F0-ZLX" firstAttribute="height" secondItem="v8A-jz-1xd" secondAttribute="height" id="s9A-T8-w8s"/>
-                                    <constraint firstItem="XCb-F0-ZLX" firstAttribute="top" secondItem="33v-de-gK9" secondAttribute="top" id="u1r-Ey-ioi"/>
                                     <constraint firstItem="ubm-O3-fP7" firstAttribute="top" secondItem="33v-de-gK9" secondAttribute="top" id="uEO-xM-VBy"/>
-                                    <constraint firstAttribute="trailing" secondItem="XCb-F0-ZLX" secondAttribute="trailing" id="wdE-5D-8cg"/>
                                     <constraint firstItem="ubm-O3-fP7" firstAttribute="leading" secondItem="v8A-jz-1xd" secondAttribute="trailing" constant="20" id="x0W-F5-5aW"/>
+                                    <constraint firstItem="ubm-O3-fP7" firstAttribute="width" secondItem="v8A-jz-1xd" secondAttribute="width" id="yCs-Ms-3qb"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="IK4-Lr-JsD"/>
+                                        <exclude reference="Mr3-Ai-OrO"/>
                                         <exclude reference="iMZ-Or-eZa"/>
-                                        <exclude reference="chU-dd-yZ0"/>
-                                        <exclude reference="hhF-Fi-oS7"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -2295,13 +2241,11 @@
                         <outlet property="concernButton" destination="v8A-jz-1xd" id="Ekg-X4-col"/>
                         <outlet property="goodButton" destination="ubm-O3-fP7" id="7bh-Sn-ioN"/>
                         <outlet property="headerLabel" destination="gwG-OB-mvO" id="PmB-wK-Vgm"/>
-                        <outlet property="noteButton" destination="XCb-F0-ZLX" id="alB-OP-YrP"/>
                         <outlet property="pirtView" destination="33v-de-gK9" id="tnz-le-a8y"/>
                         <outlet property="promptLabel" destination="GfQ-LJ-qAW" id="0hJ-qP-ImS"/>
                         <outlet property="titleLabel" destination="eS2-ZD-fQa" id="HDZ-HA-O6d"/>
                         <outletCollection property="pirtButtons" destination="v8A-jz-1xd" id="0XT-cc-1pa"/>
                         <outletCollection property="pirtButtons" destination="ubm-O3-fP7" id="yVX-a3-py7"/>
-                        <outletCollection property="pirtButtons" destination="XCb-F0-ZLX" id="gd3-Xq-JyP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GIm-f5-kNF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4213,7 +4157,6 @@ Serious</string>
         <image name="Logo" width="317" height="209"/>
         <image name="back_arrow" width="40" height="40"/>
         <image name="cross" width="40" height="40"/>
-        <image name="edit" width="40" height="40"/>
         <image name="exclamation" width="40" height="40"/>
         <image name="face_not_sad" width="40" height="40"/>
         <image name="face_sad" width="40" height="40"/>

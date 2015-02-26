@@ -234,7 +234,7 @@
         [concernEntries addObject:noteEntry];
     }
     
-    jsonRecord[@"notes"] = noteEntries;
+//    jsonRecord[@"notes"] = noteEntries;
     jsonRecord[@"goodNotes"] = goodEntries;
     jsonRecord[@"concerns"] = concernEntries;
     jsonRecord[@"user"] = [[NSUserDefaults standardUserDefaults] valueForKey:PRRecordUsernameKey] ? : [NSNull null];
@@ -288,7 +288,7 @@
     thisEntry[@"questionID"] = question.pmosQuestion ? question.pmosQuestion.questionID : [NSNull null];
     thisEntry[@"answerID"] = question.answerID ? : [NSNull null];
     
-    thisEntry[@"note"] = question.note ? [self serializeNote:question.note] : [NSNull null];
+//    thisEntry[@"note"] = question.note ? [self serializeNote:question.note] : [NSNull null];
     thisEntry[@"somethingGood"] = question.goodNote ? [self serializeNote:question.goodNote] : [NSNull null];
     thisEntry[@"concern"] = question.concern ? [self serializeConcern:question.concern] : [NSNull null];
     
