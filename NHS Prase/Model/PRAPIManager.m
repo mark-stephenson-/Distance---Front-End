@@ -169,7 +169,7 @@
         
         // ensure all basic data keys are included even in the data is incomplete
         NSMutableDictionary *fullBasicData = [NSMutableDictionary dictionaryWithCapacity:7];
-        NSArray *basicDataKeys = @[@"DOB", @"Gender", @"Ethnicity", @"Language", @"Admitted", @"InpatientCount", @"OngoingTreatment"];
+        NSArray *basicDataKeys = @[@"DOB", @"Gender", @"Ethnicity", @"Language", @"StayLength", @"InpatientCount", @"OngoingTreatment"];
         
         for (NSString *key in basicDataKeys) {
             id value = record.basicDataDictionary[key];
