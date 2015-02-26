@@ -69,7 +69,17 @@
     
     [self refreshPIRTViews];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (self.record.goodNotes.count > 0) {
+            NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"question.note-added.title", nil, nil, @"Note Saved", @"The alert title shown when a good note has been saved.");
+            NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"question.note-added.message", nil, nil, @"Your note has been saved.", @"The alert message shown when a good note has been saved.");
+            [self showAlertWithTitle:alertTitle
+                             message:alertMessage
+                         cancelTitle:nil
+                        buttonTitles:nil
+                             actions:nil];
+        }
+    }];
 }
 
 -(void)pirtViewControllerDidFinish:(PRPIRTViewController *)pirtVC withConcern:(PRConcern *)concern
@@ -88,7 +98,17 @@
     [self refreshPIRTViews];
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        [pirtVC dismissViewControllerAnimated:YES completion:nil];
+        [pirtVC dismissViewControllerAnimated:YES completion:^{
+            if (self.record.concerns.count > 0) {
+                NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"question.concern-added.title", nil, nil, @"Concern Saved", @"The alert title shown when a concern has been saved.");
+                NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"question.concern-added.message", nil, nil, @"Your concern has been saved.", @"The alert message shown when a concern has been saved.");
+                [self showAlertWithTitle:alertTitle
+                                 message:alertMessage
+                             cancelTitle:nil
+                            buttonTitles:nil
+                                 actions:nil];
+            }
+        }];
     }];
 }
 
