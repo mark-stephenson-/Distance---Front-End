@@ -11,6 +11,8 @@
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import <AFNetworking/AFNetworking.h>
 
+#import "PRBasicDataFormViewController.h"
+
 #import "PRTrust.h"
 #import "PRHospital.h"
 #import "PRWard.h"
@@ -169,7 +171,7 @@
         
         // ensure all basic data keys are included even in the data is incomplete
         NSMutableDictionary *fullBasicData = [NSMutableDictionary dictionaryWithCapacity:7];
-        NSArray *basicDataKeys = @[@"DOB", @"Gender", @"Ethnicity", @"Language", @"StayLength", @"InpatientCount", @"OngoingTreatment"];
+        NSArray *basicDataKeys = [PRBasicDataFormViewController basicDataFormKeys];
         
         for (NSString *key in basicDataKeys) {
             id value = record.basicDataDictionary[key];

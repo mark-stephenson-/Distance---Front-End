@@ -13,5 +13,10 @@
  * @discussion This class hard codes the first screen on the questionnaire, as such it should be appropriately  localized.
  */
 @interface PRBasicDataFormViewController : PRFormViewController <TDSelectionViewControllerDelegate>
+{
+    BOOL showOtherLanguageOption;
+}
+
++(NSArray *)basicDataFormKeys;
 
 @end

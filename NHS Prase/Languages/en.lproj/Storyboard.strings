@@ -10,41 +10,14 @@
 /* Label for the username log in field */
 "login.label.username-title" = "Username:";
 
+/* Button title to log in. */
+"login.button.log-in.normal" = "Create a New Record";
+
+/* Button launch the settings screen. */
+"button.settings.normal" = "Settings";
+
 /* Button title retry download. */
 "login.button.download-error.normal" = "Download Error";
-
-/* Button title to log in. */
-"login.button.log-in.normal" = "Create a New Record";
-
-/* Button launch the settings screen. */
-"button.settings.normal" = "Settings";
-
-/* Button title to return to the log in screen. */
-"home.button.log-out.normal" = "Log Out";
-
-/* Button launch the settings screen. */
-"button.settings.normal" = "Settings";
-
-/* Button title to log in. */
-"login.button.log-in.normal" = "Create a New Record";
-
-/* Prompt to select the desired hospital. */
-"home.field.ward-select.placeholder" = "Tap to select";
-
-/* Label for the hospital select field. */
-"home.label.hospital-title" = "Hospital:";
-
-/* Label for the ward select field. */
-"home.label.ward-title" = "Ward:";
-
-/* Prompt to select the desired trust. */
-"home.field.trust-select.placeholder" = "Tap to select";
-
-/* Label for the trust select field. */
-"home.label.trust-title" = "Trust:";
-
-/* Prompt to select the desired hospital. */
-"home.field.hospital-select.placeholder" = "Tap to select";
 
 /* Default title to move forwards to another screen or field or cell. */
 "button.next.normal" = "Next";
@@ -73,9 +46,6 @@
 /* Disclaimer label at the start of the questionnaire. */
 "questionnaire.statement" = "What is PRASE?  It means Patient Reporting and Action for a Safe Environment. The PRASE tool, which is the questionnaire, will allow you provide feedback on the safety and quality of care you have experienced during your stay on this ward. Any specific examples of your safety concerns or positive experiences for yourself or other patients around you during this ward stay would be appreciated This experience does not need to have caused harm to you or other patients. Your feedback will be used by the ward to make safety improvements as identified. Please note that you or your carer / family member can complete this questionnaire independently or with support of a patient safety volunteer. Once your willingness to participate is confirmed by the patient safety volunteer, you can then proceed to complete the questionnaire.";
 
-/* Button title to add a note to a question. */
-"question.button.note.normal" = "Add a note";
-
 /* Button title to add a 'Something Good' note to a question. */
 "question.button.good.normal" = "Add something good";
 
@@ -94,14 +64,14 @@
 /* Label asking the user to add something good about their care. */
 "record.comments.good-title" = "Do you want to tell us something that has been good about your care?";
 
-/* Text field prompt for requesting the 'day' part of a date in the dd/mm/yyyy format. */
-"date-select.day.placeholder" = "DD";
-
 /* Text field prompt for requesting the 'year' part of a date in the dd/mm/yyyy format. */
-"date-select.year.placeholder" = "hh";
+"date-select.year.placeholder" = "YYYY";
 
 /* Text field prompt for requesting the 'month' part of a date in the dd/mm/yyyy format. */
-"date-select.month.placeholder" = "mm";
+"date-select.month.placeholder" = "MM";
+
+/* Text field prompt for requesting the 'day' part of a date in the dd/mm/yyyy format. */
+"date-select.day.placeholder" = "DD";
 
 /* Button title to complete a task. */
 "button.done.normal" = "Done";
@@ -144,9 +114,45 @@ Serious";
 /* Title when asking "Is this comment about this hospital ward?". */
 "concern.label.this-ward" = "Comment relating to this ward?";
 
-/* Text field prompt for requesting the 'month' part of a date in the dd/mm/yyyy format. */
-"date-select.month.placeholder" = "mm";
+/* Prompt to enter a different ward. */
+"login.field.other-ward.placeholder" = "Enter your ward";
 
-/* Text field prompt for requesting the 'year' part of a date in the dd/mm/yyyy format. */
-"date-select.year.placeholder" = "hh";
+/* Text field prompt for requesting the 'minute' part of a time in the hh/mm format. */
+"date-select.min.placeholder" = "mm";
+
+/* Text field prompt for requesting the 'hour' part of a time in the hh/mm format. */
+"date-select.hour.placeholder" = "hh";
+
+/* Prompt to enter a different ward. */
+"login.field.other-ward.placeholder" = "Enter your ward";
+
+/* Prompt to select the desired hospital. */
+"home.field.ward-select.placeholder" = "Tap to select";
+
+/* Label for the hospital select field. */
+"home.label.hospital-title" = "Hospital:";
+
+/* Label for the ward select field. */
+"home.label.ward-title" = "Ward:";
+
+/* Prompt to select the desired trust. */
+"home.field.trust-select.placeholder" = "Tap to select";
+
+/* Label for the trust select field. */
+"home.label.trust-title" = "Trust:";
+
+/* Prompt to select the desired hospital. */
+"home.field.hospital-select.placeholder" = "Tap to select";
+
+/* Prompt to enter a different ward. */
+"login.field.other-ward.placeholder" = "Enter your ward";
+
+/* Button title to return to the log in screen. */
+"home.button.log-out.normal" = "Log Out";
+
+/* Button launch the settings screen. */
+"button.settings.normal" = "Settings";
+
+/* Button title to log in. */
+"login.button.log-in.normal" = "Create a New Record";
 

@@ -152,7 +152,7 @@
 
 -(void)commitCustomWard
 {
-    if ([self.selectedWard.id isEqualToNumber:@(-1)]) {
+    if ([self.selectedWard.id isEqualToNumber:@(-1)] && [self.selectedWard isNonNullString]) {
         NSInteger customWardCount = [PRWard MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"id < %@", @0]];
         
         if (self.selectedWard.id != nil) {
@@ -173,6 +173,8 @@
 {
     if (textField == otherWardField) {
         return [super textFieldShouldBeginEditing:textField];
+    } else {
+        [self.view endEditing:YES];
     }
     
     NSDictionary *options;

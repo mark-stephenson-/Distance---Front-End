@@ -7,7 +7,9 @@
 //
 
 #import "PRRecordSummaryViewController.h"
+
 #import "PRSelectionViewController.h"
+#import "PRBasicDataFormViewController.h"
 
 #import "PRQuestionnaireCompleteCell.h"
 #import "PRBasicDataCompleteCell.h"
@@ -35,7 +37,7 @@
     
     // check if basic data is complete and update the value if necessary
     NSDictionary *basicDataInfo = self.record.basicDataDictionary;
-    BOOL basicDataComplete = basicDataInfo.count == 7 && ![basicDataInfo.allValues containsObject:[NSNull null]];
+    BOOL basicDataComplete = basicDataInfo.count == [PRBasicDataFormViewController basicDataFormKeys].count && ![basicDataInfo.allValues containsObject:[NSNull null]];
     
     [self setFormValue:@(basicDataComplete) forFormKey:@"BasicData"];
     

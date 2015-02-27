@@ -9,15 +9,29 @@
 #import "PRBasicDataFormViewController.h"
 
 #import "PRTheme.h"
+
+#import "PRSelectionViewController.h"
+
 #import "PRDateSelectCell.h"
 #import "PRIncrementCell.h"
-#import "PRSelectionViewController.h"
+#import "PRTextFieldCell.h"
 
 @interface PRBasicDataFormViewController ()
 
 @end
 
 @implementation PRBasicDataFormViewController
+
++(NSArray *)basicDataFormKeys
+{
+    static NSArray *keys = nil;
+    
+    if (keys == nil) {
+        keys = @[@"DOB", @"Gender", @"Ethnicity", @"Language", @"OtherLanguage", @"StayLength"];
+    }
+    
+    return keys;
+}
 
 -(NSArray *)generateCellInfo
 {
@@ -104,14 +118,37 @@
     languageInfo[@"userInfo"][@"textField.textInsets"] = [NSValue valueWithUIEdgeInsets:UIEdgeInsetsMake(4, 15, 4, 15)];
     languageInfo[@"userInfo"][@"textField.imageInsets"] = [NSValue valueWithUIEdgeInsets:UIEdgeInsetsMake(2, 0, 2, 10)];
     
-    NSString *admittedTitle = TDLocalizedStringWithDefaultValue(@"basic-data.admitted.title", nil, nil, @"Home many days have you been in hospital?", @"Basic Data Question: Home many days have you been in hospital?");
+    NSString *admittedTitle = TDLocalizedStringWithDefaultValue(@"basic-data.admitted.title", nil, nil, @"How many days have you been in hospital?", @"Basic Data Question: How many days have you been in hospital?");
     
     NSMutableDictionary *admittedInfo = [PRIncrementCell cellInfoWithTitle:admittedTitle
                                                                       value:@0
                                                                      andKey:@"StayLength"];
     admittedInfo[@"reuseIdentifier"] = @"IncrementCell";
 
-    return @[@[dobInfo, genderInfo, ethnicGroupCell, languageInfo, admittedInfo]];
+    if (showOtherLanguageOption) {
+        
+        NSMutableDictionary *otherLanguageCellInfo = [TDTextFieldCell cellInfoWithTitle:nil
+                                                                            placeholder:@"Enter your language"
+                                                                                  value:nil
+                                                                                 andKey:@"OtherLanguage"];
+        
+        otherLanguageCellInfo[@"reuseIdentifier"] = @"TextCell";
+        
+        
+        return @[@[dobInfo, genderInfo, ethnicGroupCell, languageInfo, otherLanguageCellInfo, admittedInfo]];
+    } else {
+        return @[@[dobInfo, genderInfo, ethnicGroupCell, languageInfo, admittedInfo]];
+    }
+}
+
+-(void)cellValueChanged:(TDCell *)cell
+{
+    [super cellValueChanged:cell];
+    
+    if ([cell.key isEqualToString:@"Language"]) {
+        showOtherLanguageOption = [cell.value isEqualToString:@"Other"];
+        [self reloadForm];
+    }
 }
 
 #pragma mark - SelectionCell Delegate Methods
@@ -145,7 +182,7 @@
         UIView *view = [self createHeaderWithTitle:thisSectionTitle];
         CGSize layoutSize = [view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
         
-        return layoutSize.height + 2.0;;
+        return layoutSize.height + 2.0;
     }
     
     return 0;

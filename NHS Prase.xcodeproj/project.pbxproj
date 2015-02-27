@@ -47,6 +47,7 @@
 		A536995119ADD1170045EEB1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A536995019ADD1170045EEB1 /* Images.xcassets */; };
 		A536995D19ADD1170045EEB1 /* NHS_PraseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A536995C19ADD1170045EEB1 /* NHS_PraseTests.m */; };
 		A540640419C1FC9800C38EF9 /* PRAnswerOptionsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = A540640319C1FC9800C38EF9 /* PRAnswerOptionsLayout.m */; };
+		A54074421AA073E20039980E /* PRTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A54074411AA073E20039980E /* PRTextFieldCell.m */; };
 		A544EEC519C899F700160388 /* PRIncrementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A544EEC419C899F700160388 /* PRIncrementCell.m */; };
 		A5466A8919AE070100240026 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5466A8819AE070100240026 /* HomeViewController.m */; };
 		A5466CBF19AE3B0500240026 /* PRBasicDataFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5466CBE19AE3B0500240026 /* PRBasicDataFormViewController.m */; };
@@ -196,6 +197,8 @@
 		A54025CF19BE082000B47050 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A540640219C1FC9800C38EF9 /* PRAnswerOptionsLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRAnswerOptionsLayout.h; path = "Record View Controllers/PRAnswerOptionsLayout.h"; sourceTree = "<group>"; };
 		A540640319C1FC9800C38EF9 /* PRAnswerOptionsLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRAnswerOptionsLayout.m; path = "Record View Controllers/PRAnswerOptionsLayout.m"; sourceTree = "<group>"; };
+		A54074401AA073E20039980E /* PRTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRTextFieldCell.h; path = "Custom Form Cells/PRTextFieldCell.h"; sourceTree = "<group>"; };
+		A54074411AA073E20039980E /* PRTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRTextFieldCell.m; path = "Custom Form Cells/PRTextFieldCell.m"; sourceTree = "<group>"; };
 		A544EEC319C899F700160388 /* PRIncrementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = PRIncrementCell.h; path = "Custom Form Cells/PRIncrementCell.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		A544EEC419C899F700160388 /* PRIncrementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRIncrementCell.m; path = "Custom Form Cells/PRIncrementCell.m"; sourceTree = "<group>"; };
 		A5466A8719AE070100240026 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HomeViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -550,6 +553,8 @@
 				A58699AD19CB2E4F002E0C14 /* PRBasicDataCompleteCell.m */,
 				A5235E8319D1BE1500AE721A /* PRTextSizeSelectCell.h */,
 				A5235E8419D1BE1500AE721A /* PRTextSizeSelectCell.m */,
+				A54074401AA073E20039980E /* PRTextFieldCell.h */,
+				A54074411AA073E20039980E /* PRTextFieldCell.m */,
 			);
 			name = "Custom Form Cells";
 			sourceTree = "<group>";
@@ -734,6 +739,7 @@
 			files = (
 				A5D40FD019D2F8FE00CD6FAD /* PRAPIManager.m in Sources */,
 				A5882D2B19BA0FE500C04E4F /* PRTheme.m in Sources */,
+				A54074421AA073E20039980E /* PRTextFieldCell.m in Sources */,
 				A502278E19C09B22005B31D2 /* PRRecord.m in Sources */,
 				A502276E19C0913E005B31D2 /* PRModel.xcdatamodeld in Sources */,
 				A5EBFED619D1876C0056A44A /* PRMultiTextFieldCell.m in Sources */,
