@@ -163,7 +163,7 @@
     
     CGFloat scrollableHeight = scroll.contentSize.height + scroll.contentInset.top + scroll.contentInset.bottom;
     self.scrollButtonView.widthConstraint.priority = (scrollableHeight < scroll.frame.size.height) ? 900 : 100;
-    [self.view layoutIfNeeded];
+//    [self.view layoutIfNeeded];
     
     CGFloat offsetY = scroll.contentOffset.y;
     CGFloat minOffsetY = -scroll.contentInset.top;

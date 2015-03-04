@@ -8,6 +8,8 @@
 
 #import "PRFormViewController.h"
 
+#import "UIViewController+Scrolling.h"
+
 @interface PRFormViewController ()
 
 @end
@@ -17,12 +19,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // ensure there are buttons if the content is very large.
+    if (self.tableView != nil) {
+        [self setupScrollingButtonsOnContainer:self.tableView];
+    }
 }
 
 -(void)dealloc
 {
-//    [self removeObserver:self forKeyPath:@"frame"];
-//    [self.tableView removeObserver:self forKeyPath:@"bounds"];
+    [self tearDownScrollingContainer];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
