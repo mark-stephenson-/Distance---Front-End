@@ -33,25 +33,27 @@
     }
     
     self.scrollButtonReferenceView = scrollView;
-    [self addObservers];
-    
-    [self.scrollButtonView.scrollUpButton addTarget:self
-                                             action:@selector(startScrollUp:)
-                                   forControlEvents:UIControlEventTouchDown | UIControlEventTouchDragEnter];
-    
-    [self.scrollButtonView.scrollDownButton addTarget:self
-                                             action:@selector(startScrollDown:)
-                                   forControlEvents:UIControlEventTouchDown | UIControlEventTouchDragEnter];
-    
-    [self.scrollButtonView.scrollUpButton addTarget:self
-                                               action:@selector(stopScroll:)
-                                     forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchDragExit];
-    
-    [self.scrollButtonView.scrollDownButton addTarget:self
-                                               action:@selector(stopScroll:)
-                                     forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchDragExit];
-    
-    [self refreshViews];
+    if (scrollView != nil) {
+        [self addObservers];
+        
+        [self.scrollButtonView.scrollUpButton addTarget:self
+                                                 action:@selector(startScrollUp:)
+                                       forControlEvents:UIControlEventTouchDown | UIControlEventTouchDragEnter];
+        
+        [self.scrollButtonView.scrollDownButton addTarget:self
+                                                   action:@selector(startScrollDown:)
+                                         forControlEvents:UIControlEventTouchDown | UIControlEventTouchDragEnter];
+        
+        [self.scrollButtonView.scrollUpButton addTarget:self
+                                                 action:@selector(stopScroll:)
+                                       forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchDragExit];
+        
+        [self.scrollButtonView.scrollDownButton addTarget:self
+                                                   action:@selector(stopScroll:)
+                                         forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchDragExit];
+        
+        [self refreshViews];
+    }
 }
 
 -(void)tearDownScrollingContainer
@@ -162,8 +164,10 @@
     UIScrollView *scroll = self.scrollButtonReferenceView;
     
     CGFloat scrollableHeight = scroll.contentSize.height + scroll.contentInset.top + scroll.contentInset.bottom;
-    self.scrollButtonView.widthConstraint.priority = (scrollableHeight < scroll.frame.size.height) ? 900 : 100;
-//    [self.view layoutIfNeeded];
+    CGFloat newPriority = (scrollableHeight < scroll.frame.size.height) ? 900 : 100;
+    self.scrollButtonView.widthConstraint.priority = newPriority;
+    [self.scrollButtonView layoutIfNeeded];
+    
     
     CGFloat offsetY = scroll.contentOffset.y;
     CGFloat minOffsetY = -scroll.contentInset.top;

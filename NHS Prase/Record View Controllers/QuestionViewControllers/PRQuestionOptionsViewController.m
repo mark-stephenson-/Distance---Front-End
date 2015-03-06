@@ -175,6 +175,34 @@
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView heightForCellAtIndexPath:(NSIndexPath *)indexPath constrainedToWidth:(CGFloat)width
 {
+    // whilst there are no images the size is just the size of the label including a margin
+    CGFloat labelBuffer = 8;
+    if (layoutLabel == nil) {
+        layoutLabel = [[UILabel alloc] init];
+        layoutLabel.TDTextStyleIdentifier = @"Caption 1";
+        layoutLabel.numberOfLines = 0;
+        layoutLabel.minimumScaleFactor = 0.5;
+        layoutLabel.hidden = YES;
+        [self.view addSubview:layoutLabel];
+    }
+    
+    layoutLabel.frame = CGRectMake(0, 0, width - 2.0 * labelBuffer, 20.0);
+    [self applyThemeToView:layoutLabel];
+    
+    PRAnswerSet *sectionAnswers = self.question.pmosQuestion.answerSets[indexPath.section];
+    PRAnswerOption *thisOption = sectionAnswers.options[indexPath.row];
+    NSString *localizationKey = [thisOption localizationKeyForAnswer];
+    NSString *localizedTitle = TDLocalizedStringWithDefaultValue(localizationKey, nil, nil, nil, nil);
+    layoutLabel.text = localizedTitle;
+    
+    layoutLabel.preferredMaxLayoutWidth = layoutLabel.frame.size.width;
+    
+    CGSize fittingSize = [layoutLabel systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    fittingSize.height += 2;
+
+    return fittingSize.height + labelBuffer * 2.0;
+    
+    /*
     NSString *identifier = [self cellIdentifierForIndexPath:indexPath];
     
     if (layoutCells == nil) {
@@ -198,6 +226,7 @@
     
     CGSize fittingSize = [layoutCell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize constrainedToWidth:width];
     return fittingSize.height + 5.0;
+     */
 }
 
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath

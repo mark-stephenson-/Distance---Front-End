@@ -64,6 +64,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commitTracking) name:UIApplicationWillResignActiveNotification object:nil];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.view layoutSubviews];
+}
+
 -(void)resetTracking
 {
     // reset the tracking from date
