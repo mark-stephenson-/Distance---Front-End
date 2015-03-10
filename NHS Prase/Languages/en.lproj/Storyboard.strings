@@ -83,22 +83,13 @@
 "pirt.segment.navigation.segment_0" = "Ward";
 
 /* Navigation title when adding a concern. */
-"pirt.segment.navigation.segment_1" = "What";
+"pirt.segment.navigation.segment_1" = "What is your concern?";
 
 /* Navigation title when adding a concern. */
-"pirt.segment.navigation.segment_2" = "Why";
-
-/* Navigation title when adding a concern. */
-"pirt.segment.navigation.segment_3" = "Prevent";
-
-/* Navigation title when adding a concern. */
-"pirt.segment.navigation.segment_4" = "Questions";
+"pirt.segment.navigation.segment_2" = "Severity of Concern";
 
 /* Title when adding a note about something good to a question. */
 "good.label.title" = "Do you have any examples of positive experiences relating to this question you want to share?";
-
-/* Question asking however serious the users concern was. */
-"pirt.question.serious" = "On a scale of 1-10, how serious do you think your concern was?";
 
 /* Question asking the user if their concern could have been prevented. */
 "prit.questions.prevent" = "Do you think it would have been possible to have stopped your concern from happening?";
@@ -110,6 +101,9 @@ at all";
 /* Text if the concern is the most serious. */
 "pirt.questions.label.serious" = "Extremely
 Serious";
+
+/* Question asking however serious the users concern was. */
+"pirt.question.serious" = "On a scale of 1-10, how serious do you think your concern was?";
 
 /* Title when asking "Is this comment about this hospital ward?". */
 "concern.label.this-ward" = "Comment relating to this ward?";

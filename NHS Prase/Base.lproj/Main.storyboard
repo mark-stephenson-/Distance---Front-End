@@ -2381,10 +2381,8 @@
                                 </constraints>
                                 <segments>
                                     <segment title="Ward"/>
-                                    <segment title="What"/>
-                                    <segment title="Why"/>
-                                    <segment title="Prevent"/>
-                                    <segment title="Questions"/>
+                                    <segment title="What is your concern?"/>
+                                    <segment title="Severity of Concern"/>
                                 </segments>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="pirt.segment.navigation"/>

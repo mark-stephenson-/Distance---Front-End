@@ -34,8 +34,8 @@
     
     PRPIRTWardSelectViewController *wardSelectVC;
     PRNoteViewController *whatViewController;
-    PRNoteViewController *whyViewController;
-    PRNoteViewController *preventViewController;
+//    PRNoteViewController *whyViewController;
+//    PRNoteViewController *preventViewController;
     PRPIRTQuestionsViewController *questionsVC;
     
     PRInputAccessoryView *noteVCToolbar;

@@ -46,11 +46,12 @@
     // create the simple view controllers
     whatViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
     loadView = whatViewController.view;
-    whatViewController.titleLabel.text = TDLocalizedStringWithDefaultValue(@"pirt.what.title", nil, nil, @"Detail needed about what, where and when the concern happened.", @"Concern section title");
+    whatViewController.titleLabel.text = TDLocalizedStringWithDefaultValue(@"pirt.what.title", nil, nil, @"Can you please provide a brief description detailing what your concern is, why it is a concern to you and what you think could have been done differently to prevent it from happening to you or other patients. General comments can also be included.", @"Concern section title");
     whatViewController.delegate = self;
     whatViewController.titleLabel.TDLocalizedStringKey = @"pirt.what.title";
     whatViewController.noteView.inputAccessoryView = noteVCToolbar;
     
+    /*
     whyViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
     loadView = whyViewController.view;
     whyViewController.titleLabel.text = TDLocalizedStringWithDefaultValue(@"pirt.why.title", nil, nil, @"Why was this a concern for you?", @"Concern section title");
@@ -64,11 +65,12 @@
     preventViewController.delegate = self;
     preventViewController.titleLabel.TDLocalizedStringKey = @"pirt.prevent.title";
     preventViewController.noteView.inputAccessoryView = noteVCToolbar;
+    */
     
     // call the setter again to assign all the properties to the view conctrollers
     self.concern = _concern;
     
-    [tabController setViewControllers:@[wardSelectVC, whatViewController, whyViewController, preventViewController, questionsVC]];
+    [tabController setViewControllers:@[wardSelectVC, whatViewController, questionsVC]];
 }
 
 -(PRConcern *)concern
@@ -90,8 +92,8 @@
     
     wardSelectVC.selectedWard = concern.ward;
     whatViewController.note = concern.whatNote;
-    whyViewController.note = concern.whyNote;
-    preventViewController.note = concern.preventNote;
+//    whyViewController.note = concern.whyNote;
+//    preventViewController.note = concern.preventNote;
     questionsVC.seriousQuestion = concern.seriousQuestion;
     questionsVC.preventQuestion = concern.preventQuestion;
 }
@@ -102,8 +104,8 @@
     
     newConcern.ward = wardSelectVC.selectedWard;
     newConcern.whatNote = [whatViewController note];
-    newConcern.whyNote = [whyViewController note];
-    newConcern.preventNote = [preventViewController note];
+//    newConcern.whyNote = [whyViewController note];
+//    newConcern.preventNote = [preventViewController note];
     
     newConcern.seriousQuestion = questionsVC.seriousQuestion;
     newConcern.preventQuestion = questionsVC.preventQuestion;
@@ -166,7 +168,7 @@
     
     [super segmentChanged:sender];
     
-    if (visibleSelector.selectedSegmentIndex == 0 || visibleSelector.selectedSegmentIndex == 4) {
+    if (visibleSelector.selectedSegmentIndex == 0 || visibleSelector.selectedSegmentIndex == tabController.viewControllers.count - 1) {
         [self showFooterView:YES animated:NO];
     } else {
         [self showFooterView:NO animated:NO];
