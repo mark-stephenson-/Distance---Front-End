@@ -20,6 +20,7 @@
 #import "PRTheme.h"
 #import "PRQuestion.h"
 
+
 #import "PRAPIManager.h"
 
 #import <MagicalRecord/MagicalRecord.h>
@@ -94,6 +95,12 @@
 {
     if ([segue.identifier isEqualToString:@"PresentSettings"]) {
         [containerView layoutSubviews];
+    } else if ([segue.identifier isEqualToString:@"ShowIncomplete"]) {
+        PRIncompleteViewController *incompleteVC = (PRIncompleteViewController *) segue.destinationViewController;
+        
+        incompleteVC.delegate = self;
+        incompleteVC.title = TDLocalizedStringWithDefaultValue(@"incomplete.title", nil, nil, @"Questionnaire Incomplete", @"Title for the modal screen prompting the user for a reason why the questionnaire has not been completed.");
+        incompleteVC.subtitle = TDLocalizedStringWithDefaultValue(@"incomplete.title", nil, nil, @"Please provide a brief explanation for why this questionnaire could not be completed.", @"Subtitle for the modal screen prompting the user for a reason why the questionnaire has not been completed.");
     }
 }
 
@@ -314,11 +321,11 @@
         NSInteger total = self.record.questions.count;
     
         NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-title", nil, nil, @"Submit Record", @"The alert title shown when the user attempts to submit a record with incomplete data.");
-        NSString *submitTitle = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-submit", nil, nil, @"Submit", @"The alert button for continuing with submission even if questions are unanswered.");
+        NSString *submitTitle = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-submit", nil, nil, @"Submit Anyway", @"The alert button for continuing with submission even if questions are unanswered.");
         NSString *cancelTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyCancel, nil, nil, nil, nil);
         
         void (^submitCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
-            [self continueSubmit];
+            [self performSegueWithIdentifier:@"ShowIncomplete" sender:nil];
         };
         
         NSString *alertMessage = nil;
@@ -489,6 +496,22 @@
                         buttonTitles:@[buttonTitle]
                              actions:@[buttonCompletion]];
         }
+    }];
+}
+
+#pragma mark - Incomplete Delegate
+
+-(void)incompleteViewControllerDidCancel:(PRIncompleteViewController *)incompleteViewController
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)incompleteViewController:(PRIncompleteViewController *)incompleteViewController completedWithText:(NSString *)text
+{
+    self.record.incompleteReason = text;
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self continueSubmit];
     }];
 }
 

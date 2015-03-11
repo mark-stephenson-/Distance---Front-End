@@ -16,8 +16,9 @@
 {
     IBOutlet UIView *tableContainer;
 }
+
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
-@property (nonatomic, strong) IBOutlet UILabel *subTitleLabel;;
+@property (nonatomic, strong) IBOutlet UILabel *subTitleLabel;
 
 
 @end

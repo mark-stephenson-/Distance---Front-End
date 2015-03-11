@@ -205,6 +205,8 @@
     jsonRecord[@"totalTimePatient"] = @(record.timeAdditionalPatient.intValue + record.timeTracked.intValue) ? : [NSNull null];
     jsonRecord[@"totalTimeQuestionnaire"] = @(record.timeAdditionalQuestionnaire.intValue + record.timeTracked.intValue) ? : [NSNull null];
     
+    jsonRecord[@"incompleteReason"] = [record.incompleteReason isNonNullString] ? record.incompleteReason : [NSNull null];
+    
     // the id will uniquely identify the ward, hospital and trust in TheCore
     if (record.ward.id.integerValue >= 0) {
         jsonRecord[@"ward"] = record.ward.id ? : [NSNull null];

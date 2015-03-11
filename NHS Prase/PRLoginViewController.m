@@ -44,6 +44,12 @@
     
     usernameField.accessoryImage = nil;
     passwordField.accessoryImage = nil;
+    
+    // show the version & build number
+    NSString *versionNumber = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
+    NSString *buildNumber = [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
+    
+    versionLabel.text = [NSString stringWithFormat:@"%@ (%@)", versionNumber, buildNumber];
 }
 
 -(void)viewWillAppear:(BOOL)animated

@@ -6,6 +6,7 @@
 
 extern const struct PRRecordAttributes {
 	__unsafe_unretained NSString *basicData;
+	__unsafe_unretained NSString *incompleteReason;
 	__unsafe_unretained NSString *language;
 	__unsafe_unretained NSString *startDate;
 	__unsafe_unretained NSString *timeAdditionalPatient;
@@ -39,6 +40,7 @@ extern const struct PRRecordFetchedProperties {
 
 
 
+
 @interface PRRecordID : NSManagedObjectID {}
 @end
 
@@ -57,6 +59,16 @@ extern const struct PRRecordFetchedProperties {
 
 
 //- (BOOL)validateBasicData:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* incompleteReason;
+
+
+
+//- (BOOL)validateIncompleteReason:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -201,6 +213,12 @@ extern const struct PRRecordFetchedProperties {
 
 - (id)primitiveBasicData;
 - (void)setPrimitiveBasicData:(id)value;
+
+
+
+
+- (NSString*)primitiveIncompleteReason;
+- (void)setPrimitiveIncompleteReason:(NSString*)value;
 
 
 

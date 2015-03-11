@@ -5,6 +5,7 @@
 
 const struct PRRecordAttributes PRRecordAttributes = {
 	.basicData = @"basicData",
+	.incompleteReason = @"incompleteReason",
 	.language = @"language",
 	.startDate = @"startDate",
 	.timeAdditionalPatient = @"timeAdditionalPatient",
@@ -73,6 +74,13 @@ const struct PRRecordFetchedProperties PRRecordFetchedProperties = {
 
 
 @dynamic basicData;
+
+
+
+
+
+
+@dynamic incompleteReason;
 
 
 

@@ -17,12 +17,14 @@
 {
     NSDictionary *logInCredentials;
     
-    IBOutlet UIScrollView *scrollView;
-
-    IBOutlet TDTextField *usernameField;
-    IBOutlet TDTextField *passwordField;
+    __weak IBOutlet UILabel *versionLabel;
     
-    IBOutlet UIButton *retryButton;
+    __weak IBOutlet UIScrollView *scrollView;
+
+    __weak IBOutlet TDTextField *usernameField;
+    __weak IBOutlet TDTextField *passwordField;
+    
+    __weak IBOutlet UIButton *retryButton;
     
     PRInputAccessoryView *inputView;
     
