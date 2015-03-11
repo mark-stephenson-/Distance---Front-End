@@ -1033,7 +1033,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "abd5ec32-248c-48eb-a04d-6f3966e0a0c5";
+				PROVISIONING_PROFILE = "498d95de-a378-4045-9abb-faa14d329613";
 			};
 			name = Debug;
 		};

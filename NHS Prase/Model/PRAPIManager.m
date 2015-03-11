@@ -197,6 +197,11 @@
     jsonRecord[@"startDate"] = [dateFormatter stringFromDate:record.startDate] ? : [NSNull null];
     
     // submitted in seconds
+    jsonRecord[@"recordedTime"] = @(record.timeTracked.intValue);
+    
+    jsonRecord[@"adjustedTimePatient"] = @(record.timeAdditionalPatient.intValue);
+    jsonRecord[@"adjustedTimeQuestionnaire"] = @(record.timeAdditionalQuestionnaire.intValue);
+    
     jsonRecord[@"totalTimePatient"] = @(record.timeAdditionalPatient.intValue + record.timeTracked.intValue) ? : [NSNull null];
     jsonRecord[@"totalTimeQuestionnaire"] = @(record.timeAdditionalQuestionnaire.intValue + record.timeTracked.intValue) ? : [NSNull null];
     

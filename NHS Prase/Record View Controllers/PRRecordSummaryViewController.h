@@ -11,7 +11,9 @@
 @class PRRecord;
 
 @interface PRRecordSummaryViewController : PRFormViewController
-
+{
+    BOOL shouldUpdateAdditionalTime;
+}
 @property (nonatomic, strong) PRRecord *record;
 
 @end

@@ -32,9 +32,6 @@
     NSInteger answered = [self.record answeredQuestions];
     NSInteger total = self.record.questions.count;
     
-    [self setFormValue:@[@(answered), @(total)]
-            forFormKey:@"Questionnaire"];
-    
     // check if basic data is complete and update the value if necessary
     NSDictionary *basicDataInfo = self.record.basicDataDictionary;
     BOOL basicDataComplete = basicDataInfo.count == [PRBasicDataFormViewController basicDataFormKeys].count && ![basicDataInfo.allValues containsObject:[NSNull null]];
@@ -43,11 +40,28 @@
     
     NSTimeInterval totalPatient = self.record.timeTracked.doubleValue + self.record.timeAdditionalPatient.doubleValue;
     NSTimeInterval totalQuestionnaire = self.record.timeTracked.doubleValue + self.record.timeAdditionalQuestionnaire.doubleValue;
+    
+    // update the form with the new values
+    [self setFormValue:@[@(answered), @(total)]
+            forFormKey:@"Questionnaire"];
     [self setFormValue:@(totalPatient) forFormKey:@"PatientTime"];
     [self setFormValue:@(totalQuestionnaire) forFormKey:@"QuestionnaireTime"];
-    
     // re-generate the cells so the Questionnaire incomplete selectionvc has the correct list
     [self reloadForm];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    shouldUpdateAdditionalTime = YES;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    shouldUpdateAdditionalTime = NO;
 }
 
 -(NSArray *)generateCellInfo
@@ -136,14 +150,16 @@
 
 -(void)cellValueChanged:(TDCell *)cell
 {
-    if ([cell.key isEqualToString:@"PatientTime"]) {
-        NSTimeInterval difference = ((NSNumber *)cell.value).doubleValue - self.record.timeTracked.doubleValue;
-        self.record.timeAdditionalPatient = @(difference);
-    }
-    
-    if ([cell.key isEqualToString:@"QuestionnaireTime"]) {
-        NSTimeInterval difference = ((NSNumber *)cell.value).doubleValue - self.record.timeTracked.doubleValue;
-        self.record.timeAdditionalQuestionnaire = @(difference);
+    if (shouldUpdateAdditionalTime) {
+        if ([cell.key isEqualToString:@"PatientTime"]) {
+            NSTimeInterval difference = ((NSNumber *)cell.value).doubleValue - self.record.timeTracked.doubleValue;
+            self.record.timeAdditionalPatient = @(difference);
+        }
+        
+        if ([cell.key isEqualToString:@"QuestionnaireTime"]) {
+            NSTimeInterval difference = ((NSNumber *)cell.value).doubleValue - self.record.timeTracked.doubleValue;
+            self.record.timeAdditionalQuestionnaire = @(difference);
+        }
     }
     
     [super cellValueChanged:cell];

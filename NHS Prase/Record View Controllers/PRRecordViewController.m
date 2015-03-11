@@ -75,15 +75,16 @@
 {
     // reset the tracking from date
     trackingDate = [NSDate date];
+    NSLog(@"reset tracking from time to %@", trackingDate);
 }
 
 -(void)commitTracking
 {
-    // append the tracked time for this stint and save the record
+    // append the tracked time for this stint and assign to the record
     NSDate *now = [NSDate date];
     NSTimeInterval tracked = [now timeIntervalSinceDate:trackingDate];
     self.record.timeTracked = @(self.record.timeTracked.floatValue + tracked);
-    //NSLog(@"Appended %f for a total time of %d", tracked, self.record.timeTracked.intValue);
+    NSLog(@"Appended %f for a total time of %d", tracked, self.record.timeTracked.intValue);
 }
 
 -(void)dealloc
@@ -372,6 +373,7 @@
     NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.cancel-title", nil, nil, @"Continue with Record", @"Button title to continue creating a record when prompted about cancelling a record.");
     
     void (^homeCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+        [self.record MR_deleteEntity];
         [self continueHome];
     };
     
