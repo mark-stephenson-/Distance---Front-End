@@ -27,12 +27,6 @@
 
 #import "MBProgressHUD.h"
 
-// iOS 8 Deprecation
-//#define ALERT_GO_HOME 111
-//#define ALERT_GO_TITLE 222
-//#define ALERT_SUBMIT 333
-//#define ALERT_SUBMIT_ERROR 444
-
 @interface PRRecordViewController ()
 
 @end
@@ -68,7 +62,7 @@
 {
     [super viewDidAppear:animated];
     
-    [self.view layoutSubviews];
+    [self.view setNeedsLayout];
 }
 
 -(void)resetTracking

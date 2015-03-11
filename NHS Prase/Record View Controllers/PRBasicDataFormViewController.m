@@ -22,12 +22,21 @@
 
 @implementation PRBasicDataFormViewController
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.view setNeedsLayout];
+}
+
+#pragma mark - Form Methods
+
 +(NSArray *)basicDataFormKeys
 {
     static NSArray *keys = nil;
     
     if (keys == nil) {
-        keys = @[@"DOB", @"Gender", @"Ethnicity", @"Language", @"OtherLanguage", @"StayLength"];
+        keys = @[@"Completer", @"OtherCompleter", @"DOB", @"Gender", @"Ethnicity", @"Language", @"OtherLanguage", @"StayLength"];
     }
     
     return keys;
@@ -37,6 +46,30 @@
 {
     // save a weak reference of self to store in the dictionary to prevent retain cycles caused in self.cellInfo
     __weak PRBasicDataFormViewController *wSelf = self;
+    
+    NSString *tapToSelect = TDLocalizedStringWithDefaultValue(@"selection.default-placeholder", nil, nil, @"Tap to select", @"The default placeholder text for an empty selection cell.");
+    
+    // Completer
+    NSDictionary *completerOptions = @{@"patient": TDLocalizedStringWithDefaultValue(@"basic-data.completer.option.patient", nil, nil, @"The patient", @"Patient option for who is completing the questionnaire (basic data question)."),
+                                       @"family-carer": TDLocalizedStringWithDefaultValue(@"basic-data.completer.option.family-carer", nil, nil, @"A family member/carer", @"Family member / carer option for who is completing the questionnaire (basic data question)."),
+                                       @"hospital-volunteer": TDLocalizedStringWithDefaultValue(@"basic-data.completer.option.hospital-volunteer", nil, nil, @"A hospital volunteer", @"Hospital volunteer option for who is completing the questionnaire (basic data question)."),
+                                       @"other": TDLocalizedStringWithDefaultValue(@"basic-data.completer.option.other", nil, nil, @"Other", @"Other (i.e. free text) option for who is completing the questionnaire (basic data question).")};
+    
+    NSString *completerTitle = TDLocalizedStringWithDefaultValue(@"basic-data.completer.title", nil, nil, @"Are you...", @"Basic Data Question: Are you...");
+    NSMutableDictionary *completerInfo = [TDSelectCell cellInfoWithTitle:completerTitle
+                                                             placeholder:tapToSelect
+                                                                 options:completerOptions
+                                                                 details:nil
+                                                                 inOrder:@[@[@"patient", @"family-carer", @"hospital-volunteer", @"other"]]
+                                                                   value:nil
+                                                                  andKey:@"Completer"];
+    completerInfo[@"reuseIdentifier"] = @"SelectCell";
+    completerInfo[@"userInfo"][@"selectionDelegate"] = wSelf;
+    completerInfo[@"userInfo"][@"selectionIdentifier"] = @"PRBasicSelectionVC";
+    completerInfo[@"userInfo"][@"textField.textInsets"] = [NSValue valueWithUIEdgeInsets:UIEdgeInsetsMake(4, 15, 4, 15)];
+    completerInfo[@"userInfo"][@"textField.imageInsets"] = [NSValue valueWithUIEdgeInsets:UIEdgeInsetsMake(2, 0, 2, 15)];
+    
+    // Date Of Birth
     
     NSString *dobTitle = TDLocalizedStringWithDefaultValue(@"basic-data.dob.title", nil, nil, @"Date of Birth", @"Basic Data Question: Date of Birth");
     NSMutableDictionary *dobInfo = [PRDateSelectCell cellInfoWithTitle:dobTitle
@@ -105,7 +138,7 @@
     NSArray *languageKeys = @[@[@"en", @"mi", @"ur", @"other"]];
     
     NSMutableDictionary *languageInfo = [TDSelectCell cellInfoWithTitle:@"What is your first language?"
-                                                            placeholder:@"Tap to select"
+                                                            placeholder:tapToSelect
                                                                 options:languageOptions
                                                                 details:nil
                                                                 inOrder:languageKeys
@@ -125,20 +158,39 @@
                                                                      andKey:@"StayLength"];
     admittedInfo[@"reuseIdentifier"] = @"IncrementCell";
 
+    NSMutableArray *cellInfo = [NSMutableArray array];
+    [cellInfo addObject:completerInfo];
+    
+    // optionally add a text field if "other" is chosen for the completer
+    if (showOtherCompleterOption) {
+        NSString *placeholder = TDLocalizedStringWithDefaultValue(@"basic-data.othercompleter.placeholder", nil, nil, @"Enter your relation to the patient", @"The placeholder text shown in a text field when the user chooses other as the completer.");
+        
+        NSMutableDictionary *otherCompleterCellInfo = [TDTextFieldCell cellInfoWithTitle:nil
+                                                                            placeholder:placeholder
+                                                                                  value:nil
+                                                                                 andKey:@"OtherCompleter"];
+        otherCompleterCellInfo[@"reuseIdentifier"] = @"TextCell";
+        [cellInfo addObject:otherCompleterCellInfo];
+    }
+    
+    [cellInfo addObjectsFromArray:@[dobInfo, genderInfo, ethnicGroupCell, languageInfo]];
+    
+    // optionally add a text field if "other" is chosen for the users first language
     if (showOtherLanguageOption) {
+        NSString *placeholder = TDLocalizedStringWithDefaultValue(@"basic-data.otherlanguage.placeholder", nil, nil, @"Enter your language", @"The placeholder text shown in a text field when the user chooses other for their first language.");
         
         NSMutableDictionary *otherLanguageCellInfo = [TDTextFieldCell cellInfoWithTitle:nil
-                                                                            placeholder:@"Enter your language"
+                                                                            placeholder:placeholder
                                                                                   value:nil
                                                                                  andKey:@"OtherLanguage"];
-        
         otherLanguageCellInfo[@"reuseIdentifier"] = @"TextCell";
         
-        
-        return @[@[dobInfo, genderInfo, ethnicGroupCell, languageInfo, otherLanguageCellInfo, admittedInfo]];
-    } else {
-        return @[@[dobInfo, genderInfo, ethnicGroupCell, languageInfo, admittedInfo]];
+        [cellInfo addObject:otherLanguageCellInfo];
     }
+    
+    [cellInfo addObject:admittedInfo];
+    
+    return @[cellInfo];
 }
 
 -(void)cellValueChanged:(TDCell *)cell
@@ -147,6 +199,10 @@
     
     if ([cell.key isEqualToString:@"Language"]) {
         showOtherLanguageOption = [cell.value isEqualToString:@"Other"];
+        [self reloadForm];
+    } else if ([cell.key isEqualToString:@"Completer"]) {
+        NSString *otherOptionString = TDLocalizedStringWithDefaultValue(@"basic-data.completer.option.other", nil, nil, nil, nil);
+        showOtherCompleterOption = [cell.value isEqualToString:otherOptionString];
         [self reloadForm];
     }
 }

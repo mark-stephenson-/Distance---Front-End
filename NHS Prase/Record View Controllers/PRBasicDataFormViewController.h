@@ -15,6 +15,7 @@
 @interface PRBasicDataFormViewController : PRFormViewController <TDSelectionViewControllerDelegate>
 {
     BOOL showOtherLanguageOption;
+    BOOL showOtherCompleterOption;
 }
 
 +(NSArray *)basicDataFormKeys;
