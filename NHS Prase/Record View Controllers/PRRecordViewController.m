@@ -38,6 +38,8 @@
 {
     [super viewDidLoad];
     
+    segmentTitles = @[@"Basic Data", @"Questionnaire", @"Comments", @"Summary"];
+    
     PRQuestionaireViewController *qvc = tabController.viewControllers[1];
     qvc.questions = [self.record.questions array];
     
@@ -114,15 +116,17 @@
         if ([qvc isKindOfClass:[PRQuestionaireViewController class]]) {
             [qvc setCurrentQuestion:questionNumber.integerValue];
         }
-        [visibleSelector setSelectedSegmentIndex:1];
-        [self segmentChanged:self];
+        [self selectSegment:1];
+//        [visibleSelector setSelectedSegmentIndex:1];
+//        [self segmentChanged:self];
     }
 }
 
 -(void)handleBasicDataRequest:(NSNotification *) note
 {
-    [visibleSelector setSelectedSegmentIndex:0];
-    [self segmentChanged:self];
+    [self selectSegment:0];
+//    [visibleSelector setSelectedSegmentIndex:0];
+//    [self segmentChanged:self];
 }
 
 -(void)setRecord:(PRRecord *)record
@@ -135,7 +139,7 @@
     }
 }
 
--(void)segmentChanged:(id)sender
+-(void)selectSegment:(NSInteger)segment
 {
     NSUInteger oldSegment = tabController.selectedIndex;
     
@@ -184,25 +188,25 @@
                              actions:nil];
             
             // swap back to the new segment
-            visibleSelector.selectedSegmentIndex = oldSegment;
+//            visibleSelector.selectedSegmentIndex = oldSegment;
              return;
         }
         
         self.record.basicData = [NSDictionary dictionaryWithDictionary:enteredBasicData];
     }
     
-    NSUInteger newSegment = visibleSelector.selectedSegmentIndex;
-    if (newSegment == visibleSelector.numberOfSegments - 1) {
+//    NSUInteger newSegment = visibleSelector.selectedSegmentIndex;
+    if (segment == tabController.viewControllers.count - 1) {
         // commit the tracked time to the record so it can be loaded by the summary view controller. The tracking is paused on the summary screen to prevent confusion
         [self commitTracking];
     }
     
-    if (oldSegment == visibleSelector.numberOfSegments - 1 && newSegment != oldSegment) {
+    if (oldSegment == tabController.viewControllers.count - 1 && segment != oldSegment) {
         // unpause the tracking when navigating away from the summary
         [self resetTracking];
     }
     
-    [super segmentChanged:sender];
+    [super selectSegment:segment];
 }
 
 #pragma mark - View Configuration

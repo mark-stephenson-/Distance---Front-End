@@ -34,6 +34,7 @@
 		A50671CB19B0DABC008557CE /* PRQuestionStatementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50671CA19B0DABC008557CE /* PRQuestionStatementViewController.m */; };
 		A50671CF19B0DB40008557CE /* PRQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50671CE19B0DB40008557CE /* PRQuestionViewController.m */; };
 		A50E31F919D2B705001C5AE6 /* PROptionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A50E31F719D2B705001C5AE6 /* PROptionCollectionViewCell.m */; };
+		A519939A1AB1E30B0056EB16 /* PRTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A51993991AB1E30B0056EB16 /* PRTabCell.m */; };
 		A51A6F8019B6FEDF004BF779 /* PRInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = A51A6F7F19B6FEDF004BF779 /* PRInputAccessoryView.m */; };
 		A5235E8519D1BE1500AE721A /* PRTextSizeSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5235E8419D1BE1500AE721A /* PRTextSizeSelectCell.m */; };
 		A52A3C7019B471E300985BAB /* PRQuestionOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52A3C6F19B471E300985BAB /* PRQuestionOptionsViewController.m */; };
@@ -171,6 +172,8 @@
 		A50E31F619D2B705001C5AE6 /* PROptionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PROptionCollectionViewCell.h; sourceTree = "<group>"; };
 		A50E31F719D2B705001C5AE6 /* PROptionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PROptionCollectionViewCell.m; sourceTree = "<group>"; };
 		A5109DE91A8CD049006731DB /* Prase-Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Prase-Info.h"; sourceTree = "<group>"; };
+		A51993981AB1E30B0056EB16 /* PRTabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRTabCell.h; sourceTree = "<group>"; };
+		A51993991AB1E30B0056EB16 /* PRTabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRTabCell.m; sourceTree = "<group>"; };
 		A51A6F7E19B6FEDF004BF779 /* PRInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PRInputAccessoryView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		A51A6F7F19B6FEDF004BF779 /* PRInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRInputAccessoryView.m; sourceTree = "<group>"; };
 		A5235E8319D1BE1500AE721A /* PRTextSizeSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = PRTextSizeSelectCell.h; path = "Custom Form Cells/PRTextSizeSelectCell.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -399,6 +402,8 @@
 				A58A8D3C19C6EA1A0052EAB7 /* PRSelectionTableViewCell.m */,
 				A58591E91A9CDB7D008DB220 /* PRScrollButtonView.h */,
 				A58591EA1A9CDB7D008DB220 /* PRScrollButtonView.m */,
+				A51993981AB1E30B0056EB16 /* PRTabCell.h */,
+				A51993991AB1E30B0056EB16 /* PRTabCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -751,6 +756,7 @@
 				A502276E19C0913E005B31D2 /* PRModel.xcdatamodeld in Sources */,
 				A5EBFED619D1876C0056A44A /* PRMultiTextFieldCell.m in Sources */,
 				A544EEC519C899F700160388 /* PRIncrementCell.m in Sources */,
+				A519939A1AB1E30B0056EB16 /* PRTabCell.m in Sources */,
 				A58699AE19CB2E4F002E0C14 /* PRBasicDataCompleteCell.m in Sources */,
 				A5023E4819CC3A1D0076923A /* PRHospital.m in Sources */,
 				A50E31F919D2B705001C5AE6 /* PROptionCollectionViewCell.m in Sources */,
