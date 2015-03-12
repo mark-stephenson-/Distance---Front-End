@@ -29,6 +29,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    segmentTitles = @[@"Ward", @"What is your conern?", @"Severity of Concern"];
+    
     // create the input accessory view
     noteVCToolbar = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
     noteVCToolbar.navigationDelegate = self;
@@ -157,18 +159,19 @@
 }
 
 /// The footer view is replaced by a keyboard text input view on the PRNoteViewController screens so the footer is removed as it will be replaced by the textView's inputAccessoryView
--(void)segmentChanged:(id)sender
+-(void)selectSegment:(NSInteger)segment
 {
     if (tabController.selectedIndex == 0) {
         [self.view endEditing:YES];
+        
         if ([wardSelectVC validateSelectedWard]) {
             [wardSelectVC commitCustomWard];
         }
     }
     
-    [super segmentChanged:sender];
+    [super selectSegment:segment];
     
-    if (visibleSelector.selectedSegmentIndex == 0 || visibleSelector.selectedSegmentIndex == tabController.viewControllers.count - 1) {
+    if (segment == 0 || segment == tabController.viewControllers.count - 1) {
         [self showFooterView:YES animated:NO];
     } else {
         [self showFooterView:NO animated:NO];
