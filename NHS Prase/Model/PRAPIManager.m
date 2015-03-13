@@ -43,6 +43,13 @@
 
 #pragma mark - Prase Methods
 
+-(void)getUsersWithCompletion:(void (^)(SEL selector, BOOL success, NSArray *errors)) completion
+{
+    [self TDCGetCommitAndLinkRelatedObjectsOfNodes:@[@"user"] withCompletion:^(BOOL success, NSArray *errors) {
+        completion(_cmd, success, errors);
+    }];
+}
+
 -(void)getTrustHierarchyWithCompletion:(void (^)(SEL selector, BOOL success, NSArray *errors)) completion
 {
     [self TDCGetCommitAndLinkRelatedObjectsOfNodes:@[@"trust", @"hospital", @"ward"] withCompletion:^(BOOL success, NSArray *errors) {
@@ -358,6 +365,7 @@
                      @"question":@"PRPMOSQuestion",
                      @"answer-type":@"PRAnswerSet",
                      @"option": @"PRAnswerOption",
+                     @"user": @"PRUser"
                      };
     }
     
