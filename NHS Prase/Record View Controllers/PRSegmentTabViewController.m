@@ -43,14 +43,21 @@
     [self refreshFooterView];
     
     NSIndexPath *zeroPath = [NSIndexPath indexPathForItem:0 inSection:0];
-    [segmentSelector selectItemAtIndexPath:zeroPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+    [segmentSelector selectItemAtIndexPath:zeroPath animated:NO scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+    [[segmentSelector cellForItemAtIndexPath:zeroPath] layoutSubviews];
+}
+
+-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [self calculateCellSizesFittingWidth:size.width];
+    [segmentSelector.collectionViewLayout invalidateLayout];
 }
 
 -(void)applyTheme
 {
     [super applyTheme];
     
-    [self calculateCellSizes];
+    [self calculateCellSizesFittingWidth:self.view.bounds.size.width];
 }
 
 #pragma mark - View Configuration
@@ -116,6 +123,10 @@
         
         tdCell.textLabelTD.text = segmentTitles[indexPath.item];
         
+        NSLog(@"selected paths: %@", [collectionView indexPathsForSelectedItems]);
+        NSLog(@"selected: %ld %@", (long)indexPath.item, tdCell.selected ? @"Y" : @"N");
+        
+        
         [self applyThemeToView:tdCell];
         
         return tdCell;
@@ -126,7 +137,7 @@
 
 #pragma mark Sizing Methods
 
--(void)calculateCellSizes
+-(void)calculateCellSizesFittingWidth:(CGFloat) goalWidth;
 {
     NSMutableDictionary *tempCellSizes = [NSMutableDictionary dictionary];
     
@@ -150,19 +161,34 @@
     
     totalWidth += flowLayout.sectionInset.left + flowLayout.sectionInset.right - flowLayout.minimumLineSpacing;
     
-    CGFloat difference = self.view.bounds.size.width - totalWidth;
+    CGFloat difference = goalWidth - totalWidth;
     CGFloat widthAdjustment = 0.0;
     if (difference > 0) {
         widthAdjustment = difference / segmentTitles.count;
     }
     
     // adjust the fitting values to ensure all the cells are the same height
+    totalWidth = flowLayout.sectionInset.left;
     for (int t = 0; t < segmentTitles.count; t++) {
         NSIndexPath *thisPath = [NSIndexPath indexPathForItem:t inSection:0];
         
         CGSize cellSize = [tempCellSizes[thisPath] CGSizeValue];
         // add extra padding to ensure the cells fill the width of the screen
         cellSize.width += widthAdjustment;
+        cellSize.width = floorf(cellSize.width);
+        
+        totalWidth += cellSize.width + flowLayout.minimumLineSpacing;
+        
+        // expand the final cell to fill the gap if the rounding down leaves a small excess
+        if (t == segmentTitles.count - 1) {
+            totalWidth -= flowLayout.minimumLineSpacing;
+            totalWidth += flowLayout.sectionInset.right;
+            
+            if (totalWidth < goalWidth) {
+                CGFloat difference = goalWidth - totalWidth;
+                cellSize.width += difference;
+            }
+        }
         
         // ensure all the cells are the same height
         if (cellSize.height != maxHeight) {
