@@ -74,4 +74,18 @@
     [self refreshDoneButton];
 }
 
+-(BOOL)textView:(UITextView *)tv shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"]) {
+        
+        if ([tv canResignFirstResponder]) {
+            [tv resignFirstResponder];
+        }
+        
+        return NO;
+    }
+    
+    return YES;
+}
+
 @end
