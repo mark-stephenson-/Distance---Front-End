@@ -21,6 +21,7 @@
 #import "PRQuestion.h"
 #import "PRConcern.h"
 #import "PRNote.h"
+#import "PRUser.h"
 
 #define ALERT_LOGIN 111
 #define ALERT_DOWNLOAD_ERROR 222
@@ -35,10 +36,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    /*
     logInCredentials = @{@"TheDistance": @"PraseTheDistance",
                          @"00001":@"nhs123",
                          @"00002":@"bradfordnhs",
                          @"00003":@"barnsleyhospital"};
+    */
     
     retryWidthConstraint.priority = 999;
     
@@ -111,6 +114,14 @@
 #pragma mark - Data Methods
 
 - (IBAction)retryPressed:(id)sender {
+    
+    if ([sender isKindOfClass:[UILongPressGestureRecognizer class]]) {
+        UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer *) sender;
+        if (longPress.state != UIGestureRecognizerStateBegan) {
+            return;
+        }
+    }
+    
     [self submitSavedRecordsWithCompletion:^{
         [self downloadData];
     }];
@@ -265,7 +276,7 @@
 - (void)downloadData
 {
     // start download operations
-    
+    NSInteger requestCount = 4;
     __block NSMutableArray *allErrors = [NSMutableArray array];
     __block BOOL allSuccess = YES;
     __block int completionCount = 0;
@@ -276,10 +287,22 @@
         
         completionCount++;
         
-        if (completionCount == 3) {
+        if (selector == @selector(getUsersWithCompletion:)) {
+            NSArray *allUsers = [PRUser MR_findAll];
+            
+            NSMutableDictionary *tempUsers = [NSMutableDictionary dictionaryWithCapacity:allUsers.count];
+            for (PRUser *user in allUsers) {
+                tempUsers[user.username] = user.password;
+            }
+            
+            logInCredentials = [NSDictionary dictionaryWithDictionary:tempUsers];
+        }
+        
+        if (completionCount == requestCount) {
             
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+//                [MBProgressHUD hideHUDForView:self.view animated:YES];
             }];
             
             if ([allErrors count] > 0) {
@@ -318,6 +341,7 @@
     [manager getTrustHierarchyWithCompletion:downloadCompletion];
     [manager getQuestionHierarchyWithCompletion:downloadCompletion];
     [manager getLocalizationsWithCompletion:downloadCompletion];
+    [manager getUsersWithCompletion:downloadCompletion];
 }
 
 -(void)refreshDownloadErrorButton
@@ -348,6 +372,32 @@
 
 -(void)login:(id)sender
 {
+    if ([PRWard MR_findFirst] == nil) {
+        // prevent log in when no data has been synced as there will be no questions and no wards
+        NSString *noDataTitle = TDLocalizedStringWithDefaultValue(@"login.nodata.title", nil, nil, @"No Data", @"Error title when the user tries to log in when there is no data on the app.");
+        NSString *noDataMessage = TDLocalizedStringWithDefaultValue(@"login.nodata.message", nil, nil, @"The app has not been able to sync with the server. Please connect to the internet then tap \"Download Error\" or launch this app again.", @"Error message when the user tries to log in when there is no data on the app.");
+        
+        [self showAlertWithTitle:noDataTitle
+                         message:noDataMessage
+                     cancelTitle:nil
+                    buttonTitles:nil
+                         actions:nil];
+        return;
+    }
+    
+    if ([PRUser MR_findFirst] == nil) {
+        // prevent log in when no credentials have been set up on the server
+        NSString *noUserTitle = TDLocalizedStringWithDefaultValue(@"login.nouser.title", nil, nil, @"No Users", @"Error title when the user tries to log in but no user credentials have been synced with the app.");
+        NSString *noUserMessage = TDLocalizedStringWithDefaultValue(@"login.nouser.message", nil, nil, @"No user credentials have been created on the server. Please contact your administrator to set up new credentials.", @"Error message when the user tries to log in but no user credentials have been synced with the app.");
+        
+        [self showAlertWithTitle:noUserTitle
+                         message:noUserMessage
+                     cancelTitle:nil
+                    buttonTitles:nil
+                         actions:nil];
+        return;
+    }
+    
     BOOL canContinue = logInCredentials[usernameField.text] != nil && [passwordField.text isEqualToString:logInCredentials[usernameField.text]];
 
     if (canContinue) {

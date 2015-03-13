@@ -34,6 +34,8 @@
 		A50671CB19B0DABC008557CE /* PRQuestionStatementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50671CA19B0DABC008557CE /* PRQuestionStatementViewController.m */; };
 		A50671CF19B0DB40008557CE /* PRQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A50671CE19B0DB40008557CE /* PRQuestionViewController.m */; };
 		A50E31F919D2B705001C5AE6 /* PROptionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A50E31F719D2B705001C5AE6 /* PROptionCollectionViewCell.m */; };
+		A518BBBB1AB30F3200D45880 /* _PRUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A518BBBA1AB30F3200D45880 /* _PRUser.m */; };
+		A518BBBE1AB30F3D00D45880 /* PRUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A518BBBD1AB30F3D00D45880 /* PRUser.m */; };
 		A519939A1AB1E30B0056EB16 /* PRTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A51993991AB1E30B0056EB16 /* PRTabCell.m */; };
 		A51A6F8019B6FEDF004BF779 /* PRInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = A51A6F7F19B6FEDF004BF779 /* PRInputAccessoryView.m */; };
 		A5235E8519D1BE1500AE721A /* PRTextSizeSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5235E8419D1BE1500AE721A /* PRTextSizeSelectCell.m */; };
@@ -172,6 +174,11 @@
 		A50E31F619D2B705001C5AE6 /* PROptionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PROptionCollectionViewCell.h; sourceTree = "<group>"; };
 		A50E31F719D2B705001C5AE6 /* PROptionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PROptionCollectionViewCell.m; sourceTree = "<group>"; };
 		A5109DE91A8CD049006731DB /* Prase-Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Prase-Info.h"; sourceTree = "<group>"; };
+		A518BBB81AB30B3E00D45880 /* PRModel_1.0_2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PRModel_1.0_2.xcdatamodel; sourceTree = "<group>"; };
+		A518BBB91AB30F3200D45880 /* _PRUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _PRUser.h; sourceTree = "<group>"; };
+		A518BBBA1AB30F3200D45880 /* _PRUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _PRUser.m; sourceTree = "<group>"; };
+		A518BBBC1AB30F3D00D45880 /* PRUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRUser.h; sourceTree = "<group>"; };
+		A518BBBD1AB30F3D00D45880 /* PRUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRUser.m; sourceTree = "<group>"; };
 		A51993981AB1E30B0056EB16 /* PRTabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRTabCell.h; sourceTree = "<group>"; };
 		A51993991AB1E30B0056EB16 /* PRTabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRTabCell.m; sourceTree = "<group>"; };
 		A51A6F7E19B6FEDF004BF779 /* PRInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PRInputAccessoryView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -335,6 +342,8 @@
 				A5023E4519CC3A1D0076923A /* PRHospital.m */,
 				A5023E4619CC3A1D0076923A /* PRTrust.h */,
 				A5023E4719CC3A1D0076923A /* PRTrust.m */,
+				A518BBBC1AB30F3D00D45880 /* PRUser.h */,
+				A518BBBD1AB30F3D00D45880 /* PRUser.m */,
 				A5C0749F19D5A829003446F7 /* PRAnswerSet.h */,
 				A5C074A019D5A829003446F7 /* PRAnswerSet.m */,
 				A5C074A119D5A829003446F7 /* PRPMOS.h */,
@@ -365,6 +374,8 @@
 				A5023E3F19CC3A130076923A /* _PRHospital.m */,
 				A5023E4019CC3A130076923A /* _PRTrust.h */,
 				A5023E4119CC3A130076923A /* _PRTrust.m */,
+				A518BBB91AB30F3200D45880 /* _PRUser.h */,
+				A518BBBA1AB30F3200D45880 /* _PRUser.m */,
 				A5C0749619D5A819003446F7 /* _PRAnswerSet.h */,
 				A5C0749719D5A819003446F7 /* _PRAnswerSet.m */,
 				A5C0749819D5A819003446F7 /* _PRPMOS.h */,
@@ -726,7 +737,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd NHS\\ Prase/Model/Persistent\\ Model\nmogenerator --template-var arc=true -m PRModel.xcdatamodeld/PRModel_1.0.xcdatamodel/ -M Machine/ -H Human/";
+			shellScript = "cd NHS\\ Prase/Model/Persistent\\ Model\nmogenerator --template-var arc=true -m PRModel.xcdatamodeld/PRModel_1.0_2.xcdatamodel/ -M Machine/ -H Human/";
 		};
 		E7C2EEE51A77E7620047D66A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -760,6 +771,7 @@
 				A58699AE19CB2E4F002E0C14 /* PRBasicDataCompleteCell.m in Sources */,
 				A5023E4819CC3A1D0076923A /* PRHospital.m in Sources */,
 				A50E31F919D2B705001C5AE6 /* PROptionCollectionViewCell.m in Sources */,
+				A518BBBB1AB30F3200D45880 /* _PRUser.m in Sources */,
 				A5023E3D19CC2E5A0076923A /* PRGoodWardSelectViewController.m in Sources */,
 				A50671C819B0D56C008557CE /* PRQuestionaireViewController.m in Sources */,
 				A502278D19C09B22005B31D2 /* PRQuestion.m in Sources */,
@@ -796,6 +808,7 @@
 				A502279419C09B22005B31D2 /* _PRRecord.m in Sources */,
 				A5866CB319DAF723006EDFB0 /* PRImageView.m in Sources */,
 				A5DE267F19B737ED000D3AF2 /* PRWardSelectViewController.m in Sources */,
+				A518BBBE1AB30F3D00D45880 /* PRUser.m in Sources */,
 				A504416E19B5C2170000C9B3 /* PRPIRTQuestionsViewController.m in Sources */,
 				A502278A19C09B22005B31D2 /* PRAnswerOption.m in Sources */,
 				A536994919ADD1170045EEB1 /* AppDelegate.m in Sources */,
@@ -1152,9 +1165,10 @@
 			isa = XCVersionGroup;
 			children = (
 				A5B4EBEA1AB09F5300247F29 /* PRModel_1.0.xcdatamodel */,
+				A518BBB81AB30B3E00D45880 /* PRModel_1.0_2.xcdatamodel */,
 				A502276D19C0913E005B31D2 /* PRModel.xcdatamodel */,
 			);
-			currentVersion = A5B4EBEA1AB09F5300247F29 /* PRModel_1.0.xcdatamodel */;
+			currentVersion = A518BBB81AB30B3E00D45880 /* PRModel_1.0_2.xcdatamodel */;
 			name = PRModel.xcdatamodeld;
 			path = "Model/Persistent Model/PRModel.xcdatamodeld";
 			sourceTree = "<group>";

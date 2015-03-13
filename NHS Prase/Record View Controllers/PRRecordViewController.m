@@ -241,7 +241,7 @@
         if (currentQuestion + 1 > 0) {
             footerShows = YES;
             
-            progressLabel.text = [NSString stringWithFormat:@"Question %d of %lu", currentQuestion + 1, (unsigned long)self.record.questions.count];
+            progressLabel.text = [NSString stringWithFormat:@"Question %ld of %lu", currentQuestion + 1, (unsigned long)self.record.questions.count];
             progressView.progress = 1.0 * (currentQuestion + 1.0) / self.record.questions.count;
         }
     }
