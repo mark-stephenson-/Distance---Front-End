@@ -202,8 +202,8 @@
     
     [self dismissViewControllerAnimated:YES completion:^{
         if (self.question.goodNote != nil) {
-            NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"question.note-added.title", nil, nil, @"Note Saved", @"The alert title shown when a good note has been saved.");
-            NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"question.note-added.message", nil, nil, @"Your note has been saved.", @"The alert message shown when a good note has been saved.");
+            NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"question.note-added.title", nil, nil, @"Comment Saved", @"The alert title shown when a good note has been saved.");
+            NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"question.note-added.message", nil, nil, @"Your comment has been saved.", @"The alert message shown when a good note has been saved.");
             [self showAlertWithTitle:alertTitle
                              message:alertMessage
                          cancelTitle:nil
