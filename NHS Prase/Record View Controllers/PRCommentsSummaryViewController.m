@@ -125,6 +125,8 @@
     // force load the view to configure the note view
     PRInputAccessoryView *accessoryView = [self accessoryView];
     if (toPresent.view != nil) {
+        toPresent.titleLabel.TDLocalizedStringKey = @"good-comments.label.title";
+        toPresent.titleLabel.text = TDLocalizedStringWithDefaultValue(@"good-comments.label.title", nil, nil, @"Do you have any further examples of positive experiences that you would like to share?", @"The title text when adding a good note from the comments summary tab.");
         toPresent.noteView.inputAccessoryView = accessoryView;
         
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{

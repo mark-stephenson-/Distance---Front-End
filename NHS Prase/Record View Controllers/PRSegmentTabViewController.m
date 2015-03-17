@@ -42,9 +42,11 @@
     
     [self refreshFooterView];
     
-    NSIndexPath *zeroPath = [NSIndexPath indexPathForItem:0 inSection:0];
-    [segmentSelector selectItemAtIndexPath:zeroPath animated:NO scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
-    [[segmentSelector cellForItemAtIndexPath:zeroPath] layoutSubviews];
+    if ([segmentSelector indexPathsForSelectedItems].count == 0) {
+        NSIndexPath *zeroPath = [NSIndexPath indexPathForItem:0 inSection:0];
+        [segmentSelector selectItemAtIndexPath:zeroPath animated:NO scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+        [[segmentSelector cellForItemAtIndexPath:zeroPath] layoutSubviews];
+    }
 }
 
 -(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
@@ -123,9 +125,8 @@
         
         tdCell.textLabelTD.text = segmentTitles[indexPath.item];
         
-        NSLog(@"selected paths: %@", [collectionView indexPathsForSelectedItems]);
-        NSLog(@"selected: %ld %@", (long)indexPath.item, tdCell.selected ? @"Y" : @"N");
-        
+//        NSLog(@"selected paths: %@", [collectionView indexPathsForSelectedItems]);
+//        NSLog(@"selected: %ld %@", (long)indexPath.item, tdCell.selected ? @"Y" : @"N");
         
         [self applyThemeToView:tdCell];
         

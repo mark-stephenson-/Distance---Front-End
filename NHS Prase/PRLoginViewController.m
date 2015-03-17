@@ -73,8 +73,8 @@
     self.scrollContainer = scrollView;
     
 #ifdef DEBUG
-    usernameField.text = logInCredentials.allKeys[0];
-    passwordField.text = logInCredentials[usernameField.text];
+    usernameField.text = @"thedistance";
+    passwordField.text = @"password";
 #endif
     
     // assume both will be successful in order to not show the download error button straight away

@@ -16,11 +16,44 @@
 #import "PRIncrementCell.h"
 #import "PRTextFieldCell.h"
 
+#import "PRInputAccessoryView.h"
+
 @interface PRBasicDataFormViewController ()
 
 @end
 
 @implementation PRBasicDataFormViewController
+
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    inputView = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
+    inputView.navigationDelegate = self;
+    inputView.showsDone = NO;
+    inputView.showsNext = YES;
+    inputView.showsPrev = NO;
+    
+    // configure the next button as a done button
+    inputView.nextTitle = TDLocalizedStringWithDefaultValue(@"button.done", nil, nil, nil, nil);
+    inputView.nextButton.TDLocalizedStringKey = @"button.done";
+    [inputView.nextButton setImage:[UIImage imageNamed:@"tick"] forState:UIControlStateNormal];
+    inputView.nextButton.TDColourIdentifier = @"positive";
+    
+    accessoryToolBar = inputView;
+}
+
+-(void)applyTheme
+{
+    [super applyTheme];
+    
+    [self applyThemeToView:inputView];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -134,7 +167,7 @@
     NSDictionary *languageOptions = @{@"en": @"English",
                                       @"mi": @"Mirpuri",
                                       @"ur": @"Urdu",
-                                      @"other" : @"Other"};
+                                      @"other" : TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.other", nil, nil, @"Other", @"Other (i.e. free text) option for what is your first language (basic data question).")};
     NSArray *languageKeys = @[@[@"en", @"mi", @"ur", @"other"]];
     
     NSMutableDictionary *languageInfo = [TDSelectCell cellInfoWithTitle:@"What is your first language?"
@@ -170,6 +203,7 @@
                                                                                   value:nil
                                                                                  andKey:@"OtherCompleter"];
         otherCompleterCellInfo[@"reuseIdentifier"] = @"TextCell";
+        
         [cellInfo addObject:otherCompleterCellInfo];
     }
     
@@ -201,7 +235,7 @@
         showOtherLanguageOption = [cell.value isEqualToString:@"Other"];
         [self reloadForm];
     } else if ([cell.key isEqualToString:@"Completer"]) {
-        NSString *otherOptionString = TDLocalizedStringWithDefaultValue(@"basic-data.completer.option.other", nil, nil, nil, nil);
+        NSString *otherOptionString = TDLocalizedStringWithDefaultValue(@"basic-data.completer.option.other", nil, nil, @"Other", nil);
         showOtherCompleterOption = [cell.value isEqualToString:otherOptionString];
         [self reloadForm];
     }
@@ -286,5 +320,16 @@
     
     return view;
 }
+
+#pragma mark - Input Accessory Delegate
+
+-(void)inputAccessoryRequestsNext:(id<TDInputAccessoryView>)inputAccessoryView
+{
+    if ([self.activeComponent isKindOfClass:[TDCell class]]) {
+        TDCell *cell = (TDCell *) self.activeComponent;
+        [cell done];
+    }
+}
+
 
 @end

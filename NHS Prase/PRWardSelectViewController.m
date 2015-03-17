@@ -152,7 +152,7 @@
 
 -(void)commitCustomWard
 {
-    if ([self.selectedWard.id isEqualToNumber:@(-1)] && [self.selectedWard isNonNullString]) {
+    if ([self.selectedWard.id isEqualToNumber:@(-1)] && [self.selectedWard.name isNonNullString]) {
         NSInteger customWardCount = [PRWard MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"id < %@", @0]];
         
         if (self.selectedWard.id != nil) {

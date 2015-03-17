@@ -33,8 +33,24 @@
     NSInteger total = self.record.questions.count;
     
     // check if basic data is complete and update the value if necessary
+    
+    NSString *otherCompleterAnswer = TDLocalizedStringWithDefaultValue(@"basic-data.completer.option.other", nil, nil, @"Other", nil);
+    NSString *otherLanguageAnswer = TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.other", nil, nil, @"Other", nil);
+    
     NSDictionary *basicDataInfo = self.record.basicDataDictionary;
-    BOOL basicDataComplete = basicDataInfo.count == [PRBasicDataFormViewController basicDataFormKeys].count && ![basicDataInfo.allValues containsObject:[NSNull null]];
+    
+    NSInteger basicDataTotal = [PRBasicDataFormViewController basicDataFormKeys].count;
+    if (![(NSString *)basicDataInfo[@"Language"] isEqualToString:otherLanguageAnswer]) {
+        // a definite option is chosen for the first language so don't need a form value for key "OtherLanguage".
+        basicDataTotal--;
+    }
+    
+    if (![(NSString *)basicDataInfo[@"Completer"] isEqualToString:otherCompleterAnswer]) {
+        // a definite option is chosen for the complete so don't need a form value for key "OtherCompleter.
+        basicDataTotal--;
+    }
+    
+    BOOL basicDataComplete = (basicDataInfo.count == basicDataTotal) && ![basicDataInfo.allValues containsObject:[NSNull null]];
     
     [self setFormValue:@(basicDataComplete) forFormKey:@"BasicData"];
     

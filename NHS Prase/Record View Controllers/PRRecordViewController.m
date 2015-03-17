@@ -102,7 +102,7 @@
         
         incompleteVC.delegate = self;
         incompleteVC.title = TDLocalizedStringWithDefaultValue(@"incomplete.title", nil, nil, @"Questionnaire Incomplete", @"Title for the modal screen prompting the user for a reason why the questionnaire has not been completed.");
-        incompleteVC.subtitle = TDLocalizedStringWithDefaultValue(@"incomplete.title", nil, nil, @"Please provide a brief explanation for why this questionnaire could not be completed.", @"Subtitle for the modal screen prompting the user for a reason why the questionnaire has not been completed.");
+        incompleteVC.subtitle = TDLocalizedStringWithDefaultValue(@"incomplete.message", nil, nil, @"Please provide a brief explanation for why this questionnaire could not be completed.", @"Subtitle for the modal screen prompting the user for a reason why the questionnaire has not been completed.");
     }
 }
 
@@ -145,6 +145,7 @@
     
     if (oldSegment == 0) {
         // set the basic data of the record based on the entered cell info before changing view controllers as the summary screen is configured in viewWillAppear, and the data model needs to be complete before that is called
+        [self.view endEditing:YES];
         
         NSMutableDictionary *enteredBasicData = [NSMutableDictionary dictionaryWithCapacity:7];
         

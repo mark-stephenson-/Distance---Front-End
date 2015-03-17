@@ -36,6 +36,7 @@
     if (inputView == nil) {
         inputView = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
         inputView.navigationDelegate = self;
+        inputView.showsDone = NO;
     }
     
     return inputView;
