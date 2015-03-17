@@ -160,8 +160,8 @@
     [self showAlertWithTitle:alertTitle
                      message:alertMessage
                  cancelTitle:nil
-                buttonTitles:@[continueNoteTitle, cancelNoteTitle]
-                     actions:@[continueNoteCompletion, cancelNoteCompletion]];
+                buttonTitles:@[cancelNoteTitle, continueNoteTitle]
+                     actions:@[cancelNoteCompletion, continueNoteCompletion]];
 }
 
 #pragma mark - Delegate Methods
