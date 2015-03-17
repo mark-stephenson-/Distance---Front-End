@@ -103,7 +103,11 @@
 -(void)selectionViewControllerRequestsCancel:(TDSelectionViewController *)selectionVC
 {
     canDismissKeyboard = NO;
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (canShowKeyboard) {
+            [self.noteView becomeFirstResponder];
+        }
+    }];
 }
 
 -(void)selectionViewControllerRequestsDismissal:(TDSelectionViewController *)selectionVC
@@ -118,7 +122,11 @@
         }
     }
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (canShowKeyboard) {
+            [self.noteView becomeFirstResponder];
+        }
+    }];
 }
 
 @end
