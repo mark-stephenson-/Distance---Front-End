@@ -19,6 +19,7 @@
     [super setSelected:selected animated:animated];
 
     selectionIndicator.tintColor = [UIColor whiteColor];
+    selectionIndicator.hidden = !self.selected;
     
     // Configure the view for the selected state
     if (selected) {

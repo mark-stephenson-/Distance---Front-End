@@ -141,6 +141,8 @@
     if (tabController.selectedIndex == 0) {
         if ([wardSelectVC validateSelectedWard]) {
             [wardSelectVC commitCustomWard];
+        } else {
+            return;
         }
     }
     
@@ -166,6 +168,8 @@
         
         if ([wardSelectVC validateSelectedWard]) {
             [wardSelectVC commitCustomWard];
+        } else {
+            return;
         }
     }
     

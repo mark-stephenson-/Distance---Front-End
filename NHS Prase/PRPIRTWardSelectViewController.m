@@ -40,7 +40,7 @@
 
 -(void)refreshViews
 {
-    if (willAppear && currentWardSegment.selectedSegmentIndex == 0) {
+    if ((!hasAppeared && self.selectedWard == self.record.ward) || (hasAppeared && currentWardSegment.selectedSegmentIndex == 0)) {
        
         self.selectedTrust = self.record.ward.hospital.trust;
         self.selectedHospital = self.record.ward.hospital;
