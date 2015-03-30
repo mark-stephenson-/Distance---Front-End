@@ -29,7 +29,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    segmentTitles = @[@"Ward", @"What is your conern?", @"Severity of Concern"];
+    segmentTitles = @[TDLocalizedStringWithDefaultValue(@"pirt.segment.ward", nil, nil, @"Ward", @"The title for the \"Ward\" segement when adding a concern."),
+                      TDLocalizedStringWithDefaultValue(@"pirt.segment.what", nil, nil, @"What is your concern?", @"The title for the \"What is your concern?\" segement when adding a concern."),
+                      TDLocalizedStringWithDefaultValue(@"pirt.segment.severity", nil, nil, @"Severity of Concern", @"The title for the \"Severity of Concern\" segement when adding a concern.")];
     
     // create the input accessory view
     noteVCToolbar = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
