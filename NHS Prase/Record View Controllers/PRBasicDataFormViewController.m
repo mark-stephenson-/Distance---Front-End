@@ -164,11 +164,36 @@
     
     // Language
     
-    NSDictionary *languageOptions = @{@"en": @"English",
-                                      @"mi": @"Mirpuri",
-                                      @"ur": @"Urdu",
+    NSDictionary *languageOptions = @{@"en": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.english", nil, nil, @"English", @"English option for what is your first language (basic data question)."),
+                                      @"mi": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.mirpuri", nil, nil, @"Mirpuri", @"Mirpuri option for what is your first language (basic data question)."),
+                                      @"ur/pa": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.urdu-punjabi", nil, nil, @"Urdu/Punjabi", @"Urdu/Punjabi option for what is your first language (basic data question)."),
+                                      @"cs/sk": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.czech-slovak", nil, nil, @"Czech/Slovak", @"Czech/Slovak option for what is your first language (basic data question)."),
+                                      @"pl": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.polish", nil, nil, @"Polish", @"Polish option for what is your first language (basic data question)."),
+                                      @"bn": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.bengali", nil, nil, @"Bengali", @"Bengali option for what is your first language (basic data question)."),
+                                      @"hu": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.hungarian", nil, nil, @"Hungarian", @"Hungarian option for what is your first language (basic data question)."),
+                                      @"ps": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.pushto", nil, nil, @"Pushto", @"Pushto option for what is your first language (basic data question)."),
+                                      @"gu": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.gujarati", nil, nil, @"Gujarati", @"Gujarati option for what is your first language (basic data question)."),
+                                      @"ru": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.russian", nil, nil, @"Russian", @"Russian option for what is your first language (basic data question)."),
+                                      @"ar": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.arabic", nil, nil, @"Arabic", @"Arabic option for what is your first language (basic data question)."),
+                                      @"sl": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.slovenian", nil, nil, @"Slovenian", @"Slovenian option for what is your first language (basic data question)."),
+                                      @"fa": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.farsi", nil, nil, @"Farsi", @"Farsi option for what is your first language (basic data question)."),
+                                      @"lv": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.latvian", nil, nil, @"Latvian", @"Latvian option for what is your first language (basic data question)."),
+                                      @"ku": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.kurdish", nil, nil, @"Kurdish", @"Kurdish option for what is your first language (basic data question)."),
+                                      @"so": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.somali", nil, nil, @"Somali", @"Somali option for what is your first language (basic data question)."),
+                                      @"zh-yue": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.cantonese", nil, nil, @"Cantonese", @"Cantonese option for what is your first language (basic data question)."),
+                                      @"ro": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.romanian", nil, nil, @"Romanian", @"Romanian option for what is your first language (basic data question)."),
+                                      @"cmn": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.mandarin", nil, nil, @"Mandarin", @"Mandarin option for what is your first language (basic data question)."),
+                                      @"lt": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.lithuanian", nil, nil, @"Lithuanian", @"Lithuanian option for what is your first language (basic data question)."),
+                                      @"es": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.spanish", nil, nil, @"Spanish", @"Spanish option for what is your first language (basic data question)."),
+                                      @"sw": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.swahili", nil, nil, @"Swahili", @"Swahili option for what is your first language (basic data question)."),
                                       @"other" : TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.other", nil, nil, @"Other", @"Other (i.e. free text) option for what is your first language (basic data question).")};
-    NSArray *languageKeys = @[@[@"en", @"mi", @"ur", @"other"]];
+    
+    NSArray *languageKeys = @[@[@"en", @"mi", @"ur/pa", @"cs/sk",
+                                @"pl", @"bn", @"hu", @"ps", @"gu",
+                                @"ru", @"ar", @"sl", @"fa", @"lv",
+                                @"ku", @"so", @"zh-yue", @"ro", @"cmn",
+                                @"lt", @"es", @"sw",
+                                @"other"]];
     
     NSMutableDictionary *languageInfo = [TDSelectCell cellInfoWithTitle:@"What is your first language?"
                                                             placeholder:tapToSelect
