@@ -158,7 +158,12 @@
             id key = cellInfo[@"key"];
             
             if (value != nil && key != nil) {
-                enteredBasicData[key] = value;
+                
+                if ([key isEqualToString:@"Age"] && [value isKindOfClass:[NSString class]]) {
+                    enteredBasicData[key] = @([(NSString *)value integerValue]);
+                } else {
+                    enteredBasicData[key] = value;
+                }
             }
         }
         
@@ -187,16 +192,28 @@
                          cancelTitle:nil
                         buttonTitles:nil
                              actions:nil];
-            
-            // swap back to the new segment
-//            visibleSelector.selectedSegmentIndex = oldSegment;
              return;
+        }
+        
+        // check the age is valid
+        if ([enteredBasicData[@"Age"] integerValue] > 120) {
+            [bdVC.tableView scrollToRowAtIndexPath:invalidDatePath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            
+            NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"invalid_age.title", nil, nil, @"Your Age", @"Error title when the user has entered an invalid age and tries to move forwards.");
+            NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"invalid_age.message", nil, nil, @"Please enter your age (up to 120) or leave it blank.", @"Error message when the user has entered an invalid age and tries to move forwards.");
+            
+            [self showAlertWithTitle:alertTitle
+                             message:alertMessage
+                         cancelTitle:nil
+                        buttonTitles:nil
+                             actions:nil];
+            
+            return;
         }
         
         self.record.basicData = [NSDictionary dictionaryWithDictionary:enteredBasicData];
     }
     
-//    NSUInteger newSegment = visibleSelector.selectedSegmentIndex;
     if (segment == tabController.viewControllers.count - 1) {
         // commit the tracked time to the record so it can be loaded by the summary view controller. The tracking is paused on the summary screen to prevent confusion
         [self commitTracking];

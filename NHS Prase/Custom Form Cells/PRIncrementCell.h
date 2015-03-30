@@ -8,7 +8,7 @@
 
 #import <TheDistanceKit/TheDistanceKit_API.h>
 
-@interface PRIncrementCell : TDCell
+@interface PRIncrementCell : TDCell <UITextFieldDelegate>
 {
     IBOutlet TDTextField *numberField;
     IBOutlet UIButton *minusButton;

@@ -69,7 +69,7 @@
     static NSArray *keys = nil;
     
     if (keys == nil) {
-        keys = @[@"Completer", @"OtherCompleter", @"DOB", @"Gender", @"Ethnicity", @"Language", @"OtherLanguage", @"StayLength"];
+        keys = @[@"Completer", @"OtherCompleter", @"Age", @"Gender", @"Ethnicity", @"Language", @"OtherLanguage", @"StayLength"];
     }
     
     return keys;
@@ -104,11 +104,23 @@
     
     // Date Of Birth
     
+    NSString *ageTitle = TDLocalizedStringWithDefaultValue(@"basic-data.age.title", nil, nil, @"Age", @"Basic Data Question: Age");
+    NSString *agePlacehodler = TDLocalizedStringWithDefaultValue(@"basic-data.age.placeholder", nil, nil, @"Please enter your age", @"Placeholder for Basic Data Question: Age");
+    NSMutableDictionary *ageInfo = [PRTextFieldCell cellInfoWithTitle:ageTitle
+                                                          placeholder:agePlacehodler
+                                                                value:nil
+                                                               andKey:@"Age"];
+    ageInfo[@"reuseIdentifier"] = @"TextCellTitle";
+    ageInfo[@"userInfo"][@"numbersOnly"] = @YES;
+    ageInfo[@"userInfo"][@"textField.keyboardTypeKVC"] = @(UIKeyboardTypeDecimalPad);
+    
+    /*
     NSString *dobTitle = TDLocalizedStringWithDefaultValue(@"basic-data.dob.title", nil, nil, @"Date of Birth", @"Basic Data Question: Date of Birth");
     NSMutableDictionary *dobInfo = [PRDateSelectCell cellInfoWithTitle:dobTitle
                                                                  value:nil
                                                                 andKey:@"DOB"];
     dobInfo[@"reuseIdentifier"] = @"DateSelectCell";
+    */
     
     NSString *genderTitle = TDLocalizedStringWithDefaultValue(@"basic-data.gender.title", nil, nil, @"Gender", @"Basic Data Question: Gender");
     NSString *genderMale = TDLocalizedStringWithDefaultValue(@"basic-data.gender.male", nil, nil, @"Male", @"Basic Data Question: Gender-Male");
@@ -232,7 +244,7 @@
         [cellInfo addObject:otherCompleterCellInfo];
     }
     
-    [cellInfo addObjectsFromArray:@[dobInfo, genderInfo, ethnicGroupCell, languageInfo]];
+    [cellInfo addObjectsFromArray:@[ageInfo, genderInfo, ethnicGroupCell, languageInfo]];
     
     // optionally add a text field if "other" is chosen for the users first language
     if (showOtherLanguageOption) {
