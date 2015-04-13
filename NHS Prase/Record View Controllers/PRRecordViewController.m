@@ -355,7 +355,7 @@
         if (answered != total) {
             alertMessage = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-message", nil, nil, @"This questionnaire has been partially completed. Please review questions missed and complete as much as you can.", @"The alert message shown when the user attempts to submit a record with incomplete data.");
         } else {
-            alertMessage = TDLocalizedStringWithDefaultValue(@"submit.alert.answered-message", nil, nil, @"Thank you for completing this questionnaire. Once this questionnaire has been submitted it can no longer be editted.", @"The alert message shown when the user attempts to submit a record with complete data.");
+            alertMessage = TDLocalizedStringWithDefaultValue(@"submit.alert.answered-message", nil, nil, @"Thank you for completing this questionnaire. Once this questionnaire has been submitted it can no longer be edited.", @"The alert message shown when the user attempts to submit a record with complete data.");
         }
         
         [self showAlertWithTitle:alertTitle

@@ -30,7 +30,7 @@
     // Do any additional setup after loading the view.
     
     segmentTitles = @[TDLocalizedStringWithDefaultValue(@"pirt.segment.ward", nil, nil, @"Ward", @"The title for the \"Ward\" segement when adding a concern."),
-                      TDLocalizedStringWithDefaultValue(@"pirt.segment.what", nil, nil, @"What is your concern?", @"The title for the \"What is your concern?\" segement when adding a concern."),
+                      TDLocalizedStringWithDefaultValue(@"pirt.segment.what", nil, nil, @"What is your Concern?", @"The title for the \"What is your concern?\" segement when adding a concern."),
                       TDLocalizedStringWithDefaultValue(@"pirt.segment.severity", nil, nil, @"Severity of Concern", @"The title for the \"Severity of Concern\" segement when adding a concern.")];
     
     // create the input accessory view
@@ -50,7 +50,7 @@
     // create the simple view controllers
     whatViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
     loadView = whatViewController.view;
-    whatViewController.titleLabel.text = TDLocalizedStringWithDefaultValue(@"pirt.what.title", nil, nil, @"Can you please provide a brief description detailing what your concern is, why it is a concern to you and what you think could have been done differently to prevent it from happening to you or other patients. General comments can also be included.", @"Concern section title");
+    whatViewController.titleLabel.text = TDLocalizedStringWithDefaultValue(@"pirt.what.title", nil, nil, @"Can you please provide a brief description detailing :\n- What your concern is;\n- How it is a concern to you;\n- What you think could have been done differently to prevent it from happening to you or other patients.\nAny other general statements / comments can also be included here.", @"Concern section title");
     whatViewController.delegate = self;
     whatViewController.titleLabel.TDLocalizedStringKey = @"pirt.what.title";
     whatViewController.noteView.inputAccessoryView = noteVCToolbar;

@@ -67,7 +67,7 @@ Many thanks for participating.";
 "note.label.title" = "[fr]Type below to add more details:";
 
 /* Title asking for any further comments to attach to the record. */
-"record.comments.title" = "[fr]Thank you for sharing your perspectives of the quality and safety of care you have experienced during your stay on this ward. Is there anything you think has not been covered already which you feel strongly about good or bad?";
+"record.comments.title" = "[fr]Thank you for sharing your perspectives of the quality and safety of care you have experienced during your stay on this ward. Is there anything you think has not been covered already which you feel strongly about, good or bad?";
 
 /* Label asking the user to add any conerns they had about their care. */
 "record.comments.concern-title" = "[fr]Do you want to tell us something that has concerned you about your care?";

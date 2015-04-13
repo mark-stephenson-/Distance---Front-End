@@ -1189,9 +1189,9 @@ It is a questionnaire which will allow you provide feedback on the safety and qu
                         <rect key="frame" x="0.0" y="0.0" width="500" height="387"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJp-Dv-eiv">
-                                <rect key="frame" x="20" y="8" width="460" height="77"/>
-                                <string key="text">Thank you for sharing your perspectives of the quality and safety of care you have experienced during your stay on this ward. Is there anything you think has not been covered already which you feel strongly about good or bad?</string>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJp-Dv-eiv">
+                                <rect key="frame" x="20" y="8" width="460" height="83"/>
+                                <string key="text">Thank you for sharing your perspectives of the quality and safety of care you have experienced during your stay on this ward. Is there anything you think has not been covered already which you feel strongly about, good or bad?</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1202,7 +1202,7 @@ It is a questionnaire which will allow you provide feedback on the safety and qu
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="rBr-7s-gay">
-                                <rect key="frame" x="20" y="117" width="460" height="153"/>
+                                <rect key="frame" x="20" y="123" width="460" height="153"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="1000" text="Do you want to tell us something that has concerned you about your care?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsO-tF-0yN">
                                         <rect key="frame" x="256" y="0.0" width="204" height="83"/>
@@ -1215,7 +1215,7 @@ It is a questionnaire which will allow you provide feedback on the safety and qu
                                             <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMv-Mh-d0u" customClass="TDButton">
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="760" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMv-Mh-d0u" customClass="TDButton">
                                         <rect key="frame" x="256" y="113" width="204" height="40"/>
                                         <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Add a concern" image="exclamation">
@@ -1233,7 +1233,7 @@ It is a questionnaire which will allow you provide feedback on the safety and qu
                                             <action selector="addConcern:" destination="fZg-fg-WDE" eventType="touchUpInside" id="SWH-KI-wle"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wq6-VB-9rC" customClass="TDButton">
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="760" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wq6-VB-9rC" customClass="TDButton">
                                         <rect key="frame" x="2" y="113" width="204" height="40"/>
                                         <color key="tintColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Add something good" image="star">
@@ -1293,7 +1293,7 @@ It is a questionnaire which will allow you provide feedback on the safety and qu
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4b-tS-CJ2">
-                                <rect key="frame" x="20" y="100" width="460" height="2"/>
+                                <rect key="frame" x="20" y="106" width="460" height="2"/>
                                 <color key="backgroundColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="kCZ-BC-Wc5"/>
@@ -1305,7 +1305,7 @@ It is a questionnaire which will allow you provide feedback on the safety and qu
                             <constraint firstItem="WJp-Dv-eiv" firstAttribute="leading" secondItem="xgp-5M-srZ" secondAttribute="leading" constant="20" id="1aA-oN-4Ao"/>
                             <constraint firstItem="WJp-Dv-eiv" firstAttribute="trailing" secondItem="n4b-tS-CJ2" secondAttribute="trailing" id="4k1-vo-GL0"/>
                             <constraint firstAttribute="trailing" secondItem="WJp-Dv-eiv" secondAttribute="trailing" constant="20" id="9kt-0d-mXm"/>
-                            <constraint firstAttribute="centerY" secondItem="rBr-7s-gay" secondAttribute="centerY" id="HqJ-gU-jUm"/>
+                            <constraint firstAttribute="centerY" secondItem="rBr-7s-gay" secondAttribute="centerY" priority="750" id="HqJ-gU-jUm"/>
                             <constraint firstItem="rBr-7s-gay" firstAttribute="top" relation="greaterThanOrEqual" secondItem="n4b-tS-CJ2" secondAttribute="bottom" constant="15" id="IvD-XD-orM"/>
                             <constraint firstItem="n4b-tS-CJ2" firstAttribute="top" secondItem="WJp-Dv-eiv" secondAttribute="bottom" constant="15" id="PpW-WJ-D7J"/>
                             <constraint firstItem="WJp-Dv-eiv" firstAttribute="top" secondItem="bfh-bO-ilF" secondAttribute="bottom" constant="8" id="wdj-oA-Ma5"/>
@@ -3245,8 +3245,8 @@ Serious</string>
                         <rect key="frame" x="0.0" y="0.0" width="500" height="387"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Please complete all sections as indicated, then press submit to complete." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JA5-jd-hzz">
-                                <rect key="frame" x="0.0" y="8" width="500" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Please complete all sections as indicated, then press submit." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JA5-jd-hzz">
+                                <rect key="frame" x="0.0" y="8" width="500" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -3255,14 +3255,14 @@ Serious</string>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BlX-V9-5jl">
-                                <rect key="frame" x="0.0" y="64" width="500" height="2"/>
+                                <rect key="frame" x="0.0" y="44" width="500" height="2"/>
                                 <color key="backgroundColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="bYa-Cw-iwj"/>
                                 </constraints>
                             </view>
                             <tableView contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zXZ-wU-nU1">
-                                <rect key="frame" x="0.0" y="66" width="456" height="321"/>
+                                <rect key="frame" x="0.0" y="46" width="456" height="341"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="900" constant="350" id="EwH-O5-KNg"/>
@@ -3597,7 +3597,7 @@ Serious</string>
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="infinite" translatesAutoresizingMaskIntoConstraints="NO" id="JZZ-ev-5gt" customClass="PRScrollButtonView">
-                                <rect key="frame" x="456" y="66" width="44" height="321"/>
+                                <rect key="frame" x="456" y="46" width="44" height="341"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
