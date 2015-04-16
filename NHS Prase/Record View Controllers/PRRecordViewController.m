@@ -343,25 +343,30 @@
         NSInteger total = self.record.questions.count;
     
         NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-title", nil, nil, @"Submit Record", @"The alert title shown when the user attempts to submit a record with incomplete data.");
-        NSString *submitTitle = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-submit", nil, nil, @"Submit Anyway", @"The alert button for continuing with submission even if questions are unanswered.");
+        
+        NSString *unansweredButtonTitle = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-submit", nil, nil, @"Submit Anyway", @"The alert button for continuing with submission even if questions are unanswered.");
+        NSString *answeredButtonTitle = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-submit", nil, nil, @"Submit", @"The alert button for continuing with submission when all questions are answered.");
+        
+        NSString *unansweredMessage = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-message", nil, nil, @"This questionnaire has been partially completed. Please review questions missed and complete as much as you can.", @"The alert message shown when the user attempts to submit a record with incomplete data.");
+        NSString *answeredMessage = TDLocalizedStringWithDefaultValue(@"submit.alert.answered-message", nil, nil, @"Thank you for completing this questionnaire. Once this questionnaire has been submitted it can no longer be edited.", @"The alert message shown when the user attempts to submit a record with complete data.");
+        
+        NSString *alertMessage = (answered == total) ? answeredMessage : unansweredMessage;
+        NSString *submitTitle = (answered == total) ? answeredButtonTitle : unansweredButtonTitle;
         NSString *cancelTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyCancel, nil, nil, nil, nil);
         
         void (^submitCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
-            [self performSegueWithIdentifier:@"ShowIncomplete" sender:nil];
+            if (answered == total) {
+                [self continueSubmit];
+            } else {
+                [self performSegueWithIdentifier:@"ShowIncomplete" sender:nil];
+            }
         };
-        
-        NSString *alertMessage = nil;
-        
-        if (answered != total) {
-            alertMessage = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-message", nil, nil, @"This questionnaire has been partially completed. Please review questions missed and complete as much as you can.", @"The alert message shown when the user attempts to submit a record with incomplete data.");
-        } else {
-            alertMessage = TDLocalizedStringWithDefaultValue(@"submit.alert.answered-message", nil, nil, @"Thank you for completing this questionnaire. Once this questionnaire has been submitted it can no longer be edited.", @"The alert message shown when the user attempts to submit a record with complete data.");
-        }
         
         [self showAlertWithTitle:alertTitle
                          message:alertMessage
                      cancelTitle:cancelTitle
-                    buttonTitles:@[submitTitle] actions:@[submitCompletion]];
+                    buttonTitles:@[submitTitle]
+                         actions:@[submitCompletion]];
         
         return;
     }
