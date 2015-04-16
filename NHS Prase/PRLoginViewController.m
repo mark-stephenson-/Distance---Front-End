@@ -16,12 +16,21 @@
 #import "PRAPIManager.h"
 
 #import "AppDelegate.h"
-#import "PRRecord.h"
-#import "PRWard.h"
-#import "PRQuestion.h"
+
+#import "PRAnswerOption.h"
 #import "PRConcern.h"
 #import "PRNote.h"
+#import "PRQuestion.h"
+#import "PRRecord.h"
+#import "PRWard.h"
+#import "PRHospital.h"
+#import "PRTrust.h"
 #import "PRUser.h"
+#import "PRAnswerSet.h"
+#import "PRPMOS.h"
+#import "PRPMOSQuestion.h"
+
+#import "PRSelectionViewController.h"
 
 #define ALERT_LOGIN 111
 #define ALERT_DOWNLOAD_ERROR 222
@@ -35,13 +44,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    /*
-    logInCredentials = @{@"TheDistance": @"PraseTheDistance",
-                         @"00001":@"nhs123",
-                         @"00002":@"bradfordnhs",
-                         @"00003":@"barnsleyhospital"};
-    */
     
     retryWidthConstraint.priority = 999;
     
@@ -109,6 +111,138 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Server Selection
+
+-(IBAction)selectServer:(id)sender
+{
+#if defined(DEBUG) || defined(BETA_TESTING)
+    
+    PRSelectionViewController *selectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PRBasicSelectionVC"];
+    
+    // get all of the server URLs
+    NSDictionary *serverURLs = [[NSBundle mainBundle] infoDictionary][@"PRServerURLs"];
+    NSMutableDictionary *options = [NSMutableDictionary dictionaryWithCapacity:serverURLs.count];
+    
+    NSString *currentURLString = [[[PRAPIManager sharedManager] baseURL] absoluteString];
+    
+    for (NSString *serverKey in serverURLs.allKeys) {
+        NSString *urlString = serverURLs[serverKey];
+        options[serverKey] = [NSString stringWithFormat:@"%@:\n%@", serverKey, urlString];
+    }
+    
+    [selectionVC setOptions:options withDetails:nil orderedAs:@[[serverURLs.allKeys sortedArrayUsingSelector:@selector(compare:)]]];
+    
+    NSString *selectedURLKey = [[NSUserDefaults standardUserDefaults] valueForKey:APIManagerBaseURLKey];
+    if ([selectedURLKey  isNonNullString]) {
+        [selectionVC setSelectedKeys:[NSMutableSet setWithObject:selectedURLKey]];
+    }
+    selectionVC.delegate = self;
+    
+    if (selectionVC.view) {
+        // load the view to configure the labels
+        selectionVC.titleLabel.text = @"Select Server";
+        selectionVC.subTitleLabel.text = @"The is an advanced setting. Select Staging server for development purposes only. Select Live server for real data entry.";
+    }
+    
+    [self presentViewController:selectionVC animated:YES completion:nil];
+#endif
+}
+
+-(void)selectionViewControllerRequestsCancel:(TDSelectionViewController *)selectionVC
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)selectionViewControllerRequestsDismissal:(TDSelectionViewController *)selectionVC
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSString *currentURLKey = [[NSUserDefaults standardUserDefaults] valueForKey:APIManagerBaseURLKey];
+        NSString *selectedURLKey = [selectionVC.selectedKeys anyObject];
+        
+        if ([selectedURLKey isNonNullString] && ![currentURLKey isEqualToString:selectedURLKey]) {
+            NSString *selectedURL = [[NSBundle mainBundle] infoDictionary][@"PRServerURLs"][selectedURLKey];
+            
+            [self switchToBaseURL:[NSURL URLWithString:selectedURL] withKey:selectedURLKey];
+        }
+    }];
+}
+
+-(void)switchToBaseURL:(NSURL *) newURL withKey:(NSString *) urlKey
+{
+    // prompt the user
+    NSMutableString *alertMessage = [NSMutableString stringWithFormat:@"Changing the server will clear all current data."];
+    NSUInteger savedRecordCount = [PRRecord MR_countOfEntities];
+    if (savedRecordCount > 0) {
+        [alertMessage appendFormat:@" There are currently %lu unsubmitted surveys on this device. Changing the server will delete these.", (unsigned long) savedRecordCount];
+    }
+    [alertMessage appendString:@" Do you wish to change server?"];
+    
+    void (^changeServerCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+        // clear the data
+        
+        // delete the entities created on the device
+        [PRConcern MR_truncateAll];
+        [PRNote MR_truncateAll];
+        [PRRecord MR_truncateAll];
+        [PRPMOS MR_truncateAll];
+        [PRQuestion MR_truncateAll];
+        
+        // delete the nodes from the CMS
+        NSArray *nodesToRemove = @[@"trust",
+                                   @"hospital",
+                                   @"ward",
+                                   @"question",
+                                   @"answer-type",
+                                   @"option",
+                                   @"user"];
+        
+        MBProgressHUD *deletingHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [deletingHUD setLabelText:@"Clearing Data"];
+        
+        [[PRAPIManager sharedManager] truncateNodes:nodesToRemove
+                                     withCompletion:^(BOOL success, NSError *error) {
+                                         [deletingHUD hide:YES];
+                                         
+                                         // nil error implies to changes to save.
+                                         if (success || error == nil) {
+                                             // perform the switch
+                                             [[PRAPIManager sharedManager] setBaseURL:newURL];
+                                             [self downloadData];
+                                             
+                                             // save the current baseURL for loading on next launch
+                                             [[NSUserDefaults standardUserDefaults] setValue:urlKey forKey:APIManagerBaseURLKey];
+                                         } else {
+                                             
+                                             void (^cancelCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+                                                 [[PRAPIManager sharedManager] truncateNodes:nodesToRemove
+                                                                              withCompletion:nil];
+                                                 [self downloadData];
+                                             };
+                                             
+                                             void (^retryCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+                                                 [self switchToBaseURL:newURL withKey:urlKey];
+                                             };
+                                             
+                                             [self showAlertWithTitle:@"Data Error"
+                                                              message:[NSString stringWithFormat:@"Unable to clear the current data: %@", error.localizedDescription]
+                                                          cancelTitle:nil
+                                                         buttonTitles:@[@"Cancel", @"Retry"]
+                                                              actions:@[cancelCompletion, retryCompletion]];
+                                         }
+                                     }];
+        
+        
+        
+        
+    };
+    
+    [self showAlertWithTitle:@"Change Server"
+                     message:alertMessage
+                 cancelTitle:@"No"
+                buttonTitles:@[@"Yes"]
+                     actions:@[changeServerCompletion]];
 }
 
 #pragma mark - Data Methods

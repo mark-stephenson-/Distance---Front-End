@@ -119,6 +119,7 @@
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="AFQ-4P-6cI" appends="YES" id="07X-gy-0MA"/>
+                                                    <outletCollection property="gestureRecognizers" destination="shb-M6-ah9" appends="YES" id="DtG-b9-RtW"/>
                                                 </connections>
                                             </imageView>
                                             <view contentMode="scaleToFill" verticalCompressionResistancePriority="754" translatesAutoresizingMaskIntoConstraints="NO" id="c9l-kp-fQt">
@@ -304,6 +305,11 @@
                         <action selector="retryPressed:" destination="BYZ-38-t0r" id="16Y-9X-6z0"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="3" id="shb-M6-ah9">
+                    <connections>
+                        <action selector="selectServer:" destination="BYZ-38-t0r" id="aCd-UV-hNK"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1008" y="158"/>
         </scene>
@@ -923,13 +929,13 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="WVX-Tt-9c6"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="800" id="eX2-6E-iEK"/>
                                 </constraints>
-                                <mutableString key="text">What is PRASE? 
+                                <string key="text">What is PRASE? 
 It means Patient Reporting and Action for a Safe Environment. 
 It is a questionnaire which will allow you provide feedback on the safety and quality of care you have experienced during your stay on this ward.
  Any specific examples of your safety concerns or positive experiences for yourself or other patients around you during this ward stay would be appreciated. Your feedback will be used by the ward to make safety improvements where problems are identified.
  Participation is voluntary and you can pull out at any time. Once your willingness to participate is confirmed by the PRASE Patient Safety Volunteer, you can then proceed to complete the questionnaire.It is hoped that you are able to complete as many questions as is possible during the time you have with the volunteer.
  The PRASE Patient Safety Volunteer is here to support you complete this questionnaire. Please be reminded that you can also complete this independently and your carer / family member can also complete it on your behalf.
- Many thanks for participating.</mutableString>
+ Many thanks for participating.</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -4506,7 +4512,7 @@ Serious</string>
         <image name="upload" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BQC-c1-4uu"/>
+        <segue reference="RwE-67-GqX"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -930,7 +930,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"BETA_TESTING=1",
+				);
 				INFOPLIST_FILE = "NHS Prase/Info.plist";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
 				INFOPLIST_PREFIX_HEADER = "NHS Prase/Prase-Info.h";
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1052,6 +1058,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "NHS Prase/Info.plist";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
 				INFOPLIST_PREFIX_HEADER = "NHS Prase/Prase-Info.h";
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1078,6 +1085,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "NHS Prase/Info.plist";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
 				INFOPLIST_PREFIX_HEADER = "NHS Prase/Prase-Info.h";
 				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

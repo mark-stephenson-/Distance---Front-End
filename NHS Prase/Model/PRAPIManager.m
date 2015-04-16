@@ -209,18 +209,13 @@
     jsonRecord[@"adjustedTimePatient"] = @(record.timeAdditionalPatient.intValue);
     jsonRecord[@"adjustedTimeQuestionnaire"] = @(record.timeAdditionalQuestionnaire.intValue);
     
-    jsonRecord[@"totalTimePatient"] = @(record.timeAdditionalPatient.intValue + record.timeTracked.intValue) ? : [NSNull null];
-    jsonRecord[@"totalTimeQuestionnaire"] = @(record.timeAdditionalQuestionnaire.intValue + record.timeTracked.intValue) ? : [NSNull null];
+    jsonRecord[@"totalTimePatient"] = @(record.timeAdditionalPatient.intValue + record.timeTracked.intValue);
+    jsonRecord[@"totalTimeQuestionnaire"] = @(record.timeAdditionalQuestionnaire.intValue + record.timeTracked.intValue);
     
     jsonRecord[@"incompleteReason"] = [record.incompleteReason isNonNullString] ? record.incompleteReason : [NSNull null];
     
-    // the id will uniquely identify the ward, hospital and trust in TheCore
-    if (record.ward.id.integerValue >= 0) {
-        jsonRecord[@"ward"] = record.ward.id ? : [NSNull null];
-    } else {
-        jsonRecord[@"ward"] = record.ward.name;
-    }
-    
+    // the id will uniquely identify the ward, hospital and trust in TheCore. If the ward is a custom ward
+    jsonRecord[@"ward"] = [self serializeWard:record.ward];
     
     // create the questions entry
     NSMutableArray *questionsEntry = [NSMutableArray arrayWithCapacity:record.questions.count];
@@ -269,9 +264,9 @@
         return;
     }
     
-//    const char *jsonChars = jsonData.bytes;
-//    NSString *jsonString = [NSString stringWithCString:jsonChars encoding:NSUTF8StringEncoding];
-//    NSLog(@"POSTING: %@", jsonString);
+    const char *jsonChars = jsonData.bytes;
+    NSString *jsonString = [NSString stringWithCString:jsonChars encoding:NSUTF8StringEncoding];
+    NSLog(@"POSTING: %@", jsonString);
     
     // post to the server
     [sessionManager POST:@"api/submit"
@@ -316,13 +311,7 @@
     NSMutableDictionary *thisEntry = [NSMutableDictionary dictionaryWithCapacity:1];
     
     thisEntry[@"text"] = [note.text isNonNullString] ? note.text : [NSNull null];
-    
-    if (note.ward.id.integerValue >= 0) {
-        thisEntry[@"ward"] = note.ward.id ? : [NSNull null];
-    } else {
-        thisEntry[@"ward"] = note.ward.name;
-    }
-    
+    thisEntry[@"ward"] = note.ward ? [self serializeWard:note.ward] : [NSNull null];
     
     return thisEntry;
 }
@@ -331,11 +320,7 @@
 {
     NSMutableDictionary *thisEntry = [NSMutableDictionary dictionaryWithCapacity:8];
     
-    if (concern.ward.id.integerValue >= 0) {
-        thisEntry[@"ward"] = concern.ward.id ? : [NSNull null];
-    } else {
-        thisEntry[@"ward"] = concern.ward.name;
-    }
+    thisEntry[@"ward"] = [self serializeWard:concern.ward];
 
     thisEntry[@"whatNote"] = concern.whatNote ? [self serializeNote:concern.whatNote] : [NSNull null];
 //    thisEntry[@"whyNote"] = concern.whyNote ? [self serializeNote:concern.whyNote] : [NSNull null];
@@ -350,6 +335,13 @@
     thisEntry[@"preventAnswer"] = preventQuestion.answerID ? : [NSNull null];
     
     return thisEntry;
+}
+
+-(NSDictionary *)serializeWard:(PRWard *) ward
+{
+    return @{@"name": [ward.name isNonNullString] ? ward.name : [NSNull null],
+             @"id": (ward.id.integerValue >= 0) ? ward.id : [NSNull null],
+             @"hospitalId": ward.hospital.id};
 }
 
 #pragma mark - TDAPIManager SubClass Methods
@@ -388,7 +380,5 @@
     
     return translations;
 }
-
-
 
 @end

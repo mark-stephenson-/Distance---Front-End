@@ -15,6 +15,8 @@
 #import <Crashlytics/Crashlytics.h>
 #import "PRAPIManager.h"
 
+NSString *const APIManagerBaseURLKey = @"APIManagerBaseURL";
+
 @interface AppDelegate ()
 
 @end
@@ -38,8 +40,24 @@
     
     [[TDSegmentedControl appearance] setTextBuffer:20];
     
+    // set the base URL to be the staging / live URL depending on the release mode
+    NSDictionary *serverURLs = [[NSBundle mainBundle] infoDictionary][@"PRServerURLs"];
+    NSString *urlKey = [[NSUserDefaults standardUserDefaults] valueForKey:APIManagerBaseURLKey];
+    NSString *urlString = serverURLs[urlKey];
+    
+    if (urlString == nil) {
+        NSString *urlKey = nil;
+#ifdef DEBUG 
+        urlKey = @"Staging";
+#else 
+        urlKey = @"Live"
+#endif
+        urlString = serverURLs[urlKey];
+        [[NSUserDefaults standardUserDefaults] setValue:urlKey forKey:APIManagerBaseURLKey];
+    }
+    
     PRAPIManager *manager = [PRAPIManager sharedManager];
-    manager.baseURL = [NSURL URLWithString:@"http://prase.staging2.thedistance.co.uk"];
+    manager.baseURL = [NSURL URLWithString:urlString];
     
 #ifndef DEBUG
     [Crashlytics startWithAPIKey:@"015a3121c76ea8baec90c4a97c7bd1976400adad"];
