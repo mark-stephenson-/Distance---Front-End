@@ -42,19 +42,21 @@ NSString *const APIManagerBaseURLKey = @"APIManagerBaseURL";
     
     // set the base URL to be the staging / live URL depending on the release mode
     NSDictionary *serverURLs = [[NSBundle mainBundle] infoDictionary][@"PRServerURLs"];
-    NSString *urlKey = [[NSUserDefaults standardUserDefaults] valueForKey:APIManagerBaseURLKey];
-    NSString *urlString = serverURLs[urlKey];
-    
-    if (urlString == nil) {
-        NSString *urlKey = nil;
-#ifdef DEBUG 
+    NSString *savedUrlKey = [[NSUserDefaults standardUserDefaults] valueForKey:APIManagerBaseURLKey];
+
+    NSString *urlKey = nil;
+#if defined(DEBUG) || defined(BETA_TESTING)
         urlKey = @"Staging";
 #else 
-        urlKey = @"Live"
+        urlKey = @"Live";
 #endif
-        urlString = serverURLs[urlKey];
-        [[NSUserDefaults standardUserDefaults] setValue:urlKey forKey:APIManagerBaseURLKey];
+    
+    if (![savedUrlKey isEqualToString:urlKey]) {
+        [[PRAPIManager sharedManager] clearAllDataAndWait];
     }
+    
+    NSString *urlString = serverURLs[urlKey];
+    [[NSUserDefaults standardUserDefaults] setValue:urlKey forKey:APIManagerBaseURLKey];
     
     PRAPIManager *manager = [PRAPIManager sharedManager];
     manager.baseURL = [NSURL URLWithString:urlString];

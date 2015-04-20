@@ -20,4 +20,7 @@
 
 -(void)submitRecord:(PRRecord *) record withCompletion:(void (^)(BOOL success, NSError *error)) completion;
 
+-(void)clearAllDataAndWait;
+-(void)clearAllDataWithCompletion:(void (^)(BOOL success, NSError *error)) completion;
+
 @end

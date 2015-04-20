@@ -26,10 +26,8 @@
 	<true/>
 	<key>PRServerURLs</key>
 	<dict>
-		<key>Callam</key>
-		<string>http://192.168.</string>
 		<key>Live</key>
-		<string>http://prase.staging2.thedistance.co.uk</string>
+		<string>https://api.prase.nhs.uk</string>
 		<key>Staging</key>
 		<string>http://prase.staging2.thedistance.co.uk</string>
 	</dict>

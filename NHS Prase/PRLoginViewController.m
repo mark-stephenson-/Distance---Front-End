@@ -180,62 +180,40 @@
     [alertMessage appendString:@" Do you wish to change server?"];
     
     void (^changeServerCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
-        // clear the data
-        
-        // delete the entities created on the device
-        [PRConcern MR_truncateAll];
-        [PRNote MR_truncateAll];
-        [PRRecord MR_truncateAll];
-        [PRPMOS MR_truncateAll];
-        [PRQuestion MR_truncateAll];
-        
-        // delete the nodes from the CMS
-        NSArray *nodesToRemove = @[@"trust",
-                                   @"hospital",
-                                   @"ward",
-                                   @"question",
-                                   @"answer-type",
-                                   @"option",
-                                   @"user"];
         
         MBProgressHUD *deletingHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [deletingHUD setLabelText:@"Clearing Data"];
         
-        [[PRAPIManager sharedManager] truncateNodes:nodesToRemove
-                                     withCompletion:^(BOOL success, NSError *error) {
-                                         [deletingHUD hide:YES];
-                                         
-                                         // nil error implies to changes to save.
-                                         if (success || error == nil) {
-                                             // perform the switch
-                                             [[PRAPIManager sharedManager] setBaseURL:newURL];
-                                             [self downloadData];
-                                             
-                                             // save the current baseURL for loading on next launch
-                                             [[NSUserDefaults standardUserDefaults] setValue:urlKey forKey:APIManagerBaseURLKey];
-                                         } else {
-                                             
-                                             void (^cancelCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
-                                                 [[PRAPIManager sharedManager] truncateNodes:nodesToRemove
-                                                                              withCompletion:nil];
-                                                 [self downloadData];
-                                             };
-                                             
-                                             void (^retryCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
-                                                 [self switchToBaseURL:newURL withKey:urlKey];
-                                             };
-                                             
-                                             [self showAlertWithTitle:@"Data Error"
-                                                              message:[NSString stringWithFormat:@"Unable to clear the current data: %@", error.localizedDescription]
-                                                          cancelTitle:nil
-                                                         buttonTitles:@[@"Cancel", @"Retry"]
-                                                              actions:@[cancelCompletion, retryCompletion]];
-                                         }
-                                     }];
-        
-        
-        
-        
+        // clear the data
+        [[PRAPIManager sharedManager] clearAllDataWithCompletion:^(BOOL success, NSError *error) {
+            [deletingHUD hide:YES];
+            
+            // nil error implies to changes to save.
+            if (success || error == nil) {
+                // perform the switch
+                [[PRAPIManager sharedManager] setBaseURL:newURL];
+                [self downloadData];
+                
+                // save the current baseURL for loading on next launch
+                [[NSUserDefaults standardUserDefaults] setValue:urlKey forKey:APIManagerBaseURLKey];
+            } else {
+                
+                void (^cancelCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+                    [[PRAPIManager sharedManager] clearAllDataAndWait];
+                    [self downloadData];
+                };
+                
+                void (^retryCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+                    [self switchToBaseURL:newURL withKey:urlKey];
+                };
+                
+                [self showAlertWithTitle:@"Data Error"
+                                 message:[NSString stringWithFormat:@"Unable to clear the current data: %@", error.localizedDescription]
+                             cancelTitle:nil
+                            buttonTitles:@[@"Cancel", @"Retry"]
+                                 actions:@[cancelCompletion, retryCompletion]];
+            }
+        }];
     };
     
     [self showAlertWithTitle:@"Change Server"

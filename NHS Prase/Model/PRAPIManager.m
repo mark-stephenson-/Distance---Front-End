@@ -381,4 +381,40 @@
     return translations;
 }
 
+-(void)clearAllDataAndWait
+{
+    [self clearAllDataWithCompletion:nil orWait:YES];
+}
+
+-(void)clearAllDataWithCompletion:(void (^)(BOOL, NSError *))completion
+{
+    [self clearAllDataWithCompletion:completion orWait:NO];
+}
+
+-(void)clearAllDataWithCompletion:(void (^)(BOOL success, NSError *error)) completion orWait:(BOOL) wait
+{
+    // delete the entities created on the device
+    [PRConcern MR_truncateAll];
+    [PRNote MR_truncateAll];
+    [PRRecord MR_truncateAll];
+    [PRPMOS MR_truncateAll];
+    [PRQuestion MR_truncateAll];
+    
+    // delete the nodes from the CMS
+    NSArray *nodesToRemove = @[@"trust",
+                               @"hospital",
+                               @"ward",
+                               @"question",
+                               @"answer-type",
+                               @"option",
+                               @"user"];
+    
+    if (!wait) {
+        [[PRAPIManager sharedManager] truncateNodes:nodesToRemove
+                                     withCompletion:completion];
+    } else {
+        [[PRAPIManager sharedManager] truncateNodesAndWait:nodesToRemove];
+    }
+}
+
 @end
