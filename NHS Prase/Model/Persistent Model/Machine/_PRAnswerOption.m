@@ -42,20 +42,23 @@ const struct PRAnswerOptionFetchedProperties PRAnswerOptionFetchedProperties = {
 	return (PRAnswerOptionID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 	if ([key isEqualToString:@"answerIDValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"answerID"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"imageIDValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"imageID"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"localizationIDValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"localizationID"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 
 	return keyPaths;
@@ -68,21 +71,21 @@ const struct PRAnswerOptionFetchedProperties PRAnswerOptionFetchedProperties = {
 
 
 
-- (long long)answerIDValue {
+- (int64_t)answerIDValue {
 	NSNumber *result = [self answerID];
 	return [result longLongValue];
 }
 
-- (void)setAnswerIDValue:(long long)value_ {
+- (void)setAnswerIDValue:(int64_t)value_ {
 	[self setAnswerID:[NSNumber numberWithLongLong:value_]];
 }
 
-- (long long)primitiveAnswerIDValue {
+- (int64_t)primitiveAnswerIDValue {
 	NSNumber *result = [self primitiveAnswerID];
 	return [result longLongValue];
 }
 
-- (void)setPrimitiveAnswerIDValue:(long long)value_ {
+- (void)setPrimitiveAnswerIDValue:(int64_t)value_ {
 	[self setPrimitiveAnswerID:[NSNumber numberWithLongLong:value_]];
 }
 
@@ -94,21 +97,21 @@ const struct PRAnswerOptionFetchedProperties PRAnswerOptionFetchedProperties = {
 
 
 
-- (long long)imageIDValue {
+- (int64_t)imageIDValue {
 	NSNumber *result = [self imageID];
 	return [result longLongValue];
 }
 
-- (void)setImageIDValue:(long long)value_ {
+- (void)setImageIDValue:(int64_t)value_ {
 	[self setImageID:[NSNumber numberWithLongLong:value_]];
 }
 
-- (long long)primitiveImageIDValue {
+- (int64_t)primitiveImageIDValue {
 	NSNumber *result = [self primitiveImageID];
 	return [result longLongValue];
 }
 
-- (void)setPrimitiveImageIDValue:(long long)value_ {
+- (void)setPrimitiveImageIDValue:(int64_t)value_ {
 	[self setPrimitiveImageID:[NSNumber numberWithLongLong:value_]];
 }
 
@@ -134,21 +137,21 @@ const struct PRAnswerOptionFetchedProperties PRAnswerOptionFetchedProperties = {
 
 
 
-- (long long)localizationIDValue {
+- (int64_t)localizationIDValue {
 	NSNumber *result = [self localizationID];
 	return [result longLongValue];
 }
 
-- (void)setLocalizationIDValue:(long long)value_ {
+- (void)setLocalizationIDValue:(int64_t)value_ {
 	[self setLocalizationID:[NSNumber numberWithLongLong:value_]];
 }
 
-- (long long)primitiveLocalizationIDValue {
+- (int64_t)primitiveLocalizationIDValue {
 	NSNumber *result = [self primitiveLocalizationID];
 	return [result longLongValue];
 }
 
-- (void)setPrimitiveLocalizationIDValue:(long long)value_ {
+- (void)setPrimitiveLocalizationIDValue:(int64_t)value_ {
 	[self setPrimitiveLocalizationID:[NSNumber numberWithLongLong:value_]];
 }
 
@@ -175,6 +178,7 @@ const struct PRAnswerOptionFetchedProperties PRAnswerOptionFetchedProperties = {
 	return result;
 }
 	
+
 
 
 

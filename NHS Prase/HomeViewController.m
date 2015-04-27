@@ -8,8 +8,14 @@
 
 #import "HomeViewController.h"
 
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+
 #import "PRRecord.h"
 #import "PRRecordViewController.h"
+
+#import "PRTrust.h"
+#import "PRHospital.h"
+#import "PRWard.h"
 
 #define ALERT_GO_TITLE 111
 
@@ -18,6 +24,19 @@
 @end
 
 @implementation HomeViewController
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+#ifdef DEBUG
+    self.selectedTrust = [trusts firstObject];
+    self.selectedHospital = [self.selectedTrust.hospitals anyObject];
+    self.selectedWard = [self.selectedHospital.wards anyObject];
+#endif
+    
+    [self refreshViews];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -29,7 +48,7 @@
     if ([segue.identifier isEqualToString:@"CreateRecord"]) {
         PRRecord *newRecord = [PRRecord newRecordWithWard:self.selectedWard];
         newRecord.startDate = [NSDate date];
-        newRecord.user = [[NSUserDefaults standardUserDefaults] valueForKey:@"user"];
+        newRecord.user = [[NSUserDefaults standardUserDefaults] valueForKey:PRRecordUsernameKey];
         
         PRRecordViewController *recordVC = (PRRecordViewController *) segue.destinationViewController;
         recordVC.record = newRecord;
@@ -44,6 +63,7 @@
     canCreate = true;
 
     if (canCreate) {
+        [self commitCustomWard];
         [self performSegueWithIdentifier:@"CreateRecord" sender:self];
     }
 }
@@ -52,25 +72,20 @@
 
 -(void)goToLogIn:(id)sender
 {
-    NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.error-title", nil, nil, @"Cancel Record", @"Alert title to cancel a record and return to the home or title screen.");
-    NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.cancel.error-message", nil, nil, @"Returning to the title screen will delete any entered data. Are you sure you want to continue?", @"Alert message shown when returning to the app's title screen") ;
-    NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.button-title", nil, nil, @"Cancel Record", @"Button title to cancel a record.");
-    NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.cancel-title", nil, nil, @"Continue", @"Button title to continue creating a record when prompted about cancelling a record.");
+    NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"home.logout.title", nil, nil, @"Log Out", @"Alert title to log out of a session.");
+    NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"home.logout.error-message", nil, nil, @"Do you want to Log out of the PRASE app?", @"Alert message shown when returning to the app's title screen") ;
+    NSString *logoutTitle = TDLocalizedStringWithDefaultValue(@"home.logout.button", nil, nil, @"Log Out", @"Button title to log out.");
+    NSString *continueRecordTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyCancel, nil, nil, nil, nil);
+    
+    void (^logoutCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    };
     
     [self showAlertWithTitle:alertTitle
                      message:alertMessage
-                 buttonTitle:buttonTitle
-            buttonCompletion:^(NSNumber *buttonIndex, UIAlertAction *action) {
-                [self continueTitle];
-            } cancelTitle:cancelTitle
-                    alertTag:ALERT_GO_TITLE];
-}
-
-
-// iOS 8 Deprecation
--(void)continueTitle
-{
-    [self.navigationController popToRootViewControllerAnimated:YES];
+                 cancelTitle:continueRecordTitle
+                buttonTitles:@[logoutTitle]
+                     actions:@[logoutCompletion]];
 }
 
 @end

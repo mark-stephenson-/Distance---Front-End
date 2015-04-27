@@ -44,58 +44,59 @@ extern const struct PRConcernFetchedProperties {
 
 
 
-@property (nonatomic, strong) PRNote* preventNote;
+@property (nonatomic, strong) PRNote *preventNote;
 
 //- (BOOL)validatePreventNote:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRQuestion* preventQuestion;
+@property (nonatomic, strong) PRQuestion *preventQuestion;
 
 //- (BOOL)validatePreventQuestion:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRQuestion* question;
+@property (nonatomic, strong) PRQuestion *question;
 
 //- (BOOL)validateQuestion:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRRecord* record;
+@property (nonatomic, strong) PRRecord *record;
 
 //- (BOOL)validateRecord:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRQuestion* seriousQuestion;
+@property (nonatomic, strong) PRQuestion *seriousQuestion;
 
 //- (BOOL)validateSeriousQuestion:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRWard* ward;
+@property (nonatomic, strong) PRWard *ward;
 
 //- (BOOL)validateWard:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRNote* whatNote;
+@property (nonatomic, strong) PRNote *whatNote;
 
 //- (BOOL)validateWhatNote:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) PRNote* whyNote;
+@property (nonatomic, strong) PRNote *whyNote;
 
 //- (BOOL)validateWhyNote:(id*)value_ error:(NSError**)error_;
+
 
 
 

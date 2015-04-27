@@ -7,7 +7,9 @@
 //
 
 #import "PRRecordSummaryViewController.h"
+
 #import "PRSelectionViewController.h"
+#import "PRBasicDataFormViewController.h"
 
 #import "PRQuestionnaireCompleteCell.h"
 #import "PRBasicDataCompleteCell.h"
@@ -30,22 +32,52 @@
     NSInteger answered = [self.record answeredQuestions];
     NSInteger total = self.record.questions.count;
     
-    [self setFormValue:@[@(answered), @(total)]
-            forFormKey:@"Questionnaire"];
-    
     // check if basic data is complete and update the value if necessary
+    
+    NSString *otherCompleterAnswer = TDLocalizedStringWithDefaultValue(@"basic-data.completer.option.other", nil, nil, @"Other", nil);
+    NSString *otherLanguageAnswer = TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.other", nil, nil, @"Other", nil);
+    
     NSDictionary *basicDataInfo = self.record.basicDataDictionary;
-    BOOL basicDataComplete = basicDataInfo.count == 7 && ![basicDataInfo.allValues containsObject:[NSNull null]];
+    
+    NSInteger basicDataTotal = [PRBasicDataFormViewController basicDataFormKeys].count;
+    if (![(NSString *)basicDataInfo[@"Language"] isEqualToString:otherLanguageAnswer]) {
+        // a definite option is chosen for the first language so don't need a form value for key "OtherLanguage".
+        basicDataTotal--;
+    }
+    
+    if (![(NSString *)basicDataInfo[@"Completer"] isEqualToString:otherCompleterAnswer]) {
+        // a definite option is chosen for the complete so don't need a form value for key "OtherCompleter.
+        basicDataTotal--;
+    }
+    
+    BOOL basicDataComplete = (basicDataInfo.count == basicDataTotal) && ![basicDataInfo.allValues containsObject:[NSNull null]];
     
     [self setFormValue:@(basicDataComplete) forFormKey:@"BasicData"];
     
     NSTimeInterval totalPatient = self.record.timeTracked.doubleValue + self.record.timeAdditionalPatient.doubleValue;
     NSTimeInterval totalQuestionnaire = self.record.timeTracked.doubleValue + self.record.timeAdditionalQuestionnaire.doubleValue;
+    
+    // update the form with the new values
+    [self setFormValue:@[@(answered), @(total)]
+            forFormKey:@"Questionnaire"];
     [self setFormValue:@(totalPatient) forFormKey:@"PatientTime"];
     [self setFormValue:@(totalQuestionnaire) forFormKey:@"QuestionnaireTime"];
-    
     // re-generate the cells so the Questionnaire incomplete selectionvc has the correct list
     [self reloadForm];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    shouldUpdateAdditionalTime = YES;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    shouldUpdateAdditionalTime = NO;
 }
 
 -(NSArray *)generateCellInfo
@@ -116,13 +148,14 @@
         [prSelection setSelectedKeys:[NSMutableSet set]];
         
         // force load the view to configure its subclasses
-        UIView *view = prSelection.view;
-        prSelection.titleLabel.text = @"Incomplete Questions";
-        prSelection.subTitleLabel.text = @"Please complete as many questions as possible. Tap a question to answer to it.";
-        
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [self presentViewController:prSelection animated:YES completion:nil];
-        }];
+        if (prSelection.view != nil) {
+            prSelection.titleLabel.text = TDLocalizedStringWithDefaultValue(@"record-summary.incomplete-question-selection.title", nil, nil, @"Incomplete Questions", @"The selection view title shown when a list of unansered questions is presented to the user from the record summary screen.");
+            prSelection.subTitleLabel.text = TDLocalizedStringWithDefaultValue(@"record-summary.incomplete-question-selection.subtitle", nil, nil, @"Please complete as many questions as possible. Tap a question to answer to it.", @"The selection view subtitle shown when a list of unansered questions is presented to the user from the record summary screen.");
+            
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self presentViewController:prSelection animated:YES completion:nil];
+            }];
+        }
     }
 }
 
@@ -133,14 +166,16 @@
 
 -(void)cellValueChanged:(TDCell *)cell
 {
-    if ([cell.key isEqualToString:@"PatientTime"]) {
-        NSTimeInterval difference = ((NSNumber *)cell.value).doubleValue - self.record.timeTracked.doubleValue;
-        self.record.timeAdditionalPatient = @(difference);
-    }
-    
-    if ([cell.key isEqualToString:@"QuestionnaireTime"]) {
-        NSTimeInterval difference = ((NSNumber *)cell.value).doubleValue - self.record.timeTracked.doubleValue;
-        self.record.timeAdditionalQuestionnaire = @(difference);
+    if (shouldUpdateAdditionalTime) {
+        if ([cell.key isEqualToString:@"PatientTime"]) {
+            NSTimeInterval difference = ((NSNumber *)cell.value).doubleValue - self.record.timeTracked.doubleValue;
+            self.record.timeAdditionalPatient = @(difference);
+        }
+        
+        if ([cell.key isEqualToString:@"QuestionnaireTime"]) {
+            NSTimeInterval difference = ((NSNumber *)cell.value).doubleValue - self.record.timeTracked.doubleValue;
+            self.record.timeAdditionalQuestionnaire = @(difference);
+        }
     }
     
     [super cellValueChanged:cell];

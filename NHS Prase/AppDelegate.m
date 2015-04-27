@@ -9,11 +9,13 @@
 #import "AppDelegate.h"
 
 #import "PRTheme.h"
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import <Crashlytics/Crashlytics.h>
 #import "PRAPIManager.h"
+
+NSString *const APIManagerBaseURLKey = @"APIManagerBaseURL";
 
 @interface AppDelegate ()
 
@@ -38,8 +40,26 @@
     
     [[TDSegmentedControl appearance] setTextBuffer:20];
     
+    // set the base URL to be the staging / live URL depending on the release mode
+    NSDictionary *serverURLs = [[NSBundle mainBundle] infoDictionary][@"PRServerURLs"];
+    NSString *savedUrlKey = [[NSUserDefaults standardUserDefaults] valueForKey:APIManagerBaseURLKey];
+
+    NSString *urlKey = nil;
+#if defined(DEBUG) || defined(BETA_TESTING)
+        urlKey = @"Staging";
+#else 
+        urlKey = @"Live";
+#endif
+    
+    if (![savedUrlKey isEqualToString:urlKey]) {
+        [[PRAPIManager sharedManager] clearAllDataAndWait];
+    }
+    
+    NSString *urlString = serverURLs[urlKey];
+    [[NSUserDefaults standardUserDefaults] setValue:urlKey forKey:APIManagerBaseURLKey];
+    
     PRAPIManager *manager = [PRAPIManager sharedManager];
-    manager.baseURL = [NSURL URLWithString:@"http://prase.staging2.thedistance.co.uk"];
+    manager.baseURL = [NSURL URLWithString:urlString];
     
 #ifndef DEBUG
     [Crashlytics startWithAPIKey:@"015a3121c76ea8baec90c4a97c7bd1976400adad"];
@@ -68,6 +88,27 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    RotationPreference currentPreference = [[PRTheme sharedTheme] currentRotationPreference];
+    
+    NSUInteger orientation = UIInterfaceOrientationMaskAll;
+    switch (currentPreference) {
+        case kRotationPreferenceLandscape:
+            orientation = UIInterfaceOrientationMaskLandscape;
+            break;
+        case kRotationPreferencePortrait:
+            orientation = UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+            break;
+        default:
+            break;
+    }
+    
+//    NSLog(@"[%@] Getting rotation preference: %lu", self, (unsigned long)orientation);
+    
+    return orientation;
 }
 
 

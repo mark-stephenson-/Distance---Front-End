@@ -7,7 +7,7 @@
 //
 
 
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 #import "PRViewController.h"
 
 #define ALERT_CREATE_ERROR 222
@@ -26,6 +26,12 @@
     IBOutlet UITextField *hospitalField;
     IBOutlet UITextField *wardField;
     
+    IBOutlet UIScrollView *scrollView;
+    IBOutlet TDTextField *otherWardField;
+
+    IBOutlet NSLayoutConstraint *wardSelectBottomConstraint;
+    IBOutlet NSLayoutConstraint *otherWardBottomConstraint;
+    
     NSArray *trusts;
     NSArray *hospitals;
     NSArray *wards;
@@ -35,8 +41,11 @@
 @property (nonatomic, strong) PRHospital *selectedHospital;
 @property (nonatomic, strong) PRWard *selectedWard;
 
+
 -(void)refreshViews;
 
 -(BOOL)validateSelectedWard;
+-(PRWard *)blankCustomWard;
+-(void)commitCustomWard;
 
 @end

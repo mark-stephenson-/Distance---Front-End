@@ -37,24 +37,28 @@ extern const struct PRPMOSQuestionFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber *localizationID;
+
+@property (nonatomic, strong) NSNumber* localizationID;
 
 
-@property long long localizationIDValue;
-- (long long)localizationIDValue;
-- (void)setLocalizationIDValue:(long long)value_;
+
+@property int64_t localizationIDValue;
+- (int64_t)localizationIDValue;
+- (void)setLocalizationIDValue:(int64_t)value_;
 
 //- (BOOL)validateLocalizationID:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSNumber *questionID;
+
+@property (nonatomic, strong) NSNumber* questionID;
 
 
-@property long long questionIDValue;
-- (long long)questionIDValue;
-- (void)setQuestionIDValue:(long long)value_;
+
+@property int64_t questionIDValue;
+- (int64_t)questionIDValue;
+- (void)setQuestionIDValue:(int64_t)value_;
 
 //- (BOOL)validateQuestionID:(id*)value_ error:(NSError**)error_;
 
@@ -62,23 +66,24 @@ extern const struct PRPMOSQuestionFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSOrderedSet* answerSets;
+@property (nonatomic, strong) NSOrderedSet *answerSets;
 
 - (NSMutableOrderedSet*)answerSetsSet;
 
 
 
 
-@property (nonatomic, strong) PRPMOS* pmos;
+@property (nonatomic, strong) PRPMOS *pmos;
 
 //- (BOOL)validatePmos:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSSet* questions;
+@property (nonatomic, strong) NSSet *questions;
 
 - (NSMutableSet*)questionsSet;
+
 
 
 
@@ -105,8 +110,8 @@ extern const struct PRPMOSQuestionFetchedProperties {
 - (NSNumber*)primitiveLocalizationID;
 - (void)setPrimitiveLocalizationID:(NSNumber*)value;
 
-- (long long)primitiveLocalizationIDValue;
-- (void)setPrimitiveLocalizationIDValue:(long long)value_;
+- (int64_t)primitiveLocalizationIDValue;
+- (void)setPrimitiveLocalizationIDValue:(int64_t)value_;
 
 
 
@@ -114,8 +119,8 @@ extern const struct PRPMOSQuestionFetchedProperties {
 - (NSNumber*)primitiveQuestionID;
 - (void)setPrimitiveQuestionID:(NSNumber*)value;
 
-- (long long)primitiveQuestionIDValue;
-- (void)setPrimitiveQuestionIDValue:(long long)value_;
+- (int64_t)primitiveQuestionIDValue;
+- (void)setPrimitiveQuestionIDValue:(int64_t)value_;
 
 
 

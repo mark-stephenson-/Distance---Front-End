@@ -86,7 +86,8 @@
             [tempSectionHeights addObject:@(maxHeight)];
         }
     } else {
-        CGFloat cellHeight = cellWidth * 1.2;
+        // whilst there are no images this should be 4:3 ratio
+        CGFloat cellHeight = cellWidth * 0.75;
         
         for (int s = 0; s < sectionCount; s++) {
             [tempSectionHeights addObject:@(cellHeight)];

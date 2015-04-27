@@ -29,6 +29,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    segmentTitles = @[TDLocalizedStringWithDefaultValue(@"pirt.segment.ward", nil, nil, @"Ward", @"The title for the \"Ward\" segement when adding a concern."),
+                      TDLocalizedStringWithDefaultValue(@"pirt.segment.what", nil, nil, @"What is your Concern?", @"The title for the \"What is your concern?\" segement when adding a concern."),
+                      TDLocalizedStringWithDefaultValue(@"pirt.segment.severity", nil, nil, @"Severity of Concern", @"The title for the \"Severity of Concern\" segement when adding a concern.")];
+    
     // create the input accessory view
     noteVCToolbar = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
     noteVCToolbar.navigationDelegate = self;
@@ -46,11 +50,12 @@
     // create the simple view controllers
     whatViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
     loadView = whatViewController.view;
-    whatViewController.titleLabel.text = TDLocalizedStringWithDefaultValue(@"pirt.what.title", nil, nil, @"Detail needed about what, where and when the concern happened.", @"Concern section title");
+    whatViewController.titleLabel.text = TDLocalizedStringWithDefaultValue(@"pirt.what.title", nil, nil, @"Can you please provide a brief description detailing :\n- What your concern is;\n- How it is a concern to you;\n- What you think could have been done differently to prevent it from happening to you or other patients.\nAny other general statements / comments can also be included here.", @"Concern section title");
     whatViewController.delegate = self;
     whatViewController.titleLabel.TDLocalizedStringKey = @"pirt.what.title";
     whatViewController.noteView.inputAccessoryView = noteVCToolbar;
     
+    /*
     whyViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteVC"];
     loadView = whyViewController.view;
     whyViewController.titleLabel.text = TDLocalizedStringWithDefaultValue(@"pirt.why.title", nil, nil, @"Why was this a concern for you?", @"Concern section title");
@@ -64,11 +69,12 @@
     preventViewController.delegate = self;
     preventViewController.titleLabel.TDLocalizedStringKey = @"pirt.prevent.title";
     preventViewController.noteView.inputAccessoryView = noteVCToolbar;
+    */
     
     // call the setter again to assign all the properties to the view conctrollers
     self.concern = _concern;
     
-    [tabController setViewControllers:@[wardSelectVC, whatViewController, whyViewController, preventViewController, questionsVC]];
+    [tabController setViewControllers:@[wardSelectVC, whatViewController, questionsVC]];
 }
 
 -(PRConcern *)concern
@@ -90,8 +96,8 @@
     
     wardSelectVC.selectedWard = concern.ward;
     whatViewController.note = concern.whatNote;
-    whyViewController.note = concern.whyNote;
-    preventViewController.note = concern.preventNote;
+//    whyViewController.note = concern.whyNote;
+//    preventViewController.note = concern.preventNote;
     questionsVC.seriousQuestion = concern.seriousQuestion;
     questionsVC.preventQuestion = concern.preventQuestion;
 }
@@ -102,8 +108,8 @@
     
     newConcern.ward = wardSelectVC.selectedWard;
     newConcern.whatNote = [whatViewController note];
-    newConcern.whyNote = [whyViewController note];
-    newConcern.preventNote = [preventViewController note];
+//    newConcern.whyNote = [whyViewController note];
+//    newConcern.preventNote = [preventViewController note];
     
     newConcern.seriousQuestion = questionsVC.seriousQuestion;
     newConcern.preventQuestion = questionsVC.preventQuestion;
@@ -120,7 +126,7 @@
         [nextButton setImage:[UIImage imageNamed:@"submit"] forState:UIControlStateNormal];
         [nextButton setBackgroundColor:[[PRTheme sharedTheme] positiveColor]];
     } else {
-        nextButton.TDLocalizedStringKey = @"button.next";
+        nextButton.TDLocalizedStringKey = PRLocalisationKeyNext;
         [nextButton setTitle:@"Next" forState:UIControlStateNormal];
         [nextButton setImage:[UIImage imageNamed:@"next_arrow"] forState:UIControlStateNormal];
         [nextButton setBackgroundColor:[[PRTheme sharedTheme] neutralColor]];
@@ -129,39 +135,49 @@
     [self applyThemeToView:footerView];
 }
 
-
 #pragma mark - Navigation
 
 /// Overrides superclass method to dismiss on the final page
 -(void)goNext:(id)sender
 {
+    if (tabController.selectedIndex == 0) {
+        if ([wardSelectVC validateSelectedWard]) {
+            [wardSelectVC commitCustomWard];
+        } else {
+            return;
+        }
+    }
     
     if (tabController.selectedIndex == tabController.viewControllers.count - 1) {
         
-        if ([wardSelectVC validateSelectedWard]) {
-            if ([self.pirtDelegate respondsToSelector:@selector(pirtViewControllerDidFinish:withConcern:)]) {
-                
-                [self.pirtDelegate pirtViewControllerDidFinish:self withConcern:self.concern];
-            } else {
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
+        if ([self.pirtDelegate respondsToSelector:@selector(pirtViewControllerDidFinish:withConcern:)]) {
+            
+            [self.pirtDelegate pirtViewControllerDidFinish:self withConcern:self.concern];
         } else {
-            [visibleSelector setSelectedSegmentIndex:0];
-            [self segmentChanged:self];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
         
-
     } else {
         [super goNext:sender];
     }
 }
 
 /// The footer view is replaced by a keyboard text input view on the PRNoteViewController screens so the footer is removed as it will be replaced by the textView's inputAccessoryView
--(void)segmentChanged:(id)sender
+-(void)selectSegment:(NSInteger)segment
 {
-    [super segmentChanged:sender];
+    if (tabController.selectedIndex == 0) {
+        [self.view endEditing:YES];
+        
+        if ([wardSelectVC validateSelectedWard]) {
+            [wardSelectVC commitCustomWard];
+        } else {
+            return;
+        }
+    }
     
-    if (visibleSelector.selectedSegmentIndex == 0 || visibleSelector.selectedSegmentIndex == 4) {
+    [super selectSegment:segment];
+    
+    if (segment == 0 || segment == tabController.viewControllers.count - 1) {
         [self showFooterView:YES animated:NO];
     } else {
         [self showFooterView:NO animated:NO];
@@ -202,28 +218,30 @@
 -(void)cancelConcern:(id) sender
 {
     NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"pirt.cancel.alert-title", nil, nil, @"Cancel Concern", @"Alert title shown before the user cancels a concern workflow.");
-    NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"pirt.cancel.alert-message", nil, nil, @"Returning to the title screen will delete any entered data. Are you sure you want to continue?", @"Alert message shown before the user cancels a concern workflow");
+    NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"pirt.cancel.alert-message", nil, nil, @"By cancelling this concern any data entered about this concern will not be saved. Are you sure you want to cancel this concern?", @"Alert message shown before the user cancels a concern workflow");
     NSString *buttonTitle = alertTitle;
-    NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"pirt.cancel.cancel-title", nil, nil, @"Continue", @"Cancel button title to continue a concern workflow dismissing the cancel alert.");
+    NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"pirt.cancel.cancel-title", nil, nil, @"Continue with Concern", @"Cancel button title to continue a concern workflow dismissing the cancel alert.");
+    
+    void (^deletePIRTCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+        [self continueCancel];
+    };
     
     [self showAlertWithTitle:alertTitle
                      message:alertMessage
-                 buttonTitle:buttonTitle
-            buttonCompletion:^(NSNumber *buttonIndex, UIAlertAction *action) {
-                [self continueCancel];
-            }
                  cancelTitle:cancelTitle
-                    alertTag:ALERT_CANCEL];
-    
+                buttonTitles:@[buttonTitle]
+                     actions:@[deletePIRTCompletion]];
 }
 
+/*
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
         [self continueCancel];
     }
 }
-
+*/
+ 
 -(void)continueCancel
 {
     if ([self.pirtDelegate respondsToSelector:@selector(pirtViewControllerDidCancel:)]) {

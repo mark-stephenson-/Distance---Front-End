@@ -36,7 +36,7 @@ const struct PRPMOSFetchedProperties PRPMOSFetchedProperties = {
 	return (PRPMOSID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 
@@ -58,6 +58,7 @@ const struct PRPMOSFetchedProperties PRPMOSFetchedProperties = {
 	return result;
 }
 	
+
 
 
 

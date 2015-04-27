@@ -13,18 +13,28 @@
  * @class PRLoginViewController
  * @discussion The first screen the user sees, allowing log in to create a record. The methods in the KeyboardResponder UIViewController category are used to navigate between the log in fields.
  */
-@interface PRLoginViewController : PRViewController <TDInputAccessoryDelegate>
+@interface PRLoginViewController : PRViewController <TDInputAccessoryDelegate, TDSelectionViewControllerDelegate>
 {
     NSDictionary *logInCredentials;
     
-    IBOutlet UIScrollView *scrollView;
+    __weak IBOutlet UILabel *versionLabel;
+    
+    __weak IBOutlet UIScrollView *scrollView;
 
-    IBOutlet TDTextField *usernameField;
-    IBOutlet TDTextField *passwordField;
+    __weak IBOutlet TDTextField *usernameField;
+    __weak IBOutlet TDTextField *passwordField;
+    
+    __weak IBOutlet UIButton *retryButton;
     
     PRInputAccessoryView *inputView;
     
     __weak IBOutlet NSLayoutConstraint *retryWidthConstraint;
+    
+    /// Flag to determine whether there are previously saved records that cannot be submitted. If there are none to submit this is YES.
+    BOOL submissionSucces;
+    
+    /// Flag to determine whether an attempt to download the latest data from the server was successful.
+    BOOL dataSuccess;
 }
 
 -(IBAction)continueAsGuest:(id)sender;

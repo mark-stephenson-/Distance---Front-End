@@ -45,7 +45,7 @@ const struct PRNoteFetchedProperties PRNoteFetchedProperties = {
 	return (PRNoteID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 
@@ -109,6 +109,7 @@ const struct PRNoteFetchedProperties PRNoteFetchedProperties = {
 @dynamic ward;
 
 	
+
 
 
 

@@ -6,11 +6,9 @@
 //  Copyright (c) 2014 The Distance. All rights reserved.
 //
 
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 
-typedef enum {kRotationPreferencePortrait, kRotationPreferenceLandscape, kRotationPreferenceBoth} RotationPreference;
-
-//NSString * PRLocalizedStringWithDefaultValue(NSString *key, NSString *tbl, NSBundle *bundle, NSString *val, NSString *comment);
+typedef enum {kRotationPreferenceBoth = 0, kRotationPreferencePortrait, kRotationPreferenceLandscape} RotationPreference;
 
 @interface PRTheme : TDTheme
 

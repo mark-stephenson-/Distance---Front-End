@@ -7,16 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 
 @class PRRecord;
 
 @interface PRAPIManager : TDAPIManager
 
+-(void)getUsersWithCompletion:(void (^)(SEL selector, BOOL success, NSArray *errors)) completion;
 -(void)getTrustHierarchyWithCompletion:(void (^)(SEL selector, BOOL success, NSArray *errors)) completion;
 -(void)getQuestionHierarchyWithCompletion:(void (^)(SEL selector, BOOL success, NSArray *errors)) completion;
 -(void)getLocalizationsWithCompletion:(void (^)(SEL selector, BOOL success, NSArray *errors)) completion;
 
 -(void)submitRecord:(PRRecord *) record withCompletion:(void (^)(BOOL success, NSError *error)) completion;
+
+-(void)clearAllDataAndWait;
+-(void)clearAllDataWithCompletion:(void (^)(BOOL success, NSError *error)) completion;
 
 @end

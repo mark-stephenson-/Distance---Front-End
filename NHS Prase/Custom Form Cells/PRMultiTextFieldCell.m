@@ -9,8 +9,9 @@
 #import "PRMultiTextFieldCell.h"
 #import "PRInputAccessoryView.h"
 
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 #import "PRTheme.h"
+#import "PRViewController.h"
 
 @implementation PRMultiTextFieldCell
 
@@ -35,6 +36,7 @@
     if (inputView == nil) {
         inputView = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
         inputView.navigationDelegate = self;
+        inputView.showsDone = NO;
     }
     
     return inputView;
@@ -73,7 +75,7 @@
         [inputView.nextButton setImage:[UIImage imageNamed:@"tick"] forState:UIControlStateNormal];
         [inputView.nextButton setBackgroundColor:[[PRTheme sharedTheme] positiveColor]];
     } else {
-        inputView.nextButton.TDLocalizedStringKey = @"button.next";
+        inputView.nextButton.TDLocalizedStringKey = PRLocalisationKeyNext;
         [inputView.nextButton setImage:[UIImage imageNamed:@"next_arrow"] forState:UIControlStateNormal];
         [inputView.nextButton setBackgroundColor:[[PRTheme sharedTheme] neutralColor]];
     }

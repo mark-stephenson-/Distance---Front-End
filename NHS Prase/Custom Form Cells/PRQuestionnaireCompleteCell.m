@@ -56,7 +56,7 @@
 
     } else {
 
-        TDLocalizedStringWithDefaultValue(@"summary.questionnaire-complete", nil, nil, @"Incomplete", @"Label shown when the user has not answered all the PMOS questions.");
+        TDLocalizedStringWithDefaultValue(@"summary.questionnaire-incomplete", nil, nil, @"Incomplete", @"Label shown when the user has not answered all the PMOS questions.");
         
         summaryLabel.textColor = [[PRTheme sharedTheme] negativeColor];
         prButton.imageTint = prButton.tintColor = [[PRTheme sharedTheme] negativeColor];

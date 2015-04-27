@@ -57,7 +57,7 @@
             }
         }
         
-        NSLog(@"Created: %ld trusts, %ld hospitals and %ld wards", [[PRTrust MR_numberOfEntities] integerValue], [[PRHospital MR_numberOfEntities] integerValue], [[PRWard MR_numberOfEntities] integerValue]);
+        NSLog(@"Created: %ld trusts, %ld hospitals and %ld wards", (long) [[PRTrust MR_numberOfEntities] integerValue], (long) [[PRHospital MR_numberOfEntities] integerValue], (long) [[PRWard MR_numberOfEntities] integerValue]);
     }
 }
 

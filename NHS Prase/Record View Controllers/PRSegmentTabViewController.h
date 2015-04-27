@@ -18,23 +18,30 @@
  
  Subclasses should override goNext: and goPrevious: to perform internal navigation instead of swapping tabs if desired.
  */
-@interface PRSegmentTabViewController : PRViewController <UIAlertViewDelegate>
+@interface PRSegmentTabViewController : PRViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 {
     IBOutlet UIView *containerView;
     UITabBarController *tabController;
     
     /// used to hide and show the footer view in showFooterView:animated:.
-    IBOutlet NSLayoutConstraint *footerBottomConstraint;
-    IBOutlet UIView *footerView;
-    IBOutlet UIButton *nextButton;
-    IBOutlet UIButton *prevButton;
-    IBOutlet UIButton *settingsButton;
+    __weak IBOutlet NSLayoutConstraint *footerBottomConstraint;
+    __weak IBOutlet UIView *footerView;
+    __weak IBOutlet UIButton *nextButton;
+    __weak IBOutlet UIButton *prevButton;
+    __weak IBOutlet UIButton *settingsButton;
     
-    IBOutlet TDSegmentedControl *visibleSelector;
+    __weak IBOutlet UICollectionView *segmentSelector;
+    __weak IBOutlet NSLayoutConstraint *segmentSelectorHeightConstraint;
+    NSArray *segmentTitles;
+    /// The buffers between the segment title text label and the edge of the cell. These are enforced using UIView's layoutMargins property.
+    UIEdgeInsets segmentCellTextInsets;
+    NSDictionary *segmentCellSizes;
+//    IBOutlet TDSegmentedControl *visibleSelector;
     //IBOutlet NSLayoutConstraint *selectorHeight;
 }
 
--(IBAction)segmentChanged:(id)sender;
+-(void)selectSegment:(NSInteger) segment;
+//-(IBAction)segmentChanged:(id)sender;
 
 /// Navigates to the next tab. Subclasses should override this to perform internal navigation.
 -(IBAction)goNext:(id)sender;

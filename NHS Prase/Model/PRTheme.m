@@ -8,47 +8,19 @@
 
 #import "PRTheme.h"
 
+NSString *const PRRotationPreferenceKey = @"RotationPreference";
+
 @implementation PRTheme
 
--(UIFont *)preferredFontForTextStyle:(NSString *)fontStyle andCategorySize:(NSString *)categorySize
+-(CGFloat)preferredBaseFontSizeForCategory:(NSString *)currentContentSizeCategory
 {
-    if ([[self class] sizeValueForCategorySize:categorySize] == nil) {
-        [self logErrorFromSelector:_cmd withFormat:@"Cannot create font with category size: %@", categorySize];
-        return nil;
-    }
-    
-    UIFont *themeFont = [super preferredFontForTextStyle:fontStyle andCategorySize:categorySize];
-    
-    NSString *contentSize = categorySize;
-    
-    //  This is a good standard OS wide text size...
-    CGFloat fontSize = 14.0;
-    
-    // ... adjust the font size based on the user's choice ...
-    if ([contentSize isEqualToString:UIContentSizeCategoryExtraSmall]) {
-        fontSize = 11.0;
-        
-    } else if ([contentSize isEqualToString:UIContentSizeCategorySmall]) {
-        fontSize = 12.0;
-        
-    } else if ([contentSize isEqualToString:UIContentSizeCategoryMedium]) {
-        fontSize = 14.0;
-        
-    } else if ([contentSize isEqualToString:UIContentSizeCategoryLarge]) {
-        fontSize = 16.0;
-        
-    } else if ([contentSize isEqualToString:UIContentSizeCategoryExtraLarge]) {
-        fontSize = 18.0;
-        
-    } else if ([contentSize isEqualToString:UIContentSizeCategoryExtraExtraLarge]) {
-        fontSize = 20.0;
-        
-    } else if ([contentSize isEqualToString:UIContentSizeCategoryExtraExtraExtraLarge]) {
-        fontSize = 22.0;
-    }
-    
-    // increase as Prase uses large fonts throughout
-    fontSize += 3.0;
+    return [super preferredBaseFontSizeForCategory:currentContentSizeCategory] + 3.0;
+}
+
+-(CGFloat)preferredFontSizeForTextStyle:(NSString *)fontStyle andCategorySize:(NSString *)categorySize
+{
+    // ... set the font size adjustment based on the chosen style
+    CGFloat fontSize = [self preferredBaseFontSizeForCategory:categorySize];
     
     if ([fontStyle isEqualToString:UIFontTextStyleHeadline]) {
         // used only for dark blue headlines
@@ -75,18 +47,7 @@
         fontSize -= 4.0;
     }
     
-    return [themeFont fontWithSize:fontSize];
-}
-
-+(NSDictionary *)languageDictionary
-{
-    static NSDictionary *languageOptions = nil;
-    
-    if (languageOptions == nil) {
-        languageOptions = @{@"en": @"English"};
-    }
-    
-    return languageOptions;
+    return fontSize;
 }
 
 -(instancetype)init
@@ -109,7 +70,7 @@
         self.preferredFontNameForCaption2 = fontName;
         self.preferredFontNameForFootnote = fontName;
         
-        _currentRotationPreference = kRotationPreferenceBoth;
+        _currentRotationPreference = [[[NSUserDefaults standardUserDefaults] valueForKey:PRRotationPreferenceKey] intValue];
     }
     
     return self;
@@ -138,6 +99,30 @@
     }
     
     return [super colourForIdentifier:identifier];
+}
+
+-(void)setCurrentRotationPreference:(RotationPreference)currentRotationPreference
+{
+    _currentRotationPreference = currentRotationPreference;
+    [[NSUserDefaults standardUserDefaults] setValue:@(currentRotationPreference) forKey:PRRotationPreferenceKey];
+    
+    // force a rotation if appropriate
+    
+    UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    if (currentRotationPreference == kRotationPreferencePortrait && UIInterfaceOrientationIsLandscape(currentOrientation)) {
+        
+        [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
+        
+    } else if (currentRotationPreference == kRotationPreferenceLandscape && UIInterfaceOrientationIsPortrait(currentOrientation)) {
+        
+        if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationLandscapeRight) {
+            [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationLandscapeLeft) forKey:@"orientation"];
+        } else {
+            [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationLandscapeRight) forKey:@"orientation"];
+        }
+    }
+    
+    [UIViewController attemptRotationToDeviceOrientation];
 }
 
 @end

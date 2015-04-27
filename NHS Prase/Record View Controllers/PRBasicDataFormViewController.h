@@ -8,10 +8,20 @@
 
 #import "PRFormViewController.h"
 
+@class PRInputAccessoryView;
+
 /*!
  * @class PRBasicDataFormViewController
  * @discussion This class hard codes the first screen on the questionnaire, as such it should be appropriately  localized.
  */
-@interface PRBasicDataFormViewController : PRFormViewController <TDSelectionViewControllerDelegate>
+@interface PRBasicDataFormViewController : PRFormViewController <TDSelectionViewControllerDelegate, TDInputAccessoryDelegate>
+{
+    BOOL showOtherLanguageOption;
+    BOOL showOtherCompleterOption;
+    
+    PRInputAccessoryView *inputView;
+}
+
++(NSArray *)basicDataFormKeys;
 
 @end

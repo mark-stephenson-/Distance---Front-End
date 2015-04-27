@@ -15,9 +15,11 @@
 #import "PRDateSelectCell.h"
 
 #import "PRRecord.h"
+#import "PRWard.h"
 
 #import "PRTheme.h"
 #import "PRQuestion.h"
+
 
 #import "PRAPIManager.h"
 
@@ -25,12 +27,6 @@
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 
 #import "MBProgressHUD.h"
-
-// iOS 8 Deprecation
-#define ALERT_GO_HOME 111
-#define ALERT_GO_TITLE 222
-#define ALERT_SUBMIT 333
-#define ALERT_SUBMIT_ERROR 444
 
 @interface PRRecordViewController ()
 
@@ -41,6 +37,8 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    segmentTitles = @[@"Basic Data", @"Questionnaire", @"Comments", @"Summary"];
     
     PRQuestionaireViewController *qvc = tabController.viewControllers[1];
     qvc.questions = [self.record.questions array];
@@ -63,19 +61,27 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commitTracking) name:UIApplicationWillResignActiveNotification object:nil];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self.view setNeedsLayout];
+}
+
 -(void)resetTracking
 {
     // reset the tracking from date
     trackingDate = [NSDate date];
+    NSLog(@"reset tracking from time to %@", trackingDate);
 }
 
 -(void)commitTracking
 {
-    // append the tracked time for this stint and save the record
+    // append the tracked time for this stint and assign to the record
     NSDate *now = [NSDate date];
     NSTimeInterval tracked = [now timeIntervalSinceDate:trackingDate];
     self.record.timeTracked = @(self.record.timeTracked.floatValue + tracked);
-    //NSLog(@"Appended %f for a total time of %d", tracked, self.record.timeTracked.intValue);
+    NSLog(@"Appended %f for a total time of %d", tracked, self.record.timeTracked.intValue);
 }
 
 -(void)dealloc
@@ -91,6 +97,12 @@
 {
     if ([segue.identifier isEqualToString:@"PresentSettings"]) {
         [containerView layoutSubviews];
+    } else if ([segue.identifier isEqualToString:@"ShowIncomplete"]) {
+        PRIncompleteViewController *incompleteVC = (PRIncompleteViewController *) segue.destinationViewController;
+        
+        incompleteVC.delegate = self;
+        incompleteVC.title = TDLocalizedStringWithDefaultValue(@"incomplete.title", nil, nil, @"Questionnaire Incomplete", @"Title for the modal screen prompting the user for a reason why the questionnaire has not been completed.");
+        incompleteVC.subtitle = TDLocalizedStringWithDefaultValue(@"incomplete.message", nil, nil, @"Please provide a brief explanation for why this questionnaire could not be completed.", @"Subtitle for the modal screen prompting the user for a reason why the questionnaire has not been completed.");
     }
 }
 
@@ -104,15 +116,17 @@
         if ([qvc isKindOfClass:[PRQuestionaireViewController class]]) {
             [qvc setCurrentQuestion:questionNumber.integerValue];
         }
-        [visibleSelector setSelectedSegmentIndex:1];
-        [self segmentChanged:self];
+        [self selectSegment:1];
+//        [visibleSelector setSelectedSegmentIndex:1];
+//        [self segmentChanged:self];
     }
 }
 
 -(void)handleBasicDataRequest:(NSNotification *) note
 {
-    [visibleSelector setSelectedSegmentIndex:0];
-    [self segmentChanged:self];
+    [self selectSegment:0];
+//    [visibleSelector setSelectedSegmentIndex:0];
+//    [self segmentChanged:self];
 }
 
 -(void)setRecord:(PRRecord *)record
@@ -125,12 +139,13 @@
     }
 }
 
--(void)segmentChanged:(id)sender
+-(void)selectSegment:(NSInteger)segment
 {
     NSUInteger oldSegment = tabController.selectedIndex;
     
     if (oldSegment == 0) {
         // set the basic data of the record based on the entered cell info before changing view controllers as the summary screen is configured in viewWillAppear, and the data model needs to be complete before that is called
+        [self.view endEditing:YES];
         
         NSMutableDictionary *enteredBasicData = [NSMutableDictionary dictionaryWithCapacity:7];
         
@@ -143,7 +158,12 @@
             id key = cellInfo[@"key"];
             
             if (value != nil && key != nil) {
-                enteredBasicData[key] = value;
+                
+                if ([key isEqualToString:@"Age"] && [value isKindOfClass:[NSString class]]) {
+                    enteredBasicData[key] = @([(NSString *)value integerValue]);
+                } else {
+                    enteredBasicData[key] = value;
+                }
             }
         }
         
@@ -166,40 +186,45 @@
             
             NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"invalid_date.title", nil, nil, @"Invalid Date", @"Error title when the user has entered an invalid date and tries to move forwards.");
             NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"invalid_date.message", nil, nil, @"Please enter a valid date or leave it blank.", @"Error message when the user has entered an invalid date and tries to move forwards.");
-            NSString *alertButton = TDLocalizedStringWithDefaultValue(@"invalid_date.button", nil, nil, @"OK", @"Button title to dismiss the invalid date error.");
             
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:alertTitle
-                                                                           message:alertMessage
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            
-            [alert addAction:[UIAlertAction actionWithTitle:alertButton
-                                                      style:UIAlertActionStyleCancel
-                                                    handler:nil]];
-            
-            [self presentViewController:alert animated:YES completion:nil];
-            
-            // swap back to the new segment
-            visibleSelector.selectedSegmentIndex = oldSegment;
+            [self showAlertWithTitle:alertTitle
+                             message:alertMessage
+                         cancelTitle:nil
+                        buttonTitles:nil
+                             actions:nil];
              return;
+        }
+        
+        // check the age is valid
+        if ([enteredBasicData[@"Age"] integerValue] > 120) {
+            [bdVC.tableView scrollToRowAtIndexPath:invalidDatePath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            
+            NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"invalid_age.title", nil, nil, @"Your Age", @"Error title when the user has entered an invalid age and tries to move forwards.");
+            NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"invalid_age.message", nil, nil, @"Please enter your age (up to 120) or leave it blank.", @"Error message when the user has entered an invalid age and tries to move forwards.");
+            
+            [self showAlertWithTitle:alertTitle
+                             message:alertMessage
+                         cancelTitle:nil
+                        buttonTitles:nil
+                             actions:nil];
+            
+            return;
         }
         
         self.record.basicData = [NSDictionary dictionaryWithDictionary:enteredBasicData];
     }
     
-    NSUInteger newSegment = visibleSelector.selectedSegmentIndex;
-    if (newSegment == visibleSelector.numberOfSegments - 1) {
+    if (segment == tabController.viewControllers.count - 1) {
         // commit the tracked time to the record so it can be loaded by the summary view controller. The tracking is paused on the summary screen to prevent confusion
         [self commitTracking];
     }
     
-    if (oldSegment == visibleSelector.numberOfSegments - 1 && newSegment != oldSegment) {
+    if (oldSegment == tabController.viewControllers.count - 1 && segment != oldSegment) {
         // unpause the tracking when navigating away from the summary
         [self resetTracking];
     }
     
-    [super segmentChanged:sender];
-    
-    
+    [super selectSegment:segment];
 }
 
 #pragma mark - View Configuration
@@ -207,13 +232,12 @@
 -(void)configureNext:(BOOL) isLastSection
 {
     if (isLastSection) {
-        // explicitly add a string to be picked up in gen strings
-        TDLocalizedStringWithDefaultValue(@"button.submit", nil, nil, @"Submit", @"Default button title to complete a task, such as adding a concern or submitting a record.");
-        nextButton.TDLocalizedStringKey = @"button.submit";
+        
+        nextButton.TDLocalizedStringKey = PRLocalisationKeySubmit;
         [nextButton setImage:[UIImage imageNamed:@"upload"] forState:UIControlStateNormal];
         [nextButton setBackgroundColor:[[PRTheme sharedTheme] positiveColor]];
     } else {
-        nextButton.TDLocalizedStringKey = @"button.next";
+        nextButton.TDLocalizedStringKey = PRLocalisationKeyNext;
         [nextButton setImage:[UIImage imageNamed:@"next_arrow"] forState:UIControlStateNormal];
         [nextButton setBackgroundColor:[[PRTheme sharedTheme] neutralColor]];
     }
@@ -235,7 +259,7 @@
         if (currentQuestion + 1 > 0) {
             footerShows = YES;
             
-            progressLabel.text = [NSString stringWithFormat:@"Question %ld of %ld", currentQuestion + 1, self.record.questions.count];
+            progressLabel.text = [NSString stringWithFormat:@"Question %ld of %lu", currentQuestion + 1, (unsigned long)self.record.questions.count];
             progressView.progress = 1.0 * (currentQuestion + 1.0) / self.record.questions.count;
         }
     }
@@ -314,13 +338,36 @@
     
     if ([currentVC isKindOfClass:[PRRecordSummaryViewController class]]) {
         
-        [self showAlertWithTitle:@"Submit Record"
-                         message:@"Please ensure you have answered all the questions before submitting this record."
-                     buttonTitle:@"Submit"
-                buttonCompletion:^(NSNumber *buttonIndex, UIAlertAction *action) {
-                    [self continueSubmit];
-                } cancelTitle:@"Cancel"
-                        alertTag:ALERT_SUBMIT];
+        // check the number of questions and update the value if necessry
+        NSInteger answered = [self.record answeredQuestions];
+        NSInteger total = self.record.questions.count;
+    
+        NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-title", nil, nil, @"Submit Record", @"The alert title shown when the user attempts to submit a record with incomplete data.");
+        
+        NSString *unansweredButtonTitle = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-submit", nil, nil, @"Submit Anyway", @"The alert button for continuing with submission even if questions are unanswered.");
+        NSString *answeredButtonTitle = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-submit", nil, nil, @"Submit", @"The alert button for continuing with submission when all questions are answered.");
+        
+        NSString *unansweredMessage = TDLocalizedStringWithDefaultValue(@"submit.alert.unanswered-message", nil, nil, @"This questionnaire has been partially completed. Please review questions missed and complete as much as you can.", @"The alert message shown when the user attempts to submit a record with incomplete data.");
+        NSString *answeredMessage = TDLocalizedStringWithDefaultValue(@"submit.alert.answered-message", nil, nil, @"Thank you for completing this questionnaire. Once this questionnaire has been submitted it can no longer be edited.", @"The alert message shown when the user attempts to submit a record with complete data.");
+        
+        NSString *alertMessage = (answered == total) ? answeredMessage : unansweredMessage;
+        NSString *submitTitle = (answered == total) ? answeredButtonTitle : unansweredButtonTitle;
+        NSString *cancelTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyCancel, nil, nil, nil, nil);
+        
+        void (^submitCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+            if (answered == total) {
+                [self continueSubmit];
+            } else {
+                [self performSegueWithIdentifier:@"ShowIncomplete" sender:nil];
+            }
+        };
+        
+        [self showAlertWithTitle:alertTitle
+                         message:alertMessage
+                     cancelTitle:cancelTitle
+                    buttonTitles:@[submitTitle]
+                         actions:@[submitCompletion]];
+        
         return;
     }
     
@@ -348,30 +395,31 @@
 -(void)goHome:(id)sender
 {
     NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.error-title", nil, nil, @"Cancel Record", @"Alert title to cancel a record and return to the home or title screen.");
-    NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.cancel.error-message", nil, nil, @"Returning to the title screen will delete any entered data. Are you sure you want to continue?", @"Alert message shown when returning to the app's title screen") ;
-    NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.button-title", nil, nil, @"Cancel Record", @"Button title to cancel a record.");
-    NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.cancel-title", nil, nil, @"Continue", @"Button title to continue creating a record when prompted about cancelling a record.");
+    
+    NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.cancel.error-message", nil, nil, @"Returning to the home screen will cancel this record and any questions answered or data entered will not be saved. Are you sure you want to cancel this record and return to the home screen?", @"Alert message shown when returning to the app's title screen") ;
+    NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.button-title", nil, nil, @"Go Home", @"Button title to cancel a record and return to the home screen.");
+    NSString *cancelTitle = TDLocalizedStringWithDefaultValue(@"record.cancel.cancel-title", nil, nil, @"Continue with Record", @"Button title to continue creating a record when prompted about cancelling a record.");
+    
+    void (^homeCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+        [self.record MR_deleteEntity];
+        [self continueHome];
+    };
     
     [self showAlertWithTitle:alertTitle
                      message:alertMessage
-                 buttonTitle:buttonTitle
-            buttonCompletion:^(NSNumber *buttonIndex, UIAlertAction *action) {
-                [self continueHome];
-            }
                  cancelTitle:cancelTitle
-                    alertTag:ALERT_GO_HOME];
+                buttonTitles:@[buttonTitle]
+                     actions:@[homeCompletion]];
 }
 
 -(void)continueHome
 {
-    [self.record MR_deleteEntity];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)continueSubmit
 {
-    
-    MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = TDLocalizedStringWithDefaultValue(@"record.hud.submit", nil, nil, @"Submitting...", @"The label identifying that record is being submitted. Shown on the record screen.");
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -384,57 +432,113 @@
                                     [hud hide:YES];
                                     
                                     if (success) {
+                                        
+                                        // clear the un-needed entities from CoreData
                                         [self.record MR_deleteEntity];
                                         self.record = nil;
+                                        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
                                         
-                                        [self continueHome];
+                                        NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"record.submission-complete.title", nil, nil, @"Questionnaire Submitted", @"Title for alert when the record has been successfully submitted.");
+                                        NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.submission-complete.message", nil, nil, @"Questionnaire submitted, thank you for your time.", @"Message for alert when the record has been successfully submitted.");
+                                        NSString *buttonTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyOK, nil, nil, nil, nil);
+                                        
+                                        void (^buttonCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+                                            [self continueHome];
+                                        };
+                                        
+                                        [self showAlertWithTitle:alertTitle
+                                                         message:alertMessage
+                                                     cancelTitle:nil
+                                                    buttonTitles:@[buttonTitle]
+                                                         actions:@[buttonCompletion]];
                                     } else {
                                         [self logErrorFromSelector:_cmd withFormat:@"Unable to submit record: %@", error];
                                         
-                                        
                                         NSString *errorTitle = TDLocalizedStringWithDefaultValue(@"record.submit-error.title", nil, nil, @"Cannot Submit Record", @"Error title when the record submit failed.");
-                                        NSString *buttonTitle = TDLocalizedStringWithDefaultValue(@"button.retry", nil, nil, @"Retry", @"Button title to retry submitting record.");
+                                        NSString *errorMessage = TDLocalizedStringWithDefaultValue(@"record.submit-error.message", nil, nil, @"The record could not be saved, either retry now, or the record will be automatically saved and retried when possible.", @"Error message when the record submit failed.");
                                         
-                                        NSString *errorMessage = [NSString stringWithFormat:@"%@\nEither retry now, or the record will be automatically saved and retried when possible.", error.localizedDescription];
+                                        NSString *retryTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyRetry, nil, nil, nil, nil);
+                                        NSString *laterTitle = TDLocalizedStringWithDefaultValue(@"record.submit-error.later", nil, nil, @"Later", @"Button title to save a record for later as an error occured trying to submit the data.");
                                         
-                                        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:errorTitle
-                                                                                                                 message:errorMessage
-                                                                                                          preferredStyle:UIAlertControllerStyleAlert];
-                                        
-                                        [alertController addAction:[UIAlertAction actionWithTitle:buttonTitle
-                                                                                            style:UIAlertActionStyleDestructive
-                                                                                          handler:^(UIAlertAction *action) {
-                                                                                              [self continueSubmit];
-                                                                                          }]];
-                                        
-                                        [alertController addAction:[UIAlertAction actionWithTitle:@"Later"
-                                                                                            style:UIAlertActionStyleCancel
-                                                                                          handler:^(UIAlertAction *action) {
-                                                                                              [self submitLater];
-                                                                                          }]];
-                                        
-                                        [self presentViewController:alertController animated:YES completion:nil];
-                                        
-                                        [self showAlertWithTitle:errorTitle
-                                                         message:[error localizedFailureReason]
-                                                     buttonTitle:buttonTitle
-                                                buttonCompletion:^(NSNumber *buttonIndex, UIAlertAction *action) {
-                                                    [self continueSubmit];
-                                                }
-                                                     cancelTitle:nil
-                                                        alertTag:ALERT_SUBMIT_ERROR];
-                                        
+                                        [PRAPIManager showAlertFromViewController:self
+                                                                        forErrors:@[error]
+                                                                        withTitle:errorTitle
+                                                                          message:errorMessage
+                                                                       retryTitle:retryTitle
+                                                                       retryBlock:^(UIAlertAction *action) {
+                                                                           [self continueSubmit];
+                                                                       }
+                                                                      cancelTitle:laterTitle
+                                                                   andCancelBlock:^(UIAlertAction *action, NSString *errorMessage) {
+                                                                       [self submitLater];
+                                                                   }
+                                                              contactSupportTitle:nil
+                                                              contactSupportBlock:nil];
                                     }
                                 }];
 }
 
 -(void)submitLater
 {
-    NSMutableArray *savedRecords = [[NSUserDefaults standardUserDefaults] valueForKey:@"savedRecords"];
+    MBProgressHUD *savingHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    savingHUD.labelText = TDLocalizedStringWithDefaultValue(@"record.hud.saving", nil, nil, @"Saving", @"HUD title shown whilst a record is being saved to disk if it cannot be submitted to the server.");
     
-    [savedRecords addObject:self.record];
+    // saving the context will commit this record to disk. This will be re-uploaded again on the login screen
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:^(BOOL success, NSError *error) {
+        
+        [savingHUD hide:YES];
+        
+        if (error != nil) {
+            NSString *saveErrorTitle = TDLocalizedStringWithDefaultValue(@"record.save.title", nil, nil, @"Save Error", @"Alert title shown when a record could not be saved to disk.");
+            NSString *saveErrorMessage = TDLocalizedStringWithDefaultValue(@"record.save.message", nil, nil, @"Unable to save this questionnaire", @"Alert message shown when a record could not be saved to disk.");
+            NSString *retryTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyRetry, nil, nil, nil, nil);
+            NSString *cancelTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyCancel, nil, nil, nil, nil);
+            
+            void (^retryCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+                [self submitLater];
+            };
+            
+            void (^cancelCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+                
+            };
+            
+            [self showAlertWithTitle:saveErrorTitle
+                             message:[NSString stringWithFormat:@"%@\n%@", saveErrorMessage, error.localizedDescription]
+                         cancelTitle:nil
+                        buttonTitles:@[retryTitle, cancelTitle]
+                             actions:@[retryCompletion, cancelCompletion]];
+        } else {
+            NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"record.submission-later.title", nil, nil, @"Questionnaire Saved", @"Title for alert when the record has been successfully submitted.");
+            NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.submission-later.message", nil, nil, @"Questionnaire has been saved and will be automatically submitted when a network connection becomes available. Thank you for your time.", @"Message for alert when the record has been successfully submitted.");
+            NSString *buttonTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyOK, nil, nil, nil, nil);
+            
+            void (^buttonCompletion)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+                [self continueHome];
+            };
+            
+            [self showAlertWithTitle:alertTitle
+                             message:alertMessage
+                         cancelTitle:nil
+                        buttonTitles:@[buttonTitle]
+                             actions:@[buttonCompletion]];
+        }
+    }];
+}
+
+#pragma mark - Incomplete Delegate
+
+-(void)incompleteViewControllerDidCancel:(PRIncompleteViewController *)incompleteViewController
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)incompleteViewController:(PRIncompleteViewController *)incompleteViewController completedWithText:(NSString *)text
+{
+    self.record.incompleteReason = text;
     
-    [self continueHome];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self continueSubmit];
+    }];
 }
 
 @end

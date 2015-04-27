@@ -3,6 +3,8 @@
 @interface PRRecord : _PRRecord
 // Custom logic goes here.
 
+extern NSString *const PRRecordUsernameKey;
+
 @property (nonatomic, readonly) NSDictionary *basicDataDictionary;
 
 +(instancetype)newRecordWithWard:(PRWard *) ward;

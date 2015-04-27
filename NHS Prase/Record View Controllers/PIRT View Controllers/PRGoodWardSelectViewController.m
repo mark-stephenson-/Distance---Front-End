@@ -8,6 +8,8 @@
 
 #import "PRGoodWardSelectViewController.h"
 
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+
 #import "PRWard.h"
 #import "PRHospital.h"
 #import "PRTrust.h"
@@ -35,6 +37,14 @@
     childSelect.selectedTrust = self.selectedWard.hospital.trust;
     childSelect.selectedHospital = self.selectedWard.hospital;
     childSelect.selectedWard = self.selectedWard;
+    
+    // don't overwrite the current ward, instead load a new custom selection
+    /*
+    if (childSelect.selectedWard.id.integerValue < -1) {
+        PRWard *blankWard = [childSelect blankCustomWard];
+        childSelect.selectedWard = blankWard;
+    }
+     */
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +56,8 @@
 -(void)dismissSelectionViewController:(id)sender
 {
     BOOL validWard = [childSelect validateSelectedWard];
+    
+    [childSelect commitCustomWard];
     
     if (validWard) {
         self.selectedWard = childSelect.selectedWard;

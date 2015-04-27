@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 The Distance. All rights reserved.
 //
 
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 
 /*!
  * @class PRSelectionViewController
@@ -14,22 +14,11 @@
  */
 @interface PRSelectionViewController : TDSelectionViewController
 {
-    IBOutlet UIView *scrollButtonView;
-    IBOutlet UIButton *scrollUpButton;
-    IBOutlet UIButton *scrollDownButton;
-    
-    // searching \\
-    
-    IBOutlet UISearchBar *searchBar;
+    IBOutlet UIView *tableContainer;
 }
 
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
-@property (nonatomic, strong) IBOutlet UILabel *subTitleLabel;;
-
--(IBAction)scrollUp:(id)sender;
--(IBAction)scrollDown:(id)sender;
-
--(void)showButtons:(BOOL) show animated:(BOOL) animated;
+@property (nonatomic, strong) IBOutlet UILabel *subTitleLabel;
 
 
 @end

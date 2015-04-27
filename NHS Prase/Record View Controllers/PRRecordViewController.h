@@ -7,11 +7,12 @@
 //
 
 #import "PRSegmentTabViewController.h"
+#import "PRIncompleteViewController.h"
 
 @class PRRecord;
 @class PRQuestionnaire;
 
-@interface PRRecordViewController : PRSegmentTabViewController <UIAlertViewDelegate>
+@interface PRRecordViewController : PRSegmentTabViewController <PRIncompleteViewControllerDelegate, UIAlertViewDelegate>
 {
     IBOutlet UIView *progressFooter;
     IBOutlet UIProgressView *progressView;

@@ -1,50 +1,23 @@
-/* Label for the username log in field */
-"login.label.username-title" = "[fr]Username:";
+/* Prompt to enter a password. */
+"login.field.password.placeholder" = "[fr]Enter your staff password";
 
 /* Prompt to enter a username. */
 "login.field.username.placeholder" = "[fr]Enter your staff username";
 
-/* Prompt to enter a password. */
-"login.field.password.placeholder" = "[fr]Enter your staff password";
-
 /* Label for the password log in field */
 "login.label.password" = "[fr]Password:";
 
-/* Button title to log in as a staff member */
-"login.button.staff.normal" = "[fr]Staff Login";
+/* Label for the username log in field */
+"login.label.username-title" = "[fr]Username:";
 
-/* Title of the settings page */
-"settings.navigation.title" = "[fr]Settings";
+/* Button title to log in. */
+"login.button.log-in.normal" = "[fr]Create a New Record";
 
-/* Home screen label. */
-"home.label.home" = "[fr]Home";
+/* Button launch the settings screen. */
+"button.settings.normal" = "[fr]Settings";
 
-/* Button title to toggle the language between English and French. */
-"home.language-button.normal" = "[fr]English";
-
-/* Prompt to select the desired hospital. */
-"home.field.ward-select.placeholder" = "[fr]Tap to select";
-
-/* Button title to create a new record. */
-"home.button.create.normal" = "[fr]Create a new record";
-
-/* Prompt to select the desired hospital. */
-"home.field.hospital-select.placeholder" = "[fr]Tap to select";
-
-/* Label for the hospital select field. */
-"home.label.hospital-title" = "[fr]Hospital:";
-
-/* Label for the ward select field. */
-"home.label.ward-title" = "[fr]Ward:";
-
-/* Prompt to select the desired trust. */
-"home.field.trust-select.placeholder" = "[fr]Tap to select";
-
-/* Label for the trust select field. */
-"home.label.trust-title" = "[fr]Trust:";
-
-/* Button title to return to the log in screen. */
-"home.button.log-out.normal" = "[fr]Log Out";
+/* Button title retry download. */
+"login.button.download-error.normal" = "[fr]Download Error";
 
 /* Default title to move forwards to another screen or field or cell. */
 "button.next.normal" = "[fr]Next";
@@ -54,6 +27,9 @@
 
 /* Default title to move backwards to another screen or another field or cell. */
 "button.previous.normal" = "[fr]Previous";
+
+/* Button launch the settings screen. */
+"button.settings.normal" = "[fr]Settings";
 
 /* Navigation title whilst creating a record. */
 "record.segment.navigation.segment_0" = "[fr]Basic Data";
@@ -68,12 +44,18 @@
 "record.segment.navigation.segment_3" = "[fr]Summary";
 
 /* Disclaimer label at the start of the questionnaire. */
-"questionnaire.statement" = "[fr]This questionnaire aims to help us understand about patient safety from a patient's perspective and to identify areas of strength and weakness within hospitals. It contains factors that have been identified by patients that may affect their safety whilst using NHS services.
+"questionnaire.statement" = "[fr]What is PRASE?
+It means Patient Reporting and Action for a Safe Environment.
 
-Please read the following statements carefully, keeping in mind your current stay in hospital and pick one option for each question. If you have had no experience of, or do not know the answer to a statement, please choose 'not applicable'.";
+It is a questionnaire which will allow you provide feedback on the safety and quality of care you have experienced during your stay on this ward.
 
-/* Button title to add a note to a question. */
-"question.button.note.normal" = "[fr]Add a note";
+Any specific examples of your safety concerns or positive experiences for yourself or other patients around you during this ward stay would be appreciated. Your feedback will be used by the ward to make safety improvements where problems are identified.
+
+Participation is voluntary and you can pull out at any time. Once your willingness to participate is confirmed by the PRASE Patient Safety Volunteer, you can then proceed to complete the questionnaire.It is hoped that you are able to complete as many questions as is possible during the time you have with the volunteer.
+
+The PRASE Patient Safety Volunteer is here to support you complete this questionnaire. Please be reminded that you can also complete this independently and your carer / family member can also complete it on your behalf.
+
+Many thanks for participating.";
 
 /* Button title to add a 'Something Good' note to a question. */
 "question.button.good.normal" = "[fr]Add something good";
@@ -82,22 +64,28 @@ Please read the following statements carefully, keeping in mind your current sta
 "question.button.concern.normal" = "[fr]Add a concern";
 
 /* Title label when adding a note to a question. */
-"note.label.title" = "[fr]Type below or press record to add more details:";
+"note.label.title" = "[fr]Type below to add more details:";
 
 /* Title asking for any further comments to attach to the record. */
-"record.comments.title" = "[fr]We would like to know about your experience of care on this ward or any concerns you have had about your safety, or the safety of other patients, during this hospital visit.";
-
-/* Label asking the user to add something good about their care. */
-"record.comments.good-title" = "[fr]Do you want to tell us something that has been good about your care?";
+"record.comments.title" = "[fr]Thank you for sharing your perspectives of the quality and safety of care you have experienced during your stay on this ward. Is there anything you think has not been covered already which you feel strongly about, good or bad?";
 
 /* Label asking the user to add any conerns they had about their care. */
 "record.comments.concern-title" = "[fr]Do you want to tell us something that has concerned you about your care?";
 
-/* Default button title to cancel an action dismissing a screen. */
-"button.cancel" = "[fr]Cancel";
+/* Label asking the user to add something good about their care. */
+"record.comments.good-title" = "[fr]Do you want to tell us something that has been good about your care?";
 
-/* Default button title to dismiss a view successfully. */
-"button.done" = "[fr]Done";
+/* Text field prompt for requesting the 'year' part of a date in the dd/mm/yyyy format. */
+"date-select.year.placeholder" = "[fr]YYYY";
+
+/* Text field prompt for requesting the 'month' part of a date in the dd/mm/yyyy format. */
+"date-select.month.placeholder" = "[fr]MM";
+
+/* Text field prompt for requesting the 'day' part of a date in the dd/mm/yyyy format. */
+"date-select.day.placeholder" = "[fr]DD";
+
+/* Button title to complete a task. */
+"button.done.normal" = "[fr]Done";
 
 /* Prompt explaining to the user how to answer a question. */
 "question.prompt" = "[fr]Please select an answer from the choices below.";
@@ -106,32 +94,73 @@ Please read the following statements carefully, keeping in mind your current sta
 "pirt.segment.navigation.segment_0" = "[fr]Ward";
 
 /* Navigation title when adding a concern. */
-"pirt.segment.navigation.segment_1" = "[fr]What";
+"pirt.segment.navigation.segment_1" = "[fr]What is your concern?";
 
 /* Navigation title when adding a concern. */
-"pirt.segment.navigation.segment_2" = "[fr]Why";
-
-/* Navigation title when adding a concern. */
-"pirt.segment.navigation.segment_3" = "[fr]Prevent";
-
-/* Navigation title when adding a concern. */
-"pirt.segment.navigation.segment_4" = "[fr]Questions";
+"pirt.segment.navigation.segment_2" = "[fr]Severity of Concern";
 
 /* Title when adding a note about something good to a question. */
-"good.label.title" = "[fr]Do you want to tell us something that has been good about your care?";
+"good.label.title" = "[fr]Do you have any examples of positive experiences relating to this question you want to share?";
+
+/* Question asking the user if their concern could have been prevented. */
+"prit.questions.prevent" = "[fr]Do you think it would have been possible to have stopped your concern from happening?";
+
+/* Text if the concern is least serious. */
+"prit.questions.label.not-serious" = "[fr]Not Serious
+at all";
+
+/* Text if the concern is the most serious. */
+"pirt.questions.label.serious" = "[fr]Extremely
+Serious";
 
 /* Question asking however serious the users concern was. */
 "pirt.question.serious" = "[fr]On a scale of 1-10, how serious do you think your concern was?";
 
-/* Text if the concern is least serious. */
-"prit.questions.label.not-serious" = "[fr]Not Serious at all";
-
-/* Text if the concern is the most serious. */
-"pirt.questions.label.serious" = "[fr]Extremely Serious";
-
-/* Question asking the user if their concern could have been prevented. */
-"prit.questions.prevent" = "[fr]Do you think it would have been possible to have stopped what concerned you from happening?";
-
 /* Title when asking "Is this comment about this hospital ward?". */
 "concern.label.this-ward" = "[fr]Comment relating to this ward?";
+
+/* Prompt to enter a different ward. */
+"login.field.other-ward.placeholder" = "[fr]Enter your ward";
+
+/* Text field prompt for requesting the 'minute' part of a time in the hh/mm format. */
+"date-select.min.placeholder" = "[fr]mm";
+
+/* Text field prompt for requesting the 'hour' part of a time in the hh/mm format. */
+"date-select.hour.placeholder" = "[fr]hh";
+
+/* Prompt to enter a different ward. */
+"login.field.other-ward.placeholder" = "[fr]Enter your ward";
+
+/* Prompt to select the desired hospital. */
+"home.field.ward-select.placeholder" = "[fr]Tap to select";
+
+/* Label for the hospital select field. */
+"home.label.hospital-title" = "[fr]Hospital:";
+
+/* Label for the ward select field. */
+"home.label.ward-title" = "[fr]Ward:";
+
+/* Prompt to select the desired trust. */
+"home.field.trust-select.placeholder" = "[fr]Tap to select";
+
+/* Label for the trust select field. */
+"home.label.trust-title" = "[fr]Trust:";
+
+/* Prompt to select the desired hospital. */
+"home.field.hospital-select.placeholder" = "[fr]Tap to select";
+
+/* Prompt to enter a different ward. */
+"login.field.other-ward.placeholder" = "[fr]Enter your ward";
+
+/* Button title to return to the log in screen. */
+"home.button.log-out.normal" = "[fr]Log Out";
+
+/* Button launch the settings screen. */
+"button.settings.normal" = "[fr]Settings";
+
+/* Button title to log in. */
+"login.button.log-in.normal" = "[fr]Log In";
+
+/* Button title to select a ward to complete the questionnaire about. */
+"ward-select.create-record.normal" = "[fr]Create a New Record";
 

@@ -20,6 +20,7 @@
     CGSize oldViewSize;
     
     NSMutableDictionary *layoutCells;
+    UILabel *layoutLabel;
 }
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;

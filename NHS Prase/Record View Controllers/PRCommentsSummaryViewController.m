@@ -69,7 +69,17 @@
     
     [self refreshPIRTViews];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (self.record.goodNotes.count > 0) {
+            NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"question.note-added.title", nil, nil, @"Comment Saved", @"The alert title shown when a good note has been saved.");
+            NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"question.note-added.message", nil, nil, @"Your comment has been saved.", @"The alert message shown when a good note has been saved.");
+            [self showAlertWithTitle:alertTitle
+                             message:alertMessage
+                         cancelTitle:nil
+                        buttonTitles:nil
+                             actions:nil];
+        }
+    }];
 }
 
 -(void)pirtViewControllerDidFinish:(PRPIRTViewController *)pirtVC withConcern:(PRConcern *)concern
@@ -88,7 +98,17 @@
     [self refreshPIRTViews];
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        [pirtVC dismissViewControllerAnimated:YES completion:nil];
+        [pirtVC dismissViewControllerAnimated:YES completion:^{
+            if (self.record.concerns.count > 0) {
+                NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"question.concern-added.title", nil, nil, @"Concern Saved", @"The alert title shown when a concern has been saved.");
+                NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"question.concern-added.message", nil, nil, @"Your concern has been saved.", @"The alert message shown when a concern has been saved.");
+                [self showAlertWithTitle:alertTitle
+                                 message:alertMessage
+                             cancelTitle:nil
+                            buttonTitles:nil
+                                 actions:nil];
+            }
+        }];
     }];
 }
 
@@ -102,13 +122,17 @@
         toPresent.note = [self.record.goodNotes anyObject];
     }
     
-    UIView *loadView = toPresent.view;
+    // force load the view to configure the note view
     PRInputAccessoryView *accessoryView = [self accessoryView];
-    toPresent.noteView.inputAccessoryView = accessoryView;
-    
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        [self presentViewController:toPresent animated:YES completion:nil];
-    }];
+    if (toPresent.view != nil) {
+        toPresent.titleLabel.TDLocalizedStringKey = @"good-comments.label.title";
+        toPresent.titleLabel.text = TDLocalizedStringWithDefaultValue(@"good-comments.label.title", nil, nil, @"Do you have any further examples of positive experiences that you would like to share?", @"The title text when adding a good note from the comments summary tab.");
+        toPresent.noteView.inputAccessoryView = accessoryView;
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self presentViewController:toPresent animated:YES completion:nil];
+        }];
+    }
 }
 
 -(void)addConcern:(id)sender

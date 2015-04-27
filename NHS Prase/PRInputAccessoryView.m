@@ -9,6 +9,7 @@
 #import "PRInputAccessoryView.h"
 
 #import "PRTheme.h"
+#import "PRViewController.h"
 
 @implementation PRInputAccessoryView
 
@@ -43,7 +44,7 @@
         _nextButton = [[TDButton alloc] init];
         _nextButton.translatesAutoresizingMaskIntoConstraints = NO;
         _nextButton.cornerRadius = 0.0;
-        _nextButton.TDLocalizedStringKey = @"button.next";
+        _nextButton.TDLocalizedStringKey = PRLocalisationKeyNext;
         _nextButton.TDTextStyleIdentifier = @"Caption 1";
         [_nextButton setImage:[UIImage imageNamed:@"next_arrow"] forState:UIControlStateNormal];
         [_nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -65,7 +66,7 @@
         
         _cancelButton = [[TDButton alloc] init];
         _cancelButton.cornerRadius = 0.0;
-        _cancelButton.TDLocalizedStringKey = @"button.cancel";
+        _cancelButton.TDLocalizedStringKey = PRLocalisationKeyCancel;
         _cancelButton.TDTextStyleIdentifier = @"Caption 1";
         [_cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_cancelButton setImage:[UIImage imageNamed:@"cross"] forState:UIControlStateNormal];

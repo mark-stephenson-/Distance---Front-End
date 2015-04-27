@@ -8,6 +8,8 @@
 
 #import "PRPIRTWardSelectViewController.h"
 
+#import <MagicalRecord/CoreData+MagicalRecord.h>
+
 #import "PRRecord.h"
 
 #import "PRWard.h"
@@ -19,8 +21,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    hasAppeared = YES;
     
     BOOL noWardSelected = self.selectedWard == nil && self.selectedHospital == nil && self.selectedTrust == nil;
     
@@ -38,16 +38,9 @@
     [self refreshViews];
 }
 
--(void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    
-    hasAppeared = NO;
-}
-
 -(void)refreshViews
 {
-    if (hasAppeared && currentWardSegment.selectedSegmentIndex == 0) {
+    if ((!hasAppeared && self.selectedWard == self.record.ward) || (hasAppeared && currentWardSegment.selectedSegmentIndex == 0)) {
        
         self.selectedTrust = self.record.ward.hospital.trust;
         self.selectedHospital = self.record.ward.hospital;
@@ -58,14 +51,24 @@
         trustField.enabled = NO;
         hospitalField.enabled = NO;
         wardField.enabled = NO;
+        otherWardField.enabled = NO;
         
     } else {
+        
         [super refreshViews];
     }
 }
 
 -(void)segmentChanged:(id)sender
 {
+    if (currentWardSegment.selectedSegmentIndex == 1) {
+        // don't overwrite the current ward, instead load a new custom selection
+        if (self.selectedWard.id.integerValue < -1) {
+            PRWard *blankWard = [self blankCustomWard];
+            self.selectedWard = blankWard;
+        }
+    }
+    
     [self refreshViews];
 }
 

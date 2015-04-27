@@ -10,7 +10,7 @@
 
 #import "PRInputAccessoryView.h"
 #import "PRTheme.h"
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 
 @implementation PRDateSelectCell
 

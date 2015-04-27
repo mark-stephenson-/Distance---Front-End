@@ -10,7 +10,9 @@
 #import "PRPMOSQuestion.h"
 #import "PRQuestion.h"
 
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
+
+NSString *const PRRecordUsernameKey = @"user";
 
 @interface PRRecord ()
 
@@ -33,14 +35,23 @@
     //NSArray *pmosQs = [PRPMOSQuestion MR_findAll];
     NSMutableOrderedSet *recordQuestions = [NSMutableOrderedSet orderedSetWithCapacity:currentQuestionnaire.questions.count];
 
+    NSMutableArray *allPMOSQuestions = [NSMutableArray arrayWithArray:[currentQuestionnaire.questions array]];
+    
+//    NSLog(@"All Questions: %@", [allPMOSQuestions valueForKeyPath:@"questionID"]);
+    
     for (int q = 0; q < currentQuestionnaire.questions.count; q++) {
-        PRPMOSQuestion *pmosQuestion = currentQuestionnaire.questions[q];
+        NSInteger randomQuestoinIndex = arc4random() % allPMOSQuestions.count;
+        
+        PRPMOSQuestion *pmosQuestion = allPMOSQuestions[randomQuestoinIndex];
+        [allPMOSQuestions removeObjectAtIndex:randomQuestoinIndex];
         
         PRQuestion *blankQuestion = [PRQuestion MR_createEntity];
         blankQuestion.pmosQuestion = pmosQuestion;
         
         [recordQuestions addObject:blankQuestion];
     }
+    
+//    NSLog(@"Random Questions: %@", [recordQuestions valueForKeyPath:@"pmosQuestion.questionID"]);
     
     newRecord.questions = [NSOrderedSet orderedSetWithOrderedSet:recordQuestions];
     

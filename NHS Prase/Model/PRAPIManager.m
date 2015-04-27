@@ -11,6 +11,8 @@
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import <AFNetworking/AFNetworking.h>
 
+#import "PRBasicDataFormViewController.h"
+
 #import "PRTrust.h"
 #import "PRHospital.h"
 #import "PRWard.h"
@@ -40,6 +42,13 @@
 }
 
 #pragma mark - Prase Methods
+
+-(void)getUsersWithCompletion:(void (^)(SEL selector, BOOL success, NSArray *errors)) completion
+{
+    [self TDCGetCommitAndLinkRelatedObjectsOfNodes:@[@"user"] withCompletion:^(BOOL success, NSArray *errors) {
+        completion(_cmd, success, errors);
+    }];
+}
 
 -(void)getTrustHierarchyWithCompletion:(void (^)(SEL selector, BOOL success, NSArray *errors)) completion
 {
@@ -169,7 +178,7 @@
         
         // ensure all basic data keys are included even in the data is incomplete
         NSMutableDictionary *fullBasicData = [NSMutableDictionary dictionaryWithCapacity:7];
-        NSArray *basicDataKeys = @[@"DOB", @"Gender", @"Ethnicity", @"Language", @"Admitted", @"InpatientCount", @"OngoingTreatment"];
+        NSArray *basicDataKeys = [PRBasicDataFormViewController basicDataFormKeys];
         
         for (NSString *key in basicDataKeys) {
             id value = record.basicDataDictionary[key];
@@ -195,11 +204,18 @@
     jsonRecord[@"startDate"] = [dateFormatter stringFromDate:record.startDate] ? : [NSNull null];
     
     // submitted in seconds
-    jsonRecord[@"totalTimePatient"] = @(record.timeAdditionalPatient.intValue + record.timeTracked.intValue) ? : [NSNull null];
-    jsonRecord[@"totalTimeQuestionnaire"] = @(record.timeAdditionalQuestionnaire.intValue + record.timeTracked.intValue) ? : [NSNull null];
+    jsonRecord[@"recordedTime"] = @(record.timeTracked.intValue);
     
-    // the id will uniquely identify the ward, hospital and trust in TheCore
-    jsonRecord[@"ward"] = record.ward.id ? : [NSNull null];
+    jsonRecord[@"adjustedTimePatient"] = @(record.timeAdditionalPatient.intValue);
+    jsonRecord[@"adjustedTimeQuestionnaire"] = @(record.timeAdditionalQuestionnaire.intValue);
+    
+    jsonRecord[@"totalTimePatient"] = @(record.timeAdditionalPatient.intValue + record.timeTracked.intValue);
+    jsonRecord[@"totalTimeQuestionnaire"] = @(record.timeAdditionalQuestionnaire.intValue + record.timeTracked.intValue);
+    
+    jsonRecord[@"incompleteReason"] = [record.incompleteReason isNonNullString] ? record.incompleteReason : [NSNull null];
+    
+    // the id will uniquely identify the ward, hospital and trust in TheCore. If the ward is a custom ward
+    jsonRecord[@"ward"] = [self serializeWard:record.ward];
     
     // create the questions entry
     NSMutableArray *questionsEntry = [NSMutableArray arrayWithCapacity:record.questions.count];
@@ -229,10 +245,10 @@
         [concernEntries addObject:noteEntry];
     }
     
-    jsonRecord[@"notes"] = noteEntries;
+//    jsonRecord[@"notes"] = noteEntries;
     jsonRecord[@"goodNotes"] = goodEntries;
     jsonRecord[@"concerns"] = concernEntries;
-    jsonRecord[@"user"] = [[NSUserDefaults standardUserDefaults] valueForKey:@"user"] ? : [NSNull null];
+    jsonRecord[@"user"] = [[NSUserDefaults standardUserDefaults] valueForKey:PRRecordUsernameKey] ? : [NSNull null];
     
 
     
@@ -248,10 +264,10 @@
         return;
     }
     
-    char *jsonChars = jsonData.bytes;
+    const char *jsonChars = jsonData.bytes;
     NSString *jsonString = [NSString stringWithCString:jsonChars encoding:NSUTF8StringEncoding];
     NSLog(@"POSTING: %@", jsonString);
-                               
+    
     // post to the server
     [sessionManager POST:@"api/submit"
               parameters:jsonRecord
@@ -283,7 +299,7 @@
     thisEntry[@"questionID"] = question.pmosQuestion ? question.pmosQuestion.questionID : [NSNull null];
     thisEntry[@"answerID"] = question.answerID ? : [NSNull null];
     
-    thisEntry[@"note"] = question.note ? [self serializeNote:question.note] : [NSNull null];
+//    thisEntry[@"note"] = question.note ? [self serializeNote:question.note] : [NSNull null];
     thisEntry[@"somethingGood"] = question.goodNote ? [self serializeNote:question.goodNote] : [NSNull null];
     thisEntry[@"concern"] = question.concern ? [self serializeConcern:question.concern] : [NSNull null];
     
@@ -295,7 +311,7 @@
     NSMutableDictionary *thisEntry = [NSMutableDictionary dictionaryWithCapacity:1];
     
     thisEntry[@"text"] = [note.text isNonNullString] ? note.text : [NSNull null];
-    thisEntry[@"ward"] = note.ward.id ? : [NSNull null];
+    thisEntry[@"ward"] = note.ward ? [self serializeWard:note.ward] : [NSNull null];
     
     return thisEntry;
 }
@@ -304,11 +320,11 @@
 {
     NSMutableDictionary *thisEntry = [NSMutableDictionary dictionaryWithCapacity:8];
     
-    thisEntry[@"ward"] = concern.ward.id ? : [NSNull null];
+    thisEntry[@"ward"] = [self serializeWard:concern.ward];
 
     thisEntry[@"whatNote"] = concern.whatNote ? [self serializeNote:concern.whatNote] : [NSNull null];
-    thisEntry[@"whyNote"] = concern.whyNote ? [self serializeNote:concern.whyNote] : [NSNull null];
-    thisEntry[@"preventNote"] = concern.preventNote ? [self serializeNote:concern.preventNote] : [NSNull null];
+//    thisEntry[@"whyNote"] = concern.whyNote ? [self serializeNote:concern.whyNote] : [NSNull null];
+//    thisEntry[@"preventNote"] = concern.preventNote ? [self serializeNote:concern.preventNote] : [NSNull null];
     
     PRQuestion *seriousQuestion = concern.seriousQuestion;
     thisEntry[@"seriousQuestion"] = seriousQuestion.pmosQuestion ? seriousQuestion.pmosQuestion.questionID : [NSNull null];
@@ -319,6 +335,13 @@
     thisEntry[@"preventAnswer"] = preventQuestion.answerID ? : [NSNull null];
     
     return thisEntry;
+}
+
+-(NSDictionary *)serializeWard:(PRWard *) ward
+{
+    return @{@"name": [ward.name isNonNullString] ? ward.name : [NSNull null],
+             @"id": (ward.id.integerValue >= 0) ? ward.id : [NSNull null],
+             @"hospitalId": ward.hospital.id};
 }
 
 #pragma mark - TDAPIManager SubClass Methods
@@ -334,6 +357,7 @@
                      @"question":@"PRPMOSQuestion",
                      @"answer-type":@"PRAnswerSet",
                      @"option": @"PRAnswerOption",
+                     @"user": @"PRUser"
                      };
     }
     
@@ -357,6 +381,40 @@
     return translations;
 }
 
+-(void)clearAllDataAndWait
+{
+    [self clearAllDataWithCompletion:nil orWait:YES];
+}
 
+-(void)clearAllDataWithCompletion:(void (^)(BOOL, NSError *))completion
+{
+    [self clearAllDataWithCompletion:completion orWait:NO];
+}
+
+-(void)clearAllDataWithCompletion:(void (^)(BOOL success, NSError *error)) completion orWait:(BOOL) wait
+{
+    // delete the entities created on the device
+    [PRConcern MR_truncateAll];
+    [PRNote MR_truncateAll];
+    [PRRecord MR_truncateAll];
+    [PRPMOS MR_truncateAll];
+    [PRQuestion MR_truncateAll];
+    
+    // delete the nodes from the CMS
+    NSArray *nodesToRemove = @[@"trust",
+                               @"hospital",
+                               @"ward",
+                               @"question",
+                               @"answer-type",
+                               @"option",
+                               @"user"];
+    
+    if (!wait) {
+        [[PRAPIManager sharedManager] truncateNodes:nodesToRemove
+                                     withCompletion:completion];
+    } else {
+        [[PRAPIManager sharedManager] truncateNodesAndWait:nodesToRemove];
+    }
+}
 
 @end

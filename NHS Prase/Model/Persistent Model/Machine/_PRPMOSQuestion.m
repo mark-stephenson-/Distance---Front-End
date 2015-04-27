@@ -40,16 +40,18 @@ const struct PRPMOSQuestionFetchedProperties PRPMOSQuestionFetchedProperties = {
 	return (PRPMOSQuestionID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 	if ([key isEqualToString:@"localizationIDValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"localizationID"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"questionIDValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"questionID"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 
 	return keyPaths;
@@ -62,21 +64,21 @@ const struct PRPMOSQuestionFetchedProperties PRPMOSQuestionFetchedProperties = {
 
 
 
-- (long long)localizationIDValue {
+- (int64_t)localizationIDValue {
 	NSNumber *result = [self localizationID];
 	return [result longLongValue];
 }
 
-- (void)setLocalizationIDValue:(long long)value_ {
+- (void)setLocalizationIDValue:(int64_t)value_ {
 	[self setLocalizationID:[NSNumber numberWithLongLong:value_]];
 }
 
-- (long long)primitiveLocalizationIDValue {
+- (int64_t)primitiveLocalizationIDValue {
 	NSNumber *result = [self primitiveLocalizationID];
 	return [result longLongValue];
 }
 
-- (void)setPrimitiveLocalizationIDValue:(long long)value_ {
+- (void)setPrimitiveLocalizationIDValue:(int64_t)value_ {
 	[self setPrimitiveLocalizationID:[NSNumber numberWithLongLong:value_]];
 }
 
@@ -88,21 +90,21 @@ const struct PRPMOSQuestionFetchedProperties PRPMOSQuestionFetchedProperties = {
 
 
 
-- (long long)questionIDValue {
+- (int64_t)questionIDValue {
 	NSNumber *result = [self questionID];
 	return [result longLongValue];
 }
 
-- (void)setQuestionIDValue:(long long)value_ {
+- (void)setQuestionIDValue:(int64_t)value_ {
 	[self setQuestionID:[NSNumber numberWithLongLong:value_]];
 }
 
-- (long long)primitiveQuestionIDValue {
+- (int64_t)primitiveQuestionIDValue {
 	NSNumber *result = [self primitiveQuestionID];
 	return [result longLongValue];
 }
 
-- (void)setPrimitiveQuestionIDValue:(long long)value_ {
+- (void)setPrimitiveQuestionIDValue:(int64_t)value_ {
 	[self setPrimitiveQuestionID:[NSNumber numberWithLongLong:value_]];
 }
 
@@ -139,6 +141,7 @@ const struct PRPMOSQuestionFetchedProperties PRPMOSQuestionFetchedProperties = {
 	return result;
 }
 	
+
 
 
 

@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 The Distance. All rights reserved.
 //
 
-#import <TheDistanceKit/TheDistanceKit.h>
+#import "PRFormViewController.h"
 
-@interface PRSettingsViewController : TDFormViewController <TDSelectCellDelegate>
+@interface PRSettingsViewController : PRFormViewController <TDSelectCellDelegate>
 
 -(IBAction)dismiss:(id)sender;
 

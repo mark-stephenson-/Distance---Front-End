@@ -8,7 +8,7 @@
 
 #import "PRNoteViewController.h"
 
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 
 @class TDTextField;
 @class PRRecord;

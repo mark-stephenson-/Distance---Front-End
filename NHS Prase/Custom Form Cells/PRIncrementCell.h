@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 The Distance. All rights reserved.
 //
 
-#import <TheDistanceKit/TheDistanceKit.h>
+#import <TheDistanceKit/TheDistanceKit_API.h>
 
-@interface PRIncrementCell : TDCell
+@interface PRIncrementCell : TDCell <UITextFieldDelegate>
 {
     IBOutlet TDTextField *numberField;
     IBOutlet UIButton *minusButton;

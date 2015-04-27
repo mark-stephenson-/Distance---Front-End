@@ -43,7 +43,7 @@ const struct PRConcernFetchedProperties PRConcernFetchedProperties = {
 	return (PRConcernID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 
@@ -84,6 +84,7 @@ const struct PRConcernFetchedProperties PRConcernFetchedProperties = {
 @dynamic whyNote;
 
 	
+
 
 
 

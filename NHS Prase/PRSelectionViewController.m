@@ -9,6 +9,7 @@
 
 #import "PRSelectionViewController.h"
 #import "PRTheme.h"
+#import "UIViewController+Scrolling.h"
 
 @interface PRSelectionViewController ()
 
@@ -20,9 +21,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.tableView.layer.cornerRadius = 5.0;
-    self.tableView.layer.borderWidth = 2.0;
-    self.tableView.layer.borderColor = [[PRTheme sharedTheme] mainColor].CGColor;
+    tableContainer.layer.cornerRadius = 5.0;
+    tableContainer.layer.borderWidth = 2.0;
+    tableContainer.layer.borderColor = [[PRTheme sharedTheme] mainColor].CGColor;
+    tableContainer.clipsToBounds = YES;
+    
+    // ensure there are buttons if the content is very large.
+    [self setupScrollingButtonsOnContainer:self.tableView];
+}
+
+-(void)dealloc
+{
+    [self tearDownScrollingContainer];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,13 +55,6 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-    
-    //TDTableViewCell *cell = (TDTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
-    //cell.accessoryType = UITableViewCellAccessoryNone;
-    
-    // Reloading just the row or begin/endUpdates should resize cells but all appear not to. Probably a bug in iOS 8's resizing cells. Work around is to reload the entire table.
-    //[self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.2];
-    
 }
 
 @end
