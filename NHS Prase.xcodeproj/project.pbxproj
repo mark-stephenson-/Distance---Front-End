@@ -205,7 +205,6 @@
 		A536995619ADD1170045EEB1 /* NHS PraseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NHS PraseTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A536995B19ADD1170045EEB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A536995C19ADD1170045EEB1 /* NHS_PraseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NHS_PraseTests.m; sourceTree = "<group>"; };
-		A54025CF19BE082000B47050 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A540640219C1FC9800C38EF9 /* PRAnswerOptionsLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRAnswerOptionsLayout.h; path = "Record View Controllers/PRAnswerOptionsLayout.h"; sourceTree = "<group>"; };
 		A540640319C1FC9800C38EF9 /* PRAnswerOptionsLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRAnswerOptionsLayout.m; path = "Record View Controllers/PRAnswerOptionsLayout.m"; sourceTree = "<group>"; };
 		A54074401AA073E20039980E /* PRTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRTextFieldCell.h; path = "Custom Form Cells/PRTextFieldCell.h"; sourceTree = "<group>"; };
@@ -244,7 +243,6 @@
 		A5BCB3CA19BDE35700092F50 /* PRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRViewController.m; sourceTree = "<group>"; };
 		A5BCB3D019BDE6E600092F50 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A5BCB3D219BDE6E600092F50 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Storyboard.strings; sourceTree = "<group>"; };
-		A5BCB3D319BDE6E600092F50 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Storyboard.strings; sourceTree = "<group>"; };
 		A5C0749619D5A819003446F7 /* _PRAnswerSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _PRAnswerSet.h; sourceTree = "<group>"; };
 		A5C0749719D5A819003446F7 /* _PRAnswerSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _PRAnswerSet.m; sourceTree = "<group>"; };
 		A5C0749819D5A819003446F7 /* _PRPMOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _PRPMOS.h; sourceTree = "<group>"; };
@@ -661,7 +659,6 @@
 			knownRegions = (
 				Base,
 				en,
-				fr,
 			);
 			mainGroup = A536993719ADD1170045EEB1;
 			productRefGroup = A536994119ADD1170045EEB1 /* Products */;
@@ -862,7 +859,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				A5BCB3D019BDE6E600092F50 /* en */,
-				A54025CF19BE082000B47050 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -871,7 +867,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				A5BCB3D219BDE6E600092F50 /* en */,
-				A5BCB3D319BDE6E600092F50 /* fr */,
 			);
 			name = Storyboard.strings;
 			sourceTree = "<group>";
