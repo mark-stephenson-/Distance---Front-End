@@ -60,8 +60,6 @@
     // a ward can only be non-nil if the trust and hospital have been chosen
     BOOL canCreate = [self validateSelectedWard];
 
-    canCreate = true;
-
     if (canCreate) {
         [self commitCustomWard];
         [self performSegueWithIdentifier:@"CreateRecord" sender:self];

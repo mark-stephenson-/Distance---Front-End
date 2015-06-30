@@ -8,9 +8,16 @@
 
 #import <TheDistanceKit/TheDistanceKit_API.h>
 
+extern NSString *const PRTestAccountUsername;
+extern NSString *const PRTestAccountPassword;
+
 typedef enum {kRotationPreferenceBoth = 0, kRotationPreferencePortrait, kRotationPreferenceLandscape} RotationPreference;
 
 @interface PRTheme : TDTheme
+{
+    UIView *testBackgroundView;
+    UILabel *testLabel;
+}
 
 @property (nonatomic, strong) UIColor *negativeColor;
 @property (nonatomic, strong) UIColor *positiveColor;
@@ -18,6 +25,9 @@ typedef enum {kRotationPreferenceBoth = 0, kRotationPreferencePortrait, kRotatio
 @property (nonatomic, strong) UIColor *mainColor;
 @property (nonatomic, strong) UIColor *backColor;
 
-@property (nonatomic, assign) RotationPreference currentRotationPreference;;
+@property (nonatomic, assign) RotationPreference currentRotationPreference;
+
+
+-(BOOL)currentUserIsTest;
 
 @end

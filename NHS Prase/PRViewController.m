@@ -17,6 +17,28 @@ NSString *const PRLocalisationKeyNext = @"button.next";
 
 @implementation PRViewController
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return [[PRTheme sharedTheme] currentUserIsTest] ? UIStatusBarStyleLightContent : UIStatusBarStyleDefault;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if ([[PRTheme sharedTheme] currentUserIsTest]) {
+        loggedInView.hidden = NO;
+        [loggedInLabel setContentCompressionResistancePriority:755 forAxis:UILayoutConstraintAxisVertical];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    } else {
+        loggedInView.hidden = YES;
+        [loggedInLabel setContentCompressionResistancePriority:740 forAxis:UILayoutConstraintAxisVertical];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+    }
+    
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];

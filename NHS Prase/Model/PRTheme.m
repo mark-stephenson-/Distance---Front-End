@@ -8,7 +8,12 @@
 
 #import "PRTheme.h"
 
+#import "PRRecord.h"
+
 NSString *const PRRotationPreferenceKey = @"RotationPreference";
+
+NSString *const PRTestAccountUsername = @"PraseTest";
+NSString *const PRTestAccountPassword = @"PraseTest";
 
 @implementation PRTheme
 
@@ -124,5 +129,14 @@ NSString *const PRRotationPreferenceKey = @"RotationPreference";
     
     [UIViewController attemptRotationToDeviceOrientation];
 }
+
+#pragma mark - Test User methods
+
+-(BOOL)currentUserIsTest
+{
+    NSString *currentUser = [[NSUserDefaults standardUserDefaults] valueForKey:PRRecordUsernameKey];
+    return [currentUser isEqualToString:PRTestAccountUsername];
+}
+
 
 @end

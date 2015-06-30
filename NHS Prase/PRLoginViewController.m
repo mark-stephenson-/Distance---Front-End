@@ -61,6 +61,9 @@
 {
     [super viewWillAppear:animated];
     
+    [[NSUserDefaults standardUserDefaults] setValue:nil forKey:PRRecordUsernameKey];
+    [self setNeedsStatusBarAppearanceUpdate];
+    
     self.keyboardAccessoryView = nil;
     
     inputView = [[PRInputAccessoryView alloc] initWithFrame:CGRectMake(0, 0, 0, 60.0)];
@@ -75,8 +78,8 @@
     self.scrollContainer = scrollView;
     
 #ifdef DEBUG
-    usernameField.text = @"thedistance";
-    passwordField.text = @"password";
+    usernameField.text = @"PraseTest";
+    passwordField.text = @"PraseTest";
 #endif
     
     // assume both will be successful in order to not show the download error button straight away
@@ -510,11 +513,27 @@
         return;
     }
     
+    BOOL isTestUser = [usernameField.text isEqualToString:PRTestAccountUsername] && [passwordField.text isEqualToString:PRTestAccountPassword];
     BOOL canContinue = logInCredentials[usernameField.text] != nil && [passwordField.text isEqualToString:logInCredentials[usernameField.text]];
-
-    if (canContinue) {
+    
+    void (^continueLogIn)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
         [[NSUserDefaults standardUserDefaults] setValue:usernameField.text forKey:PRRecordUsernameKey];
         [self performSegueWithIdentifier:@"Continue" sender:self];
+    };
+    
+    if (isTestUser) {
+        
+        // Present and alert to confirm the choice.
+        [self showAlertWithTitle:@"Test User"
+                         message:@"You will be logged in as a test user. Any data entered will not be saved or submitted on completion. Do you wish to continue?"
+                     cancelTitle:@"Cancel"
+                    buttonTitles:@[@"Continue"]
+                         actions:@[continueLogIn]];
+        return;
+    }
+
+    if (canContinue) {
+        continueLogIn(nil, 0, nil);
     } else {
         NSString *title = TDLocalizedStringWithDefaultValue(@"login.error.title", nil, nil, @"Incorrect Username or Password", @"Error title if the user enters an incorrect username or password.");
         NSString *message = TDLocalizedStringWithDefaultValue(@"login.error.message", nil, nil, @"Please enter a valid username and password.", @"Error message when the user enters an incorrect username or password.");

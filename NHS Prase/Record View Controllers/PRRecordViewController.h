@@ -20,8 +20,6 @@
     
     // Time tracking ivars
     NSDate *trackingDate;
-    //NSTimeInterval trackedTime;
-    //NSTimeInterval additionalUserTime;
 }
 
 @property (nonatomic, strong) PRRecord *record;
