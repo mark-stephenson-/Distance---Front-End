@@ -10,7 +10,7 @@
 
 #import <TheDistanceKit/TheDistanceKit_API.h>
 
-#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
 
 #import "PRRecord.h"
 #import "PRAnswerOption.h"

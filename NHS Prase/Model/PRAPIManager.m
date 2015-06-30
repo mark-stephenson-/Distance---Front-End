@@ -8,7 +8,7 @@
 
 #import "PRAPIManager.h"
 
-#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
 #import <AFNetworking/AFNetworking.h>
 
 #import "PRBasicDataFormViewController.h"

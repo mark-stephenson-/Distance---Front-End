@@ -8,7 +8,7 @@
 
 #import "PRLoginViewController.h"
 
-#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
 #import <TheDistanceKit/TheDistanceKit_API.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 

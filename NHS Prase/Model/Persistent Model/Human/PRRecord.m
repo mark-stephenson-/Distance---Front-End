@@ -1,7 +1,6 @@
 #import "PRRecord.h"
 
 #import <MagicalRecord/MagicalRecord.h>
-#import <MagicalRecord/CoreData+MagicalRecord.h>
 
 #import "PRQuestion.h"
 #import "PRWard.h"

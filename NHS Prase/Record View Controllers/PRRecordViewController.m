@@ -24,7 +24,7 @@
 #import "PRAPIManager.h"
 
 #import <MagicalRecord/MagicalRecord.h>
-#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
 
 #import "MBProgressHUD.h"
 
