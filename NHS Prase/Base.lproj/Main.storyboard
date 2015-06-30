@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3zb-xf-92k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3zb-xf-92k">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -916,7 +916,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="755" translatesAutoresizingMaskIntoConstraints="NO" id="IcX-ve-s3D">
-                                <rect key="frame" x="10" y="44" width="580" height="512"/>
+                                <rect key="frame" x="10" y="55" width="580" height="491"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                         <integer key="value" value="2"/>
@@ -924,18 +924,23 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uAm-CY-LWW">
-                                <rect key="frame" x="25" y="59" width="550" height="482"/>
+                                <rect key="frame" x="25" y="70" width="550" height="461"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="WVX-Tt-9c6"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="800" id="eX2-6E-iEK"/>
                                 </constraints>
-                                <string key="text">What is PRASE? 
-It means Patient Reporting and Action for a Safe Environment. 
-It is a questionnaire which will allow you provide feedback on the safety and quality of care you have experienced during your stay on this ward.
- Any specific examples of your safety concerns or positive experiences for yourself or other patients around you during this ward stay would be appreciated. Your feedback will be used by the ward to make safety improvements where problems are identified.
- Participation is voluntary and you can pull out at any time. Once your willingness to participate is confirmed by the PRASE Patient Safety Volunteer, you can then proceed to complete the questionnaire.It is hoped that you are able to complete as many questions as is possible during the time you have with the volunteer.
- The PRASE Patient Safety Volunteer is here to support you complete this questionnaire. Please be reminded that you can also complete this independently and your carer / family member can also complete it on your behalf.
- Many thanks for participating.</string>
+                                <mutableString key="text">What is PRASE?
+It means Patient Reporting and Action for a Safe Environment.
+
+It is a questionnaire which will allow you to provide feedback on the safety and quality of care you have experienced during your stay on this ward.
+
+Any specific examples of your safety concerns or positive experiences for yourself or other patients around you during this ward stay would be appreciated. Your feedback will be used by the ward to make safety improvements where problems are identified.
+
+Participation is voluntary and you can pull out at any time. Once your willingness to participate is confirmed by the PRASE Patient Safety Volunteer, you can then proceed to complete the questionnaire. It is hoped that you are able to complete as many questions as is possible during the time you have with the volunteer.
+
+The PRASE Patient Safety Volunteer is here to support you to complete the questionnaire. However, you can also choose to complete the questionnaire independently, or your carer/family member can complete it on your behalf.
+
+Many thanks for participating.</mutableString>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2582,8 +2587,9 @@ It is a questionnaire which will allow you provide feedback on the safety and qu
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have any examples of positive experiences relating to this question you want to share?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooq-JT-cNw">
-                                <rect key="frame" x="20" y="8" width="560" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooq-JT-cNw">
+                                <rect key="frame" x="20" y="8" width="560" height="62"/>
+                                <string key="text">Do you want to tell us something that has been good about your care?We would like to know about the good experiences of care either you, or others, have had during this hospital stay.</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2594,7 +2600,7 @@ It is a questionnaire which will allow you provide feedback on the safety and qu
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text text text " translatesAutoresizingMaskIntoConstraints="NO" id="57S-zD-9XS" customClass="TDTextView">
-                                <rect key="frame" x="20" y="98" width="560" height="482"/>
+                                <rect key="frame" x="20" y="119" width="560" height="461"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2606,7 +2612,7 @@ It is a questionnaire which will allow you provide feedback on the safety and qu
                                 </connections>
                             </textView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qqs-HH-WVl" customClass="TDSegmentedControl">
-                                <rect key="frame" x="264" y="61" width="98" height="29"/>
+                                <rect key="frame" x="264" y="82" width="98" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qqs-HH-WVl" secondAttribute="height" multiplier="7:2" id="HIw-JZ-FIq"/>
                                 </constraints>
@@ -2622,7 +2628,7 @@ It is a questionnaire which will allow you provide feedback on the safety and qu
                                 </connections>
                             </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a ward" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JTK-nS-UQ9" customClass="TDTextField">
-                                <rect key="frame" x="377" y="60" width="203" height="30"/>
+                                <rect key="frame" x="377" y="81" width="203" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
@@ -2633,7 +2639,7 @@ It is a questionnaire which will allow you provide feedback on the safety and qu
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Comment relating to this ward?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZn-MZ-m0K">
-                                <rect key="frame" x="20" y="64" width="229" height="20"/>
+                                <rect key="frame" x="20" y="85" width="229" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2888,7 +2894,7 @@ Serious</string>
                                                     <constraint firstAttribute="width" constant="10" id="0Ew-N0-IvR"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On a scale of 1-10, how serious do you think your concern was?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zlq-GU-FYv">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On a scale of 1-10, how serious do you think your 'safety concern' was?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zlq-GU-FYv">
                                                 <rect key="frame" x="20" y="24" width="560" height="20"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -4512,7 +4518,7 @@ Serious</string>
         <image name="upload" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RwE-67-GqX"/>
+        <segue reference="ng7-su-oys"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
 </document>

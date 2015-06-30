@@ -47,13 +47,13 @@
 "questionnaire.statement" = "What is PRASE?
 It means Patient Reporting and Action for a Safe Environment.
 
-It is a questionnaire which will allow you provide feedback on the safety and quality of care you have experienced during your stay on this ward.
+It is a questionnaire which will allow you to provide feedback on the safety and quality of care you have experienced during your stay on this ward.
 
 Any specific examples of your safety concerns or positive experiences for yourself or other patients around you during this ward stay would be appreciated. Your feedback will be used by the ward to make safety improvements where problems are identified.
 
-Participation is voluntary and you can pull out at any time. Once your willingness to participate is confirmed by the PRASE Patient Safety Volunteer, you can then proceed to complete the questionnaire.It is hoped that you are able to complete as many questions as is possible during the time you have with the volunteer.
+Participation is voluntary and you can pull out at any time. Once your willingness to participate is confirmed by the PRASE Patient Safety Volunteer, you can then proceed to complete the questionnaire. It is hoped that you are able to complete as many questions as is possible during the time you have with the volunteer.
 
-The PRASE Patient Safety Volunteer is here to support you complete this questionnaire. Please be reminded that you can also complete this independently and your carer / family member can also complete it on your behalf.
+The PRASE Patient Safety Volunteer is here to support you to complete the questionnaire. However, you can also choose to complete the questionnaire independently, or your carer/family member can complete it on your behalf.
 
 Many thanks for participating.";
 
@@ -100,7 +100,8 @@ Many thanks for participating.";
 "pirt.segment.navigation.segment_2" = "Severity of Concern";
 
 /* Title when adding a note about something good to a question. */
-"good.label.title" = "Do you have any examples of positive experiences relating to this question you want to share?";
+"good.label.title" = "Do you want to tell us something that has been good about your care?
+We would like to know about the good experiences of care either you, or others, have had during this hospital stay.";
 
 /* Question asking the user if their concern could have been prevented. */
 "prit.questions.prevent" = "Do you think it would have been possible to have stopped your concern from happening?";
@@ -114,7 +115,7 @@ at all";
 Serious";
 
 /* Question asking however serious the users concern was. */
-"pirt.question.serious" = "On a scale of 1-10, how serious do you think your concern was?";
+"pirt.question.serious" = "On a scale of 1-10, how serious do you think your 'safety concern' was?";
 
 /* Title when asking "Is this comment about this hospital ward?". */
 "concern.label.this-ward" = "Comment relating to this ward?";
