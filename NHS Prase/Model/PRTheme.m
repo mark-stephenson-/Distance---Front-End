@@ -12,8 +12,8 @@
 
 NSString *const PRRotationPreferenceKey = @"RotationPreference";
 
-NSString *const PRTestAccountUsername = @"PraseTest";
-NSString *const PRTestAccountPassword = @"PraseTest";
+NSString *const PRTestAccountUsername = @"PraseTrainingAccount";
+NSString *const PRTestAccountPassword = @"Pr453Tr41n";
 
 @implementation PRTheme
 

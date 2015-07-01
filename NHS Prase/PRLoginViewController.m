@@ -78,8 +78,8 @@
     self.scrollContainer = scrollView;
     
 #ifdef DEBUG
-    usernameField.text = @"PraseTest";
-    passwordField.text = @"PraseTest";
+    usernameField.text = @"thedistance";
+    passwordField.text = @"52Skeldergate";
 #endif
     
     // assume both will be successful in order to not show the download error button straight away
