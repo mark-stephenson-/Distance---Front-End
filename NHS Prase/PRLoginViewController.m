@@ -78,8 +78,8 @@
     self.scrollContainer = scrollView;
     
 #ifdef DEBUG
-    usernameField.text = @"thedistance";
-    passwordField.text = @"52Skeldergate";
+    usernameField.text = @"training";
+    passwordField.text = @"trainingtest";
 #endif
     
     // assume both will be successful in order to not show the download error button straight away
@@ -309,7 +309,7 @@
         __block NSInteger submissionCount = savedRecords.count;
         __block NSInteger successCount = 0;
         __block NSInteger completedCount = 0;
-        
+
         for (PRRecord *toSubmit in savedRecords) {
             [[PRAPIManager sharedManager] submitRecord:toSubmit withCompletion:^(BOOL success, NSError *error) {
                 completedCount++;
@@ -352,7 +352,7 @@
                         submissionSucces = NO;
                         
                         NSString *alertTitle = TDLocalizedStringWithDefaultValue(@"record.resubmit-error.title", nil, nil, @"Records Not Submitted", @"The alert title shown when previously saved records have not been successfully submitted.");
-                        NSString *alertMessage = TDLocalizedStringWithDefaultValue(@"record.resubmit-error.message", nil, nil, @"Previously saved records could not be submitted at this time.", @"The alert message shown when previously saved records have not been successfully submitted.");
+                        NSString *alertMessage = [NSString stringWithFormat:TDLocalizedStringWithDefaultValue(@"record.resubmit-error.message", nil, nil, @"%d previously saved records could not be submitted at this time.", @"The alert message shown when previously saved records have not been successfully submitted."), allErrors.count];
                         NSString *cancelTitle = TDLocalizedStringWithDefaultValue(PRLocalisationKeyOK, nil, nil, nil, nil);
                         
                         [PRAPIManager showAlertFromViewController:self
@@ -371,8 +371,28 @@
                                                            completion();
                                                        }
                                                        
-                                                   } contactSupportTitle:nil
-                                              contactSupportBlock:nil];
+                                                   } contactSupportTitle:TDLocalizedStringWithDefaultValue(@"alert.contact_support", nil, nil, @"Contact Support", @"The button title shown in an alert that launches an email for contacting support.")
+                                              contactSupportBlock:^(UIAlertAction *action, MFMailComposeViewController *mailViewController) {
+                                                  
+                                                  NSString *errorDescriptions = [PRAPIManager errorDescriptionForErrors:allErrors
+                                                                                                      canContactSupport:true
+                                                                                                      shouldShowSupport:nil];
+                                                  
+                                                  NSString *fullErrorMessage = errorDescriptions.length > 0 ? [NSString stringWithFormat:@"%@\n%@", alertMessage, errorDescriptions] : alertMessage;
+                                                  
+                                                  NSMutableString *emailText = [NSMutableString stringWithFormat:@"An internal app error occured:\n\n%@\n\nErrors:\n\n%@", fullErrorMessage, allErrors];
+                                                  [emailText appendFormat:@"Records that could not be submitted:\n"];
+                                                  
+                                                  for (NSError *error in allErrors) {
+                                                      NSDictionary *json = error.userInfo[@"CorruptRecord"];
+                                                      if ([json isKindOfClass:[NSDictionary class]]) {
+                                                          [emailText appendFormat:@"\n\n%@\n\n", json];
+                                                      }
+                                                  }
+                                                  
+                                                  [mailViewController setMessageBody:emailText isHTML:NO];
+                                                  
+                                              }];
                     }
                 }
             }];

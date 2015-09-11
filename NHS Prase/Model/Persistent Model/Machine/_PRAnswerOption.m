@@ -16,9 +16,6 @@ const struct PRAnswerOptionRelationships PRAnswerOptionRelationships = {
 	.answerSet = @"answerSet",
 };
 
-const struct PRAnswerOptionFetchedProperties PRAnswerOptionFetchedProperties = {
-};
-
 @implementation PRAnswerOptionID
 @end
 
@@ -44,7 +41,7 @@ const struct PRAnswerOptionFetchedProperties PRAnswerOptionFetchedProperties = {
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
+
 	if ([key isEqualToString:@"answerIDValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"answerID"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -64,12 +61,7 @@ const struct PRAnswerOptionFetchedProperties PRAnswerOptionFetchedProperties = {
 	return keyPaths;
 }
 
-
-
-
 @dynamic answerID;
-
-
 
 - (int64_t)answerIDValue {
 	NSNumber *result = [self answerID];
@@ -89,13 +81,7 @@ const struct PRAnswerOptionFetchedProperties PRAnswerOptionFetchedProperties = {
 	[self setPrimitiveAnswerID:[NSNumber numberWithLongLong:value_]];
 }
 
-
-
-
-
 @dynamic imageID;
-
-
 
 - (int64_t)imageIDValue {
 	NSNumber *result = [self imageID];
@@ -115,27 +101,11 @@ const struct PRAnswerOptionFetchedProperties PRAnswerOptionFetchedProperties = {
 	[self setPrimitiveImageID:[NSNumber numberWithLongLong:value_]];
 }
 
-
-
-
-
 @dynamic imageName;
-
-
-
-
-
 
 @dynamic imageTintIdentifier;
 
-
-
-
-
-
 @dynamic localizationID;
-
-
 
 - (int64_t)localizationIDValue {
 	NSNumber *result = [self localizationID];
@@ -155,33 +125,18 @@ const struct PRAnswerOptionFetchedProperties PRAnswerOptionFetchedProperties = {
 	[self setPrimitiveLocalizationID:[NSNumber numberWithLongLong:value_]];
 }
 
-
-
-
-
 @dynamic title;
-
-
-
-
-
 
 @dynamic answerSet;
 
-	
 - (NSMutableSet*)answerSetSet {
 	[self willAccessValueForKey:@"answerSet"];
-  
+
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"answerSet"];
-  
+
 	[self didAccessValueForKey:@"answerSet"];
 	return result;
 }
-	
-
-
-
-
-
 
 @end
+

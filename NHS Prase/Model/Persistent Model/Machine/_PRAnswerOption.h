@@ -3,7 +3,6 @@
 
 #import <CoreData/CoreData.h>
 
-
 extern const struct PRAnswerOptionAttributes {
 	__unsafe_unretained NSString *answerID;
 	__unsafe_unretained NSString *imageID;
@@ -17,17 +16,7 @@ extern const struct PRAnswerOptionRelationships {
 	__unsafe_unretained NSString *answerSet;
 } PRAnswerOptionRelationships;
 
-extern const struct PRAnswerOptionFetchedProperties {
-} PRAnswerOptionFetchedProperties;
-
 @class PRAnswerSet;
-
-
-
-
-
-
-
 
 @interface PRAnswerOptionID : NSManagedObjectID {}
 @end
@@ -36,96 +25,51 @@ extern const struct PRAnswerOptionFetchedProperties {
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-- (PRAnswerOptionID*)objectID;
-
-
-
-
+@property (nonatomic, readonly, strong) PRAnswerOptionID* objectID;
 
 @property (nonatomic, strong) NSNumber* answerID;
 
-
-
-@property int64_t answerIDValue;
+@property (atomic) int64_t answerIDValue;
 - (int64_t)answerIDValue;
 - (void)setAnswerIDValue:(int64_t)value_;
 
 //- (BOOL)validateAnswerID:(id*)value_ error:(NSError**)error_;
 
-
-
-
-
 @property (nonatomic, strong) NSNumber* imageID;
 
-
-
-@property int64_t imageIDValue;
+@property (atomic) int64_t imageIDValue;
 - (int64_t)imageIDValue;
 - (void)setImageIDValue:(int64_t)value_;
 
 //- (BOOL)validateImageID:(id*)value_ error:(NSError**)error_;
 
-
-
-
-
 @property (nonatomic, strong) NSString* imageName;
-
-
 
 //- (BOOL)validateImageName:(id*)value_ error:(NSError**)error_;
 
-
-
-
-
 @property (nonatomic, strong) NSString* imageTintIdentifier;
-
-
 
 //- (BOOL)validateImageTintIdentifier:(id*)value_ error:(NSError**)error_;
 
-
-
-
-
 @property (nonatomic, strong) NSNumber* localizationID;
 
-
-
-@property int64_t localizationIDValue;
+@property (atomic) int64_t localizationIDValue;
 - (int64_t)localizationIDValue;
 - (void)setLocalizationIDValue:(int64_t)value_;
 
 //- (BOOL)validateLocalizationID:(id*)value_ error:(NSError**)error_;
 
-
-
-
-
 @property (nonatomic, strong) NSString* title;
 
-
-
 //- (BOOL)validateTitle:(id*)value_ error:(NSError**)error_;
-
-
-
-
 
 @property (nonatomic, strong) NSSet *answerSet;
 
 - (NSMutableSet*)answerSetSet;
 
-
-
-
-
 @end
 
-@interface _PRAnswerOption (CoreDataGeneratedAccessors)
-
+@interface _PRAnswerOption (AnswerSetCoreDataGeneratedAccessors)
 - (void)addAnswerSet:(NSSet*)value_;
 - (void)removeAnswerSet:(NSSet*)value_;
 - (void)addAnswerSetObject:(PRAnswerSet*)value_;
@@ -135,15 +79,11 @@ extern const struct PRAnswerOptionFetchedProperties {
 
 @interface _PRAnswerOption (CoreDataGeneratedPrimitiveAccessors)
 
-
 - (NSNumber*)primitiveAnswerID;
 - (void)setPrimitiveAnswerID:(NSNumber*)value;
 
 - (int64_t)primitiveAnswerIDValue;
 - (void)setPrimitiveAnswerIDValue:(int64_t)value_;
-
-
-
 
 - (NSNumber*)primitiveImageID;
 - (void)setPrimitiveImageID:(NSNumber*)value;
@@ -151,20 +91,11 @@ extern const struct PRAnswerOptionFetchedProperties {
 - (int64_t)primitiveImageIDValue;
 - (void)setPrimitiveImageIDValue:(int64_t)value_;
 
-
-
-
 - (NSString*)primitiveImageName;
 - (void)setPrimitiveImageName:(NSString*)value;
 
-
-
-
 - (NSString*)primitiveImageTintIdentifier;
 - (void)setPrimitiveImageTintIdentifier:(NSString*)value;
-
-
-
 
 - (NSNumber*)primitiveLocalizationID;
 - (void)setPrimitiveLocalizationID:(NSNumber*)value;
@@ -172,18 +103,10 @@ extern const struct PRAnswerOptionFetchedProperties {
 - (int64_t)primitiveLocalizationIDValue;
 - (void)setPrimitiveLocalizationIDValue:(int64_t)value_;
 
-
-
-
 - (NSString*)primitiveTitle;
 - (void)setPrimitiveTitle:(NSString*)value;
 
-
-
-
-
 - (NSMutableSet*)primitiveAnswerSet;
 - (void)setPrimitiveAnswerSet:(NSMutableSet*)value;
-
 
 @end

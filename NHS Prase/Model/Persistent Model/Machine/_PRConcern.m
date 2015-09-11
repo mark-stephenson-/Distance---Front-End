@@ -3,9 +3,6 @@
 
 #import "_PRConcern.h"
 
-const struct PRConcernAttributes PRConcernAttributes = {
-};
-
 const struct PRConcernRelationships PRConcernRelationships = {
 	.preventNote = @"preventNote",
 	.preventQuestion = @"preventQuestion",
@@ -15,9 +12,6 @@ const struct PRConcernRelationships PRConcernRelationships = {
 	.ward = @"ward",
 	.whatNote = @"whatNote",
 	.whyNote = @"whyNote",
-};
-
-const struct PRConcernFetchedProperties PRConcernFetchedProperties = {
 };
 
 @implementation PRConcernID
@@ -45,49 +39,25 @@ const struct PRConcernFetchedProperties PRConcernFetchedProperties = {
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
 
 	return keyPaths;
 }
 
-
-
-
 @dynamic preventNote;
-
-	
 
 @dynamic preventQuestion;
 
-	
-
 @dynamic question;
-
-	
 
 @dynamic record;
 
-	
-
 @dynamic seriousQuestion;
-
-	
 
 @dynamic ward;
 
-	
-
 @dynamic whatNote;
-
-	
 
 @dynamic whyNote;
 
-	
-
-
-
-
-
-
 @end
+

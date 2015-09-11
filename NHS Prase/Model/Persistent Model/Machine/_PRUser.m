@@ -9,12 +9,6 @@ const struct PRUserAttributes PRUserAttributes = {
 	.username = @"username",
 };
 
-const struct PRUserRelationships PRUserRelationships = {
-};
-
-const struct PRUserFetchedProperties PRUserFetchedProperties = {
-};
-
 @implementation PRUserID
 @end
 
@@ -40,7 +34,7 @@ const struct PRUserFetchedProperties PRUserFetchedProperties = {
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
+
 	if ([key isEqualToString:@"idValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"id"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -50,12 +44,7 @@ const struct PRUserFetchedProperties PRUserFetchedProperties = {
 	return keyPaths;
 }
 
-
-
-
 @dynamic id;
-
-
 
 - (int64_t)idValue {
 	NSNumber *result = [self id];
@@ -75,27 +64,9 @@ const struct PRUserFetchedProperties PRUserFetchedProperties = {
 	[self setPrimitiveId:[NSNumber numberWithLongLong:value_]];
 }
 
-
-
-
-
 @dynamic password;
-
-
-
-
-
 
 @dynamic username;
 
-
-
-
-
-
-
-
-
-
-
 @end
+

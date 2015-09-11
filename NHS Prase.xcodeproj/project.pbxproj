@@ -736,7 +736,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd NHS\\ Prase/Model/Persistent\\ Model\nmogenerator --template-var arc=true -m PRModel.xcdatamodeld/PRModel_1.0_2.xcdatamodel/ -M Machine/ -H Human/";
+			shellScript = "cd NHS\\ Prase/Model/Persistent\\ Model\n /usr/local/bin/mogenerator --template-var arc=true -m PRModel.xcdatamodeld/PRModel_1.0_2.xcdatamodel -M Machine/ -H Human/";
 		};
 		E7C2EEE51A77E7620047D66A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -922,6 +922,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iOS Distribution: Bradford Teaching Hospitals NHS Foundation Trust";
 				DEFINES_MODULE = YES;
+				ENABLE_BITCODE = NO;
 				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch *.xcode* (*) .DS_Store CVS .svn .git .hg *.framework";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1050,6 +1051,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Anthony Main (6D22PCH782)";
 				DEFINES_MODULE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1063,7 +1065,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "498d95de-a378-4045-9abb-faa14d329613";
+				PROVISIONING_PROFILE = "fdf270b5-21fb-4046-81ff-33d0b6252b39";
 			};
 			name = Debug;
 		};
@@ -1076,6 +1078,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iOS Distribution: Bradford Teaching Hospitals NHS Foundation Trust";
 				DEFINES_MODULE = YES;
+				ENABLE_BITCODE = NO;
 				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch *.xcode* (*) .DS_Store CVS .svn .git .hg *.framework";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

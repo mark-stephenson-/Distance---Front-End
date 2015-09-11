@@ -19,9 +19,6 @@ const struct PRNoteRelationships PRNoteRelationships = {
 	.ward = @"ward",
 };
 
-const struct PRNoteFetchedProperties PRNoteFetchedProperties = {
-};
-
 @implementation PRNoteID
 @end
 
@@ -47,72 +44,38 @@ const struct PRNoteFetchedProperties PRNoteFetchedProperties = {
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
 
 	return keyPaths;
 }
 
-
-
-
 @dynamic recording;
-
-
-
-
-
 
 @dynamic text;
 
-
-
-
-
-
 @dynamic concernAsPrevent;
-
-	
 
 @dynamic concernAsWhat;
 
-	
-
 @dynamic concernAsWhy;
-
-	
 
 @dynamic questionAsGood;
 
-	
 - (NSMutableSet*)questionAsGoodSet {
 	[self willAccessValueForKey:@"questionAsGood"];
-  
+
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"questionAsGood"];
-  
+
 	[self didAccessValueForKey:@"questionAsGood"];
 	return result;
 }
-	
 
 @dynamic questionAsNote;
 
-	
-
 @dynamic record;
-
-	
 
 @dynamic recordAsGood;
 
-	
-
 @dynamic ward;
 
-	
-
-
-
-
-
-
 @end
+

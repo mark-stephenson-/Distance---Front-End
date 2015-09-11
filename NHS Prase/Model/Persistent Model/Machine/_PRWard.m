@@ -15,9 +15,6 @@ const struct PRWardRelationships PRWardRelationships = {
 	.records = @"records",
 };
 
-const struct PRWardFetchedProperties PRWardFetchedProperties = {
-};
-
 @implementation PRWardID
 @end
 
@@ -43,7 +40,7 @@ const struct PRWardFetchedProperties PRWardFetchedProperties = {
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
+
 	if ([key isEqualToString:@"idValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"id"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -53,12 +50,7 @@ const struct PRWardFetchedProperties PRWardFetchedProperties = {
 	return keyPaths;
 }
 
-
-
-
 @dynamic id;
-
-
 
 - (int64_t)idValue {
 	NSNumber *result = [self id];
@@ -78,63 +70,42 @@ const struct PRWardFetchedProperties PRWardFetchedProperties = {
 	[self setPrimitiveId:[NSNumber numberWithLongLong:value_]];
 }
 
-
-
-
-
 @dynamic name;
-
-
-
-
-
 
 @dynamic concerns;
 
-	
 - (NSMutableSet*)concernsSet {
 	[self willAccessValueForKey:@"concerns"];
-  
+
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"concerns"];
-  
+
 	[self didAccessValueForKey:@"concerns"];
 	return result;
 }
-	
 
 @dynamic goodNotes;
 
-	
 - (NSMutableSet*)goodNotesSet {
 	[self willAccessValueForKey:@"goodNotes"];
-  
+
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"goodNotes"];
-  
+
 	[self didAccessValueForKey:@"goodNotes"];
 	return result;
 }
-	
 
 @dynamic hospital;
 
-	
-
 @dynamic records;
 
-	
 - (NSMutableSet*)recordsSet {
 	[self willAccessValueForKey:@"records"];
-  
+
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"records"];
-  
+
 	[self didAccessValueForKey:@"records"];
 	return result;
 }
-	
-
-
-
-
-
 
 @end
+
