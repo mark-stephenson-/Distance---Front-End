@@ -1093,7 +1093,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4d3bb57d-e0dd-4123-9bd0-ef7382083bff";
+				PROVISIONING_PROFILE = "c9375473-40f0-4ab6-8421-005d4caf979a";
 			};
 			name = Release;
 		};
