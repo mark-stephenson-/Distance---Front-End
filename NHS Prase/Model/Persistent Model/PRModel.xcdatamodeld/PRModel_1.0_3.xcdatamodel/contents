@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15B42" minimumToolsVersion="Xcode 4.3">
+    <entity name="PRAnswerOption" representedClassName="PRAnswerOption" syncable="YES">
+        <attribute name="answerID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="imageID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageTintIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="localizationID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="answerSet" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRAnswerSet" inverseName="options" inverseEntity="PRAnswerSet" syncable="YES"/>
+    </entity>
+    <entity name="PRAnswerSet" representedClassName="PRAnswerSet" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="options" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="PRAnswerOption" inverseName="answerSet" inverseEntity="PRAnswerOption" syncable="YES"/>
+        <relationship name="pmosQuestion" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRPMOSQuestion" inverseName="answerSets" inverseEntity="PRPMOSQuestion" syncable="YES"/>
+    </entity>
+    <entity name="PRConcern" representedClassName="PRConcern" syncable="YES">
+        <relationship name="preventNote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRNote" inverseName="concernAsPrevent" inverseEntity="PRNote" syncable="YES"/>
+        <relationship name="preventQuestion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRQuestion" inverseName="concernAsPrevent" inverseEntity="PRQuestion" syncable="YES"/>
+        <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRQuestion" inverseName="concern" inverseEntity="PRQuestion" syncable="YES"/>
+        <relationship name="record" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRRecord" inverseName="concerns" inverseEntity="PRRecord" syncable="YES"/>
+        <relationship name="seriousQuestion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRQuestion" inverseName="concernAsSerious" inverseEntity="PRQuestion" syncable="YES"/>
+        <relationship name="ward" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRWard" inverseName="concerns" inverseEntity="PRWard" syncable="YES"/>
+        <relationship name="whatNote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRNote" inverseName="concernAsWhat" inverseEntity="PRNote" syncable="YES"/>
+        <relationship name="whyNote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRNote" inverseName="concernAsWhy" inverseEntity="PRNote" syncable="YES"/>
+    </entity>
+    <entity name="PRHospital" representedClassName="PRHospital" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="trust" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRTrust" inverseName="hospitals" inverseEntity="PRTrust" syncable="YES"/>
+        <relationship name="wards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRWard" inverseName="hospital" inverseEntity="PRWard" syncable="YES"/>
+    </entity>
+    <entity name="PRNote" representedClassName="PRNote" syncable="YES">
+        <attribute name="recording" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="concernAsPrevent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRConcern" inverseName="preventNote" inverseEntity="PRConcern" syncable="YES"/>
+        <relationship name="concernAsWhat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRConcern" inverseName="whatNote" inverseEntity="PRConcern" syncable="YES"/>
+        <relationship name="concernAsWhy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRConcern" inverseName="whyNote" inverseEntity="PRConcern" syncable="YES"/>
+        <relationship name="questionAsGood" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRQuestion" inverseName="goodNote" inverseEntity="PRQuestion" syncable="YES"/>
+        <relationship name="questionAsNote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRQuestion" inverseName="note" inverseEntity="PRQuestion" syncable="YES"/>
+        <relationship name="record" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRRecord" inverseName="notes" inverseEntity="PRRecord" syncable="YES"/>
+        <relationship name="recordAsGood" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRRecord" inverseName="goodNotes" inverseEntity="PRRecord" syncable="YES"/>
+        <relationship name="ward" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRWard" inverseName="goodNotes" inverseEntity="PRWard" syncable="YES"/>
+    </entity>
+    <entity name="PRPMOS" representedClassName="PRPMOS" syncable="YES">
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PRPMOSQuestion" inverseName="pmos" inverseEntity="PRPMOSQuestion" syncable="YES"/>
+    </entity>
+    <entity name="PRPMOSQuestion" representedClassName="PRPMOSQuestion" syncable="YES">
+        <attribute name="localizationID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="questionID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="answerSets" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PRAnswerSet" inverseName="pmosQuestion" inverseEntity="PRAnswerSet" syncable="YES"/>
+        <relationship name="pmos" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRPMOS" inverseName="questions" inverseEntity="PRPMOS" syncable="YES"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRQuestion" inverseName="pmosQuestion" inverseEntity="PRQuestion" syncable="YES"/>
+    </entity>
+    <entity name="PRQuestion" representedClassName="PRQuestion" syncable="YES">
+        <attribute name="answerID" optional="YES" attributeType="Integer 64" syncable="YES"/>
+        <relationship name="concern" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRConcern" inverseName="question" inverseEntity="PRConcern" syncable="YES"/>
+        <relationship name="concernAsPrevent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRConcern" inverseName="preventQuestion" inverseEntity="PRConcern" syncable="YES"/>
+        <relationship name="concernAsSerious" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRConcern" inverseName="seriousQuestion" inverseEntity="PRConcern" syncable="YES"/>
+        <relationship name="goodNote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRNote" inverseName="questionAsGood" inverseEntity="PRNote" syncable="YES"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRNote" inverseName="questionAsNote" inverseEntity="PRNote" syncable="YES"/>
+        <relationship name="pmosQuestion" optional="YES" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="PRPMOSQuestion" inverseName="questions" inverseEntity="PRPMOSQuestion" syncable="YES"/>
+        <relationship name="record" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRRecord" inverseName="questions" inverseEntity="PRRecord" syncable="YES"/>
+    </entity>
+    <entity name="PRRecord" representedClassName="PRRecord" syncable="YES">
+        <attribute name="basicData" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="incompleteReason" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="language" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="timeAdditionalPatient" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="timeAdditionalQuestionnaire" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="timeTracked" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="user" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="concerns" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRConcern" inverseName="record" inverseEntity="PRConcern" syncable="YES"/>
+        <relationship name="goodNotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRNote" inverseName="recordAsGood" inverseEntity="PRNote" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRNote" inverseName="record" inverseEntity="PRNote" syncable="YES"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PRQuestion" inverseName="record" inverseEntity="PRQuestion" syncable="YES"/>
+        <relationship name="ward" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRWard" inverseName="records" inverseEntity="PRWard" syncable="YES"/>
+    </entity>
+    <entity name="PRTrust" representedClassName="PRTrust" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="hospitals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRHospital" inverseName="trust" inverseEntity="PRHospital" syncable="YES"/>
+    </entity>
+    <entity name="PRUser" representedClassName="PRUser" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="password" attributeType="String" syncable="YES"/>
+        <attribute name="trustID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="username" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="PRWard" representedClassName="PRWard" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="concerns" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRConcern" inverseName="ward" inverseEntity="PRConcern" syncable="YES"/>
+        <relationship name="goodNotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRNote" inverseName="ward" inverseEntity="PRNote" syncable="YES"/>
+        <relationship name="hospital" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PRHospital" inverseName="wards" inverseEntity="PRHospital" syncable="YES"/>
+        <relationship name="records" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PRRecord" inverseName="ward" inverseEntity="PRRecord" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="PRAnswerOption" positionX="-2952" positionY="-1170" width="128" height="150"/>
+        <element name="PRAnswerSet" positionX="-2745" positionY="-1165" width="128" height="88"/>
+        <element name="PRConcern" positionX="-2061" positionY="-991" width="128" height="163"/>
+        <element name="PRHospital" positionX="-2952" positionY="-963" width="128" height="103"/>
+        <element name="PRNote" positionX="-1845" positionY="-828" width="128" height="193"/>
+        <element name="PRPMOS" positionX="-2322" positionY="-1260" width="128" height="58"/>
+        <element name="PRPMOSQuestion" positionX="-2531" positionY="-1168" width="128" height="118"/>
+        <element name="PRQuestion" positionX="-2324" positionY="-1170" width="128" height="165"/>
+        <element name="PRRecord" positionX="-2529" positionY="-976" width="128" height="238"/>
+        <element name="PRTrust" positionX="-3141" positionY="-955" width="128" height="88"/>
+        <element name="PRUser" positionX="-3159" positionY="-1161" width="128" height="105"/>
+        <element name="PRWard" positionX="-2745" positionY="-972" width="128" height="133"/>
+    </elements>
+</model>

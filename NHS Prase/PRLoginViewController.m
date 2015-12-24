@@ -31,6 +31,7 @@
 #import "PRPMOSQuestion.h"
 
 #import "PRSelectionViewController.h"
+#import "PRWardSelectViewController.h"
 
 #define ALERT_LOGIN 111
 #define ALERT_DOWNLOAD_ERROR 222
@@ -160,6 +161,24 @@
 
 -(void)selectionViewControllerRequestsDismissal:(TDSelectionViewController *)selectionVC
 {
+    NSString *selectionKey = selectionVC.key;
+    
+    if ([selectionKey isEqualToString:@"trust"]) {
+        NSNumber *newTrustID = [[selectionVC selectedKeys] anyObject];
+        
+        
+        if (self.selectedTrust == nil || ![newTrustID isEqualToNumber:self.selectedTrust.id]) {
+            PRTrust *newTrust = [[trusts filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", newTrustID]] firstObject];
+            self.selectedTrust = newTrust;
+            [self refreshLoginCredentials];
+            trustField.text = newTrust.name;
+        }
+        
+        [self dismissViewControllerAnimated:true completion:nil];
+        return;
+    }
+
+    
     [self dismissViewControllerAnimated:YES completion:^{
         NSString *currentURLKey = [[NSUserDefaults standardUserDefaults] valueForKey:APIManagerBaseURLKey];
         NSString *selectedURLKey = [selectionVC.selectedKeys anyObject];
@@ -170,6 +189,25 @@
             [self switchToBaseURL:[NSURL URLWithString:selectedURL] withKey:selectedURLKey];
         }
     }];
+}
+
+-(void)refreshLoginCredentials
+{
+    if (self.selectedTrust == nil) {
+        logInCredentials = [NSDictionary dictionary];
+        return;
+    }
+    
+    NSArray *allUsers = [PRUser MR_findAll];
+    
+    NSMutableDictionary *tempUsers = [NSMutableDictionary dictionaryWithCapacity:allUsers.count];
+    for (PRUser *user in allUsers) {
+        if ([user.trustID isEqualToNumber: self.selectedTrust.id]) {
+            tempUsers[user.username] = user.password;
+        }
+    }
+    
+    logInCredentials = [NSDictionary dictionaryWithDictionary:tempUsers];
 }
 
 -(void)switchToBaseURL:(NSURL *) newURL withKey:(NSString *) urlKey
@@ -423,14 +461,11 @@
         completionCount++;
         
         if (selector == @selector(getUsersWithCompletion:)) {
-            NSArray *allUsers = [PRUser MR_findAll];
-            
-            NSMutableDictionary *tempUsers = [NSMutableDictionary dictionaryWithCapacity:allUsers.count];
-            for (PRUser *user in allUsers) {
-                tempUsers[user.username] = user.password;
-            }
-            
-            logInCredentials = [NSDictionary dictionaryWithDictionary:tempUsers];
+            [self refreshLoginCredentials];
+        }
+        
+        if (selector == @selector(getTrustHierarchyWithCompletion:)) {
+            trusts = [PRTrust MR_findAll];
         }
         
         if (completionCount == requestCount) {
@@ -566,6 +601,14 @@
     }
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Continue"]) {
+        PRWardSelectViewController *dvc = segue.destinationViewController;
+        dvc.selectedTrust = self.selectedTrust;
+    }
+}
+
 #pragma mark - Input Accessory Delegate Methods
 
 // configuring the active field or its accessory should be done on didBegin to ensure tapping to swap fields maintains the correct activeComponent.
@@ -584,6 +627,64 @@
     }
     
     [self applyThemeToView:inputView];
+}
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if (textField == trustField) {
+        
+        NSMutableDictionary *tempOptions = [NSMutableDictionary dictionaryWithCapacity:trusts.count];
+        
+        for (int t = 0; t < trusts.count; t++) {
+            PRTrust *thisTrust = trusts[t];
+            tempOptions[thisTrust.id] = thisTrust.name;
+        }
+        
+        NSDictionary *options = tempOptions;
+        NSArray *sortedKeys = @[[trusts valueForKeyPath:@"id"]];
+        id<NSCopying> selectedKey = self.selectedTrust.id;
+        BOOL requiresSelection = YES;
+        
+        NSString *selectionKey = @"trust";
+        
+        NSString *selectionTitle = TDLocalizedStringWithDefaultValue(@"ward-select.title.trust", nil, nil, @"Trust", @"Title when selecting a trust.");
+        NSString *selectionTitleLocalizationKey = @"ward-select.title.trust";
+        
+        NSString *selectionSubTitle = TDLocalizedStringWithDefaultValue(@"ward-select.subtitle.trust", nil, nil, @"Please select your trust from the list below:", @"Subtitle when selecting a trust.");
+        NSString *selectionSubtitleLocalizationKey = @"ward-select.subtitle.trust";
+        
+        PRSelectionViewController *selectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PRBasicSelectionVC"];
+        // force load the view to configure the labels
+        if (selectionVC.view != nil) {
+            [selectionVC setOptions:options withDetails:[NSDictionary dictionary] orderedAs:sortedKeys];
+            
+            if (selectedKey != nil) {
+                selectionVC.selectedKeys = [NSMutableSet setWithObject:selectedKey];
+            }
+            
+            selectionVC.requiresSelection = requiresSelection;
+            selectionVC.tableView.allowsMultipleSelection = NO;
+            selectionVC.delegate = self;
+            selectionVC.key = selectionKey;
+            selectionVC.title = selectionTitle;
+            
+            selectionVC.titleLabel.text = selectionTitle;
+            selectionVC.titleLabel.TDLocalizedStringKey = selectionTitleLocalizationKey;
+            
+            selectionVC.subTitleLabel.text = selectionSubTitle;
+            selectionVC.subTitleLabel.TDLocalizedStringKey = selectionSubtitleLocalizationKey;
+            
+            // present the configured selection vc
+            selectionVC.modalPresentationStyle = UIModalPresentationFormSheet;
+            
+            [self presentViewController:selectionVC animated:YES completion:nil];
+        }
+        return NO;
+        
+    }
+    
+    return YES;
+
 }
 
 

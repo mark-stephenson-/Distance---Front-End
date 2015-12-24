@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3zb-xf-92k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3zb-xf-92k">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -27,10 +28,29 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="wj5-Tc-78B">
-                                                <rect key="frame" x="51" y="300" width="499" height="138"/>
+                                                <rect key="frame" x="51" y="300" width="499" height="211"/>
                                                 <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Noa-1x-TVg" customClass="TDTextField">
+                                                        <rect key="frame" x="0.0" y="25" width="499" height="40"/>
+                                                        <accessibility key="accessibilityConfiguration" hint="Tap to select a hospital" label="Hospital Select">
+                                                            <accessibilityTraits key="traits" button="YES"/>
+                                                        </accessibility>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="Pda-i8-Dv7"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.field.trust-select"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Prompt to select the desired trust."/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="BYZ-38-t0r" id="aKq-ax-ji6"/>
+                                                        </connections>
+                                                    </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your staff password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QPr-fi-YK7" customClass="TDTextField">
-                                                        <rect key="frame" x="0.0" y="98" width="499" height="40"/>
+                                                        <rect key="frame" x="0.0" y="171" width="499" height="40"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Enter your staff log in password" label="Password"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="u6o-Fm-9el"/>
@@ -47,7 +67,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your staff username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FRz-6b-dN2" customClass="TDTextField">
-                                                        <rect key="frame" x="0.0" y="25" width="499" height="40"/>
+                                                        <rect key="frame" x="0.0" y="98" width="499" height="40"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Enter your staff log in username" label="Username"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="3Bm-wK-kJ7"/>
@@ -70,9 +90,9 @@
                                                         </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jby-nF-Rud">
-                                                        <rect key="frame" x="8" y="73" width="68" height="17"/>
+                                                        <rect key="frame" x="8" y="146" width="67" height="17"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Password for staff log in" label="Password">
-                                                            <accessibilityTraits key="traits" none="YES" staticText="YES"/>
+                                                            <accessibilityTraits key="traits" staticText="YES"/>
                                                         </accessibility>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -84,9 +104,9 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNN-DY-I1N">
-                                                        <rect key="frame" x="8" y="0.0" width="70" height="17"/>
+                                                        <rect key="frame" x="8" y="73" width="71" height="17"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Username for staff log in" label="Username">
-                                                            <accessibilityTraits key="traits" none="YES" staticText="YES"/>
+                                                            <accessibilityTraits key="traits" staticText="YES"/>
                                                         </accessibility>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -94,6 +114,20 @@
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="login.label.username-title"/>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Label for the username log in field"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Trust:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNN-rv-zS0" userLabel="home.hospital-title">
+                                                        <rect key="frame" x="8" y="0.0" width="38" height="17"/>
+                                                        <accessibility key="accessibilityConfiguration" label="">
+                                                            <accessibilityTraits key="traits" staticText="YES"/>
+                                                        </accessibility>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.label.trust-title"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Label for the trust select field."/>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
@@ -105,14 +139,29 @@
                                                     <constraint firstItem="FRz-6b-dN2" firstAttribute="top" secondItem="BNN-DY-I1N" secondAttribute="bottom" constant="8" id="2oa-5d-UcD"/>
                                                     <constraint firstItem="BNN-DY-I1N" firstAttribute="leading" secondItem="Jby-nF-Rud" secondAttribute="leading" id="6CZ-MW-0EK"/>
                                                     <constraint firstItem="QPr-fi-YK7" firstAttribute="leading" secondItem="wj5-Tc-78B" secondAttribute="leading" id="ALj-9W-RWJ"/>
+                                                    <constraint firstItem="BNN-DY-I1N" firstAttribute="top" secondItem="Noa-1x-TVg" secondAttribute="bottom" constant="8" id="CPH-H6-tbG"/>
+                                                    <constraint firstItem="aNN-rv-zS0" firstAttribute="top" secondItem="wj5-Tc-78B" secondAttribute="top" id="EEj-Hl-UfB"/>
                                                     <constraint firstItem="BNN-DY-I1N" firstAttribute="leading" secondItem="wj5-Tc-78B" secondAttribute="leading" constant="8" id="Gnb-Sp-GX2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Noa-1x-TVg" secondAttribute="trailing" id="ODp-EQ-cma"/>
                                                     <constraint firstItem="FRz-6b-dN2" firstAttribute="leading" secondItem="wj5-Tc-78B" secondAttribute="leading" id="QXQ-d0-vHR"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="RIr-Gw-m7E"/>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="Wjh-vu-03X"/>
                                                     <constraint firstItem="BNN-DY-I1N" firstAttribute="top" secondItem="wj5-Tc-78B" secondAttribute="top" id="Zvi-sV-1mL"/>
+                                                    <constraint firstItem="Noa-1x-TVg" firstAttribute="leading" secondItem="wj5-Tc-78B" secondAttribute="leading" id="a2h-6I-H1K"/>
                                                     <constraint firstAttribute="bottom" secondItem="QPr-fi-YK7" secondAttribute="bottom" id="bSa-Ct-Db0"/>
+                                                    <constraint firstItem="BNN-DY-I1N" firstAttribute="top" secondItem="wj5-Tc-78B" secondAttribute="top" constant="100" id="ccB-wD-OFb"/>
+                                                    <constraint firstItem="Noa-1x-TVg" firstAttribute="top" secondItem="BNN-DY-I1N" secondAttribute="bottom" constant="32" id="hDm-4S-3JN"/>
+                                                    <constraint firstItem="Noa-1x-TVg" firstAttribute="top" secondItem="aNN-rv-zS0" secondAttribute="bottom" constant="8" id="hTt-Cx-227"/>
+                                                    <constraint firstItem="aNN-rv-zS0" firstAttribute="leading" secondItem="wj5-Tc-78B" secondAttribute="leading" constant="8" id="rjY-4F-olm"/>
                                                     <constraint firstItem="QPr-fi-YK7" firstAttribute="top" secondItem="Jby-nF-Rud" secondAttribute="bottom" constant="8" id="sVe-Nz-69k"/>
                                                 </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="hDm-4S-3JN"/>
+                                                        <exclude reference="Zvi-sV-1mL"/>
+                                                        <exclude reference="ccB-wD-OFb"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="MoJ-Ed-epR">
                                                 <rect key="frame" x="51" y="28" width="499" height="272"/>
@@ -126,7 +175,7 @@
                                                 <rect key="frame" x="0.0" y="560" width="600" height="40"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cj0-dg-l2N" customClass="TDButton">
-                                                        <rect key="frame" x="513" y="0.0" width="87" height="40"/>
+                                                        <rect key="frame" x="514" y="0.0" width="86" height="40"/>
                                                         <color key="backgroundColor" red="0.25882352939999997" green="0.76862745099999996" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Return to log in screen"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
@@ -156,7 +205,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBd-pW-g3A" customClass="TDButton">
-                                                        <rect key="frame" x="166" y="0.0" width="102" height="40"/>
+                                                        <rect key="frame" x="165" y="0.0" width="104" height="40"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Return to log in screen"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
@@ -183,7 +232,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAT-bL-5HY" customClass="TDButton">
-                                                        <rect key="frame" x="0.0" y="0.0" width="166" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="165" height="40"/>
                                                         <color key="backgroundColor" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" priority="200" id="ipV-on-m0O"/>
@@ -294,6 +343,7 @@
                         <outlet property="retryButton" destination="wAT-bL-5HY" id="g9h-Ka-AIP"/>
                         <outlet property="retryWidthConstraint" destination="ipV-on-m0O" id="eEt-rb-BWV"/>
                         <outlet property="scrollView" destination="Cok-27-Td8" id="2hO-ua-ZA1"/>
+                        <outlet property="trustField" destination="Noa-1x-TVg" id="f7R-GN-CnS"/>
                         <outlet property="usernameField" destination="FRz-6b-dN2" id="2Cr-mG-fkN"/>
                         <outlet property="versionLabel" destination="VgN-1q-Fld" id="hbE-0e-EMs"/>
                         <segue destination="7pY-D6-NJ7" kind="show" identifier="Continue" id="BMo-rf-XDO"/>
@@ -328,7 +378,7 @@
                             <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="PJo-Qi-FPe">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cX-cR-mG9">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cX-cR-mG9">
                                         <rect key="frame" x="20" y="20" width="62" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -403,8 +453,10 @@
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LanguagSelect" rowHeight="97" id="7te-JW-eOy" customClass="TDSelectCell">
+                                        <rect key="frame" x="0.0" y="22" width="560" height="97"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7te-JW-eOy" id="Vc2-Py-Zcj">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmr-WZ-h9e">
@@ -454,9 +506,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TextSize" id="4p6-hC-wxq" customClass="PRTextSizeSelectCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="119" width="560" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4p6-hC-wxq" id="VUZ-qa-eL8">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="0.0" maxValue="6" translatesAutoresizingMaskIntoConstraints="NO" id="JnD-dT-ppL">
@@ -523,9 +576,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Rotation" rowHeight="95" id="31T-6X-C9K" customClass="TDSegmentedCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="206" width="560" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="31T-6X-C9K" id="ocJ-zd-d0O">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="94"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEo-NK-Qag">
@@ -687,7 +741,7 @@
                                             <action selector="goPrevious:" destination="ilS-7W-Avn" eventType="touchUpInside" id="JLX-uy-ONY"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQt-VO-ss0" customClass="TDButton">
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="754" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQt-VO-ss0" customClass="TDButton">
                                         <rect key="frame" x="89" y="0.0" width="102" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <accessibility key="accessibilityConfiguration" hint="Return to log in screen"/>
@@ -801,7 +855,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TabCell" id="D2a-Hj-ZQT" customClass="PRTabCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="1" y="1" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -953,7 +1007,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="WVX-Tt-9c6"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="800" id="eX2-6E-iEK"/>
                                 </constraints>
-                                <mutableString key="text">What is PRASE?
+                                <string key="text">What is PRASE?
 It means Patient Reporting and Action for a Safe Environment.
 
 It is a questionnaire which will allow you to provide feedback on the safety and quality of care you have experienced during your stay on this ward.
@@ -964,7 +1018,7 @@ Participation is voluntary and you can pull out at any time. Once your willingne
 
 The PRASE Patient Safety Volunteer is here to support you to complete the questionnaire. However, you can also choose to complete the questionnaire independently, or your carer/family member can complete it on your behalf.
 
-Many thanks for participating.</mutableString>
+Many thanks for participating.</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1384,8 +1438,10 @@ Many thanks for participating.</mutableString>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SelectCell" id="zqf-7J-9I3" customClass="TDSelectCell">
+                                        <rect key="frame" x="0.0" y="22" width="456" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zqf-7J-9I3" id="Dow-Q1-3kk">
+                                            <rect key="frame" x="0.0" y="0.0" width="456" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="skN-aX-fMB" customClass="TDTextField">
@@ -1433,8 +1489,10 @@ Many thanks for participating.</mutableString>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TextCell" id="iSd-bN-dgP" customClass="PRTextFieldCell">
+                                        <rect key="frame" x="0.0" y="96" width="456" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iSd-bN-dgP" id="P0a-o3-zP8">
+                                            <rect key="frame" x="0.0" y="0.0" width="456" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v3j-tX-830" customClass="TDTextField">
@@ -1465,8 +1523,10 @@ Many thanks for participating.</mutableString>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TextCellTitle" id="lRO-Ny-kfg" customClass="PRTextFieldCell">
+                                        <rect key="frame" x="0.0" y="170" width="456" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lRO-Ny-kfg" id="fWo-OF-6IS">
+                                            <rect key="frame" x="0.0" y="0.0" width="456" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6SC-yp-kCr" customClass="TDTextField">
@@ -1512,8 +1572,10 @@ Many thanks for participating.</mutableString>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="IncrementCell" id="UWN-E8-oHy" customClass="PRIncrementCell">
+                                        <rect key="frame" x="0.0" y="244" width="456" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UWN-E8-oHy" id="F4a-XP-I5N">
+                                            <rect key="frame" x="0.0" y="0.0" width="456" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjc-gd-qXc">
@@ -1631,8 +1693,10 @@ Many thanks for participating.</mutableString>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SegmentCell" id="PYs-K7-toq" customClass="TDSegmentedCell">
+                                        <rect key="frame" x="0.0" y="318" width="456" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PYs-K7-toq" id="bep-xP-9fJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="456" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGa-sX-cYn">
@@ -1685,8 +1749,10 @@ Many thanks for participating.</mutableString>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DateSelectCell" id="LMv-uc-3BW" customClass="PRDateSelectCell">
+                                        <rect key="frame" x="0.0" y="392" width="456" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LMv-uc-3BW" id="IiK-Rd-wNV">
+                                            <rect key="frame" x="0.0" y="0.0" width="456" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Date Select" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNt-LH-5rd">
@@ -1698,7 +1764,7 @@ Many thanks for participating.</mutableString>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="YYYY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hb2-kS-Zi5" customClass="TDTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="YYYY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hb2-kS-Zi5" customClass="TDTextField">
                                                     <rect key="frame" x="360" y="17" width="59" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="aWa-hf-O4d"/>
@@ -2008,8 +2074,10 @@ Many thanks for participating.</mutableString>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" verticalCompressionResistancePriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="Basic" id="87t-wX-r4c" customClass="PRSelectionTableViewCell">
+                                                <rect key="frame" x="0.0" y="22" width="516" height="60"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" verticalCompressionResistancePriority="1000" tableViewCell="87t-wX-r4c" id="d2I-Ju-fXg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="516" height="59"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tc-Fz-3lh">
@@ -2045,8 +2113,10 @@ Many thanks for participating.</mutableString>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell contentMode="scaleToFill" verticalCompressionResistancePriority="1000" selectionStyle="default" indentationWidth="10" reuseIdentifier="Detail" id="Qk0-Oz-3N8" customClass="PRSelectionTableViewCell">
+                                                <rect key="frame" x="0.0" y="82" width="516" height="60"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="1000" tableViewCell="Qk0-Oz-3N8" id="202-ph-ugC">
+                                                    <rect key="frame" x="0.0" y="0.0" width="516" height="59"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HtR-YD-JgY">
@@ -2186,7 +2256,7 @@ Many thanks for participating.</mutableString>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="&lt;title label&gt;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eS2-ZD-fQa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" misplaced="YES" text="&lt;title label&gt;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eS2-ZD-fQa">
                                 <rect key="frame" x="84" y="0.0" width="516" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2262,7 +2332,7 @@ Many thanks for participating.</mutableString>
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="Question :" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwG-OB-mvO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" misplaced="YES" text="Question :" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwG-OB-mvO">
                                 <rect key="frame" x="0.0" y="0.0" width="76" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -2310,7 +2380,7 @@ Many thanks for participating.</mutableString>
                                         <collectionViewLayout key="collectionViewLayout" id="KWR-7l-IrE" customClass="PRAnswerOptionsLayout"/>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OptionCell" id="7NH-Uv-goI" customClass="PROptionCollectionViewCell">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="140" height="160"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="140" height="160"/>
@@ -2436,7 +2506,7 @@ Many thanks for participating.</mutableString>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hiJ-aw-nLb">
                                 <rect key="frame" x="0.0" y="560" width="600" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vD4-Oq-4CS" customClass="TDButton">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vD4-Oq-4CS" customClass="TDButton">
                                         <rect key="frame" x="417" y="0.0" width="105" height="40"/>
                                         <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
@@ -2536,7 +2606,7 @@ Many thanks for participating.</mutableString>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TabCell" id="07a-2t-AFB" customClass="PRTabCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <rect key="frame" x="1" y="1" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -2613,7 +2683,8 @@ Many thanks for participating.</mutableString>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooq-JT-cNw">
                                 <rect key="frame" x="20" y="8" width="560" height="62"/>
-                                <string key="text">Do you want to tell us something that has been good about your care?We would like to know about the good experiences of care either you, or others, have had during this hospital stay.</string>
+                                <string key="text">Do you want to tell us something that has been good about your care?
+We would like to know about the good experiences of care either you, or others, have had during this hospital stay.</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2635,7 +2706,7 @@ Many thanks for participating.</mutableString>
                                     <outlet property="delegate" destination="EsT-K6-WZh" id="MOj-J8-aTq"/>
                                 </connections>
                             </textView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qqs-HH-WVl" customClass="TDSegmentedControl">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qqs-HH-WVl" customClass="TDSegmentedControl">
                                 <rect key="frame" x="264" y="82" width="98" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qqs-HH-WVl" secondAttribute="height" multiplier="7:2" id="HIw-JZ-FIq"/>
@@ -2651,7 +2722,7 @@ Many thanks for participating.</mutableString>
                                     <action selector="segmentChanged:" destination="EsT-K6-WZh" eventType="valueChanged" id="a3d-cd-0dn"/>
                                 </connections>
                             </segmentedControl>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a ward" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JTK-nS-UQ9" customClass="TDTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalCompressionResistancePriority="755" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a ward" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JTK-nS-UQ9" customClass="TDTextField">
                                 <rect key="frame" x="377" y="81" width="203" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -2662,7 +2733,7 @@ Many thanks for participating.</mutableString>
                                     <outlet property="delegate" destination="EsT-K6-WZh" id="khF-8q-lFg"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Comment relating to this ward?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZn-MZ-m0K">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" misplaced="YES" text="Comment relating to this ward?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZn-MZ-m0K">
                                 <rect key="frame" x="20" y="85" width="229" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2737,7 +2808,7 @@ Many thanks for participating.</mutableString>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NumberCell" id="7Hz-fm-nLf" customClass="PROptionCollectionViewCell">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <rect key="frame" x="0.0" y="18" width="45" height="70"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                             <rect key="frame" x="0.0" y="0.0" width="45" height="70"/>
@@ -2853,7 +2924,7 @@ Serious</string>
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OptionCell" id="f1o-yG-hGT" customClass="PROptionCollectionViewCell">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <rect key="frame" x="0.0" y="23" width="140" height="105"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                             <rect key="frame" x="0.0" y="0.0" width="140" height="105"/>
@@ -3039,7 +3110,7 @@ Serious</string>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qOu-m0-KaP" customClass="TDTextField">
                                                         <rect key="frame" x="0.0" y="218" width="500" height="40"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Tap to select a ward" label="Ward select">
-                                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                                            <accessibilityTraits key="traits" button="YES"/>
                                                         </accessibility>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="o2K-x2-jri"/>
@@ -3057,7 +3128,7 @@ Serious</string>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dPg-UG-hQv" customClass="TDTextField">
                                                         <rect key="frame" x="0.0" y="142" width="500" height="40"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Tap to select a hospital" label="Hospital Select">
-                                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                                            <accessibilityTraits key="traits" button="YES"/>
                                                         </accessibility>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="c2e-lS-1iR"/>
@@ -3072,10 +3143,10 @@ Serious</string>
                                                             <outlet property="delegate" destination="Vc8-DF-OTk" id="rQC-l7-0JH"/>
                                                         </connections>
                                                     </textField>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1d-QS-sak" userLabel="home.hospital-title">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hospital:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1d-QS-sak" userLabel="home.hospital-title">
                                                         <rect key="frame" x="0.0" y="114" width="65" height="20"/>
                                                         <accessibility key="accessibilityConfiguration" label="">
-                                                            <accessibilityTraits key="traits" none="YES" staticText="YES"/>
+                                                            <accessibilityTraits key="traits" staticText="YES"/>
                                                         </accessibility>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -3098,7 +3169,7 @@ Serious</string>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Pb-PF-djv" customClass="TDTextField">
                                                         <rect key="frame" x="0.0" y="66" width="500" height="40"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Tap to select a hospital" label="Hospital Select">
-                                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                                            <accessibilityTraits key="traits" button="YES"/>
                                                         </accessibility>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="bIU-kk-iJJ"/>
@@ -3113,10 +3184,10 @@ Serious</string>
                                                             <outlet property="delegate" destination="Vc8-DF-OTk" id="NTo-ed-bus"/>
                                                         </connections>
                                                     </textField>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trust:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvf-en-ejk" userLabel="home.hospital-title">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Trust:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvf-en-ejk" userLabel="home.hospital-title">
                                                         <rect key="frame" x="0.0" y="38" width="41" height="20"/>
                                                         <accessibility key="accessibilityConfiguration" label="">
-                                                            <accessibilityTraits key="traits" none="YES" staticText="YES"/>
+                                                            <accessibilityTraits key="traits" staticText="YES"/>
                                                         </accessibility>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -3126,7 +3197,7 @@ Serious</string>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment relating to this ward?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDP-hS-xHj">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Comment relating to this ward?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDP-hS-xHj">
                                                         <rect key="frame" x="0.0" y="3" width="229" height="20"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -3137,7 +3208,7 @@ Serious</string>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f3M-mn-RD3" customClass="TDSegmentedControl">
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f3M-mn-RD3" customClass="TDSegmentedControl">
                                                         <rect key="frame" x="249" y="0.0" width="98" height="29"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="f3M-mn-RD3" secondAttribute="height" multiplier="7:2" id="ZE0-TA-AbK"/>
@@ -3306,11 +3377,13 @@ Serious</string>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TimeSelectCell" id="Hpo-y5-SLk" customClass="PRTimeSelectCell">
+                                        <rect key="frame" x="0.0" y="22" width="456" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hpo-y5-SLk" id="zRh-K7-KUE">
+                                            <rect key="frame" x="0.0" y="0.0" width="456" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="255" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="760" text="Time Select" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sy8-gb-wwv">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="255" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="760" misplaced="YES" text="Time Select" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sy8-gb-wwv">
                                                     <rect key="frame" x="8" y="10" width="148" height="53"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -3319,7 +3392,7 @@ Serious</string>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqy-Wm-WcR">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" misplaced="YES" text="Hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqy-Wm-WcR">
                                                     <rect key="frame" x="176" y="26" width="46" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
@@ -3344,7 +3417,7 @@ Serious</string>
                                                         <outlet property="delegate" destination="Hpo-y5-SLk" id="Qad-O2-yzW"/>
                                                     </connections>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="255" horizontalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="hh" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZoO-6l-Ndn" customClass="TDTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="255" horizontalCompressionResistancePriority="755" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="hh" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZoO-6l-Ndn" customClass="TDTextField">
                                                     <rect key="frame" x="230" y="16" width="37" height="41"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="I8V-kc-68V"/>
@@ -3471,8 +3544,10 @@ Serious</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="QuestionnaireCompleteCell" id="Hg2-he-XG0" customClass="PRQuestionnaireCompleteCell">
+                                        <rect key="frame" x="0.0" y="96" width="456" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hg2-he-XG0" id="XI4-Qh-bKd">
+                                            <rect key="frame" x="0.0" y="0.0" width="456" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="755" text="Incomplete" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMh-09-OJm">
@@ -3548,11 +3623,13 @@ Serious</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="BasicDataCell" id="uhb-P3-b0r" customClass="PRBasicDataCompleteCell">
+                                        <rect key="frame" x="0.0" y="170" width="456" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uhb-P3-b0r" id="XNX-Be-6Bo">
+                                            <rect key="frame" x="0.0" y="0.0" width="456" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="755" text="Incomplete" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGG-yD-SQa">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="755" misplaced="YES" text="Incomplete" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGG-yD-SQa">
                                                     <rect key="frame" x="100" y="27" width="120" height="20"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -3583,7 +3660,7 @@ Serious</string>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Caption 1"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="Basic Data:" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwV-MV-SVM">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" misplaced="YES" text="Basic Data:" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwV-MV-SVM">
                                                     <rect key="frame" x="8" y="10" width="84" height="53"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -3834,7 +3911,7 @@ Serious</string>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JqK-sv-UYh" customClass="TDTextField">
                                                         <rect key="frame" x="0.0" y="180" width="500" height="40"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Tap to select a ward" label="Ward select">
-                                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                                            <accessibilityTraits key="traits" button="YES"/>
                                                         </accessibility>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="4p9-c9-eTj"/>
@@ -3851,7 +3928,7 @@ Serious</string>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1qA-Yd-eM6" customClass="TDTextField">
                                                         <rect key="frame" x="0.0" y="104" width="500" height="40"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Tap to select a hospital" label="Hospital Select">
-                                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                                            <accessibilityTraits key="traits" button="YES"/>
                                                         </accessibility>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="g6H-BY-Op2"/>
@@ -3865,10 +3942,10 @@ Serious</string>
                                                             <outlet property="delegate" destination="iP6-DF-iGB" id="7pr-ZQ-ejw"/>
                                                         </connections>
                                                     </textField>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQ5-W0-Vqa" userLabel="home.hospital-title">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hospital:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQ5-W0-Vqa" userLabel="home.hospital-title">
                                                         <rect key="frame" x="0.0" y="76" width="65" height="20"/>
                                                         <accessibility key="accessibilityConfiguration" label="">
-                                                            <accessibilityTraits key="traits" none="YES" staticText="YES"/>
+                                                            <accessibilityTraits key="traits" staticText="YES"/>
                                                         </accessibility>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -3889,7 +3966,7 @@ Serious</string>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ckk-Vz-UI6" customClass="TDTextField">
                                                         <rect key="frame" x="0.0" y="28" width="500" height="40"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Tap to select a hospital" label="Hospital Select">
-                                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                                            <accessibilityTraits key="traits" button="YES"/>
                                                         </accessibility>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="VXd-dQ-abb"/>
@@ -3903,10 +3980,10 @@ Serious</string>
                                                             <outlet property="delegate" destination="iP6-DF-iGB" id="G0V-Q3-A5Z"/>
                                                         </connections>
                                                     </textField>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trust:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsB-Ie-h8w" userLabel="home.hospital-title">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Trust:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsB-Ie-h8w" userLabel="home.hospital-title">
                                                         <rect key="frame" x="0.0" y="0.0" width="41" height="20"/>
                                                         <accessibility key="accessibilityConfiguration" label="">
-                                                            <accessibilityTraits key="traits" none="YES" staticText="YES"/>
+                                                            <accessibilityTraits key="traits" staticText="YES"/>
                                                         </accessibility>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -4026,12 +4103,12 @@ Serious</string>
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="753" translatesAutoresizingMaskIntoConstraints="NO" id="OMe-C9-fH3" userLabel="Selection Buttons">
-                                                <rect key="frame" x="50" y="290" width="500" height="220"/>
+                                                <rect key="frame" x="50" y="290" width="500" height="144"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wFQ-d3-Yf6" customClass="TDTextField">
-                                                        <rect key="frame" x="0.0" y="180" width="500" height="40"/>
+                                                        <rect key="frame" x="0.0" y="104" width="500" height="40"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Tap to select a ward" label="Ward select">
-                                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                                            <accessibilityTraits key="traits" button="YES"/>
                                                         </accessibility>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="x5i-2o-F0c"/>
@@ -4048,9 +4125,9 @@ Serious</string>
                                                         </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Hospital:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVt-Eg-lyr" userLabel="home.hospital-title">
-                                                        <rect key="frame" x="0.0" y="76" width="65" height="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="20"/>
                                                         <accessibility key="accessibilityConfiguration" label="">
-                                                            <accessibilityTraits key="traits" none="YES" staticText="YES"/>
+                                                            <accessibilityTraits key="traits" staticText="YES"/>
                                                         </accessibility>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -4062,7 +4139,7 @@ Serious</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Ward:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Dq-as-i08">
-                                                        <rect key="frame" x="0.0" y="152" width="43" height="20"/>
+                                                        <rect key="frame" x="0.0" y="76" width="43" height="20"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -4072,43 +4149,10 @@ Serious</string>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="17b-RR-ovz" customClass="TDTextField">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U2x-fm-LbL" customClass="TDTextField">
                                                         <rect key="frame" x="0.0" y="28" width="500" height="40"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Tap to select a hospital" label="Hospital Select">
-                                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
-                                                        </accessibility>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Jnx-yU-bph"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.field.trust-select"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Prompt to select the desired trust."/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="Body"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="7pY-D6-NJ7" id="lN0-Hj-fdg"/>
-                                                        </connections>
-                                                    </textField>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Trust:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eh-56-A7z" userLabel="home.hospital-title">
-                                                        <rect key="frame" x="0.0" y="0.0" width="41" height="20"/>
-                                                        <accessibility key="accessibilityConfiguration" label="">
-                                                            <accessibilityTraits key="traits" none="YES" staticText="YES"/>
-                                                        </accessibility>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.label.trust-title"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringComment" value="Label for the trust select field."/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDTextStyleIdentifier" value="SubHeadline"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U2x-fm-LbL" customClass="TDTextField">
-                                                        <rect key="frame" x="0.0" y="104" width="500" height="40"/>
-                                                        <accessibility key="accessibilityConfiguration" hint="Tap to select a hospital" label="Hospital Select">
-                                                            <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                                            <accessibilityTraits key="traits" button="YES"/>
                                                         </accessibility>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="mHj-RN-a4h"/>
@@ -4125,7 +4169,7 @@ Serious</string>
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your ward" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cR9-5u-66a" customClass="TDTextField">
-                                                        <rect key="frame" x="0.0" y="236" width="500" height="40"/>
+                                                        <rect key="frame" x="0.0" y="160" width="500" height="40"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Enter your staff log in username" label="Username"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="fRv-yi-F09"/>
@@ -4152,28 +4196,23 @@ Serious</string>
                                                     <constraint firstAttribute="trailing" secondItem="U2x-fm-LbL" secondAttribute="trailing" id="0XJ-wI-UZO"/>
                                                     <constraint firstAttribute="bottom" secondItem="wFQ-d3-Yf6" secondAttribute="bottom" id="1ag-F0-OdZ"/>
                                                     <constraint firstItem="cR9-5u-66a" firstAttribute="leading" secondItem="OMe-C9-fH3" secondAttribute="leading" id="3Fn-np-CFK"/>
-                                                    <constraint firstItem="6Dq-as-i08" firstAttribute="leading" secondItem="5eh-56-A7z" secondAttribute="leading" id="41W-vC-t1P"/>
                                                     <constraint firstItem="wFQ-d3-Yf6" firstAttribute="top" secondItem="6Dq-as-i08" secondAttribute="bottom" constant="8" id="5U3-1l-T3S"/>
-                                                    <constraint firstItem="5eh-56-A7z" firstAttribute="leading" secondItem="OMe-C9-fH3" secondAttribute="leading" id="8Xd-fx-rRw"/>
-                                                    <constraint firstAttribute="trailing" secondItem="17b-RR-ovz" secondAttribute="trailing" id="Ajp-VN-QND"/>
-                                                    <constraint firstItem="5eh-56-A7z" firstAttribute="top" secondItem="OMe-C9-fH3" secondAttribute="top" id="FXL-Xe-qyj"/>
+                                                    <constraint firstItem="6Dq-as-i08" firstAttribute="leading" secondItem="UVt-Eg-lyr" secondAttribute="leading" id="Ihg-5n-PEa"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="M6o-GH-CLu"/>
                                                     <constraint firstAttribute="bottom" secondItem="cR9-5u-66a" secondAttribute="bottom" priority="100" id="Odr-eU-nJo"/>
-                                                    <constraint firstItem="UVt-Eg-lyr" firstAttribute="top" secondItem="17b-RR-ovz" secondAttribute="bottom" constant="8" id="SwF-es-Ihy"/>
                                                     <constraint firstAttribute="bottom" secondItem="wFQ-d3-Yf6" secondAttribute="bottom" priority="900" id="XVg-PJ-lhj"/>
                                                     <constraint firstAttribute="trailing" secondItem="cR9-5u-66a" secondAttribute="trailing" id="bPW-jo-EDp"/>
                                                     <constraint firstItem="wFQ-d3-Yf6" firstAttribute="top" secondItem="6Dq-as-i08" secondAttribute="bottom" constant="8" id="bSc-9J-TVp"/>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="biZ-PD-Rqg"/>
-                                                    <constraint firstItem="17b-RR-ovz" firstAttribute="top" secondItem="5eh-56-A7z" secondAttribute="bottom" constant="8" id="euM-Z7-XlE"/>
+                                                    <constraint firstItem="UVt-Eg-lyr" firstAttribute="top" secondItem="OMe-C9-fH3" secondAttribute="top" id="cyT-lJ-kZQ"/>
                                                     <constraint firstItem="6Dq-as-i08" firstAttribute="top" secondItem="U2x-fm-LbL" secondAttribute="bottom" constant="8" id="fFE-zx-7ih"/>
-                                                    <constraint firstItem="5eh-56-A7z" firstAttribute="leading" secondItem="UVt-Eg-lyr" secondAttribute="leading" id="g4t-Sk-bcS"/>
                                                     <constraint firstItem="cR9-5u-66a" firstAttribute="top" secondItem="wFQ-d3-Yf6" secondAttribute="bottom" constant="16" id="g65-bp-7wX"/>
                                                     <constraint firstItem="wFQ-d3-Yf6" firstAttribute="leading" secondItem="OMe-C9-fH3" secondAttribute="leading" id="g9a-kk-Mi4"/>
-                                                    <constraint firstItem="17b-RR-ovz" firstAttribute="leading" secondItem="OMe-C9-fH3" secondAttribute="leading" id="tJ6-qR-6pO"/>
                                                     <constraint firstAttribute="trailing" secondItem="wFQ-d3-Yf6" secondAttribute="trailing" id="wAr-gg-Lkp"/>
                                                     <constraint firstItem="U2x-fm-LbL" firstAttribute="top" secondItem="UVt-Eg-lyr" secondAttribute="bottom" constant="8" id="wb1-x4-Mqs"/>
                                                     <constraint firstItem="U2x-fm-LbL" firstAttribute="leading" secondItem="OMe-C9-fH3" secondAttribute="leading" id="xkB-Bm-BmP"/>
                                                     <constraint firstItem="UVt-Eg-lyr" firstAttribute="leading" secondItem="OMe-C9-fH3" secondAttribute="leading" constant="5" id="xkM-hv-ukF"/>
+                                                    <constraint firstItem="UVt-Eg-lyr" firstAttribute="leading" secondItem="OMe-C9-fH3" secondAttribute="leading" id="yU1-9f-UFi"/>
                                                     <constraint firstItem="6Dq-as-i08" firstAttribute="leading" secondItem="OMe-C9-fH3" secondAttribute="leading" constant="5" id="zz5-i0-0Mg"/>
                                                 </constraints>
                                                 <variation key="default">
@@ -4255,7 +4294,7 @@ Serious</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lm0-Hs-msk" customClass="TDButton">
-                                        <rect key="frame" x="100" y="0.0" width="102" height="40"/>
+                                        <rect key="frame" x="100" y="0.0" width="104" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <accessibility key="accessibilityConfiguration" hint="Return to log in screen"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
@@ -4377,7 +4416,6 @@ Serious</string>
                         <outlet property="otherWardBottomConstraint" destination="Odr-eU-nJo" id="1Ki-6p-b9O"/>
                         <outlet property="otherWardField" destination="cR9-5u-66a" id="r3J-Uv-vIa"/>
                         <outlet property="scrollView" destination="PDZ-Eh-kJd" id="bA8-Iu-XcF"/>
-                        <outlet property="trustField" destination="17b-RR-ovz" id="M5A-Cb-8BL"/>
                         <outlet property="wardField" destination="wFQ-d3-Yf6" id="MDc-41-mJ2"/>
                         <outlet property="wardSelectBottomConstraint" destination="XVg-PJ-lhj" id="P46-Zn-IRD"/>
                         <segue destination="ilS-7W-Avn" kind="show" identifier="CreateRecord" id="qD4-Zd-ioa"/>
@@ -4566,7 +4604,7 @@ Serious</string>
         <image name="upload" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BQC-c1-4uu"/>
+        <segue reference="RwE-67-GqX"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.4823529411764706" alpha="1" colorSpace="calibratedRGB"/>
 </document>

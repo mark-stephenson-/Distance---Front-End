@@ -30,7 +30,6 @@
     [super viewWillAppear:animated];
     
 #ifdef DEBUG
-    self.selectedTrust = [trusts firstObject];
     self.selectedHospital = [self.selectedTrust.hospitals anyObject];
     self.selectedWard = [self.selectedHospital.wards anyObject];
 #endif

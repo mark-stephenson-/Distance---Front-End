@@ -375,7 +375,8 @@
                          @"PRAnswerOption": @{@"id": @"answerID",
                                               @"tint": @"imageTintIdentifier",
                                               @"text": @"localizationID",
-                                              @"image":@"imageID"}};
+                                              @"image":@"imageID"},
+                         @"PRUser":         @{@"trust": @"trustID"}};
     }
     
     return translations;

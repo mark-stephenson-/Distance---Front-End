@@ -6,6 +6,7 @@
 const struct PRUserAttributes PRUserAttributes = {
 	.id = @"id",
 	.password = @"password",
+	.trustID = @"trustID",
 	.username = @"username",
 };
 
@@ -40,6 +41,11 @@ const struct PRUserAttributes PRUserAttributes = {
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
+	if ([key isEqualToString:@"trustIDValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"trustID"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 
 	return keyPaths;
 }
@@ -65,6 +71,26 @@ const struct PRUserAttributes PRUserAttributes = {
 }
 
 @dynamic password;
+
+@dynamic trustID;
+
+- (int64_t)trustIDValue {
+	NSNumber *result = [self trustID];
+	return [result longLongValue];
+}
+
+- (void)setTrustIDValue:(int64_t)value_ {
+	[self setTrustID:[NSNumber numberWithLongLong:value_]];
+}
+
+- (int64_t)primitiveTrustIDValue {
+	NSNumber *result = [self primitiveTrustID];
+	return [result longLongValue];
+}
+
+- (void)setPrimitiveTrustIDValue:(int64_t)value_ {
+	[self setPrimitiveTrustID:[NSNumber numberWithLongLong:value_]];
+}
 
 @dynamic username;
 

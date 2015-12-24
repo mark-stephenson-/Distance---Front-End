@@ -48,7 +48,6 @@
         
         [super refreshViews];
         
-        trustField.enabled = NO;
         hospitalField.enabled = NO;
         wardField.enabled = NO;
         otherWardField.enabled = NO;

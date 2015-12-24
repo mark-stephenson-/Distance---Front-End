@@ -9,13 +9,18 @@
 #import "PRViewController.h"
 #import "PRInputAccessoryView.h"
 
+@class PRTrust;
+@class PRHospital;
+@class PRWard;
 /*!
  * @class PRLoginViewController
  * @discussion The first screen the user sees, allowing log in to create a record. The methods in the KeyboardResponder UIViewController category are used to navigate between the log in fields.
  */
-@interface PRLoginViewController : PRViewController <TDInputAccessoryDelegate, TDSelectionViewControllerDelegate>
+@interface PRLoginViewController : PRViewController <TDInputAccessoryDelegate, TDSelectionViewControllerDelegate, UITextViewDelegate>
 {
     NSDictionary *logInCredentials;
+    
+    __weak IBOutlet UITextField *trustField;
     
     __weak IBOutlet UILabel *versionLabel;
     
@@ -35,7 +40,11 @@
     
     /// Flag to determine whether an attempt to download the latest data from the server was successful.
     BOOL dataSuccess;
+    
+    NSArray *trusts;
 }
+
+@property (nonatomic, strong) PRTrust *selectedTrust;
 
 -(IBAction)continueAsGuest:(id)sender;
 -(IBAction)login:(id)sender;

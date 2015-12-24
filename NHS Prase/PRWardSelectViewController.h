@@ -22,7 +22,6 @@
  */
 @interface PRWardSelectViewController : PRViewController <UITextFieldDelegate, TDSelectionViewControllerDelegate>
 {
-    IBOutlet UITextField *trustField;
     IBOutlet UITextField *hospitalField;
     IBOutlet UITextField *wardField;
     
@@ -32,7 +31,6 @@
     IBOutlet NSLayoutConstraint *wardSelectBottomConstraint;
     IBOutlet NSLayoutConstraint *otherWardBottomConstraint;
     
-    NSArray *trusts;
     NSArray *hospitals;
     NSArray *wards;
 }

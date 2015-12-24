@@ -6,6 +6,7 @@
 extern const struct PRUserAttributes {
 	__unsafe_unretained NSString *id;
 	__unsafe_unretained NSString *password;
+	__unsafe_unretained NSString *trustID;
 	__unsafe_unretained NSString *username;
 } PRUserAttributes;
 
@@ -30,6 +31,14 @@ extern const struct PRUserAttributes {
 
 //- (BOOL)validatePassword:(id*)value_ error:(NSError**)error_;
 
+@property (nonatomic, strong) NSNumber* trustID;
+
+@property (atomic) int64_t trustIDValue;
+- (int64_t)trustIDValue;
+- (void)setTrustIDValue:(int64_t)value_;
+
+//- (BOOL)validateTrustID:(id*)value_ error:(NSError**)error_;
+
 @property (nonatomic, strong) NSString* username;
 
 //- (BOOL)validateUsername:(id*)value_ error:(NSError**)error_;
@@ -46,6 +55,12 @@ extern const struct PRUserAttributes {
 
 - (NSString*)primitivePassword;
 - (void)setPrimitivePassword:(NSString*)value;
+
+- (NSNumber*)primitiveTrustID;
+- (void)setPrimitiveTrustID:(NSNumber*)value;
+
+- (int64_t)primitiveTrustIDValue;
+- (void)setPrimitiveTrustIDValue:(int64_t)value_;
 
 - (NSString*)primitiveUsername;
 - (void)setPrimitiveUsername:(NSString*)value;
