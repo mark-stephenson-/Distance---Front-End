@@ -959,7 +959,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4d3bb57d-e0dd-4123-9bd0-ef7382083bff";
+				PROVISIONING_PROFILE = "c0af11f6-d47c-4ffe-9883-9f6c59fbd6eb";
 			};
 			name = "Beta Testing";
 		};
