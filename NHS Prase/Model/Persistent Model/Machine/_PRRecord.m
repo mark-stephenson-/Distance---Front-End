@@ -7,6 +7,7 @@ const struct PRRecordAttributes PRRecordAttributes = {
 	.basicData = @"basicData",
 	.incompleteReason = @"incompleteReason",
 	.language = @"language",
+	.pmosID = @"pmosID",
 	.startDate = @"startDate",
 	.timeAdditionalPatient = @"timeAdditionalPatient",
 	.timeAdditionalQuestionnaire = @"timeAdditionalQuestionnaire",
@@ -48,6 +49,11 @@ const struct PRRecordRelationships PRRecordRelationships = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 
+	if ([key isEqualToString:@"pmosIDValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"pmosID"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 	if ([key isEqualToString:@"timeAdditionalPatientValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"timeAdditionalPatient"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -72,6 +78,26 @@ const struct PRRecordRelationships PRRecordRelationships = {
 @dynamic incompleteReason;
 
 @dynamic language;
+
+@dynamic pmosID;
+
+- (int64_t)pmosIDValue {
+	NSNumber *result = [self pmosID];
+	return [result longLongValue];
+}
+
+- (void)setPmosIDValue:(int64_t)value_ {
+	[self setPmosID:[NSNumber numberWithLongLong:value_]];
+}
+
+- (int64_t)primitivePmosIDValue {
+	NSNumber *result = [self primitivePmosID];
+	return [result longLongValue];
+}
+
+- (void)setPrimitivePmosIDValue:(int64_t)value_ {
+	[self setPrimitivePmosID:[NSNumber numberWithLongLong:value_]];
+}
 
 @dynamic startDate;
 

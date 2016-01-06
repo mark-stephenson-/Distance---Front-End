@@ -7,6 +7,7 @@ extern const struct PRRecordAttributes {
 	__unsafe_unretained NSString *basicData;
 	__unsafe_unretained NSString *incompleteReason;
 	__unsafe_unretained NSString *language;
+	__unsafe_unretained NSString *pmosID;
 	__unsafe_unretained NSString *startDate;
 	__unsafe_unretained NSString *timeAdditionalPatient;
 	__unsafe_unretained NSString *timeAdditionalQuestionnaire;
@@ -50,6 +51,14 @@ extern const struct PRRecordRelationships {
 @property (nonatomic, strong) NSString* language;
 
 //- (BOOL)validateLanguage:(id*)value_ error:(NSError**)error_;
+
+@property (nonatomic, strong) NSNumber* pmosID;
+
+@property (atomic) int64_t pmosIDValue;
+- (int64_t)pmosIDValue;
+- (void)setPmosIDValue:(int64_t)value_;
+
+//- (BOOL)validatePmosID:(id*)value_ error:(NSError**)error_;
 
 @property (nonatomic, strong) NSDate* startDate;
 
@@ -154,6 +163,12 @@ extern const struct PRRecordRelationships {
 
 - (NSString*)primitiveLanguage;
 - (void)setPrimitiveLanguage:(NSString*)value;
+
+- (NSNumber*)primitivePmosID;
+- (void)setPrimitivePmosID:(NSNumber*)value;
+
+- (int64_t)primitivePmosIDValue;
+- (void)setPrimitivePmosIDValue:(int64_t)value_;
 
 - (NSDate*)primitiveStartDate;
 - (void)setPrimitiveStartDate:(NSDate*)value;

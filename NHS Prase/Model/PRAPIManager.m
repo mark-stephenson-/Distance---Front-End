@@ -90,6 +90,8 @@
             
             NSDictionary *root = [(NSArray *)responseObject firstObject];
             
+            currentPmos.id = [self safeValueForEntityDescription:[currentPmos entity] withKeypath:@"id" andProposedValue:root[@"id"]];
+            
             // check for update
             
             NSArray *questionBranches = root[@"branches"];
@@ -190,6 +192,8 @@
     
     // the id will uniquely identify the ward, hospital and trust in TheCore. If the ward is a custom ward
     jsonRecord[@"ward"] = [self serializeWard:record.ward];
+    
+    jsonRecord[@"pmosID"] = @(record.pmosID.intValue);
     
     // create the questions entry
     NSMutableArray *questionsEntry = [NSMutableArray arrayWithCapacity:record.questions.count];

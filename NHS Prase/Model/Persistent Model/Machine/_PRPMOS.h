@@ -3,6 +3,10 @@
 
 #import <CoreData/CoreData.h>
 
+extern const struct PRPMOSAttributes {
+	__unsafe_unretained NSString *id;
+} PRPMOSAttributes;
+
 extern const struct PRPMOSRelationships {
 	__unsafe_unretained NSString *questions;
 } PRPMOSRelationships;
@@ -17,6 +21,14 @@ extern const struct PRPMOSRelationships {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) PRPMOSID* objectID;
+
+@property (nonatomic, strong) NSNumber* id;
+
+@property (atomic) int64_t idValue;
+- (int64_t)idValue;
+- (void)setIdValue:(int64_t)value_;
+
+//- (BOOL)validateId:(id*)value_ error:(NSError**)error_;
 
 @property (nonatomic, strong) NSOrderedSet *questions;
 
@@ -40,6 +52,12 @@ extern const struct PRPMOSRelationships {
 @end
 
 @interface _PRPMOS (CoreDataGeneratedPrimitiveAccessors)
+
+- (NSNumber*)primitiveId;
+- (void)setPrimitiveId:(NSNumber*)value;
+
+- (int64_t)primitiveIdValue;
+- (void)setPrimitiveIdValue:(int64_t)value_;
 
 - (NSMutableOrderedSet*)primitiveQuestions;
 - (void)setPrimitiveQuestions:(NSMutableOrderedSet*)value;

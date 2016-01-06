@@ -31,7 +31,9 @@ NSString *const PRRecordUsernameKey = @"PRRecordUsername";
     
     // create a set of PRQuestions based on the PMOS. There should only ever be 1 PMOS in CoreData.
     PRPMOS *currentQuestionnaire = [PRPMOS MR_findFirst];
-    //NSArray *pmosQs = [PRPMOSQuestion MR_findAll];
+    
+    newRecord.pmosID = currentQuestionnaire.id;
+    
     NSMutableOrderedSet *recordQuestions = [NSMutableOrderedSet orderedSetWithCapacity:currentQuestionnaire.questions.count];
 
     NSMutableArray *allPMOSQuestions = [NSMutableArray arrayWithArray:[currentQuestionnaire.questions array]];

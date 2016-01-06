@@ -41,7 +41,7 @@
 @end
 
 @implementation PRLoginViewController
-            
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -177,7 +177,7 @@
         [self dismissViewControllerAnimated:true completion:nil];
         return;
     }
-
+    
     
     [self dismissViewControllerAnimated:YES completion:^{
         NSString *currentURLKey = [[NSUserDefaults standardUserDefaults] valueForKey:APIManagerBaseURLKey];
@@ -347,7 +347,7 @@
         __block NSInteger submissionCount = savedRecords.count;
         __block NSInteger successCount = 0;
         __block NSInteger completedCount = 0;
-
+        
         for (PRRecord *toSubmit in savedRecords) {
             [[PRAPIManager sharedManager] submitRecord:toSubmit withCompletion:^(BOOL success, NSError *error) {
                 completedCount++;
@@ -466,13 +466,20 @@
         
         if (selector == @selector(getTrustHierarchyWithCompletion:)) {
             trusts = [PRTrust MR_findAll];
+#if defined(DEBUG)
+            if (trusts.count > 0) {
+                self.selectedTrust = [trusts firstObject];
+                [self refreshLoginCredentials];
+                trustField.text = self.selectedTrust.name;
+            }
+#endif
         }
         
         if (completionCount == requestCount) {
             
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-//                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                //                [MBProgressHUD hideHUDForView:self.view animated:YES];
             }];
             
             if ([allErrors count] > 0) {
@@ -496,7 +503,7 @@
                                                [self refreshDownloadErrorButton];
                                            } contactSupportTitle:nil
                                       contactSupportBlock:nil];
-            
+                
             } else {
                 dataSuccess = YES;
                 [self refreshDownloadErrorButton];
@@ -586,7 +593,7 @@
                          actions:@[continueLogIn]];
         return;
     }
-
+    
     if (canContinue) {
         continueLogIn(nil, 0, nil);
     } else {
@@ -684,7 +691,7 @@
     }
     
     return YES;
-
+    
 }
 
 
