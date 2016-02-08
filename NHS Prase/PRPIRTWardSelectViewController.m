@@ -38,6 +38,12 @@
     [self refreshViews];
 }
 
+-(void)setRecord:(PRRecord *)record
+{
+    _record = record;
+    self.selectedTrust = record.ward.hospital.trust;
+}
+
 -(void)refreshViews
 {
     if ((!hasAppeared && self.selectedWard == self.record.ward) || (hasAppeared && currentWardSegment.selectedSegmentIndex == 0)) {
