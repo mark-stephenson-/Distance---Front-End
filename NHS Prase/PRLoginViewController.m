@@ -638,6 +638,8 @@
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    [super textFieldShouldBeginEditing:textField];
+    
     if (textField == trustField) {
         
         NSMutableDictionary *tempOptions = [NSMutableDictionary dictionaryWithCapacity:trusts.count];

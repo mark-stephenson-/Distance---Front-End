@@ -46,7 +46,7 @@ NSString *const APIManagerBaseURLKey = @"APIManagerBaseURL";
 
     NSString *urlKey = nil;
 #if defined(DEBUG) || defined(BETA_TESTING)
-        urlKey = @"Staging";
+        urlKey = @"Live";
 #else 
         urlKey = @"Live";
 #endif

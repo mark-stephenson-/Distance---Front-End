@@ -84,6 +84,8 @@
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    [super textFieldShouldBeginEditing:textField];
+    
     canDismissKeyboard = YES;
     [self.noteView resignFirstResponder];
     

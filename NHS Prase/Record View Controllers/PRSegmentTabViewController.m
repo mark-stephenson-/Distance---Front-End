@@ -27,12 +27,11 @@
         tabController.tabBar.hidden = YES;
         [tabController setSelectedIndex:0];
     }
-    
+        
     segmentSelector.bounces = NO;
     segmentSelector.showsHorizontalScrollIndicator = NO;
     segmentSelector.showsVerticalScrollIndicator = NO;
     
-    segmentCellTextInsets = UIEdgeInsetsMake(8, 25, 8, 25);
 //    visibleSelector.textBuffer = 25.0;
 }
 
@@ -77,14 +76,14 @@
     [self configureNext:tabController.selectedIndex == tabController.viewControllers.count - 1];
     
     if (footerBottomConstraint.constant != 0.0) {
-        footerBottomConstraint.constant = [footerView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+        footerBottomConstraint.constant = [bottomView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
         [self.view layoutIfNeeded];
     }
 }
 
 -(void)showFooterView:(BOOL)show animated:(BOOL)animated
 {
-    CGSize footerSize = [footerView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    CGSize footerSize = [bottomView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     
     if (animated) {
         [UIView animateWithDuration:0.35 animations:^{
@@ -201,9 +200,13 @@
     
     // ensure the collection view is marginally larger than the cells to give a small border around the edge
     segmentSelectorHeightConstraint.constant = maxHeight + flowLayout.sectionInset.top + flowLayout.sectionInset.bottom;
+    [self.view setNeedsLayout];
     segmentCellSizes = tempCellSizes;
     [segmentSelector.collectionViewLayout invalidateLayout];
-    [self.view layoutIfNeeded];
+    
+    if (hasAppeared) {
+        [self.view layoutIfNeeded];
+    }
     
 }
 
@@ -227,9 +230,11 @@
         NSString *cellText = segmentTitles[indexPath.item];
         UIFont *font = [[PRTheme sharedTheme] preferredFontForTextStyle:UIFontTextStyleHeadline];
         
-        CGSize cellSize = [cellText sizeWithAttributes:@{NSFontAttributeName: font}];
-        cellSize.width += segmentCellTextInsets.left + segmentCellTextInsets.right + 2.0;
-        cellSize.height += segmentCellTextInsets.top + segmentCellTextInsets.bottom + 2.0;
+        CGSize cellSize = [cellText boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: font} context:nil].size;
+        
+//        CGSize cellSize = [cellText sizeWithAttributes:@{NSFontAttributeName: font}];
+        cellSize.width += segmentCellTextInsets.left + segmentCellTextInsets.right + 16.0 + 2.0;
+        cellSize.height += segmentCellTextInsets.top + segmentCellTextInsets.bottom + 16.0 + 2.0;
         
         if (segmentSelectorHeightConstraint.constant != cellSize.height) {
             segmentSelectorHeightConstraint.constant = cellSize.height + 3.0; // leave a 1pt border around the collection view to make it look like a border on the cell.
