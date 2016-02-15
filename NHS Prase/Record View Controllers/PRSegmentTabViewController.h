@@ -25,7 +25,7 @@
     
     /// used to hide and show the footer view in showFooterView:animated:.
     __weak IBOutlet NSLayoutConstraint *footerBottomConstraint;
-    __weak IBOutlet UIView *footerView;
+    __weak IBOutlet UIView *bottomView;
     __weak IBOutlet UIButton *nextButton;
     __weak IBOutlet UIButton *prevButton;
     __weak IBOutlet UIButton *settingsButton;

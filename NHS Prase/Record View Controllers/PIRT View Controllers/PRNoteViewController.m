@@ -82,6 +82,7 @@
     
     canDismissKeyboard = YES;
     [self.noteView resignFirstResponder];
+    self.activeComponent = nil;
 }
 
 -(void)viewDidDisappear:(BOOL)animated

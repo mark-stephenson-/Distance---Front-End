@@ -652,7 +652,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="qru-x2-l2B"/>
                     <connections>
-                        <outlet property="footerView" destination="ibJ-qL-OKe" id="vpg-If-eRj"/>
+                        <outlet property="footerView" destination="ibJ-qL-OKe" id="DbO-kb-wAY"/>
                         <outlet property="headerView" destination="PJo-Qi-FPe" id="3Xa-gm-Yoh"/>
                         <outlet property="tableView" destination="rsQ-x0-mQz" id="9Zd-Lg-tXw"/>
                     </connections>
@@ -941,9 +941,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="bottomView" destination="q1Z-jc-doS" id="I2b-jz-ogk"/>
                         <outlet property="containerView" destination="4EC-d9-SYg" id="ArR-ma-wep"/>
                         <outlet property="footerBottomConstraint" destination="qK5-ys-mti" id="zye-dq-Ynn"/>
-                        <outlet property="footerView" destination="q1Z-jc-doS" id="eLc-MF-CqH"/>
                         <outlet property="loggedInLabel" destination="dKn-PE-Yf3" id="7Mp-GM-Z2I"/>
                         <outlet property="loggedInView" destination="5SP-OZ-ZnK" id="D7t-NE-k1Z"/>
                         <outlet property="nextButton" destination="nQU-3w-RyB" id="sDj-VN-vmG"/>
@@ -2657,8 +2657,8 @@ Many thanks for participating.</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomView" destination="hiJ-aw-nLb" id="gyX-Oi-TrO"/>
                         <outlet property="footerBottomConstraint" destination="PgI-7p-uSY" id="Urh-Yl-kJ3"/>
-                        <outlet property="footerView" destination="hiJ-aw-nLb" id="1Vl-av-XPA"/>
                         <outlet property="nextButton" destination="ulD-8n-X4O" id="Nuf-ML-F7X"/>
                         <outlet property="prevButton" destination="vD4-Oq-4CS" id="Jqt-UO-M2N"/>
                         <outlet property="segmentSelector" destination="U5S-en-G0o" id="zYx-MZ-IoC"/>
@@ -3869,10 +3869,10 @@ Serious</string>
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="u0J-Tz-faB">
-                                                <rect key="frame" x="50" y="108" width="500" height="276"/>
+                                                <rect key="frame" x="50" y="146" width="500" height="200"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JqK-sv-UYh" customClass="TDTextField">
-                                                        <rect key="frame" x="0.0" y="180" width="500" height="40"/>
+                                                        <rect key="frame" x="0.0" y="104" width="500" height="40"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Tap to select a ward" label="Ward select">
                                                             <accessibilityTraits key="traits" button="YES"/>
                                                         </accessibility>
@@ -3889,7 +3889,7 @@ Serious</string>
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1qA-Yd-eM6" customClass="TDTextField">
-                                                        <rect key="frame" x="0.0" y="104" width="500" height="40"/>
+                                                        <rect key="frame" x="0.0" y="28" width="500" height="40"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Tap to select a hospital" label="Hospital Select">
                                                             <accessibilityTraits key="traits" button="YES"/>
                                                         </accessibility>
@@ -3905,8 +3905,8 @@ Serious</string>
                                                             <outlet property="delegate" destination="iP6-DF-iGB" id="7pr-ZQ-ejw"/>
                                                         </connections>
                                                     </textField>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hospital:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQ5-W0-Vqa" userLabel="home.hospital-title">
-                                                        <rect key="frame" x="0.0" y="76" width="65" height="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQ5-W0-Vqa" userLabel="home.hospital-title">
+                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="20"/>
                                                         <accessibility key="accessibilityConfiguration" label="">
                                                             <accessibilityTraits key="traits" staticText="YES"/>
                                                         </accessibility>
@@ -3918,7 +3918,7 @@ Serious</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ward:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMf-2H-s7G">
-                                                        <rect key="frame" x="0.0" y="152" width="43" height="20"/>
+                                                        <rect key="frame" x="0.0" y="76" width="43" height="20"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -3926,37 +3926,8 @@ Serious</string>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.label.ward-title"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tap to select" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ckk-Vz-UI6" customClass="TDTextField">
-                                                        <rect key="frame" x="0.0" y="28" width="500" height="40"/>
-                                                        <accessibility key="accessibilityConfiguration" hint="Tap to select a hospital" label="Hospital Select">
-                                                            <accessibilityTraits key="traits" button="YES"/>
-                                                        </accessibility>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="VXd-dQ-abb"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.field.trust-select"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="iP6-DF-iGB" id="G0V-Q3-A5Z"/>
-                                                        </connections>
-                                                    </textField>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Trust:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsB-Ie-h8w" userLabel="home.hospital-title">
-                                                        <rect key="frame" x="0.0" y="0.0" width="41" height="20"/>
-                                                        <accessibility key="accessibilityConfiguration" label="">
-                                                            <accessibilityTraits key="traits" staticText="YES"/>
-                                                        </accessibility>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="TDLocalizedStringKey" value="home.label.trust-title"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your ward" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f2X-wL-hn6" customClass="TDTextField">
-                                                        <rect key="frame" x="0.0" y="236" width="500" height="40"/>
+                                                        <rect key="frame" x="0.0" y="160" width="500" height="40"/>
                                                         <accessibility key="accessibilityConfiguration" hint="Enter your staff log in username" label="Username"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="VvS-hI-4Ki"/>
@@ -3981,27 +3952,22 @@ Serious</string>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="Ckk-Vz-UI6" secondAttribute="trailing" id="4Qn-p1-Y5t"/>
                                                     <constraint firstItem="f2X-wL-hn6" firstAttribute="top" secondItem="JqK-sv-UYh" secondAttribute="bottom" constant="16" id="Coy-ow-6fD"/>
                                                     <constraint firstItem="JqK-sv-UYh" firstAttribute="top" secondItem="VMf-2H-s7G" secondAttribute="bottom" constant="8" id="CvR-tA-AhZ"/>
-                                                    <constraint firstItem="kQ5-W0-Vqa" firstAttribute="top" secondItem="Ckk-Vz-UI6" secondAttribute="bottom" constant="8" id="ExC-D5-Y5o"/>
                                                     <constraint firstAttribute="bottom" secondItem="f2X-wL-hn6" secondAttribute="bottom" priority="900" id="IoM-Rz-Y6d"/>
                                                     <constraint firstAttribute="trailing" secondItem="JqK-sv-UYh" secondAttribute="trailing" id="N9n-pQ-Rkb"/>
                                                     <constraint firstAttribute="bottom" secondItem="JqK-sv-UYh" secondAttribute="bottom" priority="100" id="TRr-xL-yxJ"/>
-                                                    <constraint firstItem="zsB-Ie-h8w" firstAttribute="top" secondItem="u0J-Tz-faB" secondAttribute="top" id="Wt3-ME-Fgg"/>
-                                                    <constraint firstItem="zsB-Ie-h8w" firstAttribute="leading" secondItem="u0J-Tz-faB" secondAttribute="leading" id="Zw0-gu-KPr"/>
+                                                    <constraint firstItem="kQ5-W0-Vqa" firstAttribute="top" secondItem="u0J-Tz-faB" secondAttribute="top" id="dg7-bN-sSa"/>
                                                     <constraint firstItem="f2X-wL-hn6" firstAttribute="leading" secondItem="u0J-Tz-faB" secondAttribute="leading" id="dsA-QQ-Df6"/>
                                                     <constraint firstAttribute="trailing" secondItem="f2X-wL-hn6" secondAttribute="trailing" id="eff-Yz-D9U"/>
                                                     <constraint firstItem="1qA-Yd-eM6" firstAttribute="top" secondItem="kQ5-W0-Vqa" secondAttribute="bottom" constant="8" id="fIr-op-wVd"/>
                                                     <constraint firstItem="JqK-sv-UYh" firstAttribute="top" secondItem="VMf-2H-s7G" secondAttribute="bottom" constant="8" id="g0U-gL-DwE"/>
-                                                    <constraint firstItem="Ckk-Vz-UI6" firstAttribute="top" secondItem="zsB-Ie-h8w" secondAttribute="bottom" constant="8" id="gwT-w4-UL4"/>
                                                     <constraint firstAttribute="trailing" secondItem="1qA-Yd-eM6" secondAttribute="trailing" id="pks-MV-bC0"/>
                                                     <constraint firstItem="VMf-2H-s7G" firstAttribute="top" secondItem="1qA-Yd-eM6" secondAttribute="bottom" constant="8" id="qq4-Pn-U9N"/>
                                                     <constraint firstItem="JqK-sv-UYh" firstAttribute="leading" secondItem="u0J-Tz-faB" secondAttribute="leading" id="rfX-iU-MEy"/>
                                                     <constraint firstItem="1qA-Yd-eM6" firstAttribute="leading" secondItem="u0J-Tz-faB" secondAttribute="leading" id="svo-BY-9ug"/>
                                                     <constraint firstItem="VMf-2H-s7G" firstAttribute="leading" secondItem="u0J-Tz-faB" secondAttribute="leading" id="uUn-en-hrf"/>
                                                     <constraint firstItem="kQ5-W0-Vqa" firstAttribute="leading" secondItem="u0J-Tz-faB" secondAttribute="leading" id="vNO-6A-gRy"/>
-                                                    <constraint firstItem="Ckk-Vz-UI6" firstAttribute="leading" secondItem="u0J-Tz-faB" secondAttribute="leading" id="vXM-Jz-m5M"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -4038,7 +4004,6 @@ Serious</string>
                         <outlet property="otherWardBottomConstraint" destination="IoM-Rz-Y6d" id="mDH-wv-qZZ"/>
                         <outlet property="otherWardField" destination="f2X-wL-hn6" id="Zjm-xP-ZdI"/>
                         <outlet property="scrollView" destination="XWO-pY-4lc" id="5nD-nl-5Qw"/>
-                        <outlet property="trustField" destination="Ckk-Vz-UI6" id="6oz-tw-kcX"/>
                         <outlet property="wardField" destination="JqK-sv-UYh" id="l8Z-Cl-9KW"/>
                         <outlet property="wardSelectBottomConstraint" destination="TRr-xL-yxJ" id="Dny-hr-GcO"/>
                     </connections>

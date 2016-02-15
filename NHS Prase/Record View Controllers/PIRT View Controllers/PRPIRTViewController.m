@@ -132,7 +132,7 @@
         [nextButton setBackgroundColor:[[PRTheme sharedTheme] neutralColor]];
     }
     
-    [self applyThemeToView:footerView];
+    [self applyThemeToView:bottomView];
 }
 
 #pragma mark - Navigation

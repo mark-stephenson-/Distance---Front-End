@@ -242,7 +242,7 @@
         [nextButton setBackgroundColor:[[PRTheme sharedTheme] neutralColor]];
     }
     
-    [self applyThemeToView:footerView];
+    [self applyThemeToView:bottomView];
 }
 
 -(void)refreshFooterView
@@ -272,24 +272,24 @@
     [super viewDidLayoutSubviews];
     
     // force layout the footer view to ensure the difference between the buttons is caluclated correctly.
-    [footerView layoutSubviews];
+    [bottomView layoutSubviews];
     
     CGSize progressSize = [progressFooter systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     
     CGFloat xDelta = CGRectGetMinX(prevButton.frame) - CGRectGetMaxX(settingsButton.frame);
     
-    if (xDelta > progressSize.width && progressFooter.superview != footerView) {
+    if (xDelta > progressSize.width && progressFooter.superview != bottomView) {
         [progressFooter removeFromSuperview];
         
-        [footerView addSubview:progressFooter];
-        [footerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[settings][progress][previous]"
+        [bottomView addSubview:progressFooter];
+        [bottomView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[settings][progress][previous]"
                                                                            options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
                                                                            metrics:nil
                                                                              views:@{@"settings":settingsButton,
                                                                                      @"progress":progressFooter,
                                                                                      @"previous":prevButton}]];
         
-    } else if (xDelta < progressSize.width && progressFooter.superview == footerView) {
+    } else if (xDelta < progressSize.width && progressFooter.superview == bottomView) {
         [progressFooter removeFromSuperview];
         
         // storyboard constraints should be configured such that the container tries to be 20 away from the foot with a lower priority than the vertical content compression priority of the progress view. That way, when the progress footer is between container and the footer the gap will be 20, when it is in the way, the 20 spacing constraint will be ignored.
@@ -299,7 +299,7 @@
                                                                           metrics:nil
                                                                             views:@{@"container":containerView,
                                                                                     @"progress":progressFooter,
-                                                                                    @"footer":footerView}]];
+                                                                                    @"footer":bottomView}]];
         
         [self.view addConstraint:[NSLayoutConstraint constraintWithItem:progressFooter
                                                               attribute:NSLayoutAttributeLeading

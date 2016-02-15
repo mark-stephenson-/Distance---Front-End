@@ -43,6 +43,13 @@
     }
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    self.activeComponent = nil;
+}
+
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
@@ -168,6 +175,8 @@
 // Show a TDSelectionViewController and prevent a keyboard from showing;
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    [super textFieldShouldBeginEditing:textField];
+    
     if (textField == otherWardField) {
         return [super textFieldShouldBeginEditing:textField];
     } else {
