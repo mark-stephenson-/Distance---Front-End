@@ -40,6 +40,12 @@
     [textView becomeFirstResponder];
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.activeComponent = nil;
+}
+
 -(void)refreshDoneButton
 {
     BOOL reasonGiven = [textView.text isNonNullString];
