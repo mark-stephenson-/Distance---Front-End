@@ -226,7 +226,7 @@
 //    jsonRecord[@"notes"] = noteEntries;
     jsonRecord[@"goodNotes"] = goodEntries;
     jsonRecord[@"concerns"] = concernEntries;
-    jsonRecord[@"user"] = [[NSUserDefaults standardUserDefaults] valueForKey:PRRecordUsernameKey] ? : [NSNull null];
+    jsonRecord[@"user"] = record.user;
     
     if ([record.basicData isKindOfClass:[NSDictionary class]]) {
         
