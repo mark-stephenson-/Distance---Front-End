@@ -202,7 +202,7 @@
                                       @"sw": TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.swahili", nil, nil, @"Swahili", @"Swahili option for what is your first language (basic data question)."),
                                       @"other" : TDLocalizedStringWithDefaultValue(@"basic-data.first-language.option.other", nil, nil, @"Other", @"Other (i.e. free text) option for what is your first language (basic data question).")};
     
-    NSArray *languageKeys = @[@[@"en", @"mi", @"ur/pa", @"cs/sk",
+    NSArray *languageKeys = @[@[@"en", @"mi", @"ur", @"pa", @"cs", @"sk",
                                 @"pl", @"bn", @"hu", @"ps", @"gu",
                                 @"ru", @"ar", @"sl", @"fa", @"lv",
                                 @"ku", @"so", @"zh-yue", @"ro", @"cmn",

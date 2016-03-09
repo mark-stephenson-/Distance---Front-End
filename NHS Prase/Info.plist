@@ -38,7 +38,7 @@
 		<key>New Questions</key>
 		<string>http://prase-newquestions.staging.thedistance.co.uk</string>
 		<key>Staging</key>
-		<string>http://prase-ns.staging.thedistance.co.uk</string>
+		<string>http://prase.nso.im</string>
 	</dict>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
