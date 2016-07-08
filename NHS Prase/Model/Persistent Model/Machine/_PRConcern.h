@@ -3,10 +3,6 @@
 
 #import <CoreData/CoreData.h>
 
-
-extern const struct PRConcernAttributes {
-} PRConcernAttributes;
-
 extern const struct PRConcernRelationships {
 	__unsafe_unretained NSString *preventNote;
 	__unsafe_unretained NSString *preventQuestion;
@@ -18,9 +14,6 @@ extern const struct PRConcernRelationships {
 	__unsafe_unretained NSString *whyNote;
 } PRConcernRelationships;
 
-extern const struct PRConcernFetchedProperties {
-} PRConcernFetchedProperties;
-
 @class PRNote;
 @class PRQuestion;
 @class PRQuestion;
@@ -30,7 +23,6 @@ extern const struct PRConcernFetchedProperties {
 @class PRNote;
 @class PRNote;
 
-
 @interface PRConcernID : NSManagedObjectID {}
 @end
 
@@ -38,116 +30,66 @@ extern const struct PRConcernFetchedProperties {
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-- (PRConcernID*)objectID;
-
-
-
-
+@property (nonatomic, readonly, strong) PRConcernID* objectID;
 
 @property (nonatomic, strong) PRNote *preventNote;
 
 //- (BOOL)validatePreventNote:(id*)value_ error:(NSError**)error_;
 
-
-
-
 @property (nonatomic, strong) PRQuestion *preventQuestion;
 
 //- (BOOL)validatePreventQuestion:(id*)value_ error:(NSError**)error_;
-
-
-
 
 @property (nonatomic, strong) PRQuestion *question;
 
 //- (BOOL)validateQuestion:(id*)value_ error:(NSError**)error_;
 
-
-
-
 @property (nonatomic, strong) PRRecord *record;
 
 //- (BOOL)validateRecord:(id*)value_ error:(NSError**)error_;
-
-
-
 
 @property (nonatomic, strong) PRQuestion *seriousQuestion;
 
 //- (BOOL)validateSeriousQuestion:(id*)value_ error:(NSError**)error_;
 
-
-
-
 @property (nonatomic, strong) PRWard *ward;
 
 //- (BOOL)validateWard:(id*)value_ error:(NSError**)error_;
-
-
-
 
 @property (nonatomic, strong) PRNote *whatNote;
 
 //- (BOOL)validateWhatNote:(id*)value_ error:(NSError**)error_;
 
-
-
-
 @property (nonatomic, strong) PRNote *whyNote;
 
 //- (BOOL)validateWhyNote:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@end
-
-@interface _PRConcern (CoreDataGeneratedAccessors)
 
 @end
 
 @interface _PRConcern (CoreDataGeneratedPrimitiveAccessors)
 
-
-
 - (PRNote*)primitivePreventNote;
 - (void)setPrimitivePreventNote:(PRNote*)value;
-
-
 
 - (PRQuestion*)primitivePreventQuestion;
 - (void)setPrimitivePreventQuestion:(PRQuestion*)value;
 
-
-
 - (PRQuestion*)primitiveQuestion;
 - (void)setPrimitiveQuestion:(PRQuestion*)value;
-
-
 
 - (PRRecord*)primitiveRecord;
 - (void)setPrimitiveRecord:(PRRecord*)value;
 
-
-
 - (PRQuestion*)primitiveSeriousQuestion;
 - (void)setPrimitiveSeriousQuestion:(PRQuestion*)value;
-
-
 
 - (PRWard*)primitiveWard;
 - (void)setPrimitiveWard:(PRWard*)value;
 
-
-
 - (PRNote*)primitiveWhatNote;
 - (void)setPrimitiveWhatNote:(PRNote*)value;
 
-
-
 - (PRNote*)primitiveWhyNote;
 - (void)setPrimitiveWhyNote:(PRNote*)value;
-
 
 @end

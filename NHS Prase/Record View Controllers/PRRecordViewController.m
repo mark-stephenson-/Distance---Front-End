@@ -24,7 +24,7 @@
 #import "PRAPIManager.h"
 
 #import <MagicalRecord/MagicalRecord.h>
-#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
 
 #import "MBProgressHUD.h"
 
@@ -419,6 +419,22 @@
 
 -(void)continueSubmit
 {
+    if ([[PRTheme sharedTheme] currentUserIsTest]) {
+        
+        void (^endQuestionnaire)(UIAlertAction *, NSInteger, NSString *) = ^(UIAlertAction *action, NSInteger buttonIndex, NSString *buttonTitle){
+            [self.record MR_deleteEntity];
+            [self continueHome];
+        };
+        
+        [self showAlertWithTitle:@"Test User"
+                         message:@"As a test user you cannot save or submit the data entered, any data entered will be lost. Do you wish to end the questionnaire?"
+                     cancelTitle:@"Continue"
+                    buttonTitles:@[@"End Questionnaire"]
+                         actions:@[endQuestionnaire]];
+        
+        return;
+    }
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = TDLocalizedStringWithDefaultValue(@"record.hud.submit", nil, nil, @"Submitting...", @"The label identifying that record is being submitted. Shown on the record screen.");
     

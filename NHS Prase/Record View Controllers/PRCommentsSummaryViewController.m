@@ -126,7 +126,7 @@
     PRInputAccessoryView *accessoryView = [self accessoryView];
     if (toPresent.view != nil) {
         toPresent.titleLabel.TDLocalizedStringKey = @"good-comments.label.title";
-        toPresent.titleLabel.text = TDLocalizedStringWithDefaultValue(@"good-comments.label.title", nil, nil, @"Do you have any further examples of positive experiences that you would like to share?", @"The title text when adding a good note from the comments summary tab.");
+        toPresent.titleLabel.text = TDLocalizedStringWithDefaultValue(@"good-comments.label.title", nil, nil, @"Do you want to tell us something that has been good about your care?\nWe would like to know about the good experiences of care either you, or others, have had during this hospital stay.", @"The title text when adding a good note from the comments summary tab.");
         toPresent.noteView.inputAccessoryView = accessoryView;
         
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{

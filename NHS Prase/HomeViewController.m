@@ -8,7 +8,7 @@
 
 #import "HomeViewController.h"
 
-#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
 
 #import "PRRecord.h"
 #import "PRRecordViewController.h"
@@ -59,8 +59,6 @@
 {
     // a ward can only be non-nil if the trust and hospital have been chosen
     BOOL canCreate = [self validateSelectedWard];
-
-    canCreate = true;
 
     if (canCreate) {
         [self commitCustomWard];

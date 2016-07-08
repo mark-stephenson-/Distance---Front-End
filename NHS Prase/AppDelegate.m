@@ -11,7 +11,7 @@
 #import "PRTheme.h"
 #import <TheDistanceKit/TheDistanceKit_API.h>
 
-#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
 #import <Crashlytics/Crashlytics.h>
 #import "PRAPIManager.h"
 

@@ -12,7 +12,7 @@
 #import "PRTheme.h"
 
 #import "PRQuestion.h"
-#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
 #import <MagicalRecord/MagicalRecord.h>
 
 #import "PRAnswerOptionsLayout.h"

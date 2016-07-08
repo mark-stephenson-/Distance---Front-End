@@ -29,6 +29,9 @@ extern NSString *const PRLocalisationKeyNext;
  * @discussion Base class to be the root superclass of all view controllers. Adds default functionality to showAlertWithTitle: to set the default cancel button title.
  */
 @interface PRViewController : TDViewController <UIAlertViewDelegate>
-
+{
+    IBOutlet UIView *loggedInView;
+    IBOutlet UIView *loggedInLabel;
+}
 
 @end

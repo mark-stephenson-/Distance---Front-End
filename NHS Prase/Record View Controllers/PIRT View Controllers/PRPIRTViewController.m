@@ -15,7 +15,7 @@
 #import "PRNote.h"
 #import "PRConcern.h"
 #import <MagicalRecord/MagicalRecord.h>
-#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
 
 @interface PRPIRTViewController ()
 

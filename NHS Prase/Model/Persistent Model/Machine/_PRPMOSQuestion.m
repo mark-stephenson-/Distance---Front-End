@@ -14,9 +14,6 @@ const struct PRPMOSQuestionRelationships PRPMOSQuestionRelationships = {
 	.questions = @"questions",
 };
 
-const struct PRPMOSQuestionFetchedProperties PRPMOSQuestionFetchedProperties = {
-};
-
 @implementation PRPMOSQuestionID
 @end
 
@@ -42,7 +39,7 @@ const struct PRPMOSQuestionFetchedProperties PRPMOSQuestionFetchedProperties = {
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
+
 	if ([key isEqualToString:@"localizationIDValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"localizationID"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -57,12 +54,7 @@ const struct PRPMOSQuestionFetchedProperties PRPMOSQuestionFetchedProperties = {
 	return keyPaths;
 }
 
-
-
-
 @dynamic localizationID;
-
-
 
 - (int64_t)localizationIDValue {
 	NSNumber *result = [self localizationID];
@@ -82,13 +74,7 @@ const struct PRPMOSQuestionFetchedProperties PRPMOSQuestionFetchedProperties = {
 	[self setPrimitiveLocalizationID:[NSNumber numberWithLongLong:value_]];
 }
 
-
-
-
-
 @dynamic questionID;
-
-
 
 - (int64_t)questionIDValue {
 	NSNumber *result = [self questionID];
@@ -108,43 +94,89 @@ const struct PRPMOSQuestionFetchedProperties PRPMOSQuestionFetchedProperties = {
 	[self setPrimitiveQuestionID:[NSNumber numberWithLongLong:value_]];
 }
 
-
-
-
-
 @dynamic answerSets;
 
-	
 - (NSMutableOrderedSet*)answerSetsSet {
 	[self willAccessValueForKey:@"answerSets"];
-  
+
 	NSMutableOrderedSet *result = (NSMutableOrderedSet*)[self mutableOrderedSetValueForKey:@"answerSets"];
-  
+
 	[self didAccessValueForKey:@"answerSets"];
 	return result;
 }
-	
 
 @dynamic pmos;
 
-	
-
 @dynamic questions;
 
-	
 - (NSMutableSet*)questionsSet {
 	[self willAccessValueForKey:@"questions"];
-  
+
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"questions"];
-  
+
 	[self didAccessValueForKey:@"questions"];
 	return result;
 }
-	
-
-
-
-
-
 
 @end
+
+@implementation _PRPMOSQuestion (AnswerSetsCoreDataGeneratedAccessors)
+- (void)addAnswerSets:(NSOrderedSet*)value_ {
+	[self.answerSetsSet unionOrderedSet:value_];
+}
+- (void)removeAnswerSets:(NSOrderedSet*)value_ {
+	[self.answerSetsSet minusOrderedSet:value_];
+}
+- (void)addAnswerSetsObject:(PRAnswerSet*)value_ {
+	[self.answerSetsSet addObject:value_];
+}
+- (void)removeAnswerSetsObject:(PRAnswerSet*)value_ {
+	[self.answerSetsSet removeObject:value_];
+}
+- (void)insertObject:(PRAnswerSet*)value inAnswerSetsAtIndex:(NSUInteger)idx {
+    NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
+    [self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"answerSets"];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self answerSets]];
+    [tmpOrderedSet insertObject:value atIndex:idx];
+    [self setPrimitiveValue:tmpOrderedSet forKey:@"answerSets"];
+    [self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"answerSets"];
+}
+- (void)removeObjectFromAnswerSetsAtIndex:(NSUInteger)idx {
+    NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
+    [self willChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@"answerSets"];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self answerSets]];
+    [tmpOrderedSet removeObjectAtIndex:idx];
+    [self setPrimitiveValue:tmpOrderedSet forKey:@"answerSets"];
+    [self didChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@"answerSets"];
+}
+- (void)insertAnswerSets:(NSArray *)value atIndexes:(NSIndexSet *)indexes {
+    [self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"answerSets"];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self answerSets]];
+    [tmpOrderedSet insertObjects:value atIndexes:indexes];
+    [self setPrimitiveValue:tmpOrderedSet forKey:@"answerSets"];
+    [self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"answerSets"];
+}
+- (void)removeAnswerSetsAtIndexes:(NSIndexSet *)indexes {
+    [self willChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@"answerSets"];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self answerSets]];
+    [tmpOrderedSet removeObjectsAtIndexes:indexes];
+    [self setPrimitiveValue:tmpOrderedSet forKey:@"answerSets"];
+    [self didChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@"answerSets"];
+}
+- (void)replaceObjectInAnswerSetsAtIndex:(NSUInteger)idx withObject:(PRAnswerSet*)value {
+    NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
+    [self willChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"answerSets"];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self answerSets]];
+    [tmpOrderedSet replaceObjectAtIndex:idx withObject:value];
+    [self setPrimitiveValue:tmpOrderedSet forKey:@"answerSets"];
+    [self didChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"answerSets"];
+}
+- (void)replaceAnswerSetsAtIndexes:(NSIndexSet *)indexes withAnswerSets:(NSArray *)value {
+    [self willChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"answerSets"];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self answerSets]];
+    [tmpOrderedSet replaceObjectsAtIndexes:indexes withObjects:value];
+    [self setPrimitiveValue:tmpOrderedSet forKey:@"answerSets"];
+    [self didChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"answerSets"];
+}
+@end
+

@@ -17,9 +17,6 @@ const struct PRQuestionRelationships PRQuestionRelationships = {
 	.record = @"record",
 };
 
-const struct PRQuestionFetchedProperties PRQuestionFetchedProperties = {
-};
-
 @implementation PRQuestionID
 @end
 
@@ -45,7 +42,7 @@ const struct PRQuestionFetchedProperties PRQuestionFetchedProperties = {
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
+
 	if ([key isEqualToString:@"answerIDValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"answerID"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -55,12 +52,7 @@ const struct PRQuestionFetchedProperties PRQuestionFetchedProperties = {
 	return keyPaths;
 }
 
-
-
-
 @dynamic answerID;
-
-
 
 - (int64_t)answerIDValue {
 	NSNumber *result = [self answerID];
@@ -80,41 +72,19 @@ const struct PRQuestionFetchedProperties PRQuestionFetchedProperties = {
 	[self setPrimitiveAnswerID:[NSNumber numberWithLongLong:value_]];
 }
 
-
-
-
-
 @dynamic concern;
-
-	
 
 @dynamic concernAsPrevent;
 
-	
-
 @dynamic concernAsSerious;
-
-	
 
 @dynamic goodNote;
 
-	
-
 @dynamic note;
-
-	
 
 @dynamic pmosQuestion;
 
-	
-
 @dynamic record;
 
-	
-
-
-
-
-
-
 @end
+

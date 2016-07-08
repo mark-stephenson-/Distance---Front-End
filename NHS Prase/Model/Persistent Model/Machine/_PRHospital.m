@@ -13,9 +13,6 @@ const struct PRHospitalRelationships PRHospitalRelationships = {
 	.wards = @"wards",
 };
 
-const struct PRHospitalFetchedProperties PRHospitalFetchedProperties = {
-};
-
 @implementation PRHospitalID
 @end
 
@@ -41,7 +38,7 @@ const struct PRHospitalFetchedProperties PRHospitalFetchedProperties = {
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
+
 	if ([key isEqualToString:@"idValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"id"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -51,12 +48,7 @@ const struct PRHospitalFetchedProperties PRHospitalFetchedProperties = {
 	return keyPaths;
 }
 
-
-
-
 @dynamic id;
-
-
 
 - (int64_t)idValue {
 	NSNumber *result = [self id];
@@ -76,37 +68,20 @@ const struct PRHospitalFetchedProperties PRHospitalFetchedProperties = {
 	[self setPrimitiveId:[NSNumber numberWithLongLong:value_]];
 }
 
-
-
-
-
 @dynamic name;
-
-
-
-
-
 
 @dynamic trust;
 
-	
-
 @dynamic wards;
 
-	
 - (NSMutableSet*)wardsSet {
 	[self willAccessValueForKey:@"wards"];
-  
+
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"wards"];
-  
+
 	[self didAccessValueForKey:@"wards"];
 	return result;
 }
-	
-
-
-
-
-
 
 @end
+

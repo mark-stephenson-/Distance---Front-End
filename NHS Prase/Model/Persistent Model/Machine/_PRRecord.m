@@ -22,9 +22,6 @@ const struct PRRecordRelationships PRRecordRelationships = {
 	.ward = @"ward",
 };
 
-const struct PRRecordFetchedProperties PRRecordFetchedProperties = {
-};
-
 @implementation PRRecordID
 @end
 
@@ -50,7 +47,7 @@ const struct PRRecordFetchedProperties PRRecordFetchedProperties = {
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
-	
+
 	if ([key isEqualToString:@"timeAdditionalPatientValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"timeAdditionalPatient"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -70,40 +67,15 @@ const struct PRRecordFetchedProperties PRRecordFetchedProperties = {
 	return keyPaths;
 }
 
-
-
-
 @dynamic basicData;
-
-
-
-
-
 
 @dynamic incompleteReason;
 
-
-
-
-
-
 @dynamic language;
-
-
-
-
-
 
 @dynamic startDate;
 
-
-
-
-
-
 @dynamic timeAdditionalPatient;
-
-
 
 - (int64_t)timeAdditionalPatientValue {
 	NSNumber *result = [self timeAdditionalPatient];
@@ -123,13 +95,7 @@ const struct PRRecordFetchedProperties PRRecordFetchedProperties = {
 	[self setPrimitiveTimeAdditionalPatient:[NSNumber numberWithLongLong:value_]];
 }
 
-
-
-
-
 @dynamic timeAdditionalQuestionnaire;
-
-
 
 - (int64_t)timeAdditionalQuestionnaireValue {
 	NSNumber *result = [self timeAdditionalQuestionnaire];
@@ -149,13 +115,7 @@ const struct PRRecordFetchedProperties PRRecordFetchedProperties = {
 	[self setPrimitiveTimeAdditionalQuestionnaire:[NSNumber numberWithLongLong:value_]];
 }
 
-
-
-
-
 @dynamic timeTracked;
-
-
 
 - (int64_t)timeTrackedValue {
 	NSNumber *result = [self timeTracked];
@@ -175,76 +135,113 @@ const struct PRRecordFetchedProperties PRRecordFetchedProperties = {
 	[self setPrimitiveTimeTracked:[NSNumber numberWithLongLong:value_]];
 }
 
-
-
-
-
 @dynamic user;
-
-
-
-
-
 
 @dynamic concerns;
 
-	
 - (NSMutableSet*)concernsSet {
 	[self willAccessValueForKey:@"concerns"];
-  
+
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"concerns"];
-  
+
 	[self didAccessValueForKey:@"concerns"];
 	return result;
 }
-	
 
 @dynamic goodNotes;
 
-	
 - (NSMutableSet*)goodNotesSet {
 	[self willAccessValueForKey:@"goodNotes"];
-  
+
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"goodNotes"];
-  
+
 	[self didAccessValueForKey:@"goodNotes"];
 	return result;
 }
-	
 
 @dynamic notes;
 
-	
 - (NSMutableSet*)notesSet {
 	[self willAccessValueForKey:@"notes"];
-  
+
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"notes"];
-  
+
 	[self didAccessValueForKey:@"notes"];
 	return result;
 }
-	
 
 @dynamic questions;
 
-	
 - (NSMutableOrderedSet*)questionsSet {
 	[self willAccessValueForKey:@"questions"];
-  
+
 	NSMutableOrderedSet *result = (NSMutableOrderedSet*)[self mutableOrderedSetValueForKey:@"questions"];
-  
+
 	[self didAccessValueForKey:@"questions"];
 	return result;
 }
-	
 
 @dynamic ward;
 
-	
-
-
-
-
-
-
 @end
+
+@implementation _PRRecord (QuestionsCoreDataGeneratedAccessors)
+- (void)addQuestions:(NSOrderedSet*)value_ {
+	[self.questionsSet unionOrderedSet:value_];
+}
+- (void)removeQuestions:(NSOrderedSet*)value_ {
+	[self.questionsSet minusOrderedSet:value_];
+}
+- (void)addQuestionsObject:(PRQuestion*)value_ {
+	[self.questionsSet addObject:value_];
+}
+- (void)removeQuestionsObject:(PRQuestion*)value_ {
+	[self.questionsSet removeObject:value_];
+}
+- (void)insertObject:(PRQuestion*)value inQuestionsAtIndex:(NSUInteger)idx {
+    NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
+    [self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"questions"];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions]];
+    [tmpOrderedSet insertObject:value atIndex:idx];
+    [self setPrimitiveValue:tmpOrderedSet forKey:@"questions"];
+    [self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"questions"];
+}
+- (void)removeObjectFromQuestionsAtIndex:(NSUInteger)idx {
+    NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
+    [self willChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@"questions"];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions]];
+    [tmpOrderedSet removeObjectAtIndex:idx];
+    [self setPrimitiveValue:tmpOrderedSet forKey:@"questions"];
+    [self didChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@"questions"];
+}
+- (void)insertQuestions:(NSArray *)value atIndexes:(NSIndexSet *)indexes {
+    [self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"questions"];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions]];
+    [tmpOrderedSet insertObjects:value atIndexes:indexes];
+    [self setPrimitiveValue:tmpOrderedSet forKey:@"questions"];
+    [self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"questions"];
+}
+- (void)removeQuestionsAtIndexes:(NSIndexSet *)indexes {
+    [self willChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@"questions"];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions]];
+    [tmpOrderedSet removeObjectsAtIndexes:indexes];
+    [self setPrimitiveValue:tmpOrderedSet forKey:@"questions"];
+    [self didChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@"questions"];
+}
+- (void)replaceObjectInQuestionsAtIndex:(NSUInteger)idx withObject:(PRQuestion*)value {
+    NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
+    [self willChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"questions"];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions]];
+    [tmpOrderedSet replaceObjectAtIndex:idx withObject:value];
+    [self setPrimitiveValue:tmpOrderedSet forKey:@"questions"];
+    [self didChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"questions"];
+}
+- (void)replaceQuestionsAtIndexes:(NSIndexSet *)indexes withQuestions:(NSArray *)value {
+    [self willChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"questions"];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions]];
+    [tmpOrderedSet replaceObjectsAtIndexes:indexes withObjects:value];
+    [self setPrimitiveValue:tmpOrderedSet forKey:@"questions"];
+    [self didChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"questions"];
+}
+@end
+

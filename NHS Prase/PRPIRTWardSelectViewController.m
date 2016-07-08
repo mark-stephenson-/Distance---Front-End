@@ -8,7 +8,7 @@
 
 #import "PRPIRTWardSelectViewController.h"
 
-#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
 
 #import "PRRecord.h"
 

@@ -8,7 +8,7 @@
 
 #import "PRAPIManager.h"
 
-#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
 #import <AFNetworking/AFNetworking.h>
 
 #import "PRBasicDataFormViewController.h"
@@ -174,32 +174,6 @@
     // convert record to json
     NSMutableDictionary *jsonRecord = [NSMutableDictionary dictionary];
     
-    if ([record.basicData isKindOfClass:[NSDictionary class]]) {
-        
-        // ensure all basic data keys are included even in the data is incomplete
-        NSMutableDictionary *fullBasicData = [NSMutableDictionary dictionaryWithCapacity:7];
-        NSArray *basicDataKeys = [PRBasicDataFormViewController basicDataFormKeys];
-        
-        for (NSString *key in basicDataKeys) {
-            id value = record.basicDataDictionary[key];
-            
-            if ([value isKindOfClass:[NSDate class]]) {
-                value = [dateFormatter stringFromDate:value];
-            }
-            
-            fullBasicData[key] = value ? : [NSNull null];
-        }
-        
-        jsonRecord[@"basicData"] = fullBasicData;
-    } else {
-        NSError *serialisationError = [NSError errorWithDomain:TDAPIErrorDomain
-                                                          code:kTDCAPIErrorUnexpectedRequest
-                                                      userInfo:@{NSLocalizedDescriptionKey: @"Internal App Error Occured.",
-                                                                 NSLocalizedFailureReasonErrorKey: @"Cannot submit a record with a non-dictionary basic data."}];
-        completion(NO, serialisationError);
-        return;
-    }
-    
     // format in standard ISO date format
     jsonRecord[@"startDate"] = [dateFormatter stringFromDate:record.startDate] ? : [NSNull null];
     
@@ -250,6 +224,32 @@
     jsonRecord[@"concerns"] = concernEntries;
     jsonRecord[@"user"] = [[NSUserDefaults standardUserDefaults] valueForKey:PRRecordUsernameKey] ? : [NSNull null];
     
+    if ([record.basicData isKindOfClass:[NSDictionary class]]) {
+        
+        // ensure all basic data keys are included even in the data is incomplete
+        NSMutableDictionary *fullBasicData = [NSMutableDictionary dictionaryWithCapacity:7];
+        NSArray *basicDataKeys = [PRBasicDataFormViewController basicDataFormKeys];
+        
+        for (NSString *key in basicDataKeys) {
+            id value = record.basicDataDictionary[key];
+            
+            if ([value isKindOfClass:[NSDate class]]) {
+                value = [dateFormatter stringFromDate:value];
+            }
+            
+            fullBasicData[key] = value ? : [NSNull null];
+        }
+        
+        jsonRecord[@"basicData"] = fullBasicData;
+    } else {
+        NSError *serialisationError = [NSError errorWithDomain:TDAPIErrorDomain
+                                                          code:kTDCAPIErrorUnexpectedRequest
+                                                      userInfo:@{NSLocalizedDescriptionKey: @"Internal App Error Occured.",
+                                                                 NSLocalizedFailureReasonErrorKey: [NSString stringWithFormat:@"Cannot submit a record with a non-dictionary basic data: %@", record.basicData],
+                                                                 @"CorruptRecord":jsonRecord}];
+        completion(NO, serialisationError);
+        return;
+    }
 
     
     NSError *jsonError = nil;
