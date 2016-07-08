@@ -942,7 +942,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4d3bb57d-e0dd-4123-9bd0-ef7382083bff";
+				PROVISIONING_PROFILE = "c0af11f6-d47c-4ffe-9883-9f6c59fbd6eb";
 			};
 			name = "Beta Testing";
 		};
@@ -1065,7 +1065,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "fdf270b5-21fb-4046-81ff-33d0b6252b39";
+				PROVISIONING_PROFILE = "8cf039a7-1827-4647-94ad-f9d186283035";
 			};
 			name = Debug;
 		};
@@ -1093,7 +1093,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c9375473-40f0-4ab6-8421-005d4caf979a";
+				PROVISIONING_PROFILE = "b7ee8109-3507-4b68-98a1-67d2f305fa67";
 			};
 			name = Release;
 		};
