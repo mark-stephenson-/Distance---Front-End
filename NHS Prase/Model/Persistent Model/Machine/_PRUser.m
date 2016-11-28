@@ -3,18 +3,12 @@
 
 #import "_PRUser.h"
 
-const struct PRUserAttributes PRUserAttributes = {
-	.id = @"id",
-	.password = @"password",
-	.username = @"username",
-};
-
 @implementation PRUserID
 @end
 
 @implementation _PRUser
 
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_ {
 	NSParameterAssert(moc_);
 	return [NSEntityDescription insertNewObjectForEntityForName:@"PRUser" inManagedObjectContext:moc_];
 }
@@ -52,7 +46,7 @@ const struct PRUserAttributes PRUserAttributes = {
 }
 
 - (void)setIdValue:(int64_t)value_ {
-	[self setId:[NSNumber numberWithLongLong:value_]];
+	[self setId:@(value_)];
 }
 
 - (int64_t)primitiveIdValue {
@@ -61,12 +55,24 @@ const struct PRUserAttributes PRUserAttributes = {
 }
 
 - (void)setPrimitiveIdValue:(int64_t)value_ {
-	[self setPrimitiveId:[NSNumber numberWithLongLong:value_]];
+	[self setPrimitiveId:@(value_)];
 }
 
 @dynamic password;
 
 @dynamic username;
 
+@end
+
+@implementation PRUserAttributes 
++ (NSString *)id {
+	return @"id";
+}
++ (NSString *)password {
+	return @"password";
+}
++ (NSString *)username {
+	return @"username";
+}
 @end
 

@@ -3,24 +3,12 @@
 
 #import "_PRWard.h"
 
-const struct PRWardAttributes PRWardAttributes = {
-	.id = @"id",
-	.name = @"name",
-};
-
-const struct PRWardRelationships PRWardRelationships = {
-	.concerns = @"concerns",
-	.goodNotes = @"goodNotes",
-	.hospital = @"hospital",
-	.records = @"records",
-};
-
 @implementation PRWardID
 @end
 
 @implementation _PRWard
 
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_ {
 	NSParameterAssert(moc_);
 	return [NSEntityDescription insertNewObjectForEntityForName:@"PRWard" inManagedObjectContext:moc_];
 }
@@ -58,7 +46,7 @@ const struct PRWardRelationships PRWardRelationships = {
 }
 
 - (void)setIdValue:(int64_t)value_ {
-	[self setId:[NSNumber numberWithLongLong:value_]];
+	[self setId:@(value_)];
 }
 
 - (int64_t)primitiveIdValue {
@@ -67,17 +55,17 @@ const struct PRWardRelationships PRWardRelationships = {
 }
 
 - (void)setPrimitiveIdValue:(int64_t)value_ {
-	[self setPrimitiveId:[NSNumber numberWithLongLong:value_]];
+	[self setPrimitiveId:@(value_)];
 }
 
 @dynamic name;
 
 @dynamic concerns;
 
-- (NSMutableSet*)concernsSet {
+- (NSMutableSet<PRConcern*>*)concernsSet {
 	[self willAccessValueForKey:@"concerns"];
 
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"concerns"];
+	NSMutableSet<PRConcern*> *result = (NSMutableSet<PRConcern*>*)[self mutableSetValueForKey:@"concerns"];
 
 	[self didAccessValueForKey:@"concerns"];
 	return result;
@@ -85,10 +73,10 @@ const struct PRWardRelationships PRWardRelationships = {
 
 @dynamic goodNotes;
 
-- (NSMutableSet*)goodNotesSet {
+- (NSMutableSet<PRNote*>*)goodNotesSet {
 	[self willAccessValueForKey:@"goodNotes"];
 
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"goodNotes"];
+	NSMutableSet<PRNote*> *result = (NSMutableSet<PRNote*>*)[self mutableSetValueForKey:@"goodNotes"];
 
 	[self didAccessValueForKey:@"goodNotes"];
 	return result;
@@ -98,14 +86,38 @@ const struct PRWardRelationships PRWardRelationships = {
 
 @dynamic records;
 
-- (NSMutableSet*)recordsSet {
+- (NSMutableSet<PRRecord*>*)recordsSet {
 	[self willAccessValueForKey:@"records"];
 
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"records"];
+	NSMutableSet<PRRecord*> *result = (NSMutableSet<PRRecord*>*)[self mutableSetValueForKey:@"records"];
 
 	[self didAccessValueForKey:@"records"];
 	return result;
 }
 
+@end
+
+@implementation PRWardAttributes 
++ (NSString *)id {
+	return @"id";
+}
++ (NSString *)name {
+	return @"name";
+}
+@end
+
+@implementation PRWardRelationships 
++ (NSString *)concerns {
+	return @"concerns";
+}
++ (NSString *)goodNotes {
+	return @"goodNotes";
+}
++ (NSString *)hospital {
+	return @"hospital";
+}
++ (NSString *)records {
+	return @"records";
+}
 @end
 

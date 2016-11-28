@@ -1,18 +1,15 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to PRPMOSQuestion.h instead.
 
-#import <CoreData/CoreData.h>
+#if __has_feature(modules)
+    @import Foundation;
+    @import CoreData;
+#else
+    #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
+#endif
 
-extern const struct PRPMOSQuestionAttributes {
-	__unsafe_unretained NSString *localizationID;
-	__unsafe_unretained NSString *questionID;
-} PRPMOSQuestionAttributes;
-
-extern const struct PRPMOSQuestionRelationships {
-	__unsafe_unretained NSString *answerSets;
-	__unsafe_unretained NSString *pmos;
-	__unsafe_unretained NSString *questions;
-} PRPMOSQuestionRelationships;
+NS_ASSUME_NONNULL_BEGIN
 
 @class PRAnswerSet;
 @class PRPMOS;
@@ -21,45 +18,37 @@ extern const struct PRPMOSQuestionRelationships {
 @interface PRPMOSQuestionID : NSManagedObjectID {}
 @end
 
-@interface _PRPMOSQuestion : NSManagedObject {}
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
+@interface _PRPMOSQuestion : NSManagedObject
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-@property (nonatomic, readonly, strong) PRPMOSQuestionID* objectID;
++ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
+@property (nonatomic, readonly, strong) PRPMOSQuestionID *objectID;
 
-@property (nonatomic, strong) NSNumber* localizationID;
+@property (nonatomic, strong, nullable) NSNumber* localizationID;
 
 @property (atomic) int64_t localizationIDValue;
 - (int64_t)localizationIDValue;
 - (void)setLocalizationIDValue:(int64_t)value_;
 
-//- (BOOL)validateLocalizationID:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) NSNumber* questionID;
+@property (nonatomic, strong, nullable) NSNumber* questionID;
 
 @property (atomic) int64_t questionIDValue;
 - (int64_t)questionIDValue;
 - (void)setQuestionIDValue:(int64_t)value_;
 
-//- (BOOL)validateQuestionID:(id*)value_ error:(NSError**)error_;
+@property (nonatomic, strong, nullable) NSOrderedSet<PRAnswerSet*> *answerSets;
+- (nullable NSMutableOrderedSet<PRAnswerSet*>*)answerSetsSet;
 
-@property (nonatomic, strong) NSOrderedSet *answerSets;
+@property (nonatomic, strong, nullable) PRPMOS *pmos;
 
-- (NSMutableOrderedSet*)answerSetsSet;
-
-@property (nonatomic, strong) PRPMOS *pmos;
-
-//- (BOOL)validatePmos:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) NSSet *questions;
-
-- (NSMutableSet*)questionsSet;
+@property (nonatomic, strong, nullable) NSSet<PRQuestion*> *questions;
+- (nullable NSMutableSet<PRQuestion*>*)questionsSet;
 
 @end
 
 @interface _PRPMOSQuestion (AnswerSetsCoreDataGeneratedAccessors)
-- (void)addAnswerSets:(NSOrderedSet*)value_;
-- (void)removeAnswerSets:(NSOrderedSet*)value_;
+- (void)addAnswerSets:(NSOrderedSet<PRAnswerSet*>*)value_;
+- (void)removeAnswerSets:(NSOrderedSet<PRAnswerSet*>*)value_;
 - (void)addAnswerSetsObject:(PRAnswerSet*)value_;
 - (void)removeAnswerSetsObject:(PRAnswerSet*)value_;
 
@@ -73,8 +62,8 @@ extern const struct PRPMOSQuestionRelationships {
 @end
 
 @interface _PRPMOSQuestion (QuestionsCoreDataGeneratedAccessors)
-- (void)addQuestions:(NSSet*)value_;
-- (void)removeQuestions:(NSSet*)value_;
+- (void)addQuestions:(NSSet<PRQuestion*>*)value_;
+- (void)removeQuestions:(NSSet<PRQuestion*>*)value_;
 - (void)addQuestionsObject:(PRQuestion*)value_;
 - (void)removeQuestionsObject:(PRQuestion*)value_;
 
@@ -82,25 +71,38 @@ extern const struct PRPMOSQuestionRelationships {
 
 @interface _PRPMOSQuestion (CoreDataGeneratedPrimitiveAccessors)
 
-- (NSNumber*)primitiveLocalizationID;
-- (void)setPrimitiveLocalizationID:(NSNumber*)value;
+- (nullable NSNumber*)primitiveLocalizationID;
+- (void)setPrimitiveLocalizationID:(nullable NSNumber*)value;
 
 - (int64_t)primitiveLocalizationIDValue;
 - (void)setPrimitiveLocalizationIDValue:(int64_t)value_;
 
-- (NSNumber*)primitiveQuestionID;
-- (void)setPrimitiveQuestionID:(NSNumber*)value;
+- (nullable NSNumber*)primitiveQuestionID;
+- (void)setPrimitiveQuestionID:(nullable NSNumber*)value;
 
 - (int64_t)primitiveQuestionIDValue;
 - (void)setPrimitiveQuestionIDValue:(int64_t)value_;
 
-- (NSMutableOrderedSet*)primitiveAnswerSets;
-- (void)setPrimitiveAnswerSets:(NSMutableOrderedSet*)value;
+- (NSMutableOrderedSet<PRAnswerSet*>*)primitiveAnswerSets;
+- (void)setPrimitiveAnswerSets:(NSMutableOrderedSet<PRAnswerSet*>*)value;
 
 - (PRPMOS*)primitivePmos;
 - (void)setPrimitivePmos:(PRPMOS*)value;
 
-- (NSMutableSet*)primitiveQuestions;
-- (void)setPrimitiveQuestions:(NSMutableSet*)value;
+- (NSMutableSet<PRQuestion*>*)primitiveQuestions;
+- (void)setPrimitiveQuestions:(NSMutableSet<PRQuestion*>*)value;
 
 @end
+
+@interface PRPMOSQuestionAttributes: NSObject 
++ (NSString *)localizationID;
++ (NSString *)questionID;
+@end
+
+@interface PRPMOSQuestionRelationships: NSObject
++ (NSString *)answerSets;
++ (NSString *)pmos;
++ (NSString *)questions;
+@end
+
+NS_ASSUME_NONNULL_END

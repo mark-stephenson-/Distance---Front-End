@@ -3,26 +3,12 @@
 
 #import "_PRQuestion.h"
 
-const struct PRQuestionAttributes PRQuestionAttributes = {
-	.answerID = @"answerID",
-};
-
-const struct PRQuestionRelationships PRQuestionRelationships = {
-	.concern = @"concern",
-	.concernAsPrevent = @"concernAsPrevent",
-	.concernAsSerious = @"concernAsSerious",
-	.goodNote = @"goodNote",
-	.note = @"note",
-	.pmosQuestion = @"pmosQuestion",
-	.record = @"record",
-};
-
 @implementation PRQuestionID
 @end
 
 @implementation _PRQuestion
 
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_ {
 	NSParameterAssert(moc_);
 	return [NSEntityDescription insertNewObjectForEntityForName:@"PRQuestion" inManagedObjectContext:moc_];
 }
@@ -60,7 +46,7 @@ const struct PRQuestionRelationships PRQuestionRelationships = {
 }
 
 - (void)setAnswerIDValue:(int64_t)value_ {
-	[self setAnswerID:[NSNumber numberWithLongLong:value_]];
+	[self setAnswerID:@(value_)];
 }
 
 - (int64_t)primitiveAnswerIDValue {
@@ -69,7 +55,7 @@ const struct PRQuestionRelationships PRQuestionRelationships = {
 }
 
 - (void)setPrimitiveAnswerIDValue:(int64_t)value_ {
-	[self setPrimitiveAnswerID:[NSNumber numberWithLongLong:value_]];
+	[self setPrimitiveAnswerID:@(value_)];
 }
 
 @dynamic concern;
@@ -86,5 +72,35 @@ const struct PRQuestionRelationships PRQuestionRelationships = {
 
 @dynamic record;
 
+@end
+
+@implementation PRQuestionAttributes 
++ (NSString *)answerID {
+	return @"answerID";
+}
+@end
+
+@implementation PRQuestionRelationships 
++ (NSString *)concern {
+	return @"concern";
+}
++ (NSString *)concernAsPrevent {
+	return @"concernAsPrevent";
+}
++ (NSString *)concernAsSerious {
+	return @"concernAsSerious";
+}
++ (NSString *)goodNote {
+	return @"goodNote";
+}
++ (NSString *)note {
+	return @"note";
+}
++ (NSString *)pmosQuestion {
+	return @"pmosQuestion";
+}
++ (NSString *)record {
+	return @"record";
+}
 @end
 

@@ -1,19 +1,15 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to PRWard.h instead.
 
-#import <CoreData/CoreData.h>
+#if __has_feature(modules)
+    @import Foundation;
+    @import CoreData;
+#else
+    #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
+#endif
 
-extern const struct PRWardAttributes {
-	__unsafe_unretained NSString *id;
-	__unsafe_unretained NSString *name;
-} PRWardAttributes;
-
-extern const struct PRWardRelationships {
-	__unsafe_unretained NSString *concerns;
-	__unsafe_unretained NSString *goodNotes;
-	__unsafe_unretained NSString *hospital;
-	__unsafe_unretained NSString *records;
-} PRWardRelationships;
+NS_ASSUME_NONNULL_BEGIN
 
 @class PRConcern;
 @class PRNote;
@@ -23,61 +19,52 @@ extern const struct PRWardRelationships {
 @interface PRWardID : NSManagedObjectID {}
 @end
 
-@interface _PRWard : NSManagedObject {}
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
+@interface _PRWard : NSManagedObject
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-@property (nonatomic, readonly, strong) PRWardID* objectID;
++ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
+@property (nonatomic, readonly, strong) PRWardID *objectID;
 
-@property (nonatomic, strong) NSNumber* id;
+@property (nonatomic, strong, nullable) NSNumber* id;
 
 @property (atomic) int64_t idValue;
 - (int64_t)idValue;
 - (void)setIdValue:(int64_t)value_;
 
-//- (BOOL)validateId:(id*)value_ error:(NSError**)error_;
+@property (nonatomic, strong, nullable) NSString* name;
 
-@property (nonatomic, strong) NSString* name;
+@property (nonatomic, strong, nullable) NSSet<PRConcern*> *concerns;
+- (nullable NSMutableSet<PRConcern*>*)concernsSet;
 
-//- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
+@property (nonatomic, strong, nullable) NSSet<PRNote*> *goodNotes;
+- (nullable NSMutableSet<PRNote*>*)goodNotesSet;
 
-@property (nonatomic, strong) NSSet *concerns;
+@property (nonatomic, strong, nullable) PRHospital *hospital;
 
-- (NSMutableSet*)concernsSet;
-
-@property (nonatomic, strong) NSSet *goodNotes;
-
-- (NSMutableSet*)goodNotesSet;
-
-@property (nonatomic, strong) PRHospital *hospital;
-
-//- (BOOL)validateHospital:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) NSSet *records;
-
-- (NSMutableSet*)recordsSet;
+@property (nonatomic, strong, nullable) NSSet<PRRecord*> *records;
+- (nullable NSMutableSet<PRRecord*>*)recordsSet;
 
 @end
 
 @interface _PRWard (ConcernsCoreDataGeneratedAccessors)
-- (void)addConcerns:(NSSet*)value_;
-- (void)removeConcerns:(NSSet*)value_;
+- (void)addConcerns:(NSSet<PRConcern*>*)value_;
+- (void)removeConcerns:(NSSet<PRConcern*>*)value_;
 - (void)addConcernsObject:(PRConcern*)value_;
 - (void)removeConcernsObject:(PRConcern*)value_;
 
 @end
 
 @interface _PRWard (GoodNotesCoreDataGeneratedAccessors)
-- (void)addGoodNotes:(NSSet*)value_;
-- (void)removeGoodNotes:(NSSet*)value_;
+- (void)addGoodNotes:(NSSet<PRNote*>*)value_;
+- (void)removeGoodNotes:(NSSet<PRNote*>*)value_;
 - (void)addGoodNotesObject:(PRNote*)value_;
 - (void)removeGoodNotesObject:(PRNote*)value_;
 
 @end
 
 @interface _PRWard (RecordsCoreDataGeneratedAccessors)
-- (void)addRecords:(NSSet*)value_;
-- (void)removeRecords:(NSSet*)value_;
+- (void)addRecords:(NSSet<PRRecord*>*)value_;
+- (void)removeRecords:(NSSet<PRRecord*>*)value_;
 - (void)addRecordsObject:(PRRecord*)value_;
 - (void)removeRecordsObject:(PRRecord*)value_;
 
@@ -85,25 +72,39 @@ extern const struct PRWardRelationships {
 
 @interface _PRWard (CoreDataGeneratedPrimitiveAccessors)
 
-- (NSNumber*)primitiveId;
-- (void)setPrimitiveId:(NSNumber*)value;
+- (nullable NSNumber*)primitiveId;
+- (void)setPrimitiveId:(nullable NSNumber*)value;
 
 - (int64_t)primitiveIdValue;
 - (void)setPrimitiveIdValue:(int64_t)value_;
 
-- (NSString*)primitiveName;
-- (void)setPrimitiveName:(NSString*)value;
+- (nullable NSString*)primitiveName;
+- (void)setPrimitiveName:(nullable NSString*)value;
 
-- (NSMutableSet*)primitiveConcerns;
-- (void)setPrimitiveConcerns:(NSMutableSet*)value;
+- (NSMutableSet<PRConcern*>*)primitiveConcerns;
+- (void)setPrimitiveConcerns:(NSMutableSet<PRConcern*>*)value;
 
-- (NSMutableSet*)primitiveGoodNotes;
-- (void)setPrimitiveGoodNotes:(NSMutableSet*)value;
+- (NSMutableSet<PRNote*>*)primitiveGoodNotes;
+- (void)setPrimitiveGoodNotes:(NSMutableSet<PRNote*>*)value;
 
 - (PRHospital*)primitiveHospital;
 - (void)setPrimitiveHospital:(PRHospital*)value;
 
-- (NSMutableSet*)primitiveRecords;
-- (void)setPrimitiveRecords:(NSMutableSet*)value;
+- (NSMutableSet<PRRecord*>*)primitiveRecords;
+- (void)setPrimitiveRecords:(NSMutableSet<PRRecord*>*)value;
 
 @end
+
+@interface PRWardAttributes: NSObject 
++ (NSString *)id;
++ (NSString *)name;
+@end
+
+@interface PRWardRelationships: NSObject
++ (NSString *)concerns;
++ (NSString *)goodNotes;
++ (NSString *)hospital;
++ (NSString *)records;
+@end
+
+NS_ASSUME_NONNULL_END

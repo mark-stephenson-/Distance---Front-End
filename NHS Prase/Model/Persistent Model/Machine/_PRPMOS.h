@@ -1,32 +1,35 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to PRPMOS.h instead.
 
-#import <CoreData/CoreData.h>
+#if __has_feature(modules)
+    @import Foundation;
+    @import CoreData;
+#else
+    #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
+#endif
 
-extern const struct PRPMOSRelationships {
-	__unsafe_unretained NSString *questions;
-} PRPMOSRelationships;
+NS_ASSUME_NONNULL_BEGIN
 
 @class PRPMOSQuestion;
 
 @interface PRPMOSID : NSManagedObjectID {}
 @end
 
-@interface _PRPMOS : NSManagedObject {}
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
+@interface _PRPMOS : NSManagedObject
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-@property (nonatomic, readonly, strong) PRPMOSID* objectID;
++ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
+@property (nonatomic, readonly, strong) PRPMOSID *objectID;
 
-@property (nonatomic, strong) NSOrderedSet *questions;
-
-- (NSMutableOrderedSet*)questionsSet;
+@property (nonatomic, strong, nullable) NSOrderedSet<PRPMOSQuestion*> *questions;
+- (nullable NSMutableOrderedSet<PRPMOSQuestion*>*)questionsSet;
 
 @end
 
 @interface _PRPMOS (QuestionsCoreDataGeneratedAccessors)
-- (void)addQuestions:(NSOrderedSet*)value_;
-- (void)removeQuestions:(NSOrderedSet*)value_;
+- (void)addQuestions:(NSOrderedSet<PRPMOSQuestion*>*)value_;
+- (void)removeQuestions:(NSOrderedSet<PRPMOSQuestion*>*)value_;
 - (void)addQuestionsObject:(PRPMOSQuestion*)value_;
 - (void)removeQuestionsObject:(PRPMOSQuestion*)value_;
 
@@ -41,7 +44,13 @@ extern const struct PRPMOSRelationships {
 
 @interface _PRPMOS (CoreDataGeneratedPrimitiveAccessors)
 
-- (NSMutableOrderedSet*)primitiveQuestions;
-- (void)setPrimitiveQuestions:(NSMutableOrderedSet*)value;
+- (NSMutableOrderedSet<PRPMOSQuestion*>*)primitiveQuestions;
+- (void)setPrimitiveQuestions:(NSMutableOrderedSet<PRPMOSQuestion*>*)value;
 
 @end
+
+@interface PRPMOSRelationships: NSObject
++ (NSString *)questions;
+@end
+
+NS_ASSUME_NONNULL_END

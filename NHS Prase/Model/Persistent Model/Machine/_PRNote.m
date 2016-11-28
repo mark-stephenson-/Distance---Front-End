@@ -3,28 +3,12 @@
 
 #import "_PRNote.h"
 
-const struct PRNoteAttributes PRNoteAttributes = {
-	.recording = @"recording",
-	.text = @"text",
-};
-
-const struct PRNoteRelationships PRNoteRelationships = {
-	.concernAsPrevent = @"concernAsPrevent",
-	.concernAsWhat = @"concernAsWhat",
-	.concernAsWhy = @"concernAsWhy",
-	.questionAsGood = @"questionAsGood",
-	.questionAsNote = @"questionAsNote",
-	.record = @"record",
-	.recordAsGood = @"recordAsGood",
-	.ward = @"ward",
-};
-
 @implementation PRNoteID
 @end
 
 @implementation _PRNote
 
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_ {
 	NSParameterAssert(moc_);
 	return [NSEntityDescription insertNewObjectForEntityForName:@"PRNote" inManagedObjectContext:moc_];
 }
@@ -60,10 +44,10 @@ const struct PRNoteRelationships PRNoteRelationships = {
 
 @dynamic questionAsGood;
 
-- (NSMutableSet*)questionAsGoodSet {
+- (NSMutableSet<PRQuestion*>*)questionAsGoodSet {
 	[self willAccessValueForKey:@"questionAsGood"];
 
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"questionAsGood"];
+	NSMutableSet<PRQuestion*> *result = (NSMutableSet<PRQuestion*>*)[self mutableSetValueForKey:@"questionAsGood"];
 
 	[self didAccessValueForKey:@"questionAsGood"];
 	return result;
@@ -77,5 +61,41 @@ const struct PRNoteRelationships PRNoteRelationships = {
 
 @dynamic ward;
 
+@end
+
+@implementation PRNoteAttributes 
++ (NSString *)recording {
+	return @"recording";
+}
++ (NSString *)text {
+	return @"text";
+}
+@end
+
+@implementation PRNoteRelationships 
++ (NSString *)concernAsPrevent {
+	return @"concernAsPrevent";
+}
++ (NSString *)concernAsWhat {
+	return @"concernAsWhat";
+}
++ (NSString *)concernAsWhy {
+	return @"concernAsWhy";
+}
++ (NSString *)questionAsGood {
+	return @"questionAsGood";
+}
++ (NSString *)questionAsNote {
+	return @"questionAsNote";
+}
++ (NSString *)record {
+	return @"record";
+}
++ (NSString *)recordAsGood {
+	return @"recordAsGood";
+}
++ (NSString *)ward {
+	return @"ward";
+}
 @end
 

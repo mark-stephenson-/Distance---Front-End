@@ -1,26 +1,15 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to PRRecord.h instead.
 
-#import <CoreData/CoreData.h>
+#if __has_feature(modules)
+    @import Foundation;
+    @import CoreData;
+#else
+    #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
+#endif
 
-extern const struct PRRecordAttributes {
-	__unsafe_unretained NSString *basicData;
-	__unsafe_unretained NSString *incompleteReason;
-	__unsafe_unretained NSString *language;
-	__unsafe_unretained NSString *startDate;
-	__unsafe_unretained NSString *timeAdditionalPatient;
-	__unsafe_unretained NSString *timeAdditionalQuestionnaire;
-	__unsafe_unretained NSString *timeTracked;
-	__unsafe_unretained NSString *user;
-} PRRecordAttributes;
-
-extern const struct PRRecordRelationships {
-	__unsafe_unretained NSString *concerns;
-	__unsafe_unretained NSString *goodNotes;
-	__unsafe_unretained NSString *notes;
-	__unsafe_unretained NSString *questions;
-	__unsafe_unretained NSString *ward;
-} PRRecordRelationships;
+NS_ASSUME_NONNULL_BEGIN
 
 @class PRConcern;
 @class PRNote;
@@ -33,105 +22,83 @@ extern const struct PRRecordRelationships {
 @interface PRRecordID : NSManagedObjectID {}
 @end
 
-@interface _PRRecord : NSManagedObject {}
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
+@interface _PRRecord : NSManagedObject
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-@property (nonatomic, readonly, strong) PRRecordID* objectID;
++ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
+@property (nonatomic, readonly, strong) PRRecordID *objectID;
 
-@property (nonatomic, strong) id basicData;
+@property (nonatomic, strong, nullable) id basicData;
 
-//- (BOOL)validateBasicData:(id*)value_ error:(NSError**)error_;
+@property (nonatomic, strong, nullable) NSString* incompleteReason;
 
-@property (nonatomic, strong) NSString* incompleteReason;
+@property (nonatomic, strong, nullable) NSString* language;
 
-//- (BOOL)validateIncompleteReason:(id*)value_ error:(NSError**)error_;
+@property (nonatomic, strong, nullable) NSDate* startDate;
 
-@property (nonatomic, strong) NSString* language;
-
-//- (BOOL)validateLanguage:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) NSDate* startDate;
-
-//- (BOOL)validateStartDate:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) NSNumber* timeAdditionalPatient;
+@property (nonatomic, strong, nullable) NSNumber* timeAdditionalPatient;
 
 @property (atomic) int64_t timeAdditionalPatientValue;
 - (int64_t)timeAdditionalPatientValue;
 - (void)setTimeAdditionalPatientValue:(int64_t)value_;
 
-//- (BOOL)validateTimeAdditionalPatient:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) NSNumber* timeAdditionalQuestionnaire;
+@property (nonatomic, strong, nullable) NSNumber* timeAdditionalQuestionnaire;
 
 @property (atomic) int64_t timeAdditionalQuestionnaireValue;
 - (int64_t)timeAdditionalQuestionnaireValue;
 - (void)setTimeAdditionalQuestionnaireValue:(int64_t)value_;
 
-//- (BOOL)validateTimeAdditionalQuestionnaire:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) NSNumber* timeTracked;
+@property (nonatomic, strong, nullable) NSNumber* timeTracked;
 
 @property (atomic) int64_t timeTrackedValue;
 - (int64_t)timeTrackedValue;
 - (void)setTimeTrackedValue:(int64_t)value_;
 
-//- (BOOL)validateTimeTracked:(id*)value_ error:(NSError**)error_;
+@property (nonatomic, strong, nullable) NSString* user;
 
-@property (nonatomic, strong) NSString* user;
+@property (nonatomic, strong, nullable) NSSet<PRConcern*> *concerns;
+- (nullable NSMutableSet<PRConcern*>*)concernsSet;
 
-//- (BOOL)validateUser:(id*)value_ error:(NSError**)error_;
+@property (nonatomic, strong, nullable) NSSet<PRNote*> *goodNotes;
+- (nullable NSMutableSet<PRNote*>*)goodNotesSet;
 
-@property (nonatomic, strong) NSSet *concerns;
+@property (nonatomic, strong, nullable) NSSet<PRNote*> *notes;
+- (nullable NSMutableSet<PRNote*>*)notesSet;
 
-- (NSMutableSet*)concernsSet;
+@property (nonatomic, strong, nullable) NSOrderedSet<PRQuestion*> *questions;
+- (nullable NSMutableOrderedSet<PRQuestion*>*)questionsSet;
 
-@property (nonatomic, strong) NSSet *goodNotes;
-
-- (NSMutableSet*)goodNotesSet;
-
-@property (nonatomic, strong) NSSet *notes;
-
-- (NSMutableSet*)notesSet;
-
-@property (nonatomic, strong) NSOrderedSet *questions;
-
-- (NSMutableOrderedSet*)questionsSet;
-
-@property (nonatomic, strong) PRWard *ward;
-
-//- (BOOL)validateWard:(id*)value_ error:(NSError**)error_;
+@property (nonatomic, strong, nullable) PRWard *ward;
 
 @end
 
 @interface _PRRecord (ConcernsCoreDataGeneratedAccessors)
-- (void)addConcerns:(NSSet*)value_;
-- (void)removeConcerns:(NSSet*)value_;
+- (void)addConcerns:(NSSet<PRConcern*>*)value_;
+- (void)removeConcerns:(NSSet<PRConcern*>*)value_;
 - (void)addConcernsObject:(PRConcern*)value_;
 - (void)removeConcernsObject:(PRConcern*)value_;
 
 @end
 
 @interface _PRRecord (GoodNotesCoreDataGeneratedAccessors)
-- (void)addGoodNotes:(NSSet*)value_;
-- (void)removeGoodNotes:(NSSet*)value_;
+- (void)addGoodNotes:(NSSet<PRNote*>*)value_;
+- (void)removeGoodNotes:(NSSet<PRNote*>*)value_;
 - (void)addGoodNotesObject:(PRNote*)value_;
 - (void)removeGoodNotesObject:(PRNote*)value_;
 
 @end
 
 @interface _PRRecord (NotesCoreDataGeneratedAccessors)
-- (void)addNotes:(NSSet*)value_;
-- (void)removeNotes:(NSSet*)value_;
+- (void)addNotes:(NSSet<PRNote*>*)value_;
+- (void)removeNotes:(NSSet<PRNote*>*)value_;
 - (void)addNotesObject:(PRNote*)value_;
 - (void)removeNotesObject:(PRNote*)value_;
 
 @end
 
 @interface _PRRecord (QuestionsCoreDataGeneratedAccessors)
-- (void)addQuestions:(NSOrderedSet*)value_;
-- (void)removeQuestions:(NSOrderedSet*)value_;
+- (void)addQuestions:(NSOrderedSet<PRQuestion*>*)value_;
+- (void)removeQuestions:(NSOrderedSet<PRQuestion*>*)value_;
 - (void)addQuestionsObject:(PRQuestion*)value_;
 - (void)removeQuestionsObject:(PRQuestion*)value_;
 
@@ -146,52 +113,73 @@ extern const struct PRRecordRelationships {
 
 @interface _PRRecord (CoreDataGeneratedPrimitiveAccessors)
 
-- (id)primitiveBasicData;
-- (void)setPrimitiveBasicData:(id)value;
+- (nullable id)primitiveBasicData;
+- (void)setPrimitiveBasicData:(nullable id)value;
 
-- (NSString*)primitiveIncompleteReason;
-- (void)setPrimitiveIncompleteReason:(NSString*)value;
+- (nullable NSString*)primitiveIncompleteReason;
+- (void)setPrimitiveIncompleteReason:(nullable NSString*)value;
 
-- (NSString*)primitiveLanguage;
-- (void)setPrimitiveLanguage:(NSString*)value;
+- (nullable NSString*)primitiveLanguage;
+- (void)setPrimitiveLanguage:(nullable NSString*)value;
 
-- (NSDate*)primitiveStartDate;
-- (void)setPrimitiveStartDate:(NSDate*)value;
+- (nullable NSDate*)primitiveStartDate;
+- (void)setPrimitiveStartDate:(nullable NSDate*)value;
 
-- (NSNumber*)primitiveTimeAdditionalPatient;
-- (void)setPrimitiveTimeAdditionalPatient:(NSNumber*)value;
+- (nullable NSNumber*)primitiveTimeAdditionalPatient;
+- (void)setPrimitiveTimeAdditionalPatient:(nullable NSNumber*)value;
 
 - (int64_t)primitiveTimeAdditionalPatientValue;
 - (void)setPrimitiveTimeAdditionalPatientValue:(int64_t)value_;
 
-- (NSNumber*)primitiveTimeAdditionalQuestionnaire;
-- (void)setPrimitiveTimeAdditionalQuestionnaire:(NSNumber*)value;
+- (nullable NSNumber*)primitiveTimeAdditionalQuestionnaire;
+- (void)setPrimitiveTimeAdditionalQuestionnaire:(nullable NSNumber*)value;
 
 - (int64_t)primitiveTimeAdditionalQuestionnaireValue;
 - (void)setPrimitiveTimeAdditionalQuestionnaireValue:(int64_t)value_;
 
-- (NSNumber*)primitiveTimeTracked;
-- (void)setPrimitiveTimeTracked:(NSNumber*)value;
+- (nullable NSNumber*)primitiveTimeTracked;
+- (void)setPrimitiveTimeTracked:(nullable NSNumber*)value;
 
 - (int64_t)primitiveTimeTrackedValue;
 - (void)setPrimitiveTimeTrackedValue:(int64_t)value_;
 
-- (NSString*)primitiveUser;
-- (void)setPrimitiveUser:(NSString*)value;
+- (nullable NSString*)primitiveUser;
+- (void)setPrimitiveUser:(nullable NSString*)value;
 
-- (NSMutableSet*)primitiveConcerns;
-- (void)setPrimitiveConcerns:(NSMutableSet*)value;
+- (NSMutableSet<PRConcern*>*)primitiveConcerns;
+- (void)setPrimitiveConcerns:(NSMutableSet<PRConcern*>*)value;
 
-- (NSMutableSet*)primitiveGoodNotes;
-- (void)setPrimitiveGoodNotes:(NSMutableSet*)value;
+- (NSMutableSet<PRNote*>*)primitiveGoodNotes;
+- (void)setPrimitiveGoodNotes:(NSMutableSet<PRNote*>*)value;
 
-- (NSMutableSet*)primitiveNotes;
-- (void)setPrimitiveNotes:(NSMutableSet*)value;
+- (NSMutableSet<PRNote*>*)primitiveNotes;
+- (void)setPrimitiveNotes:(NSMutableSet<PRNote*>*)value;
 
-- (NSMutableOrderedSet*)primitiveQuestions;
-- (void)setPrimitiveQuestions:(NSMutableOrderedSet*)value;
+- (NSMutableOrderedSet<PRQuestion*>*)primitiveQuestions;
+- (void)setPrimitiveQuestions:(NSMutableOrderedSet<PRQuestion*>*)value;
 
 - (PRWard*)primitiveWard;
 - (void)setPrimitiveWard:(PRWard*)value;
 
 @end
+
+@interface PRRecordAttributes: NSObject 
++ (NSString *)basicData;
++ (NSString *)incompleteReason;
++ (NSString *)language;
++ (NSString *)startDate;
++ (NSString *)timeAdditionalPatient;
++ (NSString *)timeAdditionalQuestionnaire;
++ (NSString *)timeTracked;
++ (NSString *)user;
+@end
+
+@interface PRRecordRelationships: NSObject
++ (NSString *)concerns;
++ (NSString *)goodNotes;
++ (NSString *)notes;
++ (NSString *)questions;
++ (NSString *)ward;
+@end
+
+NS_ASSUME_NONNULL_END
