@@ -53,8 +53,10 @@
     // show the version & build number
     NSString *versionNumber = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
     NSString *buildNumber = [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
-    
-    versionLabel.text = [NSString stringWithFormat:@"%@ (%@)", versionNumber, buildNumber];
+
+    NSString *savedUrlKey = [[NSUserDefaults standardUserDefaults] valueForKey:APIManagerBaseURLKey];
+
+    versionLabel.text = [NSString stringWithFormat:@"%@ (%@) on %@", versionNumber, buildNumber, savedUrlKey];
 }
 
 -(void)viewWillAppear:(BOOL)animated

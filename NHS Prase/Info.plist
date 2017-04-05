@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>Live</string>
+	<string>2017.04.05</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -38,7 +38,7 @@
 		<key>New Questions</key>
 		<string>http://prase-newquestions.staging.thedistance.co.uk</string>
 		<key>Staging</key>
-		<string>http://prase.staging2.thedistance.co.uk</string>
+		<string>http://prase.staging.thedistance.co.uk</string>
 	</dict>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
