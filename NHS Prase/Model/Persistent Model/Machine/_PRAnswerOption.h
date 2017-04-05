@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _PRAnswerOption : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) PRAnswerOptionID *objectID;
 
 @property (nonatomic, strong, nullable) NSNumber* answerID;
@@ -61,32 +61,32 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _PRAnswerOption (CoreDataGeneratedPrimitiveAccessors)
 
-- (nullable NSNumber*)primitiveAnswerID;
-- (void)setPrimitiveAnswerID:(nullable NSNumber*)value;
+- (NSNumber*)primitiveAnswerID;
+- (void)setPrimitiveAnswerID:(NSNumber*)value;
 
 - (int64_t)primitiveAnswerIDValue;
 - (void)setPrimitiveAnswerIDValue:(int64_t)value_;
 
-- (nullable NSNumber*)primitiveImageID;
-- (void)setPrimitiveImageID:(nullable NSNumber*)value;
+- (NSNumber*)primitiveImageID;
+- (void)setPrimitiveImageID:(NSNumber*)value;
 
 - (int64_t)primitiveImageIDValue;
 - (void)setPrimitiveImageIDValue:(int64_t)value_;
 
-- (nullable NSString*)primitiveImageName;
-- (void)setPrimitiveImageName:(nullable NSString*)value;
+- (NSString*)primitiveImageName;
+- (void)setPrimitiveImageName:(NSString*)value;
 
-- (nullable NSString*)primitiveImageTintIdentifier;
-- (void)setPrimitiveImageTintIdentifier:(nullable NSString*)value;
+- (NSString*)primitiveImageTintIdentifier;
+- (void)setPrimitiveImageTintIdentifier:(NSString*)value;
 
-- (nullable NSNumber*)primitiveLocalizationID;
-- (void)setPrimitiveLocalizationID:(nullable NSNumber*)value;
+- (NSNumber*)primitiveLocalizationID;
+- (void)setPrimitiveLocalizationID:(NSNumber*)value;
 
 - (int64_t)primitiveLocalizationIDValue;
 - (void)setPrimitiveLocalizationIDValue:(int64_t)value_;
 
-- (nullable NSString*)primitiveTitle;
-- (void)setPrimitiveTitle:(nullable NSString*)value;
+- (NSString*)primitiveTitle;
+- (void)setPrimitiveTitle:(NSString*)value;
 
 - (NSMutableSet<PRAnswerSet*>*)primitiveAnswerSet;
 - (void)setPrimitiveAnswerSet:(NSMutableSet<PRAnswerSet*>*)value;

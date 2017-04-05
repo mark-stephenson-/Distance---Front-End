@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _PRQuestion : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) PRQuestionID *objectID;
 
 @property (nonatomic, strong, nullable) NSNumber* answerID;
@@ -52,8 +52,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _PRQuestion (CoreDataGeneratedPrimitiveAccessors)
 
-- (nullable NSNumber*)primitiveAnswerID;
-- (void)setPrimitiveAnswerID:(nullable NSNumber*)value;
+- (NSNumber*)primitiveAnswerID;
+- (void)setPrimitiveAnswerID:(NSNumber*)value;
 
 - (int64_t)primitiveAnswerIDValue;
 - (void)setPrimitiveAnswerIDValue:(int64_t)value_;

@@ -98,7 +98,7 @@
 - (void)insertObject:(PRAnswerOption*)value inOptionsAtIndex:(NSUInteger)idx {
     NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
     [self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"options"];
-    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self options] ?: [NSOrderedSet orderedSet]];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self options]];
     [tmpOrderedSet insertObject:value atIndex:idx];
     [self setPrimitiveValue:tmpOrderedSet forKey:@"options"];
     [self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"options"];
@@ -106,21 +106,21 @@
 - (void)removeObjectFromOptionsAtIndex:(NSUInteger)idx {
     NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
     [self willChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@"options"];
-    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self options] ?: [NSOrderedSet orderedSet]];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self options]];
     [tmpOrderedSet removeObjectAtIndex:idx];
     [self setPrimitiveValue:tmpOrderedSet forKey:@"options"];
     [self didChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@"options"];
 }
 - (void)insertOptions:(NSArray *)value atIndexes:(NSIndexSet *)indexes {
     [self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"options"];
-    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self options] ?: [NSOrderedSet orderedSet]];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self options]];
     [tmpOrderedSet insertObjects:value atIndexes:indexes];
     [self setPrimitiveValue:tmpOrderedSet forKey:@"options"];
     [self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"options"];
 }
 - (void)removeOptionsAtIndexes:(NSIndexSet *)indexes {
     [self willChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@"options"];
-    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self options] ?: [NSOrderedSet orderedSet]];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self options]];
     [tmpOrderedSet removeObjectsAtIndexes:indexes];
     [self setPrimitiveValue:tmpOrderedSet forKey:@"options"];
     [self didChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@"options"];
@@ -128,14 +128,14 @@
 - (void)replaceObjectInOptionsAtIndex:(NSUInteger)idx withObject:(PRAnswerOption*)value {
     NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
     [self willChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"options"];
-    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self options] ?: [NSOrderedSet orderedSet]];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self options]];
     [tmpOrderedSet replaceObjectAtIndex:idx withObject:value];
     [self setPrimitiveValue:tmpOrderedSet forKey:@"options"];
     [self didChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"options"];
 }
 - (void)replaceOptionsAtIndexes:(NSIndexSet *)indexes withOptions:(NSArray *)value {
     [self willChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"options"];
-    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self options] ?: [NSOrderedSet orderedSet]];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self options]];
     [tmpOrderedSet replaceObjectsAtIndexes:indexes withObjects:value];
     [self setPrimitiveValue:tmpOrderedSet forKey:@"options"];
     [self didChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"options"];

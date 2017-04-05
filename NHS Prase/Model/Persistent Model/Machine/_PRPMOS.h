@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _PRPMOS : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) PRPMOSID *objectID;
 
 @property (nonatomic, strong, nullable) NSOrderedSet<PRPMOSQuestion*> *questions;

@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _PRNote : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) PRNoteID *objectID;
 
 @property (nonatomic, strong, nullable) NSData* recording;
@@ -62,11 +62,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _PRNote (CoreDataGeneratedPrimitiveAccessors)
 
-- (nullable NSData*)primitiveRecording;
-- (void)setPrimitiveRecording:(nullable NSData*)value;
+- (NSData*)primitiveRecording;
+- (void)setPrimitiveRecording:(NSData*)value;
 
-- (nullable NSString*)primitiveText;
-- (void)setPrimitiveText:(nullable NSString*)value;
+- (NSString*)primitiveText;
+- (void)setPrimitiveText:(NSString*)value;
 
 - (PRConcern*)primitiveConcernAsPrevent;
 - (void)setPrimitiveConcernAsPrevent:(PRConcern*)value;

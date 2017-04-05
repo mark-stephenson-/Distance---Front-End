@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _PRHospital : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) PRHospitalID *objectID;
 
 @property (nonatomic, strong, nullable) NSNumber* id;
@@ -48,14 +48,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _PRHospital (CoreDataGeneratedPrimitiveAccessors)
 
-- (nullable NSNumber*)primitiveId;
-- (void)setPrimitiveId:(nullable NSNumber*)value;
+- (NSNumber*)primitiveId;
+- (void)setPrimitiveId:(NSNumber*)value;
 
 - (int64_t)primitiveIdValue;
 - (void)setPrimitiveIdValue:(int64_t)value_;
 
-- (nullable NSString*)primitiveName;
-- (void)setPrimitiveName:(nullable NSString*)value;
+- (NSString*)primitiveName;
+- (void)setPrimitiveName:(NSString*)value;
 
 - (PRTrust*)primitiveTrust;
 - (void)setPrimitiveTrust:(PRTrust*)value;

@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _PRRecord : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) PRRecordID *objectID;
 
 @property (nonatomic, strong, nullable) id basicData;
@@ -113,38 +113,38 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _PRRecord (CoreDataGeneratedPrimitiveAccessors)
 
-- (nullable id)primitiveBasicData;
-- (void)setPrimitiveBasicData:(nullable id)value;
+- (id)primitiveBasicData;
+- (void)setPrimitiveBasicData:(id)value;
 
-- (nullable NSString*)primitiveIncompleteReason;
-- (void)setPrimitiveIncompleteReason:(nullable NSString*)value;
+- (NSString*)primitiveIncompleteReason;
+- (void)setPrimitiveIncompleteReason:(NSString*)value;
 
-- (nullable NSString*)primitiveLanguage;
-- (void)setPrimitiveLanguage:(nullable NSString*)value;
+- (NSString*)primitiveLanguage;
+- (void)setPrimitiveLanguage:(NSString*)value;
 
-- (nullable NSDate*)primitiveStartDate;
-- (void)setPrimitiveStartDate:(nullable NSDate*)value;
+- (NSDate*)primitiveStartDate;
+- (void)setPrimitiveStartDate:(NSDate*)value;
 
-- (nullable NSNumber*)primitiveTimeAdditionalPatient;
-- (void)setPrimitiveTimeAdditionalPatient:(nullable NSNumber*)value;
+- (NSNumber*)primitiveTimeAdditionalPatient;
+- (void)setPrimitiveTimeAdditionalPatient:(NSNumber*)value;
 
 - (int64_t)primitiveTimeAdditionalPatientValue;
 - (void)setPrimitiveTimeAdditionalPatientValue:(int64_t)value_;
 
-- (nullable NSNumber*)primitiveTimeAdditionalQuestionnaire;
-- (void)setPrimitiveTimeAdditionalQuestionnaire:(nullable NSNumber*)value;
+- (NSNumber*)primitiveTimeAdditionalQuestionnaire;
+- (void)setPrimitiveTimeAdditionalQuestionnaire:(NSNumber*)value;
 
 - (int64_t)primitiveTimeAdditionalQuestionnaireValue;
 - (void)setPrimitiveTimeAdditionalQuestionnaireValue:(int64_t)value_;
 
-- (nullable NSNumber*)primitiveTimeTracked;
-- (void)setPrimitiveTimeTracked:(nullable NSNumber*)value;
+- (NSNumber*)primitiveTimeTracked;
+- (void)setPrimitiveTimeTracked:(NSNumber*)value;
 
 - (int64_t)primitiveTimeTrackedValue;
 - (void)setPrimitiveTimeTrackedValue:(int64_t)value_;
 
-- (nullable NSString*)primitiveUser;
-- (void)setPrimitiveUser:(nullable NSString*)value;
+- (NSString*)primitiveUser;
+- (void)setPrimitiveUser:(NSString*)value;
 
 - (NSMutableSet<PRConcern*>*)primitiveConcerns;
 - (void)setPrimitiveConcerns:(NSMutableSet<PRConcern*>*)value;

@@ -182,7 +182,7 @@
 - (void)insertObject:(PRQuestion*)value inQuestionsAtIndex:(NSUInteger)idx {
     NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
     [self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"questions"];
-    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions] ?: [NSOrderedSet orderedSet]];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions]];
     [tmpOrderedSet insertObject:value atIndex:idx];
     [self setPrimitiveValue:tmpOrderedSet forKey:@"questions"];
     [self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"questions"];
@@ -190,21 +190,21 @@
 - (void)removeObjectFromQuestionsAtIndex:(NSUInteger)idx {
     NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
     [self willChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@"questions"];
-    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions] ?: [NSOrderedSet orderedSet]];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions]];
     [tmpOrderedSet removeObjectAtIndex:idx];
     [self setPrimitiveValue:tmpOrderedSet forKey:@"questions"];
     [self didChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@"questions"];
 }
 - (void)insertQuestions:(NSArray *)value atIndexes:(NSIndexSet *)indexes {
     [self willChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"questions"];
-    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions] ?: [NSOrderedSet orderedSet]];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions]];
     [tmpOrderedSet insertObjects:value atIndexes:indexes];
     [self setPrimitiveValue:tmpOrderedSet forKey:@"questions"];
     [self didChange:NSKeyValueChangeInsertion valuesAtIndexes:indexes forKey:@"questions"];
 }
 - (void)removeQuestionsAtIndexes:(NSIndexSet *)indexes {
     [self willChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@"questions"];
-    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions] ?: [NSOrderedSet orderedSet]];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions]];
     [tmpOrderedSet removeObjectsAtIndexes:indexes];
     [self setPrimitiveValue:tmpOrderedSet forKey:@"questions"];
     [self didChange:NSKeyValueChangeRemoval valuesAtIndexes:indexes forKey:@"questions"];
@@ -212,14 +212,14 @@
 - (void)replaceObjectInQuestionsAtIndex:(NSUInteger)idx withObject:(PRQuestion*)value {
     NSIndexSet* indexes = [NSIndexSet indexSetWithIndex:idx];
     [self willChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"questions"];
-    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions] ?: [NSOrderedSet orderedSet]];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions]];
     [tmpOrderedSet replaceObjectAtIndex:idx withObject:value];
     [self setPrimitiveValue:tmpOrderedSet forKey:@"questions"];
     [self didChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"questions"];
 }
 - (void)replaceQuestionsAtIndexes:(NSIndexSet *)indexes withQuestions:(NSArray *)value {
     [self willChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"questions"];
-    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions] ?: [NSOrderedSet orderedSet]];
+    NSMutableOrderedSet *tmpOrderedSet = [NSMutableOrderedSet orderedSetWithOrderedSet:[self questions]];
     [tmpOrderedSet replaceObjectsAtIndexes:indexes withObjects:value];
     [self setPrimitiveValue:tmpOrderedSet forKey:@"questions"];
     [self didChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"questions"];
