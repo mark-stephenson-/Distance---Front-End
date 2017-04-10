@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3291976AA7418475857136AF /* Pods_NHS_Prase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D993A95820A38BC8F5B212D /* Pods_NHS_Prase.framework */; };
+		5A10C4441E9B9FB600674258 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A10C4431E9B9FB600674258 /* Launch Screen.storyboard */; };
 		7DE3E39086F229064A1B0524 /* Pods_NHS_PraseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19BC3C82226A364FD9D0EC1B /* Pods_NHS_PraseTests.framework */; };
 		A502276E19C0913E005B31D2 /* PRModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A502276C19C0913E005B31D2 /* PRModel.xcdatamodeld */; };
 		A502278A19C09B22005B31D2 /* PRAnswerOption.m in Sources */ = {isa = PBXBuildFile; fileRef = A502277219C09B22005B31D2 /* PRAnswerOption.m */; };
@@ -120,6 +121,7 @@
 /* Begin PBXFileReference section */
 		19BC3C82226A364FD9D0EC1B /* Pods_NHS_PraseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NHS_PraseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D993A95820A38BC8F5B212D /* Pods_NHS_Prase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NHS_Prase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A10C4431E9B9FB600674258 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		75D35E57BDA6A305694E530F /* Pods-NHS Prase.beta testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHS Prase.beta testing.xcconfig"; path = "Pods/Target Support Files/Pods-NHS Prase/Pods-NHS Prase.beta testing.xcconfig"; sourceTree = "<group>"; };
 		9791B777FBD2600238D9DE6A /* Pods-NHS Prase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHS Prase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NHS Prase/Pods-NHS Prase.debug.xcconfig"; sourceTree = "<group>"; };
 		9A8A0F26F5A7CFD3D7733A2B /* Pods-NHS PraseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHS PraseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NHS PraseTests/Pods-NHS PraseTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 		A536994319ADD1170045EEB1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5A10C4431E9B9FB600674258 /* Launch Screen.storyboard */,
 				A536994419ADD1170045EEB1 /* Info.plist */,
 				A536994519ADD1170045EEB1 /* main.m */,
 				A5961E5D19DC2E2E0085AFD9 /* NHS Prase-Info.h */,
@@ -651,12 +654,13 @@
 		A536993819ADD1170045EEB1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "The Distance";
 				TargetAttributes = {
 					A536993F19ADD1170045EEB1 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 5M6H43M3LM;
+						DevelopmentTeam = MJM3Z85Y2V;
+						ProvisioningStyle = Automatic;
 					};
 					A536995519ADD1170045EEB1 = {
 						CreatedOnToolsVersion = 6.0;
@@ -691,6 +695,7 @@
 				A536994F19ADD1170045EEB1 /* Main.storyboard in Resources */,
 				A5BCB3D419BDE6E600092F50 /* Localizable.strings in Resources */,
 				A536995119ADD1170045EEB1 /* Images.xcassets in Resources */,
+				5A10C4441E9B9FB600674258 /* Launch Screen.storyboard in Resources */,
 				A5BCB3D519BDE6E600092F50 /* Storyboard.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -960,8 +965,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -969,6 +976,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -991,7 +999,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iOS Distribution: Bradford Teaching Hospitals NHS Foundation Trust";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MJM3Z85Y2V;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch *.xcode* (*) .DS_Store CVS .svn .git .hg *.framework";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1011,8 +1021,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.nhs.prase.enterprise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c0af11f6-d47c-4ffe-9883-9f6c59fbd6eb";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = "Beta Testing";
 		};
@@ -1027,6 +1039,7 @@
 				);
 				INFOPLIST_FILE = "NHS PraseTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.thedistance.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NHS Prase.app/NHS Prase";
@@ -1047,15 +1060,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1090,8 +1107,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1099,6 +1118,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1121,7 +1141,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Anthony Main (6D22PCH782)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MJM3Z85Y2V;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1135,8 +1157,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.nhs.prase.enterprise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8cf039a7-1827-4647-94ad-f9d186283035";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -1148,7 +1172,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Health Education Yorkshire and the Humber";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MJM3Z85Y2V;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch *.xcode* (*) .DS_Store CVS .svn .git .hg *.framework";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1163,8 +1189,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.nhs.prase.enterprise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8c904947-7740-4e2d-b5d0-821467b3b03d";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

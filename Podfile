@@ -44,8 +44,6 @@ end
 
 target 'NHS PraseTests' do
 	core
-	thedistance
-	pod 'KIF'	
-    
+	thedistance   
 end
 
