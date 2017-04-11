@@ -62,12 +62,14 @@
 {
     [super viewWillAppear:animated];
     
-    [self selectAnswer];
+    //[self selectAnswer];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+
+    [self selectAnswer];
 }
 
 -(void)setQuestion:(PRQuestion *)question
@@ -103,14 +105,13 @@
     
     self.collectionView.tintColor = [[PRTheme sharedTheme] mainColor];
     
-    if (CGSizeEqualToSize(CGSizeZero, oldViewSize) || !CGSizeEqualToSize(self.view.bounds.size, oldViewSize)) {
-        [self.collectionView.collectionViewLayout invalidateLayout];
-        [self.collectionView.collectionViewLayout prepareLayout];
-        
-        CGSize collectionSize = [self.collectionView.collectionViewLayout collectionViewContentSize];
-        collectionViewWidthConstraint.constant = collectionSize.width;
-        collectionViewHeightConstraint.constant = collectionSize.height;
-    }
+    [self.collectionView.collectionViewLayout invalidateLayout];
+    [self.collectionView.collectionViewLayout prepareLayout];
+
+    CGSize collectionSize = [self.collectionView.collectionViewLayout collectionViewContentSize];
+    collectionViewWidthConstraint.constant = collectionSize.width;
+    collectionViewHeightConstraint.constant = collectionSize.height;
+
 }
 
 #pragma mark - CollectionView DataSource
