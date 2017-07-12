@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0</string>
+	<string>2.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2017.04.11</string>
+	<string>2017.07.12</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -34,11 +34,11 @@
 	<key>PRServerURLs</key>
 	<dict>
 		<key>Live</key>
-		<string>https://api.prase.nhs.uk</string>
+		<string>https://cms.prase.nhs.uk</string>
 		<key>New Questions</key>
 		<string>http://prase-newquestions.staging.thedistance.co.uk</string>
 		<key>Staging</key>
-		<string>http://prase.staging.thedistance.co.uk</string>
+		<string>https://cms.prase.nhs.uk</string>
 	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>Launch Screen</string>
