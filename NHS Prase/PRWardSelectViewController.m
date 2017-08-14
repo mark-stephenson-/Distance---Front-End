@@ -62,24 +62,20 @@
 {
     trustField.text = self.selectedTrust.name;
     hospitalField.text = self.selectedHospital.name;
-    wardField.text = (self.selectedWard.id.integerValue < 0) ? @"Other" : self.selectedWard.name;
-
-    otherWardField.text = [self.selectedWard.id isEqualToNumber:@(-1)] ? self.selectedWard.name : @"";
-    
     trustField.enabled = YES;
     hospitalField.enabled = self.selectedTrust != nil;
     wardField.enabled = self.selectedHospital != nil;
-    otherWardField.enabled = [self.selectedWard.id isEqualToNumber:@(-1)];
     
     // show / hide the custom ward text field
-    if (self.selectedWard != nil && self.selectedWard.id.integerValue < 0) {
-        wardSelectBottomConstraint.priority = 100;
-        otherWardBottomConstraint.priority = 900;
-        
+    if (self.selectedWard.id.integerValue < 0) {
+        otherWardField.enabled = YES;
+        otherWardField.hidden = NO;
         otherWardField.text = self.selectedWard.name;
+        wardField.text = @"Other";
     } else {
-        wardSelectBottomConstraint.priority = 900;
-        otherWardBottomConstraint.priority = 100;
+        otherWardField.hidden = YES;
+        otherWardField.text = @"";
+        wardField.text = self.selectedWard.name;
     }
 }
 

@@ -28,9 +28,6 @@
     
     IBOutlet UIScrollView *scrollView;
     IBOutlet TDTextField *otherWardField;
-
-    IBOutlet NSLayoutConstraint *wardSelectBottomConstraint;
-    IBOutlet NSLayoutConstraint *otherWardBottomConstraint;
     
     NSArray *trusts;
     NSArray *hospitals;
