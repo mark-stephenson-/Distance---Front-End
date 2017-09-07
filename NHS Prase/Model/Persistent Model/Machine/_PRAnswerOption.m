@@ -3,25 +3,12 @@
 
 #import "_PRAnswerOption.h"
 
-const struct PRAnswerOptionAttributes PRAnswerOptionAttributes = {
-	.answerID = @"answerID",
-	.imageID = @"imageID",
-	.imageName = @"imageName",
-	.imageTintIdentifier = @"imageTintIdentifier",
-	.localizationID = @"localizationID",
-	.title = @"title",
-};
-
-const struct PRAnswerOptionRelationships PRAnswerOptionRelationships = {
-	.answerSet = @"answerSet",
-};
-
 @implementation PRAnswerOptionID
 @end
 
 @implementation _PRAnswerOption
 
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_ {
 	NSParameterAssert(moc_);
 	return [NSEntityDescription insertNewObjectForEntityForName:@"PRAnswerOption" inManagedObjectContext:moc_];
 }
@@ -69,7 +56,7 @@ const struct PRAnswerOptionRelationships PRAnswerOptionRelationships = {
 }
 
 - (void)setAnswerIDValue:(int64_t)value_ {
-	[self setAnswerID:[NSNumber numberWithLongLong:value_]];
+	[self setAnswerID:@(value_)];
 }
 
 - (int64_t)primitiveAnswerIDValue {
@@ -78,7 +65,7 @@ const struct PRAnswerOptionRelationships PRAnswerOptionRelationships = {
 }
 
 - (void)setPrimitiveAnswerIDValue:(int64_t)value_ {
-	[self setPrimitiveAnswerID:[NSNumber numberWithLongLong:value_]];
+	[self setPrimitiveAnswerID:@(value_)];
 }
 
 @dynamic imageID;
@@ -89,7 +76,7 @@ const struct PRAnswerOptionRelationships PRAnswerOptionRelationships = {
 }
 
 - (void)setImageIDValue:(int64_t)value_ {
-	[self setImageID:[NSNumber numberWithLongLong:value_]];
+	[self setImageID:@(value_)];
 }
 
 - (int64_t)primitiveImageIDValue {
@@ -98,7 +85,7 @@ const struct PRAnswerOptionRelationships PRAnswerOptionRelationships = {
 }
 
 - (void)setPrimitiveImageIDValue:(int64_t)value_ {
-	[self setPrimitiveImageID:[NSNumber numberWithLongLong:value_]];
+	[self setPrimitiveImageID:@(value_)];
 }
 
 @dynamic imageName;
@@ -113,7 +100,7 @@ const struct PRAnswerOptionRelationships PRAnswerOptionRelationships = {
 }
 
 - (void)setLocalizationIDValue:(int64_t)value_ {
-	[self setLocalizationID:[NSNumber numberWithLongLong:value_]];
+	[self setLocalizationID:@(value_)];
 }
 
 - (int64_t)primitiveLocalizationIDValue {
@@ -122,21 +109,48 @@ const struct PRAnswerOptionRelationships PRAnswerOptionRelationships = {
 }
 
 - (void)setPrimitiveLocalizationIDValue:(int64_t)value_ {
-	[self setPrimitiveLocalizationID:[NSNumber numberWithLongLong:value_]];
+	[self setPrimitiveLocalizationID:@(value_)];
 }
 
 @dynamic title;
 
 @dynamic answerSet;
 
-- (NSMutableSet*)answerSetSet {
+- (NSMutableSet<PRAnswerSet*>*)answerSetSet {
 	[self willAccessValueForKey:@"answerSet"];
 
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"answerSet"];
+	NSMutableSet<PRAnswerSet*> *result = (NSMutableSet<PRAnswerSet*>*)[self mutableSetValueForKey:@"answerSet"];
 
 	[self didAccessValueForKey:@"answerSet"];
 	return result;
 }
 
+@end
+
+@implementation PRAnswerOptionAttributes 
++ (NSString *)answerID {
+	return @"answerID";
+}
++ (NSString *)imageID {
+	return @"imageID";
+}
++ (NSString *)imageName {
+	return @"imageName";
+}
++ (NSString *)imageTintIdentifier {
+	return @"imageTintIdentifier";
+}
++ (NSString *)localizationID {
+	return @"localizationID";
+}
++ (NSString *)title {
+	return @"title";
+}
+@end
+
+@implementation PRAnswerOptionRelationships 
++ (NSString *)answerSet {
+	return @"answerSet";
+}
 @end
 

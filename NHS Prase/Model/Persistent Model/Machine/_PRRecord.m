@@ -3,32 +3,12 @@
 
 #import "_PRRecord.h"
 
-const struct PRRecordAttributes PRRecordAttributes = {
-	.basicData = @"basicData",
-	.incompleteReason = @"incompleteReason",
-	.language = @"language",
-	.pmosID = @"pmosID",
-	.startDate = @"startDate",
-	.timeAdditionalPatient = @"timeAdditionalPatient",
-	.timeAdditionalQuestionnaire = @"timeAdditionalQuestionnaire",
-	.timeTracked = @"timeTracked",
-	.user = @"user",
-};
-
-const struct PRRecordRelationships PRRecordRelationships = {
-	.concerns = @"concerns",
-	.goodNotes = @"goodNotes",
-	.notes = @"notes",
-	.questions = @"questions",
-	.ward = @"ward",
-};
-
 @implementation PRRecordID
 @end
 
 @implementation _PRRecord
 
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_ {
 	NSParameterAssert(moc_);
 	return [NSEntityDescription insertNewObjectForEntityForName:@"PRRecord" inManagedObjectContext:moc_];
 }
@@ -87,7 +67,7 @@ const struct PRRecordRelationships PRRecordRelationships = {
 }
 
 - (void)setPmosIDValue:(int64_t)value_ {
-	[self setPmosID:[NSNumber numberWithLongLong:value_]];
+	[self setPmosID:@(value_)];
 }
 
 - (int64_t)primitivePmosIDValue {
@@ -96,7 +76,7 @@ const struct PRRecordRelationships PRRecordRelationships = {
 }
 
 - (void)setPrimitivePmosIDValue:(int64_t)value_ {
-	[self setPrimitivePmosID:[NSNumber numberWithLongLong:value_]];
+	[self setPrimitivePmosID:@(value_)];
 }
 
 @dynamic startDate;
@@ -109,7 +89,7 @@ const struct PRRecordRelationships PRRecordRelationships = {
 }
 
 - (void)setTimeAdditionalPatientValue:(int64_t)value_ {
-	[self setTimeAdditionalPatient:[NSNumber numberWithLongLong:value_]];
+	[self setTimeAdditionalPatient:@(value_)];
 }
 
 - (int64_t)primitiveTimeAdditionalPatientValue {
@@ -118,7 +98,7 @@ const struct PRRecordRelationships PRRecordRelationships = {
 }
 
 - (void)setPrimitiveTimeAdditionalPatientValue:(int64_t)value_ {
-	[self setPrimitiveTimeAdditionalPatient:[NSNumber numberWithLongLong:value_]];
+	[self setPrimitiveTimeAdditionalPatient:@(value_)];
 }
 
 @dynamic timeAdditionalQuestionnaire;
@@ -129,7 +109,7 @@ const struct PRRecordRelationships PRRecordRelationships = {
 }
 
 - (void)setTimeAdditionalQuestionnaireValue:(int64_t)value_ {
-	[self setTimeAdditionalQuestionnaire:[NSNumber numberWithLongLong:value_]];
+	[self setTimeAdditionalQuestionnaire:@(value_)];
 }
 
 - (int64_t)primitiveTimeAdditionalQuestionnaireValue {
@@ -138,7 +118,7 @@ const struct PRRecordRelationships PRRecordRelationships = {
 }
 
 - (void)setPrimitiveTimeAdditionalQuestionnaireValue:(int64_t)value_ {
-	[self setPrimitiveTimeAdditionalQuestionnaire:[NSNumber numberWithLongLong:value_]];
+	[self setPrimitiveTimeAdditionalQuestionnaire:@(value_)];
 }
 
 @dynamic timeTracked;
@@ -149,7 +129,7 @@ const struct PRRecordRelationships PRRecordRelationships = {
 }
 
 - (void)setTimeTrackedValue:(int64_t)value_ {
-	[self setTimeTracked:[NSNumber numberWithLongLong:value_]];
+	[self setTimeTracked:@(value_)];
 }
 
 - (int64_t)primitiveTimeTrackedValue {
@@ -158,17 +138,17 @@ const struct PRRecordRelationships PRRecordRelationships = {
 }
 
 - (void)setPrimitiveTimeTrackedValue:(int64_t)value_ {
-	[self setPrimitiveTimeTracked:[NSNumber numberWithLongLong:value_]];
+	[self setPrimitiveTimeTracked:@(value_)];
 }
 
 @dynamic user;
 
 @dynamic concerns;
 
-- (NSMutableSet*)concernsSet {
+- (NSMutableSet<PRConcern*>*)concernsSet {
 	[self willAccessValueForKey:@"concerns"];
 
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"concerns"];
+	NSMutableSet<PRConcern*> *result = (NSMutableSet<PRConcern*>*)[self mutableSetValueForKey:@"concerns"];
 
 	[self didAccessValueForKey:@"concerns"];
 	return result;
@@ -176,10 +156,10 @@ const struct PRRecordRelationships PRRecordRelationships = {
 
 @dynamic goodNotes;
 
-- (NSMutableSet*)goodNotesSet {
+- (NSMutableSet<PRNote*>*)goodNotesSet {
 	[self willAccessValueForKey:@"goodNotes"];
 
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"goodNotes"];
+	NSMutableSet<PRNote*> *result = (NSMutableSet<PRNote*>*)[self mutableSetValueForKey:@"goodNotes"];
 
 	[self didAccessValueForKey:@"goodNotes"];
 	return result;
@@ -187,10 +167,10 @@ const struct PRRecordRelationships PRRecordRelationships = {
 
 @dynamic notes;
 
-- (NSMutableSet*)notesSet {
+- (NSMutableSet<PRNote*>*)notesSet {
 	[self willAccessValueForKey:@"notes"];
 
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"notes"];
+	NSMutableSet<PRNote*> *result = (NSMutableSet<PRNote*>*)[self mutableSetValueForKey:@"notes"];
 
 	[self didAccessValueForKey:@"notes"];
 	return result;
@@ -198,10 +178,10 @@ const struct PRRecordRelationships PRRecordRelationships = {
 
 @dynamic questions;
 
-- (NSMutableOrderedSet*)questionsSet {
+- (NSMutableOrderedSet<PRQuestion*>*)questionsSet {
 	[self willAccessValueForKey:@"questions"];
 
-	NSMutableOrderedSet *result = (NSMutableOrderedSet*)[self mutableOrderedSetValueForKey:@"questions"];
+	NSMutableOrderedSet<PRQuestion*> *result = (NSMutableOrderedSet<PRQuestion*>*)[self mutableOrderedSetValueForKey:@"questions"];
 
 	[self didAccessValueForKey:@"questions"];
 	return result;
@@ -212,10 +192,10 @@ const struct PRRecordRelationships PRRecordRelationships = {
 @end
 
 @implementation _PRRecord (QuestionsCoreDataGeneratedAccessors)
-- (void)addQuestions:(NSOrderedSet*)value_ {
+- (void)addQuestions:(NSOrderedSet<PRQuestion*>*)value_ {
 	[self.questionsSet unionOrderedSet:value_];
 }
-- (void)removeQuestions:(NSOrderedSet*)value_ {
+- (void)removeQuestions:(NSOrderedSet<PRQuestion*>*)value_ {
 	[self.questionsSet minusOrderedSet:value_];
 }
 - (void)addQuestionsObject:(PRQuestion*)value_ {
@@ -268,6 +248,54 @@ const struct PRRecordRelationships PRRecordRelationships = {
     [tmpOrderedSet replaceObjectsAtIndexes:indexes withObjects:value];
     [self setPrimitiveValue:tmpOrderedSet forKey:@"questions"];
     [self didChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"questions"];
+}
+@end
+
+@implementation PRRecordAttributes 
++ (NSString *)basicData {
+	return @"basicData";
+}
++ (NSString *)incompleteReason {
+	return @"incompleteReason";
+}
++ (NSString *)language {
+	return @"language";
+}
++ (NSString *)pmosID {
+	return @"pmosID";
+}
++ (NSString *)startDate {
+	return @"startDate";
+}
++ (NSString *)timeAdditionalPatient {
+	return @"timeAdditionalPatient";
+}
++ (NSString *)timeAdditionalQuestionnaire {
+	return @"timeAdditionalQuestionnaire";
+}
++ (NSString *)timeTracked {
+	return @"timeTracked";
+}
++ (NSString *)user {
+	return @"user";
+}
+@end
+
+@implementation PRRecordRelationships 
++ (NSString *)concerns {
+	return @"concerns";
+}
++ (NSString *)goodNotes {
+	return @"goodNotes";
+}
++ (NSString *)notes {
+	return @"notes";
+}
++ (NSString *)questions {
+	return @"questions";
+}
++ (NSString *)ward {
+	return @"ward";
 }
 @end
 

@@ -3,23 +3,12 @@
 
 #import "_PRConcern.h"
 
-const struct PRConcernRelationships PRConcernRelationships = {
-	.preventNote = @"preventNote",
-	.preventQuestion = @"preventQuestion",
-	.question = @"question",
-	.record = @"record",
-	.seriousQuestion = @"seriousQuestion",
-	.ward = @"ward",
-	.whatNote = @"whatNote",
-	.whyNote = @"whyNote",
-};
-
 @implementation PRConcernID
 @end
 
 @implementation _PRConcern
 
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_ {
 	NSParameterAssert(moc_);
 	return [NSEntityDescription insertNewObjectForEntityForName:@"PRConcern" inManagedObjectContext:moc_];
 }
@@ -59,5 +48,32 @@ const struct PRConcernRelationships PRConcernRelationships = {
 
 @dynamic whyNote;
 
+@end
+
+@implementation PRConcernRelationships 
++ (NSString *)preventNote {
+	return @"preventNote";
+}
++ (NSString *)preventQuestion {
+	return @"preventQuestion";
+}
++ (NSString *)question {
+	return @"question";
+}
++ (NSString *)record {
+	return @"record";
+}
++ (NSString *)seriousQuestion {
+	return @"seriousQuestion";
+}
++ (NSString *)ward {
+	return @"ward";
+}
++ (NSString *)whatNote {
+	return @"whatNote";
+}
++ (NSString *)whyNote {
+	return @"whyNote";
+}
 @end
 

@@ -1,77 +1,59 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to PRAnswerOption.h instead.
 
-#import <CoreData/CoreData.h>
+#if __has_feature(modules)
+    @import Foundation;
+    @import CoreData;
+#else
+    #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
+#endif
 
-extern const struct PRAnswerOptionAttributes {
-	__unsafe_unretained NSString *answerID;
-	__unsafe_unretained NSString *imageID;
-	__unsafe_unretained NSString *imageName;
-	__unsafe_unretained NSString *imageTintIdentifier;
-	__unsafe_unretained NSString *localizationID;
-	__unsafe_unretained NSString *title;
-} PRAnswerOptionAttributes;
-
-extern const struct PRAnswerOptionRelationships {
-	__unsafe_unretained NSString *answerSet;
-} PRAnswerOptionRelationships;
+NS_ASSUME_NONNULL_BEGIN
 
 @class PRAnswerSet;
 
 @interface PRAnswerOptionID : NSManagedObjectID {}
 @end
 
-@interface _PRAnswerOption : NSManagedObject {}
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
+@interface _PRAnswerOption : NSManagedObject
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-@property (nonatomic, readonly, strong) PRAnswerOptionID* objectID;
+@property (nonatomic, readonly, strong) PRAnswerOptionID *objectID;
 
-@property (nonatomic, strong) NSNumber* answerID;
+@property (nonatomic, strong, nullable) NSNumber* answerID;
 
 @property (atomic) int64_t answerIDValue;
 - (int64_t)answerIDValue;
 - (void)setAnswerIDValue:(int64_t)value_;
 
-//- (BOOL)validateAnswerID:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) NSNumber* imageID;
+@property (nonatomic, strong, nullable) NSNumber* imageID;
 
 @property (atomic) int64_t imageIDValue;
 - (int64_t)imageIDValue;
 - (void)setImageIDValue:(int64_t)value_;
 
-//- (BOOL)validateImageID:(id*)value_ error:(NSError**)error_;
+@property (nonatomic, strong, nullable) NSString* imageName;
 
-@property (nonatomic, strong) NSString* imageName;
+@property (nonatomic, strong, nullable) NSString* imageTintIdentifier;
 
-//- (BOOL)validateImageName:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) NSString* imageTintIdentifier;
-
-//- (BOOL)validateImageTintIdentifier:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) NSNumber* localizationID;
+@property (nonatomic, strong, nullable) NSNumber* localizationID;
 
 @property (atomic) int64_t localizationIDValue;
 - (int64_t)localizationIDValue;
 - (void)setLocalizationIDValue:(int64_t)value_;
 
-//- (BOOL)validateLocalizationID:(id*)value_ error:(NSError**)error_;
+@property (nonatomic, strong, nullable) NSString* title;
 
-@property (nonatomic, strong) NSString* title;
-
-//- (BOOL)validateTitle:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) NSSet *answerSet;
-
-- (NSMutableSet*)answerSetSet;
+@property (nonatomic, strong, nullable) NSSet<PRAnswerSet*> *answerSet;
+- (nullable NSMutableSet<PRAnswerSet*>*)answerSetSet;
 
 @end
 
 @interface _PRAnswerOption (AnswerSetCoreDataGeneratedAccessors)
-- (void)addAnswerSet:(NSSet*)value_;
-- (void)removeAnswerSet:(NSSet*)value_;
+- (void)addAnswerSet:(NSSet<PRAnswerSet*>*)value_;
+- (void)removeAnswerSet:(NSSet<PRAnswerSet*>*)value_;
 - (void)addAnswerSetObject:(PRAnswerSet*)value_;
 - (void)removeAnswerSetObject:(PRAnswerSet*)value_;
 
@@ -106,7 +88,22 @@ extern const struct PRAnswerOptionRelationships {
 - (NSString*)primitiveTitle;
 - (void)setPrimitiveTitle:(NSString*)value;
 
-- (NSMutableSet*)primitiveAnswerSet;
-- (void)setPrimitiveAnswerSet:(NSMutableSet*)value;
+- (NSMutableSet<PRAnswerSet*>*)primitiveAnswerSet;
+- (void)setPrimitiveAnswerSet:(NSMutableSet<PRAnswerSet*>*)value;
 
 @end
+
+@interface PRAnswerOptionAttributes: NSObject 
++ (NSString *)answerID;
++ (NSString *)imageID;
++ (NSString *)imageName;
++ (NSString *)imageTintIdentifier;
++ (NSString *)localizationID;
++ (NSString *)title;
+@end
+
+@interface PRAnswerOptionRelationships: NSObject
++ (NSString *)answerSet;
+@end
+
+NS_ASSUME_NONNULL_END

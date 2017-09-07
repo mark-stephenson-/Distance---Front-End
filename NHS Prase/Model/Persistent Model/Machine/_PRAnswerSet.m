@@ -3,21 +3,12 @@
 
 #import "_PRAnswerSet.h"
 
-const struct PRAnswerSetAttributes PRAnswerSetAttributes = {
-	.id = @"id",
-};
-
-const struct PRAnswerSetRelationships PRAnswerSetRelationships = {
-	.options = @"options",
-	.pmosQuestion = @"pmosQuestion",
-};
-
 @implementation PRAnswerSetID
 @end
 
 @implementation _PRAnswerSet
 
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_ {
 	NSParameterAssert(moc_);
 	return [NSEntityDescription insertNewObjectForEntityForName:@"PRAnswerSet" inManagedObjectContext:moc_];
 }
@@ -55,7 +46,7 @@ const struct PRAnswerSetRelationships PRAnswerSetRelationships = {
 }
 
 - (void)setIdValue:(int64_t)value_ {
-	[self setId:[NSNumber numberWithLongLong:value_]];
+	[self setId:@(value_)];
 }
 
 - (int64_t)primitiveIdValue {
@@ -64,15 +55,15 @@ const struct PRAnswerSetRelationships PRAnswerSetRelationships = {
 }
 
 - (void)setPrimitiveIdValue:(int64_t)value_ {
-	[self setPrimitiveId:[NSNumber numberWithLongLong:value_]];
+	[self setPrimitiveId:@(value_)];
 }
 
 @dynamic options;
 
-- (NSMutableOrderedSet*)optionsSet {
+- (NSMutableOrderedSet<PRAnswerOption*>*)optionsSet {
 	[self willAccessValueForKey:@"options"];
 
-	NSMutableOrderedSet *result = (NSMutableOrderedSet*)[self mutableOrderedSetValueForKey:@"options"];
+	NSMutableOrderedSet<PRAnswerOption*> *result = (NSMutableOrderedSet<PRAnswerOption*>*)[self mutableOrderedSetValueForKey:@"options"];
 
 	[self didAccessValueForKey:@"options"];
 	return result;
@@ -80,10 +71,10 @@ const struct PRAnswerSetRelationships PRAnswerSetRelationships = {
 
 @dynamic pmosQuestion;
 
-- (NSMutableSet*)pmosQuestionSet {
+- (NSMutableSet<PRPMOSQuestion*>*)pmosQuestionSet {
 	[self willAccessValueForKey:@"pmosQuestion"];
 
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"pmosQuestion"];
+	NSMutableSet<PRPMOSQuestion*> *result = (NSMutableSet<PRPMOSQuestion*>*)[self mutableSetValueForKey:@"pmosQuestion"];
 
 	[self didAccessValueForKey:@"pmosQuestion"];
 	return result;
@@ -92,10 +83,10 @@ const struct PRAnswerSetRelationships PRAnswerSetRelationships = {
 @end
 
 @implementation _PRAnswerSet (OptionsCoreDataGeneratedAccessors)
-- (void)addOptions:(NSOrderedSet*)value_ {
+- (void)addOptions:(NSOrderedSet<PRAnswerOption*>*)value_ {
 	[self.optionsSet unionOrderedSet:value_];
 }
-- (void)removeOptions:(NSOrderedSet*)value_ {
+- (void)removeOptions:(NSOrderedSet<PRAnswerOption*>*)value_ {
 	[self.optionsSet minusOrderedSet:value_];
 }
 - (void)addOptionsObject:(PRAnswerOption*)value_ {
@@ -148,6 +139,21 @@ const struct PRAnswerSetRelationships PRAnswerSetRelationships = {
     [tmpOrderedSet replaceObjectsAtIndexes:indexes withObjects:value];
     [self setPrimitiveValue:tmpOrderedSet forKey:@"options"];
     [self didChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"options"];
+}
+@end
+
+@implementation PRAnswerSetAttributes 
++ (NSString *)id {
+	return @"id";
+}
+@end
+
+@implementation PRAnswerSetRelationships 
++ (NSString *)options {
+	return @"options";
+}
++ (NSString *)pmosQuestion {
+	return @"pmosQuestion";
 }
 @end
 

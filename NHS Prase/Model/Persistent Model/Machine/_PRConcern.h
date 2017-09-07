@@ -1,18 +1,15 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to PRConcern.h instead.
 
-#import <CoreData/CoreData.h>
+#if __has_feature(modules)
+    @import Foundation;
+    @import CoreData;
+#else
+    #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
+#endif
 
-extern const struct PRConcernRelationships {
-	__unsafe_unretained NSString *preventNote;
-	__unsafe_unretained NSString *preventQuestion;
-	__unsafe_unretained NSString *question;
-	__unsafe_unretained NSString *record;
-	__unsafe_unretained NSString *seriousQuestion;
-	__unsafe_unretained NSString *ward;
-	__unsafe_unretained NSString *whatNote;
-	__unsafe_unretained NSString *whyNote;
-} PRConcernRelationships;
+NS_ASSUME_NONNULL_BEGIN
 
 @class PRNote;
 @class PRQuestion;
@@ -26,43 +23,27 @@ extern const struct PRConcernRelationships {
 @interface PRConcernID : NSManagedObjectID {}
 @end
 
-@interface _PRConcern : NSManagedObject {}
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
+@interface _PRConcern : NSManagedObject
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-@property (nonatomic, readonly, strong) PRConcernID* objectID;
+@property (nonatomic, readonly, strong) PRConcernID *objectID;
 
-@property (nonatomic, strong) PRNote *preventNote;
+@property (nonatomic, strong, nullable) PRNote *preventNote;
 
-//- (BOOL)validatePreventNote:(id*)value_ error:(NSError**)error_;
+@property (nonatomic, strong, nullable) PRQuestion *preventQuestion;
 
-@property (nonatomic, strong) PRQuestion *preventQuestion;
+@property (nonatomic, strong, nullable) PRQuestion *question;
 
-//- (BOOL)validatePreventQuestion:(id*)value_ error:(NSError**)error_;
+@property (nonatomic, strong, nullable) PRRecord *record;
 
-@property (nonatomic, strong) PRQuestion *question;
+@property (nonatomic, strong, nullable) PRQuestion *seriousQuestion;
 
-//- (BOOL)validateQuestion:(id*)value_ error:(NSError**)error_;
+@property (nonatomic, strong, nullable) PRWard *ward;
 
-@property (nonatomic, strong) PRRecord *record;
+@property (nonatomic, strong, nullable) PRNote *whatNote;
 
-//- (BOOL)validateRecord:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) PRQuestion *seriousQuestion;
-
-//- (BOOL)validateSeriousQuestion:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) PRWard *ward;
-
-//- (BOOL)validateWard:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) PRNote *whatNote;
-
-//- (BOOL)validateWhatNote:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) PRNote *whyNote;
-
-//- (BOOL)validateWhyNote:(id*)value_ error:(NSError**)error_;
+@property (nonatomic, strong, nullable) PRNote *whyNote;
 
 @end
 
@@ -93,3 +74,16 @@ extern const struct PRConcernRelationships {
 - (void)setPrimitiveWhyNote:(PRNote*)value;
 
 @end
+
+@interface PRConcernRelationships: NSObject
++ (NSString *)preventNote;
++ (NSString *)preventQuestion;
++ (NSString *)question;
++ (NSString *)record;
++ (NSString *)seriousQuestion;
++ (NSString *)ward;
++ (NSString *)whatNote;
++ (NSString *)whyNote;
+@end
+
+NS_ASSUME_NONNULL_END

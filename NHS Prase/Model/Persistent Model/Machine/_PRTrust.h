@@ -1,49 +1,43 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to PRTrust.h instead.
 
-#import <CoreData/CoreData.h>
+#if __has_feature(modules)
+    @import Foundation;
+    @import CoreData;
+#else
+    #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
+#endif
 
-extern const struct PRTrustAttributes {
-	__unsafe_unretained NSString *id;
-	__unsafe_unretained NSString *name;
-} PRTrustAttributes;
-
-extern const struct PRTrustRelationships {
-	__unsafe_unretained NSString *hospitals;
-} PRTrustRelationships;
+NS_ASSUME_NONNULL_BEGIN
 
 @class PRHospital;
 
 @interface PRTrustID : NSManagedObjectID {}
 @end
 
-@interface _PRTrust : NSManagedObject {}
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
+@interface _PRTrust : NSManagedObject
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-@property (nonatomic, readonly, strong) PRTrustID* objectID;
+@property (nonatomic, readonly, strong) PRTrustID *objectID;
 
-@property (nonatomic, strong) NSNumber* id;
+@property (nonatomic, strong, nullable) NSNumber* id;
 
 @property (atomic) int64_t idValue;
 - (int64_t)idValue;
 - (void)setIdValue:(int64_t)value_;
 
-//- (BOOL)validateId:(id*)value_ error:(NSError**)error_;
+@property (nonatomic, strong, nullable) NSString* name;
 
-@property (nonatomic, strong) NSString* name;
-
-//- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) NSSet *hospitals;
-
-- (NSMutableSet*)hospitalsSet;
+@property (nonatomic, strong, nullable) NSSet<PRHospital*> *hospitals;
+- (nullable NSMutableSet<PRHospital*>*)hospitalsSet;
 
 @end
 
 @interface _PRTrust (HospitalsCoreDataGeneratedAccessors)
-- (void)addHospitals:(NSSet*)value_;
-- (void)removeHospitals:(NSSet*)value_;
+- (void)addHospitals:(NSSet<PRHospital*>*)value_;
+- (void)removeHospitals:(NSSet<PRHospital*>*)value_;
 - (void)addHospitalsObject:(PRHospital*)value_;
 - (void)removeHospitalsObject:(PRHospital*)value_;
 
@@ -60,7 +54,18 @@ extern const struct PRTrustRelationships {
 - (NSString*)primitiveName;
 - (void)setPrimitiveName:(NSString*)value;
 
-- (NSMutableSet*)primitiveHospitals;
-- (void)setPrimitiveHospitals:(NSMutableSet*)value;
+- (NSMutableSet<PRHospital*>*)primitiveHospitals;
+- (void)setPrimitiveHospitals:(NSMutableSet<PRHospital*>*)value;
 
 @end
+
+@interface PRTrustAttributes: NSObject 
++ (NSString *)id;
++ (NSString *)name;
+@end
+
+@interface PRTrustRelationships: NSObject
++ (NSString *)hospitals;
+@end
+
+NS_ASSUME_NONNULL_END

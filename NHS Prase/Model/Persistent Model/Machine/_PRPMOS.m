@@ -3,20 +3,12 @@
 
 #import "_PRPMOS.h"
 
-const struct PRPMOSAttributes PRPMOSAttributes = {
-	.id = @"id",
-};
-
-const struct PRPMOSRelationships PRPMOSRelationships = {
-	.questions = @"questions",
-};
-
 @implementation PRPMOSID
 @end
 
 @implementation _PRPMOS
 
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_ {
 	NSParameterAssert(moc_);
 	return [NSEntityDescription insertNewObjectForEntityForName:@"PRPMOS" inManagedObjectContext:moc_];
 }
@@ -54,7 +46,7 @@ const struct PRPMOSRelationships PRPMOSRelationships = {
 }
 
 - (void)setIdValue:(int64_t)value_ {
-	[self setId:[NSNumber numberWithLongLong:value_]];
+	[self setId:@(value_)];
 }
 
 - (int64_t)primitiveIdValue {
@@ -63,15 +55,15 @@ const struct PRPMOSRelationships PRPMOSRelationships = {
 }
 
 - (void)setPrimitiveIdValue:(int64_t)value_ {
-	[self setPrimitiveId:[NSNumber numberWithLongLong:value_]];
+	[self setPrimitiveId:@(value_)];
 }
 
 @dynamic questions;
 
-- (NSMutableOrderedSet*)questionsSet {
+- (NSMutableOrderedSet<PRPMOSQuestion*>*)questionsSet {
 	[self willAccessValueForKey:@"questions"];
 
-	NSMutableOrderedSet *result = (NSMutableOrderedSet*)[self mutableOrderedSetValueForKey:@"questions"];
+	NSMutableOrderedSet<PRPMOSQuestion*> *result = (NSMutableOrderedSet<PRPMOSQuestion*>*)[self mutableOrderedSetValueForKey:@"questions"];
 
 	[self didAccessValueForKey:@"questions"];
 	return result;
@@ -80,10 +72,10 @@ const struct PRPMOSRelationships PRPMOSRelationships = {
 @end
 
 @implementation _PRPMOS (QuestionsCoreDataGeneratedAccessors)
-- (void)addQuestions:(NSOrderedSet*)value_ {
+- (void)addQuestions:(NSOrderedSet<PRPMOSQuestion*>*)value_ {
 	[self.questionsSet unionOrderedSet:value_];
 }
-- (void)removeQuestions:(NSOrderedSet*)value_ {
+- (void)removeQuestions:(NSOrderedSet<PRPMOSQuestion*>*)value_ {
 	[self.questionsSet minusOrderedSet:value_];
 }
 - (void)addQuestionsObject:(PRPMOSQuestion*)value_ {
@@ -136,6 +128,18 @@ const struct PRPMOSRelationships PRPMOSRelationships = {
     [tmpOrderedSet replaceObjectsAtIndexes:indexes withObjects:value];
     [self setPrimitiveValue:tmpOrderedSet forKey:@"questions"];
     [self didChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"questions"];
+}
+@end
+
+@implementation PRPMOSAttributes 
++ (NSString *)id {
+	return @"id";
+}
+@end
+
+@implementation PRPMOSRelationships 
++ (NSString *)questions {
+	return @"questions";
 }
 @end
 

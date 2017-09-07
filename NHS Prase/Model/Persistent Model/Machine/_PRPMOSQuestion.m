@@ -3,23 +3,12 @@
 
 #import "_PRPMOSQuestion.h"
 
-const struct PRPMOSQuestionAttributes PRPMOSQuestionAttributes = {
-	.localizationID = @"localizationID",
-	.questionID = @"questionID",
-};
-
-const struct PRPMOSQuestionRelationships PRPMOSQuestionRelationships = {
-	.answerSets = @"answerSets",
-	.pmos = @"pmos",
-	.questions = @"questions",
-};
-
 @implementation PRPMOSQuestionID
 @end
 
 @implementation _PRPMOSQuestion
 
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_ {
 	NSParameterAssert(moc_);
 	return [NSEntityDescription insertNewObjectForEntityForName:@"PRPMOSQuestion" inManagedObjectContext:moc_];
 }
@@ -62,7 +51,7 @@ const struct PRPMOSQuestionRelationships PRPMOSQuestionRelationships = {
 }
 
 - (void)setLocalizationIDValue:(int64_t)value_ {
-	[self setLocalizationID:[NSNumber numberWithLongLong:value_]];
+	[self setLocalizationID:@(value_)];
 }
 
 - (int64_t)primitiveLocalizationIDValue {
@@ -71,7 +60,7 @@ const struct PRPMOSQuestionRelationships PRPMOSQuestionRelationships = {
 }
 
 - (void)setPrimitiveLocalizationIDValue:(int64_t)value_ {
-	[self setPrimitiveLocalizationID:[NSNumber numberWithLongLong:value_]];
+	[self setPrimitiveLocalizationID:@(value_)];
 }
 
 @dynamic questionID;
@@ -82,7 +71,7 @@ const struct PRPMOSQuestionRelationships PRPMOSQuestionRelationships = {
 }
 
 - (void)setQuestionIDValue:(int64_t)value_ {
-	[self setQuestionID:[NSNumber numberWithLongLong:value_]];
+	[self setQuestionID:@(value_)];
 }
 
 - (int64_t)primitiveQuestionIDValue {
@@ -91,15 +80,15 @@ const struct PRPMOSQuestionRelationships PRPMOSQuestionRelationships = {
 }
 
 - (void)setPrimitiveQuestionIDValue:(int64_t)value_ {
-	[self setPrimitiveQuestionID:[NSNumber numberWithLongLong:value_]];
+	[self setPrimitiveQuestionID:@(value_)];
 }
 
 @dynamic answerSets;
 
-- (NSMutableOrderedSet*)answerSetsSet {
+- (NSMutableOrderedSet<PRAnswerSet*>*)answerSetsSet {
 	[self willAccessValueForKey:@"answerSets"];
 
-	NSMutableOrderedSet *result = (NSMutableOrderedSet*)[self mutableOrderedSetValueForKey:@"answerSets"];
+	NSMutableOrderedSet<PRAnswerSet*> *result = (NSMutableOrderedSet<PRAnswerSet*>*)[self mutableOrderedSetValueForKey:@"answerSets"];
 
 	[self didAccessValueForKey:@"answerSets"];
 	return result;
@@ -109,10 +98,10 @@ const struct PRPMOSQuestionRelationships PRPMOSQuestionRelationships = {
 
 @dynamic questions;
 
-- (NSMutableSet*)questionsSet {
+- (NSMutableSet<PRQuestion*>*)questionsSet {
 	[self willAccessValueForKey:@"questions"];
 
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"questions"];
+	NSMutableSet<PRQuestion*> *result = (NSMutableSet<PRQuestion*>*)[self mutableSetValueForKey:@"questions"];
 
 	[self didAccessValueForKey:@"questions"];
 	return result;
@@ -121,10 +110,10 @@ const struct PRPMOSQuestionRelationships PRPMOSQuestionRelationships = {
 @end
 
 @implementation _PRPMOSQuestion (AnswerSetsCoreDataGeneratedAccessors)
-- (void)addAnswerSets:(NSOrderedSet*)value_ {
+- (void)addAnswerSets:(NSOrderedSet<PRAnswerSet*>*)value_ {
 	[self.answerSetsSet unionOrderedSet:value_];
 }
-- (void)removeAnswerSets:(NSOrderedSet*)value_ {
+- (void)removeAnswerSets:(NSOrderedSet<PRAnswerSet*>*)value_ {
 	[self.answerSetsSet minusOrderedSet:value_];
 }
 - (void)addAnswerSetsObject:(PRAnswerSet*)value_ {
@@ -177,6 +166,27 @@ const struct PRPMOSQuestionRelationships PRPMOSQuestionRelationships = {
     [tmpOrderedSet replaceObjectsAtIndexes:indexes withObjects:value];
     [self setPrimitiveValue:tmpOrderedSet forKey:@"answerSets"];
     [self didChange:NSKeyValueChangeReplacement valuesAtIndexes:indexes forKey:@"answerSets"];
+}
+@end
+
+@implementation PRPMOSQuestionAttributes 
++ (NSString *)localizationID {
+	return @"localizationID";
+}
++ (NSString *)questionID {
+	return @"questionID";
+}
+@end
+
+@implementation PRPMOSQuestionRelationships 
++ (NSString *)answerSets {
+	return @"answerSets";
+}
++ (NSString *)pmos {
+	return @"pmos";
+}
++ (NSString *)questions {
+	return @"questions";
 }
 @end
 
