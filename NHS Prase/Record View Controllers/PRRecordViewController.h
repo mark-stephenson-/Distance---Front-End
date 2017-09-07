@@ -15,6 +15,7 @@
 @interface PRRecordViewController : PRSegmentTabViewController <PRIncompleteViewControllerDelegate, UIAlertViewDelegate>
 {
     IBOutlet UIView *progressFooter;
+    IBOutlet UIView *footerView;
     IBOutlet UIProgressView *progressView;
     IBOutlet UILabel *progressLabel;
     

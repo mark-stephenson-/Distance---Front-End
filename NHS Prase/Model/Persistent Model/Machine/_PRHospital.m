@@ -3,22 +3,12 @@
 
 #import "_PRHospital.h"
 
-const struct PRHospitalAttributes PRHospitalAttributes = {
-	.id = @"id",
-	.name = @"name",
-};
-
-const struct PRHospitalRelationships PRHospitalRelationships = {
-	.trust = @"trust",
-	.wards = @"wards",
-};
-
 @implementation PRHospitalID
 @end
 
 @implementation _PRHospital
 
-+ (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
++ (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_ {
 	NSParameterAssert(moc_);
 	return [NSEntityDescription insertNewObjectForEntityForName:@"PRHospital" inManagedObjectContext:moc_];
 }
@@ -56,7 +46,7 @@ const struct PRHospitalRelationships PRHospitalRelationships = {
 }
 
 - (void)setIdValue:(int64_t)value_ {
-	[self setId:[NSNumber numberWithLongLong:value_]];
+	[self setId:@(value_)];
 }
 
 - (int64_t)primitiveIdValue {
@@ -65,7 +55,7 @@ const struct PRHospitalRelationships PRHospitalRelationships = {
 }
 
 - (void)setPrimitiveIdValue:(int64_t)value_ {
-	[self setPrimitiveId:[NSNumber numberWithLongLong:value_]];
+	[self setPrimitiveId:@(value_)];
 }
 
 @dynamic name;
@@ -74,14 +64,32 @@ const struct PRHospitalRelationships PRHospitalRelationships = {
 
 @dynamic wards;
 
-- (NSMutableSet*)wardsSet {
+- (NSMutableSet<PRWard*>*)wardsSet {
 	[self willAccessValueForKey:@"wards"];
 
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"wards"];
+	NSMutableSet<PRWard*> *result = (NSMutableSet<PRWard*>*)[self mutableSetValueForKey:@"wards"];
 
 	[self didAccessValueForKey:@"wards"];
 	return result;
 }
 
+@end
+
+@implementation PRHospitalAttributes 
++ (NSString *)id {
+	return @"id";
+}
++ (NSString *)name {
+	return @"name";
+}
+@end
+
+@implementation PRHospitalRelationships 
++ (NSString *)trust {
+	return @"trust";
+}
++ (NSString *)wards {
+	return @"wards";
+}
 @end
 

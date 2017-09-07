@@ -22,15 +22,14 @@
  */
 @interface PRWardSelectViewController : PRViewController <UITextFieldDelegate, TDSelectionViewControllerDelegate>
 {
+    IBOutlet UITextField *trustField;
     IBOutlet UITextField *hospitalField;
     IBOutlet UITextField *wardField;
     
     IBOutlet UIScrollView *scrollView;
     IBOutlet TDTextField *otherWardField;
 
-    IBOutlet NSLayoutConstraint *wardSelectBottomConstraint;
-    IBOutlet NSLayoutConstraint *otherWardBottomConstraint;
-    
+    NSArray *trusts;
     NSArray *hospitals;
     NSArray *wards;
 }

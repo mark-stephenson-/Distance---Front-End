@@ -61,13 +61,15 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [self selectAnswer];
+
+    //[self selectAnswer];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+
+    [self selectAnswer];
 }
 
 -(void)setQuestion:(PRQuestion *)question
@@ -102,15 +104,14 @@
     [super viewDidLayoutSubviews];
     
     self.collectionView.tintColor = [[PRTheme sharedTheme] mainColor];
-    
-    if (CGSizeEqualToSize(CGSizeZero, oldViewSize) || !CGSizeEqualToSize(self.view.bounds.size, oldViewSize)) {
-        [self.collectionView.collectionViewLayout invalidateLayout];
-        [self.collectionView.collectionViewLayout prepareLayout];
-        
-        CGSize collectionSize = [self.collectionView.collectionViewLayout collectionViewContentSize];
-        collectionViewWidthConstraint.constant = collectionSize.width;
-        collectionViewHeightConstraint.constant = collectionSize.height;
-    }
+
+    [self.collectionView.collectionViewLayout invalidateLayout];
+    [self.collectionView.collectionViewLayout prepareLayout];
+
+    CGSize collectionSize = [self.collectionView.collectionViewLayout collectionViewContentSize];
+    collectionViewWidthConstraint.constant = collectionSize.width;
+    collectionViewHeightConstraint.constant = collectionSize.height;
+
 }
 
 #pragma mark - CollectionView DataSource
@@ -203,29 +204,29 @@
     return fittingSize.height + labelBuffer * 2.0;
     
     /*
-    NSString *identifier = [self cellIdentifierForIndexPath:indexPath];
-    
-    if (layoutCells == nil) {
-        layoutCells = [NSMutableDictionary dictionary];
-    }
-    
-    PROptionCollectionViewCell *layoutCell = layoutCells[identifier];
-    
-    if (layoutCell == nil) {
-        UICollectionViewLayout *originalLayout = self.collectionView.collectionViewLayout;
-        
-        UICollectionViewFlowLayout *newLayout = [[UICollectionViewFlowLayout alloc] init];
-        newLayout.itemSize = CGSizeMake(width, 200);
-        collectionView.collectionViewLayout = newLayout;
-        layoutCell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:nil];
-        layoutCells[identifier] = layoutCell;
-        collectionView.collectionViewLayout = originalLayout;
-    }
-    
-    [self configureCell:layoutCell forIndexPath:indexPath];
-    
-    CGSize fittingSize = [layoutCell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize constrainedToWidth:width];
-    return fittingSize.height + 5.0;
+     NSString *identifier = [self cellIdentifierForIndexPath:indexPath];
+
+     if (layoutCells == nil) {
+     layoutCells = [NSMutableDictionary dictionary];
+     }
+
+     PROptionCollectionViewCell *layoutCell = layoutCells[identifier];
+
+     if (layoutCell == nil) {
+     UICollectionViewLayout *originalLayout = self.collectionView.collectionViewLayout;
+
+     UICollectionViewFlowLayout *newLayout = [[UICollectionViewFlowLayout alloc] init];
+     newLayout.itemSize = CGSizeMake(width, 200);
+     collectionView.collectionViewLayout = newLayout;
+     layoutCell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:nil];
+     layoutCells[identifier] = layoutCell;
+     collectionView.collectionViewLayout = originalLayout;
+     }
+
+     [self configureCell:layoutCell forIndexPath:indexPath];
+
+     CGSize fittingSize = [layoutCell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize constrainedToWidth:width];
+     return fittingSize.height + 5.0;
      */
 }
 

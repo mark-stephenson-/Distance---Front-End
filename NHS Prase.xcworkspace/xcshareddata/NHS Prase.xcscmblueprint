@@ -9,8 +9,8 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "51DE61B1-2C0E-4B95-B1CE-B0FCA13705DD",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "A96388536544EF014B7B1B46D823CF63C7A527E9" : "NHS%20PraseTDKit",
-    "54EE1493F6F10B740983C10EEF57881BFF2CB2A2" : "NHS%20Prase"
+    "A96388536544EF014B7B1B46D823CF63C7A527E9" : "nhs-prase\/TDKit\/",
+    "54EE1493F6F10B740983C10EEF57881BFF2CB2A2" : "nhs-prase\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "NHS Prase",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,

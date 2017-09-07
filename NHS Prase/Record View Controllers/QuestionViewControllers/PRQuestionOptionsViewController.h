@@ -16,9 +16,7 @@
     IBOutlet UIView *collectionContainer;
     IBOutlet NSLayoutConstraint *collectionViewWidthConstraint;
     IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
-    
-    CGSize oldViewSize;
-    
+        
     NSMutableDictionary *layoutCells;
     UILabel *layoutLabel;
 }

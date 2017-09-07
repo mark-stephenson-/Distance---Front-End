@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		408CC42810B9480D918B020E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B52AF8C77EDD4244ACFF7EC3 /* libPods.a */; };
+		5AFA00521F617D1600D34EE2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AFA00501F617D1600D34EE2 /* Launch Screen.storyboard */; };
 		A502276E19C0913E005B31D2 /* PRModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A502276C19C0913E005B31D2 /* PRModel.xcdatamodeld */; };
 		A502278A19C09B22005B31D2 /* PRAnswerOption.m in Sources */ = {isa = PBXBuildFile; fileRef = A502277219C09B22005B31D2 /* PRAnswerOption.m */; };
 		A502278B19C09B22005B31D2 /* PRConcern.m in Sources */ = {isa = PBXBuildFile; fileRef = A502277419C09B22005B31D2 /* PRConcern.m */; };
@@ -82,6 +82,7 @@
 		A5EBFECB19D17D710056A44A /* PRTimeSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBFECA19D17D710056A44A /* PRTimeSelectCell.m */; };
 		A5EBFED619D1876C0056A44A /* PRMultiTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBFED519D1876C0056A44A /* PRMultiTextFieldCell.m */; };
 		A5F565AA19C338E10080C692 /* PRSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F565A919C338E10080C692 /* PRSelectionViewController.m */; };
+		CC7B6EA22FA6E6A3B12F6CD6 /* Pods_NHS_Prase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26EB2B241FC2557E7C409BEE /* Pods_NHS_Prase.framework */; };
 		E7C2EEF21A77E7C70047D66A /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C2EEF11A77E7C70047D66A /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,31 +96,12 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		A561094E19ADEED000488879 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A5F521F919AF29B600DC6C68 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		2CABA1FDD932E8345724AECD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		31B25AA318CE66FBADA049EC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		26EB2B241FC2557E7C409BEE /* Pods_NHS_Prase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NHS_Prase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FE170F646FFE7EE6BA37E39 /* Pods-NHS Prase.beta testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHS Prase.beta testing.xcconfig"; path = "Pods/Target Support Files/Pods-NHS Prase/Pods-NHS Prase.beta testing.xcconfig"; sourceTree = "<group>"; };
+		4E1B69937C51281D4B7D81F2 /* Pods-NHS Prase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHS Prase.release.xcconfig"; path = "Pods/Target Support Files/Pods-NHS Prase/Pods-NHS Prase.release.xcconfig"; sourceTree = "<group>"; };
+		5AFA00511F617D1600D34EE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
+		84BF662ACC5DB28230D0183B /* Pods-NHS Prase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NHS Prase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NHS Prase/Pods-NHS Prase.debug.xcconfig"; sourceTree = "<group>"; };
 		A502276D19C0913E005B31D2 /* PRModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PRModel.xcdatamodel; sourceTree = "<group>"; };
 		A502277119C09B22005B31D2 /* PRAnswerOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRAnswerOption.h; sourceTree = "<group>"; };
 		A502277219C09B22005B31D2 /* PRAnswerOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRAnswerOption.m; sourceTree = "<group>"; };
@@ -269,8 +251,6 @@
 		A5EBFED519D1876C0056A44A /* PRMultiTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = PRMultiTextFieldCell.m; path = "Custom Form Cells/PRMultiTextFieldCell.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A5F565A819C338E10080C692 /* PRSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PRSelectionViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		A5F565A919C338E10080C692 /* PRSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRSelectionViewController.m; sourceTree = "<group>"; };
-		AEB0739A3A859EECDBD09DC0 /* Pods.beta testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods.beta testing.xcconfig"; path = "Pods/Target Support Files/Pods/Pods.beta testing.xcconfig"; sourceTree = "<group>"; };
-		B52AF8C77EDD4244ACFF7EC3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E782AE071C231361000082C8 /* PRModel_1.0_3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PRModel_1.0_3.xcdatamodel; sourceTree = "<group>"; };
 		E7C2EEF11A77E7C70047D66A /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -280,8 +260,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				408CC42810B9480D918B020E /* libPods.a in Frameworks */,
 				E7C2EEF21A77E7C70047D66A /* Crashlytics.framework in Frameworks */,
+				CC7B6EA22FA6E6A3B12F6CD6 /* Pods_NHS_Prase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,21 +275,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4D95FF1EF131BCB73628AD72 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				31B25AA318CE66FBADA049EC /* Pods.debug.xcconfig */,
-				2CABA1FDD932E8345724AECD /* Pods.release.xcconfig */,
-				AEB0739A3A859EECDBD09DC0 /* Pods.beta testing.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		792E3E2641A0445DAC8F4667 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				E7C2EEF11A77E7C70047D66A /* Crashlytics.framework */,
-				B52AF8C77EDD4244ACFF7EC3 /* libPods.a */,
+				26EB2B241FC2557E7C409BEE /* Pods_NHS_Prase.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -459,7 +429,7 @@
 				A536995919ADD1170045EEB1 /* NHS PraseTests */,
 				A536994119ADD1170045EEB1 /* Products */,
 				792E3E2641A0445DAC8F4667 /* Frameworks */,
-				4D95FF1EF131BCB73628AD72 /* Pods */,
+				BFCB38CE77D3C4867F609130 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -499,6 +469,7 @@
 				A576056619B0ADD60018E9EA /* Custom Form Cells */,
 				A5466AA419AE287C00240026 /* Record View Controllers */,
 				A536994D19ADD1170045EEB1 /* Main.storyboard */,
+				5AFA00501F617D1600D34EE2 /* Launch Screen.storyboard */,
 				A536995019ADD1170045EEB1 /* Images.xcassets */,
 				A536994319ADD1170045EEB1 /* Supporting Files */,
 			);
@@ -592,6 +563,16 @@
 			path = "NHS Prase/Languages";
 			sourceTree = "<group>";
 		};
+		BFCB38CE77D3C4867F609130 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				84BF662ACC5DB28230D0183B /* Pods-NHS Prase.debug.xcconfig */,
+				4E1B69937C51281D4B7D81F2 /* Pods-NHS Prase.release.xcconfig */,
+				3FE170F646FFE7EE6BA37E39 /* Pods-NHS Prase.beta testing.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -599,16 +580,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A536996019ADD1170045EEB1 /* Build configuration list for PBXNativeTarget "NHS Prase" */;
 			buildPhases = (
-				21FE2FC7906247CDAF220432 /* Check Pods Manifest.lock */,
-				A502279619C09D31005B31D2 /* ShellScript */,
+				B39398493E951307CA27D7E4 /* [CP] Check Pods Manifest.lock */,
+				A502279619C09D31005B31D2 /* mogenerator */,
 				A536993C19ADD1170045EEB1 /* Sources */,
 				A536993D19ADD1170045EEB1 /* Frameworks */,
 				A536993E19ADD1170045EEB1 /* Resources */,
-				A561094E19ADEED000488879 /* Embed Frameworks */,
-				A5F521F919AF29B600DC6C68 /* CopyFiles */,
-				6DD37551D3FD435CB6FCD6DC /* Copy Pods Resources */,
-				E7C2EEE51A77E7620047D66A /* ShellScript */,
-				86C3E05BCE476047649522D1 /* Embed Pods Frameworks */,
+				E7C2EEE51A77E7620047D66A /* Fabric */,
+				C61DD78F0F118C72AC9C6857 /* [CP] Embed Pods Frameworks */,
+				60A99FE976DB78AB5905FE75 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -648,7 +627,8 @@
 				TargetAttributes = {
 					A536993F19ADD1170045EEB1 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = RA4PB2C3M4;
+						DevelopmentTeam = MJM3Z85Y2V;
+						ProvisioningStyle = Automatic;
 					};
 					A536995519ADD1170045EEB1 = {
 						CreatedOnToolsVersion = 6.0;
@@ -683,6 +663,7 @@
 				A536994F19ADD1170045EEB1 /* Main.storyboard in Resources */,
 				A5BCB3D419BDE6E600092F50 /* Localizable.strings in Resources */,
 				A536995119ADD1170045EEB1 /* Images.xcassets in Resources */,
+				5AFA00521F617D1600D34EE2 /* Launch Screen.storyboard in Resources */,
 				A5BCB3D519BDE6E600092F50 /* Storyboard.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -697,71 +678,73 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		21FE2FC7906247CDAF220432 /* Check Pods Manifest.lock */ = {
+		60A99FE976DB78AB5905FE75 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NHS Prase/Pods-NHS Prase-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6DD37551D3FD435CB6FCD6DC /* Copy Pods Resources */ = {
+		A502279619C09D31005B31D2 /* mogenerator */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		86C3E05BCE476047649522D1 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A502279619C09D31005B31D2 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
+			name = mogenerator;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cd NHS\\ Prase/Model/Persistent\\ Model\n /usr/local/bin/mogenerator --template-var arc=true -m PRModel.xcdatamodeld/PRModel_1.0_3.xcdatamodel -M Machine/ -H Human/";
 		};
-		E7C2EEE51A77E7620047D66A /* ShellScript */ = {
+		B39398493E951307CA27D7E4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C61DD78F0F118C72AC9C6857 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NHS Prase/Pods-NHS Prase-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7C2EEE51A77E7620047D66A /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -866,6 +849,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		5AFA00501F617D1600D34EE2 /* Launch Screen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AFA00511F617D1600D34EE2 /* Base */,
+			);
+			name = "Launch Screen.storyboard";
+			sourceTree = "<group>";
+		};
 		A536994D19ADD1170045EEB1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -932,13 +923,15 @@
 		};
 		A5109DE71A8CCFF5006731DB /* Beta Testing */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AEB0739A3A859EECDBD09DC0 /* Pods.beta testing.xcconfig */;
+			baseConfigurationReference = 3FE170F646FFE7EE6BA37E39 /* Pods-NHS Prase.beta testing.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Bradford Teaching Hospitals NHS Foundation Trust (5M6H43M3LM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MJM3Z85Y2V;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch *.xcode* (*) .DS_Store CVS .svn .git .hg *.framework";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -958,8 +951,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.nhs.prase.enterprise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c0af11f6-d47c-4ffe-9883-9f6c59fbd6eb";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = "Beta Testing";
 		};
@@ -1061,13 +1056,15 @@
 		};
 		A536996119ADD1170045EEB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 31B25AA318CE66FBADA049EC /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 84BF662ACC5DB28230D0183B /* Pods-NHS Prase.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MJM3Z85Y2V;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1081,20 +1078,24 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.nhs.prase.enterprise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8cf039a7-1827-4647-94ad-f9d186283035";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
 		A536996219ADD1170045EEB1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2CABA1FDD932E8345724AECD /* Pods.release.xcconfig */;
+			baseConfigurationReference = 4E1B69937C51281D4B7D81F2 /* Pods-NHS Prase.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Health Education Yorkshire and the Humber";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MJM3Z85Y2V;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch *.xcode* (*) .DS_Store CVS .svn .git .hg *.framework";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1109,8 +1110,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.nhs.prase.enterprise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8c904947-7740-4e2d-b5d0-821467b3b03d";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

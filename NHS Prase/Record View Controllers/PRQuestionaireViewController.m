@@ -24,8 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+
+    pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl
                                                      navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                    options:nil];
     
@@ -122,18 +122,24 @@
         [pageController setViewControllers:@[nextVC]
                                  direction:UIPageViewControllerNavigationDirectionForward
                                   animated:YES
-                                completion:nil];
+                                completion:^(BOOL finished) {
+                                    [nextVC.view performSelector:@selector(layoutIfNeeded) withObject:nil afterDelay:1];
+                                }];
     }
 }
 
 -(void)goToPreviousQuestion
 {
     if ([self canGoToPreviousQuestion]) {
+
         UIViewController *prevVC = [self viewControllerForIndex:self.currentQuestion - 1];
+
         [pageController setViewControllers:@[prevVC]
                                  direction:UIPageViewControllerNavigationDirectionReverse
                                   animated:YES
-                                completion:nil];
+                                completion:^(BOOL finished) {
+                                    [prevVC.view performSelector:@selector(layoutIfNeeded) withObject:nil afterDelay:1];
+                                }];
     }
 }
 

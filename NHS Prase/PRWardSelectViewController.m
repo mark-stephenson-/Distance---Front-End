@@ -22,7 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
+    trusts = [PRTrust MR_findAllSortedBy:@"name" ascending:YES];
     otherWardField.accessoryImage = nil;
 }
 
@@ -43,13 +44,6 @@
     }
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    self.activeComponent = nil;
-}
-
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
@@ -66,24 +60,22 @@
 
 -(void)refreshViews
 {
+    trustField.text = self.selectedTrust.name;
     hospitalField.text = self.selectedHospital.name;
-    wardField.text = (self.selectedWard.id.integerValue < 0) ? @"Other" : self.selectedWard.name;
-
-    otherWardField.text = [self.selectedWard.id isEqualToNumber:@(-1)] ? self.selectedWard.name : @"";
-    
+    trustField.enabled = YES;
     hospitalField.enabled = self.selectedTrust != nil;
     wardField.enabled = self.selectedHospital != nil;
-    otherWardField.enabled = [self.selectedWard.id isEqualToNumber:@(-1)];
-    
+
     // show / hide the custom ward text field
-    if (self.selectedWard != nil && self.selectedWard.id.integerValue < 0) {
-        wardSelectBottomConstraint.priority = 100;
-        otherWardBottomConstraint.priority = 900;
-        
+    if (self.selectedWard.id.integerValue < 0) {
+        otherWardField.enabled = YES;
+        otherWardField.hidden = NO;
         otherWardField.text = self.selectedWard.name;
+        wardField.text = @"Other";
     } else {
-        wardSelectBottomConstraint.priority = 900;
-        otherWardBottomConstraint.priority = 100;
+        otherWardField.hidden = YES;
+        otherWardField.text = @"";
+        wardField.text = self.selectedWard.name;
     }
 }
 
@@ -175,8 +167,6 @@
 // Show a TDSelectionViewController and prevent a keyboard from showing;
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    [super textFieldShouldBeginEditing:textField];
-    
     if (textField == otherWardField) {
         return [super textFieldShouldBeginEditing:textField];
     } else {
@@ -186,7 +176,7 @@
     NSDictionary *options;
     NSArray *sortedKeys;
     id<NSCopying> selectedKey;
-    BOOL requiresSelection = YES;
+    BOOL requiresSelection;
     NSString *selectionKey;
     
     NSString *selectionTitle;
@@ -197,9 +187,31 @@
     
     // The custom wards show a detail sting to imply they are custom
     NSMutableDictionary *optionDetails = [NSMutableDictionary dictionary];
-    
-    if (textField == hospitalField) {
-        
+
+    if (textField == trustField) {
+
+        NSMutableDictionary *tempOptions = [NSMutableDictionary dictionaryWithCapacity:trusts.count];
+
+        for (int t = 0; t < trusts.count; t++) {
+            PRTrust *thisTrust = trusts[t];
+            tempOptions[thisTrust.id] = thisTrust.name;
+        }
+
+        options = tempOptions;
+        sortedKeys = @[[trusts valueForKeyPath:@"id"]];
+        selectedKey = self.selectedTrust.id;
+        requiresSelection = YES;
+
+        selectionKey = @"trust";
+
+        selectionTitle = TDLocalizedStringWithDefaultValue(@"ward-select.title.trust", nil, nil, @"Trust", @"Title when selecting a trust.");
+        selectionTitleLocalizationKey = @"ward-select.title.trust";
+
+        selectionSubTitle = TDLocalizedStringWithDefaultValue(@"ward-select.subtitle.trust", nil, nil, @"Please select your trust from the list below:", @"Subtitle when selecting a trust.");
+        selectionSubtitleLocalizationKey = @"ward-select.subtitle.trust";
+
+    } else if (textField == hospitalField) {
+
         NSMutableDictionary *tempOptions = [NSMutableDictionary dictionaryWithCapacity:hospitals.count];
         
         for (int h = 0; h < hospitals.count; h++) {
@@ -309,6 +321,21 @@
 {
     NSString *selectionKey = selectionVC.key;
     
+
+    if ([selectionKey isEqualToString:@"trust"]) {
+        NSNumber *newTrustID = [[selectionVC selectedKeys] anyObject];
+
+
+        if (self.selectedTrust == nil || ![newTrustID isEqualToNumber:self.selectedTrust.id]) {
+            PRTrust *newTrust = [[trusts filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", newTrustID]] firstObject];
+            self.selectedTrust = newTrust;
+
+            // clear the existing hospital and ward as they will not be under this trust
+            self.selectedHospital = nil;
+            self.selectedWard = nil;
+        }
+    }
+
     if ([selectionKey isEqualToString:@"hospital"]) {
         NSNumber *newHospitalID = [[selectionVC selectedKeys] anyObject];
         
