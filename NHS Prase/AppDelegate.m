@@ -44,12 +44,7 @@ NSString *const APIManagerBaseURLKey = @"APIManagerBaseURL";
     NSDictionary *serverURLs = [[NSBundle mainBundle] infoDictionary][@"PRServerURLs"];
     NSString *savedUrlKey = [[NSUserDefaults standardUserDefaults] valueForKey:APIManagerBaseURLKey];
 
-    NSString *urlKey = nil;
-#if defined(DEBUG) || defined(BETA_TESTING)
-        urlKey = @"Staging";
-#else 
-        urlKey = @"Live";
-#endif
+    NSString *urlKey = @"Live";
     
     if (![savedUrlKey isEqualToString:urlKey]) {
         [[PRAPIManager sharedManager] clearAllDataAndWait];

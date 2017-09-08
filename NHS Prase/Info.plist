@@ -38,7 +38,7 @@
 		<key>New Questions</key>
 		<string>http://prase-newquestions.staging.thedistance.co.uk</string>
 		<key>Staging</key>
-		<string>http://cms.prase.nhs.uk</string>
+		<string>https://cms.prase.nhs.uk</string>
 	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>Launch Screen</string>

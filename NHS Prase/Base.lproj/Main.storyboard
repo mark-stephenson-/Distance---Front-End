@@ -895,6 +895,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="bottomView" destination="q1Z-jc-doS" id="YvG-q5-oKw"/>
                         <outlet property="containerView" destination="4EC-d9-SYg" id="ArR-ma-wep"/>
                         <outlet property="footerBottomConstraint" destination="qK5-ys-mti" id="zye-dq-Ynn"/>
                         <outlet property="footerView" destination="q1Z-jc-doS" id="eLc-MF-CqH"/>
@@ -2032,7 +2033,7 @@ Many thanks for participating.</string>
                                                 <rect key="frame" x="0.0" y="22" width="684" height="60"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" verticalCompressionResistancePriority="1000" tableViewCell="87t-wX-r4c" id="d2I-Ju-fXg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="684" height="59.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="684" height="60"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tc-Fz-3lh">
@@ -2071,7 +2072,7 @@ Many thanks for participating.</string>
                                                 <rect key="frame" x="0.0" y="82" width="684" height="60"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="1000" tableViewCell="Qk0-Oz-3N8" id="202-ph-ugC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="684" height="59.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="684" height="60"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HtR-YD-JgY">
@@ -2611,7 +2612,6 @@ Many thanks for participating.</string>
                     </view>
                     <connections>
                         <outlet property="footerBottomConstraint" destination="PgI-7p-uSY" id="Urh-Yl-kJ3"/>
-                        <outlet property="footerView" destination="hiJ-aw-nLb" id="1Vl-av-XPA"/>
                         <outlet property="nextButton" destination="ulD-8n-X4O" id="Nuf-ML-F7X"/>
                         <outlet property="prevButton" destination="vD4-Oq-4CS" id="Jqt-UO-M2N"/>
                         <outlet property="segmentSelector" destination="U5S-en-G0o" id="zYx-MZ-IoC"/>
@@ -4573,7 +4573,7 @@ Serious</string>
         <image name="upload" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BQC-c1-4uu"/>
+        <segue reference="RwE-67-GqX"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

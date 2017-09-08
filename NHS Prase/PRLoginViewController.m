@@ -82,8 +82,8 @@
     self.scrollContainer = scrollView;
     
 #ifdef DEBUG
-    usernameField.text = @"training";
-    passwordField.text = @"trainingtest";
+    usernameField.text = @"anthonymain";
+    passwordField.text = @"Test123!";
 #endif
     
     // assume both will be successful in order to not show the download error button straight away
@@ -124,7 +124,7 @@
 
 -(IBAction)selectServer:(id)sender
 {
-#if defined(DEBUG) || defined(BETA_TESTING)
+#if defined(DEBUG)
     
     PRSelectionViewController *selectionVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PRBasicSelectionVC"];
     
@@ -205,9 +205,9 @@
     
     NSMutableDictionary *tempUsers = [NSMutableDictionary dictionaryWithCapacity:allUsers.count];
     for (PRUser *user in allUsers) {
-        if ([user.trustID isEqualToNumber: self.selectedTrust.id]) {
+        //if ([user.trustID isEqualToNumber: self.selectedTrust.id]) {
             tempUsers[user.username] = user.password;
-        }
+        //}
     }
     
     logInCredentials = [NSDictionary dictionaryWithDictionary:tempUsers];
