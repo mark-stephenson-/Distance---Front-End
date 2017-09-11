@@ -28,11 +28,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-#ifdef DEBUG
-    self.selectedHospital = [self.selectedTrust.hospitals anyObject];
-    self.selectedWard = [self.selectedHospital.wards anyObject];
-#endif
+
     
     [self refreshViews];
 }

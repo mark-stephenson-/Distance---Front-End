@@ -196,11 +196,7 @@
 
 -(void)refreshLoginCredentials
 {
-    if (self.selectedTrust == nil) {
-        logInCredentials = [NSDictionary dictionary];
-        return;
-    }
-    
+
     NSArray *allUsers = [PRUser MR_findAll];
     
     NSMutableDictionary *tempUsers = [NSMutableDictionary dictionaryWithCapacity:allUsers.count];
@@ -209,6 +205,8 @@
             tempUsers[user.username] = user.password;
         //}
     }
+
+    NSLog(@"Adding %lu users out of a total of %lu: for trust: %@",(unsigned long)tempUsers.count,(unsigned long)allUsers.count,self.selectedTrust.id);
     
     logInCredentials = [NSDictionary dictionaryWithDictionary:tempUsers];
 }
