@@ -15,5 +15,6 @@ target 'NHS Prase' do
 	pod 'AFNetworking'
 	pod 'MBProgressHUD'
 	pod 'TheDistanceKit/TheDistanceKit_API', :path => "TDKit"
+    pod 'IQKeyboardManager'
 end
 

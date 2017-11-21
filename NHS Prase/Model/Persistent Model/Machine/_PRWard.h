@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _PRWard : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) PRWardID *objectID;
 
 @property (nonatomic, strong, nullable) NSNumber* id;
@@ -72,14 +72,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _PRWard (CoreDataGeneratedPrimitiveAccessors)
 
-- (NSNumber*)primitiveId;
-- (void)setPrimitiveId:(NSNumber*)value;
+- (nullable NSNumber*)primitiveId;
+- (void)setPrimitiveId:(nullable NSNumber*)value;
 
 - (int64_t)primitiveIdValue;
 - (void)setPrimitiveIdValue:(int64_t)value_;
 
-- (NSString*)primitiveName;
-- (void)setPrimitiveName:(NSString*)value;
+- (nullable NSString*)primitiveName;
+- (void)setPrimitiveName:(nullable NSString*)value;
 
 - (NSMutableSet<PRConcern*>*)primitiveConcerns;
 - (void)setPrimitiveConcerns:(NSMutableSet<PRConcern*>*)value;

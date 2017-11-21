@@ -1,4 +1,4 @@
 [submodule "TDKit"]
 	path = TDKit
-	url = git@bitbucket.org:thedistance/the-distance-kit.git
+url=https://AnhPhanTran@bitbucket.org/thedistance/deprecated-the-distance-kit.git
 	branch = develop

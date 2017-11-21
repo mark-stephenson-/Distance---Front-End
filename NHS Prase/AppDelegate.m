@@ -14,6 +14,7 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import <Crashlytics/Crashlytics.h>
 #import "PRAPIManager.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 NSString *const APIManagerBaseURLKey = @"APIManagerBaseURL";
 
@@ -26,7 +27,8 @@ NSString *const APIManagerBaseURLKey = @"APIManagerBaseURL";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+
+    [IQKeyboardManager sharedManager].enable = true;
     [[PRTheme sharedTheme] setLanguageIdentifier:@"en"];
     
     [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"PRModel.sqlite"];

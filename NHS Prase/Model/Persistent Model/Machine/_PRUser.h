@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _PRUser : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) PRUserID *objectID;
 
 @property (nonatomic, strong, nullable) NSNumber* id;
@@ -40,8 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _PRUser (CoreDataGeneratedPrimitiveAccessors)
 
-- (NSNumber*)primitiveId;
-- (void)setPrimitiveId:(NSNumber*)value;
+- (nullable NSNumber*)primitiveId;
+- (void)setPrimitiveId:(nullable NSNumber*)value;
 
 - (int64_t)primitiveIdValue;
 - (void)setPrimitiveIdValue:(int64_t)value_;
@@ -49,8 +49,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString*)primitivePassword;
 - (void)setPrimitivePassword:(NSString*)value;
 
-- (NSNumber*)primitiveTrustID;
-- (void)setPrimitiveTrustID:(NSNumber*)value;
+- (nullable NSNumber*)primitiveTrustID;
+- (void)setPrimitiveTrustID:(nullable NSNumber*)value;
 
 - (int64_t)primitiveTrustIDValue;
 - (void)setPrimitiveTrustIDValue:(int64_t)value_;

@@ -23,8 +23,8 @@
     [super viewWillAppear:animated];
     
     BOOL noWardSelected = self.selectedWard == nil && self.selectedHospital == nil && self.selectedTrust == nil;
-    
-    if (noWardSelected || self.selectedWard == self.record.ward) {
+
+    if (self.record.ward) {
         
         self.selectedTrust = self.record.ward.hospital.trust;
         self.selectedHospital = self.record.ward.hospital;

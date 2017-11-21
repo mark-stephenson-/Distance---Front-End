@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _PRConcern : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) PRConcernID *objectID;
 
 @property (nonatomic, strong, nullable) PRNote *preventNote;

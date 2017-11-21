@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface _PRPMOSQuestion : NSManagedObject
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_;
 + (NSString*)entityName;
-+ (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
++ (nullable NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 @property (nonatomic, readonly, strong) PRPMOSQuestionID *objectID;
 
 @property (nonatomic, strong, nullable) NSNumber* localizationID;
@@ -71,14 +71,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _PRPMOSQuestion (CoreDataGeneratedPrimitiveAccessors)
 
-- (NSNumber*)primitiveLocalizationID;
-- (void)setPrimitiveLocalizationID:(NSNumber*)value;
+- (nullable NSNumber*)primitiveLocalizationID;
+- (void)setPrimitiveLocalizationID:(nullable NSNumber*)value;
 
 - (int64_t)primitiveLocalizationIDValue;
 - (void)setPrimitiveLocalizationIDValue:(int64_t)value_;
 
-- (NSNumber*)primitiveQuestionID;
-- (void)setPrimitiveQuestionID:(NSNumber*)value;
+- (nullable NSNumber*)primitiveQuestionID;
+- (void)setPrimitiveQuestionID:(nullable NSNumber*)value;
 
 - (int64_t)primitiveQuestionIDValue;
 - (void)setPrimitiveQuestionIDValue:(int64_t)value_;

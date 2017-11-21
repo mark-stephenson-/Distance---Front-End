@@ -57,12 +57,12 @@
         topLayoutConstraint.constant = topLayoutConstraint.constant + 20.0;
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
-    if (canShowKeyboard && self.showKeyboardOnWillAppear) {
-        [self.noteView becomeFirstResponder];
-    }
+//    if (canShowKeyboard && self.showKeyboardOnWillAppear) {
+//        [self.noteView becomeFirstResponder];
+//    }
 }
 
 #pragma mark - Keyboard Methods
@@ -71,9 +71,9 @@
 {
     [super viewDidAppear:animated];
     
-    if (canShowKeyboard && !self.showKeyboardOnWillAppear) {
-        [self.noteView becomeFirstResponder];
-    }
+//    if (canShowKeyboard && !self.showKeyboardOnWillAppear) {
+//        [self.noteView becomeFirstResponder];
+//    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated

@@ -16,6 +16,10 @@
 #import "PRConcern.h"
 #import <MagicalRecord/MagicalRecord.h>
 #import <MagicalRecord/MagicalRecord.h>
+#import "PRRecord.h"
+#import "PRWard.h"
+#import "PRHospital.h"
+#import "PRTrust.h"
 
 @interface PRPIRTViewController ()
 
@@ -41,7 +45,8 @@
     // grab the storyboard created view controllers
     wardSelectVC = tabController.viewControllers[0];
     wardSelectVC.record = self.record;
-    
+    wardSelectVC.selectedWard = self.record.ward;
+
     questionsVC = tabController.viewControllers[1];
     
     // force the view controllers to load their views so they can be configured here
