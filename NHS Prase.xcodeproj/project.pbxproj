@@ -627,7 +627,7 @@
 				TargetAttributes = {
 					A536993F19ADD1170045EEB1 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = RA4PB2C3M4;
+						DevelopmentTeam = MJM3Z85Y2V;
 						ProvisioningStyle = Automatic;
 					};
 					A536995519ADD1170045EEB1 = {
@@ -957,7 +957,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Bradford Teaching Hospitals NHS Foundation Trust (5M6H43M3LM)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = RA4PB2C3M4;
+				DEVELOPMENT_TEAM = MJM3Z85Y2V;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch *.xcode* (*) .DS_Store CVS .svn .git .hg *.framework";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -977,7 +977,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.nhs.prase.enterprise.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.nhs.prase.enterprise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1111,7 +1111,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = RA4PB2C3M4;
+				DEVELOPMENT_TEAM = MJM3Z85Y2V;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1125,7 +1125,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.nhs.prase.enterprise.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.nhs.prase.enterprise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1142,7 +1142,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Health Education Yorkshire and the Humber";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = RA4PB2C3M4;
+				DEVELOPMENT_TEAM = MJM3Z85Y2V;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch *.xcode* (*) .DS_Store CVS .svn .git .hg *.framework";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1157,7 +1157,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.nhs.prase.enterprise.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.nhs.prase.enterprise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

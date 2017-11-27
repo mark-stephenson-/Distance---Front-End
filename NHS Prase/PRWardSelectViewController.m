@@ -244,7 +244,7 @@
         }
         
         // add an option for the user to select a different ward
-        tempOptions[@(-1)] = TDLocalizedStringWithDefaultValue(@"ward-select.ward.other", nil, nil, @"Other", @"Selection option to enter a ward not in the CMS.");
+        // tempOptions[@(-1)] = TDLocalizedStringWithDefaultValue(@"ward-select.ward.other", nil, nil, @"Other", @"Selection option to enter a ward not in the CMS.");
         
         options = tempOptions;
         sortedKeys = [wards valueForKeyPath:@"id"];
