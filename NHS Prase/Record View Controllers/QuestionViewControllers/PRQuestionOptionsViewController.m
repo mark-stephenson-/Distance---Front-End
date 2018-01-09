@@ -20,7 +20,7 @@
 #import "PRPMOSQuestion.h"
 #import "PRAnswerSet.h"
 #import "PROptionCollectionViewCell.h"
-
+#import "NHS_Prase-Swift.h"
 //#import "PRAPIManager.h"
 
 @interface PRQuestionOptionsViewController ()
@@ -33,7 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     titleLabel.TDLocalizedStringKey = self.question.localizationKeyForQuestion;
-    
+
     ((UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout).minimumLineSpacing = 30.0;
 }
 
@@ -75,7 +75,7 @@
 -(void)setQuestion:(PRQuestion *)question
 {
     [super setQuestion:question];
-    
+
     if (headerLabel != nil) {
         headerLabel.TDLocalizedStringKey = @"question.index_header";
     }
@@ -112,6 +112,7 @@
     collectionViewWidthConstraint.constant = collectionSize.width;
     collectionViewHeightConstraint.constant = collectionSize.height;
 
+    questionLabelHeightConstraint.constant = titleLabel.getEstimatedHeight;
 }
 
 #pragma mark - CollectionView DataSource

@@ -83,6 +83,7 @@
 		A5EBFED619D1876C0056A44A /* PRMultiTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EBFED519D1876C0056A44A /* PRMultiTextFieldCell.m */; };
 		A5F565AA19C338E10080C692 /* PRSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F565A919C338E10080C692 /* PRSelectionViewController.m */; };
 		CC7B6EA22FA6E6A3B12F6CD6 /* Pods_NHS_Prase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26EB2B241FC2557E7C409BEE /* Pods_NHS_Prase.framework */; };
+		DBF11F922005162400474724 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF11F912005162400474724 /* Extensions.swift */; };
 		E7C2EEF21A77E7C70047D66A /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C2EEF11A77E7C70047D66A /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
@@ -251,6 +252,8 @@
 		A5EBFED519D1876C0056A44A /* PRMultiTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = PRMultiTextFieldCell.m; path = "Custom Form Cells/PRMultiTextFieldCell.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A5F565A819C338E10080C692 /* PRSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PRSelectionViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		A5F565A919C338E10080C692 /* PRSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRSelectionViewController.m; sourceTree = "<group>"; };
+		DBF11F902005162300474724 /* NHS Prase-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NHS Prase-Bridging-Header.h"; sourceTree = "<group>"; };
+		DBF11F912005162400474724 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E782AE071C231361000082C8 /* PRModel_1.0_3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PRModel_1.0_3.xcdatamodel; sourceTree = "<group>"; };
 		E7C2EEF11A77E7C70047D66A /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -472,6 +475,8 @@
 				5AFA00501F617D1600D34EE2 /* Launch Screen.storyboard */,
 				A536995019ADD1170045EEB1 /* Images.xcassets */,
 				A536994319ADD1170045EEB1 /* Supporting Files */,
+				DBF11F912005162400474724 /* Extensions.swift */,
+				DBF11F902005162300474724 /* NHS Prase-Bridging-Header.h */,
 			);
 			path = "NHS Prase";
 			sourceTree = "<group>";
@@ -628,6 +633,7 @@
 					A536993F19ADD1170045EEB1 = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = MJM3Z85Y2V;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					A536995519ADD1170045EEB1 = {
@@ -830,6 +836,7 @@
 				A536994919ADD1170045EEB1 /* AppDelegate.m in Sources */,
 				A5C0749E19D5A819003446F7 /* _PRPMOSQuestion.m in Sources */,
 				A536994619ADD1170045EEB1 /* main.m in Sources */,
+				DBF11F922005162400474724 /* Extensions.swift in Sources */,
 				A57B559919CAE62A0069FE65 /* PRQuestionnaireCompleteCell.m in Sources */,
 				A576056919B0AE150018E9EA /* PRDateSelectCell.m in Sources */,
 				A57B558D19CAE4420069FE65 /* PRFormViewController.m in Sources */,
@@ -954,6 +961,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Bradford Teaching Hospitals NHS Foundation Trust (5M6H43M3LM)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
@@ -981,12 +989,15 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "NHS Prase/NHS Prase-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = "Beta Testing";
 		};
 		A5109DE81A8CCFF5006731DB /* Beta Testing */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = RA4PB2C3M4;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1108,7 +1119,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Health Education Yorkshire and the Humber";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MJM3Z85Y2V;
@@ -1129,6 +1141,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "NHS Prase/NHS Prase-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1139,6 +1154,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Health Education Yorkshire and the Humber";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
@@ -1161,12 +1177,15 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "NHS Prase/NHS Prase-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		A536996419ADD1170045EEB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = RA4PB2C3M4;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1189,6 +1208,7 @@
 		A536996519ADD1170045EEB1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = RA4PB2C3M4;
 				FRAMEWORK_SEARCH_PATHS = (

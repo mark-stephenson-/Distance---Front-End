@@ -16,7 +16,8 @@
     IBOutlet UIView *collectionContainer;
     IBOutlet NSLayoutConstraint *collectionViewWidthConstraint;
     IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
-        
+    IBOutlet NSLayoutConstraint *questionLabelHeightConstraint;
+
     NSMutableDictionary *layoutCells;
     UILabel *layoutLabel;
 }
