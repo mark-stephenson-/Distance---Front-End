@@ -100,8 +100,6 @@
 }
 
 #pragma mark - Selection Methods
-
-
 -(void)selectionViewControllerRequestsCancel:(TDSelectionViewController *)selectionVC
 {
     canDismissKeyboard = NO;

@@ -32,6 +32,7 @@
     self.noteView.textInsets = UIEdgeInsetsMake(15, 15, 15, 15);
     self.noteView.layer.borderColor = self.view.tintColor.CGColor;
     self.noteView.layer.borderWidth = 2.0;
+    self.noteView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -89,8 +90,8 @@
 {
     [super viewDidDisappear:animated];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 -(void)keyboardWillShow:(NSNotification *)note
@@ -166,10 +167,10 @@
 }
 
 #pragma mark - Delegate Methods
-
 -(BOOL)textViewShouldEndEditing:(UITextView *)textView
 {
-    return canDismissKeyboard;
+    return true;
+//    return canDismissKeyboard;
 }
 
 -(void)textViewDidChange:(UITextView *)textView
