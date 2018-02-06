@@ -34,6 +34,8 @@
 -(void)setBaseURL:(NSURL *)baseURL
 {
     [super setBaseURL:baseURL];
+
+    NSLog(@"SETTING BASE URL: %@", baseURL.absoluteString);
     
     // configure the request serializer to have the correct credentials to access the store
     AFJSONRequestSerializer *jsonRequestSerializer = (AFJSONRequestSerializer *) sessionManager.requestSerializer;

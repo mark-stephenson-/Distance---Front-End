@@ -51,7 +51,7 @@ NSString *const APIManagerBaseURLKey = @"APIManagerBaseURL";
     if (![savedUrlKey isEqualToString:urlKey]) {
         [[PRAPIManager sharedManager] clearAllDataAndWait];
     }
-    
+
     NSString *urlString = serverURLs[urlKey];
     [[NSUserDefaults standardUserDefaults] setValue:urlKey forKey:APIManagerBaseURLKey];
     

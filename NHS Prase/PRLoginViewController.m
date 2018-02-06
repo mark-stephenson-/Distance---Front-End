@@ -59,6 +59,8 @@
 
     versionLabel.text = [NSString stringWithFormat:@"%@ (%@) on %@", versionNumber, buildNumber, savedUrlKey];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewWentToForeGround)
+                                                 name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -97,6 +99,15 @@
     [super viewDidAppear:animated];
     
     [self submitSavedRecordsWithCompletion:^{
+        [[PRAPIManager sharedManager] clearAllDataAndWait];
+        [self downloadData];
+    }];
+}
+
+
+-(void)viewWentToForeGround{
+    [self submitSavedRecordsWithCompletion:^{
+        [[PRAPIManager sharedManager] clearAllDataAndWait];
         [self downloadData];
     }];
 }
@@ -106,6 +117,10 @@
     [super viewDidDisappear:animated];
     
     self.scrollContainer = nil;
+}
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)handleThemeChange:(NSNotification *)note
@@ -480,6 +495,7 @@
             
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                [self refreshLoginCredentials];
                 //                [MBProgressHUD hideHUDForView:self.view animated:YES];
             }];
             
