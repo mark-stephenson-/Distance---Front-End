@@ -23,7 +23,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    trusts = [PRTrust MR_findAllSortedBy:@"name" ascending:YES];
+    if (self.selectedTrust != nil) {
+      trusts = [NSArray arrayWithObjects:self.selectedTrust, nil];
+    } else {
+      trusts = [PRTrust MR_findAllSortedBy:@"name" ascending:YES];
+    }
+  
     otherWardField.accessoryImage = nil;
 }
 

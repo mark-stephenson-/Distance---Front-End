@@ -91,6 +91,7 @@
     // assume both will be successful in order to not show the download error button straight away
     submissionSucces = YES;
     dataSuccess = YES;
+    self.selectedTrust = nil;
     [self refreshDownloadErrorButton];
 }
 
@@ -215,15 +216,24 @@
     NSArray *allUsers = [PRUser MR_findAll];
     
     NSMutableDictionary *tempUsers = [NSMutableDictionary dictionaryWithCapacity:allUsers.count];
+    NSMutableDictionary *tempMapping = [NSMutableDictionary dictionaryWithCapacity:allUsers.count];
+
     for (PRUser *user in allUsers) {
-        //if ([user.trustID isEqualToNumber: self.selectedTrust.id]) {
-            tempUsers[user.username] = user.password;
-        //}
+      NSLog(@"User email: %@ - has trust id: %@", user.username, user.trustID);
+      if (self.selectedTrust.id) {
+        if ([user.trustID isEqualToNumber: self.selectedTrust.id]) {
+          tempUsers[user.username] = user.password;
+        }
+      } else {
+        tempUsers[user.username] = user.password;
+      }
+      tempMapping[user.username] = user.trustID;
     }
 
     NSLog(@"Adding %lu users out of a total of %lu: for trust: %@",(unsigned long)tempUsers.count,(unsigned long)allUsers.count,self.selectedTrust.id);
     
     logInCredentials = [NSDictionary dictionaryWithDictionary:tempUsers];
+    userTrustMapping = [NSDictionary dictionaryWithDictionary:tempMapping];
 }
 
 -(void)switchToBaseURL:(NSURL *) newURL withKey:(NSString *) urlKey
@@ -610,8 +620,15 @@
                          actions:@[continueLogIn]];
         return;
     }
+  
+  
     
     if (canContinue) {
+        if (userTrustMapping[usernameField.text] != nil) {
+          NSPredicate* selectedTrustPredicate = [NSPredicate predicateWithFormat:@"id == %@", userTrustMapping[usernameField.text]];
+          self.selectedTrust = [PRTrust MR_findFirstWithPredicate:selectedTrustPredicate];
+          NSLog(@"logged in with trust id: %@", self.selectedTrust.id);
+        }
         continueLogIn(nil, 0, nil);
     } else {
         NSString *title = TDLocalizedStringWithDefaultValue(@"login.error.title", nil, nil, @"Incorrect Username or Password", @"Error title if the user enters an incorrect username or password.");

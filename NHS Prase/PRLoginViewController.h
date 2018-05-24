@@ -19,6 +19,7 @@
 @interface PRLoginViewController : PRViewController <TDInputAccessoryDelegate, TDSelectionViewControllerDelegate, UITextViewDelegate>
 {
     NSDictionary *logInCredentials;
+    NSDictionary *userTrustMapping;
     
     __weak IBOutlet UITextField *trustField;
     
